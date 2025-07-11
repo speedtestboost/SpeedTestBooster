@@ -10,6 +10,7 @@ export const users = pgTable("users", {
 
 export const speedTests = pgTable("speed_tests", {
   id: serial("id").primaryKey(),
+  sessionId: text("session_id").notNull(),
   downloadSpeed: real("download_speed").notNull(),
   uploadSpeed: real("upload_speed").notNull(),
   ping: real("ping").notNull(),

@@ -21,7 +21,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/speed-tests", async (req, res) => {
     try {
       const limit = req.query.limit ? parseInt(req.query.limit as string) : 10;
-      const tests = await storage.getSpeedTests(limit);
+      const sessionId = req.query.sessionId as string || req.headers['x-session-id'] as string || 'default';
+      const tests = await storage.getSpeedTests(sessionId, limit);
       res.json(tests);
     } catch (error) {
       res.status(500).json({ error: "Failed to retrieve speed tests" });
@@ -30,7 +31,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.delete("/api/speed-tests", async (req, res) => {
     try {
-      await storage.deleteAllSpeedTests();
+      const sessionId = req.query.sessionId as string || req.headers['x-session-id'] as string || 'default';
+      await storage.deleteAllSpeedTests(sessionId);
       res.json({ message: "All speed tests deleted" });
     } catch (error) {
       res.status(500).json({ error: "Failed to delete speed tests" });

@@ -7,8 +7,8 @@ export interface IStorage {
   
   // Speed test methods
   createSpeedTest(test: InsertSpeedTest): Promise<SpeedTest>;
-  getSpeedTests(limit?: number): Promise<SpeedTest[]>;
-  deleteAllSpeedTests(): Promise<void>;
+  getSpeedTests(sessionId: string, limit?: number): Promise<SpeedTest[]>;
+  deleteAllSpeedTests(sessionId: string): Promise<void>;
 }
 
 export class MemStorage implements IStorage {
@@ -52,15 +52,20 @@ export class MemStorage implements IStorage {
     return test;
   }
 
-  async getSpeedTests(limit: number = 10): Promise<SpeedTest[]> {
+  async getSpeedTests(sessionId: string, limit: number = 10): Promise<SpeedTest[]> {
     const tests = Array.from(this.speedTests.values())
+      .filter(test => test.sessionId === sessionId)
       .sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime())
       .slice(0, limit);
     return tests;
   }
 
-  async deleteAllSpeedTests(): Promise<void> {
-    this.speedTests.clear();
+  async deleteAllSpeedTests(sessionId: string): Promise<void> {
+    const testsToDelete = Array.from(this.speedTests.entries())
+      .filter(([_, test]) => test.sessionId === sessionId)
+      .map(([id, _]) => id);
+    
+    testsToDelete.forEach(id => this.speedTests.delete(id));
   }
 }
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { queryClient } from "@/lib/queryClient";
+import { getSessionId } from "@/lib/sessionManager";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -34,10 +35,15 @@ export default function SpeedTest() {
   // Save speed test mutation
   const saveSpeedTest = useMutation({
     mutationFn: async (result: SpeedTestResult) => {
+      const sessionId = getSessionId();
       const response = await fetch("/api/speed-tests", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "X-Session-ID": sessionId
+        },
         body: JSON.stringify({
+          sessionId,
           downloadSpeed: result.downloadSpeed,
           uploadSpeed: result.uploadSpeed,
           ping: result.ping,
@@ -68,8 +74,12 @@ export default function SpeedTest() {
   // Clear history mutation
   const clearHistory = useMutation({
     mutationFn: async () => {
+      const sessionId = getSessionId();
       const response = await fetch("/api/speed-tests", {
         method: "DELETE",
+        headers: {
+          "X-Session-ID": sessionId
+        }
       });
       if (!response.ok) throw new Error("Failed to clear history");
       return response.json();
