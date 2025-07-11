@@ -195,7 +195,9 @@ export default function SpeedTest() {
                   size="lg"
                 >
                   <div className="flex items-center justify-center">
-                    <Play className="mr-3 h-6 w-6 flex-shrink-0" />
+                    <div className="w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">
+                      <Play className="h-6 w-6" />
+                    </div>
                     <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
                   </div>
                 </Button>
@@ -225,7 +227,9 @@ export default function SpeedTest() {
                   size="lg"
                 >
                   <div className="flex items-center justify-center">
-                    <Wifi className="mr-3 h-6 w-6 flex-shrink-0" />
+                    <div className="w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">
+                      <Wifi className="h-6 w-6" />
+                    </div>
                     <span>Optimize WiFi Speed</span>
                   </div>
                 </Button>
@@ -340,7 +344,9 @@ export default function SpeedTest() {
               size="lg"
             >
               <div className="flex items-center justify-center">
-                <Play className="mr-3 h-6 w-6 flex-shrink-0" />
+                <div className="w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">
+                  <Play className="h-6 w-6" />
+                </div>
                 <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
               </div>
             </Button>
@@ -370,7 +376,9 @@ export default function SpeedTest() {
               size="lg"
             >
               <div className="flex items-center justify-center">
-                <Wifi className="mr-3 h-6 w-6 flex-shrink-0" />
+                <div className="w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">
+                  <Wifi className="h-6 w-6" />
+                </div>
                 <span>Optimize WiFi Speed</span>
               </div>
             </Button>
