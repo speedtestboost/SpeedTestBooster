@@ -12,7 +12,7 @@ export const speedTests = pgTable("speed_tests", {
   id: serial("id").primaryKey(),
   downloadSpeed: real("download_speed").notNull(),
   uploadSpeed: real("upload_speed").notNull(),
-  ping: integer("ping").notNull(),
+  ping: real("ping").notNull(),
   jitter: real("jitter").notNull(),
   serverLocation: text("server_location").notNull(),
   connectionType: text("connection_type").notNull(),

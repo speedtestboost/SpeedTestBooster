@@ -8,16 +8,17 @@ import { useToast } from "@/hooks/use-toast";
 import SpeedGauge from "@/components/SpeedGauge";
 import TestHistory from "@/components/TestHistory";
 import NetworkInfo from "@/components/NetworkInfo";
+import OptimizationModal from "@/components/OptimizationModal";
 
 import { performSpeedTest, type SpeedTestResult } from "@/lib/speedTest";
-import { Play, Gauge } from "lucide-react";
+import { Play, Gauge, Wifi } from "lucide-react";
 
 export default function SpeedTest() {
   const [isTestRunning, setIsTestRunning] = useState(false);
   const [testProgress, setTestProgress] = useState(0);
   const [testStatus, setTestStatus] = useState("Ready to test");
   const [currentResult, setCurrentResult] = useState<SpeedTestResult | null>(null);
-
+  const [showOptimization, setShowOptimization] = useState(false);
   const { toast } = useToast();
 
   // Fetch network info
@@ -121,7 +122,9 @@ export default function SpeedTest() {
     }
   };
 
-
+  const handleOptimizeWifi = () => {
+    setShowOptimization(true);
+  };
 
   const lastTest = speedTests?.[0];
   const displayResult = currentResult || lastTest;
@@ -218,6 +221,19 @@ export default function SpeedTest() {
                   </div>
                 )}
 
+                <Button
+                  onClick={handleOptimizeWifi}
+                  disabled={isTestRunning}
+                  className="w-full bg-secondary text-secondary-foreground rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50"
+                  size="lg"
+                >
+                  <div className="flex items-center justify-center">
+                    <div className="w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">
+                      <Wifi className="h-6 w-6" />
+                    </div>
+                    <span>Optimize WiFi Speed</span>
+                  </div>
+                </Button>
 
               </CardContent>
             </Card>
@@ -355,6 +371,19 @@ export default function SpeedTest() {
               </div>
             )}
 
+            <Button
+              onClick={handleOptimizeWifi}
+              disabled={isTestRunning}
+              className="w-full bg-secondary text-secondary-foreground rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50"
+              size="lg"
+            >
+              <div className="flex items-center justify-center">
+                <div className="w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">
+                  <Wifi className="h-6 w-6" />
+                </div>
+                <span>Optimize WiFi Speed</span>
+              </div>
+            </Button>
 
           </div>
 
@@ -409,7 +438,11 @@ export default function SpeedTest() {
         </div>
       </main>
 
-
+      {/* Optimization Modal */}
+      <OptimizationModal
+        isOpen={showOptimization}
+        onClose={() => setShowOptimization(false)}
+      />
 
       {/* SEO-Optimized Footer Content */}
       <footer className="bg-card/30 backdrop-blur-sm border-t border-border/50 mt-12">

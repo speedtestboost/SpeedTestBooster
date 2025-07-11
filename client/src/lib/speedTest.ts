@@ -47,7 +47,7 @@ export async function performSpeedTest(options: SpeedTestOptions = {}): Promise<
     const result = {
       downloadSpeed: Number(calibratedResults.downloadSpeed) || 0,
       uploadSpeed: Number(calibratedResults.uploadSpeed) || 0,
-      ping: Number(pingResult) || 0,
+      ping: Math.round(Number(pingResult)) || 0,
       jitter: Number(jitter) || 0,
       serverLocation: "Global Edge Network",
       connectionType: "Broadband"
