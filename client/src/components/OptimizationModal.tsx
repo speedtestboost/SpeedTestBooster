@@ -85,13 +85,13 @@ export default function OptimizationModal({ isOpen, onClose }: OptimizationModal
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <div className="flex flex-col items-center space-y-4">
-            <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center">
+            <div className="w-16 h-16 gradient-bg rounded-full flex items-center justify-center glow-effect">
               <Wifi className="h-8 w-8 text-white" />
             </div>
-            <DialogTitle className="text-lg font-semibold text-gray-900">
+            <DialogTitle className="text-lg font-semibold text-foreground">
               WiFi Optimization
             </DialogTitle>
-            <p className="text-sm text-gray-600 text-center">
+            <p className="text-sm text-muted-foreground text-center">
               Optimizing your connection for better performance...
             </p>
           </div>
@@ -100,15 +100,15 @@ export default function OptimizationModal({ isOpen, onClose }: OptimizationModal
         <div className="space-y-4">
           <div className="space-y-3">
             {steps.map((step, index) => (
-              <div key={step.id} className="flex items-center justify-between">
-                <span className="text-sm text-gray-600">{step.label}</span>
+              <div key={step.id} className="flex items-center justify-between p-3 bg-muted/30 rounded-lg border border-border/50">
+                <span className="text-sm text-foreground">{step.label}</span>
                 <div className="flex items-center">
                   {step.status === "completed" ? (
                     <Check className="h-4 w-4 text-success" />
                   ) : step.status === "running" ? (
                     <Loader2 className="h-4 w-4 animate-spin text-primary" />
                   ) : (
-                    <div className="w-4 h-4 border-2 border-gray-300 rounded-full" />
+                    <div className="w-4 h-4 border-2 border-muted rounded-full" />
                   )}
                 </div>
               </div>
@@ -116,11 +116,11 @@ export default function OptimizationModal({ isOpen, onClose }: OptimizationModal
           </div>
           
           <div className="space-y-2">
-            <div className="flex justify-between text-sm text-gray-600">
+            <div className="flex justify-between text-sm text-muted-foreground">
               <span>Progress</span>
               <span>{Math.round(progress)}%</span>
             </div>
-            <Progress value={progress} className="h-2" />
+            <Progress value={progress} className="h-3 bg-muted/30" />
           </div>
           
           <Button

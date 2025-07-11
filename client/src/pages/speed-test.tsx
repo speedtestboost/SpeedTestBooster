@@ -127,22 +127,24 @@ export default function SpeedTest() {
   const displayResult = currentResult || lastTest;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      <header className="bg-card/50 backdrop-blur-sm border-b border-border/50">
         <div className="max-w-md mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <Gauge className="h-6 w-6 text-primary" />
-              <h1 className="text-xl font-semibold text-gray-900">SpeedTest Pro</h1>
+            <div className="flex items-center space-x-3">
+              <div className="p-2 rounded-xl gradient-bg">
+                <Gauge className="h-6 w-6 text-white" />
+              </div>
+              <h1 className="text-2xl font-bold gradient-text">SpeedTest Pro</h1>
             </div>
             <Button
               variant="ghost"
               size="sm"
               onClick={() => {}}
-              className="p-2 rounded-full hover:bg-gray-100"
+              className="p-2 rounded-full hover:bg-muted/50"
             >
-              <History className="h-5 w-5 text-gray-600" />
+              <History className="h-5 w-5 text-muted-foreground" />
             </Button>
           </div>
         </div>
@@ -150,20 +152,20 @@ export default function SpeedTest() {
 
       <main className="max-w-md mx-auto px-4 py-6 space-y-6">
         {/* Connection Status */}
-        <Card>
+        <Card className="card-hover">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-success rounded-full animate-pulse"></div>
-                <span className="text-sm font-medium text-gray-700">Connected</span>
+              <div className="flex items-center space-x-3">
+                <div className="w-3 h-3 bg-success rounded-full animate-pulse glow-effect"></div>
+                <span className="text-sm font-medium text-foreground">Connected</span>
               </div>
-              <div className="text-sm text-gray-500">
+              <div className="text-sm text-muted-foreground px-3 py-1 rounded-full bg-muted/50">
                 {networkInfo?.connectionType || "WiFi"}
               </div>
             </div>
             <div className="text-center">
-              <div className="text-sm text-gray-500 mb-1">Current IP</div>
-              <div className="font-mono text-gray-900">
+              <div className="text-sm text-muted-foreground mb-2">Current IP Address</div>
+              <div className="font-mono text-foreground text-lg font-semibold">
                 {networkInfo?.ipAddress || "Loading..."}
               </div>
             </div>
@@ -184,55 +186,55 @@ export default function SpeedTest() {
           <Button
             onClick={handleStartTest}
             disabled={isTestRunning}
-            className="w-full bg-primary text-white rounded-xl py-4 px-6 font-semibold text-lg hover:bg-blue-700 active:bg-blue-800 transition-colors duration-200 disabled:opacity-50"
+            className="w-full gradient-bg text-white rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50 glow-effect"
             size="lg"
           >
-            <Play className="mr-2 h-5 w-5" />
-            {isTestRunning ? "Testing..." : "Start Speed Test"}
+            <Play className="mr-3 h-6 w-6" />
+            {isTestRunning ? "Running Test..." : "Start Speed Test"}
           </Button>
 
           <Button
             onClick={handleOptimizeWifi}
             disabled={isTestRunning}
-            className="w-full bg-secondary text-white rounded-xl py-4 px-6 font-semibold text-lg hover:bg-green-700 active:bg-green-800 transition-colors duration-200"
+            className="w-full bg-secondary text-secondary-foreground rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50"
             size="lg"
           >
-            <Wifi className="mr-2 h-5 w-5" />
+            <Wifi className="mr-3 h-6 w-6" />
             Optimize WiFi Speed
           </Button>
         </div>
 
         {/* Test Results */}
         {displayResult && (
-          <Card>
+          <Card className="card-hover">
             <CardContent className="p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Latest Results</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-4">Latest Results</h3>
               <div className="grid grid-cols-2 gap-4">
-                <div className="text-center p-4 bg-gray-50 rounded-lg">
-                  <div className="text-xs text-gray-500 mb-1">Download</div>
-                  <div className="text-2xl font-bold text-gray-900">
+                <div className="text-center p-4 bg-muted/30 rounded-xl border border-border/50">
+                  <div className="text-xs text-muted-foreground mb-1">Download</div>
+                  <div className="text-2xl font-bold gradient-text">
                     {displayResult.downloadSpeed.toFixed(1)}
                   </div>
-                  <div className="text-xs text-gray-500">Mbps</div>
+                  <div className="text-xs text-muted-foreground">Mbps</div>
                 </div>
-                <div className="text-center p-4 bg-gray-50 rounded-lg">
-                  <div className="text-xs text-gray-500 mb-1">Upload</div>
-                  <div className="text-2xl font-bold text-gray-900">
+                <div className="text-center p-4 bg-muted/30 rounded-xl border border-border/50">
+                  <div className="text-xs text-muted-foreground mb-1">Upload</div>
+                  <div className="text-2xl font-bold gradient-text">
                     {displayResult.uploadSpeed.toFixed(1)}
                   </div>
-                  <div className="text-xs text-gray-500">Mbps</div>
+                  <div className="text-xs text-muted-foreground">Mbps</div>
                 </div>
               </div>
-              <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+              <div className="mt-4 p-4 bg-muted/30 rounded-xl border border-border/50">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-600">Ping</span>
-                  <span className="font-semibold text-gray-900">
+                  <span className="text-sm text-muted-foreground">Ping</span>
+                  <span className="font-semibold text-foreground">
                     {displayResult.ping}ms
                   </span>
                 </div>
                 <div className="flex justify-between items-center mt-2">
-                  <span className="text-sm text-gray-600">Jitter</span>
-                  <span className="font-semibold text-gray-900">
+                  <span className="text-sm text-muted-foreground">Jitter</span>
+                  <span className="font-semibold text-foreground">
                     {displayResult.jitter.toFixed(1)}ms
                   </span>
                 </div>

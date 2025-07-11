@@ -34,16 +34,16 @@ export default function TestHistory({
   };
 
   return (
-    <Card>
+    <Card className="card-hover">
       <CardContent className="p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-gray-900">Test History</h3>
+          <h3 className="text-lg font-semibold text-foreground">Test History</h3>
           {speedTests.length > 0 && (
             <Button
               variant="ghost"
               size="sm"
               onClick={onClearHistory}
-              className="text-sm text-primary hover:text-blue-700 transition-colors"
+              className="text-sm text-primary hover:text-accent transition-colors"
             >
               Clear All
             </Button>
@@ -61,7 +61,7 @@ export default function TestHistory({
             ))}
           </div>
         ) : speedTests.length === 0 ? (
-          <div className="text-center py-8 text-gray-500">
+          <div className="text-center py-8 text-muted-foreground">
             <p>No speed tests yet</p>
             <p className="text-sm mt-1">Run your first speed test to see results here</p>
           </div>
@@ -70,18 +70,18 @@ export default function TestHistory({
             {speedTests.map((test) => (
               <div
                 key={test.id}
-                className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
+                className="flex items-center justify-between p-4 bg-muted/30 rounded-xl border border-border/50 hover:border-primary/50 transition-all"
               >
                 <div className="flex-1">
                   <div className="flex items-center space-x-4">
-                    <div className="text-sm font-medium text-gray-900">
+                    <div className="text-sm font-semibold text-foreground">
                       {test.downloadSpeed.toFixed(1)} Mbps
                     </div>
-                    <div className="text-sm text-gray-500">
+                    <div className="text-sm text-muted-foreground">
                       ↑ {test.uploadSpeed.toFixed(1)} Mbps
                     </div>
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">
+                  <div className="text-xs text-muted-foreground mt-1">
                     {formatDate(test.timestamp)}
                   </div>
                 </div>
@@ -91,7 +91,7 @@ export default function TestHistory({
                       test.downloadSpeed
                     )}`}
                   />
-                  <ChevronRight className="h-4 w-4 text-gray-400" />
+                  <ChevronRight className="h-4 w-4 text-muted-foreground" />
                 </div>
               </div>
             ))}
