@@ -14,42 +14,52 @@ export interface SpeedTestOptions {
 export async function performSpeedTest(options: SpeedTestOptions = {}): Promise<SpeedTestResult> {
   const { onProgress } = options;
   
-  // Phase 1: Quick ping test
-  onProgress?.(10, "Measuring ping...");
-  const pingResult = await measurePingFast();
-  
-  // Phase 2: Quick download test
-  onProgress?.(30, "Testing download speed...");
-  const downloadSpeed = await measureDownloadSpeedFast((p) => {
-    const phaseProgress = 30 + (p * 0.4); // 30% to 70%
-    onProgress?.(phaseProgress, "Testing download speed...");
-  });
-  
-  // Phase 3: Quick upload test
-  onProgress?.(75, "Testing upload speed...");
-  const uploadSpeed = await measureUploadSpeedFast((p) => {
-    const phaseProgress = 75 + (p * 0.15); // 75% to 90%
-    onProgress?.(phaseProgress, "Testing upload speed...");
-  });
-  
-  // Phase 4: Quick jitter calculation
-  onProgress?.(95, "Calculating jitter...");
-  const jitter = await measureJitterFast();
-  
-  // Phase 5: Final calibration
-  onProgress?.(98, "Finalizing results...");
-  const calibratedResults = await calibrateResults(downloadSpeed, uploadSpeed, pingResult);
-  
-  onProgress?.(100, "Test complete!");
-  
-  return {
-    downloadSpeed: calibratedResults.downloadSpeed,
-    uploadSpeed: calibratedResults.uploadSpeed,
-    ping: pingResult,
-    jitter,
-    serverLocation: "Global Edge Network",
-    connectionType: "Broadband"
-  };
+  try {
+    // Phase 1: Quick ping test
+    onProgress?.(10, "Measuring ping...");
+    const pingResult = await measurePingFast();
+    
+    // Phase 2: Quick download test
+    onProgress?.(30, "Testing download speed...");
+    const downloadSpeed = await measureDownloadSpeedFast((p) => {
+      const phaseProgress = 30 + (p * 0.4); // 30% to 70%
+      onProgress?.(phaseProgress, "Testing download speed...");
+    });
+    
+    // Phase 3: Quick upload test
+    onProgress?.(75, "Testing upload speed...");
+    const uploadSpeed = await measureUploadSpeedFast((p) => {
+      const phaseProgress = 75 + (p * 0.15); // 75% to 90%
+      onProgress?.(phaseProgress, "Testing upload speed...");
+    });
+    
+    // Phase 4: Quick jitter calculation
+    onProgress?.(95, "Calculating jitter...");
+    const jitter = await measureJitterFast();
+    
+    // Phase 5: Final calibration
+    onProgress?.(98, "Finalizing results...");
+    const calibratedResults = await calibrateResults(downloadSpeed, uploadSpeed, pingResult);
+    
+    onProgress?.(100, "Test complete!");
+    
+    // Ensure all values are valid numbers
+    const result = {
+      downloadSpeed: Number(calibratedResults.downloadSpeed) || 0,
+      uploadSpeed: Number(calibratedResults.uploadSpeed) || 0,
+      ping: Number(pingResult) || 0,
+      jitter: Number(jitter) || 0,
+      serverLocation: "Global Edge Network",
+      connectionType: "Broadband"
+    };
+    
+    console.log("Speed test result:", result);
+    return result;
+    
+  } catch (error) {
+    console.error("Speed test failed:", error);
+    throw new Error("Speed test failed");
+  }
 }
 
 async function calibrateResults(downloadSpeed: number, uploadSpeed: number, ping: number): Promise<{ downloadSpeed: number, uploadSpeed: number }> {

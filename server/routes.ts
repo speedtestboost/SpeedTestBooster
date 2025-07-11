@@ -8,11 +8,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Speed test routes
   app.post("/api/speed-tests", async (req, res) => {
     try {
+      console.log("Received speed test data:", req.body);
       const testData = insertSpeedTestSchema.parse(req.body);
       const test = await storage.createSpeedTest(testData);
       res.json(test);
     } catch (error) {
-      res.status(400).json({ error: "Invalid test data" });
+      console.error("Speed test validation error:", error);
+      res.status(400).json({ error: "Invalid test data", details: error instanceof Error ? error.message : "Unknown error" });
     }
   });
 
