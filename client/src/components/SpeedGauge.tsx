@@ -90,7 +90,7 @@ export default function SpeedGauge({
             {isTestRunning ? testStatus : "Ready to test"}
           </div>
           <div className="text-xs text-muted-foreground">
-            {formatLastTest(lastTest)}
+            {isTestRunning ? `${testProgress.toFixed(0)}% complete` : formatLastTest(lastTest)}
           </div>
         </div>
         

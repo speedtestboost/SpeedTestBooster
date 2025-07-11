@@ -95,6 +95,7 @@ export default function SpeedTest() {
     setIsTestRunning(true);
     setTestProgress(0);
     setTestStatus("Initializing test...");
+    setCurrentResult(null); // Clear previous result
 
     try {
       const result = await performSpeedTest({
@@ -107,9 +108,10 @@ export default function SpeedTest() {
       setCurrentResult(result);
       await saveSpeedTest.mutateAsync(result);
     } catch (error) {
+      console.error('Speed test error:', error);
       toast({
         title: "Test failed",
-        description: "Failed to complete speed test. Please try again.",
+        description: "Network test encountered an issue. Please check your connection and try again.",
         variant: "destructive",
       });
     } finally {
@@ -192,6 +194,24 @@ export default function SpeedTest() {
             <Play className="mr-3 h-6 w-6" />
             {isTestRunning ? "Running Test..." : "Start Speed Test"}
           </Button>
+
+          {isTestRunning && (
+            <div className="bg-muted/30 rounded-xl p-4 border border-border/50">
+              <div className="flex items-center justify-between text-sm text-muted-foreground mb-2">
+                <span>Test Progress</span>
+                <span>{testProgress.toFixed(0)}%</span>
+              </div>
+              <div className="w-full bg-muted rounded-full h-2 mb-2">
+                <div 
+                  className="bg-gradient-to-r from-primary to-accent h-2 rounded-full transition-all duration-300"
+                  style={{ width: `${testProgress}%` }}
+                />
+              </div>
+              <div className="text-xs text-foreground text-center">
+                {testStatus}
+              </div>
+            </div>
+          )}
 
           <Button
             onClick={handleOptimizeWifi}
