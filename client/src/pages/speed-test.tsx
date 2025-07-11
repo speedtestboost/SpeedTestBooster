@@ -194,8 +194,10 @@ export default function SpeedTest() {
                   className="w-full gradient-bg text-white rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50 glow-effect"
                   size="lg"
                 >
-                  <Play className="mr-3 h-6 w-6" />
-                  {isTestRunning ? "Running Test..." : "Start Speed Test"}
+                  <div className="flex items-center justify-center">
+                    <Play className="mr-3 h-6 w-6 flex-shrink-0" />
+                    <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
+                  </div>
                 </Button>
 
                 {isTestRunning && (
@@ -222,8 +224,10 @@ export default function SpeedTest() {
                   className="w-full bg-secondary text-secondary-foreground rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50"
                   size="lg"
                 >
-                  <Wifi className="mr-3 h-6 w-6" />
-                  Optimize WiFi Speed
+                  <div className="flex items-center justify-center">
+                    <Wifi className="mr-3 h-6 w-6 flex-shrink-0" />
+                    <span>Optimize WiFi Speed</span>
+                  </div>
                 </Button>
               </CardContent>
             </Card>
@@ -335,8 +339,10 @@ export default function SpeedTest() {
               className="w-full gradient-bg text-white rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50 glow-effect"
               size="lg"
             >
-              <Play className="mr-3 h-6 w-6" />
-              {isTestRunning ? "Running Test..." : "Start Speed Test"}
+              <div className="flex items-center justify-center">
+                <Play className="mr-3 h-6 w-6 flex-shrink-0" />
+                <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
+              </div>
             </Button>
 
             {isTestRunning && (
@@ -363,8 +369,10 @@ export default function SpeedTest() {
               className="w-full bg-secondary text-secondary-foreground rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50"
               size="lg"
             >
-              <Wifi className="mr-3 h-6 w-6" />
-              Optimize WiFi Speed
+              <div className="flex items-center justify-center">
+                <Wifi className="mr-3 h-6 w-6 flex-shrink-0" />
+                <span>Optimize WiFi Speed</span>
+              </div>
             </Button>
           </div>
 
