@@ -138,7 +138,7 @@ export default function SpeedTest() {
               <div className="p-2 rounded-xl gradient-bg">
                 <Gauge className="h-6 w-6 text-white" />
               </div>
-              <h1 className="text-2xl lg:text-3xl font-bold gradient-text">SpeedTest Pro</h1>
+              <h1 className="text-2xl lg:text-3xl font-bold gradient-text">Speed Test and Boost</h1>
             </div>
             <Button
               variant="ghost"

@@ -1,8 +1,8 @@
-# Speed Test Application
+# Speed Test and Boost Application
 
 ## Overview
 
-This is a full-stack speed test application built with a React frontend and Express backend. The application allows users to test their internet connection speed, view test history, and get network information. It uses a modern tech stack with TypeScript, shadcn/ui components, and Drizzle ORM for database operations.
+This is a full-stack speed test application built with a React frontend and Express backend. The "Speed Test and Boost" application allows users to test their internet connection speed, view test history, get network information, and optimize their WiFi connection. It uses a modern tech stack with TypeScript, shadcn/ui components, and Drizzle ORM for database operations.
 
 ## User Preferences
 
