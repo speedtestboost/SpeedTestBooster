@@ -136,7 +136,20 @@ export default function SpeedTest() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="p-2 rounded-xl gradient-bg">
-                <Gauge className="h-6 w-6 text-white" />
+                <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M 8 16 A 8 8 0 0 1 24 16" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round"/>
+                  <line x1="16" y1="16" x2="22" y2="12" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                  <circle cx="16" cy="16" r="2" fill="white"/>
+                  <line x1="9" y1="15" x2="11" y2="14" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                  <line x1="8" y1="16" x2="10" y2="16" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                  <line x1="9" y1="17" x2="11" y2="18" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                  <line x1="21" y1="14" x2="23" y2="15" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                  <line x1="22" y1="16" x2="24" y2="16" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                  <line x1="21" y1="18" x2="23" y2="17" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                  <path d="M 13 22 Q 16 20 19 22" stroke="white" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+                  <path d="M 14 23 Q 16 22 18 23" stroke="white" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+                  <circle cx="16" cy="24" r="1" fill="white"/>
+                </svg>
               </div>
               <h1 className="text-2xl lg:text-3xl font-bold gradient-text">Speed Test and Boost</h1>
             </div>
