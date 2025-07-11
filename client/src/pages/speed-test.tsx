@@ -10,8 +10,7 @@ import TestHistory from "@/components/TestHistory";
 import NetworkInfo from "@/components/NetworkInfo";
 import OptimizationModal from "@/components/OptimizationModal";
 import { performSpeedTest, type SpeedTestResult } from "@/lib/speedTest";
-import { useTheme } from "@/components/ThemeProvider";
-import { Play, Wifi, Sun, Moon, Gauge } from "lucide-react";
+import { Play, Wifi, Gauge } from "lucide-react";
 
 export default function SpeedTest() {
   const [isTestRunning, setIsTestRunning] = useState(false);
@@ -20,7 +19,6 @@ export default function SpeedTest() {
   const [currentResult, setCurrentResult] = useState<SpeedTestResult | null>(null);
   const [showOptimization, setShowOptimization] = useState(false);
   const { toast } = useToast();
-  const { theme, setTheme } = useTheme();
 
   // Fetch network info
   const { data: networkInfo } = useQuery({
@@ -142,24 +140,7 @@ export default function SpeedTest() {
               </div>
               <h1 className="text-2xl lg:text-3xl font-bold gradient-text">Speed Test and Boost</h1>
             </div>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => {
-                console.log("Current theme:", theme);
-                const newTheme = theme === "dark" ? "light" : "dark";
-                console.log("Switching to:", newTheme);
-                setTheme(newTheme);
-              }}
-              className="p-2 rounded-full hover:bg-muted/50"
-              title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            >
-              {theme === "dark" ? (
-                <Sun className="h-5 w-5 text-muted-foreground" />
-              ) : (
-                <Moon className="h-5 w-5 text-muted-foreground" />
-              )}
-            </Button>
+
           </div>
         </div>
       </header>
