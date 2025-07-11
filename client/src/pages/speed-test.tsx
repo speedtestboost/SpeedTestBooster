@@ -147,17 +147,17 @@ export default function SpeedTest() {
               size="sm"
               onClick={() => {
                 console.log("Current theme:", theme);
-                const newTheme = theme === "light" ? "dark" : "light";
+                const newTheme = theme === "dark" ? "light" : "dark";
                 console.log("Switching to:", newTheme);
                 setTheme(newTheme);
               }}
               className="p-2 rounded-full hover:bg-muted/50"
-              title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+              title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
             >
-              {theme === "light" ? (
-                <Moon className="h-5 w-5 text-muted-foreground" />
-              ) : (
+              {theme === "dark" ? (
                 <Sun className="h-5 w-5 text-muted-foreground" />
+              ) : (
+                <Moon className="h-5 w-5 text-muted-foreground" />
               )}
             </Button>
           </div>
