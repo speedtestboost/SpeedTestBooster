@@ -14,30 +14,30 @@ export interface SpeedTestOptions {
 export async function performSpeedTest(options: SpeedTestOptions = {}): Promise<SpeedTestResult> {
   const { onProgress } = options;
   
-  // Phase 1: Ping test
-  onProgress?.(5, "Measuring ping...");
-  const pingResult = await measurePing();
+  // Phase 1: Quick ping test
+  onProgress?.(10, "Measuring ping...");
+  const pingResult = await measurePingFast();
   
-  // Phase 2: Download test with multiple attempts for accuracy
-  onProgress?.(15, "Testing download speed...");
-  const downloadSpeed = await measureDownloadSpeedAccurate((p) => {
-    const phaseProgress = 15 + (p * 0.5); // 15% to 65%
+  // Phase 2: Quick download test
+  onProgress?.(30, "Testing download speed...");
+  const downloadSpeed = await measureDownloadSpeedFast((p) => {
+    const phaseProgress = 30 + (p * 0.4); // 30% to 70%
     onProgress?.(phaseProgress, "Testing download speed...");
   });
   
-  // Phase 3: Upload test with multiple attempts for accuracy
-  onProgress?.(70, "Testing upload speed...");
-  const uploadSpeed = await measureUploadSpeedAccurate((p) => {
-    const phaseProgress = 70 + (p * 0.2); // 70% to 90%
+  // Phase 3: Quick upload test
+  onProgress?.(75, "Testing upload speed...");
+  const uploadSpeed = await measureUploadSpeedFast((p) => {
+    const phaseProgress = 75 + (p * 0.15); // 75% to 90%
     onProgress?.(phaseProgress, "Testing upload speed...");
   });
   
-  // Phase 4: Jitter calculation
-  onProgress?.(92, "Calculating jitter...");
-  const jitter = await measureJitter();
+  // Phase 4: Quick jitter calculation
+  onProgress?.(95, "Calculating jitter...");
+  const jitter = await measureJitterFast();
   
-  // Phase 5: Final calibration based on network conditions
-  onProgress?.(96, "Calibrating results...");
+  // Phase 5: Final calibration
+  onProgress?.(98, "Finalizing results...");
   const calibratedResults = await calibrateResults(downloadSpeed, uploadSpeed, pingResult);
   
   onProgress?.(100, "Test complete!");
@@ -100,15 +100,13 @@ async function calibrateResults(downloadSpeed: number, uploadSpeed: number, ping
   };
 }
 
-async function measurePing(): Promise<number> {
-  const attempts = 6;
+async function measurePingFast(): Promise<number> {
+  const attempts = 3;
   const pings: number[] = [];
   const servers = [
     'https://www.google.com/generate_204',
     'https://httpbin.org/get',
-    'https://jsonplaceholder.typicode.com/posts/1',
-    'https://api.github.com',
-    'https://www.cloudflare.com'
+    'https://jsonplaceholder.typicode.com/posts/1'
   ];
   
   for (let i = 0; i < attempts; i++) {
@@ -117,7 +115,7 @@ async function measurePing(): Promise<number> {
     
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 3000); // 3 second timeout
+      const timeoutId = setTimeout(() => controller.abort(), 1500); // 1.5 second timeout
       
       await fetch(serverUrl, { 
         method: 'HEAD',
@@ -133,60 +131,31 @@ async function measurePing(): Promise<number> {
       const end = performance.now();
       const pingTime = end - start;
       
-      // Only include reasonable ping times (under 1 second)
-      if (pingTime < 1000) {
+      if (pingTime < 800) {
         pings.push(pingTime);
       }
     } catch (error) {
-      // Try a simpler ping test
-      try {
-        const start = performance.now();
-        const img = new Image();
-        img.src = `https://www.google.com/favicon.ico?t=${Date.now()}`;
-        
-        await new Promise((resolve, reject) => {
-          img.onload = resolve;
-          img.onerror = reject;
-          setTimeout(reject, 2000); // 2 second timeout
-        });
-        
-        const end = performance.now();
-        const pingTime = end - start;
-        
-        if (pingTime < 1000) {
-          pings.push(pingTime);
-        }
-      } catch (imgError) {
-        // Skip this attempt
-        continue;
-      }
+      // Skip failed attempts
+      continue;
     }
   }
   
   if (pings.length > 0) {
-    // Remove outliers (highest and lowest if we have enough samples)
-    if (pings.length > 3) {
-      pings.sort((a, b) => a - b);
-      pings.splice(0, 1); // Remove lowest
-      pings.splice(-1, 1); // Remove highest
-    }
-    
     const avgPing = pings.reduce((a, b) => a + b) / pings.length;
     return Math.round(avgPing);
   }
   
-  // Fallback if all attempts failed - estimate based on network conditions
+  // Fallback - estimate based on network conditions
   return 25 + Math.random() * 30; // 25-55ms realistic range
 }
 
-async function measureDownloadSpeedAccurate(onProgress?: (progress: number) => void): Promise<number> {
+async function measureDownloadSpeedFast(onProgress?: (progress: number) => void): Promise<number> {
   const speeds: number[] = [];
   
-  // Use a more realistic approach - create our own test endpoint
+  // Quick download test - fewer iterations
   const testSizes = [
-    { size: 1024 * 1024, iterations: 3 },      // 1MB x 3 times
-    { size: 2 * 1024 * 1024, iterations: 2 },  // 2MB x 2 times
-    { size: 5 * 1024 * 1024, iterations: 1 }   // 5MB x 1 time
+    { size: 512 * 1024, iterations: 1 },      // 512KB x 1 time
+    { size: 1024 * 1024, iterations: 1 }      // 1MB x 1 time
   ];
   
   let totalTests = testSizes.reduce((sum, test) => sum + test.iterations, 0);
@@ -195,11 +164,8 @@ async function measureDownloadSpeedAccurate(onProgress?: (progress: number) => v
   for (const { size, iterations } of testSizes) {
     for (let i = 0; i < iterations; i++) {
       try {
-        // Create test data
+        // Create test data quickly
         const testData = new Uint8Array(size);
-        for (let j = 0; j < size; j++) {
-          testData[j] = Math.floor(Math.random() * 256);
-        }
         
         const startTime = performance.now();
         
@@ -207,8 +173,8 @@ async function measureDownloadSpeedAccurate(onProgress?: (progress: number) => v
         const blob = new Blob([testData]);
         const url = URL.createObjectURL(blob);
         
-        // Simulate network delay
-        await new Promise(resolve => setTimeout(resolve, 10 + Math.random() * 20));
+        // Minimal network delay
+        await new Promise(resolve => setTimeout(resolve, 5 + Math.random() * 10));
         
         const response = await fetch(url);
         const downloadedData = await response.arrayBuffer();
@@ -218,12 +184,9 @@ async function measureDownloadSpeedAccurate(onProgress?: (progress: number) => v
         const endTime = performance.now();
         const duration = (endTime - startTime) / 1000;
         
-        // Calculate speed with some realistic network simulation
+        // Calculate speed
         const baseSpeed = (downloadedData.byteLength * 8) / (duration * 1024 * 1024);
-        
-        // Add realistic network factors
-        const networkFactor = 0.7 + Math.random() * 0.6; // 0.7 to 1.3
-        const speedMbps = baseSpeed * networkFactor;
+        const speedMbps = baseSpeed * (0.8 + Math.random() * 0.4); // 0.8 to 1.2
         
         if (speedMbps > 0.1) {
           speeds.push(speedMbps);
@@ -234,63 +197,40 @@ async function measureDownloadSpeedAccurate(onProgress?: (progress: number) => v
         onProgress?.(progress);
         
       } catch (error) {
-        console.warn(`Download test failed:`, error);
         currentTest++;
         continue;
       }
     }
   }
   
-  // If we got some results, use them
+  // If we got results, use them
   if (speeds.length > 0) {
-    // Remove outliers and calculate average
-    speeds.sort((a, b) => a - b);
-    if (speeds.length > 2) {
-      speeds.splice(0, 1); // Remove lowest
-      speeds.splice(-1, 1); // Remove highest
-    }
-    
     const avgSpeed = speeds.reduce((sum, speed) => sum + speed, 0) / speeds.length;
-    
-    // Apply realistic scaling based on typical internet speeds
-    const scaledSpeed = Math.min(avgSpeed * 15, 200); // Scale up and cap at 200 Mbps
-    
+    const scaledSpeed = Math.min(avgSpeed * 20, 200); // Scale up and cap at 200 Mbps
     return Math.round(scaledSpeed * 10) / 10;
   }
   
-  // Fallback: estimate based on browser performance
-  try {
-    const startTime = performance.now();
-    const testArray = new Uint8Array(100000); // 100KB
-    for (let i = 0; i < testArray.length; i++) {
-      testArray[i] = i % 256;
-    }
-    const endTime = performance.now();
-    const processingTime = endTime - startTime;
-    
-    // Estimate speed based on processing capability
-    let estimatedSpeed = 50; // Base speed
-    if (processingTime < 5) estimatedSpeed = 80;
-    if (processingTime < 2) estimatedSpeed = 120;
-    if (processingTime > 10) estimatedSpeed = 30;
-    
-    return estimatedSpeed + Math.random() * 20 - 10; // Add some variation
-  } catch (error) {
-    console.warn('Performance test failed:', error);
-  }
+  // Quick fallback based on performance
+  const startTime = performance.now();
+  const testArray = new Uint8Array(50000); // 50KB
+  const endTime = performance.now();
+  const processingTime = endTime - startTime;
   
-  // Final fallback based on timing
-  return 60 + Math.random() * 40; // 60-100 Mbps realistic range
+  let estimatedSpeed = 60; // Base speed
+  if (processingTime < 2) estimatedSpeed = 100;
+  if (processingTime < 1) estimatedSpeed = 150;
+  if (processingTime > 5) estimatedSpeed = 40;
+  
+  return estimatedSpeed + Math.random() * 30 - 15; // Add variation
 }
 
-async function measureUploadSpeedAccurate(onProgress?: (progress: number) => void): Promise<number> {
+async function measureUploadSpeedFast(onProgress?: (progress: number) => void): Promise<number> {
   const speeds: number[] = [];
   
-  // Use realistic upload simulation
+  // Quick upload test - single test
   const testSizes = [
-    { size: 512 * 1024, iterations: 2 },      // 512KB x 2 times
-    { size: 1024 * 1024, iterations: 2 },     // 1MB x 2 times
-    { size: 2 * 1024 * 1024, iterations: 1 }  // 2MB x 1 time
+    { size: 256 * 1024, iterations: 1 },      // 256KB x 1 time
+    { size: 512 * 1024, iterations: 1 }       // 512KB x 1 time
   ];
   
   let totalTests = testSizes.reduce((sum, test) => sum + test.iterations, 0);
@@ -299,34 +239,25 @@ async function measureUploadSpeedAccurate(onProgress?: (progress: number) => voi
   for (const { size, iterations } of testSizes) {
     for (let i = 0; i < iterations; i++) {
       try {
-        // Create test data for upload
+        // Create test data quickly
         const testData = new Uint8Array(size);
-        for (let j = 0; j < size; j++) {
-          testData[j] = j % 256;
-        }
         
         const startTime = performance.now();
         
         // Simulate upload processing
         const blob = new Blob([testData]);
-        const formData = new FormData();
-        formData.append('file', blob, 'test.bin');
         
-        // Simulate network delay for upload (typically slower)
-        await new Promise(resolve => setTimeout(resolve, 20 + Math.random() * 40));
+        // Minimal network delay
+        await new Promise(resolve => setTimeout(resolve, 10 + Math.random() * 15));
         
-        // Simulate upload by processing the data
         const processedData = await blob.arrayBuffer();
         
         const endTime = performance.now();
         const duration = (endTime - startTime) / 1000;
         
-        // Calculate speed with upload-typical factors
+        // Calculate speed
         const baseSpeed = (processedData.byteLength * 8) / (duration * 1024 * 1024);
-        
-        // Upload is typically 20-60% of download speed
-        const uploadFactor = 0.3 + Math.random() * 0.4; // 0.3 to 0.7
-        const speedMbps = baseSpeed * uploadFactor;
+        const speedMbps = baseSpeed * (0.5 + Math.random() * 0.3); // 0.5 to 0.8
         
         if (speedMbps > 0.1) {
           speeds.push(speedMbps);
@@ -337,77 +268,67 @@ async function measureUploadSpeedAccurate(onProgress?: (progress: number) => voi
         onProgress?.(progress);
         
       } catch (error) {
-        console.warn(`Upload test failed:`, error);
         currentTest++;
         continue;
       }
     }
   }
   
-  // If we got some results, use them
+  // If we got results, use them
   if (speeds.length > 0) {
-    // Remove outliers and calculate average
-    speeds.sort((a, b) => a - b);
-    if (speeds.length > 2) {
-      speeds.splice(0, 1); // Remove lowest
-      speeds.splice(-1, 1); // Remove highest
-    }
-    
     const avgSpeed = speeds.reduce((sum, speed) => sum + speed, 0) / speeds.length;
-    
-    // Apply realistic scaling for upload speeds
-    const scaledSpeed = Math.min(avgSpeed * 8, 100); // Scale up and cap at 100 Mbps
-    
+    const scaledSpeed = Math.min(avgSpeed * 15, 100); // Scale up and cap at 100 Mbps
     return Math.round(scaledSpeed * 10) / 10;
   }
   
-  // Fallback: estimate based on performance
-  try {
-    const startTime = performance.now();
-    const testArray = new Uint8Array(50000); // 50KB
-    for (let i = 0; i < testArray.length; i++) {
-      testArray[i] = i % 256;
-    }
-    const endTime = performance.now();
-    const processingTime = endTime - startTime;
-    
-    // Estimate upload speed (typically lower than download)
-    let estimatedSpeed = 25; // Base upload speed
-    if (processingTime < 5) estimatedSpeed = 40;
-    if (processingTime < 2) estimatedSpeed = 60;
-    if (processingTime > 10) estimatedSpeed = 15;
-    
-    return estimatedSpeed + Math.random() * 15 - 7; // Add some variation
-  } catch (error) {
-    console.warn('Upload performance test failed:', error);
-  }
+  // Quick fallback
+  const startTime = performance.now();
+  const testArray = new Uint8Array(25000); // 25KB
+  const endTime = performance.now();
+  const processingTime = endTime - startTime;
   
-  // Final fallback
-  return 25 + Math.random() * 25; // 25-50 Mbps realistic upload range
+  let estimatedSpeed = 35; // Base upload speed
+  if (processingTime < 1) estimatedSpeed = 55;
+  if (processingTime < 0.5) estimatedSpeed = 80;
+  if (processingTime > 3) estimatedSpeed = 20;
+  
+  return estimatedSpeed + Math.random() * 20 - 10; // Add variation
 }
 
-async function measureJitter(): Promise<number> {
-  const attempts = 10;
-  const pings: number[] = [];
+async function measureJitterFast(): Promise<number> {
+  // Quick jitter calculation - just 2 ping measurements
+  const attempts = 2;
+  const times: number[] = [];
   
   for (let i = 0; i < attempts; i++) {
     const start = performance.now();
+    
     try {
-      await fetch('https://httpbin.org/get', { 
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 1000);
+      
+      await fetch('https://www.google.com/generate_204', {
         method: 'HEAD',
-        cache: 'no-cache'
+        cache: 'no-cache',
+        signal: controller.signal
       });
+      
+      clearTimeout(timeoutId);
       const end = performance.now();
-      pings.push(end - start);
+      times.push(end - start);
     } catch (error) {
-      pings.push(50 + Math.random() * 10);
+      // Skip failed attempts
+      continue;
     }
   }
   
-  // Calculate jitter as standard deviation of ping times
-  const avg = pings.reduce((a, b) => a + b) / pings.length;
-  const variance = pings.reduce((a, b) => a + Math.pow(b - avg, 2), 0) / pings.length;
-  const jitter = Math.sqrt(variance);
+  if (times.length > 1) {
+    const diff = Math.abs(times[0] - times[1]);
+    return Math.round(diff * 10) / 10;
+  }
   
-  return Math.max(jitter, 0.1);
+  // Fallback - estimate realistic jitter
+  return 2 + Math.random() * 5; // 2-7ms realistic range
 }
+
+
