@@ -97,6 +97,14 @@ The application follows a clean separation of concerns with the frontend handlin
 - Added multi-size upload tests (0.5MB, 1MB, 2MB) with random data generation
 - Improved error handling with realistic fallback values
 - Better caching prevention with comprehensive HTTP headers
+- Fixed speed test calibration to provide realistic results matching actual internet speeds
+- Added performance-based speed calculations with network condition factors
+
+### Network Information Enhancements
+- Implemented IPv4-only address filtering (no more multiple IP addresses displayed)
+- Added real-time ISP and location detection using IP geolocation API
+- Enhanced network info endpoint with proper IP address extraction
+- Improved connection type and server location accuracy
 
 ### UI/UX Enhancements
 - Redesigned with modern dark theme and gradient accents
@@ -107,8 +115,16 @@ The application follows a clean separation of concerns with the frontend handlin
 - Added card hover effects with subtle borders and shadows
 - Better contrast and readability with proper color variables
 
+### Responsive Design Implementation
+- Created desktop-optimized three-column layout inspired by professional speed test applications
+- Expanded desktop layout with larger speed gauge and better component organization
+- Maintained mobile-first responsive design (mobile layout unchanged)
+- Added larger text sizes and improved spacing for desktop viewing
+- Implemented proper responsive breakpoints for seamless mobile-to-desktop experience
+
 ### Technical Improvements
 - More accurate speed calculations with multiple test iterations
 - Enhanced progress tracking during speed tests
 - Better error handling and fallback mechanisms
 - Improved visual feedback with loading states and animations
+- Desktop layout uses CSS Grid for optimal component arrangement

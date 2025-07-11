@@ -132,13 +132,13 @@ export default function SpeedTest() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="bg-card/50 backdrop-blur-sm border-b border-border/50">
-        <div className="max-w-md mx-auto px-4 py-4">
+        <div className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="p-2 rounded-xl gradient-bg">
                 <Gauge className="h-6 w-6 text-white" />
               </div>
-              <h1 className="text-2xl font-bold gradient-text">SpeedTest Pro</h1>
+              <h1 className="text-2xl lg:text-3xl font-bold gradient-text">SpeedTest Pro</h1>
             </div>
             <Button
               variant="ghost"
@@ -152,126 +152,265 @@ export default function SpeedTest() {
         </div>
       </header>
 
-      <main className="max-w-md mx-auto px-4 py-6 space-y-6">
-        {/* Connection Status */}
-        <Card className="card-hover">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center space-x-3">
-                <div className="w-3 h-3 bg-success rounded-full animate-pulse glow-effect"></div>
-                <span className="text-sm font-medium text-foreground">Connected</span>
-              </div>
-              <div className="text-sm text-muted-foreground px-3 py-1 rounded-full bg-muted/50">
-                {networkInfo?.connectionType || "WiFi"}
-              </div>
+      <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-6 space-y-6">
+        {/* Desktop Layout - Three Column Grid */}
+        <div className="hidden lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
+          {/* Left Column - Speed Test */}
+          <div className="space-y-6">
+            {/* Connection Status */}
+            <Card className="card-hover">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-3 h-3 bg-success rounded-full animate-pulse glow-effect"></div>
+                    <span className="text-sm font-medium text-foreground">Connected</span>
+                  </div>
+                  <div className="text-sm text-muted-foreground px-3 py-1 rounded-full bg-muted/50">
+                    {networkInfo?.connectionType || "WiFi"}
+                  </div>
+                </div>
+                <div className="text-center">
+                  <div className="text-sm text-muted-foreground mb-2">Current IP Address</div>
+                  <div className="font-mono text-foreground text-lg font-semibold">
+                    {networkInfo?.ipAddress || "Loading..."}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Test Controls */}
+            <Card className="card-hover">
+              <CardContent className="p-6 space-y-4">
+                <h3 className="text-lg font-semibold text-foreground">Speed Test</h3>
+                <Button
+                  onClick={handleStartTest}
+                  disabled={isTestRunning}
+                  className="w-full gradient-bg text-white rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50 glow-effect"
+                  size="lg"
+                >
+                  <Play className="mr-3 h-6 w-6" />
+                  {isTestRunning ? "Running Test..." : "Start Speed Test"}
+                </Button>
+
+                {isTestRunning && (
+                  <div className="bg-muted/30 rounded-xl p-4 border border-border/50">
+                    <div className="flex items-center justify-between text-sm text-muted-foreground mb-2">
+                      <span>Test Progress</span>
+                      <span>{testProgress.toFixed(0)}%</span>
+                    </div>
+                    <div className="w-full bg-muted rounded-full h-2 mb-2">
+                      <div 
+                        className="bg-gradient-to-r from-primary to-accent h-2 rounded-full transition-all duration-300"
+                        style={{ width: `${testProgress}%` }}
+                      />
+                    </div>
+                    <div className="text-xs text-foreground text-center">
+                      {testStatus}
+                    </div>
+                  </div>
+                )}
+
+                <Button
+                  onClick={handleOptimizeWifi}
+                  disabled={isTestRunning}
+                  className="w-full bg-secondary text-secondary-foreground rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50"
+                  size="lg"
+                >
+                  <Wifi className="mr-3 h-6 w-6" />
+                  Optimize WiFi Speed
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Network Info */}
+            <NetworkInfo networkInfo={networkInfo} />
+          </div>
+
+          {/* Center Column - Speed Gauge */}
+          <div className="flex items-start justify-center">
+            <div className="w-full max-w-md">
+              <SpeedGauge
+                currentSpeed={displayResult?.downloadSpeed || 0}
+                isTestRunning={isTestRunning}
+                testProgress={testProgress}
+                testStatus={testStatus}
+                lastTest={lastTest}
+              />
             </div>
-            <div className="text-center">
-              <div className="text-sm text-muted-foreground mb-2">Current IP Address</div>
-              <div className="font-mono text-foreground text-lg font-semibold">
-                {networkInfo?.ipAddress || "Loading..."}
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+          </div>
 
-        {/* Speed Gauge */}
-        <SpeedGauge
-          currentSpeed={displayResult?.downloadSpeed || 0}
-          isTestRunning={isTestRunning}
-          testProgress={testProgress}
-          testStatus={testStatus}
-          lastTest={lastTest}
-        />
+          {/* Right Column - Results & History */}
+          <div className="space-y-6">
+            {/* Test Results */}
+            {displayResult && (
+              <Card className="card-hover">
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold text-foreground mb-4">Latest Results</h3>
+                  <div className="space-y-4">
+                    <div className="text-center p-4 bg-muted/30 rounded-xl border border-border/50">
+                      <div className="text-xs text-muted-foreground mb-1">Download Speed</div>
+                      <div className="text-3xl font-bold gradient-text">
+                        {displayResult.downloadSpeed.toFixed(1)}
+                      </div>
+                      <div className="text-sm text-muted-foreground">Mbps</div>
+                    </div>
+                    <div className="text-center p-4 bg-muted/30 rounded-xl border border-border/50">
+                      <div className="text-xs text-muted-foreground mb-1">Upload Speed</div>
+                      <div className="text-3xl font-bold gradient-text">
+                        {displayResult.uploadSpeed.toFixed(1)}
+                      </div>
+                      <div className="text-sm text-muted-foreground">Mbps</div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="text-center p-4 bg-muted/30 rounded-xl border border-border/50">
+                        <div className="text-xs text-muted-foreground mb-1">Ping</div>
+                        <div className="text-xl font-bold text-foreground">
+                          {displayResult.ping}ms
+                        </div>
+                      </div>
+                      <div className="text-center p-4 bg-muted/30 rounded-xl border border-border/50">
+                        <div className="text-xs text-muted-foreground mb-1">Jitter</div>
+                        <div className="text-xl font-bold text-foreground">
+                          {displayResult.jitter.toFixed(1)}ms
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
 
-        {/* Test Controls */}
-        <div className="space-y-4">
-          <Button
-            onClick={handleStartTest}
-            disabled={isTestRunning}
-            className="w-full gradient-bg text-white rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50 glow-effect"
-            size="lg"
-          >
-            <Play className="mr-3 h-6 w-6" />
-            {isTestRunning ? "Running Test..." : "Start Speed Test"}
-          </Button>
-
-          {isTestRunning && (
-            <div className="bg-muted/30 rounded-xl p-4 border border-border/50">
-              <div className="flex items-center justify-between text-sm text-muted-foreground mb-2">
-                <span>Test Progress</span>
-                <span>{testProgress.toFixed(0)}%</span>
-              </div>
-              <div className="w-full bg-muted rounded-full h-2 mb-2">
-                <div 
-                  className="bg-gradient-to-r from-primary to-accent h-2 rounded-full transition-all duration-300"
-                  style={{ width: `${testProgress}%` }}
-                />
-              </div>
-              <div className="text-xs text-foreground text-center">
-                {testStatus}
-              </div>
-            </div>
-          )}
-
-          <Button
-            onClick={handleOptimizeWifi}
-            disabled={isTestRunning}
-            className="w-full bg-secondary text-secondary-foreground rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50"
-            size="lg"
-          >
-            <Wifi className="mr-3 h-6 w-6" />
-            Optimize WiFi Speed
-          </Button>
+            {/* Test History */}
+            <TestHistory
+              speedTests={speedTests || []}
+              isLoading={isLoadingHistory}
+              onClearHistory={() => clearHistory.mutate()}
+            />
+          </div>
         </div>
 
-        {/* Test Results */}
-        {displayResult && (
+        {/* Mobile Layout - Single Column (unchanged) */}
+        <div className="lg:hidden space-y-6">
+          {/* Connection Status */}
           <Card className="card-hover">
             <CardContent className="p-6">
-              <h3 className="text-lg font-semibold text-foreground mb-4">Latest Results</h3>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="text-center p-4 bg-muted/30 rounded-xl border border-border/50">
-                  <div className="text-xs text-muted-foreground mb-1">Download</div>
-                  <div className="text-2xl font-bold gradient-text">
-                    {displayResult.downloadSpeed.toFixed(1)}
-                  </div>
-                  <div className="text-xs text-muted-foreground">Mbps</div>
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 bg-success rounded-full animate-pulse glow-effect"></div>
+                  <span className="text-sm font-medium text-foreground">Connected</span>
                 </div>
-                <div className="text-center p-4 bg-muted/30 rounded-xl border border-border/50">
-                  <div className="text-xs text-muted-foreground mb-1">Upload</div>
-                  <div className="text-2xl font-bold gradient-text">
-                    {displayResult.uploadSpeed.toFixed(1)}
-                  </div>
-                  <div className="text-xs text-muted-foreground">Mbps</div>
+                <div className="text-sm text-muted-foreground px-3 py-1 rounded-full bg-muted/50">
+                  {networkInfo?.connectionType || "WiFi"}
                 </div>
               </div>
-              <div className="mt-4 p-4 bg-muted/30 rounded-xl border border-border/50">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">Ping</span>
-                  <span className="font-semibold text-foreground">
-                    {displayResult.ping}ms
-                  </span>
-                </div>
-                <div className="flex justify-between items-center mt-2">
-                  <span className="text-sm text-muted-foreground">Jitter</span>
-                  <span className="font-semibold text-foreground">
-                    {displayResult.jitter.toFixed(1)}ms
-                  </span>
+              <div className="text-center">
+                <div className="text-sm text-muted-foreground mb-2">Current IP Address</div>
+                <div className="font-mono text-foreground text-lg font-semibold">
+                  {networkInfo?.ipAddress || "Loading..."}
                 </div>
               </div>
             </CardContent>
           </Card>
-        )}
 
-        {/* Test History */}
-        <TestHistory
-          speedTests={speedTests || []}
-          isLoading={isLoadingHistory}
-          onClearHistory={() => clearHistory.mutate()}
-        />
+          {/* Speed Gauge */}
+          <SpeedGauge
+            currentSpeed={displayResult?.downloadSpeed || 0}
+            isTestRunning={isTestRunning}
+            testProgress={testProgress}
+            testStatus={testStatus}
+            lastTest={lastTest}
+          />
 
-        {/* Network Info */}
-        <NetworkInfo networkInfo={networkInfo} />
+          {/* Test Controls */}
+          <div className="space-y-4">
+            <Button
+              onClick={handleStartTest}
+              disabled={isTestRunning}
+              className="w-full gradient-bg text-white rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50 glow-effect"
+              size="lg"
+            >
+              <Play className="mr-3 h-6 w-6" />
+              {isTestRunning ? "Running Test..." : "Start Speed Test"}
+            </Button>
+
+            {isTestRunning && (
+              <div className="bg-muted/30 rounded-xl p-4 border border-border/50">
+                <div className="flex items-center justify-between text-sm text-muted-foreground mb-2">
+                  <span>Test Progress</span>
+                  <span>{testProgress.toFixed(0)}%</span>
+                </div>
+                <div className="w-full bg-muted rounded-full h-2 mb-2">
+                  <div 
+                    className="bg-gradient-to-r from-primary to-accent h-2 rounded-full transition-all duration-300"
+                    style={{ width: `${testProgress}%` }}
+                  />
+                </div>
+                <div className="text-xs text-foreground text-center">
+                  {testStatus}
+                </div>
+              </div>
+            )}
+
+            <Button
+              onClick={handleOptimizeWifi}
+              disabled={isTestRunning}
+              className="w-full bg-secondary text-secondary-foreground rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50"
+              size="lg"
+            >
+              <Wifi className="mr-3 h-6 w-6" />
+              Optimize WiFi Speed
+            </Button>
+          </div>
+
+          {/* Test Results */}
+          {displayResult && (
+            <Card className="card-hover">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-foreground mb-4">Latest Results</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="text-center p-4 bg-muted/30 rounded-xl border border-border/50">
+                    <div className="text-xs text-muted-foreground mb-1">Download</div>
+                    <div className="text-2xl font-bold gradient-text">
+                      {displayResult.downloadSpeed.toFixed(1)}
+                    </div>
+                    <div className="text-xs text-muted-foreground">Mbps</div>
+                  </div>
+                  <div className="text-center p-4 bg-muted/30 rounded-xl border border-border/50">
+                    <div className="text-xs text-muted-foreground mb-1">Upload</div>
+                    <div className="text-2xl font-bold gradient-text">
+                      {displayResult.uploadSpeed.toFixed(1)}
+                    </div>
+                    <div className="text-xs text-muted-foreground">Mbps</div>
+                  </div>
+                </div>
+                <div className="mt-4 p-4 bg-muted/30 rounded-xl border border-border/50">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm text-muted-foreground">Ping</span>
+                    <span className="font-semibold text-foreground">
+                      {displayResult.ping}ms
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center mt-2">
+                    <span className="text-sm text-muted-foreground">Jitter</span>
+                    <span className="font-semibold text-foreground">
+                      {displayResult.jitter.toFixed(1)}ms
+                    </span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Test History */}
+          <TestHistory
+            speedTests={speedTests || []}
+            isLoading={isLoadingHistory}
+            onClearHistory={() => clearHistory.mutate()}
+          />
+
+          {/* Network Info */}
+          <NetworkInfo networkInfo={networkInfo} />
+        </div>
       </main>
 
       {/* Optimization Modal */}

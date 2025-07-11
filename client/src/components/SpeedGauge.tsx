@@ -41,7 +41,7 @@ export default function SpeedGauge({
     <Card className="card-hover">
       <CardContent className="p-6">
         <div className="text-center mb-6">
-          <div className="relative w-52 h-52 mx-auto mb-6">
+          <div className="relative w-52 h-52 lg:w-80 lg:h-80 mx-auto mb-6">
             {/* Speed Gauge Circle */}
             <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
               {/* Background circle */}
@@ -77,19 +77,19 @@ export default function SpeedGauge({
             {/* Speed display */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center">
-                <div className="text-4xl font-bold gradient-text mb-1">
+                <div className="text-4xl lg:text-6xl font-bold gradient-text mb-1">
                   {isTestRunning ? testProgress.toFixed(0) : currentSpeed.toFixed(1)}
                 </div>
-                <div className="text-sm text-muted-foreground font-medium">
+                <div className="text-sm lg:text-base text-muted-foreground font-medium">
                   {isTestRunning ? "%" : "Mbps"}
                 </div>
               </div>
             </div>
           </div>
-          <div className="text-sm text-foreground mb-2 font-medium">
+          <div className="text-sm lg:text-base text-foreground mb-2 font-medium">
             {isTestRunning ? testStatus : "Ready to test"}
           </div>
-          <div className="text-xs text-muted-foreground">
+          <div className="text-xs lg:text-sm text-muted-foreground">
             {isTestRunning ? `${testProgress.toFixed(0)}% complete` : formatLastTest(lastTest)}
           </div>
         </div>
