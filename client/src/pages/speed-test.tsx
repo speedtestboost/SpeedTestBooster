@@ -439,6 +439,16 @@ export default function SpeedTest() {
       <OptimizationModal
         isOpen={showOptimization}
         onClose={() => setShowOptimization(false)}
+        networkConditions={
+          currentResult ? {
+            downloadSpeed: currentResult.downloadSpeed,
+            uploadSpeed: currentResult.uploadSpeed,
+            ping: currentResult.ping,
+            jitter: currentResult.jitter,
+            ipAddress: networkInfo?.ipAddress || 'Unknown',
+            connectionType: currentResult.connectionType
+          } : undefined
+        }
       />
 
       {/* SEO-Optimized Footer Content */}
