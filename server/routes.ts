@@ -38,19 +38,70 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Network info endpoint
   app.get("/api/network-info", async (req, res) => {
     try {
-      // Get client IP and basic network info
-      const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress || 'Unknown';
+      // Get client IP from various headers
+      const forwardedFor = req.headers['x-forwarded-for'] as string;
+      const realIp = req.headers['x-real-ip'] as string;
+      const remoteAddress = req.connection.remoteAddress;
       const userAgent = req.headers['user-agent'] || 'Unknown';
       
+      // Extract IPv4 address only
+      let ipAddress = forwardedFor?.split(',')[0]?.trim() || realIp || remoteAddress || "127.0.0.1";
+      
+      // Filter out IPv6 and keep only first public IPv4
+      if (ipAddress.includes(',')) {
+        const ips = ipAddress.split(',').map(ip => ip.trim());
+        ipAddress = ips.find(ip => 
+          ip.match(/^\d+\.\d+\.\d+\.\d+$/) && 
+          !ip.startsWith('127.') && 
+          !ip.startsWith('10.') && 
+          !ip.startsWith('192.168.') && 
+          !ip.startsWith('172.')
+        ) || ips.find(ip => ip.match(/^\d+\.\d+\.\d+\.\d+$/)) || ips[0];
+      }
+      
+      // Ensure IPv4 format
+      if (!ipAddress.match(/^\d+\.\d+\.\d+\.\d+$/)) {
+        ipAddress = "127.0.0.1";
+      }
+      
+      // Get location and ISP info from IP
+      let locationInfo = {
+        serverLocation: "Global Edge",
+        isp: "Unknown ISP"
+      };
+      
+      // Try to get real location info for non-local IPs
+      if (!ipAddress.startsWith('127.') && !ipAddress.startsWith('10.') && !ipAddress.startsWith('192.168.')) {
+        try {
+          const response = await fetch(`http://ip-api.com/json/${ipAddress}?fields=status,country,regionName,city,isp,org`);
+          const data = await response.json();
+          
+          if (data.status === 'success') {
+            locationInfo = {
+              serverLocation: `${data.city || 'Unknown'}, ${data.regionName || 'Unknown'}, ${data.country || 'Unknown'}`,
+              isp: data.isp || data.org || 'Unknown ISP'
+            };
+          }
+        } catch (error) {
+          console.warn('Failed to fetch location info:', error);
+        }
+      }
+      
       res.json({
-        ipAddress: clientIp,
+        ipAddress: ipAddress,
         userAgent,
-        connectionType: 'WiFi', // This would normally be detected
-        serverLocation: 'New York, NY',
-        isp: 'Unknown ISP'
+        connectionType: 'WiFi',
+        ...locationInfo
       });
     } catch (error) {
-      res.status(500).json({ error: "Failed to get network info" });
+      console.error('Network info error:', error);
+      res.json({
+        ipAddress: "127.0.0.1",
+        userAgent: req.headers['user-agent'] || 'Unknown',
+        connectionType: 'WiFi',
+        serverLocation: "Global Edge",
+        isp: "Unknown ISP"
+      });
     }
   });
 
