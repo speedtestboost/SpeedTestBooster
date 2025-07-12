@@ -128,11 +128,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.setHeader('Content-Length', size.toString());
     res.setHeader('Access-Control-Allow-Origin', '*');
     
-    // Pre-generate larger chunks for better performance
-    const chunkSize = 64 * 1024; // 64KB chunks for better throughput
+    // Use much larger chunks for maximum throughput
+    const chunkSize = 1024 * 1024; // 1MB chunks for maximum bandwidth
     const pregenChunk = Buffer.alloc(chunkSize);
     
-    // Fill with pattern data (faster than random)
+    // Fill with simple pattern data (fastest possible)
     for (let i = 0; i < chunkSize; i++) {
       pregenChunk[i] = i % 256;
     }
@@ -152,8 +152,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.write(chunk);
       bytesWritten += currentChunkSize;
       
-      // Use setImmediate to avoid blocking the event loop
-      setImmediate(sendChunk);
+      // Send next chunk immediately for maximum throughput
+      process.nextTick(sendChunk);
     };
     
     sendChunk();
