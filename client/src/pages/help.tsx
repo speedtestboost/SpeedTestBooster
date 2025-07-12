@@ -28,6 +28,28 @@ export default function Help() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {/* Navigation Header */}
+      <nav className="border-b border-border/20 bg-background/80 backdrop-blur-sm sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8 py-4">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Speed Test & Boost
+            </Link>
+            <div className="flex items-center space-x-6">
+              <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
+                Speed Test
+              </Link>
+              <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
+                About
+              </Link>
+              <Link href="/help" className="text-primary font-medium">
+                Help
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-muted/20">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>

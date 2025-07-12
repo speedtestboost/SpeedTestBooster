@@ -13,6 +13,7 @@ import OptimizationModal from "@/components/OptimizationModal";
 
 import { performSpeedTest, type SpeedTestResult } from "@/lib/speedTest";
 import { Play, Gauge, Wifi } from "lucide-react";
+import { Link } from "wouter";
 
 export default function SpeedTest() {
   const [isTestRunning, setIsTestRunning] = useState(false);
@@ -643,11 +644,19 @@ export default function SpeedTest() {
             </div>
             <div>
               <h4 className="font-semibold text-foreground mb-3">About</h4>
-              <div className="space-y-2 text-sm text-muted-foreground">
-                <div>How It Works</div>
-                <div>Privacy Policy</div>
-                <div>Terms of Service</div>
-                <div>Contact Us</div>
+              <div className="space-y-2 text-sm">
+                <Link href="/about" className="block text-muted-foreground hover:text-primary transition-colors">
+                  About Us
+                </Link>
+                <Link href="/help" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Help & FAQ
+                </Link>
+                <Link href="/privacy" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Privacy Policy
+                </Link>
+                <Link href="/terms" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Terms of Service
+                </Link>
               </div>
             </div>
           </div>
