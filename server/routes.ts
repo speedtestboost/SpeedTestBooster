@@ -188,6 +188,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
     });
   });
 
+  // Ping test endpoint - simple response for latency measurement
+  app.get("/api/speed-test/ping", (req, res) => {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.json({ timestamp: Date.now() });
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

@@ -58,13 +58,12 @@ export async function performSpeedTest(options: SpeedTestOptions = {}): Promise<
   }
 }
 
-// Real ping measurement using multiple reliable endpoints
+// Real ping measurement using our own server and reliable endpoints
 async function measureRealPing(): Promise<number> {
   const endpoints = [
-    'https://www.google.com/generate_204',
-    'https://www.cloudflare.com/cdn-cgi/trace',
-    'https://httpbin.org/get',
-    'https://api.github.com'
+    '/api/speed-test/ping',                        // Our own server (no CORS issues)
+    'https://www.cloudflare.com/cdn-cgi/trace',    // Cloudflare
+    'https://httpbin.org/get'                      // HTTPBin
   ];
   
   const pingResults: number[] = [];
