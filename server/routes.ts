@@ -109,6 +109,85 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Speed test download endpoint - serves random data for testing
+  app.get("/api/speed-test/download/:size", (req, res) => {
+    const size = parseInt(req.params.size);
+    const maxSize = 100 * 1024 * 1024; // 100MB max
+    
+    if (isNaN(size) || size <= 0 || size > maxSize) {
+      return res.status(400).json({ error: "Invalid size parameter" });
+    }
+    
+    console.log(`Serving speed test download: ${size} bytes`);
+    
+    // Set headers for no caching and proper content type
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+    res.setHeader('Content-Type', 'application/octet-stream');
+    res.setHeader('Content-Length', size.toString());
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    
+    // Stream random data
+    let bytesWritten = 0;
+    const chunkSize = 8192; // 8KB chunks
+    
+    const sendChunk = () => {
+      const remainingBytes = size - bytesWritten;
+      if (remainingBytes <= 0) {
+        res.end();
+        return;
+      }
+      
+      const currentChunkSize = Math.min(chunkSize, remainingBytes);
+      const chunk = Buffer.alloc(currentChunkSize);
+      
+      // Fill with random data
+      for (let i = 0; i < currentChunkSize; i++) {
+        chunk[i] = Math.floor(Math.random() * 256);
+      }
+      
+      res.write(chunk);
+      bytesWritten += currentChunkSize;
+      
+      // Use setImmediate to avoid blocking the event loop
+      setImmediate(sendChunk);
+    };
+    
+    sendChunk();
+  });
+
+  // Speed test upload endpoint - receives data for testing
+  app.post("/api/speed-test/upload", (req, res) => {
+    let bytesReceived = 0;
+    const startTime = Date.now();
+    
+    console.log("Starting upload speed test");
+    
+    req.on('data', (chunk) => {
+      bytesReceived += chunk.length;
+    });
+    
+    req.on('end', () => {
+      const endTime = Date.now();
+      const duration = (endTime - startTime) / 1000;
+      const mbps = (bytesReceived * 8) / (duration * 1000 * 1000);
+      
+      console.log(`Upload test completed: ${bytesReceived} bytes in ${duration.toFixed(2)}s = ${mbps.toFixed(2)} Mbps`);
+      
+      res.json({
+        bytesReceived,
+        duration,
+        mbps: Math.round(mbps * 100) / 100
+      });
+    });
+    
+    req.on('error', (error) => {
+      console.error('Upload test error:', error);
+      res.status(500).json({ error: 'Upload test failed' });
+    });
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

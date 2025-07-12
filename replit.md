@@ -200,12 +200,14 @@ The application follows a clean separation of concerns with the frontend handlin
 
 ### Real Speed Test Implementation (January 2025)
 - Completely replaced fake speed test simulation with real network measurements
-- Enhanced download speed testing using reliable CORS-enabled endpoints (Cloudflare speed test, HTTPBin)
-- Implemented concurrent download testing with 25MB-100MB files to saturate bandwidth while avoiding certificate/CORS issues
-- Added real-time speed calculation every 200ms during streaming for maximum accuracy
-- Enhanced upload speed testing using larger file sizes (2MB, 5MB, 10MB) for better precision
+- **MAJOR ARCHITECTURE CHANGE**: Created custom server-side speed test endpoints to eliminate CORS issues
+- Added `/api/speed-test/download/:size` endpoint that streams random data for accurate download measurement
+- Added `/api/speed-test/upload` endpoint that receives data for accurate upload measurement
+- Implemented concurrent download testing with 25MB-100MB files served from our own backend
+- Added real-time speed calculation every 300ms during streaming for maximum accuracy
+- Enhanced upload speed testing using larger file sizes (2MB, 5MB, 10MB) with server-side measurement
 - Improved ping measurement using reliable endpoints (Google, Cloudflare) with multiple tests
 - Implemented proper jitter calculation using 8 ping samples and standard deviation
 - Uses 1000-based Mbps calculation for consistency with fast.com and other speed test services
-- Multiple concurrent connections ensure accurate measurement of actual internet speeds (80-95 Mbps range)
+- Server-side streaming ensures no CORS, certificate, or external dependency issues
 - Real speed test now measures actual network performance matching professional speed test tools

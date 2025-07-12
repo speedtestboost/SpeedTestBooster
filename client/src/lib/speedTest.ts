@@ -113,26 +113,26 @@ async function measureRealPing(): Promise<number> {
   return pingResults[Math.floor(pingResults.length / 2)];
 }
 
-// Real download speed measurement using reliable endpoints
+// Real download speed measurement using our own server endpoints
 async function measureRealDownloadSpeed(onProgress?: (progress: number) => void): Promise<number> {
   const speeds: number[] = [];
   const testDuration = 8; // Test for 8 seconds
   
-  // Use reliable endpoints that work with CORS and don't have certificate issues
-  const testUrls = [
-    'https://speed.cloudflare.com/__down?bytes=25000000',   // 25MB - Cloudflare speed test
-    'https://speed.cloudflare.com/__down?bytes=50000000',   // 50MB - Cloudflare speed test
-    'https://speed.cloudflare.com/__down?bytes=100000000',  // 100MB - Cloudflare speed test
-    'https://httpbin.org/bytes/25000000',                   // 25MB - HTTPBin
-    'https://httpbin.org/bytes/50000000',                   // 50MB - HTTPBin
+  // Use our own server endpoints to avoid CORS issues
+  const testSizes = [
+    25 * 1024 * 1024,   // 25MB
+    50 * 1024 * 1024,   // 50MB
+    100 * 1024 * 1024,  // 100MB
   ];
   
-  console.log('Starting download speed test with reliable endpoints...');
+  console.log('Starting download speed test with server endpoints...');
   
-  // Test multiple endpoints concurrently to saturate bandwidth
-  const testPromises = testUrls.map(async (testUrl, index) => {
+  // Test multiple sizes concurrently to saturate bandwidth
+  const testPromises = testSizes.map(async (size, index) => {
     try {
-      console.log(`Starting test ${index + 1}: ${testUrl}`);
+      const testUrl = `/api/speed-test/download/${size}`;
+      console.log(`Starting test ${index + 1}: ${testUrl} (${(size / 1024 / 1024).toFixed(1)}MB)`);
+      
       const startTime = performance.now();
       let totalBytes = 0;
       let lastProgressUpdate = startTime;
@@ -141,8 +141,7 @@ async function measureRealDownloadSpeed(onProgress?: (progress: number) => void)
         cache: 'no-cache',
         headers: {
           'Cache-Control': 'no-cache, no-store, must-revalidate',
-          'Pragma': 'no-cache',
-          'Accept-Encoding': 'identity' // Disable compression for accurate measurement
+          'Pragma': 'no-cache'
         }
       });
       
@@ -202,48 +201,41 @@ async function measureRealDownloadSpeed(onProgress?: (progress: number) => void)
   await Promise.all(testPromises);
   
   if (speeds.length === 0) {
-    console.warn('All tests failed, trying alternative approach');
+    console.warn('All tests failed, trying single test');
     
-    // Try a different approach: download a large file sequentially
-    const fallbackUrls = [
-      'https://httpbin.org/bytes/30000000',  // 30MB
-      'https://httpbin.org/bytes/20000000',  // 20MB
-      'https://httpbin.org/bytes/10000000',  // 10MB
-    ];
-    
-    for (const url of fallbackUrls) {
-      try {
-        console.log(`Trying fallback test: ${url}`);
-        const startTime = performance.now();
-        const response = await fetch(url, { 
-          cache: 'no-cache',
-          headers: {
-            'Cache-Control': 'no-cache, no-store, must-revalidate',
-            'Accept-Encoding': 'identity'
-          }
-        });
-        
-        if (response.ok && response.body) {
-          const reader = response.body.getReader();
-          let totalBytes = 0;
-          
-          while (true) {
-            const { value, done } = await reader.read();
-            if (value) totalBytes += value.length;
-            if (done) break;
-          }
-          
-          const endTime = performance.now();
-          const duration = (endTime - startTime) / 1000;
-          if (duration >= 1 && totalBytes > 5000000) {
-            const mbps = (totalBytes * 8) / (duration * 1000 * 1000);
-            console.log(`Fallback test successful: ${totalBytes} bytes in ${duration.toFixed(2)}s = ${mbps.toFixed(2)} Mbps`);
-            return mbps;
-          }
+    // Try a single test as fallback
+    try {
+      const testUrl = `/api/speed-test/download/${10 * 1024 * 1024}`; // 10MB
+      console.log(`Trying fallback test: ${testUrl}`);
+      
+      const startTime = performance.now();
+      const response = await fetch(testUrl, { 
+        cache: 'no-cache',
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate'
         }
-      } catch (e) {
-        console.error('Fallback test failed:', e);
+      });
+      
+      if (response.ok && response.body) {
+        const reader = response.body.getReader();
+        let totalBytes = 0;
+        
+        while (true) {
+          const { value, done } = await reader.read();
+          if (value) totalBytes += value.length;
+          if (done) break;
+        }
+        
+        const endTime = performance.now();
+        const duration = (endTime - startTime) / 1000;
+        if (duration >= 1 && totalBytes > 1000000) {
+          const mbps = (totalBytes * 8) / (duration * 1000 * 1000);
+          console.log(`Fallback test successful: ${totalBytes} bytes in ${duration.toFixed(2)}s = ${mbps.toFixed(2)} Mbps`);
+          return mbps;
+        }
       }
+    } catch (e) {
+      console.error('Fallback test failed:', e);
     }
     
     return 50; // Final fallback
@@ -262,7 +254,7 @@ async function measureRealDownloadSpeed(onProgress?: (progress: number) => void)
   return finalSpeed;
 }
 
-// Real upload speed measurement using progressive upload technique
+// Real upload speed measurement using our own server endpoint
 async function measureRealUploadSpeed(onProgress?: (progress: number) => void): Promise<number> {
   const speeds: number[] = [];
   
@@ -273,54 +265,49 @@ async function measureRealUploadSpeed(onProgress?: (progress: number) => void): 
     10 * 1024 * 1024   // 10MB
   ];
   
-  const testEndpoints = [
-    'https://httpbin.org/post',
-    'https://postman-echo.com/post'
-  ];
+  const testEndpoint = '/api/speed-test/upload';
   
   for (let i = 0; i < testSizes.length; i++) {
     const size = testSizes[i];
     onProgress?.((i / testSizes.length) * 100);
     
-    for (const endpoint of testEndpoints) {
-      try {
-        // Create random data for upload
-        const data = new Uint8Array(size);
-        if (crypto.getRandomValues) {
-          crypto.getRandomValues(data);
-        } else {
-          for (let j = 0; j < size; j++) {
-            data[j] = Math.floor(Math.random() * 256);
-          }
+    try {
+      // Create random data for upload
+      const data = new Uint8Array(size);
+      if (crypto.getRandomValues) {
+        crypto.getRandomValues(data);
+      } else {
+        for (let j = 0; j < size; j++) {
+          data[j] = Math.floor(Math.random() * 256);
         }
-        
-        console.log(`Upload test ${i+1}: ${(size / 1024 / 1024).toFixed(1)}MB to ${endpoint}`);
-        const startTime = performance.now();
-        
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          body: data,
-          headers: {
-            'Content-Type': 'application/octet-stream',
-            'Cache-Control': 'no-cache'
-          }
-        });
-        
-        if (response.ok) {
-          const endTime = performance.now();
-          const durationSeconds = (endTime - startTime) / 1000;
-          
-          if (durationSeconds > 0.3) { // Valid measurement
-            const bitsPerSecond = (size * 8) / durationSeconds;
-            const mbps = bitsPerSecond / (1000 * 1000);
-            speeds.push(mbps);
-            console.log(`Upload test ${i+1}: ${mbps.toFixed(2)} Mbps (${(size / 1024 / 1024).toFixed(1)}MB in ${durationSeconds.toFixed(2)}s)`);
-            break; // Success, move to next size
-          }
-        }
-      } catch (error) {
-        console.error(`Upload test ${i+1} failed:`, error);
       }
+      
+      console.log(`Upload test ${i+1}: ${(size / 1024 / 1024).toFixed(1)}MB to ${testEndpoint}`);
+      const startTime = performance.now();
+      
+      const response = await fetch(testEndpoint, {
+        method: 'POST',
+        body: data,
+        headers: {
+          'Content-Type': 'application/octet-stream',
+          'Cache-Control': 'no-cache'
+        }
+      });
+      
+      if (response.ok) {
+        const endTime = performance.now();
+        const durationSeconds = (endTime - startTime) / 1000;
+        
+        if (durationSeconds > 0.3) { // Valid measurement
+          const bitsPerSecond = (size * 8) / durationSeconds;
+          const mbps = bitsPerSecond / (1000 * 1000);
+          speeds.push(mbps);
+          console.log(`Upload test ${i+1}: ${mbps.toFixed(2)} Mbps (${(size / 1024 / 1024).toFixed(1)}MB in ${durationSeconds.toFixed(2)}s)`);
+          break; // Success, move to next size
+        }
+      }
+    } catch (error) {
+      console.error(`Upload test ${i+1} failed:`, error);
     }
   }
   
