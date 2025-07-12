@@ -17,48 +17,73 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Navigation Header */}
-      <nav className="border-b border-border/20 bg-background/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Speed Test & Boost
-            </Link>
-            <div className="flex items-center space-x-6">
-              <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
-                Speed Test
+      {/* Animated Header */}
+      <header className="relative overflow-hidden bg-gradient-to-br from-background via-background to-muted/20 min-h-[400px] flex items-center">
+        {/* Background Animation */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-primary/10 to-accent/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-48 h-48 bg-gradient-to-br from-accent/10 to-primary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-primary/5 to-accent/5 rounded-full blur-2xl animate-pulse delay-500"></div>
+        </div>
+
+        {/* Navigation */}
+        <nav className="absolute top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border/20">
+          <div className="max-w-7xl mx-auto px-4 lg:px-8 py-4">
+            <div className="flex items-center justify-between">
+              <Link href="/" className="flex items-center space-x-3">
+                <div className="relative">
+                  <svg className="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="speedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#8B5CF6" />
+                        <stop offset="100%" stopColor="#EC4899" />
+                      </linearGradient>
+                    </defs>
+                    <circle cx="50" cy="50" r="45" stroke="url(#speedGradient)" strokeWidth="6" fill="none" className="animate-spin" style={{animationDuration: '8s'}} />
+                    <path d="M50 20 L55 30 L45 30 Z" fill="url(#speedGradient)" className="animate-pulse" />
+                    <circle cx="50" cy="50" r="4" fill="url(#speedGradient)" className="animate-pulse" />
+                    <path d="M20 50 Q30 40 40 50" stroke="url(#speedGradient)" strokeWidth="2" fill="none" opacity="0.6" className="animate-pulse" style={{animationDelay: '0.5s'}} />
+                    <path d="M60 50 Q70 40 80 50" stroke="url(#speedGradient)" strokeWidth="2" fill="none" opacity="0.6" className="animate-pulse" style={{animationDelay: '1s'}} />
+                    <path d="M50 60 Q60 70 50 80" stroke="url(#speedGradient)" strokeWidth="2" fill="none" opacity="0.6" className="animate-pulse" style={{animationDelay: '1.5s'}} />
+                  </svg>
+                </div>
+                <div className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  Speed Test & Boost
+                </div>
               </Link>
-              <Link href="/about" className="text-primary font-medium">
-                About
-              </Link>
-              <Link href="/help" className="text-muted-foreground hover:text-primary transition-colors">
-                Help
-              </Link>
+              <div className="flex items-center space-x-6">
+                <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
+                  Speed Test
+                </Link>
+                <Link href="/about" className="text-primary font-medium">
+                  About
+                </Link>
+                <Link href="/help" className="text-muted-foreground hover:text-primary transition-colors">
+                  Help
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="relative max-w-7xl mx-auto px-4 lg:px-8 py-20">
-          <div className="text-center">
-            <Badge className="mb-6 bg-primary/10 text-primary border-primary/20">
+        {/* Main Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8 py-20 text-center">
+          <div className="flex items-center justify-center mb-6">
+            <div className="px-4 py-2 bg-primary/10 text-primary border border-primary/20 rounded-full text-sm font-medium">
               Professional Network Diagnostics
-            </Badge>
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-                About Speed Test & Boost
-              </span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              The most accurate and comprehensive internet speed testing platform. 
-              Measure your connection speed, diagnose network issues, and optimize your internet performance.
-            </p>
+            </div>
           </div>
+          <h1 className="text-4xl lg:text-6xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-pulse">
+              About Speed Test & Boost
+            </span>
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            The most accurate and comprehensive internet speed testing platform. 
+            Measure your connection speed, diagnose network issues, and optimize your internet performance.
+          </p>
         </div>
-      </section>
+      </header>
 
       {/* Features Section */}
       <section className="py-20 bg-muted/30">
