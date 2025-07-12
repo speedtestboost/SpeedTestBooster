@@ -651,12 +651,8 @@ export default function SpeedTest() {
                 <Link href="/help" className="block text-muted-foreground hover:text-primary transition-colors">
                   Help & FAQ
                 </Link>
-                <Link href="/privacy" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Privacy Policy
-                </Link>
-                <Link href="/terms" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Terms of Service
-                </Link>
+                <div className="text-muted-foreground">How It Works</div>
+                <div className="text-muted-foreground">Contact Us</div>
               </div>
             </div>
           </div>
