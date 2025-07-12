@@ -49,6 +49,16 @@
     <meta name="application-name" content="Speed Test and Boost" />
     <meta name="theme-color" content="#8B5CF6" />
     <meta name="msapplication-TileColor" content="#8B5CF6" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Speed Test" />
+    
+    <!-- Performance and Loading -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="x-ua-compatible" content="ie=edge" />
+    <link rel="preload" href="/src/main.tsx" as="script" />
+    <link rel="modulepreload" href="/src/main.tsx" />
     
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
@@ -99,6 +109,12 @@
     <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.ipify.org" />
+    <link rel="preconnect" href="https://ipapi.co" />
+    <link rel="dns-prefetch" href="//www.google-analytics.com" />
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="//www.cloudflare.com" />
+    <link rel="dns-prefetch" href="//httpbin.org" />
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />

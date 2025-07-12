@@ -1,0 +1,62 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://speedtestandboost.com/sitemap.xml
+
+# Crawl-delay for bots
+Crawl-delay: 1
+
+# Disallow crawling of API endpoints
+Disallow: /api/
+
+# Allow important SEO pages
+Allow: /
+Allow: /speed-test
+Allow: /about
+Allow: /help
+Allow: /privacy
+Allow: /terms
+
+# Block common crawler traps
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-content/
+Disallow: /admin/
+Disallow: /login/
+Disallow: /register/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*?*
+Disallow: /*#*
+
+# Allow Google, Bing, and other major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
