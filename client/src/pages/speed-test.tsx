@@ -142,29 +142,114 @@ export default function SpeedTest() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="bg-card/50 backdrop-blur-sm border-b border-border/50">
-        <div className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-4">
+      <header className="bg-card/50 backdrop-blur-sm border-b border-border/50 relative overflow-hidden">
+        {/* Animated Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full">
+            <div className="absolute w-32 h-32 rounded-full bg-gradient-to-r from-primary to-accent animate-pulse opacity-30 -top-16 -left-16"></div>
+            <div className="absolute w-24 h-24 rounded-full bg-gradient-to-r from-accent to-primary animate-pulse opacity-20 -top-12 right-20 animation-delay-1000"></div>
+            <div className="absolute w-16 h-16 rounded-full bg-gradient-to-r from-primary to-accent animate-pulse opacity-25 -bottom-8 left-1/3 animation-delay-500"></div>
+          </div>
+        </div>
+        
+        <div className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-6 relative z-10">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="p-2 rounded-xl gradient-bg">
-                <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M 8 16 A 8 8 0 0 1 24 16" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round"/>
-                  <line x1="16" y1="16" x2="22" y2="12" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                  <circle cx="16" cy="16" r="2" fill="white"/>
-                  <line x1="9" y1="15" x2="11" y2="14" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-                  <line x1="8" y1="16" x2="10" y2="16" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-                  <line x1="9" y1="17" x2="11" y2="18" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-                  <line x1="21" y1="14" x2="23" y2="15" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-                  <line x1="22" y1="16" x2="24" y2="16" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-                  <line x1="21" y1="18" x2="23" y2="17" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-                  <path d="M 13 22 Q 16 20 19 22" stroke="white" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-                  <path d="M 14 23 Q 16 22 18 23" stroke="white" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-                  <circle cx="16" cy="24" r="1" fill="white"/>
-                </svg>
+            <div className="flex items-center space-x-4">
+              {/* Enhanced Custom Icon with Animations */}
+              <div className="relative">
+                <div className="absolute -inset-2 bg-gradient-to-r from-primary to-accent rounded-2xl opacity-75 blur animate-pulse"></div>
+                <div className="relative p-3 rounded-2xl gradient-bg glow-effect hover:scale-105 transition-all duration-300">
+                  <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style={{stopColor: '#ffffff', stopOpacity: 1}} />
+                        <stop offset="50%" style={{stopColor: '#f8fafc', stopOpacity: 0.9}} />
+                        <stop offset="100%" style={{stopColor: '#ffffff', stopOpacity: 1}} />
+                      </linearGradient>
+                      <filter id="glow">
+                        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                        <feMerge> 
+                          <feMergeNode in="coloredBlur"/>
+                          <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                      </filter>
+                    </defs>
+                    
+                    {/* Speed Gauge Arc */}
+                    <path d="M 10 20 A 10 10 0 0 1 30 20" stroke="url(#iconGradient)" strokeWidth="3" fill="none" strokeLinecap="round" filter="url(#glow)">
+                      <animate attributeName="stroke-opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                    </path>
+                    
+                    {/* Dynamic Speed Needle */}
+                    <line x1="20" y1="20" x2="27" y2="14" stroke="url(#iconGradient)" strokeWidth="3" strokeLinecap="round" filter="url(#glow)">
+                      <animateTransform attributeName="transform" type="rotate" values="0 20 20;15 20 20;0 20 20" dur="3s" repeatCount="indefinite"/>
+                    </line>
+                    
+                    {/* Pulsing Center */}
+                    <circle cx="20" cy="20" r="2.5" fill="url(#iconGradient)" filter="url(#glow)">
+                      <animate attributeName="r" values="2.5;3.5;2.5" dur="2s" repeatCount="indefinite"/>
+                      <animate attributeName="fill-opacity" values="1;0.8;1" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    
+                    {/* Speed Marks with Stagger Animation */}
+                    <g stroke="url(#iconGradient)" strokeWidth="2" strokeLinecap="round">
+                      <line x1="11" y1="18" x2="13" y2="17">
+                        <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" begin="0s" repeatCount="indefinite"/>
+                      </line>
+                      <line x1="10" y1="20" x2="12" y2="20">
+                        <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+                      </line>
+                      <line x1="11" y1="22" x2="13" y2="23">
+                        <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+                      </line>
+                      
+                      <line x1="27" y1="17" x2="29" y2="18">
+                        <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" begin="0.9s" repeatCount="indefinite"/>
+                      </line>
+                      <line x1="28" y1="20" x2="30" y2="20">
+                        <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" begin="1.2s" repeatCount="indefinite"/>
+                      </line>
+                      <line x1="27" y1="23" x2="29" y2="22">
+                        <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+                      </line>
+                    </g>
+                    
+                    {/* Animated WiFi Waves */}
+                    <g stroke="url(#iconGradient)" strokeWidth="2" fill="none" strokeLinecap="round">
+                      <path d="M 16 28 Q 20 26 24 28">
+                        <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
+                      </path>
+                      <path d="M 17 30 Q 20 28.5 23 30">
+                        <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="1.5s" begin="0.5s" repeatCount="indefinite"/>
+                      </path>
+                      <circle cx="20" cy="32" r="1.5" fill="url(#iconGradient)">
+                        <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="1s" repeatCount="indefinite"/>
+                      </circle>
+                    </g>
+                  </svg>
+                </div>
               </div>
-              <h1 className="text-2xl lg:text-3xl font-bold gradient-text">Speed Test and Boost</h1>
+              
+              {/* Enhanced Title with Gradient Animation */}
+              <div className="flex flex-col">
+                <h1 className="text-2xl lg:text-4xl font-bold gradient-text relative">
+                  <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient-x">
+                    Speed Test & Boost
+                  </span>
+                </h1>
+                <p className="text-xs lg:text-sm text-muted-foreground mt-1 opacity-75">
+                  Professional Network Diagnostics
+                </p>
+              </div>
             </div>
-
+            
+            {/* Status Indicator */}
+            <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 bg-success/20 rounded-full px-3 py-1">
+                <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
+                <span className="text-xs font-medium text-success">Online</span>
+              </div>
+            </div>
           </div>
         </div>
       </header>
