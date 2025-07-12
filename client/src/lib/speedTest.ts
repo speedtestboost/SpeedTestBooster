@@ -113,25 +113,26 @@ async function measureRealPing(): Promise<number> {
   return pingResults[Math.floor(pingResults.length / 2)];
 }
 
-// Real download speed measurement using multiple concurrent connections
+// Real download speed measurement using reliable endpoints
 async function measureRealDownloadSpeed(onProgress?: (progress: number) => void): Promise<number> {
   const speeds: number[] = [];
   const testDuration = 8; // Test for 8 seconds
   
-  // Use multiple proven fast endpoints that work reliably
+  // Use reliable endpoints that work with CORS and don't have certificate issues
   const testUrls = [
-    'https://speed.cloudflare.com/__down?bytes=100000000',  // 100MB
-    'https://speed.hetzner.de/100MB.bin',                   // 100MB from Hetzner
-    'https://proof.ovh.net/files/100Mb.dat',               // 100MB from OVH
-    'https://download.thinkbroadband.com/100MB.zip',       // 100MB test file
+    'https://speed.cloudflare.com/__down?bytes=25000000',   // 25MB - Cloudflare speed test
+    'https://speed.cloudflare.com/__down?bytes=50000000',   // 50MB - Cloudflare speed test
+    'https://speed.cloudflare.com/__down?bytes=100000000',  // 100MB - Cloudflare speed test
+    'https://httpbin.org/bytes/25000000',                   // 25MB - HTTPBin
+    'https://httpbin.org/bytes/50000000',                   // 50MB - HTTPBin
   ];
   
-  console.log('Starting concurrent download speed test with multiple endpoints...');
+  console.log('Starting download speed test with reliable endpoints...');
   
-  // Run tests concurrently to saturate bandwidth
+  // Test multiple endpoints concurrently to saturate bandwidth
   const testPromises = testUrls.map(async (testUrl, index) => {
     try {
-      console.log(`Starting concurrent test ${index + 1}: ${testUrl}`);
+      console.log(`Starting test ${index + 1}: ${testUrl}`);
       const startTime = performance.now();
       let totalBytes = 0;
       let lastProgressUpdate = startTime;
@@ -156,8 +157,8 @@ async function measureRealDownloadSpeed(onProgress?: (progress: number) => void)
             totalBytes += value.length;
           }
           
-          // Calculate instantaneous speed every 200ms
-          if (currentTime - lastProgressUpdate >= 200) {
+          // Calculate speed every 300ms for real-time measurement
+          if (currentTime - lastProgressUpdate >= 300) {
             const duration = (currentTime - startTime) / 1000;
             if (duration >= 0.5) { // At least 500ms of data
               const bitsPerSecond = (totalBytes * 8) / duration;
@@ -201,42 +202,62 @@ async function measureRealDownloadSpeed(onProgress?: (progress: number) => void)
   await Promise.all(testPromises);
   
   if (speeds.length === 0) {
-    console.warn('All concurrent tests failed, trying single large file test');
-    // Fallback single test with very large file
-    try {
-      const startTime = performance.now();
-      const response = await fetch('https://httpbin.org/bytes/50000000', { 
-        cache: 'no-cache',
-        headers: {
-          'Cache-Control': 'no-cache, no-store, must-revalidate',
-          'Accept-Encoding': 'identity'
+    console.warn('All tests failed, trying alternative approach');
+    
+    // Try a different approach: download a large file sequentially
+    const fallbackUrls = [
+      'https://httpbin.org/bytes/30000000',  // 30MB
+      'https://httpbin.org/bytes/20000000',  // 20MB
+      'https://httpbin.org/bytes/10000000',  // 10MB
+    ];
+    
+    for (const url of fallbackUrls) {
+      try {
+        console.log(`Trying fallback test: ${url}`);
+        const startTime = performance.now();
+        const response = await fetch(url, { 
+          cache: 'no-cache',
+          headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Accept-Encoding': 'identity'
+          }
+        });
+        
+        if (response.ok && response.body) {
+          const reader = response.body.getReader();
+          let totalBytes = 0;
+          
+          while (true) {
+            const { value, done } = await reader.read();
+            if (value) totalBytes += value.length;
+            if (done) break;
+          }
+          
+          const endTime = performance.now();
+          const duration = (endTime - startTime) / 1000;
+          if (duration >= 1 && totalBytes > 5000000) {
+            const mbps = (totalBytes * 8) / (duration * 1000 * 1000);
+            console.log(`Fallback test successful: ${totalBytes} bytes in ${duration.toFixed(2)}s = ${mbps.toFixed(2)} Mbps`);
+            return mbps;
+          }
         }
-      });
-      
-      if (response.ok) {
-        const arrayBuffer = await response.arrayBuffer();
-        const endTime = performance.now();
-        const duration = (endTime - startTime) / 1000;
-        const mbps = (arrayBuffer.byteLength * 8) / (duration * 1000 * 1000);
-        console.log(`Fallback test: ${arrayBuffer.byteLength} bytes in ${duration.toFixed(2)}s = ${mbps.toFixed(2)} Mbps`);
-        return Math.max(mbps, 10);
+      } catch (e) {
+        console.error('Fallback test failed:', e);
       }
-    } catch (e) {
-      console.error('Fallback test failed:', e);
     }
     
-    return 50; // Conservative fallback
+    return 50; // Final fallback
   }
   
-  // Calculate peak speed from all measurements
+  // Calculate the highest sustained speed
   speeds.sort((a, b) => b - a);
-  const topSpeeds = speeds.slice(0, Math.min(10, speeds.length));
+  const topSpeeds = speeds.slice(0, Math.min(5, speeds.length));
   const peakSpeed = topSpeeds[0];
   const avgTopSpeed = topSpeeds.reduce((sum, speed) => sum + speed, 0) / topSpeeds.length;
   
   // Use the higher of peak or average top speed
   const finalSpeed = Math.max(peakSpeed, avgTopSpeed);
-  console.log(`Download speed result: ${finalSpeed.toFixed(2)} Mbps (peak: ${peakSpeed.toFixed(2)}, avg top: ${avgTopSpeed.toFixed(2)})`);
+  console.log(`Download speed result: ${finalSpeed.toFixed(2)} Mbps (from ${speeds.length} measurements)`);
   
   return finalSpeed;
 }

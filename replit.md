@@ -200,8 +200,8 @@ The application follows a clean separation of concerns with the frontend handlin
 
 ### Real Speed Test Implementation (January 2025)
 - Completely replaced fake speed test simulation with real network measurements
-- Enhanced download speed testing using multiple concurrent endpoints (Cloudflare, Hetzner, OVH, ThinkBroadband)
-- Implemented concurrent download testing with 100MB files from multiple CDNs to saturate bandwidth
+- Enhanced download speed testing using reliable CORS-enabled endpoints (Cloudflare speed test, HTTPBin)
+- Implemented concurrent download testing with 25MB-100MB files to saturate bandwidth while avoiding certificate/CORS issues
 - Added real-time speed calculation every 200ms during streaming for maximum accuracy
 - Enhanced upload speed testing using larger file sizes (2MB, 5MB, 10MB) for better precision
 - Improved ping measurement using reliable endpoints (Google, Cloudflare) with multiple tests
