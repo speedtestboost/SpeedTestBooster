@@ -237,11 +237,24 @@ export default function SpeedTest() {
               </div>
             </div>
             
-            {/* Status Indicator */}
-            <div className="flex items-center space-x-2">
-              <div className="flex items-center space-x-2 bg-success/20 rounded-full px-3 py-1">
-                <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
-                <span className="text-xs font-medium text-success">Online</span>
+            {/* Navigation and Status */}
+            <div className="flex items-center space-x-6">
+              {/* Navigation Links */}
+              <div className="hidden lg:flex items-center space-x-6">
+                <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
+                  About
+                </Link>
+                <Link href="/help" className="text-muted-foreground hover:text-primary transition-colors">
+                  Help & FAQ
+                </Link>
+              </div>
+              
+              {/* Status Indicator */}
+              <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 bg-success/20 rounded-full px-3 py-1">
+                  <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
+                  <span className="text-xs font-medium text-success">Online</span>
+                </div>
               </div>
             </div>
           </div>
