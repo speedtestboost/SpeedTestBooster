@@ -192,8 +192,8 @@ The application follows a clean separation of concerns with the frontend handlin
 - Added animated background patterns with gradient orbs and staggered animations
 - Enhanced title with animated gradient text effect and professional subtitle
 - Added online status indicator with pulsing animation
-- Implemented hover effects with glowing shadows and smooth transitions
 - Created custom animated icon with rotating needle, pulsing center, and staggered speed marks
 - Added animated WiFi signal waves with opacity transitions
-- Enhanced favicon with matching gradient design and improved visual elements
+- Enhanced favicon with matching gradient design and clean visual elements
 - Professional "Speed Test & Boost" branding with "Professional Network Diagnostics" subtitle
+- Removed glowing effects for cleaner, more professional appearance while maintaining animations

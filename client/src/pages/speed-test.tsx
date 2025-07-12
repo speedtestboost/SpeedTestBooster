@@ -157,8 +157,7 @@ export default function SpeedTest() {
             <div className="flex items-center space-x-4">
               {/* Enhanced Custom Icon with Animations */}
               <div className="relative">
-                <div className="absolute -inset-2 bg-gradient-to-r from-primary to-accent rounded-2xl opacity-75 blur animate-pulse"></div>
-                <div className="relative p-3 rounded-2xl gradient-bg glow-effect hover:scale-105 transition-all duration-300">
+                <div className="p-3 rounded-2xl gradient-bg hover:scale-105 transition-all duration-300">
                   <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                       <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -166,27 +165,21 @@ export default function SpeedTest() {
                         <stop offset="50%" style={{stopColor: '#f8fafc', stopOpacity: 0.9}} />
                         <stop offset="100%" style={{stopColor: '#ffffff', stopOpacity: 1}} />
                       </linearGradient>
-                      <filter id="glow">
-                        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                        <feMerge> 
-                          <feMergeNode in="coloredBlur"/>
-                          <feMergeNode in="SourceGraphic"/>
-                        </feMerge>
-                      </filter>
+
                     </defs>
                     
                     {/* Speed Gauge Arc */}
-                    <path d="M 10 20 A 10 10 0 0 1 30 20" stroke="url(#iconGradient)" strokeWidth="3" fill="none" strokeLinecap="round" filter="url(#glow)">
+                    <path d="M 10 20 A 10 10 0 0 1 30 20" stroke="url(#iconGradient)" strokeWidth="3" fill="none" strokeLinecap="round">
                       <animate attributeName="stroke-opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
                     </path>
                     
                     {/* Dynamic Speed Needle */}
-                    <line x1="20" y1="20" x2="27" y2="14" stroke="url(#iconGradient)" strokeWidth="3" strokeLinecap="round" filter="url(#glow)">
+                    <line x1="20" y1="20" x2="27" y2="14" stroke="url(#iconGradient)" strokeWidth="3" strokeLinecap="round">
                       <animateTransform attributeName="transform" type="rotate" values="0 20 20;15 20 20;0 20 20" dur="3s" repeatCount="indefinite"/>
                     </line>
                     
                     {/* Pulsing Center */}
-                    <circle cx="20" cy="20" r="2.5" fill="url(#iconGradient)" filter="url(#glow)">
+                    <circle cx="20" cy="20" r="2.5" fill="url(#iconGradient)">
                       <animate attributeName="r" values="2.5;3.5;2.5" dur="2s" repeatCount="indefinite"/>
                       <animate attributeName="fill-opacity" values="1;0.8;1" dur="2s" repeatCount="indefinite"/>
                     </circle>
@@ -264,7 +257,7 @@ export default function SpeedTest() {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-success rounded-full animate-pulse glow-effect"></div>
+                    <div className="w-3 h-3 bg-success rounded-full animate-pulse"></div>
                     <span className="text-sm font-medium text-foreground">Connected</span>
                   </div>
                   <div className="text-sm text-muted-foreground px-3 py-1 rounded-full bg-muted/50">
@@ -287,7 +280,7 @@ export default function SpeedTest() {
                 <Button
                   onClick={handleStartTest}
                   disabled={isTestRunning}
-                  className="w-full gradient-bg text-white rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50 glow-effect"
+                  className="w-full gradient-bg text-white rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50"
                   size="lg"
                 >
                   <div className="flex items-center justify-center">
