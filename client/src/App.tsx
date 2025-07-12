@@ -2,6 +2,10 @@ import { Switch, Route } from "wouter";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import SpeedTest from "@/pages/speed-test";
+import About from "@/pages/about";
+import Help from "@/pages/help";
+import Privacy from "@/pages/privacy";
+import Terms from "@/pages/terms";
 import NotFound from "@/pages/not-found";
 import { useEffect } from "react";
 import { initGA } from "./lib/analytics";
@@ -14,6 +18,10 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={SpeedTest} />
+      <Route path="/about" component={About} />
+      <Route path="/help" component={Help} />
+      <Route path="/privacy" component={Privacy} />
+      <Route path="/terms" component={Terms} />
       <Route component={NotFound} />
     </Switch>
   );
