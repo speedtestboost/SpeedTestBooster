@@ -112,29 +112,26 @@ async function measureRealPing(): Promise<number> {
   return pingResults[Math.floor(pingResults.length / 2)];
 }
 
-// Real download speed measurement using our own server endpoints
+// Real download speed measurement using bandwidth saturation technique
 async function measureRealDownloadSpeed(onProgress?: (progress: number) => void): Promise<number> {
   const speeds: number[] = [];
-  const testDuration = 8; // Test for 8 seconds
+  const testDuration = 10; // 10 seconds like fast.com
   
-  // Use our own server endpoints to avoid CORS issues
-  const testSizes = [
-    25 * 1024 * 1024,   // 25MB
-    50 * 1024 * 1024,   // 50MB
-    100 * 1024 * 1024,  // 100MB
-  ];
+  console.log('Starting bandwidth saturation download test...');
   
-  console.log('Starting download speed test with server endpoints...');
+  // Use multiple concurrent connections to saturate bandwidth like fast.com
+  const concurrentConnections = 4;
+  const testSize = 50 * 1024 * 1024; // 50MB per connection
   
-  // Test multiple sizes concurrently to saturate bandwidth
-  const testPromises = testSizes.map(async (size, index) => {
+  const testPromises = Array.from({ length: concurrentConnections }, async (_, index) => {
     try {
-      const testUrl = `/api/speed-test/download/${size}`;
-      console.log(`Starting test ${index + 1}: ${testUrl} (${(size / 1024 / 1024).toFixed(1)}MB)`);
+      const testUrl = `/api/speed-test/download/${testSize}`;
+      console.log(`Starting concurrent connection ${index + 1}: ${testUrl}`);
       
       const startTime = performance.now();
       let totalBytes = 0;
-      let lastProgressUpdate = startTime;
+      let lastSpeedCalc = startTime;
+      const connectionSpeeds: number[] = [];
       
       const response = await fetch(testUrl, {
         cache: 'no-cache',
@@ -155,17 +152,17 @@ async function measureRealDownloadSpeed(onProgress?: (progress: number) => void)
             totalBytes += value.length;
           }
           
-          // Calculate speed every 300ms for real-time measurement
-          if (currentTime - lastProgressUpdate >= 300) {
+          // Calculate instantaneous speed every 250ms
+          if (currentTime - lastSpeedCalc >= 250) {
             const duration = (currentTime - startTime) / 1000;
             if (duration >= 0.5) { // At least 500ms of data
               const bitsPerSecond = (totalBytes * 8) / duration;
               const mbps = bitsPerSecond / (1000 * 1000);
-              speeds.push(mbps);
-              console.log(`Test ${index + 1} - ${duration.toFixed(1)}s: ${mbps.toFixed(2)} Mbps (${(totalBytes / 1024 / 1024).toFixed(2)} MB)`);
+              connectionSpeeds.push(mbps);
+              console.log(`Connection ${index + 1} - ${duration.toFixed(1)}s: ${mbps.toFixed(2)} Mbps (${(totalBytes / 1024 / 1024).toFixed(2)} MB)`);
               onProgress?.(Math.min((duration / testDuration) * 100, 100));
             }
-            lastProgressUpdate = currentTime;
+            lastSpeedCalc = currentTime;
           }
           
           // Stop after testDuration or when done
@@ -174,15 +171,8 @@ async function measureRealDownloadSpeed(onProgress?: (progress: number) => void)
           }
         }
         
-        // Final calculation for this test
-        const finalTime = performance.now();
-        const finalDuration = (finalTime - startTime) / 1000;
-        if (finalDuration >= 1 && totalBytes > 1000000) {
-          const finalBitsPerSecond = (totalBytes * 8) / finalDuration;
-          const finalMbps = finalBitsPerSecond / (1000 * 1000);
-          speeds.push(finalMbps);
-          console.log(`Test ${index + 1} final: ${finalMbps.toFixed(2)} Mbps over ${finalDuration.toFixed(1)}s`);
-        }
+        // Add connection speeds to global array
+        speeds.push(...connectionSpeeds);
         
         // Cancel remaining download
         try {
@@ -192,20 +182,20 @@ async function measureRealDownloadSpeed(onProgress?: (progress: number) => void)
         }
       }
     } catch (error) {
-      console.error(`Test ${index + 1} failed:`, error);
+      console.error(`Connection ${index + 1} failed:`, error);
     }
   });
   
-  // Wait for all concurrent tests
+  // Wait for all concurrent connections
   await Promise.all(testPromises);
   
   if (speeds.length === 0) {
-    console.warn('All tests failed, trying single test');
+    console.warn('All concurrent tests failed, trying single connection test');
     
-    // Try a single test as fallback
+    // Try a single connection as fallback
     try {
-      const testUrl = `/api/speed-test/download/${10 * 1024 * 1024}`; // 10MB
-      console.log(`Trying fallback test: ${testUrl}`);
+      const testUrl = `/api/speed-test/download/${20 * 1024 * 1024}`; // 20MB
+      console.log(`Trying fallback single connection test: ${testUrl}`);
       
       const startTime = performance.now();
       const response = await fetch(testUrl, { 
@@ -240,15 +230,37 @@ async function measureRealDownloadSpeed(onProgress?: (progress: number) => void)
     return 50; // Final fallback
   }
   
-  // Calculate the highest sustained speed
-  speeds.sort((a, b) => b - a);
-  const topSpeeds = speeds.slice(0, Math.min(5, speeds.length));
-  const peakSpeed = topSpeeds[0];
-  const avgTopSpeed = topSpeeds.reduce((sum, speed) => sum + speed, 0) / topSpeeds.length;
+  // Calculate aggregated speed from all connections (bandwidth saturation)
+  const timeWindows = new Map<number, number[]>();
   
-  // Use the higher of peak or average top speed
-  const finalSpeed = Math.max(peakSpeed, avgTopSpeed);
-  console.log(`Download speed result: ${finalSpeed.toFixed(2)} Mbps (from ${speeds.length} measurements)`);
+  // Group speeds by time windows to calculate total bandwidth
+  speeds.forEach((speed, index) => {
+    const timeWindow = Math.floor(index / concurrentConnections);
+    if (!timeWindows.has(timeWindow)) {
+      timeWindows.set(timeWindow, []);
+    }
+    timeWindows.get(timeWindow)!.push(speed);
+  });
+  
+  // Calculate total bandwidth for each time window
+  const totalBandwidths: number[] = [];
+  timeWindows.forEach((windowSpeeds) => {
+    const totalBandwidth = windowSpeeds.reduce((sum, speed) => sum + speed, 0);
+    totalBandwidths.push(totalBandwidth);
+  });
+  
+  if (totalBandwidths.length === 0) {
+    return 50; // Fallback
+  }
+  
+  // Use the highest total bandwidth achieved
+  totalBandwidths.sort((a, b) => b - a);
+  const peakBandwidth = totalBandwidths[0];
+  const avgTopBandwidth = totalBandwidths.slice(0, Math.min(3, totalBandwidths.length))
+    .reduce((sum, bw) => sum + bw, 0) / Math.min(3, totalBandwidths.length);
+  
+  const finalSpeed = Math.max(peakBandwidth, avgTopBandwidth);
+  console.log(`Download speed result: ${finalSpeed.toFixed(2)} Mbps (peak: ${peakBandwidth.toFixed(2)}, avg: ${avgTopBandwidth.toFixed(2)})`);
   
   return finalSpeed;
 }

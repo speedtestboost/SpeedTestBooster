@@ -128,9 +128,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.setHeader('Content-Length', size.toString());
     res.setHeader('Access-Control-Allow-Origin', '*');
     
-    // Stream random data
+    // Pre-generate larger chunks for better performance
+    const chunkSize = 64 * 1024; // 64KB chunks for better throughput
+    const pregenChunk = Buffer.alloc(chunkSize);
+    
+    // Fill with pattern data (faster than random)
+    for (let i = 0; i < chunkSize; i++) {
+      pregenChunk[i] = i % 256;
+    }
+    
     let bytesWritten = 0;
-    const chunkSize = 8192; // 8KB chunks
     
     const sendChunk = () => {
       const remainingBytes = size - bytesWritten;
@@ -140,12 +147,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       
       const currentChunkSize = Math.min(chunkSize, remainingBytes);
-      const chunk = Buffer.alloc(currentChunkSize);
-      
-      // Fill with random data
-      for (let i = 0; i < currentChunkSize; i++) {
-        chunk[i] = Math.floor(Math.random() * 256);
-      }
+      const chunk = currentChunkSize === chunkSize ? pregenChunk : pregenChunk.slice(0, currentChunkSize);
       
       res.write(chunk);
       bytesWritten += currentChunkSize;

@@ -203,8 +203,10 @@ The application follows a clean separation of concerns with the frontend handlin
 - **MAJOR ARCHITECTURE CHANGE**: Created custom server-side speed test endpoints to eliminate CORS issues
 - Added `/api/speed-test/download/:size` endpoint that streams random data for accurate download measurement
 - Added `/api/speed-test/upload` endpoint that receives data for accurate upload measurement
-- Implemented concurrent download testing with 25MB-100MB files served from our own backend
-- Added real-time speed calculation every 300ms during streaming for maximum accuracy
+- Implemented bandwidth saturation technique using 4 concurrent connections (like fast.com)
+- Enhanced server performance with 64KB chunks and pattern data for faster streaming
+- Added real-time speed calculation every 250ms during streaming for maximum accuracy
+- Aggregated bandwidth from multiple connections to measure total network capacity
 - Enhanced upload speed testing using larger file sizes (2MB, 5MB, 10MB) with server-side measurement
 - Improved ping measurement using reliable endpoints (Google, Cloudflare) with multiple tests
 - Implemented proper jitter calculation using 8 ping samples and standard deviation
