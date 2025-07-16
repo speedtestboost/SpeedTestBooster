@@ -9,6 +9,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/speed-tests", async (req, res) => {
     try {
       console.log("Received speed test data:", req.body);
+      
+      // Ensure sessionId is present from header if not in body
+      if (!req.body.sessionId) {
+        req.body.sessionId = req.headers['x-session-id'] || 'default';
+      }
+      
       const testData = insertSpeedTestSchema.parse(req.body);
       const test = await storage.createSpeedTest(testData);
       res.json(test);
