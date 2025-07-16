@@ -1,11 +1,13 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, Wifi, Globe, Shield, Zap, Users } from "lucide-react";
+import { CheckCircle, Wifi, Globe, Shield, Zap, Users, Menu, X } from "lucide-react";
 import { Link } from "wouter";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function About() {
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  
   useEffect(() => {
     // Update page title and meta description for SEO
     document.title = "About Speed Test & Boost - Professional Internet Speed Testing";
@@ -51,18 +53,59 @@ export default function About() {
                   Speed Test & Boost
                 </div>
               </Link>
-              <div className="flex items-center space-x-6">
-                <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
-                  Speed Test
-                </Link>
-                <Link href="/about" className="text-primary font-medium">
-                  About
-                </Link>
-                <Link href="/help" className="text-muted-foreground hover:text-primary transition-colors">
-                  Help
-                </Link>
+              <div className="flex items-center space-x-4">
+                {/* Desktop Navigation */}
+                <div className="hidden lg:flex items-center space-x-6">
+                  <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
+                    Speed Test
+                  </Link>
+                  <Link href="/about" className="text-primary font-medium">
+                    About
+                  </Link>
+                  <Link href="/help" className="text-muted-foreground hover:text-primary transition-colors">
+                    Help
+                  </Link>
+                </div>
+                
+                {/* Mobile Menu Button */}
+                <button
+                  onClick={() => setShowMobileMenu(!showMobileMenu)}
+                  className="lg:hidden p-2 rounded-lg hover:bg-muted/50 transition-colors"
+                  aria-label="Toggle mobile menu"
+                >
+                  {showMobileMenu ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                </button>
               </div>
             </div>
+            
+            {/* Mobile Navigation Menu */}
+            {showMobileMenu && (
+              <div className="lg:hidden mt-4 pt-4 border-t border-border/30">
+                <div className="flex flex-col space-y-3">
+                  <Link 
+                    href="/" 
+                    className="text-muted-foreground hover:text-primary transition-colors py-2"
+                    onClick={() => setShowMobileMenu(false)}
+                  >
+                    Speed Test
+                  </Link>
+                  <Link 
+                    href="/about" 
+                    className="text-primary font-medium py-2"
+                    onClick={() => setShowMobileMenu(false)}
+                  >
+                    About
+                  </Link>
+                  <Link 
+                    href="/help" 
+                    className="text-muted-foreground hover:text-primary transition-colors py-2"
+                    onClick={() => setShowMobileMenu(false)}
+                  >
+                    Help
+                  </Link>
+                </div>
+              </div>
+            )}
           </div>
         </nav>
 

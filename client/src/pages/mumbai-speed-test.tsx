@@ -12,7 +12,7 @@ import NetworkInfo from "@/components/NetworkInfo";
 import OptimizationModal from "@/components/OptimizationModal";
 
 import { performSpeedTest, type SpeedTestResult } from "@/lib/speedTest";
-import { Play, Gauge, Wifi } from "lucide-react";
+import { Play, Gauge, Wifi, Menu, X } from "lucide-react";
 import { Link } from "wouter";
 
 export default function MumbaiSpeedTest() {
@@ -21,6 +21,7 @@ export default function MumbaiSpeedTest() {
   const [testStatus, setTestStatus] = useState("Ready to test");
   const [currentResult, setCurrentResult] = useState<SpeedTestResult | null>(null);
   const [showOptimization, setShowOptimization] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const { toast } = useToast();
 
   // SEO Meta Tags
@@ -227,8 +228,8 @@ export default function MumbaiSpeedTest() {
             </div>
             
             {/* Navigation and Status */}
-            <div className="flex items-center space-x-6">
-              {/* Navigation Links */}
+            <div className="flex items-center space-x-4">
+              {/* Desktop Navigation Links */}
               <div className="hidden lg:flex items-center space-x-6">
                 <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
                   Home
@@ -241,6 +242,15 @@ export default function MumbaiSpeedTest() {
                 </Link>
               </div>
               
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setShowMobileMenu(!showMobileMenu)}
+                className="lg:hidden p-2 rounded-lg hover:bg-muted/50 transition-colors"
+                aria-label="Toggle mobile menu"
+              >
+                {showMobileMenu ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </button>
+              
               {/* Status Indicator */}
               <div className="flex items-center space-x-2">
                 <div className="flex items-center space-x-2 bg-success/20 rounded-full px-3 py-1">
@@ -250,6 +260,35 @@ export default function MumbaiSpeedTest() {
               </div>
             </div>
           </div>
+          
+          {/* Mobile Navigation Menu */}
+          {showMobileMenu && (
+            <div className="lg:hidden mt-4 pt-4 border-t border-border/30">
+              <div className="flex flex-col space-y-3">
+                <Link 
+                  href="/" 
+                  className="text-muted-foreground hover:text-primary transition-colors py-2"
+                  onClick={() => setShowMobileMenu(false)}
+                >
+                  Home
+                </Link>
+                <Link 
+                  href="/about" 
+                  className="text-muted-foreground hover:text-primary transition-colors py-2"
+                  onClick={() => setShowMobileMenu(false)}
+                >
+                  About
+                </Link>
+                <Link 
+                  href="/help" 
+                  className="text-muted-foreground hover:text-primary transition-colors py-2"
+                  onClick={() => setShowMobileMenu(false)}
+                >
+                  Help & FAQ
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       </header>
 
