@@ -371,6 +371,38 @@ export default function DelhiSpeedTest() {
         </div>
       </main>
 
+      {/* Other Cities Navigation */}
+      <section className="bg-card/30 border-t border-border/30 py-8 mt-8">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8">
+          <div className="text-center">
+            <h3 className="text-lg font-semibold text-foreground mb-4">Test Internet Speed in Other Cities</h3>
+            <p className="text-sm text-muted-foreground mb-6">Check your internet speed and boost performance in other major Indian cities</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              <Link href="/mumbai-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+                <div className="text-sm font-medium text-foreground">Mumbai</div>
+                <div className="text-xs text-muted-foreground">Financial Hub Speed Test</div>
+              </Link>
+              <Link href="/bangalore-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+                <div className="text-sm font-medium text-foreground">Bangalore</div>
+                <div className="text-xs text-muted-foreground">Tech Hub Speed Test</div>
+              </Link>
+              <Link href="/hyderabad-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+                <div className="text-sm font-medium text-foreground">Hyderabad</div>
+                <div className="text-xs text-muted-foreground">Cyberabad Speed Test</div>
+              </Link>
+              <Link href="/chennai-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+                <div className="text-sm font-medium text-foreground">Chennai</div>
+                <div className="text-xs text-muted-foreground">South India Speed Test</div>
+              </Link>
+              <Link href="/kolkata-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+                <div className="text-sm font-medium text-foreground">Kolkata</div>
+                <div className="text-xs text-muted-foreground">East India Speed Test</div>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className="bg-card/50 border-t border-border/50 py-8 mt-12">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <div className="text-center text-sm text-muted-foreground">
