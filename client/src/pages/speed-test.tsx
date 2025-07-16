@@ -261,6 +261,41 @@ export default function SpeedTest() {
         </div>
       </header>
 
+      {/* City Navigation Menu */}
+      <section className="bg-card/30 border-b border-border/30 py-4">
+        <div className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8">
+          <div className="text-center">
+            <h3 className="text-lg font-semibold text-foreground mb-4">Test Your Internet Speed by City</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+              <Link href="/mumbai-speed-test" className="block p-3 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+                <div className="text-sm font-medium text-foreground">Mumbai</div>
+                <div className="text-xs text-muted-foreground">Internet Speed & Booster</div>
+              </Link>
+              <Link href="/delhi-speed-test" className="block p-3 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+                <div className="text-sm font-medium text-foreground">Delhi</div>
+                <div className="text-xs text-muted-foreground">Internet Speed & Booster</div>
+              </Link>
+              <Link href="/bangalore-speed-test" className="block p-3 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+                <div className="text-sm font-medium text-foreground">Bangalore</div>
+                <div className="text-xs text-muted-foreground">Internet Speed & Booster</div>
+              </Link>
+              <Link href="/hyderabad-speed-test" className="block p-3 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+                <div className="text-sm font-medium text-foreground">Hyderabad</div>
+                <div className="text-xs text-muted-foreground">Internet Speed & Booster</div>
+              </Link>
+              <Link href="/chennai-speed-test" className="block p-3 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+                <div className="text-sm font-medium text-foreground">Chennai</div>
+                <div className="text-xs text-muted-foreground">Internet Speed & Booster</div>
+              </Link>
+              <Link href="/kolkata-speed-test" className="block p-3 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+                <div className="text-sm font-medium text-foreground">Kolkata</div>
+                <div className="text-xs text-muted-foreground">Internet Speed & Booster</div>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-6 space-y-6">
         {/* Desktop Layout - Three Column Grid */}
         <div className="hidden lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">

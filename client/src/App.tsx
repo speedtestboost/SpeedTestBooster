@@ -4,6 +4,12 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import SpeedTest from "@/pages/speed-test";
 import About from "@/pages/about";
 import Help from "@/pages/help";
+import MumbaiSpeedTest from "@/pages/mumbai-speed-test";
+import DelhiSpeedTest from "@/pages/delhi-speed-test";
+import BangaloreSpeedTest from "@/pages/bangalore-speed-test";
+import HyderabadSpeedTest from "@/pages/hyderabad-speed-test";
+import ChennaiSpeedTest from "@/pages/chennai-speed-test";
+import KolkataSpeedTest from "@/pages/kolkata-speed-test";
 import NotFound from "@/pages/not-found";
 import { useEffect } from "react";
 import { initGA } from "./lib/analytics";
@@ -18,6 +24,12 @@ function Router() {
       <Route path="/" component={SpeedTest} />
       <Route path="/about" component={About} />
       <Route path="/help" component={Help} />
+      <Route path="/mumbai-speed-test" component={MumbaiSpeedTest} />
+      <Route path="/delhi-speed-test" component={DelhiSpeedTest} />
+      <Route path="/bangalore-speed-test" component={BangaloreSpeedTest} />
+      <Route path="/hyderabad-speed-test" component={HyderabadSpeedTest} />
+      <Route path="/chennai-speed-test" component={ChennaiSpeedTest} />
+      <Route path="/kolkata-speed-test" component={KolkataSpeedTest} />
       <Route component={NotFound} />
     </Switch>
   );
