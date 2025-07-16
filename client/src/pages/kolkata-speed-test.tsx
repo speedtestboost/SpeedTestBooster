@@ -161,12 +161,6 @@ export default function KolkataSpeedTest() {
               >
                 {showMobileMenu ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </button>
-              <div className="flex items-center space-x-2">
-                <div className="flex items-center space-x-2 bg-success/20 rounded-full px-3 py-1">
-                  <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
-                  <span className="text-xs font-medium text-success">Online</span>
-                </div>
-              </div>
             </div>
           </div>
           
