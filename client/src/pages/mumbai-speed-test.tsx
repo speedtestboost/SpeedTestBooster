@@ -39,7 +39,7 @@ export default function MumbaiSpeedTest() {
       canonical.rel = 'canonical';
       document.head.appendChild(canonical);
     }
-    canonical.href = 'https://speedtestandboost.com/mumbai-speed-test';
+    canonical.href = 'https://speedtestboost.com/mumbai-speed-test';
   }, []);
 
   // Fetch network info

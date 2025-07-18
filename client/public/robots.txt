@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://speedtestandboost.com/sitemap.xml
+Sitemap: https://speedtestboost.com/sitemap.xml
 
 # Crawl-delay for bots
 Crawl-delay: 1

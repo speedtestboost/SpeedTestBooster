@@ -6,7 +6,7 @@
   
   <!-- Homepage - Speed Test Tool -->
   <url>
-    <loc>https://speedtestandboost.com/</loc>
+    <loc>https://speedtestboost.com/</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -14,7 +14,7 @@
   
   <!-- About Page -->
   <url>
-    <loc>https://speedtestandboost.com/about</loc>
+    <loc>https://speedtestboost.com/about</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -22,7 +22,7 @@
   
   <!-- Help/FAQ Page -->
   <url>
-    <loc>https://speedtestandboost.com/help</loc>
+    <loc>https://speedtestboost.com/help</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -30,42 +30,42 @@
   
   <!-- City-specific Speed Test Pages -->
   <url>
-    <loc>https://speedtestandboost.com/mumbai-speed-test</loc>
+    <loc>https://speedtestboost.com/mumbai-speed-test</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://speedtestandboost.com/delhi-speed-test</loc>
+    <loc>https://speedtestboost.com/delhi-speed-test</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://speedtestandboost.com/bangalore-speed-test</loc>
+    <loc>https://speedtestboost.com/bangalore-speed-test</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://speedtestandboost.com/hyderabad-speed-test</loc>
+    <loc>https://speedtestboost.com/hyderabad-speed-test</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://speedtestandboost.com/chennai-speed-test</loc>
+    <loc>https://speedtestboost.com/chennai-speed-test</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://speedtestandboost.com/kolkata-speed-test</loc>
+    <loc>https://speedtestboost.com/kolkata-speed-test</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
