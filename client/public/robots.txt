@@ -18,6 +18,14 @@ Allow: /help
 Allow: /privacy
 Allow: /terms
 
+# Allow city-specific speed test pages
+Allow: /mumbai-speed-test
+Allow: /delhi-speed-test
+Allow: /bangalore-speed-test
+Allow: /hyderabad-speed-test
+Allow: /chennai-speed-test
+Allow: /kolkata-speed-test
+
 # Block common crawler traps
 Disallow: /wp-admin/
 Disallow: /wp-includes/
@@ -27,8 +35,6 @@ Disallow: /login/
 Disallow: /register/
 Disallow: /*.json$
 Disallow: /*.xml$
-Disallow: /*?*
-Disallow: /*#*
 
 # Allow Google, Bing, and other major search engines
 User-agent: Googlebot

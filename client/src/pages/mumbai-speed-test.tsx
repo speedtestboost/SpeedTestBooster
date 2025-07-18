@@ -31,6 +31,15 @@ export default function MumbaiSpeedTest() {
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Test your internet speed in Mumbai. Get accurate broadband speed results for BSNL, Airtel, Jio, and Vi networks. Free speed test with WiFi optimization tips for Mumbai users.');
     }
+    
+    // Add canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.href = 'https://speedtestandboost.com/mumbai-speed-test';
   }, []);
 
   // Fetch network info

@@ -6,66 +6,66 @@
   
   <!-- Homepage - Speed Test Tool -->
   <url>
-    <loc>https://www.speedtestboost.com/</loc>
-    <lastmod>2025-01-12</lastmod>
+    <loc>https://speedtestandboost.com/</loc>
+    <lastmod>2025-01-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   
   <!-- About Page -->
   <url>
-    <loc>https://www.speedtestboost.com/about</loc>
-    <lastmod>2025-01-12</lastmod>
+    <loc>https://speedtestandboost.com/about</loc>
+    <lastmod>2025-01-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <!-- Help/FAQ Page -->
   <url>
-    <loc>https://www.speedtestboost.com/help</loc>
-    <lastmod>2025-01-12</lastmod>
+    <loc>https://speedtestandboost.com/help</loc>
+    <lastmod>2025-01-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <!-- City-specific Speed Test Pages -->
   <url>
-    <loc>https://www.speedtestboost.com/mumbai-speed-test</loc>
+    <loc>https://speedtestandboost.com/mumbai-speed-test</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.speedtestboost.com/delhi-speed-test</loc>
+    <loc>https://speedtestandboost.com/delhi-speed-test</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.speedtestboost.com/bangalore-speed-test</loc>
+    <loc>https://speedtestandboost.com/bangalore-speed-test</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.speedtestboost.com/hyderabad-speed-test</loc>
+    <loc>https://speedtestandboost.com/hyderabad-speed-test</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.speedtestboost.com/chennai-speed-test</loc>
+    <loc>https://speedtestandboost.com/chennai-speed-test</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://www.speedtestboost.com/kolkata-speed-test</loc>
+    <loc>https://speedtestandboost.com/kolkata-speed-test</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
