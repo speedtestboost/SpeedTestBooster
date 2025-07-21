@@ -29,6 +29,15 @@ export default function HyderabadSpeedTest() {
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Test your internet speed in Hyderabad (Secunderabad). Get accurate broadband speed results for all major ISPs including BSNL, Airtel, Jio Fiber, and Vi. Free speed test with WiFi optimization for Hyderabad users.');
     }
+    
+    // Add canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.href = 'https://speedtestboost.com/hyderabad-speed-test';
   }, []);
 
   const { data: networkInfo } = useQuery({ queryKey: ["/api/network-info"] });

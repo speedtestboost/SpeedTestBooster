@@ -24,6 +24,18 @@ export default function SpeedTest() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const { toast } = useToast();
 
+  // SEO Meta Tags for homepage
+  useEffect(() => {
+    // Add canonical URL for homepage
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.href = 'https://speedtestboost.com/';
+  }, []);
+
   // Fetch network info
   const { data: networkInfo } = useQuery({
     queryKey: ["/api/network-info"],

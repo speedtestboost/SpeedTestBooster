@@ -28,6 +28,15 @@ export default function Help() {
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Get help with internet speed testing. FAQ, troubleshooting guide, and tips to improve your connection speed. Learn about download speed, upload speed, ping, and jitter.');
     }
+    
+    // Add canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.href = 'https://speedtestboost.com/help';
   }, []);
 
   return (

@@ -15,6 +15,15 @@ export default function About() {
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Learn about Speed Test & Boost, the professional internet speed testing tool. Accurate bandwidth measurement, network diagnostics, and WiFi optimization for all devices.');
     }
+    
+    // Add canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.href = 'https://speedtestboost.com/about';
   }, []);
 
   return (

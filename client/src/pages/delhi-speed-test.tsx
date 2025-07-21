@@ -31,6 +31,15 @@ export default function DelhiSpeedTest() {
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Test your internet speed in Delhi NCR. Get accurate broadband speed results for all major ISPs including BSNL, Airtel, Jio Fiber, and Vi. Free speed test with WiFi optimization for Delhi users.');
     }
+    
+    // Add canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.href = 'https://speedtestboost.com/delhi-speed-test';
   }, []);
 
   // ... [Rest of the component logic is identical to Mumbai page] ...
