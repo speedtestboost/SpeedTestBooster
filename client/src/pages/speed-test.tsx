@@ -254,9 +254,6 @@ export default function SpeedTest() {
             <div className="flex items-center space-x-4">
               {/* Desktop Navigation Links */}
               <div className="hidden lg:flex items-center space-x-6">
-                <Link href="/blog" className="text-muted-foreground hover:text-primary transition-colors">
-                  Blog
-                </Link>
                 <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
                   About
                 </Link>
@@ -280,13 +277,6 @@ export default function SpeedTest() {
           {showMobileMenu && (
             <div className="lg:hidden mt-4 pt-4 border-t border-border/30">
               <div className="flex flex-col space-y-3">
-                <Link 
-                  href="/blog" 
-                  className="text-muted-foreground hover:text-primary transition-colors py-2"
-                  onClick={() => setShowMobileMenu(false)}
-                >
-                  Blog
-                </Link>
                 <Link 
                   href="/about" 
                   className="text-muted-foreground hover:text-primary transition-colors py-2"
