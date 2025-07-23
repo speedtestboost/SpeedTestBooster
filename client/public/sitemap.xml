@@ -28,6 +28,14 @@
     <priority>0.6</priority>
   </url>
   
+  <!-- Blog Page -->
+  <url>
+    <loc>https://speedtestboost.com/blog</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
   <!-- City-specific Speed Test Pages -->
   <url>
     <loc>https://speedtestboost.com/mumbai-speed-test</loc>
