@@ -5,6 +5,7 @@ import SpeedTest from "@/pages/speed-test";
 import About from "@/pages/about";
 import Help from "@/pages/help";
 import Blog from "@/pages/blog";
+import BlogPost from "@/pages/blog-post";
 import MumbaiSpeedTest from "@/pages/mumbai-speed-test";
 import DelhiSpeedTest from "@/pages/delhi-speed-test";
 import BangaloreSpeedTest from "@/pages/bangalore-speed-test";
@@ -26,6 +27,7 @@ function Router() {
       <Route path="/about" component={About} />
       <Route path="/help" component={Help} />
       <Route path="/blog" component={Blog} />
+      <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/mumbai-speed-test" component={MumbaiSpeedTest} />
       <Route path="/delhi-speed-test" component={DelhiSpeedTest} />
       <Route path="/bangalore-speed-test" component={BangaloreSpeedTest} />
