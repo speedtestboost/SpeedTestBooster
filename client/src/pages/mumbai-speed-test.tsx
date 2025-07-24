@@ -627,34 +627,54 @@ export default function MumbaiSpeedTest() {
           {/* Footer Links and Info */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-8 border-t border-border/30">
             <div>
-              <h4 className="font-semibold text-foreground mb-3">Speed Test Tools</h4>
-              <div className="space-y-2 text-sm text-muted-foreground">
-                <div>Download Speed Test</div>
-                <div>Upload Speed Test</div>
-                <div>Ping Test Tool</div>
-                <div>Bandwidth Checker</div>
+              <h4 className="font-semibold text-foreground mb-3">Other City Tests</h4>
+              <div className="space-y-2 text-sm">
+                <Link href="/" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Main Speed Test
+                </Link>
+                <Link href="/delhi-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Delhi Speed Test
+                </Link>
+                <Link href="/bangalore-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Bangalore Speed Test
+                </Link>
+                <Link href="/hyderabad-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Hyderabad Speed Test
+                </Link>
               </div>
             </div>
             <div>
-              <h4 className="font-semibold text-foreground mb-3">Connection Types</h4>
-              <div className="space-y-2 text-sm text-muted-foreground">
-                <div>WiFi Speed Test</div>
-                <div>Fiber Speed Test</div>
-                <div>Cable Speed Test</div>
-                <div>Mobile Speed Test</div>
+              <h4 className="font-semibold text-foreground mb-3">More Cities</h4>
+              <div className="space-y-2 text-sm">
+                <Link href="/chennai-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Chennai Speed Test
+                </Link>
+                <Link href="/kolkata-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Kolkata Speed Test
+                </Link>
+                <div className="text-muted-foreground">WiFi Speed Test</div>
+                <div className="text-muted-foreground">Fiber Speed Test</div>
               </div>
             </div>
             <div>
-              <h4 className="font-semibold text-foreground mb-3">Resources</h4>
-              <div className="space-y-2 text-sm text-muted-foreground">
-                <div>Speed Test History</div>
-                <div>Network Diagnostics</div>
-                <div>Connection Optimization</div>
-                <div>Speed Comparisons</div>
+              <h4 className="font-semibold text-foreground mb-3">Mumbai ISPs</h4>
+              <div className="space-y-2 text-sm">
+                <a href="https://www.jio.com/fiber/en-in" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Jio Fiber Mumbai
+                </a>
+                <a href="https://www.airtel.in/broadband" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Airtel Broadband
+                </a>
+                <a href="https://portal.bsnl.in/" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  BSNL Mumbai
+                </a>
+                <a href="https://www.myvi.in/personal/broadband" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Vi Broadband
+                </a>
               </div>
             </div>
             <div>
-              <h4 className="font-semibold text-foreground mb-3">About</h4>
+              <h4 className="font-semibold text-foreground mb-3">About & Help</h4>
               <div className="space-y-2 text-sm">
                 <Link href="/about" className="block text-muted-foreground hover:text-primary transition-colors">
                   About Us
@@ -662,8 +682,12 @@ export default function MumbaiSpeedTest() {
                 <Link href="/help" className="block text-muted-foreground hover:text-primary transition-colors">
                   Help & FAQ
                 </Link>
-                <div className="text-muted-foreground">How It Works</div>
-                <div className="text-muted-foreground">Contact Us</div>
+                <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Compare Fast.com
+                </a>
+                <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Speedtest.net
+                </a>
               </div>
             </div>
           </div>
@@ -671,8 +695,8 @@ export default function MumbaiSpeedTest() {
           {/* Copyright */}
           <div className="text-center pt-8 border-t border-border/30 mt-8">
             <p className="text-sm text-muted-foreground">
-              © 2025 Speed Test and Boost. Free internet speed test tool for accurate bandwidth measurement. 
-              Test your connection speed on any device.
+              © 2025 Speed Test and Boost. Free Mumbai internet speed test tool for accurate bandwidth measurement. 
+              Test your connection speed on any device. Compare with <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Fast.com</a> and <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Speedtest.net</a>.
             </p>
           </div>
         </div>
