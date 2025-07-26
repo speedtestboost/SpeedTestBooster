@@ -512,6 +512,23 @@ export default function MumbaiSpeedTest() {
         </div>
       </main>
 
+      {/* Main Speed Test Call-to-Action */}
+      <section className="bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 py-12 mt-8">
+        <div className="max-w-4xl mx-auto px-4 lg:px-8 text-center">
+          <h2 className="text-2xl lg:text-3xl font-bold mb-4">
+            Try Our Universal Speed Test
+          </h2>
+          <p className="text-lg text-muted-foreground mb-6">
+            Test your internet speed with our main tool that works across all locations and ISPs
+          </p>
+          <Link href="/">
+            <Button size="lg" className="gradient-bg text-white px-8 py-4 text-lg">
+              Go to Main Speed Test
+            </Button>
+          </Link>
+        </div>
+      </section>
+
       {/* Other Cities Navigation */}
       <section className="bg-card/30 border-t border-border/30 py-8 mt-8">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">

@@ -332,6 +332,36 @@ export default function SpeedTest() {
         </div>
       </section>
 
+      {/* External Speed Test Comparison Section */}
+      <section className="bg-muted/20 py-8 border-b border-border/30">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8">
+          <div className="text-center mb-6">
+            <h2 className="text-xl font-semibold text-foreground mb-2">Compare Speed Test Results</h2>
+            <p className="text-sm text-muted-foreground">
+              Test your connection across multiple platforms for the most accurate assessment
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 px-4 py-2 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+              <span className="text-sm font-medium text-foreground">Fast.com</span>
+              <span className="text-xs text-muted-foreground">by Netflix</span>
+            </a>
+            <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 px-4 py-2 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+              <span className="text-sm font-medium text-foreground">Speedtest.net</span>
+              <span className="text-xs text-muted-foreground">by Ookla</span>
+            </a>
+            <a href="https://www.google.com/search?q=internet+speed+test" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 px-4 py-2 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+              <span className="text-sm font-medium text-foreground">Google Speed Test</span>
+              <span className="text-xs text-muted-foreground">Search Tool</span>
+            </a>
+            <a href="https://www.cloudflare.com/speed/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 px-4 py-2 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+              <span className="text-sm font-medium text-foreground">Cloudflare Speed</span>
+              <span className="text-xs text-muted-foreground">Network Test</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
       <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-6 space-y-6">
         {/* Desktop Layout - Three Column Grid */}
         <div className="hidden lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
@@ -628,7 +658,7 @@ export default function SpeedTest() {
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   An internet speed test measures your connection's download speed, upload speed, and ping latency. 
                   Our free bandwidth test tool provides accurate results for WiFi, broadband, fiber, and mobile connections 
-                  including 4G and 5G networks.
+                  including 4G and 5G networks. Compare your results with <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Fast.com</a> or <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Speedtest.net</a>.
                 </p>
               </CardContent>
             </Card>
@@ -690,7 +720,7 @@ export default function SpeedTest() {
                   <h4 className="font-semibold text-foreground mb-2">How can I improve my internet speed?</h4>
                   <p className="text-sm text-muted-foreground">
                     Upgrade your plan, use wired connections, update your router, reduce network interference, 
-                    and close unnecessary applications consuming bandwidth.
+                    and close unnecessary applications consuming bandwidth. Check <a href="https://www.cloudflare.com/learning/performance/how-to-speed-up-a-website/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Cloudflare's optimization guide</a> or consult your ISP's support pages like <a href="https://www.jio.com/fiber/en-in" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Jio Fiber</a> or <a href="https://www.airtel.in/broadband" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Airtel Broadband</a>.
                   </p>
                 </div>
               </div>
