@@ -354,10 +354,6 @@ export default function SpeedTest() {
               <span className="text-sm font-medium text-foreground">Google Speed Test</span>
               <span className="text-xs text-muted-foreground">Search Tool</span>
             </a>
-            <a href="https://www.cloudflare.com/speed/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 px-4 py-2 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-              <span className="text-sm font-medium text-foreground">Cloudflare Speed</span>
-              <span className="text-xs text-muted-foreground">Network Test</span>
-            </a>
           </div>
         </div>
       </section>
@@ -720,7 +716,7 @@ export default function SpeedTest() {
                   <h4 className="font-semibold text-foreground mb-2">How can I improve my internet speed?</h4>
                   <p className="text-sm text-muted-foreground">
                     Upgrade your plan, use wired connections, update your router, reduce network interference, 
-                    and close unnecessary applications consuming bandwidth. Check <a href="https://www.cloudflare.com/learning/performance/how-to-speed-up-a-website/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Cloudflare's optimization guide</a> or consult your ISP's support pages like <a href="https://www.jio.com/fiber/en-in" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Jio Fiber</a> or <a href="https://www.airtel.in/broadband" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Airtel Broadband</a>.
+                    and close unnecessary applications consuming bandwidth. Consult your ISP's support pages like <a href="https://www.jio.com/fiber/en-in" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Jio Fiber</a> or <a href="https://www.airtel.in/broadband" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Airtel Broadband</a> for optimization tips.
                   </p>
                 </div>
               </div>
@@ -771,8 +767,8 @@ export default function SpeedTest() {
                 <a href="https://www.google.com/search?q=internet+speed+test" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
                   Google Speed Test
                 </a>
-                <a href="https://www.cloudflare.com/learning/performance/how-to-speed-up-a-website/" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Speed Optimization Guide
+                <a href="https://www.fcc.gov/consumers/guides/broadband-speed-guide" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  FCC Broadband Guide
                 </a>
               </div>
             </div>
