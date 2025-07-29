@@ -26,6 +26,12 @@ Allow: /hyderabad-speed-test
 Allow: /chennai-speed-test
 Allow: /kolkata-speed-test
 
+# Allow country-specific speed test pages
+Allow: /us-speed-test
+Allow: /uk-speed-test
+Allow: /au-speed-test
+Allow: /ca-speed-test
+
 # Block common crawler traps
 Disallow: /wp-admin/
 Disallow: /wp-includes/

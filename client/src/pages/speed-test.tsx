@@ -26,7 +26,61 @@ export default function SpeedTest() {
 
   // SEO Meta Tags for homepage
   useEffect(() => {
-    // Add canonical URL for homepage
+    document.title = "Free Internet Speed Test - Check WiFi & Broadband Speed | Speed Test & Boost";
+    
+    // Meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Free internet speed test tool. Test WiFi and broadband speeds instantly with accurate results. Check download, upload speeds and ping. Works globally with all ISPs.');
+    }
+    
+    // Keywords meta tag
+    let keywords = document.querySelector('meta[name="keywords"]');
+    if (!keywords) {
+      keywords = document.createElement('meta');
+      keywords.name = 'keywords';
+      document.head.appendChild(keywords);
+    }
+    keywords.content = 'internet speed test, wifi speed test, broadband speed test, speed test online, check internet speed, bandwidth test, network speed test, fast speed test';
+    
+    // Open Graph tags
+    const ogTags = [
+      { property: 'og:title', content: 'Free Internet Speed Test - Check WiFi & Broadband Speed' },
+      { property: 'og:description', content: 'Free internet speed test tool. Test WiFi and broadband speeds instantly with accurate results. Check download, upload speeds and ping. Works globally with all ISPs.' },
+      { property: 'og:url', content: 'https://speedtestboost.com/' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:site_name', content: 'Speed Test & Boost' },
+      { property: 'og:locale', content: 'en_US' }
+    ];
+    
+    ogTags.forEach(tag => {
+      let ogTag = document.querySelector(`meta[property="${tag.property}"]`);
+      if (!ogTag) {
+        ogTag = document.createElement('meta');
+        ogTag.setAttribute('property', tag.property);
+        document.head.appendChild(ogTag);
+      }
+      ogTag.setAttribute('content', tag.content);
+    });
+    
+    // Twitter Card tags
+    const twitterTags = [
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: 'Free Internet Speed Test - Check WiFi & Broadband Speed' },
+      { name: 'twitter:description', content: 'Free internet speed test tool. Test WiFi and broadband speeds instantly with accurate results.' }
+    ];
+    
+    twitterTags.forEach(tag => {
+      let twitterTag = document.querySelector(`meta[name="${tag.name}"]`);
+      if (!twitterTag) {
+        twitterTag = document.createElement('meta');
+        twitterTag.name = tag.name;
+        document.head.appendChild(twitterTag);
+      }
+      twitterTag.content = tag.content;
+    });
+    
+    // Canonical URL for homepage
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');
@@ -34,6 +88,41 @@ export default function SpeedTest() {
       document.head.appendChild(canonical);
     }
     canonical.href = 'https://speedtestboost.com/';
+    
+    // Structured Data (JSON-LD)
+    let structuredData = document.querySelector('script[type="application/ld+json"]');
+    if (!structuredData) {
+      structuredData = document.createElement('script');
+      structuredData.type = 'application/ld+json';
+      document.head.appendChild(structuredData);
+    }
+    structuredData.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Speed Test & Boost",
+      "description": "Free internet speed test tool with global coverage. Test WiFi and broadband speeds instantly with accurate results for all ISPs.",
+      "url": "https://speedtestboost.com/",
+      "applicationCategory": "NetworkingApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Speed Test & Boost",
+        "url": "https://speedtestboost.com/"
+      },
+      "featureList": [
+        "Download speed test",
+        "Upload speed test", 
+        "Ping test",
+        "WiFi optimization",
+        "Global server coverage",
+        "All ISP support"
+      ]
+    });
   }, []);
 
   // Fetch network info

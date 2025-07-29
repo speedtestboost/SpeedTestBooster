@@ -27,12 +27,60 @@ export default function USSpeedTest() {
   // SEO Meta Tags
   useEffect(() => {
     document.title = "Internet Speed Test USA - Free WiFi & Broadband Speed Checker | Speed Test & Boost";
+    
+    // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Test your internet speed in the United States. Free online speed test for Verizon, AT&T, Comcast, and Spectrum. Check WiFi, broadband, and fiber speeds with accurate US server results.');
     }
     
-    // Add canonical URL
+    // Keywords meta tag
+    let keywords = document.querySelector('meta[name="keywords"]');
+    if (!keywords) {
+      keywords = document.createElement('meta');
+      keywords.name = 'keywords';
+      document.head.appendChild(keywords);
+    }
+    keywords.content = 'internet speed test USA, wifi speed test US, broadband speed test America, Verizon speed test, AT&T speed test, Comcast speed test, Spectrum speed test, fiber speed test USA, online speed test US';
+    
+    // Open Graph tags
+    const ogTags = [
+      { property: 'og:title', content: 'Internet Speed Test USA - Free WiFi & Broadband Speed Checker' },
+      { property: 'og:description', content: 'Test your internet speed in the United States. Free online speed test for Verizon, AT&T, Comcast, and Spectrum. Check WiFi, broadband, and fiber speeds with accurate US server results.' },
+      { property: 'og:url', content: 'https://speedtestboost.com/us-speed-test' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:site_name', content: 'Speed Test & Boost' },
+      { property: 'og:locale', content: 'en_US' }
+    ];
+    
+    ogTags.forEach(tag => {
+      let ogTag = document.querySelector(`meta[property="${tag.property}"]`);
+      if (!ogTag) {
+        ogTag = document.createElement('meta');
+        ogTag.setAttribute('property', tag.property);
+        document.head.appendChild(ogTag);
+      }
+      ogTag.setAttribute('content', tag.content);
+    });
+    
+    // Twitter Card tags
+    const twitterTags = [
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: 'Internet Speed Test USA - Free WiFi & Broadband Speed Checker' },
+      { name: 'twitter:description', content: 'Test your internet speed in the United States. Free online speed test for Verizon, AT&T, Comcast, and Spectrum.' }
+    ];
+    
+    twitterTags.forEach(tag => {
+      let twitterTag = document.querySelector(`meta[name="${tag.name}"]`);
+      if (!twitterTag) {
+        twitterTag = document.createElement('meta');
+        twitterTag.name = tag.name;
+        document.head.appendChild(twitterTag);
+      }
+      twitterTag.content = tag.content;
+    });
+    
+    // Canonical URL
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');
@@ -40,6 +88,39 @@ export default function USSpeedTest() {
       document.head.appendChild(canonical);
     }
     canonical.href = 'https://speedtestboost.com/us-speed-test';
+    
+    // Structured Data (JSON-LD)
+    let structuredData = document.querySelector('script[type="application/ld+json"]');
+    if (!structuredData) {
+      structuredData = document.createElement('script');
+      structuredData.type = 'application/ld+json';
+      document.head.appendChild(structuredData);
+    }
+    structuredData.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Internet Speed Test USA",
+      "description": "Free online internet speed test for USA users with Verizon, AT&T, Comcast, and Spectrum ISP support",
+      "url": "https://speedtestboost.com/us-speed-test",
+      "applicationCategory": "NetworkingApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Speed Test & Boost"
+      },
+      "audience": {
+        "@type": "Audience",
+        "geographicArea": {
+          "@type": "Country",
+          "name": "United States"
+        }
+      }
+    });
   }, []);
 
   // Fetch network info and speed test history

@@ -27,12 +27,60 @@ export default function UKSpeedTest() {
   // SEO Meta Tags
   useEffect(() => {
     document.title = "Broadband Speed Test UK - Free Internet Speed Checker | Speed Test & Boost";
+    
+    // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Test your broadband speed in the UK. Free online speed test for BT, Sky, Virgin Media, TalkTalk, and Plusnet. Check WiFi and fibre speeds with accurate UK server results.');
     }
     
-    // Add canonical URL
+    // Keywords meta tag
+    let keywords = document.querySelector('meta[name="keywords"]');
+    if (!keywords) {
+      keywords = document.createElement('meta');
+      keywords.name = 'keywords';
+      document.head.appendChild(keywords);
+    }
+    keywords.content = 'broadband speed test UK, internet speed test Britain, wifi speed test UK, BT speed test, Sky speed test, Virgin Media speed test, TalkTalk speed test, Plusnet speed test, fibre speed test UK';
+    
+    // Open Graph tags
+    const ogTags = [
+      { property: 'og:title', content: 'Broadband Speed Test UK - Free Internet Speed Checker' },
+      { property: 'og:description', content: 'Test your broadband speed in the UK. Free online speed test for BT, Sky, Virgin Media, TalkTalk, and Plusnet. Check WiFi and fibre speeds with accurate UK server results.' },
+      { property: 'og:url', content: 'https://speedtestboost.com/uk-speed-test' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:site_name', content: 'Speed Test & Boost' },
+      { property: 'og:locale', content: 'en_GB' }
+    ];
+    
+    ogTags.forEach(tag => {
+      let ogTag = document.querySelector(`meta[property="${tag.property}"]`);
+      if (!ogTag) {
+        ogTag = document.createElement('meta');
+        ogTag.setAttribute('property', tag.property);
+        document.head.appendChild(ogTag);
+      }
+      ogTag.setAttribute('content', tag.content);
+    });
+    
+    // Twitter Card tags
+    const twitterTags = [
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: 'Broadband Speed Test UK - Free Internet Speed Checker' },
+      { name: 'twitter:description', content: 'Test your broadband speed in the UK. Free online speed test for BT, Sky, Virgin Media, TalkTalk, and Plusnet.' }
+    ];
+    
+    twitterTags.forEach(tag => {
+      let twitterTag = document.querySelector(`meta[name="${tag.name}"]`);
+      if (!twitterTag) {
+        twitterTag = document.createElement('meta');
+        twitterTag.name = tag.name;
+        document.head.appendChild(twitterTag);
+      }
+      twitterTag.content = tag.content;
+    });
+    
+    // Canonical URL
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');
@@ -40,6 +88,39 @@ export default function UKSpeedTest() {
       document.head.appendChild(canonical);
     }
     canonical.href = 'https://speedtestboost.com/uk-speed-test';
+    
+    // Structured Data (JSON-LD)
+    let structuredData = document.querySelector('script[type="application/ld+json"]');
+    if (!structuredData) {
+      structuredData = document.createElement('script');
+      structuredData.type = 'application/ld+json';
+      document.head.appendChild(structuredData);
+    }
+    structuredData.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Broadband Speed Test UK",
+      "description": "Free online broadband speed test for UK users with BT, Sky, Virgin Media, TalkTalk, and Plusnet ISP support",
+      "url": "https://speedtestboost.com/uk-speed-test",
+      "applicationCategory": "NetworkingApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "GBP"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Speed Test & Boost"
+      },
+      "audience": {
+        "@type": "Audience",
+        "geographicArea": {
+          "@type": "Country",
+          "name": "United Kingdom"
+        }
+      }
+    });
   }, []);
 
   // Fetch network info and speed test history

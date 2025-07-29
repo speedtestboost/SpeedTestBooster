@@ -27,12 +27,60 @@ export default function CASpeedTest() {
   // SEO Meta Tags
   useEffect(() => {
     document.title = "Internet Speed Test Canada - Free WiFi & Broadband Speed Checker | Speed Test & Boost";
+    
+    // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Test your internet speed in Canada. Free online speed test for Rogers, Bell, Telus, Shaw, and Videotron. Check WiFi and fibre speeds with accurate Canadian server results.');
     }
     
-    // Add canonical URL
+    // Keywords meta tag
+    let keywords = document.querySelector('meta[name="keywords"]');
+    if (!keywords) {
+      keywords = document.createElement('meta');
+      keywords.name = 'keywords';
+      document.head.appendChild(keywords);
+    }
+    keywords.content = 'internet speed test Canada, wifi speed test Canada, broadband speed test CA, Rogers speed test, Bell speed test, Telus speed test, Shaw speed test, Videotron speed test, fibre speed test Canada';
+    
+    // Open Graph tags
+    const ogTags = [
+      { property: 'og:title', content: 'Internet Speed Test Canada - Free WiFi & Broadband Speed Checker' },
+      { property: 'og:description', content: 'Test your internet speed in Canada. Free online speed test for Rogers, Bell, Telus, Shaw, and Videotron. Check WiFi and fibre speeds with accurate Canadian server results.' },
+      { property: 'og:url', content: 'https://speedtestboost.com/ca-speed-test' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:site_name', content: 'Speed Test & Boost' },
+      { property: 'og:locale', content: 'en_CA' }
+    ];
+    
+    ogTags.forEach(tag => {
+      let ogTag = document.querySelector(`meta[property="${tag.property}"]`);
+      if (!ogTag) {
+        ogTag = document.createElement('meta');
+        ogTag.setAttribute('property', tag.property);
+        document.head.appendChild(ogTag);
+      }
+      ogTag.setAttribute('content', tag.content);
+    });
+    
+    // Twitter Card tags
+    const twitterTags = [
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: 'Internet Speed Test Canada - Free WiFi & Broadband Speed Checker' },
+      { name: 'twitter:description', content: 'Test your internet speed in Canada. Free online speed test for Rogers, Bell, Telus, Shaw, and Videotron.' }
+    ];
+    
+    twitterTags.forEach(tag => {
+      let twitterTag = document.querySelector(`meta[name="${tag.name}"]`);
+      if (!twitterTag) {
+        twitterTag = document.createElement('meta');
+        twitterTag.name = tag.name;
+        document.head.appendChild(twitterTag);
+      }
+      twitterTag.content = tag.content;
+    });
+    
+    // Canonical URL
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');
@@ -40,6 +88,39 @@ export default function CASpeedTest() {
       document.head.appendChild(canonical);
     }
     canonical.href = 'https://speedtestboost.com/ca-speed-test';
+    
+    // Structured Data (JSON-LD)
+    let structuredData = document.querySelector('script[type="application/ld+json"]');
+    if (!structuredData) {
+      structuredData = document.createElement('script');
+      structuredData.type = 'application/ld+json';
+      document.head.appendChild(structuredData);
+    }
+    structuredData.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Internet Speed Test Canada",
+      "description": "Free online internet speed test for Canadian users with Rogers, Bell, Telus, Shaw, and Videotron ISP support",
+      "url": "https://speedtestboost.com/ca-speed-test",
+      "applicationCategory": "NetworkingApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CAD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Speed Test & Boost"
+      },
+      "audience": {
+        "@type": "Audience",
+        "geographicArea": {
+          "@type": "Country",
+          "name": "Canada"
+        }
+      }
+    });
   }, []);
 
   // Fetch network info and speed test history
