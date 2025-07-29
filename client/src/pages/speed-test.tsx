@@ -332,32 +332,14 @@ export default function SpeedTest() {
         </div>
       </section>
 
-      {/* Featured City Speed Tests Section */}
+      {/* Compare with External Tools Section */}
       <section className="bg-muted/20 py-8 border-b border-border/30">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <div className="text-center mb-6">
-            <h2 className="text-xl font-semibold text-foreground mb-2">Featured City Speed Tests</h2>
+            <h2 className="text-xl font-semibold text-foreground mb-2">Compare Speed Test Results</h2>
             <p className="text-sm text-muted-foreground">
-              Get location-specific speed test results optimized for your city's network infrastructure
+              Test your connection across multiple platforms for the most accurate assessment
             </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-            <Link href="/delhi-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-              <div className="text-sm font-medium text-foreground group-hover:text-primary">Delhi Speed Test</div>
-              <div className="text-xs text-muted-foreground">NCR Network Analysis</div>
-            </Link>
-            <Link href="/mumbai-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-              <div className="text-sm font-medium text-foreground group-hover:text-primary">Mumbai Speed Test</div>
-              <div className="text-xs text-muted-foreground">Financial Hub Analysis</div>
-            </Link>
-            <Link href="/bangalore-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-              <div className="text-sm font-medium text-foreground group-hover:text-primary">Bangalore Speed Test</div>
-              <div className="text-xs text-muted-foreground">Tech Hub Analysis</div>
-            </Link>
-          </div>
-          
-          <div className="text-center mb-6">
-            <h3 className="text-lg font-medium text-foreground mb-2">Compare with External Tools</h3>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
             <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 px-4 py-2 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
@@ -372,6 +354,44 @@ export default function SpeedTest() {
               <span className="text-sm font-medium text-foreground">Google Speed Test</span>
               <span className="text-xs text-muted-foreground">Search Tool</span>
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured City Speed Tests Section */}
+      <section className="bg-muted/10 py-8 border-b border-border/30">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8">
+          <div className="text-center mb-6">
+            <h2 className="text-xl font-semibold text-foreground mb-2">Featured City Speed Tests</h2>
+            <p className="text-sm text-muted-foreground">
+              Get location-specific speed test results optimized for your city's network infrastructure
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <Link href="/delhi-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+              <div className="text-sm font-medium text-foreground group-hover:text-primary">Delhi Speed Test</div>
+              <div className="text-xs text-muted-foreground">NCR Network Analysis</div>
+            </Link>
+            <Link href="/mumbai-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+              <div className="text-sm font-medium text-foreground group-hover:text-primary">Mumbai Speed Test</div>
+              <div className="text-xs text-muted-foreground">Financial Hub Analysis</div>
+            </Link>
+            <Link href="/bangalore-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+              <div className="text-sm font-medium text-foreground group-hover:text-primary">Bangalore Speed Test</div>
+              <div className="text-xs text-muted-foreground">Tech Hub Analysis</div>
+            </Link>
+            <Link href="/hyderabad-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+              <div className="text-sm font-medium text-foreground group-hover:text-primary">Hyderabad Speed Test</div>
+              <div className="text-xs text-muted-foreground">IT Hub Analysis</div>
+            </Link>
+            <Link href="/chennai-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+              <div className="text-sm font-medium text-foreground group-hover:text-primary">Chennai Speed Test</div>
+              <div className="text-xs text-muted-foreground">South India Analysis</div>
+            </Link>
+            <Link href="/kolkata-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+              <div className="text-sm font-medium text-foreground group-hover:text-primary">Kolkata Speed Test</div>
+              <div className="text-xs text-muted-foreground">East India Analysis</div>
+            </Link>
           </div>
         </div>
       </section>
