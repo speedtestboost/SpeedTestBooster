@@ -254,9 +254,9 @@ export default function SpeedTest() {
             <div className="flex items-center space-x-4">
               {/* Desktop Navigation Links */}
               <div className="hidden lg:flex items-center space-x-6">
-                <div className="bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium">
+                <Link href="/" className="bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">
                   Global Speed Test
-                </div>
+                </Link>
                 <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
                   About
                 </Link>
@@ -280,9 +280,13 @@ export default function SpeedTest() {
           {showMobileMenu && (
             <div className="lg:hidden mt-4 pt-4 border-t border-border/30">
               <div className="flex flex-col space-y-3">
-                <div className="bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium">
+                <Link 
+                  href="/" 
+                  className="bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                  onClick={() => setShowMobileMenu(false)}
+                >
                   Global Speed Test
-                </div>
+                </Link>
                 <Link 
                   href="/about" 
                   className="text-muted-foreground hover:text-primary transition-colors py-2"
