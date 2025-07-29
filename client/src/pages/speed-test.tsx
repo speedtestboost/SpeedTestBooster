@@ -691,6 +691,32 @@ export default function SpeedTest() {
           </div>
 
 
+          {/* International Country Speed Tests Section */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold text-foreground mb-6 text-center">International Speed Tests</h2>
+            <p className="text-center text-muted-foreground mb-8">
+              Test your internet speed with servers optimized for your country's network infrastructure
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <Link href="/us-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+                <div className="text-sm font-medium text-foreground group-hover:text-primary">🇺🇸 USA Speed Test</div>
+                <div className="text-xs text-muted-foreground">Verizon, AT&T, Comcast</div>
+              </Link>
+              <Link href="/uk-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+                <div className="text-sm font-medium text-foreground group-hover:text-primary">🇬🇧 UK Speed Test</div>
+                <div className="text-xs text-muted-foreground">BT, Sky, Virgin Media</div>
+              </Link>
+              <Link href="/au-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+                <div className="text-sm font-medium text-foreground group-hover:text-primary">🇦🇺 Australia Speed Test</div>
+                <div className="text-xs text-muted-foreground">NBN, Telstra, Optus</div>
+              </Link>
+              <Link href="/ca-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+                <div className="text-sm font-medium text-foreground group-hover:text-primary">🇨🇦 Canada Speed Test</div>
+                <div className="text-xs text-muted-foreground">Rogers, Bell, Telus</div>
+              </Link>
+            </div>
+          </div>
+
           {/* Featured City Speed Tests Section */}
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Featured City Speed Tests</h2>
