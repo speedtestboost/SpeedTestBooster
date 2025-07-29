@@ -332,14 +332,32 @@ export default function SpeedTest() {
         </div>
       </section>
 
-      {/* External Speed Test Comparison Section */}
+      {/* Featured City Speed Tests Section */}
       <section className="bg-muted/20 py-8 border-b border-border/30">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <div className="text-center mb-6">
-            <h2 className="text-xl font-semibold text-foreground mb-2">Compare Speed Test Results</h2>
+            <h2 className="text-xl font-semibold text-foreground mb-2">Featured City Speed Tests</h2>
             <p className="text-sm text-muted-foreground">
-              Test your connection across multiple platforms for the most accurate assessment
+              Get location-specific speed test results optimized for your city's network infrastructure
             </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+            <Link href="/delhi-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+              <div className="text-sm font-medium text-foreground group-hover:text-primary">Delhi Speed Test</div>
+              <div className="text-xs text-muted-foreground">NCR Network Analysis</div>
+            </Link>
+            <Link href="/mumbai-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+              <div className="text-sm font-medium text-foreground group-hover:text-primary">Mumbai Speed Test</div>
+              <div className="text-xs text-muted-foreground">Financial Hub Analysis</div>
+            </Link>
+            <Link href="/bangalore-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+              <div className="text-sm font-medium text-foreground group-hover:text-primary">Bangalore Speed Test</div>
+              <div className="text-xs text-muted-foreground">Tech Hub Analysis</div>
+            </Link>
+          </div>
+          
+          <div className="text-center mb-6">
+            <h3 className="text-lg font-medium text-foreground mb-2">Compare with External Tools</h3>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
             <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 px-4 py-2 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
@@ -654,7 +672,8 @@ export default function SpeedTest() {
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   An internet speed test measures your connection's download speed, upload speed, and ping latency. 
                   Our free bandwidth test tool provides accurate results for WiFi, broadband, fiber, and mobile connections 
-                  including 4G and 5G networks. Compare your results with <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Fast.com</a> or <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Speedtest.net</a>.
+                  including 4G and 5G networks. Test your speed in major cities like <Link href="/delhi-speed-test" className="text-primary hover:underline">Delhi</Link>, <Link href="/mumbai-speed-test" className="text-primary hover:underline">Mumbai</Link>, and <Link href="/bangalore-speed-test" className="text-primary hover:underline">Bangalore</Link>. 
+                  Compare your results with <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Fast.com</a> or <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Speedtest.net</a>.
                 </p>
               </CardContent>
             </Card>
@@ -673,12 +692,15 @@ export default function SpeedTest() {
 
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-3">Speed Requirements</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-3">Speed Requirements by City</h3>
                 <div className="space-y-2 text-sm text-muted-foreground">
                   <div><strong className="text-foreground">HD Streaming:</strong> 5-10 Mbps</div>
                   <div><strong className="text-foreground">4K Streaming:</strong> 25+ Mbps</div>
                   <div><strong className="text-foreground">Gaming:</strong> 3-6 Mbps + low ping</div>
                   <div><strong className="text-foreground">Video Calls:</strong> 1-4 Mbps</div>
+                  <div className="pt-2 border-t border-border/30">
+                    <div className="text-xs">Test across India's major tech hubs: <Link href="/chennai-speed-test" className="text-primary hover:underline">Chennai</Link>, <Link href="/hyderabad-speed-test" className="text-primary hover:underline">Hyderabad</Link>, <Link href="/kolkata-speed-test" className="text-primary hover:underline">Kolkata</Link></div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -726,27 +748,27 @@ export default function SpeedTest() {
           {/* Footer Links and Info */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-8 border-t border-border/30">
             <div>
-              <h4 className="font-semibold text-foreground mb-3">City Speed Tests</h4>
+              <h4 className="font-semibold text-foreground mb-3">Major City Tests</h4>
               <div className="space-y-2 text-sm">
-                <Link href="/mumbai-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Mumbai Speed Test
-                </Link>
                 <Link href="/delhi-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
                   Delhi Speed Test
+                </Link>
+                <Link href="/mumbai-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Mumbai Speed Test
                 </Link>
                 <Link href="/bangalore-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
                   Bangalore Speed Test
                 </Link>
-                <Link href="/hyderabad-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Hyderabad Speed Test
+                <Link href="/chennai-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Chennai Speed Test
                 </Link>
               </div>
             </div>
             <div>
-              <h4 className="font-semibold text-foreground mb-3">More City Tests</h4>
+              <h4 className="font-semibold text-foreground mb-3">Regional Cities</h4>
               <div className="space-y-2 text-sm">
-                <Link href="/chennai-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Chennai Speed Test
+                <Link href="/hyderabad-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Hyderabad Speed Test
                 </Link>
                 <Link href="/kolkata-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
                   Kolkata Speed Test
