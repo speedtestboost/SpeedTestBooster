@@ -185,7 +185,7 @@ export default function DelhiSpeedTest() {
             </div>
             <div className="flex items-center space-x-6">
               <div className="hidden lg:flex items-center space-x-6">
-                <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">Home</Link>
+                <Link href="/" className="bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">Home</Link>
                 <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
                 <Link href="/help" className="text-muted-foreground hover:text-primary transition-colors">Help & FAQ</Link>
               </div>
@@ -207,7 +207,7 @@ export default function DelhiSpeedTest() {
               <div className="flex flex-col space-y-3">
                 <Link 
                   href="/" 
-                  className="text-muted-foreground hover:text-primary transition-colors py-2"
+                  className="bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors"
                   onClick={() => setShowMobileMenu(false)}
                 >
                   Home
