@@ -346,6 +346,9 @@ export default function SpeedTest() {
                 <Link href="/us-speed-test" className="bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">
                   Global Speed Test
                 </Link>
+                <Link href="/internet-speed-requirements" className="text-muted-foreground hover:text-primary transition-colors">
+                  Speed Guide
+                </Link>
                 <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
                   About
                 </Link>
@@ -375,6 +378,13 @@ export default function SpeedTest() {
                   onClick={() => setShowMobileMenu(false)}
                 >
                   Global Speed Test
+                </Link>
+                <Link 
+                  href="/internet-speed-requirements" 
+                  className="text-muted-foreground hover:text-primary transition-colors py-2"
+                  onClick={() => setShowMobileMenu(false)}
+                >
+                  Speed Guide
                 </Link>
                 <Link 
                   href="/about" 

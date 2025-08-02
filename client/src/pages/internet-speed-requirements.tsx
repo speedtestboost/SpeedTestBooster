@@ -277,6 +277,7 @@ export default function InternetSpeedRequirements() {
           </Link>
           <nav className="hidden md:flex space-x-6">
             <Link to="/" className="text-white/80 hover:text-white transition-colors">Speed Test</Link>
+            <Link to="/internet-speed-requirements" className="text-white/80 hover:text-white transition-colors">Speed Guide</Link>
             <Link to="/about" className="text-white/80 hover:text-white transition-colors">About</Link>
             <Link to="/help" className="text-white/80 hover:text-white transition-colors">Help</Link>
           </nav>
@@ -293,9 +294,11 @@ export default function InternetSpeedRequirements() {
           <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">
             Find out exactly how much internet speed you need for gaming, streaming, work from home, and smart devices. Use our interactive calculator to get personalized recommendations.
           </p>
-          <Badge className={speedCategory.color + " text-lg px-4 py-2"}>
-            Updated for 2025 • Comprehensive Guide
-          </Badge>
+          <Link to="/">
+            <Button size="lg" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-lg px-6 py-3">
+              Check Internet Speed Now
+            </Button>
+          </Link>
         </div>
 
         {/* Interactive Speed Calculator */}
