@@ -28,7 +28,13 @@
     <priority>0.6</priority>
   </url>
   
-
+  <!-- Internet Speed Requirements Guide 2025 - High Traffic Page -->
+  <url>
+    <loc>https://speedtestboost.com/internet-speed-requirements</loc>
+    <lastmod>2025-02-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
   
   <!-- City-specific Speed Test Pages -->
   <url>

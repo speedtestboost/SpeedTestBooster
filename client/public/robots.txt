@@ -17,6 +17,7 @@ Allow: /about
 Allow: /help
 Allow: /privacy
 Allow: /terms
+Allow: /internet-speed-requirements
 
 # Allow city-specific speed test pages
 Allow: /mumbai-speed-test

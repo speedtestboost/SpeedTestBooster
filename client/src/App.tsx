@@ -14,6 +14,7 @@ import USSpeedTest from "@/pages/us-speed-test";
 import UKSpeedTest from "@/pages/uk-speed-test";
 import AUSpeedTest from "@/pages/au-speed-test";
 import CASpeedTest from "@/pages/ca-speed-test";
+import InternetSpeedRequirements from "@/pages/internet-speed-requirements";
 import NotFound from "@/pages/not-found";
 import { useEffect } from "react";
 import { initGA } from "./lib/analytics";
@@ -38,6 +39,7 @@ function Router() {
       <Route path="/uk-speed-test" component={UKSpeedTest} />
       <Route path="/au-speed-test" component={AUSpeedTest} />
       <Route path="/ca-speed-test" component={CASpeedTest} />
+      <Route path="/internet-speed-requirements" component={InternetSpeedRequirements} />
       <Route component={NotFound} />
     </Switch>
   );
