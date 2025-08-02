@@ -52,27 +52,27 @@ interface CalculatorState {
 
 const speedRequirements: ActivityRequirement[] = [
   // Streaming
-  { activity: "HD Video Streaming (1080p)", minSpeed: 5, recommendedSpeed: 8, description: "Netflix, YouTube, Disney+", icon: Video, category: 'streaming' },
-  { activity: "4K Ultra HD Streaming", minSpeed: 25, recommendedSpeed: 35, description: "4K Netflix, Prime Video", icon: Tv, category: 'streaming' },
-  { activity: "Multiple 4K Streams", minSpeed: 50, recommendedSpeed: 75, description: "Family watching different 4K content", icon: Users, category: 'streaming' },
-  { activity: "Live Streaming (Twitch/YouTube)", minSpeed: 15, recommendedSpeed: 25, description: "Broadcasting 1080p content", icon: Camera, category: 'streaming' },
+  { activity: "HD Video Streaming (1080p)", minSpeed: 5, recommendedSpeed: 8, description: "Netflix, YouTube, Disney+, BBC iPlayer, Stan", icon: Video, category: 'streaming' },
+  { activity: "4K Ultra HD Streaming", minSpeed: 25, recommendedSpeed: 35, description: "4K Netflix, Prime Video, Sky, Foxtel", icon: Tv, category: 'streaming' },
+  { activity: "Multiple 4K Streams", minSpeed: 50, recommendedSpeed: 75, description: "Family watching different 4K content globally", icon: Users, category: 'streaming' },
+  { activity: "Live Streaming (Twitch/YouTube)", minSpeed: 15, recommendedSpeed: 25, description: "Broadcasting 1080p content worldwide", icon: Camera, category: 'streaming' },
   
   // Gaming
-  { activity: "Casual Gaming", minSpeed: 3, recommendedSpeed: 10, description: "Minecraft, Roblox, turn-based games", icon: Gamepad2, category: 'gaming' },
-  { activity: "Competitive Gaming", minSpeed: 15, recommendedSpeed: 50, description: "Fortnite, Call of Duty, Apex Legends", icon: Zap, category: 'gaming' },
-  { activity: "Cloud Gaming", minSpeed: 35, recommendedSpeed: 50, description: "GeForce Now, Xbox Cloud Gaming", icon: Monitor, category: 'gaming' },
-  { activity: "VR Gaming", minSpeed: 50, recommendedSpeed: 100, description: "Meta Quest, Steam VR", icon: Headphones, category: 'gaming' },
+  { activity: "Casual Gaming", minSpeed: 3, recommendedSpeed: 10, description: "Minecraft, Roblox, turn-based games worldwide", icon: Gamepad2, category: 'gaming' },
+  { activity: "Competitive Gaming", minSpeed: 15, recommendedSpeed: 50, description: "Fortnite, Call of Duty, Apex Legends globally", icon: Zap, category: 'gaming' },
+  { activity: "Cloud Gaming", minSpeed: 35, recommendedSpeed: 50, description: "GeForce Now, Xbox Cloud Gaming, Stadia", icon: Monitor, category: 'gaming' },
+  { activity: "VR Gaming", minSpeed: 50, recommendedSpeed: 100, description: "Meta Quest, Steam VR, PSVR globally", icon: Headphones, category: 'gaming' },
   
   // Work
-  { activity: "Video Conferencing", minSpeed: 2, recommendedSpeed: 8, description: "Zoom, Teams, Google Meet", icon: Briefcase, category: 'work' },
-  { activity: "HD Video Calls", minSpeed: 8, recommendedSpeed: 15, description: "High quality business meetings", icon: Monitor, category: 'work' },
-  { activity: "Large File Uploads", minSpeed: 10, recommendedSpeed: 25, description: "Cloud storage, video files", icon: TrendingUp, category: 'work' },
-  { activity: "Remote Desktop", minSpeed: 5, recommendedSpeed: 15, description: "Accessing work computers remotely", icon: Globe, category: 'work' },
+  { activity: "Video Conferencing", minSpeed: 2, recommendedSpeed: 8, description: "Zoom, Teams, Google Meet, Webex globally", icon: Briefcase, category: 'work' },
+  { activity: "HD Video Calls", minSpeed: 8, recommendedSpeed: 15, description: "High quality business meetings worldwide", icon: Monitor, category: 'work' },
+  { activity: "Large File Uploads", minSpeed: 10, recommendedSpeed: 25, description: "Cloud storage, video files, global transfer", icon: TrendingUp, category: 'work' },
+  { activity: "Remote Desktop", minSpeed: 5, recommendedSpeed: 15, description: "Accessing work computers remotely worldwide", icon: Globe, category: 'work' },
   
   // Smart Home
-  { activity: "Security Cameras (4 cams)", minSpeed: 5, recommendedSpeed: 10, description: "1080p home security system", icon: Camera, category: 'smart-home' },
-  { activity: "Smart Home Devices", minSpeed: 1, recommendedSpeed: 5, description: "IoT devices, smart speakers", icon: Home, category: 'smart-home' },
-  { activity: "Multiple Smart TVs", minSpeed: 15, recommendedSpeed: 25, description: "Smart TV apps, streaming", icon: Tv, category: 'smart-home' }
+  { activity: "Security Cameras (4 cams)", minSpeed: 5, recommendedSpeed: 10, description: "1080p home security system globally", icon: Camera, category: 'smart-home' },
+  { activity: "Smart Home Devices", minSpeed: 1, recommendedSpeed: 5, description: "IoT devices, smart speakers, global connectivity", icon: Home, category: 'smart-home' },
+  { activity: "Multiple Smart TVs", minSpeed: 15, recommendedSpeed: 25, description: "Smart TV apps, streaming worldwide", icon: Tv, category: 'smart-home' }
 ];
 
 export default function InternetSpeedRequirements() {
@@ -97,12 +97,12 @@ export default function InternetSpeedRequirements() {
 
   // SEO Meta Tags
   useEffect(() => {
-    document.title = "Internet Speed Requirements 2025 - Complete Guide & Calculator | Speed Test & Boost";
+    document.title = "Internet Speed Requirements 2025 - Global Guide & Calculator | How Much Speed Do I Need";
     
     // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Complete 2025 guide to internet speed requirements. Interactive calculator for gaming, streaming, work from home. Find out what speed you need for Netflix 4K, competitive gaming, video calls.');
+      metaDescription.setAttribute('content', 'Ultimate 2025 guide: How much internet speed do you need? Free calculator for gaming, streaming, work from home worldwide. Broadband, fiber/fibre, 5G speed requirements for all countries.');
     }
     
     // Keywords meta tag
@@ -112,16 +112,20 @@ export default function InternetSpeedRequirements() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    keywords.content = 'internet speed requirements 2025, how much internet speed do I need, speed for gaming, speed for streaming, netflix speed requirements, gaming internet speed, work from home internet, 4K streaming speed, video call speed requirements';
+    keywords.content = 'internet speed requirements 2025, how much internet speed do I need, broadband speed requirements, wifi speed for streaming, minimum internet speed for gaming, internet speed calculator, bandwidth calculator, upload speed requirements, download speed needed, fiber internet speed guide, fibre internet speed guide, 5G speed requirements, satellite internet speed, rural internet speed, internet speed for work from home, speed test requirements, global internet speed guide';
     
     // Open Graph tags
     const ogTags = [
-      { property: 'og:title', content: 'Internet Speed Requirements 2025 - Complete Guide & Calculator' },
-      { property: 'og:description', content: 'Complete 2025 guide to internet speed requirements. Interactive calculator for gaming, streaming, work from home. Find out what speed you need for Netflix 4K, competitive gaming, video calls.' },
+      { property: 'og:title', content: 'Internet Speed Requirements 2025 - Global Guide & Calculator | How Much Speed Do I Need' },
+      { property: 'og:description', content: 'Ultimate 2025 guide: How much internet speed do you need? Free calculator for gaming, streaming, work from home worldwide. Broadband, fiber/fibre, 5G speed requirements for all countries.' },
       { property: 'og:url', content: 'https://speedtestboost.com/internet-speed-requirements' },
       { property: 'og:type', content: 'article' },
       { property: 'og:site_name', content: 'Speed Test & Boost' },
-      { property: 'og:locale', content: 'en_US' }
+      { property: 'og:locale', content: 'en_US' },
+      { property: 'og:locale:alternate', content: 'en_GB' },
+      { property: 'og:locale:alternate', content: 'en_CA' },
+      { property: 'og:locale:alternate', content: 'en_AU' },
+      { property: 'og:locale:alternate', content: 'en_IN' }
     ];
     
     ogTags.forEach(tag => {
@@ -137,8 +141,8 @@ export default function InternetSpeedRequirements() {
     // Twitter Card tags
     const twitterTags = [
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'Internet Speed Requirements 2025 - Complete Guide & Calculator' },
-      { name: 'twitter:description', content: 'Interactive calculator to find your perfect internet speed for gaming, streaming, and work.' }
+      { name: 'twitter:title', content: 'How Much Internet Speed Do I Need? 2025 Global Guide & Calculator' },
+      { name: 'twitter:description', content: 'Free speed calculator for gaming, streaming, work. Global broadband, fiber/fibre, 5G requirements for all countries.' }
     ];
     
     twitterTags.forEach(tag => {
@@ -193,7 +197,7 @@ export default function InternetSpeedRequirements() {
             "name": "What internet speed do I need for 4K streaming?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "For 4K Ultra HD streaming, you need a minimum of 25 Mbps download speed, but 35 Mbps is recommended for consistent quality without buffering."
+              "text": "For 4K Ultra HD streaming worldwide, you need a minimum of 25 Mbps download speed, but 35 Mbps is recommended for consistent quality without buffering on Netflix, Disney+, Prime Video, BBC iPlayer, and other global platforms."
             }
           },
           {
@@ -201,7 +205,7 @@ export default function InternetSpeedRequirements() {
             "name": "What internet speed do I need for gaming?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Casual gaming requires 3-10 Mbps, competitive gaming needs 15-50 Mbps, and cloud gaming requires 35-50 Mbps for optimal performance."
+              "text": "Casual gaming requires 3-10 Mbps, competitive gaming needs 15-50 Mbps, and cloud gaming requires 35-50 Mbps for optimal performance globally on fiber, broadband, and 5G connections."
             }
           },
           {
@@ -209,7 +213,7 @@ export default function InternetSpeedRequirements() {
             "name": "How much internet speed do I need for work from home?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "For video conferencing, 8-15 Mbps is recommended. For large file uploads and remote desktop work, 25 Mbps or higher is ideal."
+              "text": "For video conferencing worldwide, 8-15 Mbps is recommended. For large file uploads and remote desktop work globally, 25 Mbps or higher is ideal on any broadband or fiber/fibre connection."
             }
           }
         ]
@@ -288,11 +292,11 @@ export default function InternetSpeedRequirements() {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Internet Speed Requirements 
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"> 2025</span>
+            How Much Internet Speed
+            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"> Do I Need?</span>
           </h1>
           <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">
-            Find out exactly how much internet speed you need for gaming, streaming, work from home, and smart devices. Use our interactive calculator to get personalized recommendations.
+            Global guide to internet speed requirements for gaming, streaming, work from home, and smart devices. Free calculator works for broadband, fiber/fibre, 5G, and satellite internet worldwide.
           </p>
           <Link to="/">
             <Button size="lg" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-lg px-6 py-3">
@@ -617,6 +621,114 @@ export default function InternetSpeedRequirements() {
           </CardContent>
         </Card>
 
+        {/* Global Connection Types Section */}
+        <Card className="bg-white/5 border-white/10 mb-12">
+          <CardHeader>
+            <CardTitle className="text-white text-center flex items-center justify-center gap-2">
+              <Globe className="w-6 h-6 text-blue-400" />
+              Internet Connection Types Worldwide
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="p-4 rounded-lg bg-white/5">
+                <h4 className="font-semibold text-white mb-2 flex items-center gap-2">
+                  <Zap className="w-4 h-4 text-purple-400" />
+                  Fiber/Fibre Internet
+                </h4>
+                <p className="text-white/70 text-sm mb-3">Fastest and most reliable worldwide. Available in most developed countries.</p>
+                <div className="space-y-1 text-xs">
+                  <div className="flex justify-between">
+                    <span className="text-white/60">Speed Range:</span>
+                    <span className="text-green-400">100-1000+ Mbps</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-white/60">Latency:</span>
+                    <span className="text-green-400">1-10ms</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-white/60">Best For:</span>
+                    <span className="text-white/80">Everything</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="p-4 rounded-lg bg-white/5">
+                <h4 className="font-semibold text-white mb-2 flex items-center gap-2">
+                  <Wifi className="w-4 h-4 text-blue-400" />
+                  5G Mobile Internet
+                </h4>
+                <p className="text-white/70 text-sm mb-3">Next-generation mobile internet rolling out globally.</p>
+                <div className="space-y-1 text-xs">
+                  <div className="flex justify-between">
+                    <span className="text-white/60">Speed Range:</span>
+                    <span className="text-green-400">100-1000 Mbps</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-white/60">Latency:</span>
+                    <span className="text-yellow-400">10-50ms</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-white/60">Best For:</span>
+                    <span className="text-white/80">Mobile, Gaming</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="p-4 rounded-lg bg-white/5">
+                <h4 className="font-semibold text-white mb-2 flex items-center gap-2">
+                  <Monitor className="w-4 h-4 text-orange-400" />
+                  Cable Broadband
+                </h4>
+                <p className="text-white/70 text-sm mb-3">Widely available in urban areas worldwide via coaxial cable.</p>
+                <div className="space-y-1 text-xs">
+                  <div className="flex justify-between">
+                    <span className="text-white/60">Speed Range:</span>
+                    <span className="text-yellow-400">25-300 Mbps</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-white/60">Latency:</span>
+                    <span className="text-yellow-400">20-50ms</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-white/60">Best For:</span>
+                    <span className="text-white/80">Streaming, Work</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="p-4 rounded-lg bg-white/5">
+                <h4 className="font-semibold text-white mb-2 flex items-center gap-2">
+                  <Globe className="w-4 h-4 text-red-400" />
+                  Satellite Internet
+                </h4>
+                <p className="text-white/70 text-sm mb-3">Best option for rural areas. Starlink improving global coverage.</p>
+                <div className="space-y-1 text-xs">
+                  <div className="flex justify-between">
+                    <span className="text-white/60">Speed Range:</span>
+                    <span className="text-yellow-400">25-150 Mbps</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-white/60">Latency:</span>
+                    <span className="text-red-400">20-600ms</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-white/60">Best For:</span>
+                    <span className="text-white/80">Rural Areas</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-6 p-4 rounded-lg bg-blue-500/10 border border-blue-500/20">
+              <h4 className="text-white font-medium mb-2">💡 Global Speed Tip</h4>
+              <p className="text-white/80 text-sm">
+                Connection quality matters more than raw speed. A stable 50 Mbps fiber/fibre connection often performs better than an unstable 100 Mbps cable connection for gaming and video calls.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* FAQ Section */}
         <Card className="bg-white/5 border-white/10 mb-12">
           <CardHeader>
@@ -627,19 +739,27 @@ export default function InternetSpeedRequirements() {
               {[
                 {
                   q: "What's the difference between download and upload speed?",
-                  a: "Download speed affects streaming, gaming, and browsing. Upload speed is important for video calls, live streaming, and uploading files to the cloud."
+                  a: "Download speed affects streaming, gaming, and browsing worldwide. Upload speed is important for video calls, live streaming, and uploading files to cloud storage globally."
                 },
                 {
                   q: "Do I need different speeds for 4K vs HD streaming?",
-                  a: "Yes. HD (1080p) streaming needs 5-8 Mbps, while 4K streaming requires 25-35 Mbps per stream for smooth playback without buffering."
+                  a: "Yes. HD (1080p) streaming needs 5-8 Mbps, while 4K streaming requires 25-35 Mbps per stream for smooth playback without buffering on Netflix, Disney+, BBC iPlayer, and other global platforms."
                 },
                 {
                   q: "Is ping more important than speed for gaming?",
-                  a: "For competitive gaming, ping (latency) under 50ms is crucial. Speed matters too - 15-50 Mbps prevents lag during downloads and updates."
+                  a: "For competitive gaming worldwide, ping (latency) under 50ms is crucial. Speed matters too - 15-50 Mbps prevents lag during downloads and updates on fiber, broadband, or 5G connections."
                 },
                 {
                   q: "How many devices can use my internet at once?",
-                  a: "It depends on your speed and what each device is doing. A 100 Mbps connection can support 10-15 basic devices or 4-5 devices streaming 4K."
+                  a: "It depends on your speed and what each device is doing. A 100 Mbps connection can support 10-15 basic devices or 4-5 devices streaming 4K content globally."
+                },
+                {
+                  q: "What about rural or satellite internet speed requirements?",
+                  a: "Rural internet often has higher latency. For satellite internet, add 20-30% extra speed for activities. Starlink and other low-earth orbit satellites offer better performance than traditional satellite internet."
+                },
+                {
+                  q: "Fiber vs broadband vs 5G - which is fastest?",
+                  a: "Fiber/fibre internet typically offers the fastest and most reliable speeds (up to 1000+ Mbps). 5G can reach similar speeds but varies by location. Traditional broadband (cable/DSL) ranges from 25-300 Mbps."
                 },
                 {
                   q: "Do smart home devices use a lot of internet?",
