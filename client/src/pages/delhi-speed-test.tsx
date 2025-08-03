@@ -26,20 +26,105 @@ export default function DelhiSpeedTest() {
 
   // SEO Meta Tags
   useEffect(() => {
-    document.title = "Delhi Internet Speed Test - Check Your Connection Speed | Speed Test & Boost";
+    document.title = "Delhi Internet Speed Test - Free WiFi & Broadband Speed Checker NCR | Speed Test & Boost";
+    
+    // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your internet speed in Delhi NCR. Get accurate broadband speed results for all major ISPs including BSNL, Airtel, Jio Fiber, and Vi. Free speed test with WiFi optimization for Delhi users.');
+      metaDescription.setAttribute('content', 'Test your internet speed in Delhi NCR and Gurgaon. Free speed test for Airtel, Jio Fiber, BSNL, and Excitel. Check WiFi, broadband, and 5G speeds with accurate Delhi server results.');
     }
     
-    // Add canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]');
+    // Keywords meta tag
+    let keywords = document.querySelector('meta[name="keywords"]') as HTMLMetaElement;
+    if (!keywords) {
+      keywords = document.createElement('meta');
+      keywords.name = 'keywords';
+      document.head.appendChild(keywords);
+    }
+    keywords.content = 'delhi internet speed test, delhi wifi speed test, NCR broadband test, gurgaon speed test, noida speed test, faridabad speed test, airtel delhi speed, jio fiber delhi, excitel speed test, delhi 5G speed test';
+    
+    // Open Graph tags
+    const ogTags = [
+      { property: 'og:title', content: 'Delhi Internet Speed Test - Free WiFi & Broadband Speed Checker NCR' },
+      { property: 'og:description', content: 'Test your internet speed in Delhi NCR and Gurgaon. Free speed test for Airtel, Jio Fiber, BSNL, and Excitel. Check WiFi, broadband, and 5G speeds with accurate Delhi server results.' },
+      { property: 'og:url', content: 'https://speedtestboost.com/delhi-speed-test' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:site_name', content: 'Speed Test & Boost' },
+      { property: 'og:locale', content: 'en_IN' }
+    ];
+    
+    ogTags.forEach(tag => {
+      let ogTag = document.querySelector(`meta[property="${tag.property}"]`);
+      if (!ogTag) {
+        ogTag = document.createElement('meta');
+        ogTag.setAttribute('property', tag.property);
+        document.head.appendChild(ogTag);
+      }
+      ogTag.setAttribute('content', tag.content);
+    });
+    
+    // Twitter Card tags
+    const twitterTags = [
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: 'Delhi Internet Speed Test - Free WiFi & Broadband Speed Checker NCR' },
+      { name: 'twitter:description', content: 'Test your internet speed in Delhi NCR and Gurgaon. Free speed test for Airtel, Jio Fiber, BSNL, and Excitel.' }
+    ];
+    
+    twitterTags.forEach(tag => {
+      let twitterTag = document.querySelector(`meta[name="${tag.name}"]`) as HTMLMetaElement;
+      if (!twitterTag) {
+        twitterTag = document.createElement('meta');
+        twitterTag.name = tag.name;
+        document.head.appendChild(twitterTag);
+      }
+      twitterTag.content = tag.content;
+    });
+    
+    // Canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
     if (!canonical) {
       canonical = document.createElement('link');
       canonical.rel = 'canonical';
       document.head.appendChild(canonical);
     }
     canonical.href = 'https://speedtestboost.com/delhi-speed-test';
+    
+    // Structured Data (JSON-LD)
+    let structuredData = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
+    if (!structuredData) {
+      structuredData = document.createElement('script');
+      structuredData.type = 'application/ld+json';
+      document.head.appendChild(structuredData);
+    }
+    structuredData.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Delhi Internet Speed Test",
+      "description": "Free online internet speed test for Delhi NCR users with Airtel, Jio Fiber, BSNL, and Excitel ISP support",
+      "url": "https://speedtestboost.com/delhi-speed-test",
+      "applicationCategory": "NetworkingApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Speed Test & Boost"
+      },
+      "audience": {
+        "@type": "Audience",
+        "geographicArea": {
+          "@type": "City",
+          "name": "Delhi",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "India"
+          }
+        }
+      }
+    });
   }, []);
 
   // ... [Rest of the component logic is identical to Mumbai page] ...
@@ -236,13 +321,29 @@ export default function DelhiSpeedTest() {
       <section className="max-w-4xl mx-auto px-4 lg:px-8 py-8">
         <div className="text-center mb-8">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Delhi Internet Speed Test
+            Delhi NCR Internet Speed Test
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Test your internet speed in Delhi NCR and get accurate results for all major ISPs including BSNL, Airtel, Jio Fiber, and Vi. 
-            As India's capital city, Delhi requires high-speed internet for government services, businesses, and educational institutions. 
-            Check your broadband performance and optimize your WiFi connection with our professional speed test tool designed for Delhi users.
+            Test your internet speed in Delhi, Gurgaon, Noida, Faridabad, and Greater NCR with our comprehensive speed testing tool. 
+            Get accurate results for all major ISPs including Airtel Xstream Fiber, Jio Fiber, BSNL Bharat Fiber, Excitel, ACT Fibernet, and local cable operators. 
+            As India's capital and political center, Delhi NCR requires ultra-reliable internet for government services, corporate headquarters, 
+            embassies, and millions of professionals working in Connaught Place, Cyber City Gurgaon, and Sector 62 Noida.
           </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            <div className="bg-card/50 rounded-lg p-6 border border-border/50">
+              <h3 className="font-semibold text-foreground mb-2">NCR Coverage</h3>
+              <p className="text-sm text-muted-foreground">Delhi, Gurgaon, Noida, Faridabad, Ghaziabad</p>
+            </div>
+            <div className="bg-card/50 rounded-lg p-6 border border-border/50">
+              <h3 className="font-semibold text-foreground mb-2">Popular ISPs</h3>
+              <p className="text-sm text-muted-foreground">Airtel, Jio Fiber, BSNL, Excitel, ACT</p>
+            </div>
+            <div className="bg-card/50 rounded-lg p-6 border border-border/50">
+              <h3 className="font-semibold text-foreground mb-2">Connection Types</h3>
+              <p className="text-sm text-muted-foreground">Fiber, Cable, 4G, 5G, Broadband</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -413,6 +514,46 @@ export default function DelhiSpeedTest() {
         </div>
       </main>
 
+      {/* NCR Areas Coverage */}
+      <section className="bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5 py-12 mt-8">
+        <div className="max-w-6xl mx-auto px-4 lg:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl lg:text-3xl font-bold mb-4">
+              Delhi NCR Internet Speed Coverage
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Test your internet speed across the National Capital Region
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-card/60 backdrop-blur-sm rounded-lg p-6 border border-border/50 hover:border-primary/30 transition-all duration-200">
+              <h3 className="font-semibold text-foreground mb-2">New Delhi</h3>
+              <p className="text-sm text-muted-foreground mb-3">Central Delhi, Connaught Place, India Gate</p>
+              <div className="text-xs text-primary font-medium">Airtel, Jio Fiber, BSNL coverage</div>
+            </div>
+            
+            <div className="bg-card/60 backdrop-blur-sm rounded-lg p-6 border border-border/50 hover:border-primary/30 transition-all duration-200">
+              <h3 className="font-semibold text-foreground mb-2">Gurgaon</h3>
+              <p className="text-sm text-muted-foreground mb-3">Cyber City, Golf Course Road, MG Road</p>
+              <div className="text-xs text-primary font-medium">Excitel, Airtel, ACT Fibernet</div>
+            </div>
+            
+            <div className="bg-card/60 backdrop-blur-sm rounded-lg p-6 border border-border/50 hover:border-primary/30 transition-all duration-200">
+              <h3 className="font-semibold text-foreground mb-2">Noida</h3>
+              <p className="text-sm text-muted-foreground mb-3">Sector 62, Film City, Expressway</p>
+              <div className="text-xs text-primary font-medium">Jio Fiber, Airtel, Local Cable</div>
+            </div>
+            
+            <div className="bg-card/60 backdrop-blur-sm rounded-lg p-6 border border-border/50 hover:border-primary/30 transition-all duration-200">
+              <h3 className="font-semibold text-foreground mb-2">Faridabad</h3>
+              <p className="text-sm text-muted-foreground mb-3">Industrial Area, Sector 15, NIT</p>
+              <div className="text-xs text-primary font-medium">BSNL Fiber, Jio, Airtel</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       {/* Other Cities Navigation */}
       <section className="bg-card/30 border-t border-border/30 py-8 mt-8">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
@@ -440,6 +581,75 @@ export default function DelhiSpeedTest() {
                 <div className="text-sm font-medium text-foreground">Kolkata</div>
                 <div className="text-xs text-muted-foreground">East India Speed Test</div>
               </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Delhi-specific Educational Content */}
+      <section className="bg-card/30 backdrop-blur-sm border-t border-border/50 mt-8">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <Card className="card-hover">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-foreground mb-3">Delhi Internet Infrastructure</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Delhi benefits from robust fiber optic infrastructure with multiple Tier-1 ISPs. 
+                  Most areas in South Delhi, Central Delhi, and Gurgaon have access to gigabit fiber connections 
+                  from Airtel Xstream Fiber, Jio Fiber, and Excitel, making it ideal for businesses and remote work.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="card-hover">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-foreground mb-3">Popular ISPs in Delhi NCR</h3>
+                <div className="space-y-2 text-sm text-muted-foreground">
+                  <div><strong className="text-foreground">Airtel Xstream Fiber:</strong> Up to 1 Gbps, wide coverage</div>
+                  <div><strong className="text-foreground">Jio Fiber:</strong> Competitive pricing, good speeds</div>
+                  <div><strong className="text-foreground">Excitel:</strong> Local favorite, affordable plans</div>
+                  <div><strong className="text-foreground">ACT Fibernet:</strong> High-speed in select areas</div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="card-hover">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-foreground mb-3">Speed Recommendations</h3>
+                <div className="space-y-2 text-sm text-muted-foreground">
+                  <div><strong className="text-foreground">Corporate Use:</strong> 100+ Mbps for offices</div>
+                  <div><strong className="text-foreground">Work from Home:</strong> 50+ Mbps recommended</div>
+                  <div><strong className="text-foreground">Family Streaming:</strong> 25+ Mbps for 4K</div>
+                  <div><strong className="text-foreground">Gaming:</strong> 10+ Mbps with low ping</div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Delhi Internet Speed FAQ</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">Which is the fastest internet in Delhi?</h4>
+                  <p className="text-sm text-muted-foreground">Airtel Xstream Fiber and Jio Fiber offer the fastest speeds up to 1 Gbps in most Delhi NCR areas. Excitel is also popular for high-speed connections in specific localities.</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">What's the average internet speed in Delhi?</h4>
+                  <p className="text-sm text-muted-foreground">Average broadband speeds in Delhi range from 50-100 Mbps for residential connections, with business connections often exceeding 200 Mbps.</p>
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">Best internet for Delhi Metro areas?</h4>
+                  <p className="text-sm text-muted-foreground">Connaught Place, Karol Bagh, and South Extension have excellent Airtel and Jio Fiber coverage with speeds up to 1 Gbps and reliable connectivity.</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">Is 5G available in Delhi?</h4>
+                  <p className="text-sm text-muted-foreground">Yes, both Jio and Airtel have rolled out 5G services in Delhi NCR, offering mobile internet speeds of 200+ Mbps in covered areas.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

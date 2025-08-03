@@ -24,20 +24,106 @@ export default function KolkataSpeedTest() {
   const { toast } = useToast();
 
   useEffect(() => {
-    document.title = "Kolkata Internet Speed Test - Check Your Connection Speed | Speed Test & Boost";
+    document.title = "Kolkata Internet Speed Test - Free East India WiFi & Broadband Speed Checker | Speed Test & Boost";
+    
+    // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your internet speed in Kolkata (Calcutta). Get accurate broadband speed results for all major ISPs including BSNL, Airtel, Jio Fiber, and Vi. Free speed test with WiFi optimization for Kolkata users.');
+      metaDescription.setAttribute('content', 'Test your internet speed in Kolkata (Calcutta) East India. Free speed test for Airtel, Jio Fiber, BSNL, and Wishnet. Check WiFi, broadband speeds optimized for banking, jute industry, and port operations.');
     }
     
-    // Add canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]');
+    // Keywords meta tag
+    let keywords = document.querySelector('meta[name="keywords"]') as HTMLMetaElement;
+    if (!keywords) {
+      keywords = document.createElement('meta');
+      keywords.name = 'keywords';
+      document.head.appendChild(keywords);
+    }
+    keywords.content = 'kolkata internet speed test, calcutta wifi speed test, east india broadband, salt lake speed test, howrah speed test, park street speed test, airtel kolkata fiber, jio fiber kolkata, wishnet kolkata, BSNL kolkata';
+    
+    // Open Graph tags
+    const ogTags = [
+      { property: 'og:title', content: 'Kolkata Internet Speed Test - Free East India WiFi & Broadband Speed Checker' },
+      { property: 'og:description', content: 'Test your internet speed in Kolkata (Calcutta) East India. Free speed test for Airtel, Jio Fiber, BSNL, and Wishnet. Check WiFi, broadband speeds optimized for banking and port operations.' },
+      { property: 'og:url', content: 'https://speedtestboost.com/kolkata-speed-test' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:site_name', content: 'Speed Test & Boost' },
+      { property: 'og:locale', content: 'en_IN' }
+    ];
+    
+    ogTags.forEach(tag => {
+      let ogTag = document.querySelector(`meta[property="${tag.property}"]`);
+      if (!ogTag) {
+        ogTag = document.createElement('meta');
+        ogTag.setAttribute('property', tag.property);
+        document.head.appendChild(ogTag);
+      }
+      ogTag.setAttribute('content', tag.content);
+    });
+    
+    // Twitter Card tags
+    const twitterTags = [
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: 'Kolkata Internet Speed Test - Free East India WiFi & Broadband Speed Checker' },
+      { name: 'twitter:description', content: 'Test your internet speed in Kolkata East India. Free speed test for Airtel, Jio Fiber, BSNL, Wishnet optimized for banking.' }
+    ];
+    
+    twitterTags.forEach(tag => {
+      let twitterTag = document.querySelector(`meta[name="${tag.name}"]`) as HTMLMetaElement;
+      if (!twitterTag) {
+        twitterTag = document.createElement('meta');
+        twitterTag.name = tag.name;
+        document.head.appendChild(twitterTag);
+      }
+      twitterTag.content = tag.content;
+    });
+    
+    // Canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
     if (!canonical) {
       canonical = document.createElement('link');
       canonical.rel = 'canonical';
       document.head.appendChild(canonical);
     }
     canonical.href = 'https://speedtestboost.com/kolkata-speed-test';
+    
+    // Structured Data (JSON-LD)
+    let structuredData = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
+    if (!structuredData) {
+      structuredData = document.createElement('script');
+      structuredData.type = 'application/ld+json';
+      document.head.appendChild(structuredData);
+    }
+    structuredData.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Kolkata Internet Speed Test",
+      "description": "Free online internet speed test for Kolkata East India with Airtel, Jio Fiber, BSNL, and Wishnet ISP support",
+      "url": "https://speedtestboost.com/kolkata-speed-test",
+      "applicationCategory": "NetworkingApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Speed Test & Boost"
+      },
+      "audience": {
+        "@type": "Audience",
+        "geographicArea": {
+          "@type": "City",
+          "name": "Kolkata",
+          "alternateName": "Calcutta",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "India"
+          }
+        }
+      }
+    });
   }, []);
 
   const { data: networkInfo } = useQuery({ queryKey: ["/api/network-info"] });
@@ -207,13 +293,30 @@ export default function KolkataSpeedTest() {
       <section className="max-w-4xl mx-auto px-4 lg:px-8 py-8">
         <div className="text-center mb-8">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Kolkata Internet Speed Test
+            Kolkata East India Speed Test
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Test your internet speed in Kolkata (Calcutta) and get accurate broadband speed results for all major ISPs including BSNL, Airtel, Jio Fiber, and Vi. 
-            As a major commercial and educational hub in Eastern India, Kolkata requires reliable internet connectivity for businesses, institutions, and daily life. 
-            Check your broadband performance and optimize your WiFi connection with our professional speed test tool designed for Kolkata users.
+            Test your internet speed in Kolkata (Calcutta), East India's financial and cultural capital. 
+            Get accurate results for all major ISPs including Airtel Xstream Fiber, Jio Fiber, BSNL Bharat Fiber, Wishnet, and local cable operators. 
+            Kolkata's banking district around BBD Bagh, industrial areas in Howrah, tech parks in Salt Lake Sector V, 
+            and cultural centers near Park Street require reliable internet for financial operations, port logistics at Kolkata Port, 
+            jute industry operations, and preserving Bengal's rich cultural heritage through digital initiatives.
           </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            <div className="bg-card/50 rounded-lg p-6 border border-border/50">
+              <h3 className="font-semibold text-foreground mb-2">Key Areas</h3>
+              <p className="text-sm text-muted-foreground">BBD Bagh, Salt Lake, Park Street, Howrah</p>
+            </div>
+            <div className="bg-card/50 rounded-lg p-6 border border-border/50">
+              <h3 className="font-semibold text-foreground mb-2">ISP Options</h3>
+              <p className="text-sm text-muted-foreground">Airtel, Jio Fiber, BSNL, Wishnet, Alliance</p>
+            </div>
+            <div className="bg-card/50 rounded-lg p-6 border border-border/50">
+              <h3 className="font-semibold text-foreground mb-2">Industries</h3>
+              <p className="text-sm text-muted-foreground">Banking, Port operations, Jute, Culture & Education</p>
+            </div>
+          </div>
         </div>
       </section>
 

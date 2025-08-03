@@ -24,20 +24,106 @@ export default function ChennaiSpeedTest() {
   const { toast } = useToast();
 
   useEffect(() => {
-    document.title = "Chennai Internet Speed Test - Check Your Connection Speed | Speed Test & Boost";
+    document.title = "Chennai Internet Speed Test - Free South India WiFi & Fiber Speed Checker | Speed Test & Boost";
+    
+    // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your internet speed in Chennai (Madras). Get accurate broadband speed results for all major ISPs including BSNL, Airtel, Jio Fiber, and Vi. Free speed test with WiFi optimization for Chennai users.');
+      metaDescription.setAttribute('content', 'Test your internet speed in Chennai (Madras) South India. Free speed test for Airtel, Jio Fiber, ACT Fibernet, and BSNL. Check WiFi, fiber speeds optimized for automotive, port operations, and IT services.');
     }
     
-    // Add canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]');
+    // Keywords meta tag
+    let keywords = document.querySelector('meta[name="keywords"]') as HTMLMetaElement;
+    if (!keywords) {
+      keywords = document.createElement('meta');
+      keywords.name = 'keywords';
+      document.head.appendChild(keywords);
+    }
+    keywords.content = 'chennai internet speed test, madras wifi speed test, south india broadband, omr speed test, guindy speed test, tambaram speed test, airtel chennai fiber, jio fiber chennai, ACT fibernet chennai';
+    
+    // Open Graph tags
+    const ogTags = [
+      { property: 'og:title', content: 'Chennai Internet Speed Test - Free South India WiFi & Fiber Speed Checker' },
+      { property: 'og:description', content: 'Test your internet speed in Chennai (Madras) South India. Free speed test for Airtel, Jio Fiber, ACT Fibernet, and BSNL. Check WiFi, fiber speeds optimized for automotive and IT services.' },
+      { property: 'og:url', content: 'https://speedtestboost.com/chennai-speed-test' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:site_name', content: 'Speed Test & Boost' },
+      { property: 'og:locale', content: 'en_IN' }
+    ];
+    
+    ogTags.forEach(tag => {
+      let ogTag = document.querySelector(`meta[property="${tag.property}"]`);
+      if (!ogTag) {
+        ogTag = document.createElement('meta');
+        ogTag.setAttribute('property', tag.property);
+        document.head.appendChild(ogTag);
+      }
+      ogTag.setAttribute('content', tag.content);
+    });
+    
+    // Twitter Card tags
+    const twitterTags = [
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: 'Chennai Internet Speed Test - Free South India WiFi & Fiber Speed Checker' },
+      { name: 'twitter:description', content: 'Test your internet speed in Chennai South India. Free speed test for Airtel, Jio Fiber, ACT Fibernet optimized for automotive and IT.' }
+    ];
+    
+    twitterTags.forEach(tag => {
+      let twitterTag = document.querySelector(`meta[name="${tag.name}"]`) as HTMLMetaElement;
+      if (!twitterTag) {
+        twitterTag = document.createElement('meta');
+        twitterTag.name = tag.name;
+        document.head.appendChild(twitterTag);
+      }
+      twitterTag.content = tag.content;
+    });
+    
+    // Canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
     if (!canonical) {
       canonical = document.createElement('link');
       canonical.rel = 'canonical';
       document.head.appendChild(canonical);
     }
     canonical.href = 'https://speedtestboost.com/chennai-speed-test';
+    
+    // Structured Data (JSON-LD)
+    let structuredData = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
+    if (!structuredData) {
+      structuredData = document.createElement('script');
+      structuredData.type = 'application/ld+json';
+      document.head.appendChild(structuredData);
+    }
+    structuredData.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Chennai Internet Speed Test",
+      "description": "Free online internet speed test for Chennai South India with Airtel, Jio Fiber, ACT Fibernet, and BSNL ISP support",
+      "url": "https://speedtestboost.com/chennai-speed-test",
+      "applicationCategory": "NetworkingApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Speed Test & Boost"
+      },
+      "audience": {
+        "@type": "Audience",
+        "geographicArea": {
+          "@type": "City",
+          "name": "Chennai",
+          "alternateName": "Madras",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "India"
+          }
+        }
+      }
+    });
   }, []);
 
   const { data: networkInfo } = useQuery({ queryKey: ["/api/network-info"] });
@@ -207,13 +293,30 @@ export default function ChennaiSpeedTest() {
       <section className="max-w-4xl mx-auto px-4 lg:px-8 py-8">
         <div className="text-center mb-8">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Chennai Internet Speed Test
+            Chennai South India Speed Test
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Test your internet speed in Chennai (Madras) and get accurate broadband speed results for all major ISPs including BSNL, Airtel, Jio Fiber, and Vi. 
-            Chennai is a major business and technology hub in South India, requiring reliable internet connectivity for industries, education, and healthcare. 
-            Check your broadband performance and optimize your WiFi connection with our professional speed test tool designed for Chennai users.
+            Test your internet speed in Chennai (Madras), South India's automotive and industrial capital. 
+            Get accurate results for all major ISPs including Airtel Xstream Fiber, Jio Fiber, ACT Fibernet, BSNL Bharat Fiber, and local providers. 
+            Chennai's thriving automotive industry with companies like Ford, Hyundai, BMW, Renault-Nissan in Sriperumbudur, 
+            plus major IT corridors along OMR (Old Mahabalipuram Road) and GST Road demand ultra-reliable internet connections 
+            for manufacturing operations, port logistics at Chennai Port, and software services exports.
           </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            <div className="bg-card/50 rounded-lg p-6 border border-border/50">
+              <h3 className="font-semibold text-foreground mb-2">Industrial Areas</h3>
+              <p className="text-sm text-muted-foreground">OMR, GST Road, Sriperumbudur, Tambaram</p>
+            </div>
+            <div className="bg-card/50 rounded-lg p-6 border border-border/50">
+              <h3 className="font-semibold text-foreground mb-2">Major ISPs</h3>
+              <p className="text-sm text-muted-foreground">Airtel, Jio Fiber, ACT, BSNL, Hathway</p>
+            </div>
+            <div className="bg-card/50 rounded-lg p-6 border border-border/50">
+              <h3 className="font-semibold text-foreground mb-2">Industry Focus</h3>
+              <p className="text-sm text-muted-foreground">Automotive, IT, Port operations, Manufacturing</p>
+            </div>
+          </div> 
         </div>
       </section>
 

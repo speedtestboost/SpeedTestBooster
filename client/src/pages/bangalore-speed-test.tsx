@@ -24,20 +24,106 @@ export default function BangaloreSpeedTest() {
   const { toast } = useToast();
 
   useEffect(() => {
-    document.title = "Bangalore Internet Speed Test - Check Your Connection Speed | Speed Test & Boost";
+    document.title = "Bangalore Internet Speed Test - Free Tech Hub WiFi & Fiber Speed Checker | Speed Test & Boost";
+    
+    // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your internet speed in Bangalore (Bengaluru). Get accurate broadband speed results for all major ISPs including BSNL, Airtel, Jio Fiber, and Vi. Free speed test with WiFi optimization for Bangalore tech professionals.');
+      metaDescription.setAttribute('content', 'Test your internet speed in Bangalore (Bengaluru) Silicon Valley. Free speed test for ACT Fibernet, Airtel, Jio Fiber, and BSNL. Check WiFi, fiber, and 5G speeds optimized for tech professionals and IT companies.');
     }
     
-    // Add canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]');
+    // Keywords meta tag
+    let keywords = document.querySelector('meta[name="keywords"]') as HTMLMetaElement;
+    if (!keywords) {
+      keywords = document.createElement('meta');
+      keywords.name = 'keywords';
+      document.head.appendChild(keywords);
+    }
+    keywords.content = 'bangalore internet speed test, bengaluru wifi speed test, silicon valley india broadband, whitefield speed test, electronic city speed test, koramangala speed test, ACT fibernet bangalore, airtel bangalore fiber, jio fiber bengaluru';
+    
+    // Open Graph tags
+    const ogTags = [
+      { property: 'og:title', content: 'Bangalore Internet Speed Test - Free Tech Hub WiFi & Fiber Speed Checker' },
+      { property: 'og:description', content: 'Test your internet speed in Bangalore (Bengaluru) Silicon Valley. Free speed test for ACT Fibernet, Airtel, Jio Fiber, and BSNL. Check WiFi, fiber, and 5G speeds optimized for tech professionals.' },
+      { property: 'og:url', content: 'https://speedtestboost.com/bangalore-speed-test' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:site_name', content: 'Speed Test & Boost' },
+      { property: 'og:locale', content: 'en_IN' }
+    ];
+    
+    ogTags.forEach(tag => {
+      let ogTag = document.querySelector(`meta[property="${tag.property}"]`);
+      if (!ogTag) {
+        ogTag = document.createElement('meta');
+        ogTag.setAttribute('property', tag.property);
+        document.head.appendChild(ogTag);
+      }
+      ogTag.setAttribute('content', tag.content);
+    });
+    
+    // Twitter Card tags
+    const twitterTags = [
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: 'Bangalore Internet Speed Test - Free Tech Hub WiFi & Fiber Speed Checker' },
+      { name: 'twitter:description', content: 'Test your internet speed in Bangalore Silicon Valley. Free speed test for ACT Fibernet, Airtel, Jio Fiber optimized for tech professionals.' }
+    ];
+    
+    twitterTags.forEach(tag => {
+      let twitterTag = document.querySelector(`meta[name="${tag.name}"]`) as HTMLMetaElement;
+      if (!twitterTag) {
+        twitterTag = document.createElement('meta');
+        twitterTag.name = tag.name;
+        document.head.appendChild(twitterTag);
+      }
+      twitterTag.content = tag.content;
+    });
+    
+    // Canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
     if (!canonical) {
       canonical = document.createElement('link');
       canonical.rel = 'canonical';
       document.head.appendChild(canonical);
     }
     canonical.href = 'https://speedtestboost.com/bangalore-speed-test';
+    
+    // Structured Data (JSON-LD)
+    let structuredData = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
+    if (!structuredData) {
+      structuredData = document.createElement('script');
+      structuredData.type = 'application/ld+json';
+      document.head.appendChild(structuredData);
+    }
+    structuredData.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Bangalore Internet Speed Test",
+      "description": "Free online internet speed test for Bangalore tech professionals with ACT Fibernet, Airtel, Jio Fiber, and BSNL ISP support",
+      "url": "https://speedtestboost.com/bangalore-speed-test",
+      "applicationCategory": "NetworkingApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Speed Test & Boost"
+      },
+      "audience": {
+        "@type": "Audience",
+        "geographicArea": {
+          "@type": "City",
+          "name": "Bangalore",
+          "alternateName": "Bengaluru",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "India"
+          }
+        }
+      }
+    });
   }, []);
 
   const { data: networkInfo } = useQuery({ queryKey: ["/api/network-info"] });
@@ -207,13 +293,29 @@ export default function BangaloreSpeedTest() {
       <section className="max-w-4xl mx-auto px-4 lg:px-8 py-8">
         <div className="text-center mb-8">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Bangalore Internet Speed Test
+            Bangalore Silicon Valley Speed Test
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Test your internet speed in Bangalore (Bengaluru), India's Silicon Valley. Get accurate broadband speed results for all major ISPs including BSNL, Airtel, Jio Fiber, and Vi. 
-            As India's tech capital, Bangalore demands high-speed internet for IT companies, startups, and remote work. 
-            Check your broadband performance and optimize your WiFi connection with our professional speed test tool designed for Bangalore's tech community.
+            Test your internet speed in Bangalore (Bengaluru), India's Silicon Valley and tech capital. 
+            Get accurate results for all major ISPs including ACT Fibernet, Airtel Xstream Fiber, Jio Fiber, Tata Play Fiber, and BSNL Bharat Fiber. 
+            Bangalore's thriving IT ecosystem in Electronic City, Whitefield, Koramangala, and Indiranagar demands ultra-reliable gigabit connections 
+            for software development, cloud computing, video conferencing, and 24/7 global operations across Fortune 500 companies and innovative startups.
           </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            <div className="bg-card/50 rounded-lg p-6 border border-border/50">
+              <h3 className="font-semibold text-foreground mb-2">Tech Hubs</h3>
+              <p className="text-sm text-muted-foreground">Electronic City, Whitefield, Koramangala, Indiranagar</p>
+            </div>
+            <div className="bg-card/50 rounded-lg p-6 border border-border/50">
+              <h3 className="font-semibold text-foreground mb-2">Premium ISPs</h3>
+              <p className="text-sm text-muted-foreground">ACT Fibernet, Airtel, Jio Fiber, Tata Play</p>
+            </div>
+            <div className="bg-card/50 rounded-lg p-6 border border-border/50">
+              <h3 className="font-semibold text-foreground mb-2">IT Requirements</h3>
+              <p className="text-sm text-muted-foreground">Low latency, High upload, 99.9% uptime</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -416,35 +518,35 @@ export default function BangaloreSpeedTest() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-3">About Internet Speed Tests</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-3">Bangalore Tech Infrastructure</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  An internet speed test measures your connection's download speed, upload speed, and ping latency. 
-                  Our free bandwidth test tool provides accurate results for WiFi, broadband, fiber, and mobile connections 
-                  including 4G and 5G networks.
+                  Bangalore leads India in fiber optic infrastructure with the highest concentration of IT companies. 
+                  Electronic City, Whitefield, and Koramangala offer gigabit connections from ACT Fibernet and Airtel Xstream Fiber, 
+                  making it the most connected city for software professionals and global tech operations.
                 </p>
               </CardContent>
             </Card>
 
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-3">Understanding Your Results</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-3">Popular ISPs in Bangalore</h3>
                 <div className="space-y-2 text-sm text-muted-foreground">
-                  <div><strong className="text-foreground">Download Speed:</strong> How fast you receive data</div>
-                  <div><strong className="text-foreground">Upload Speed:</strong> How fast you send data</div>
-                  <div><strong className="text-foreground">Ping:</strong> Response time in milliseconds</div>
-                  <div><strong className="text-foreground">Jitter:</strong> Variation in ping times</div>
+                  <div><strong className="text-foreground">ACT Fibernet:</strong> Premium speeds up to 1 Gbps</div>
+                  <div><strong className="text-foreground">Airtel Xstream Fiber:</strong> Reliable enterprise grade</div>
+                  <div><strong className="text-foreground">Jio Fiber:</strong> Competitive pricing, good coverage</div>
+                  <div><strong className="text-foreground">Tata Play Fiber:</strong> Business focused plans</div>
                 </div>
               </CardContent>
             </Card>
 
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-3">Speed Requirements</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-3">Tech Professional Requirements</h3>
                 <div className="space-y-2 text-sm text-muted-foreground">
-                  <div><strong className="text-foreground">HD Streaming:</strong> 5-10 Mbps</div>
-                  <div><strong className="text-foreground">4K Streaming:</strong> 25+ Mbps</div>
-                  <div><strong className="text-foreground">Gaming:</strong> 3-6 Mbps + low ping</div>
-                  <div><strong className="text-foreground">Video Calls:</strong> 1-4 Mbps</div>
+                  <div><strong className="text-foreground">Software Development:</strong> 100+ Mbps upload</div>
+                  <div><strong className="text-foreground">Video Conferencing:</strong> 25+ Mbps stable</div>
+                  <div><strong className="text-foreground">Cloud Computing:</strong> Low latency essential</div>
+                  <div><strong className="text-foreground">Startup Operations:</strong> 99.9% uptime needed</div>
                 </div>
               </CardContent>
             </Card>

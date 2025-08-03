@@ -24,20 +24,106 @@ export default function HyderabadSpeedTest() {
   const { toast } = useToast();
 
   useEffect(() => {
-    document.title = "Hyderabad Internet Speed Test - Check Your Connection Speed | Speed Test & Boost";
+    document.title = "Hyderabad Internet Speed Test - Free Cyberabad WiFi & Fiber Speed Checker | Speed Test & Boost";
+    
+    // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your internet speed in Hyderabad (Secunderabad). Get accurate broadband speed results for all major ISPs including BSNL, Airtel, Jio Fiber, and Vi. Free speed test with WiFi optimization for Hyderabad users.');
+      metaDescription.setAttribute('content', 'Test your internet speed in Hyderabad (Cyberabad). Free speed test for Airtel, Jio Fiber, ACT Fibernet, and Railwire. Check WiFi, fiber speeds optimized for HITEC City, Gachibowli, and pharma industries.');
     }
     
-    // Add canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]');
+    // Keywords meta tag
+    let keywords = document.querySelector('meta[name="keywords"]') as HTMLMetaElement;
+    if (!keywords) {
+      keywords = document.createElement('meta');
+      keywords.name = 'keywords';
+      document.head.appendChild(keywords);
+    }
+    keywords.content = 'hyderabad internet speed test, cyberabad wifi speed test, hitec city speed test, gachibowli speed test, madhapur speed test, secunderabad speed test, airtel hyderabad fiber, jio fiber cyberabad, ACT fibernet hyderabad';
+    
+    // Open Graph tags
+    const ogTags = [
+      { property: 'og:title', content: 'Hyderabad Internet Speed Test - Free Cyberabad WiFi & Fiber Speed Checker' },
+      { property: 'og:description', content: 'Test your internet speed in Hyderabad (Cyberabad). Free speed test for Airtel, Jio Fiber, ACT Fibernet, and Railwire. Check WiFi, fiber speeds optimized for HITEC City and pharma industries.' },
+      { property: 'og:url', content: 'https://speedtestboost.com/hyderabad-speed-test' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:site_name', content: 'Speed Test & Boost' },
+      { property: 'og:locale', content: 'en_IN' }
+    ];
+    
+    ogTags.forEach(tag => {
+      let ogTag = document.querySelector(`meta[property="${tag.property}"]`);
+      if (!ogTag) {
+        ogTag = document.createElement('meta');
+        ogTag.setAttribute('property', tag.property);
+        document.head.appendChild(ogTag);
+      }
+      ogTag.setAttribute('content', tag.content);
+    });
+    
+    // Twitter Card tags
+    const twitterTags = [
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: 'Hyderabad Internet Speed Test - Free Cyberabad WiFi & Fiber Speed Checker' },
+      { name: 'twitter:description', content: 'Test your internet speed in Hyderabad Cyberabad. Free speed test for Airtel, Jio Fiber, ACT Fibernet optimized for HITEC City.' }
+    ];
+    
+    twitterTags.forEach(tag => {
+      let twitterTag = document.querySelector(`meta[name="${tag.name}"]`) as HTMLMetaElement;
+      if (!twitterTag) {
+        twitterTag = document.createElement('meta');
+        twitterTag.name = tag.name;
+        document.head.appendChild(twitterTag);
+      }
+      twitterTag.content = tag.content;
+    });
+    
+    // Canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
     if (!canonical) {
       canonical = document.createElement('link');
       canonical.rel = 'canonical';
       document.head.appendChild(canonical);
     }
     canonical.href = 'https://speedtestboost.com/hyderabad-speed-test';
+    
+    // Structured Data (JSON-LD)
+    let structuredData = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
+    if (!structuredData) {
+      structuredData = document.createElement('script');
+      structuredData.type = 'application/ld+json';
+      document.head.appendChild(structuredData);
+    }
+    structuredData.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Hyderabad Internet Speed Test",
+      "description": "Free online internet speed test for Hyderabad Cyberabad with Airtel, Jio Fiber, ACT Fibernet, and Railwire ISP support",
+      "url": "https://speedtestboost.com/hyderabad-speed-test",
+      "applicationCategory": "NetworkingApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Speed Test & Boost"
+      },
+      "audience": {
+        "@type": "Audience",
+        "geographicArea": {
+          "@type": "City",
+          "name": "Hyderabad",
+          "alternateName": "Cyberabad",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "India"
+          }
+        }
+      }
+    });
   }, []);
 
   const { data: networkInfo } = useQuery({ queryKey: ["/api/network-info"] });
@@ -207,13 +293,30 @@ export default function HyderabadSpeedTest() {
       <section className="max-w-4xl mx-auto px-4 lg:px-8 py-8">
         <div className="text-center mb-8">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Hyderabad Internet Speed Test
+            Hyderabad Cyberabad Speed Test
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Test your internet speed in Hyderabad (Secunderabad) and get accurate broadband speed results for all major ISPs including BSNL, Airtel, Jio Fiber, and Vi. 
-            Known as Cyberabad, Hyderabad is a major IT hub requiring reliable internet connectivity for businesses and professionals. 
-            Check your broadband performance and optimize your WiFi connection with our professional speed test tool designed for Hyderabad's growing tech ecosystem.
+            Test your internet speed in Hyderabad (Cyberabad), India's leading biotech and pharmaceutical hub. 
+            Get accurate results for all major ISPs including Airtel Xstream Fiber, Jio Fiber, ACT Fibernet, Railwire, and BSNL Bharat Fiber. 
+            Hyderabad's HITEC City, Gachibowli, and Madhapur house global pharmaceutical giants like Dr. Reddy's, Aurobindo Pharma, 
+            plus major IT companies in Financial District demanding ultra-reliable gigabit connections 
+            for research operations, clinical trials, regulatory compliance, and 24/7 global pharmaceutical manufacturing.
           </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            <div className="bg-card/50 rounded-lg p-6 border border-border/50">
+              <h3 className="font-semibold text-foreground mb-2">Tech Corridors</h3>
+              <p className="text-sm text-muted-foreground">HITEC City, Gachibowli, Madhapur, Financial District</p>
+            </div>
+            <div className="bg-card/50 rounded-lg p-6 border border-border/50">
+              <h3 className="font-semibold text-foreground mb-2">Premium ISPs</h3>
+              <p className="text-sm text-muted-foreground">Airtel, Jio Fiber, ACT, Railwire, BSNL</p>
+            </div>
+            <div className="bg-card/50 rounded-lg p-6 border border-border/50">
+              <h3 className="font-semibold text-foreground mb-2">Key Industries</h3>
+              <p className="text-sm text-muted-foreground">Pharma, Biotech, IT services, Financial services</p>
+            </div>
+          </div>
         </div>
       </section>
 
