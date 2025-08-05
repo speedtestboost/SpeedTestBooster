@@ -10,9 +10,10 @@ import SpeedGauge from "@/components/SpeedGauge";
 import TestHistory from "@/components/TestHistory";
 import NetworkInfo from "@/components/NetworkInfo";
 import OptimizationModal from "@/components/OptimizationModal";
+import Header from "@/components/Header";
 
 import { performSpeedTest, type SpeedTestResult } from "@/lib/speedTest";
-import { Play, Gauge, Wifi, Menu, X } from "lucide-react";
+import { Play, Gauge, Wifi } from "lucide-react";
 import { Link } from "wouter";
 
 export default function USSpeedTest() {
@@ -21,7 +22,7 @@ export default function USSpeedTest() {
   const [testStatus, setTestStatus] = useState("Ready to test");
   const [currentResult, setCurrentResult] = useState<SpeedTestResult | null>(null);
   const [showOptimization, setShowOptimization] = useState(false);
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
+
   const { toast } = useToast();
 
   // SEO Meta Tags
@@ -193,87 +194,7 @@ export default function USSpeedTest() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      {/* Enhanced Header with Animation */}
-      <header className="bg-card/30 backdrop-blur-sm border-b border-border/50 sticky top-0 z-50">
-        <div className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo and Title */}
-            <div className="flex items-center space-x-4">
-              <div className="relative">
-                <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center">
-                  <Gauge className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
-                </div>
-              </div>
-              
-              <div className="flex flex-col">
-                <Link href="/" className="text-xl lg:text-2xl font-bold gradient-text hover:opacity-80 transition-opacity">
-                  Speed Test & Boost
-                </Link>
-                <p className="text-xs lg:text-sm text-muted-foreground">
-                  USA Internet Speed Test
-                </p>
-              </div>
-            </div>
-            
-            {/* Navigation */}
-            <div className="flex items-center space-x-4">
-              <div className="hidden lg:flex items-center space-x-6">
-                <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
-                  Home
-                </Link>
-                <Link href="/uk-speed-test" className="text-muted-foreground hover:text-primary transition-colors">
-                  🇬🇧 UK
-                </Link>
-                <Link href="/au-speed-test" className="text-muted-foreground hover:text-primary transition-colors">
-                  🇦🇺 Australia
-                </Link>
-                <Link href="/ca-speed-test" className="text-muted-foreground hover:text-primary transition-colors">
-                  🇨🇦 Canada
-                </Link>
-                <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
-                  About
-                </Link>
-                <Link href="/help" className="text-muted-foreground hover:text-primary transition-colors">
-                  Help & FAQ
-                </Link>
-              </div>
-              
-              <button
-                onClick={() => setShowMobileMenu(!showMobileMenu)}
-                className="lg:hidden p-2 rounded-lg hover:bg-muted/50 transition-colors"
-              >
-                {showMobileMenu ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-              </button>
-            </div>
-          </div>
-          
-          {/* Mobile Menu */}
-          {showMobileMenu && (
-            <div className="lg:hidden mt-4 pt-4 border-t border-border/30">
-              <div className="flex flex-col space-y-3">
-                <Link href="/" className="text-muted-foreground hover:text-primary transition-colors py-2">
-                  Home
-                </Link>
-                <Link href="/uk-speed-test" className="text-muted-foreground hover:text-primary transition-colors py-2">
-                  🇬🇧 UK Speed Test
-                </Link>
-                <Link href="/au-speed-test" className="text-muted-foreground hover:text-primary transition-colors py-2">
-                  🇦🇺 Australia Speed Test
-                </Link>
-                <Link href="/ca-speed-test" className="text-muted-foreground hover:text-primary transition-colors py-2">
-                  🇨🇦 Canada Speed Test
-                </Link>
-                <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors py-2">
-                  About
-                </Link>
-                <Link href="/help" className="text-muted-foreground hover:text-primary transition-colors py-2">
-                  Help & FAQ
-                </Link>
-              </div>
-            </div>
-          )}
-        </div>
-      </header>
+      <Header currentPath="/us-speed-test" />
 
       <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-6 space-y-6">
         {/* Desktop Layout */}
