@@ -7,7 +7,7 @@
   <!-- Homepage - Speed Test Tool -->
   <url>
     <loc>https://speedtestboost.com/</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-08-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -15,7 +15,7 @@
   <!-- About Page -->
   <url>
     <loc>https://speedtestboost.com/about</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -23,7 +23,7 @@
   <!-- Help/FAQ Page -->
   <url>
     <loc>https://speedtestboost.com/help</loc>
-    <lastmod>2025-01-16</lastmod>
+    <lastmod>2025-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -31,84 +31,12 @@
   <!-- Internet Speed Requirements Guide 2025 - High Traffic Page -->
   <url>
     <loc>https://speedtestboost.com/internet-speed-requirements</loc>
-    <lastmod>2025-08-02</lastmod>
+    <lastmod>2025-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   
-  <!-- City-specific Speed Test Pages -->
-  <url>
-    <loc>https://speedtestboost.com/mumbai-speed-test</loc>
-    <lastmod>2025-01-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://speedtestboost.com/delhi-speed-test</loc>
-    <lastmod>2025-08-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://speedtestboost.com/bangalore-speed-test</loc>
-    <lastmod>2025-08-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://speedtestboost.com/hyderabad-speed-test</loc>
-    <lastmod>2025-08-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://speedtestboost.com/chennai-speed-test</loc>
-    <lastmod>2025-08-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://speedtestboost.com/kolkata-speed-test</loc>
-    <lastmod>2025-08-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Country-specific Speed Test Pages -->
-  <url>
-    <loc>https://speedtestboost.com/us-speed-test</loc>
-    <lastmod>2025-01-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://speedtestboost.com/uk-speed-test</loc>
-    <lastmod>2025-01-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://speedtestboost.com/au-speed-test</loc>
-    <lastmod>2025-01-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://speedtestboost.com/ca-speed-test</loc>
-    <lastmod>2025-01-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <!-- Internet Providers Pages -->
+  <!-- Internet Providers Main Page -->
   <url>
     <loc>https://speedtestboost.com/internet-providers</loc>
     <lastmod>2025-08-05</lastmod>
@@ -116,7 +44,79 @@
     <priority>0.9</priority>
   </url>
   
-  <!-- US Internet Providers -->
+  <!-- Country-specific Speed Test Pages -->
+  <url>
+    <loc>https://speedtestboost.com/us-speed-test</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://speedtestboost.com/uk-speed-test</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://speedtestboost.com/au-speed-test</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://speedtestboost.com/ca-speed-test</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- City-specific Speed Test Pages -->
+  <url>
+    <loc>https://speedtestboost.com/mumbai-speed-test</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://speedtestboost.com/delhi-speed-test</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://speedtestboost.com/bangalore-speed-test</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://speedtestboost.com/hyderabad-speed-test</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://speedtestboost.com/chennai-speed-test</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://speedtestboost.com/kolkata-speed-test</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- US Internet Providers (3 providers) -->
   <url>
     <loc>https://speedtestboost.com/providers/us/verizon</loc>
     <lastmod>2025-08-05</lastmod>
@@ -124,110 +124,96 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://speedtestboost.com/providers/us/comcast-xfinity</loc>
+    <loc>https://speedtestboost.com/providers/us/comcast</loc>
     <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://speedtestboost.com/providers/us/att</loc>
     <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://speedtestboost.com/providers/us/spectrum</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   
-  <!-- UK Internet Providers -->
+  <!-- UK Internet Providers (3 providers) -->
+  <url>
+    <loc>https://speedtestboost.com/providers/uk/sky</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://speedtestboost.com/providers/uk/virgin-media</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://speedtestboost.com/providers/uk/bt</loc>
     <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://speedtestboost.com/providers/uk/sky</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://speedtestboost.com/providers/uk/virgin-media</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
   
-  <!-- Canada Internet Providers -->
+  <!-- Canada Internet Providers (3 providers) -->
   <url>
     <loc>https://speedtestboost.com/providers/ca/bell</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://speedtestboost.com/providers/ca/rogers</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://speedtestboost.com/providers/ca/telus</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- Australia Internet Providers -->
-  <url>
-    <loc>https://speedtestboost.com/providers/au/telstra</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://speedtestboost.com/providers/au/optus</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- India Internet Providers -->
-  <url>
-    <loc>https://speedtestboost.com/providers/in/jio-fiber</loc>
     <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://speedtestboost.com/providers/in/airtel-xstream</loc>
+    <loc>https://speedtestboost.com/providers/ca/rogers</loc>
     <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://speedtestboost.com/providers/in/act-fibernet</loc>
+    <loc>https://speedtestboost.com/providers/ca/telus</loc>
     <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   
-  <!-- Germany Internet Providers -->
+  <!-- Germany Internet Providers (3 providers) -->
   <url>
     <loc>https://speedtestboost.com/providers/de/deutsche-telekom</loc>
     <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://speedtestboost.com/providers/de/vodafone-de</loc>
     <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://speedtestboost.com/providers/de/o2-de</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Australia Internet Providers (3 providers) -->
+  <url>
+    <loc>https://speedtestboost.com/providers/au/telstra</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://speedtestboost.com/providers/au/optus</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://speedtestboost.com/providers/au/tpg</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   
 </urlset>
