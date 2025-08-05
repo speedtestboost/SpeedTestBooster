@@ -16,7 +16,7 @@ const countries = [
     population: "331M",
     providers: [
       { name: "Verizon", slug: "verizon", type: "Fiber/5G", coverage: "Nationwide" },
-      { name: "Comcast Xfinity", slug: "comcast-xfinity", type: "Cable/Fiber", coverage: "39 States" },
+      { name: "Comcast Xfinity", slug: "comcast", type: "Cable/Fiber", coverage: "39 States" },
       { name: "AT&T", slug: "att", type: "Fiber/DSL", coverage: "Nationwide" }
     ]
   },
