@@ -172,7 +172,7 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   return (
-    <nav className="absolute top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border/20">
+    <nav className="relative z-10 bg-background/80 backdrop-blur-sm border-b border-border/20">
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-3">
