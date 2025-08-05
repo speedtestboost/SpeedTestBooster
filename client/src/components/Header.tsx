@@ -18,13 +18,8 @@ const countries = [
     flag: "🇺🇸",
     providers: [
       { name: "Verizon", slug: "verizon" },
-      { name: "Comcast Xfinity", slug: "comcast-xfinity" },
-      { name: "AT&T", slug: "att" },
-      { name: "Spectrum", slug: "spectrum" },
-      { name: "Cox", slug: "cox" },
-      { name: "Mediacom", slug: "mediacom" },
-      { name: "CenturyLink", slug: "centurylink" },
-      { name: "Optimum", slug: "optimum" }
+      { name: "Comcast Xfinity", slug: "comcast" },
+      { name: "AT&T", slug: "att" }
     ]
   },
   {
@@ -32,14 +27,9 @@ const countries = [
     code: "uk",
     flag: "🇬🇧",
     providers: [
-      { name: "BT", slug: "bt" },
       { name: "Sky", slug: "sky" },
       { name: "Virgin Media", slug: "virgin-media" },
-      { name: "TalkTalk", slug: "talktalk" },
-      { name: "Plusnet", slug: "plusnet" },
-      { name: "EE", slug: "ee" },
-      { name: "Vodafone", slug: "vodafone-uk" },
-      { name: "Three", slug: "three-uk" }
+      { name: "BT", slug: "bt" }
     ]
   },
   {
@@ -49,27 +39,7 @@ const countries = [
     providers: [
       { name: "Bell", slug: "bell" },
       { name: "Rogers", slug: "rogers" },
-      { name: "Telus", slug: "telus" },
-      { name: "Shaw", slug: "shaw" },
-      { name: "Videotron", slug: "videotron" },
-      { name: "Eastlink", slug: "eastlink" },
-      { name: "SaskTel", slug: "sasktel" },
-      { name: "TekSavvy", slug: "teksavvy" }
-    ]
-  },
-  {
-    name: "Australia",
-    code: "au",
-    flag: "🇦🇺",
-    providers: [
-      { name: "Telstra", slug: "telstra" },
-      { name: "Optus", slug: "optus" },
-      { name: "TPG", slug: "tpg" },
-      { name: "iiNet", slug: "iinet" },
-      { name: "Aussie Broadband", slug: "aussie-broadband" },
-      { name: "Vodafone", slug: "vodafone-au" },
-      { name: "Internode", slug: "internode" },
-      { name: "Exetel", slug: "exetel" }
+      { name: "Telus", slug: "telus" }
     ]
   },
   {
@@ -79,87 +49,17 @@ const countries = [
     providers: [
       { name: "Deutsche Telekom", slug: "deutsche-telekom" },
       { name: "Vodafone", slug: "vodafone-de" },
-      { name: "O2", slug: "o2-de" },
-      { name: "1&1", slug: "1and1" },
-      { name: "Unitymedia", slug: "unitymedia" },
-      { name: "NetCologne", slug: "netcologne" },
-      { name: "M-net", slug: "m-net" },
-      { name: "EWE", slug: "ewe" }
+      { name: "O2", slug: "o2-de" }
     ]
   },
   {
-    name: "India",
-    code: "in",
-    flag: "🇮🇳",
+    name: "Australia",
+    code: "au",
+    flag: "🇦🇺",
     providers: [
-      { name: "Jio Fiber", slug: "jio-fiber" },
-      { name: "Airtel Xstream", slug: "airtel-xstream" },
-      { name: "ACT Fibernet", slug: "act-fibernet" },
-      { name: "BSNL", slug: "bsnl" },
-      { name: "Hathway", slug: "hathway" },
-      { name: "Excitel", slug: "excitel" },
-      { name: "Tata Play Fiber", slug: "tata-play-fiber" },
-      { name: "GTPL", slug: "gtpl" }
-    ]
-  },
-  {
-    name: "France",
-    code: "fr",
-    flag: "🇫🇷",
-    providers: [
-      { name: "Orange", slug: "orange-fr" },
-      { name: "SFR", slug: "sfr" },
-      { name: "Free", slug: "free-fr" },
-      { name: "Bouygues Telecom", slug: "bouygues-telecom" },
-      { name: "RED by SFR", slug: "red-by-sfr" },
-      { name: "Sosh", slug: "sosh" },
-      { name: "B&YOU", slug: "b-and-you" },
-      { name: "Nordnet", slug: "nordnet" }
-    ]
-  },
-  {
-    name: "Brazil",
-    code: "br",
-    flag: "🇧🇷",
-    providers: [
-      { name: "Vivo", slug: "vivo-br" },
-      { name: "Claro", slug: "claro-br" },
-      { name: "TIM", slug: "tim-br" },
-      { name: "Oi", slug: "oi" },
-      { name: "NET", slug: "net-br" },
-      { name: "Copel Telecom", slug: "copel-telecom" },
-      { name: "Algar Telecom", slug: "algar-telecom" },
-      { name: "Brisanet", slug: "brisanet" }
-    ]
-  },
-  {
-    name: "Japan",
-    code: "jp",
-    flag: "🇯🇵",
-    providers: [
-      { name: "NTT", slug: "ntt" },
-      { name: "SoftBank", slug: "softbank" },
-      { name: "KDDI", slug: "kddi" },
-      { name: "So-net", slug: "so-net" },
-      { name: "OCN", slug: "ocn" },
-      { name: "Biglobe", slug: "biglobe" },
-      { name: "Nifty", slug: "nifty" },
-      { name: "IIJ", slug: "iij" }
-    ]
-  },
-  {
-    name: "South Korea",
-    code: "kr",
-    flag: "🇰🇷",
-    providers: [
-      { name: "KT", slug: "kt" },
-      { name: "SK Telecom", slug: "sk-telecom" },
-      { name: "LG U+", slug: "lg-uplus" },
-      { name: "LG HelloVision", slug: "lg-hellovision" },
-      { name: "Hyundai HCN", slug: "hyundai-hcn" },
-      { name: "CJ Hello", slug: "cj-hello" },
-      { name: "D'Live", slug: "dlive" },
-      { name: "CMB", slug: "cmb" }
+      { name: "Telstra", slug: "telstra" },
+      { name: "Optus", slug: "optus" },
+      { name: "TPG", slug: "tpg" }
     ]
   }
 ];
