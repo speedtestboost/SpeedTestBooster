@@ -10,9 +10,10 @@ import SpeedGauge from "@/components/SpeedGauge";
 import TestHistory from "@/components/TestHistory";
 import NetworkInfo from "@/components/NetworkInfo";
 import OptimizationModal from "@/components/OptimizationModal";
+import Header from "@/components/Header";
 
 import { performSpeedTest, type SpeedTestResult } from "@/lib/speedTest";
-import { Play, Gauge, Wifi, Menu, X } from "lucide-react";
+import { Play, Gauge, Wifi } from "lucide-react";
 import { Link } from "wouter";
 
 export default function SpeedTest() {
@@ -21,7 +22,6 @@ export default function SpeedTest() {
   const [testStatus, setTestStatus] = useState("Ready to test");
   const [currentResult, setCurrentResult] = useState<SpeedTestResult | null>(null);
   const [showOptimization, setShowOptimization] = useState(false);
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const { toast } = useToast();
 
   // SEO Meta Tags for homepage
@@ -244,228 +244,7 @@ export default function SpeedTest() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="bg-card/50 backdrop-blur-sm border-b border-border/50 relative overflow-hidden">
-        {/* Animated Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-full h-full">
-            <div className="absolute w-32 h-32 rounded-full bg-gradient-to-r from-primary to-accent animate-pulse opacity-30 -top-16 -left-16"></div>
-            <div className="absolute w-24 h-24 rounded-full bg-gradient-to-r from-accent to-primary animate-pulse opacity-20 -top-12 right-20 animation-delay-1000"></div>
-            <div className="absolute w-16 h-16 rounded-full bg-gradient-to-r from-primary to-accent animate-pulse opacity-25 -bottom-8 left-1/3 animation-delay-500"></div>
-          </div>
-        </div>
-        
-        <div className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-6 relative z-10">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              {/* Enhanced Custom Icon with Animations */}
-              <div className="relative">
-                <div className="p-3 rounded-2xl gradient-bg hover:scale-105 transition-all duration-300">
-                  <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style={{stopColor: '#ffffff', stopOpacity: 1}} />
-                        <stop offset="50%" style={{stopColor: '#f8fafc', stopOpacity: 0.9}} />
-                        <stop offset="100%" style={{stopColor: '#ffffff', stopOpacity: 1}} />
-                      </linearGradient>
-
-                    </defs>
-                    
-                    {/* Speed Gauge Arc */}
-                    <path d="M 10 20 A 10 10 0 0 1 30 20" stroke="url(#iconGradient)" strokeWidth="3" fill="none" strokeLinecap="round">
-                      <animate attributeName="stroke-opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
-                    </path>
-                    
-                    {/* Dynamic Speed Needle */}
-                    <line x1="20" y1="20" x2="27" y2="14" stroke="url(#iconGradient)" strokeWidth="3" strokeLinecap="round">
-                      <animateTransform attributeName="transform" type="rotate" values="0 20 20;15 20 20;0 20 20" dur="3s" repeatCount="indefinite"/>
-                    </line>
-                    
-                    {/* Pulsing Center */}
-                    <circle cx="20" cy="20" r="2.5" fill="url(#iconGradient)">
-                      <animate attributeName="r" values="2.5;3.5;2.5" dur="2s" repeatCount="indefinite"/>
-                      <animate attributeName="fill-opacity" values="1;0.8;1" dur="2s" repeatCount="indefinite"/>
-                    </circle>
-                    
-                    {/* Speed Marks with Stagger Animation */}
-                    <g stroke="url(#iconGradient)" strokeWidth="2" strokeLinecap="round">
-                      <line x1="11" y1="18" x2="13" y2="17">
-                        <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" begin="0s" repeatCount="indefinite"/>
-                      </line>
-                      <line x1="10" y1="20" x2="12" y2="20">
-                        <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" begin="0.3s" repeatCount="indefinite"/>
-                      </line>
-                      <line x1="11" y1="22" x2="13" y2="23">
-                        <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" begin="0.6s" repeatCount="indefinite"/>
-                      </line>
-                      
-                      <line x1="27" y1="17" x2="29" y2="18">
-                        <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" begin="0.9s" repeatCount="indefinite"/>
-                      </line>
-                      <line x1="28" y1="20" x2="30" y2="20">
-                        <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" begin="1.2s" repeatCount="indefinite"/>
-                      </line>
-                      <line x1="27" y1="23" x2="29" y2="22">
-                        <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" begin="1.5s" repeatCount="indefinite"/>
-                      </line>
-                    </g>
-                    
-                    {/* Animated WiFi Waves */}
-                    <g stroke="url(#iconGradient)" strokeWidth="2" fill="none" strokeLinecap="round">
-                      <path d="M 16 28 Q 20 26 24 28">
-                        <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
-                      </path>
-                      <path d="M 17 30 Q 20 28.5 23 30">
-                        <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="1.5s" begin="0.5s" repeatCount="indefinite"/>
-                      </path>
-                      <circle cx="20" cy="32" r="1.5" fill="url(#iconGradient)">
-                        <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="1s" repeatCount="indefinite"/>
-                      </circle>
-                    </g>
-                  </svg>
-                </div>
-              </div>
-              
-              {/* Enhanced Title with Gradient Animation */}
-              <div className="flex flex-col">
-                <h1 className="text-2xl lg:text-4xl font-bold gradient-text relative">
-                  <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient-x">
-                    Speed Test & Boost
-                  </span>
-                </h1>
-                <p className="text-xs lg:text-sm text-muted-foreground mt-1 opacity-75">
-                  Professional Network Diagnostics
-                </p>
-              </div>
-            </div>
-            
-            {/* Navigation and Status */}
-            <div className="flex items-center space-x-4">
-              {/* Desktop Navigation Links */}
-              <div className="hidden lg:flex items-center space-x-6">
-                <Link href="/us-speed-test" className="bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">
-                  Global Speed Test
-                </Link>
-                <Link href="/internet-speed-requirements" className="text-muted-foreground hover:text-primary transition-colors">
-                  Speed Guide
-                </Link>
-                <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
-                  About
-                </Link>
-                <Link href="/help" className="text-muted-foreground hover:text-primary transition-colors">
-                  Help & FAQ
-                </Link>
-              </div>
-              
-              {/* Mobile Menu Button */}
-              <button
-                onClick={() => setShowMobileMenu(!showMobileMenu)}
-                className="lg:hidden p-2 rounded-lg hover:bg-muted/50 transition-colors"
-                aria-label="Toggle mobile menu"
-              >
-                {showMobileMenu ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-              </button>
-            </div>
-          </div>
-          
-          {/* Mobile Navigation Menu */}
-          {showMobileMenu && (
-            <div className="lg:hidden mt-4 pt-4 border-t border-border/30">
-              <div className="flex flex-col space-y-3">
-                <Link 
-                  href="/us-speed-test" 
-                  className="bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors"
-                  onClick={() => setShowMobileMenu(false)}
-                >
-                  Global Speed Test
-                </Link>
-                <Link 
-                  href="/internet-speed-requirements" 
-                  className="text-muted-foreground hover:text-primary transition-colors py-2"
-                  onClick={() => setShowMobileMenu(false)}
-                >
-                  Speed Guide
-                </Link>
-                <Link 
-                  href="/about" 
-                  className="text-muted-foreground hover:text-primary transition-colors py-2"
-                  onClick={() => setShowMobileMenu(false)}
-                >
-                  About
-                </Link>
-                <Link 
-                  href="/help" 
-                  className="text-muted-foreground hover:text-primary transition-colors py-2"
-                  onClick={() => setShowMobileMenu(false)}
-                >
-                  Help & FAQ
-                </Link>
-              </div>
-            </div>
-          )}
-        </div>
-      </header>
-
-      {/* City Navigation Menu */}
-      <section className="bg-card/30 border-b border-border/30 py-4">
-        <div className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8">
-          <div className="text-center">
-            <h3 className="text-lg font-semibold text-foreground mb-4">Test Your Internet Speed by City</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-              <Link href="/mumbai-speed-test" className="block p-3 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-                <div className="text-sm font-medium text-foreground">Mumbai</div>
-                <div className="text-xs text-muted-foreground">Internet Speed & Booster</div>
-              </Link>
-              <Link href="/delhi-speed-test" className="block p-3 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-                <div className="text-sm font-medium text-foreground">Delhi</div>
-                <div className="text-xs text-muted-foreground">Internet Speed & Booster</div>
-              </Link>
-              <Link href="/bangalore-speed-test" className="block p-3 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-                <div className="text-sm font-medium text-foreground">Bangalore</div>
-                <div className="text-xs text-muted-foreground">Internet Speed & Booster</div>
-              </Link>
-              <Link href="/hyderabad-speed-test" className="block p-3 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-                <div className="text-sm font-medium text-foreground">Hyderabad</div>
-                <div className="text-xs text-muted-foreground">Internet Speed & Booster</div>
-              </Link>
-              <Link href="/chennai-speed-test" className="block p-3 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-                <div className="text-sm font-medium text-foreground">Chennai</div>
-                <div className="text-xs text-muted-foreground">Internet Speed & Booster</div>
-              </Link>
-              <Link href="/kolkata-speed-test" className="block p-3 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-                <div className="text-sm font-medium text-foreground">Kolkata</div>
-                <div className="text-xs text-muted-foreground">Internet Speed & Booster</div>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Compare with External Tools Section */}
-      <section className="bg-muted/20 py-8 border-b border-border/30">
-        <div className="max-w-7xl mx-auto px-4 lg:px-8">
-          <div className="text-center mb-6">
-            <h2 className="text-xl font-semibold text-foreground mb-2">Compare Speed Test Results</h2>
-            <p className="text-sm text-muted-foreground">
-              Test your connection across multiple platforms for the most accurate assessment
-            </p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 px-4 py-2 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-              <span className="text-sm font-medium text-foreground">Fast.com</span>
-              <span className="text-xs text-muted-foreground">by Netflix</span>
-            </a>
-            <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 px-4 py-2 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-              <span className="text-sm font-medium text-foreground">Speedtest.net</span>
-              <span className="text-xs text-muted-foreground">by Ookla</span>
-            </a>
-            <a href="https://www.google.com/search?q=internet+speed+test" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 px-4 py-2 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-              <span className="text-sm font-medium text-foreground">Google Speed Test</span>
-              <span className="text-xs text-muted-foreground">Search Tool</span>
-            </a>
-          </div>
-        </div>
-      </section>
+      <Header currentPath="/" />
 
 
 
