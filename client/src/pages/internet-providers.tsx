@@ -136,38 +136,6 @@ const countries = [
       { name: "Algar Telecom", slug: "algar-telecom", type: "Fiber/ADSL", coverage: "Minas Gerais" },
       { name: "Brisanet", slug: "brisanet", type: "Fiber", coverage: "Northeast Brazil" }
     ]
-  },
-  {
-    name: "Japan",
-    code: "jp",
-    flag: "🇯🇵",
-    population: "125M",
-    providers: [
-      { name: "NTT", slug: "ntt", type: "Fiber/5G", coverage: "Nationwide" },
-      { name: "SoftBank", slug: "softbank", type: "Fiber/5G", coverage: "Nationwide" },
-      { name: "KDDI", slug: "kddi", type: "Fiber/5G", coverage: "Nationwide" },
-      { name: "So-net", slug: "so-net", type: "Fiber", coverage: "Nationwide" },
-      { name: "OCN", slug: "ocn", type: "Fiber", coverage: "Nationwide" },
-      { name: "Biglobe", slug: "biglobe", type: "Fiber", coverage: "Nationwide" },
-      { name: "Nifty", slug: "nifty", type: "Fiber", coverage: "Nationwide" },
-      { name: "IIJ", slug: "iij", type: "Fiber/Business", coverage: "Business Focus" }
-    ]
-  },
-  {
-    name: "South Korea",
-    code: "kr",
-    flag: "🇰🇷",
-    population: "52M",
-    providers: [
-      { name: "KT", slug: "kt", type: "Fiber/5G", coverage: "Nationwide" },
-      { name: "SK Telecom", slug: "sk-telecom", type: "Fiber/5G", coverage: "Nationwide" },
-      { name: "LG U+", slug: "lg-uplus", type: "Fiber/5G", coverage: "Nationwide" },
-      { name: "LG HelloVision", slug: "lg-hellovision", type: "Cable/IPTV", coverage: "Major Cities" },
-      { name: "Hyundai HCN", slug: "hyundai-hcn", type: "Cable", coverage: "Seoul Region" },
-      { name: "CJ Hello", slug: "cj-hello", type: "Cable/IPTV", coverage: "Regional" },
-      { name: "D'Live", slug: "dlive", type: "Cable", coverage: "Regional" },
-      { name: "CMB", slug: "cmb", type: "Cable", coverage: "Busan Region" }
-    ]
   }
 ];
 
