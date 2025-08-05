@@ -18,7 +18,7 @@ Preferred communication style: Simple, everyday language.
 - **UI Components**: shadcn/ui built on Radix UI primitives
 - **Styling**: Tailwind CSS with custom CSS variables (dark theme with purple/pink gradient accents)
 - **Forms**: React Hook Form with Zod validation
-- **Design Decisions**: Modern dark theme, animated header with custom speed gauge icon, responsive design (desktop three-column layout, mobile-first), improved contrast and readability.
+- **Design Decisions**: Modern dark theme, static logo (progress gauge design) with responsive branding, responsive design (desktop three-column layout, mobile-first), improved contrast and readability.
 
 ### Backend Architecture
 - **Framework**: Express.js with TypeScript
