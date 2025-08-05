@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import antml:parameter name="Button" from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Zap, Wifi, MapPin, TrendingUp, Users } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
 
