@@ -15,6 +15,10 @@ import UKSpeedTest from "@/pages/uk-speed-test";
 import AUSpeedTest from "@/pages/au-speed-test";
 import CASpeedTest from "@/pages/ca-speed-test";
 import InternetSpeedRequirements from "@/pages/internet-speed-requirements";
+import InternetProviders from "@/pages/internet-providers";
+import VerizonSpeedTest from "@/pages/providers/us/verizon";
+import BTSpeedTest from "@/pages/providers/uk/bt";
+import JioFiberSpeedTest from "@/pages/providers/in/jio-fiber";
 import NotFound from "@/pages/not-found";
 import { useEffect } from "react";
 import { initGA } from "./lib/analytics";
@@ -40,6 +44,10 @@ function Router() {
       <Route path="/au-speed-test" component={AUSpeedTest} />
       <Route path="/ca-speed-test" component={CASpeedTest} />
       <Route path="/internet-speed-requirements" component={InternetSpeedRequirements} />
+      <Route path="/internet-providers" component={InternetProviders} />
+      <Route path="/providers/us/verizon" component={VerizonSpeedTest} />
+      <Route path="/providers/uk/bt" component={BTSpeedTest} />
+      <Route path="/providers/in/jio-fiber" component={JioFiberSpeedTest} />
       <Route component={NotFound} />
     </Switch>
   );
