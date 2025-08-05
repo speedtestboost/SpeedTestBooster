@@ -10,8 +10,9 @@ import SpeedGauge from "@/components/SpeedGauge";
 import TestHistory from "@/components/TestHistory";
 import NetworkInfo from "@/components/NetworkInfo";
 import OptimizationModal from "@/components/OptimizationModal";
+import Header from "@/components/Header";
 import { performSpeedTest, type SpeedTestResult } from "@/lib/speedTest";
-import { Play, Gauge, Wifi, Menu, X } from "lucide-react";
+import { Play, Gauge, Wifi } from "lucide-react";
 import { Link } from "wouter";
 
 export default function ChennaiSpeedTest() {
@@ -20,7 +21,7 @@ export default function ChennaiSpeedTest() {
   const [testStatus, setTestStatus] = useState("Ready to test");
   const [currentResult, setCurrentResult] = useState<SpeedTestResult | null>(null);
   const [showOptimization, setShowOptimization] = useState(false);
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
+
   const { toast } = useToast();
 
   useEffect(() => {
@@ -197,98 +198,7 @@ export default function ChennaiSpeedTest() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="bg-card/50 backdrop-blur-sm border-b border-border/50 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-full h-full">
-            <div className="absolute w-32 h-32 rounded-full bg-gradient-to-r from-primary to-accent animate-pulse opacity-30 -top-16 -left-16"></div>
-            <div className="absolute w-24 h-24 rounded-full bg-gradient-to-r from-accent to-primary animate-pulse opacity-20 -top-12 right-20 animation-delay-1000"></div>
-            <div className="absolute w-16 h-16 rounded-full bg-gradient-to-r from-primary to-accent animate-pulse opacity-25 -bottom-8 left-1/3 animation-delay-500"></div>
-          </div>
-        </div>
-        <div className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-6 relative z-10">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="relative">
-                <div className="p-3 rounded-2xl gradient-bg hover:scale-105 transition-all duration-300">
-                  <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style={{stopColor: '#ffffff', stopOpacity: 1}} />
-                        <stop offset="50%" style={{stopColor: '#f8fafc', stopOpacity: 0.9}} />
-                        <stop offset="100%" style={{stopColor: '#ffffff', stopOpacity: 1}} />
-                      </linearGradient>
-                    </defs>
-                    <path d="M 10 20 A 10 10 0 0 1 30 20" stroke="url(#iconGradient)" strokeWidth="3" fill="none" strokeLinecap="round">
-                      <animate attributeName="stroke-opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
-                    </path>
-                    <line x1="20" y1="20" x2="27" y2="14" stroke="url(#iconGradient)" strokeWidth="3" strokeLinecap="round">
-                      <animateTransform attributeName="transform" type="rotate" values="0 20 20;15 20 20;0 20 20" dur="3s" repeatCount="indefinite"/>
-                    </line>
-                    <circle cx="20" cy="20" r="2.5" fill="url(#iconGradient)">
-                      <animate attributeName="r" values="2.5;3.5;2.5" dur="2s" repeatCount="indefinite"/>
-                    </circle>
-                  </svg>
-                </div>
-              </div>
-              <div className="flex flex-col">
-                <h1 className="text-2xl lg:text-4xl font-bold gradient-text relative">
-                  <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient-x">
-                    Chennai Speed Test & Boost
-                  </span>
-                </h1>
-                <p className="text-xs lg:text-sm text-muted-foreground mt-1 opacity-75">
-                  Professional Network Diagnostics for Chennai
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-6">
-              <div className="hidden lg:flex items-center space-x-6">
-                <Link href="/" className="bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">Home</Link>
-                <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
-                <Link href="/help" className="text-muted-foreground hover:text-primary transition-colors">Help & FAQ</Link>
-              </div>
-              
-              {/* Mobile Menu Button */}
-              <button
-                onClick={() => setShowMobileMenu(!showMobileMenu)}
-                className="lg:hidden p-2 rounded-lg hover:bg-muted/50 transition-colors"
-                aria-label="Toggle mobile menu"
-              >
-                {showMobileMenu ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-              </button>
-            </div>
-          </div>
-          
-          {/* Mobile Navigation Menu */}
-          {showMobileMenu && (
-            <div className="lg:hidden mt-4 pt-4 border-t border-border/30">
-              <div className="flex flex-col space-y-3">
-                <Link 
-                  href="/" 
-                  className="text-muted-foreground hover:text-primary transition-colors py-2"
-                  onClick={() => setShowMobileMenu(false)}
-                >
-                  Home
-                </Link>
-                <Link 
-                  href="/about" 
-                  className="text-muted-foreground hover:text-primary transition-colors py-2"
-                  onClick={() => setShowMobileMenu(false)}
-                >
-                  About
-                </Link>
-                <Link 
-                  href="/help" 
-                  className="text-muted-foreground hover:text-primary transition-colors py-2"
-                  onClick={() => setShowMobileMenu(false)}
-                >
-                  Help & FAQ
-                </Link>
-              </div>
-            </div>
-          )}
-        </div>
-      </header>
+      <Header currentPath="/chennai-speed-test" />
 
       <section className="max-w-4xl mx-auto px-4 lg:px-8 py-8">
         <div className="text-center mb-8">
