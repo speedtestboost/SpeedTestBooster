@@ -1,33 +1,32 @@
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Zap, Wifi, MapPin, Star, TrendingUp, Users, Shield } from "lucide-react";
+import { Zap, Wifi } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
 
 export default function BTSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "BT Broadband Speed Test - Test BT Fibre & ADSL Internet UK 2025";
+    document.title = "BT Speed Test - Test BT Broadband Internet Speed UK 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your BT broadband speed for free. Check BT Fibre speeds up to 900 Mbps and ADSL performance across the UK.');
+      metaDescription.setAttribute('content', 'Test your BT internet speed for free. BT UK speed test for fiber broadband, ADSL, and full fiber services nationwide.');
     }
 
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "BT Broadband Speed Test",
-      "description": "Test your BT broadband speed for free. Check fibre speeds up to 900 Mbps and ADSL performance.",
+      "name": "BT Speed Test",
+      "description": "Test your BT internet speed for free. Speed test for BT fiber and ADSL customers.",
       "url": `${window.location.origin}/providers/uk/bt`,
       "provider": {
         "@type": "Organization",
         "name": "BT",
-        "description": "UK's largest broadband provider offering fibre and ADSL internet services nationwide",
+        "description": "Major UK telecommunications company providing fiber and ADSL internet services",
         "areaServed": { "@type": "Country", "name": "United Kingdom" },
-        "serviceType": ["Fibre Broadband", "ADSL", "Phone", "TV"]
+        "serviceType": ["Fiber Broadband", "ADSL", "Full Fiber", "TV", "Business Services"]
       }
     };
 
@@ -47,8 +46,7 @@ export default function BTSpeedTest() {
       <Header currentPath="/providers/uk/bt" />
       
       <main className="pt-24 pb-12">
-        <div className="max-w-7xl mx-auto px-4 lg:px-8">
-          {/* Hero Section */}
+        <div className="max-w-4xl mx-auto px-4 lg:px-8">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-6">
               <div className="p-4 bg-purple-500/10 rounded-full">
@@ -56,14 +54,13 @@ export default function BTSpeedTest() {
               </div>
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-500 bg-clip-text text-transparent">
-              BT Broadband Speed Test
+              BT Speed Test
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Test your <span className="font-semibold text-purple-500">BT broadband speed</span> for free. Check BT Fibre speeds up to 900 Mbps and ADSL performance across the UK.
+              Test your <span className="font-semibold text-purple-500">BT internet speed</span> for free. Check your fiber broadband or ADSL internet performance.
             </p>
             
-            {/* Speed Test CTA */}
-            <div className="mb-8">
+            <div className="mb-12">
               <Button 
                 onClick={() => setShowSpeedTest(true)} 
                 size="lg" 
@@ -75,105 +72,70 @@ export default function BTSpeedTest() {
             </div>
           </div>
 
-          {/* Provider Info Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center space-x-2 text-sm">
-                  <Users className="h-4 w-4 text-purple-500" />
-                  <span>Customers</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold">9.5M+</p>
-                <p className="text-sm text-muted-foreground">UK broadband</p>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center space-x-2 text-sm">
-                  <TrendingUp className="h-4 w-4 text-purple-500" />
-                  <span>Max Speed</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold">900 Mbps</p>
-                <p className="text-sm text-muted-foreground">Fibre 2</p>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center space-x-2 text-sm">
-                  <MapPin className="h-4 w-4 text-purple-500" />
-                  <span>Coverage</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold">95%</p>
-                <p className="text-sm text-muted-foreground">UK premises</p>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center space-x-2 text-sm">
-                  <Shield className="h-4 w-4 text-purple-500" />
-                  <span>Technology</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold">Fibre</p>
-                <p className="text-sm text-muted-foreground">+ ADSL legacy</p>
-              </CardContent>
-            </Card>
-          </div>
+          <Card>
+            <CardContent className="p-8">
+              <h2 className="text-2xl font-bold mb-6">About BT</h2>
+              <div className="prose prose-gray dark:prose-invert max-w-none space-y-6">
+                <p className="text-lg text-muted-foreground">
+                  BT Group plc represents the United Kingdom's oldest and most established telecommunications company, 
+                  with origins tracing back to the founding of the public telephone system. As the incumbent operator, 
+                  BT maintains extensive network infrastructure across the UK while serving millions of customers with 
+                  comprehensive internet, mobile, and digital services. The company operates critical national 
+                  telecommunications infrastructure while competing in modern broadband and business communications markets.
+                </p>
+                
+                <h3 className="text-xl font-semibold mb-3">National Infrastructure Heritage</h3>
+                <p className="text-muted-foreground">
+                  BT operates the United Kingdom's most extensive telecommunications network infrastructure, built 
+                  upon decades of investment in copper, fiber, and wireless technologies. The company's network 
+                  reaches virtually every community across England, Scotland, Wales, and Northern Ireland, providing 
+                  comprehensive coverage that reflects BT's historical role as the UK's primary telecommunications 
+                  provider. This extensive infrastructure foundation enables diverse connectivity solutions across 
+                  varied geographic and demographic markets.
+                </p>
 
-          {/* SEO Content */}
-          <div className="max-w-4xl mx-auto">
-            <Card>
-              <CardContent className="p-8">
-                <h2 className="text-2xl font-bold mb-4">About BT Broadband</h2>
-                <div className="prose prose-gray dark:prose-invert max-w-none">
-                  <p className="text-lg text-muted-foreground mb-4">
-                    BT is the UK's largest broadband provider, serving over 9.5 million customers with high-speed internet 
-                    services. Operating the UK's largest fibre network, BT offers superfast and ultrafast broadband with 
-                    speeds up to 900 Mbps, covering 95% of UK premises.
-                  </p>
-                  
-                  <h3 className="text-xl font-semibold mb-3">BT Broadband Plans</h3>
-                  <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                    <li><strong>BT Broadband Essential:</strong> Standard ADSL up to 10 Mbps for basic usage</li>
-                    <li><strong>BT Fibre Essential:</strong> Superfast fibre up to 36 Mbps for streaming</li>
-                    <li><strong>BT Fibre 1:</strong> Up to 50 Mbps for multiple device households</li>
-                    <li><strong>BT Fibre 2:</strong> Up to 67 Mbps for heavy usage and gaming</li>
-                    <li><strong>BT Full Fibre 100:</strong> 150 Mbps ultrafast fibre for power users</li>
-                    <li><strong>BT Full Fibre 500:</strong> 500 Mbps for ultimate performance</li>
-                    <li><strong>BT Full Fibre 900:</strong> 900 Mbps fastest residential speeds</li>
-                  </ul>
+                <h3 className="text-xl font-semibold mb-3">Fiber Network Advancement</h3>
+                <p className="text-muted-foreground">
+                  BT's fiber broadband network represents significant modernization of UK telecommunications 
+                  infrastructure, delivering superfast and ultrafast broadband services through fiber-to-the-cabinet 
+                  and fiber-to-the-premises technologies. The company's fiber deployment strategy encompasses both 
+                  urban centers and rural communities, supporting the UK government's digital connectivity goals 
+                  while providing customers with advanced broadband capabilities for streaming, remote work, and 
+                  digital applications.
+                </p>
 
-                  <h3 className="text-xl font-semibold mb-3 mt-6">Coverage Areas</h3>
-                  <p className="text-muted-foreground mb-4">
-                    BT broadband is available nationwide across England, Scotland, Wales, and Northern Ireland. The company's 
-                    Openreach network covers 95% of UK premises with superfast broadband, while full fibre (FTTP) coverage 
-                    continues expanding to major cities and towns across the country.
-                  </p>
+                <h3 className="text-xl font-semibold mb-3">Business and Enterprise Leadership</h3>
+                <p className="text-muted-foreground">
+                  BT Global Services operates as a major provider of telecommunications solutions for UK and 
+                  international businesses, delivering managed networks, cloud services, cybersecurity, and 
+                  communication platforms. The company's business division leverages its extensive network 
+                  infrastructure and technical expertise to serve large corporations, government agencies, and 
+                  public sector organizations with sophisticated connectivity and communication requirements.
+                </p>
 
-                  <h3 className="text-xl font-semibold mb-3">Why Test Your BT Speed?</h3>
-                  <p className="text-muted-foreground">
-                    Testing your BT broadband speed helps ensure optimal performance and value for money. Our BT speed test 
-                    measures download speeds, upload speeds, and ping latency to help identify connection issues, optimize 
-                    your setup, and verify you're receiving the speeds promised in your BT broadband package.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+                <h3 className="text-xl font-semibold mb-3">Technology Innovation Focus</h3>
+                <p className="text-muted-foreground">
+                  BT invests in emerging telecommunications technologies including 5G networks, Internet of Things 
+                  applications, and artificial intelligence solutions that enhance network performance and customer 
+                  experiences. The company's innovation strategy emphasizes research and development while maintaining 
+                  the reliability and coverage standards expected from the UK's national telecommunications provider. 
+                  This technology focus supports both consumer services and specialized business applications.
+                </p>
+
+                <h3 className="text-xl font-semibold mb-3">Service Quality Monitoring</h3>
+                <p className="text-muted-foreground">
+                  Regular speed testing helps BT customers monitor their internet performance and ensure optimal 
+                  service delivery from their fiber broadband or ADSL connection. Our BT speed test measures 
+                  download speeds, upload speeds, and network latency, providing insights into your broadband 
+                  performance. This testing helps identify connectivity issues and ensures you're receiving the 
+                  reliable internet service that reflects BT's telecommunications heritage and infrastructure excellence.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </main>
 
-      {/* Speed Test Modal */}
       {showSpeedTest && (
         <SpeedTestModal onClose={() => setShowSpeedTest(false)} />
       )}

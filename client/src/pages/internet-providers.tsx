@@ -17,12 +17,7 @@ const countries = [
     providers: [
       { name: "Verizon", slug: "verizon", type: "Fiber/5G", coverage: "Nationwide" },
       { name: "Comcast Xfinity", slug: "comcast-xfinity", type: "Cable/Fiber", coverage: "39 States" },
-      { name: "AT&T", slug: "att", type: "Fiber/DSL", coverage: "Nationwide" },
-      { name: "Spectrum", slug: "spectrum", type: "Cable", coverage: "41 States" },
-      { name: "Cox", slug: "cox", type: "Cable/Fiber", coverage: "18 States" },
-      { name: "Mediacom", slug: "mediacom", type: "Cable", coverage: "22 States" },
-      { name: "CenturyLink", slug: "centurylink", type: "DSL/Fiber", coverage: "36 States" },
-      { name: "Optimum", slug: "optimum", type: "Cable/Fiber", coverage: "4 States" }
+      { name: "AT&T", slug: "att", type: "Fiber/DSL", coverage: "Nationwide" }
     ]
   },
   {
@@ -33,12 +28,7 @@ const countries = [
     providers: [
       { name: "BT", slug: "bt", type: "Fiber/ADSL", coverage: "Nationwide" },
       { name: "Sky", slug: "sky", type: "Fiber/ADSL", coverage: "Nationwide" },
-      { name: "Virgin Media", slug: "virgin-media", type: "Cable/Fiber", coverage: "Nationwide" },
-      { name: "TalkTalk", slug: "talktalk", type: "Fiber/ADSL", coverage: "Nationwide" },
-      { name: "Plusnet", slug: "plusnet", type: "Fiber/ADSL", coverage: "Nationwide" },
-      { name: "EE", slug: "ee", type: "4G/5G/Fiber", coverage: "Nationwide" },
-      { name: "Vodafone", slug: "vodafone-uk", type: "4G/5G/Fiber", coverage: "Nationwide" },
-      { name: "Three", slug: "three-uk", type: "4G/5G", coverage: "Nationwide" }
+      { name: "Virgin Media", slug: "virgin-media", type: "Cable/Fiber", coverage: "Nationwide" }
     ]
   },
   {
@@ -49,28 +39,7 @@ const countries = [
     providers: [
       { name: "Bell", slug: "bell", type: "Fiber/DSL", coverage: "Nationwide" },
       { name: "Rogers", slug: "rogers", type: "Cable/5G", coverage: "Nationwide" },
-      { name: "Telus", slug: "telus", type: "Fiber/LTE", coverage: "Western Canada" },
-      { name: "Shaw", slug: "shaw", type: "Cable", coverage: "Western Canada" },
-      { name: "Videotron", slug: "videotron", type: "Cable/LTE", coverage: "Quebec" },
-      { name: "Eastlink", slug: "eastlink", type: "Cable/Fiber", coverage: "Atlantic Canada" },
-      { name: "SaskTel", slug: "sasktel", type: "Fiber/LTE", coverage: "Saskatchewan" },
-      { name: "TekSavvy", slug: "teksavvy", type: "Cable/DSL", coverage: "Ontario/Quebec" }
-    ]
-  },
-  {
-    name: "Australia",
-    code: "au",
-    flag: "🇦🇺",
-    population: "26M",
-    providers: [
-      { name: "Telstra", slug: "telstra", type: "NBN/5G", coverage: "Nationwide" },
-      { name: "Optus", slug: "optus", type: "NBN/5G", coverage: "Nationwide" },
-      { name: "TPG", slug: "tpg", type: "NBN/ADSL", coverage: "Nationwide" },
-      { name: "iiNet", slug: "iinet", type: "NBN/ADSL", coverage: "Nationwide" },
-      { name: "Aussie Broadband", slug: "aussie-broadband", type: "NBN", coverage: "Nationwide" },
-      { name: "Vodafone", slug: "vodafone-au", type: "NBN/4G", coverage: "Nationwide" },
-      { name: "Internode", slug: "internode", type: "NBN/ADSL", coverage: "Nationwide" },
-      { name: "Exetel", slug: "exetel", type: "NBN/ADSL", coverage: "Nationwide" }
+      { name: "Telus", slug: "telus", type: "Fiber/LTE", coverage: "Western Canada" }
     ]
   },
   {
@@ -81,60 +50,18 @@ const countries = [
     providers: [
       { name: "Deutsche Telekom", slug: "deutsche-telekom", type: "Fiber/DSL", coverage: "Nationwide" },
       { name: "Vodafone", slug: "vodafone-de", type: "Cable/5G", coverage: "Nationwide" },
-      { name: "O2", slug: "o2-de", type: "DSL/LTE", coverage: "Nationwide" },
-      { name: "1&1", slug: "1and1", type: "DSL/Fiber", coverage: "Nationwide" },
-      { name: "Unitymedia", slug: "unitymedia", type: "Cable", coverage: "Regional" },
-      { name: "NetCologne", slug: "netcologne", type: "Fiber/Cable", coverage: "Cologne Region" },
-      { name: "M-net", slug: "m-net", type: "Fiber/DSL", coverage: "Munich Region" },
-      { name: "EWE", slug: "ewe", type: "Fiber/DSL", coverage: "Northern Germany" }
+      { name: "O2", slug: "o2-de", type: "DSL/LTE", coverage: "Nationwide" }
     ]
   },
   {
-    name: "India",
-    code: "in",
-    flag: "🇮🇳",
-    population: "1.4B",
+    name: "Australia",
+    code: "au",
+    flag: "🇦🇺",
+    population: "26M",
     providers: [
-      { name: "Jio Fiber", slug: "jio-fiber", type: "Fiber", coverage: "Pan-India" },
-      { name: "Airtel Xstream", slug: "airtel-xstream", type: "Fiber", coverage: "Pan-India" },
-      { name: "ACT Fibernet", slug: "act-fibernet", type: "Fiber", coverage: "Major Cities" },
-      { name: "BSNL", slug: "bsnl", type: "Fiber/ADSL", coverage: "Pan-India" },
-      { name: "Hathway", slug: "hathway", type: "Cable/Fiber", coverage: "Major Cities" },
-      { name: "Excitel", slug: "excitel", type: "Fiber", coverage: "Metro Cities" },
-      { name: "Tata Play Fiber", slug: "tata-play-fiber", type: "Fiber", coverage: "Major Cities" },
-      { name: "GTPL", slug: "gtpl", type: "Cable/Fiber", coverage: "Gujarat/Maharashtra" }
-    ]
-  },
-  {
-    name: "France",
-    code: "fr",
-    flag: "🇫🇷",
-    population: "67M",
-    providers: [
-      { name: "Orange", slug: "orange-fr", type: "Fiber/ADSL", coverage: "Nationwide" },
-      { name: "SFR", slug: "sfr", type: "Fiber/Cable", coverage: "Nationwide" },
-      { name: "Free", slug: "free-fr", type: "Fiber/ADSL", coverage: "Nationwide" },
-      { name: "Bouygues Telecom", slug: "bouygues-telecom", type: "Fiber/4G", coverage: "Nationwide" },
-      { name: "RED by SFR", slug: "red-by-sfr", type: "Fiber/4G", coverage: "Nationwide" },
-      { name: "Sosh", slug: "sosh", type: "Fiber/ADSL", coverage: "Nationwide" },
-      { name: "B&YOU", slug: "b-and-you", type: "Fiber/4G", coverage: "Nationwide" },
-      { name: "Nordnet", slug: "nordnet", type: "Satellite/ADSL", coverage: "Rural Areas" }
-    ]
-  },
-  {
-    name: "Brazil",
-    code: "br",
-    flag: "🇧🇷",
-    population: "215M",
-    providers: [
-      { name: "Vivo", slug: "vivo-br", type: "Fiber/5G", coverage: "Nationwide" },
-      { name: "Claro", slug: "claro-br", type: "Fiber/5G", coverage: "Nationwide" },
-      { name: "TIM", slug: "tim-br", type: "Fiber/5G", coverage: "Nationwide" },
-      { name: "Oi", slug: "oi", type: "Fiber/ADSL", coverage: "Nationwide" },
-      { name: "NET", slug: "net-br", type: "Cable/Fiber", coverage: "Major Cities" },
-      { name: "Copel Telecom", slug: "copel-telecom", type: "Fiber", coverage: "Paraná" },
-      { name: "Algar Telecom", slug: "algar-telecom", type: "Fiber/ADSL", coverage: "Minas Gerais" },
-      { name: "Brisanet", slug: "brisanet", type: "Fiber", coverage: "Northeast Brazil" }
+      { name: "Telstra", slug: "telstra", type: "NBN/5G", coverage: "Nationwide" },
+      { name: "Optus", slug: "optus", type: "NBN/5G", coverage: "Nationwide" },
+      { name: "TPG", slug: "tpg", type: "NBN/ADSL", coverage: "Nationwide" }
     ]
   }
 ];

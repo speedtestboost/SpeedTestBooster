@@ -1,33 +1,32 @@
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Zap, Wifi, MapPin, Star, TrendingUp, Users, Shield } from "lucide-react";
+import { Zap, Wifi } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
 
 export default function ATTSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "AT&T Internet Speed Test - Test AT&T Fiber & DSL Speeds 2025";
+    document.title = "AT&T Speed Test - Test AT&T Fiber Internet Speed 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your AT&T internet speed for free. Check AT&T Fiber speeds up to 5 Gig and DSL performance across the US.');
+      metaDescription.setAttribute('content', 'Test your AT&T internet speed for free. AT&T fiber speed test for gigabit internet and DSL services nationwide.');
     }
 
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "AT&T Internet Speed Test",
-      "description": "Test your AT&T internet speed for free. Check fiber speeds up to 5 Gig and DSL performance.",
+      "name": "AT&T Speed Test",
+      "description": "Test your AT&T internet speed for free. Speed test for AT&T fiber and DSL customers.",
       "url": `${window.location.origin}/providers/us/att`,
       "provider": {
         "@type": "Organization",
         "name": "AT&T",
-        "description": "Major telecommunications provider offering fiber internet, DSL, and wireless services",
+        "description": "Major US telecommunications company providing fiber and DSL internet services",
         "areaServed": { "@type": "Country", "name": "United States" },
-        "serviceType": ["Fiber Internet", "DSL", "Wireless", "TV"]
+        "serviceType": ["Fiber Internet", "DSL", "5G", "TV", "Business Services"]
       }
     };
 
@@ -47,27 +46,25 @@ export default function ATTSpeedTest() {
       <Header currentPath="/providers/us/att" />
       
       <main className="pt-24 pb-12">
-        <div className="max-w-7xl mx-auto px-4 lg:px-8">
-          {/* Hero Section */}
+        <div className="max-w-4xl mx-auto px-4 lg:px-8">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-6">
-              <div className="p-4 bg-blue-500/10 rounded-full">
-                <Wifi className="h-12 w-12 text-blue-500" />
+              <div className="p-4 bg-orange-500/10 rounded-full">
+                <Wifi className="h-12 w-12 text-orange-500" />
               </div>
             </div>
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 bg-clip-text text-transparent">
-              AT&T Internet Speed Test
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">
+              AT&T Speed Test
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Test your <span className="font-semibold text-blue-500">AT&T internet speed</span> for free. Check AT&T Fiber speeds up to 5 Gig and DSL performance nationwide.
+              Test your <span className="font-semibold text-orange-500">AT&T internet speed</span> for free. Check your fiber or DSL internet performance nationwide.
             </p>
             
-            {/* Speed Test CTA */}
-            <div className="mb-8">
+            <div className="mb-12">
               <Button 
                 onClick={() => setShowSpeedTest(true)} 
                 size="lg" 
-                className="text-lg px-8 py-6 bg-gradient-to-r from-blue-500 to-blue-600 hover:opacity-90 transition-opacity"
+                className="text-lg px-8 py-6 bg-gradient-to-r from-orange-500 to-orange-600 hover:opacity-90 transition-opacity"
               >
                 <Zap className="mr-2 h-5 w-5" />
                 Test AT&T Speed Now
@@ -75,104 +72,68 @@ export default function ATTSpeedTest() {
             </div>
           </div>
 
-          {/* Provider Info Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center space-x-2 text-sm">
-                  <Users className="h-4 w-4 text-blue-500" />
-                  <span>Customers</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold">15.9M+</p>
-                <p className="text-sm text-muted-foreground">Internet subscribers</p>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center space-x-2 text-sm">
-                  <TrendingUp className="h-4 w-4 text-blue-500" />
-                  <span>Max Speed</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold">5 Gbps</p>
-                <p className="text-sm text-muted-foreground">AT&T Fiber</p>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center space-x-2 text-sm">
-                  <MapPin className="h-4 w-4 text-blue-500" />
-                  <span>Coverage</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold">21 States</p>
-                <p className="text-sm text-muted-foreground">Fiber available</p>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center space-x-2 text-sm">
-                  <Shield className="h-4 w-4 text-blue-500" />
-                  <span>Technology</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold">Fiber</p>
-                <p className="text-sm text-muted-foreground">+ DSL legacy</p>
-              </CardContent>
-            </Card>
-          </div>
+          <Card>
+            <CardContent className="p-8">
+              <h2 className="text-2xl font-bold mb-6">About AT&T</h2>
+              <div className="prose prose-gray dark:prose-invert max-w-none space-y-6">
+                <p className="text-lg text-muted-foreground">
+                  AT&T Inc. operates as one of America's oldest and largest telecommunications companies, with a rich 
+                  history spanning more than a century of communications innovation. Today, AT&T serves millions of 
+                  customers across the United States with comprehensive internet, mobile, and digital services while 
+                  maintaining extensive network infrastructure that supports both consumer and enterprise telecommunications 
+                  needs throughout the American market.
+                </p>
+                
+                <h3 className="text-xl font-semibold mb-3">National Network Legacy</h3>
+                <p className="text-muted-foreground">
+                  AT&T operates one of America's most extensive telecommunications network infrastructures, built upon 
+                  decades of investment in copper, fiber, and wireless technologies. The company's network spans rural 
+                  communities, suburban areas, and major metropolitan centers, providing comprehensive coverage that 
+                  reflects AT&T's historical role as America's primary telecommunications provider. This extensive 
+                  infrastructure foundation enables diverse connectivity solutions across varied geographic markets.
+                </p>
 
-          {/* SEO Content */}
-          <div className="max-w-4xl mx-auto">
-            <Card>
-              <CardContent className="p-8">
-                <h2 className="text-2xl font-bold mb-4">About AT&T Internet Services</h2>
-                <div className="prose prose-gray dark:prose-invert max-w-none">
-                  <p className="text-lg text-muted-foreground mb-4">
-                    AT&T is a major telecommunications provider serving over 15.9 million internet customers across the United States. 
-                    The company offers high-speed fiber internet through AT&T Fiber with speeds up to 5 Gbps, plus legacy DSL 
-                    services in rural and underserved areas.
-                  </p>
-                  
-                  <h3 className="text-xl font-semibold mb-3">AT&T Internet Plans</h3>
-                  <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                    <li><strong>AT&T Internet 300:</strong> 300 Mbps fiber for streaming and remote work</li>
-                    <li><strong>AT&T Internet 500:</strong> 500 Mbps for multiple users and 4K streaming</li>
-                    <li><strong>AT&T Internet 1000:</strong> Gigabit speeds for gaming and smart homes</li>
-                    <li><strong>AT&T Internet 2000:</strong> 2 Gig speeds for power users</li>
-                    <li><strong>AT&T Internet 5000:</strong> 5 Gig speeds for ultimate performance</li>
-                    <li><strong>AT&T DSL:</strong> Up to 100 Mbps in areas without fiber</li>
-                  </ul>
+                <h3 className="text-xl font-semibold mb-3">Fiber Network Expansion</h3>
+                <p className="text-muted-foreground">
+                  AT&T Fiber represents the company's investment in next-generation network technology, delivering 
+                  symmetrical gigabit internet speeds directly to homes and businesses across expanding service areas. 
+                  The company's fiber deployment strategy focuses on both urban centers and suburban communities, 
+                  providing customers with advanced broadband capabilities that support streaming, remote work, and 
+                  smart home applications while competing with other fiber providers.
+                </p>
 
-                  <h3 className="text-xl font-semibold mb-3 mt-6">Coverage Areas</h3>
-                  <p className="text-muted-foreground mb-4">
-                    AT&T Fiber is available in 21 states, primarily in the Southeast, Southwest, and Midwest. Major markets 
-                    include Texas, California, Florida, Georgia, North Carolina, Tennessee, Louisiana, Alabama, South Carolina, 
-                    Kentucky, Indiana, Arkansas, Kansas, Missouri, Nevada, Oklahoma, Mississippi, Illinois, Wisconsin, and Michigan.
-                  </p>
+                <h3 className="text-xl font-semibold mb-3">Integrated Communications Platform</h3>
+                <p className="text-muted-foreground">
+                  AT&T provides integrated telecommunications solutions that combine internet connectivity with mobile 
+                  services, television programming, and business communications platforms. The company's approach 
+                  emphasizes bundled services that leverage multiple network technologies to provide customers with 
+                  comprehensive connectivity solutions. This integration strategy appeals to customers seeking unified 
+                  telecommunications services from a single provider.
+                </p>
 
-                  <h3 className="text-xl font-semibold mb-3">Why Test Your AT&T Speed?</h3>
-                  <p className="text-muted-foreground">
-                    Regular speed testing ensures your AT&T internet connection performs as expected. Our AT&T speed test 
-                    measures download speeds, upload speeds, and latency to help you troubleshoot issues, optimize your 
-                    network setup, and verify you're receiving the speeds included in your plan.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+                <h3 className="text-xl font-semibold mb-3">Enterprise and Business Solutions</h3>
+                <p className="text-muted-foreground">
+                  AT&T Business delivers sophisticated telecommunications solutions for American enterprises, including 
+                  dedicated internet access, private networking, cloud services, and cybersecurity applications. The 
+                  company's business division leverages its extensive network infrastructure and technical expertise 
+                  to serve large corporations, government agencies, and small businesses with scalable connectivity 
+                  solutions that support diverse operational requirements.
+                </p>
+
+                <h3 className="text-xl font-semibold mb-3">Connection Quality Testing</h3>
+                <p className="text-muted-foreground">
+                  Regular speed testing helps AT&T customers monitor their internet performance and ensure optimal 
+                  service delivery from their fiber, DSL, or wireless connection. Our AT&T speed test measures 
+                  download speeds, upload speeds, and network latency, providing insights into your broadband 
+                  performance. This testing helps identify connectivity issues and ensures you're receiving the 
+                  reliable internet service that reflects AT&T's telecommunications heritage and technological capabilities.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </main>
 
-      {/* Speed Test Modal */}
       {showSpeedTest && (
         <SpeedTestModal onClose={() => setShowSpeedTest(false)} />
       )}

@@ -1,79 +1,32 @@
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Zap, Wifi, MapPin, Star, TrendingUp, Clock, Users, Shield } from "lucide-react";
+import { Zap, Wifi } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
 
 export default function VerizonSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Verizon Internet Speed Test - Test Verizon Fios & 5G Home Internet 2025";
+    document.title = "Verizon Speed Test - Test Verizon Fios Internet Speed 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Verizon internet speed for free. Check Verizon Fios fiber speeds up to 2 Gig, 5G Home Internet, and LTE plans. Compare download/upload speeds, ping, and jitter. Nationwide coverage across the US.');
+      metaDescription.setAttribute('content', 'Test your Verizon internet speed for free. Verizon Fios speed test for fiber internet and 5G home internet nationwide.');
     }
 
-    // Add meta keywords
-    const metaKeywords = document.createElement('meta');
-    metaKeywords.name = 'keywords';
-    metaKeywords.content = 'verizon speed test, verizon fios speed test, verizon 5g home internet speed test, verizon internet speed, fios fiber speed test, verizon broadband speed, verizon wifi test, verizon connection test, verizon download speed, verizon upload speed';
-    document.head.appendChild(metaKeywords);
-
-    // Add JSON-LD structured data
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "Verizon Internet Speed Test",
-      "description": "Test your Verizon internet speed for free. Check Verizon Fios fiber speeds up to 2 Gig, 5G Home Internet, and LTE plans.",
+      "name": "Verizon Speed Test",
+      "description": "Test your Verizon internet speed for free. Speed test for Verizon Fios and 5G customers.",
       "url": `${window.location.origin}/providers/us/verizon`,
       "provider": {
         "@type": "Organization",
         "name": "Verizon",
-        "description": "Leading telecommunications company providing fiber internet, 5G, and wireless services across the United States",
-        "areaServed": {
-          "@type": "Country",
-          "name": "United States"
-        },
-        "serviceType": ["Fiber Internet", "5G Home Internet", "LTE", "Wireless"],
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.2",
-          "reviewCount": "125000",
-          "bestRating": "5",
-          "worstRating": "1"
-        }
-      },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": window.location.origin
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Internet Providers",
-            "item": `${window.location.origin}/internet-providers`
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "United States",
-            "item": `${window.location.origin}/providers/us`
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "Verizon Speed Test",
-            "item": `${window.location.origin}/providers/us/verizon`
-          }
-        ]
+        "description": "Major US telecommunications company providing fiber and 5G internet services",
+        "areaServed": { "@type": "Country", "name": "United States" },
+        "serviceType": ["Fiber Internet", "5G Home", "Mobile", "TV", "Business Services"]
       }
     };
 
@@ -84,50 +37,16 @@ export default function VerizonSpeedTest() {
 
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
-      const existingKeywords = document.querySelector('meta[name="keywords"]');
       if (existingScript) document.head.removeChild(existingScript);
-      if (existingKeywords) document.head.removeChild(existingKeywords);
     };
   }, []);
-
-  const plans = [
-    {
-      name: "Fios Gigabit Connection",
-      speed: "940/880 Mbps",
-      price: "$49.99/month",
-      type: "Fiber",
-      features: ["No annual contract", "Free router included", "Unlimited data"]
-    },
-    {
-      name: "Fios 2 Gig Connection",
-      speed: "2300/2300 Mbps",
-      price: "$79.99/month", 
-      type: "Fiber",
-      features: ["Symmetrical speeds", "Wi-Fi 6E router", "Priority tech support"]
-    },
-    {
-      name: "5G Home Internet",
-      speed: "300-1000 Mbps",
-      price: "$25-70/month",
-      type: "5G",
-      features: ["No data caps", "Easy self-install", "Mobile + Home discounts"]
-    },
-    {
-      name: "LTE Home Internet",
-      speed: "25-50 Mbps",
-      price: "$39.99/month",
-      type: "LTE",
-      features: ["Rural areas", "No data limits", "Quick setup"]
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       <Header currentPath="/providers/us/verizon" />
       
       <main className="pt-24 pb-12">
-        <div className="max-w-7xl mx-auto px-4 lg:px-8">
-          {/* Hero Section */}
+        <div className="max-w-4xl mx-auto px-4 lg:px-8">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-6">
               <div className="p-4 bg-red-500/10 rounded-full">
@@ -138,11 +57,10 @@ export default function VerizonSpeedTest() {
               Verizon Speed Test
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Test your <span className="font-semibold text-red-500">Verizon internet speed</span> for free. Check Fios fiber speeds up to 2 Gig, 5G Home Internet performance, and LTE connection quality across the United States.
+              Test your <span className="font-semibold text-red-500">Verizon internet speed</span> for free. Check your Fios fiber or 5G home internet performance.
             </p>
             
-            {/* Speed Test CTA */}
-            <div className="mb-8">
+            <div className="mb-12">
               <Button 
                 onClick={() => setShowSpeedTest(true)} 
                 size="lg" 
@@ -154,197 +72,68 @@ export default function VerizonSpeedTest() {
             </div>
           </div>
 
-          {/* Provider Info Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center space-x-2 text-sm">
-                  <Users className="h-4 w-4 text-red-500" />
-                  <span>Coverage</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold">118M+</p>
-                <p className="text-sm text-muted-foreground">Americans covered</p>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center space-x-2 text-sm">
-                  <TrendingUp className="h-4 w-4 text-red-500" />
-                  <span>Max Speed</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold">2.3 Gbps</p>
-                <p className="text-sm text-muted-foreground">Fios fiber plans</p>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center space-x-2 text-sm">
-                  <Star className="h-4 w-4 text-red-500" />
-                  <span>Rating</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold">4.2/5</p>
-                <p className="text-sm text-muted-foreground">Customer satisfaction</p>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center space-x-2 text-sm">
-                  <Shield className="h-4 w-4 text-red-500" />
-                  <span>Technology</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold">Fiber</p>
-                <p className="text-sm text-muted-foreground">+ 5G nationwide</p>
-              </CardContent>
-            </Card>
-          </div>
+          <Card>
+            <CardContent className="p-8">
+              <h2 className="text-2xl font-bold mb-6">About Verizon</h2>
+              <div className="prose prose-gray dark:prose-invert max-w-none space-y-6">
+                <p className="text-lg text-muted-foreground">
+                  Verizon Communications stands as one of America's largest telecommunications companies, renowned for 
+                  its premium fiber-optic network infrastructure and advanced 5G wireless technology. Operating 
+                  primarily in the eastern United States, Verizon serves millions of customers with comprehensive 
+                  internet, mobile, and digital services while maintaining a reputation for network quality and 
+                  technological innovation in the competitive American telecommunications market.
+                </p>
+                
+                <h3 className="text-xl font-semibold mb-3">Fiber Network Leadership</h3>
+                <p className="text-muted-foreground">
+                  Verizon Fios represents one of the most extensive pure fiber-optic networks in the United States, 
+                  delivering symmetrical upload and download speeds directly to homes and businesses. The company's 
+                  fiber infrastructure spans major metropolitan areas across the eastern seaboard, providing customers 
+                  with reliable, high-capacity internet connections that support bandwidth-intensive applications 
+                  including 4K streaming, cloud computing, and smart home technologies.
+                </p>
 
-          {/* Plans Section */}
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold mb-8 text-center">Verizon Internet Plans</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {plans.map((plan, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <CardTitle className="flex items-center justify-between">
-                      <span className="text-lg">{plan.name}</span>
-                      <Badge variant={plan.type === 'Fiber' ? 'default' : 'secondary'}>
-                        {plan.type}
-                      </Badge>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <p className="text-2xl font-bold text-red-500">{plan.speed}</p>
-                        <p className="text-sm text-muted-foreground">Download/Upload</p>
-                      </div>
-                      <div>
-                        <p className="text-xl font-semibold">{plan.price}</p>
-                        <p className="text-sm text-muted-foreground">Starting price</p>
-                      </div>
-                      <div className="space-y-2">
-                        {plan.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-center space-x-2">
-                            <div className="w-1 h-1 bg-red-500 rounded-full"></div>
-                            <span className="text-sm">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
+                <h3 className="text-xl font-semibold mb-3">5G Innovation Excellence</h3>
+                <p className="text-muted-foreground">
+                  Verizon operates one of America's most advanced 5G networks, pioneering mmWave 5G Ultra Wideband 
+                  technology in major cities across the country. The company's 5G infrastructure supports not only 
+                  mobile communications but also 5G home internet services that provide wireless broadband alternatives 
+                  to traditional fixed-line connections. This wireless innovation positions Verizon at the forefront 
+                  of next-generation telecommunications technology.
+                </p>
 
-          {/* Coverage Areas */}
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold mb-8 text-center">Verizon Coverage Areas</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center space-x-2">
-                    <MapPin className="h-5 w-5 text-red-500" />
-                    <span>Fios Fiber</span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    Available in major metropolitan areas across 9 states
-                  </p>
-                  <div className="space-y-1 text-sm">
-                    <p>• New York, New Jersey, Pennsylvania</p>
-                    <p>• Virginia, Maryland, Delaware</p>
-                    <p>• Massachusetts, Rhode Island, Connecticut</p>
-                    <p>• Washington DC metro area</p>
-                  </div>
-                </CardContent>
-              </Card>
-              
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center space-x-2">
-                    <MapPin className="h-5 w-5 text-red-500" />
-                    <span>5G Home Internet</span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    Expanding 5G coverage in 70+ cities nationwide
-                  </p>
-                  <div className="space-y-1 text-sm">
-                    <p>• Los Angeles, Chicago, Houston</p>
-                    <p>• Phoenix, Philadelphia, San Antonio</p>
-                    <p>• San Diego, Dallas, San Jose</p>
-                    <p>• Austin, Jacksonville, Fort Worth</p>
-                  </div>
-                </CardContent>
-              </Card>
-              
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center space-x-2">
-                    <MapPin className="h-5 w-5 text-red-500" />
-                    <span>LTE Home Internet</span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    Rural and underserved areas across the United States
-                  </p>
-                  <div className="space-y-1 text-sm">
-                    <p>• Rural communities nationwide</p>
-                    <p>• Areas without cable/fiber access</p>
-                    <p>• Small towns and countryside</p>
-                    <p>• Backup internet solution</p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
+                <h3 className="text-xl font-semibold mb-3">Premium Service Quality</h3>
+                <p className="text-muted-foreground">
+                  Verizon distinguishes itself through consistent focus on network quality and customer service 
+                  excellence, operating premium telecommunications infrastructure that emphasizes reliability and 
+                  performance over aggressive pricing strategies. The company's approach appeals to customers who 
+                  prioritize service quality and technological innovation, making Verizon particularly attractive 
+                  to business customers and technology-focused consumers.
+                </p>
 
-          {/* SEO Content */}
-          <div className="max-w-4xl mx-auto prose prose-gray dark:prose-invert">
-            <h2>About Verizon Internet Services</h2>
-            <p>
-              Verizon is one of the largest telecommunications companies in the United States, offering high-speed internet through multiple technologies including fiber-optic Fios, 5G Home Internet, and LTE services. Known for reliable connectivity and fast speeds, Verizon serves over 118 million Americans across urban, suburban, and rural areas.
-            </p>
-            
-            <h3>Verizon Fios Fiber Internet</h3>
-            <p>
-              Verizon Fios delivers symmetrical fiber-optic internet with speeds up to 2.3 Gbps. Available in select metropolitan areas, Fios provides consistent performance for streaming, gaming, remote work, and smart home applications. Plans include unlimited data, free router rental, and no annual contracts.
-            </p>
-            
-            <h3>5G Home Internet Technology</h3>
-            <p>
-              Verizon's 5G Home Internet uses ultra-wideband 5G technology to deliver wireless broadband with speeds ranging from 300 Mbps to 1 Gig. This service provides an alternative to traditional cable and DSL in areas with 5G coverage, offering easy installation and competitive pricing.
-            </p>
-            
-            <h3>Why Test Your Verizon Speed?</h3>
-            <p>
-              Regular speed testing helps ensure you're receiving the internet speeds you're paying for. Our Verizon speed test measures download speed, upload speed, ping latency, and connection stability. Use these results to optimize your network setup, troubleshoot connectivity issues, or compare actual performance against your plan specifications.
-            </p>
-            
-            <h3>Optimizing Verizon Internet Performance</h3>
-            <p>
-              To maximize your Verizon internet speed: use a Verizon-compatible router, position your router centrally, reduce interference from other devices, update firmware regularly, and connect high-bandwidth devices via ethernet when possible. For Fios customers, the included router is optimized for the network and provides the best performance.
-            </p>
-          </div>
+                <h3 className="text-xl font-semibold mb-3">Business and Enterprise Solutions</h3>
+                <p className="text-muted-foreground">
+                  Verizon provides comprehensive business telecommunications solutions including enterprise networking, 
+                  cloud services, cybersecurity, and IoT applications that support American businesses across all 
+                  industries. The company's business division leverages its advanced network infrastructure to 
+                  deliver sophisticated technical solutions while maintaining the reliability and security standards 
+                  required by enterprise customers.
+                </p>
+
+                <h3 className="text-xl font-semibold mb-3">Performance Testing and Optimization</h3>
+                <p className="text-muted-foreground">
+                  Regular speed testing helps Verizon customers monitor their internet performance and ensure optimal 
+                  service delivery from their Fios fiber or 5G home connection. Our Verizon speed test measures 
+                  download speeds, upload speeds, and network latency, providing insights into your broadband 
+                  performance. This testing helps identify connectivity issues and ensures you're receiving the 
+                  premium internet service quality that defines Verizon's telecommunications excellence.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </main>
 
-      {/* Speed Test Modal */}
       {showSpeedTest && (
         <SpeedTestModal onClose={() => setShowSpeedTest(false)} />
       )}

@@ -2,43 +2,142 @@ import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Zap, Wifi, MapPin, TrendingUp, Users } from "lucide-react";
+import { Zap, Wifi } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
 
 export default function RogersSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Rogers Internet Speed Test - Test Rogers Ignite Cable 5G Canada 2025";
+    document.title = "Rogers Speed Test - Test Rogers Internet Speed Canada 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Rogers internet speed for free. Check Rogers Ignite cable and 5G speeds up to 1.5 Gig across Canada.');
+      metaDescription.setAttribute('content', 'Test your Rogers internet speed for free. Rogers Canada speed test for cable internet, fiber, and 5G services nationwide.');
     }
+
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Rogers Speed Test",
+      "description": "Test your Rogers internet speed for free. Speed test for Rogers cable and fiber customers.",
+      "url": `${window.location.origin}/providers/ca/rogers`,
+      "provider": {
+        "@type": "Organization",
+        "name": "Rogers",
+        "description": "Major Canadian telecommunications company providing cable and fiber internet services",
+        "areaServed": { "@type": "Country", "name": "Canada" },
+        "serviceType": ["Cable Internet", "Fiber", "5G", "TV", "Business Services"]
+      }
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(structuredData);
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.querySelector('script[type="application/ld+json"]');
+      if (existingScript) document.head.removeChild(existingScript);
+    };
   }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       <Header currentPath="/providers/ca/rogers" />
       
-      <main className="max-w-7xl mx-auto px-4 lg:px-8 py-8 space-y-8">
-        <div className="text-center space-y-6">
-          <div className="flex items-center justify-center space-x-4">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-red-600 to-red-700 flex items-center justify-center">
-              <Zap className="h-8 w-8 text-white" />
+      <main className="pt-24 pb-12">
+        <div className="max-w-4xl mx-auto px-4 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center mb-6">
+              <div className="p-4 bg-red-500/10 rounded-full">
+                <Wifi className="h-12 w-12 text-red-500" />
+              </div>
             </div>
-            <div>
-              <h1 className="text-4xl lg:text-6xl font-bold gradient-text">Rogers</h1>
-              <p className="text-xl text-muted-foreground mt-2">Internet Speed Test</p>
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-red-500 via-red-600 to-red-500 bg-clip-text text-transparent">
+              Rogers Speed Test
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+              Test your <span className="font-semibold text-red-500">Rogers internet speed</span> for free. Check your cable, fiber, or 5G internet performance.
+            </p>
+            
+            <div className="mb-12">
+              <Button 
+                onClick={() => setShowSpeedTest(true)} 
+                size="lg" 
+                className="text-lg px-8 py-6 bg-gradient-to-r from-red-500 to-red-600 hover:opacity-90 transition-opacity"
+              >
+                <Zap className="mr-2 h-5 w-5" />
+                Test Rogers Speed Now
+              </Button>
             </div>
           </div>
-          
-          <Button onClick={() => setShowSpeedTest(true)} className="gradient-bg text-white px-8 py-6 text-lg font-semibold rounded-xl">
-            <Zap className="h-5 w-5 mr-2" />Test Rogers Speed Now
-          </Button>
+
+          <Card>
+            <CardContent className="p-8">
+              <h2 className="text-2xl font-bold mb-6">About Rogers</h2>
+              <div className="prose prose-gray dark:prose-invert max-w-none space-y-6">
+                <p className="text-lg text-muted-foreground">
+                  Rogers Communications stands as one of Canada's largest telecommunications companies, with particular 
+                  strength in eastern Canada and extensive network infrastructure serving millions of Canadian customers. 
+                  Founded as a radio broadcasting company, Rogers has evolved into a comprehensive telecommunications 
+                  provider offering internet, mobile, television, and digital services while maintaining leadership 
+                  in Canadian cable and wireless markets.
+                </p>
+                
+                <h3 className="text-xl font-semibold mb-3">Eastern Canadian Leadership</h3>
+                <p className="text-muted-foreground">
+                  Rogers operates extensive telecommunications infrastructure across eastern Canada, with particular 
+                  concentration in Ontario and Atlantic provinces. The company's regional strength allows for deep 
+                  market penetration and specialized services tailored to eastern Canadian demographics and business 
+                  needs. This geographic focus enables Rogers to provide comprehensive connectivity solutions while 
+                  maintaining strong community connections and localized customer service.
+                </p>
+
+                <h3 className="text-xl font-semibold mb-3">Cable Network Excellence</h3>
+                <p className="text-muted-foreground">
+                  Rogers operates one of Canada's most extensive cable network infrastructures, utilizing advanced 
+                  hybrid fiber-coaxial technology to deliver high-speed internet services across diverse Canadian 
+                  communities. The company's cable network spans urban centers, suburban neighborhoods, and smaller 
+                  communities, providing comprehensive coverage that supports varied bandwidth requirements. This 
+                  cable foundation enables Rogers to offer competitive internet speeds while leveraging proven 
+                  infrastructure technology.
+                </p>
+
+                <h3 className="text-xl font-semibold mb-3">5G and Wireless Innovation</h3>
+                <p className="text-muted-foreground">
+                  Rogers has invested significantly in 5G network development and wireless technology advancement, 
+                  operating one of Canada's most comprehensive wireless networks. The company's wireless infrastructure 
+                  supports advanced mobile communications, 5G home internet services, and emerging IoT applications 
+                  that serve both consumer and business customers. This wireless innovation complements Rogers' cable 
+                  services to provide comprehensive connectivity solutions.
+                </p>
+
+                <h3 className="text-xl font-semibold mb-3">Sports and Entertainment Integration</h3>
+                <p className="text-muted-foreground">
+                  Rogers distinguishes itself through significant investments in sports and entertainment content, 
+                  including ownership of major league sports teams and broadcasting rights that enhance customer 
+                  value propositions. The company's entertainment strategy leverages its network infrastructure 
+                  to provide exclusive content experiences that complement internet and mobile services. This 
+                  integrated approach appeals to Canadian customers seeking combined connectivity and entertainment solutions.
+                </p>
+
+                <h3 className="text-xl font-semibold mb-3">Network Performance Testing</h3>
+                <p className="text-muted-foreground">
+                  Regular speed testing helps Rogers customers monitor their internet performance and ensure optimal 
+                  service delivery from their cable, fiber, or wireless connection. Our Rogers speed test measures 
+                  download speeds, upload speeds, and network latency, providing insights into your broadband 
+                  performance. This testing helps identify connectivity issues and ensures you're receiving the 
+                  comprehensive internet service that reflects Rogers' position as a leading Canadian telecommunications provider.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </main>
 
-      <SpeedTestModal isOpen={showSpeedTest} onClose={() => setShowSpeedTest(false)} providerName="Rogers" />
+      {showSpeedTest && (
+        <SpeedTestModal onClose={() => setShowSpeedTest(false)} />
+      )}
     </div>
   );
 }

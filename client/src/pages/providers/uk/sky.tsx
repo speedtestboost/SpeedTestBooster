@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Zap, Wifi, MapPin, TrendingUp, Users } from "lucide-react";
+import { Zap, Wifi } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
 
 export default function SkySpeedTest() {
@@ -13,21 +12,21 @@ export default function SkySpeedTest() {
     document.title = "Sky Broadband Speed Test - Test Sky Fibre Internet UK 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Sky broadband speed for free. Check Sky Fibre and ADSL speeds up to 900 Mbps across the UK. Compare download/upload speeds and latency.');
+      metaDescription.setAttribute('content', 'Test your Sky broadband speed for free. Sky UK broadband speed test for fibre internet, superfast broadband, and Sky TV customers nationwide.');
     }
 
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Sky Broadband Speed Test",
-      "description": "Test your Sky broadband speed for free. Check fibre speeds up to 900 Mbps.",
+      "description": "Test your Sky broadband speed for free. Speed test for Sky fibre internet and TV customers.",
       "url": `${window.location.origin}/providers/uk/sky`,
       "provider": {
         "@type": "Organization",
-        "name": "Sky UK",
-        "description": "Leading broadband, TV and mobile provider serving the United Kingdom",
+        "name": "Sky",
+        "description": "Leading UK broadband and TV provider offering superfast fibre internet and entertainment services",
         "areaServed": { "@type": "Country", "name": "United Kingdom" },
-        "serviceType": ["Fibre Broadband", "ADSL", "TV", "Mobile"]
+        "serviceType": ["Fibre Broadband", "TV", "Mobile", "Entertainment"]
       }
     };
 
@@ -35,77 +34,107 @@ export default function SkySpeedTest() {
     script.type = 'application/ld+json';
     script.textContent = JSON.stringify(structuredData);
     document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.querySelector('script[type="application/ld+json"]');
+      if (existingScript) document.head.removeChild(existingScript);
+    };
   }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       <Header currentPath="/providers/uk/sky" />
       
-      <main className="max-w-7xl mx-auto px-4 lg:px-8 py-8 space-y-8">
-        <div className="text-center space-y-6">
-          <div className="flex items-center justify-center space-x-4">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 flex items-center justify-center">
-              <Zap className="h-8 w-8 text-white" />
+      <main className="pt-24 pb-12">
+        <div className="max-w-4xl mx-auto px-4 lg:px-8">
+          {/* Hero Section with Speed Test */}
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center mb-6">
+              <div className="p-4 bg-blue-500/10 rounded-full">
+                <Wifi className="h-12 w-12 text-blue-500" />
+              </div>
             </div>
-            <div>
-              <h1 className="text-4xl lg:text-6xl font-bold gradient-text">Sky</h1>
-              <p className="text-xl text-muted-foreground mt-2">Broadband Speed Test</p>
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 bg-clip-text text-transparent">
+              Sky Broadband Speed Test
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+              Test your <span className="font-semibold text-blue-500">Sky broadband speed</span> for free. Check your Sky fibre internet performance and connection quality.
+            </p>
+            
+            {/* Speed Test CTA */}
+            <div className="mb-12">
+              <Button 
+                onClick={() => setShowSpeedTest(true)} 
+                size="lg" 
+                className="text-lg px-8 py-6 bg-gradient-to-r from-blue-500 to-blue-600 hover:opacity-90 transition-opacity"
+              >
+                <Zap className="mr-2 h-5 w-5" />
+                Test Sky Speed Now
+              </Button>
             </div>
           </div>
-          
-          <Button 
-            onClick={() => setShowSpeedTest(true)}
-            className="gradient-bg text-white px-8 py-6 text-lg font-semibold rounded-xl hover:opacity-90 transition-all duration-200 shadow-lg"
-          >
-            <Zap className="h-5 w-5 mr-2" />
-            Test Sky Speed Now
-          </Button>
-        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Card className="card-hover">
-            <CardContent className="p-6 text-center">
-              <TrendingUp className="h-12 w-12 text-primary mx-auto mb-4" />
-              <h3 className="font-semibold text-lg mb-2">Max Speed</h3>
-              <p className="text-3xl font-bold text-primary">900 Mbps</p>
-              <p className="text-sm text-muted-foreground mt-1">Sky Superfast</p>
-            </CardContent>
-          </Card>
+          {/* SEO Content About Sky */}
+          <Card>
+            <CardContent className="p-8">
+              <h2 className="text-2xl font-bold mb-6">About Sky Broadband</h2>
+              <div className="prose prose-gray dark:prose-invert max-w-none space-y-6">
+                <p className="text-lg text-muted-foreground">
+                  Sky is one of the UK's most popular broadband and entertainment providers, serving millions of customers 
+                  across Britain with superfast fibre broadband, comprehensive TV packages, and mobile services. Known 
+                  for exceptional customer service and reliable connectivity, Sky has established itself as a household 
+                  name in British telecommunications.
+                </p>
+                
+                <h3 className="text-xl font-semibold mb-3">Sky's UK Market Position</h3>
+                <p className="text-muted-foreground">
+                  As part of Comcast Corporation, Sky operates as a major telecommunications provider in the United Kingdom, 
+                  competing directly with BT, Virgin Media, and other leading internet service providers. The company has 
+                  built a strong reputation for bundling high-quality broadband with premium entertainment content, making 
+                  it particularly attractive to households seeking comprehensive digital services.
+                </p>
 
-          <Card className="card-hover">
-            <CardContent className="p-6 text-center">
-              <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />
-              <h3 className="font-semibold text-lg mb-2">Coverage</h3>
-              <p className="text-2xl font-bold text-primary">Nationwide</p>
-              <p className="text-sm text-muted-foreground mt-1">UK Wide</p>
-            </CardContent>
-          </Card>
+                <h3 className="text-xl font-semibold mb-3">Technology and Infrastructure</h3>
+                <p className="text-muted-foreground">
+                  Sky broadband utilizes Openreach's extensive fibre network infrastructure, ensuring wide availability 
+                  across the UK. The service operates on both FTTC (Fibre to the Cabinet) and FTTP (Fibre to the Premises) 
+                  technologies, delivering consistent broadband performance to urban and rural communities. Sky's network 
+                  investments focus on reliability and customer satisfaction rather than headline speeds alone.
+                </p>
 
-          <Card className="card-hover">
-            <CardContent className="p-6 text-center">
-              <Wifi className="h-12 w-12 text-primary mx-auto mb-4" />
-              <h3 className="font-semibold text-lg mb-2">Technology</h3>
-              <p className="text-xl font-bold text-primary">Fibre/ADSL</p>
-              <p className="text-sm text-muted-foreground mt-1">Hybrid Network</p>
-            </CardContent>
-          </Card>
+                <h3 className="text-xl font-semibold mb-3">Customer Experience Focus</h3>
+                <p className="text-muted-foreground">
+                  Sky differentiates itself through superior customer service, winning multiple awards for technical support 
+                  and customer satisfaction. The company provides comprehensive self-service options through the Sky app, 
+                  professional installation services, and 24/7 technical support. Sky's approach emphasizes long-term 
+                  customer relationships over short-term promotional pricing.
+                </p>
 
-          <Card className="card-hover">
-            <CardContent className="p-6 text-center">
-              <Users className="h-12 w-12 text-primary mx-auto mb-4" />
-              <h3 className="font-semibold text-lg mb-2">Customers</h3>
-              <p className="text-2xl font-bold text-primary">6M+</p>
-              <p className="text-sm text-muted-foreground mt-1">Broadband Customers</p>
+                <h3 className="text-xl font-semibold mb-3">Entertainment Integration</h3>
+                <p className="text-muted-foreground">
+                  What sets Sky apart from traditional internet providers is its seamless integration of broadband with 
+                  world-class entertainment services. Sky TV, Sky Sports, Sky Cinema, and streaming services are optimized 
+                  for Sky broadband connections, ensuring buffer-free viewing and enhanced streaming quality. This integrated 
+                  approach makes Sky particularly popular among sports fans and entertainment enthusiasts.
+                </p>
+
+                <h3 className="text-xl font-semibold mb-3">Testing Your Sky Connection</h3>
+                <p className="text-muted-foreground">
+                  Regular speed testing helps Sky customers monitor their broadband performance and ensure optimal service 
+                  delivery. Our Sky speed test measures your actual download speeds, upload speeds, and connection latency, 
+                  helping identify any performance issues. This information is valuable for troubleshooting connectivity 
+                  problems and optimizing your home network setup for Sky's services.
+                </p>
+              </div>
             </CardContent>
           </Card>
         </div>
       </main>
 
-      <SpeedTestModal 
-        isOpen={showSpeedTest} 
-        onClose={() => setShowSpeedTest(false)}
-        providerName="Sky"
-      />
+      {/* Speed Test Modal */}
+      {showSpeedTest && (
+        <SpeedTestModal onClose={() => setShowSpeedTest(false)} />
+      )}
     </div>
   );
 }
