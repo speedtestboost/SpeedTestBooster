@@ -15,12 +15,10 @@ export default function ComcastSpeedTest() {
       metaDescription.setAttribute('content', 'Test your Comcast Xfinity internet speed for free. Xfinity speed test for cable internet and fiber services nationwide.');
     }
 
-    // Add canonical tag
-    const canonical = document.querySelector('link[rel="canonical"]') || document.createElement('link');
-    canonical.setAttribute('rel', 'canonical');
-    canonical.setAttribute('href', `${window.location.origin}/providers/us/comcast`);
-    if (!document.querySelector('link[rel="canonical"]')) {
-      document.head.appendChild(canonical);
+    // Update canonical tag
+    const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
+    if (canonical) {
+      canonical.setAttribute('href', `${window.location.origin}/providers/us/comcast`);
     }
 
     const structuredData = {
@@ -46,8 +44,11 @@ export default function ComcastSpeedTest() {
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
-      const existingCanonical = document.querySelector('link[rel="canonical"]');
-      if (existingCanonical) document.head.removeChild(existingCanonical);
+      // Reset canonical to homepage when leaving page
+      const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
+      if (canonical) {
+        canonical.setAttribute('href', 'https://speedtestboost.com/');
+      }
     };
   }, []);
 

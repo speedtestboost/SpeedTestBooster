@@ -15,12 +15,10 @@ export default function TelstraSpeedTest() {
       metaDescription.setAttribute('content', 'Test your Telstra internet speed for free. Telstra Australia speed test for NBN broadband, mobile, and 5G internet services nationwide.');
     }
 
-    // Add canonical tag
-    const canonical = document.querySelector('link[rel="canonical"]') || document.createElement('link');
-    canonical.setAttribute('rel', 'canonical');
-    canonical.setAttribute('href', `${window.location.origin}/providers/au/telstra`);
-    if (!document.querySelector('link[rel="canonical"]')) {
-      document.head.appendChild(canonical);
+    // Update canonical tag
+    const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
+    if (canonical) {
+      canonical.setAttribute('href', `${window.location.origin}/providers/au/telstra`);
     }
 
     const structuredData = {
@@ -46,8 +44,11 @@ export default function TelstraSpeedTest() {
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
-      const existingCanonical = document.querySelector('link[rel="canonical"]');
-      if (existingCanonical) document.head.removeChild(existingCanonical);
+      // Reset canonical to homepage when leaving page
+      const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
+      if (canonical) {
+        canonical.setAttribute('href', 'https://speedtestboost.com/');
+      }
     };
   }, []);
 

@@ -15,12 +15,10 @@ export default function O2DESpeedTest() {
       metaDescription.setAttribute('content', 'Test your O2 Germany internet speed for free. O2 DE speed test for DSL, LTE, and mobile internet services nationwide.');
     }
 
-    // Add canonical tag
-    const canonical = document.querySelector('link[rel="canonical"]') || document.createElement('link');
-    canonical.setAttribute('rel', 'canonical');
-    canonical.setAttribute('href', `${window.location.origin}/providers/de/o2-de`);
-    if (!document.querySelector('link[rel="canonical"]')) {
-      document.head.appendChild(canonical);
+    // Update canonical tag
+    const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
+    if (canonical) {
+      canonical.setAttribute('href', `${window.location.origin}/providers/de/o2-de`);
     }
 
     const structuredData = {
@@ -46,8 +44,11 @@ export default function O2DESpeedTest() {
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
-      const existingCanonical = document.querySelector('link[rel="canonical"]');
-      if (existingCanonical) document.head.removeChild(existingCanonical);
+      // Reset canonical to homepage when leaving page
+      const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
+      if (canonical) {
+        canonical.setAttribute('href', 'https://speedtestboost.com/');
+      }
     };
   }, []);
 

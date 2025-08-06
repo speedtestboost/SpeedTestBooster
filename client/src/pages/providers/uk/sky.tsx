@@ -15,12 +15,10 @@ export default function SkySpeedTest() {
       metaDescription.setAttribute('content', 'Test your Sky broadband speed for free. Sky UK broadband speed test for fibre internet, superfast broadband, and Sky TV customers nationwide.');
     }
 
-    // Add canonical tag
-    const canonical = document.querySelector('link[rel="canonical"]') || document.createElement('link');
-    canonical.setAttribute('rel', 'canonical');
-    canonical.setAttribute('href', `${window.location.origin}/providers/uk/sky`);
-    if (!document.querySelector('link[rel="canonical"]')) {
-      document.head.appendChild(canonical);
+    // Update canonical tag
+    const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
+    if (canonical) {
+      canonical.setAttribute('href', `${window.location.origin}/providers/uk/sky`);
     }
 
     const structuredData = {
@@ -46,8 +44,11 @@ export default function SkySpeedTest() {
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
-      const existingCanonical = document.querySelector('link[rel="canonical"]');
-      if (existingCanonical) document.head.removeChild(existingCanonical);
+      // Reset canonical to homepage when leaving page
+      const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
+      if (canonical) {
+        canonical.setAttribute('href', 'https://speedtestboost.com/');
+      }
     };
   }, []);
 
