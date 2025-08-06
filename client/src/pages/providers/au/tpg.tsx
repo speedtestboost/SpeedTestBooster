@@ -15,6 +15,14 @@ export default function TPGSpeedTest() {
       metaDescription.setAttribute('content', 'Test your TPG internet speed for free. TPG Australia speed test for NBN broadband and ADSL internet services nationwide.');
     }
 
+    // Add canonical tag
+    const canonical = document.querySelector('link[rel="canonical"]') || document.createElement('link');
+    canonical.setAttribute('rel', 'canonical');
+    canonical.setAttribute('href', `${window.location.origin}/providers/au/tpg`);
+    if (!document.querySelector('link[rel="canonical"]')) {
+      document.head.appendChild(canonical);
+    }
+
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -38,6 +46,8 @@ export default function TPGSpeedTest() {
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) document.head.removeChild(existingCanonical);
     };
   }, []);
 

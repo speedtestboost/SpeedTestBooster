@@ -15,6 +15,14 @@ export default function DeutscheTelekomSpeedTest() {
       metaDescription.setAttribute('content', 'Test your Deutsche Telekom internet speed for free. Telekom Germany speed test for DSL, fibre, and 5G internet services nationwide.');
     }
 
+    // Add canonical tag
+    const canonical = document.querySelector('link[rel="canonical"]') || document.createElement('link');
+    canonical.setAttribute('rel', 'canonical');
+    canonical.setAttribute('href', `${window.location.origin}/providers/de/deutsche-telekom`);
+    if (!document.querySelector('link[rel="canonical"]')) {
+      document.head.appendChild(canonical);
+    }
+
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -38,6 +46,8 @@ export default function DeutscheTelekomSpeedTest() {
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) document.head.removeChild(existingCanonical);
     };
   }, []);
 

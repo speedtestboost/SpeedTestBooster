@@ -15,6 +15,14 @@ export default function BellSpeedTest() {
       metaDescription.setAttribute('content', 'Test your Bell internet speed for free. Bell Canada speed test for Fibe internet, DSL broadband, and telecommunications services nationwide.');
     }
 
+    // Add canonical tag
+    const canonical = document.querySelector('link[rel="canonical"]') || document.createElement('link');
+    canonical.setAttribute('rel', 'canonical');
+    canonical.setAttribute('href', `${window.location.origin}/providers/ca/bell`);
+    if (!document.querySelector('link[rel="canonical"]')) {
+      document.head.appendChild(canonical);
+    }
+
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -38,6 +46,8 @@ export default function BellSpeedTest() {
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) document.head.removeChild(existingCanonical);
     };
   }, []);
 

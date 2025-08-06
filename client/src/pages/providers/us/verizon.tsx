@@ -15,6 +15,14 @@ export default function VerizonSpeedTest() {
       metaDescription.setAttribute('content', 'Test your Verizon internet speed for free. Verizon Fios speed test for fiber internet and 5G home internet nationwide.');
     }
 
+    // Add canonical tag
+    const canonical = document.querySelector('link[rel="canonical"]') || document.createElement('link');
+    canonical.setAttribute('rel', 'canonical');
+    canonical.setAttribute('href', `${window.location.origin}/providers/us/verizon`);
+    if (!document.querySelector('link[rel="canonical"]')) {
+      document.head.appendChild(canonical);
+    }
+
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -38,6 +46,8 @@ export default function VerizonSpeedTest() {
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) document.head.removeChild(existingCanonical);
     };
   }, []);
 
