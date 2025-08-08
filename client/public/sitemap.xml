@@ -119,19 +119,19 @@
   <!-- US Internet Providers (3 providers) -->
   <url>
     <loc>https://speedtestboost.com/providers/us/verizon</loc>
-    <lastmod>2025-08-05</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://speedtestboost.com/providers/us/comcast</loc>
-    <lastmod>2025-08-05</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://speedtestboost.com/providers/us/att</loc>
-    <lastmod>2025-08-05</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -139,19 +139,19 @@
   <!-- UK Internet Providers (3 providers) -->
   <url>
     <loc>https://speedtestboost.com/providers/uk/sky</loc>
-    <lastmod>2025-08-05</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://speedtestboost.com/providers/uk/virgin-media</loc>
-    <lastmod>2025-08-05</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://speedtestboost.com/providers/uk/bt</loc>
-    <lastmod>2025-08-05</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -159,19 +159,19 @@
   <!-- Canada Internet Providers (3 providers) -->
   <url>
     <loc>https://speedtestboost.com/providers/ca/bell</loc>
-    <lastmod>2025-08-05</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://speedtestboost.com/providers/ca/rogers</loc>
-    <lastmod>2025-08-05</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://speedtestboost.com/providers/ca/telus</loc>
-    <lastmod>2025-08-05</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -179,19 +179,19 @@
   <!-- Germany Internet Providers (3 providers) -->
   <url>
     <loc>https://speedtestboost.com/providers/de/deutsche-telekom</loc>
-    <lastmod>2025-08-05</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://speedtestboost.com/providers/de/vodafone-de</loc>
-    <lastmod>2025-08-05</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://speedtestboost.com/providers/de/o2-de</loc>
-    <lastmod>2025-08-05</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -199,19 +199,19 @@
   <!-- Australia Internet Providers (3 providers) -->
   <url>
     <loc>https://speedtestboost.com/providers/au/telstra</loc>
-    <lastmod>2025-08-05</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://speedtestboost.com/providers/au/optus</loc>
-    <lastmod>2025-08-05</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://speedtestboost.com/providers/au/tpg</loc>
-    <lastmod>2025-08-05</lastmod>
+    <lastmod>2025-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
