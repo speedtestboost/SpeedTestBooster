@@ -25,6 +25,8 @@ import {
   BarChart3
 } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
+import Header from "@/components/Header";
+import { Link } from "wouter";
 
 interface NetworkInfo {
   ssid: string;
@@ -252,8 +254,11 @@ export default function WiFiAnalyzer() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
-      {/* SEO Header */}
+    <div className="min-h-screen bg-background">
+      <Header currentPath="/wifi-analyzer" />
+      
+      <div className="bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
+        {/* SEO Header */}
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -612,12 +617,68 @@ export default function WiFiAnalyzer() {
         </div>
       </div>
 
+      {/* SEO-Optimized Footer Content */}
+      <footer className="bg-card/30 backdrop-blur-sm border-t border-border/50 mt-12">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <Card className="card-hover">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-foreground mb-3">WiFi Analyzer Tools & Features</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Our comprehensive WiFi analyzer provides professional-grade network diagnostics for home and business users. 
+                  Scan wireless networks, detect signal interference, analyze channel congestion, and identify security vulnerabilities. 
+                  Compatible with Windows, Mac, Android, and iOS devices for complete network visibility and optimization.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="card-hover">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-foreground mb-3">Network Diagnostics Guide</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Learn how network diagnostics can improve your internet speed and reliability. Our wireless scanner identifies 
+                  common issues like DNS problems, packet loss, channel conflicts, and interference from neighboring networks. 
+                  Get actionable recommendations to optimize your WiFi performance and troubleshoot connection problems.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="card-hover">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-foreground mb-3">Related Network Tools</h3>
+                <div className="space-y-2">
+                  <Link href="/" className="block text-primary hover:underline text-sm">
+                    Internet Speed Test
+                  </Link>
+                  <Link href="/internet-speed-requirements" className="block text-primary hover:underline text-sm">
+                    Speed Requirements Guide
+                  </Link>
+                  <Link href="/help" className="block text-primary hover:underline text-sm">
+                    Network Troubleshooting Help
+                  </Link>
+                  <Link href="/about" className="block text-primary hover:underline text-sm">
+                    About Our Network Tools
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="border-t border-border pt-8 text-center">
+            <p className="text-sm text-muted-foreground">
+              © 2025 Speed Test & Boost. Free WiFi analyzer and network diagnostics tools for optimal internet performance.
+            </p>
+          </div>
+        </div>
+      </footer>
+
       {/* Speed Test Modal */}
       {showSpeedTest && (
         <SpeedTestModal 
           onClose={() => setShowSpeedTest(false)} 
         />
       )}
+      </div>
     </div>
   );
 }
