@@ -260,8 +260,8 @@ export default function WiFiAnalyzer() {
             WiFi Analyzer & Network Diagnostics Tool
           </h1>
           <p className="text-xl text-gray-300 mb-6 max-w-3xl mx-auto">
-            Professional WiFi analyzer, network scanner, and wireless diagnostics tool. 
-            Analyze WiFi signals, diagnose network issues, and optimize your wireless performance.
+            Discover hidden network issues affecting your WiFi performance. Our advanced wireless scanner identifies interference, 
+            channel conflicts, and security vulnerabilities that slow down your connection.
           </p>
           <div className="flex flex-wrap justify-center gap-2 mb-6">
             <Badge variant="secondary" className="bg-purple-800 text-white">WiFi Analyzer</Badge>
@@ -493,12 +493,12 @@ export default function WiFiAnalyzer() {
                   WiFi Analyzer Features
                 </h3>
                 <ul className="space-y-2 text-gray-300">
-                  <li>• Real-time WiFi network scanning and analysis</li>
-                  <li>• Signal strength measurement and visualization</li>
-                  <li>• Channel congestion detection and optimization</li>
-                  <li>• Security protocol analysis (WPA3, WPA2, WEP)</li>
-                  <li>• Frequency band analysis (2.4GHz, 5GHz, 6GHz)</li>
-                  <li>• Network performance benchmarking</li>
+                  <li>• Instant wireless network scanning across all channels</li>
+                  <li>• Real-time signal strength monitoring with visual heatmaps</li>
+                  <li>• Smart channel optimization recommendations</li>
+                  <li>• Complete security audit (WPA3, WPA2, open networks)</li>
+                  <li>• Multi-band analysis for 2.4GHz, 5GHz, and WiFi 6E</li>
+                  <li>• Detailed network performance reports</li>
                 </ul>
               </div>
               
@@ -547,19 +547,65 @@ export default function WiFiAnalyzer() {
           </div>
 
           <div className="text-white">
+            <h3 className="text-2xl font-bold mb-6">Real-World WiFi Analyzer Applications</h3>
+            <div className="grid md:grid-cols-2 gap-6 mb-12">
+              <div className="bg-white/5 border border-white/10 rounded-lg p-6">
+                <h4 className="font-semibold text-white mb-3 flex items-center gap-2">
+                  <Router className="w-5 h-5 text-blue-400" />
+                  Home Network Optimization
+                </h4>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Your neighbor's router on channel 6 is crushing your WiFi speeds. Use our wireless scanner to find the least crowded channel, 
+                  then switch your router settings. In apartments with 20+ networks, this simple fix often doubles download speeds.
+                </p>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-lg p-6">
+                <h4 className="font-semibold text-white mb-3 flex items-center gap-2">
+                  <Shield className="w-5 h-5 text-red-400" />
+                  Security Vulnerability Detection
+                </h4>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Spot unprotected networks broadcasting your personal data. Our network diagnostics reveal WEP encryption (easily hacked), 
+                  open guest networks without isolation, and suspicious access points that could be security risks.
+                </p>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-lg p-6">
+                <h4 className="font-semibold text-white mb-3 flex items-center gap-2">
+                  <TrendingUp className="w-5 h-5 text-green-400" />
+                  Office WiFi Planning
+                </h4>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Before deploying enterprise WiFi, map existing interference. Our analyzer shows which channels are saturated by neighboring 
+                  businesses, microwave ovens, and Bluetooth devices. Plan your access point placement to avoid dead zones.
+                </p>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-lg p-6">
+                <h4 className="font-semibold text-white mb-3 flex items-center gap-2">
+                  <Search className="w-5 h-5 text-purple-400" />
+                  Troubleshooting Connection Issues
+                </h4>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  When WiFi suddenly slows down, run network diagnostics to identify the cause. Check if signal strength dropped, 
+                  DNS servers are responding slowly, or interference increased. Get specific solutions instead of just "restart your router."
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-white">
             <h3 className="text-2xl font-bold mb-4">Frequently Asked Questions</h3>
             <div className="space-y-4">
               <div className="bg-white/5 border border-white/10 rounded-lg p-6">
                 <h4 className="font-semibold mb-2">What is a WiFi analyzer and why do I need one?</h4>
-                <p className="text-gray-300">A WiFi analyzer is a network diagnostic tool that scans, analyzes, and troubleshoots wireless networks. It helps optimize your WiFi performance by identifying channel congestion, signal strength issues, and security vulnerabilities.</p>
+                <p className="text-gray-300">Think of a WiFi analyzer as a detective for your wireless network. It scans all nearby networks, measures signal strength, and spots problems like overcrowded channels or weak security. Most people don't realize their slow WiFi isn't due to their internet plan—it's often interference from neighbors or poor channel selection.</p>
               </div>
               <div className="bg-white/5 border border-white/10 rounded-lg p-6">
-                <h4 className="font-semibold mb-2">How does network diagnostics improve my internet speed?</h4>
-                <p className="text-gray-300">Network diagnostics identify bottlenecks, interference, and configuration issues that slow down your connection. By analyzing factors like DNS response times, packet loss, and channel congestion, you can optimize your network for maximum performance.</p>
+                <h4 className="font-semibold mb-2">How can network diagnostics actually boost my speed?</h4>
+                <p className="text-gray-300">Network diagnostics reveal the real culprits behind slow connections. Maybe your router picked channel 6, but so did five neighbors. Or your DNS server takes forever to respond. By running diagnostics, you'll discover specific fixes—like switching to channel 1 or changing DNS servers—that can double your speeds.</p>
               </div>
               <div className="bg-white/5 border border-white/10 rounded-lg p-6">
-                <h4 className="font-semibold mb-2">What's the difference between 2.4GHz and 5GHz WiFi bands?</h4>
-                <p className="text-gray-300">2.4GHz offers longer range but slower speeds and more congestion. 5GHz provides faster speeds with less interference but shorter range. Our analyzer helps you choose the optimal band for your specific location and needs.</p>
+                <h4 className="font-semibold mb-2">Should I use 2.4GHz or 5GHz for better performance?</h4>
+                <p className="text-gray-300">Here's the truth: 2.4GHz travels further but moves slower, like a diesel truck. 5GHz is like a sports car—fast but shorter range. If you're far from your router, 2.4GHz wins. Close to your router? 5GHz dominates. Our wireless scanner shows both bands so you can test which performs better in your specific location.</p>
               </div>
             </div>
           </div>
