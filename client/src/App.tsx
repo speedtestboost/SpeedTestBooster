@@ -40,6 +40,7 @@ import O2DESpeedTest from "@/pages/providers/de/o2-de";
 import TelstraSpeedTest from "@/pages/providers/au/telstra";
 import OptusSpeedTest from "@/pages/providers/au/optus";
 import TPGSpeedTest from "@/pages/providers/au/tpg";
+import WiFiAnalyzer from "@/pages/wifi-analyzer";
 import LogoDemo from "@/pages/logo-demo";
 import NotFound from "@/pages/not-found";
 import { useEffect } from "react";
@@ -67,6 +68,7 @@ function Router() {
       <Route path="/ca-speed-test" component={CASpeedTest} />
       <Route path="/internet-speed-requirements" component={InternetSpeedRequirements} />
       <Route path="/internet-providers" component={InternetProviders} />
+      <Route path="/wifi-analyzer" component={WiFiAnalyzer} />
       <Route path="/logo-demo" component={LogoDemo} />
       
       {/* US Provider Routes */}
