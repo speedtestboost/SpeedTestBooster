@@ -132,6 +132,12 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
               </DropdownMenu>
               
               <Link 
+                href="/wifi-analyzer" 
+                className={`transition-colors ${currentPath === "/wifi-analyzer" ? "text-primary font-medium" : "text-muted-foreground hover:text-primary"}`}
+              >
+                WiFi Analyzer
+              </Link>
+              <Link 
                 href="/about" 
                 className={`transition-colors ${currentPath === "/about" ? "text-primary font-medium" : "text-muted-foreground hover:text-primary"}`}
               >
@@ -173,6 +179,13 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
                 onClick={() => setShowMobileMenu(false)}
               >
                 All Internet Providers
+              </Link>
+              <Link 
+                href="/wifi-analyzer" 
+                className="text-muted-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setShowMobileMenu(false)}
+              >
+                WiFi Analyzer
               </Link>
               <Link 
                 href="/about" 
