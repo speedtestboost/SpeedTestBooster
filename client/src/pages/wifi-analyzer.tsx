@@ -27,6 +27,7 @@ import {
 import SpeedTestModal from "@/components/SpeedTestModal";
 import Header from "@/components/Header";
 import { Link } from "wouter";
+import { trackEvent, trackEngagement } from "@/lib/analytics";
 
 interface NetworkInfo {
   ssid: string;
@@ -221,6 +222,10 @@ export default function WiFiAnalyzer() {
   ];
 
   const startScan = async () => {
+    // Track WiFi analyzer scan start
+    trackEvent('wifi_scan_started', 'wifi_analyzer', 'network_scan');
+    trackEngagement('wifi_analyzer_used', { action: 'scan_networks', page: '/wifi-analyzer' });
+
     setIsScanning(true);
     setScanProgress(0);
     
@@ -233,6 +238,9 @@ export default function WiFiAnalyzer() {
     setNetworks(mockNetworks);
     setDiagnostics(mockDiagnostics);
     setIsScanning(false);
+
+    // Track successful scan completion
+    trackEvent('wifi_scan_completed', 'wifi_analyzer', 'scan_success', mockNetworks.length);
   };
 
   const getStatusColor = (status: string) => {
@@ -442,7 +450,10 @@ export default function WiFiAnalyzer() {
                     </CardHeader>
                     <CardContent>
                       <Button 
-                        onClick={() => setShowSpeedTest(true)}
+                        onClick={() => {
+                          trackEvent('speed_test_modal_opened', 'wifi_analyzer', 'speed_test_button');
+                          setShowSpeedTest(true);
+                        }}
                         className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
                       >
                         <Zap className="w-4 h-4 mr-2" />

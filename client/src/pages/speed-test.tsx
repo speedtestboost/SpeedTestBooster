@@ -13,6 +13,7 @@ import OptimizationModal from "@/components/OptimizationModal";
 import Header from "@/components/Header";
 
 import { performSpeedTest, type SpeedTestResult } from "@/lib/speedTest";
+import { trackEvent, trackSpeedTest, trackWifiOptimization } from "@/lib/analytics";
 import { Play, Gauge, Wifi } from "lucide-react";
 import { Link } from "wouter";
 
@@ -189,6 +190,7 @@ export default function SpeedTest() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/speed-tests"] });
+      trackEvent('history_cleared', 'user_action', 'speed_test_history');
       toast({
         title: "History cleared",
         description: "All speed test history has been cleared.",
@@ -206,6 +208,9 @@ export default function SpeedTest() {
   const handleStartTest = async () => {
     if (isTestRunning) return;
 
+    // Track speed test start
+    trackEvent('speed_test_started', 'speed_test', 'homepage');
+
     setIsTestRunning(true);
     setTestProgress(0);
     setTestStatus("Initializing test...");
@@ -221,8 +226,13 @@ export default function SpeedTest() {
 
       setCurrentResult(result);
       await saveSpeedTest.mutateAsync(result);
+      
+      // Track successful speed test completion with results
+      trackSpeedTest(result);
+      trackEvent('speed_test_completed', 'speed_test', 'success');
     } catch (error) {
       console.error('Speed test error:', error);
+      trackEvent('speed_test_failed', 'speed_test', 'error');
       toast({
         title: "Test failed",
         description: "Network test encountered an issue. Please check your connection and try again.",
@@ -236,6 +246,8 @@ export default function SpeedTest() {
   };
 
   const handleOptimizeWifi = () => {
+    trackWifiOptimization('start');
+    trackEvent('wifi_optimization_clicked', 'optimization', 'homepage');
     setShowOptimization(true);
   };
 

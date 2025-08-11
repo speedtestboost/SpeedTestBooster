@@ -3,6 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Wifi, Check, Loader2 } from "lucide-react";
+import { trackWifiOptimization, trackEvent } from "@/lib/analytics";
 
 interface OptimizationModalProps {
   isOpen: boolean;
@@ -62,6 +63,10 @@ export default function OptimizationModal({ isOpen, onClose }: OptimizationModal
     
     setIsOptimizing(false);
     setIsComplete(true);
+    
+    // Track WiFi optimization completion
+    trackWifiOptimization('complete');
+    trackEvent('wifi_optimization_completed', 'optimization', 'modal_success');
   };
 
   const handleClose = () => {
