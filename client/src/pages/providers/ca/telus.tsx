@@ -44,11 +44,6 @@ export default function TelusSpeedTest() {
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
-      // Reset canonical to homepage when leaving page
-      const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
-      if (canonical) {
-        canonical.setAttribute('href', 'https://speedtestboost.com/');
-      }
     };
   }, []);
 
