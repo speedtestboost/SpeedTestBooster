@@ -18,7 +18,7 @@ export default function SkySpeedTest() {
     // Update canonical tag
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
     if (canonical) {
-      canonical.setAttribute('href', `${window.location.origin}/providers/uk/sky`);
+      canonical.setAttribute('href', 'https://speedtestboost.com/providers/uk/sky');
     }
 
     const structuredData = {
@@ -26,7 +26,7 @@ export default function SkySpeedTest() {
       "@type": "WebPage",
       "name": "Sky Broadband Speed Test",
       "description": "Test your Sky broadband speed for free. Speed test for Sky fibre internet and TV customers.",
-      "url": `${window.location.origin}/providers/uk/sky`,
+      "url": "https://speedtestboost.com/providers/uk/sky",
       "provider": {
         "@type": "Organization",
         "name": "Sky",

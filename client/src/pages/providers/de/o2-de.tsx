@@ -18,7 +18,7 @@ export default function O2DESpeedTest() {
     // Update canonical tag
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
     if (canonical) {
-      canonical.setAttribute('href', `${window.location.origin}/providers/de/o2-de`);
+      canonical.setAttribute('href', 'https://speedtestboost.com/providers/de/o2-de');
     }
 
     const structuredData = {
@@ -26,7 +26,7 @@ export default function O2DESpeedTest() {
       "@type": "WebPage",
       "name": "O2 Germany Speed Test",
       "description": "Test your O2 Germany internet speed for free. Speed test for O2 DSL and mobile customers.",
-      "url": `${window.location.origin}/providers/de/o2-de`,
+      "url": "https://speedtestboost.com/providers/de/o2-de",
       "provider": {
         "@type": "Organization",
         "name": "O2 Germany",

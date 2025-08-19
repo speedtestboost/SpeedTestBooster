@@ -18,7 +18,7 @@ export default function ATTSpeedTest() {
     // Update canonical tag
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
     if (canonical) {
-      canonical.setAttribute('href', `${window.location.origin}/providers/us/att`);
+      canonical.setAttribute('href', 'https://speedtestboost.com/providers/us/att');
     }
 
     const structuredData = {
@@ -26,7 +26,7 @@ export default function ATTSpeedTest() {
       "@type": "WebPage",
       "name": "AT&T Speed Test",
       "description": "Test your AT&T internet speed for free. Speed test for AT&T fiber and DSL customers.",
-      "url": `${window.location.origin}/providers/us/att`,
+      "url": "https://speedtestboost.com/providers/us/att",
       "provider": {
         "@type": "Organization",
         "name": "AT&T",

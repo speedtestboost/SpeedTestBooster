@@ -18,7 +18,7 @@ export default function ComcastSpeedTest() {
     // Update canonical tag
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
     if (canonical) {
-      canonical.setAttribute('href', `${window.location.origin}/providers/us/comcast`);
+      canonical.setAttribute('href', 'https://speedtestboost.com/providers/us/comcast');
     }
 
     const structuredData = {
@@ -26,7 +26,7 @@ export default function ComcastSpeedTest() {
       "@type": "WebPage",
       "name": "Comcast Xfinity Speed Test",
       "description": "Test your Comcast Xfinity internet speed for free. Speed test for Xfinity cable and fiber customers.",
-      "url": `${window.location.origin}/providers/us/comcast`,
+      "url": "https://speedtestboost.com/providers/us/comcast",
       "provider": {
         "@type": "Organization",
         "name": "Comcast Xfinity",

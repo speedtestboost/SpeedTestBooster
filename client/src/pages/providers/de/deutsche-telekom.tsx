@@ -18,7 +18,7 @@ export default function DeutscheTelekomSpeedTest() {
     // Update canonical tag
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
     if (canonical) {
-      canonical.setAttribute('href', `${window.location.origin}/providers/de/deutsche-telekom`);
+      canonical.setAttribute('href', 'https://speedtestboost.com/providers/de/deutsche-telekom');
     }
 
     const structuredData = {
@@ -26,7 +26,7 @@ export default function DeutscheTelekomSpeedTest() {
       "@type": "WebPage",
       "name": "Deutsche Telekom Speed Test", 
       "description": "Test your Deutsche Telekom internet speed for free. Speed test for Telekom DSL and fibre customers in Germany.",
-      "url": `${window.location.origin}/providers/de/deutsche-telekom`,
+      "url": "https://speedtestboost.com/providers/de/deutsche-telekom",
       "provider": {
         "@type": "Organization",
         "name": "Deutsche Telekom",

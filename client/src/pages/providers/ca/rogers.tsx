@@ -18,7 +18,7 @@ export default function RogersSpeedTest() {
     // Update canonical tag
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
     if (canonical) {
-      canonical.setAttribute('href', `${window.location.origin}/providers/ca/rogers`);
+      canonical.setAttribute('href', 'https://speedtestboost.com/providers/ca/rogers');
     }
 
     const structuredData = {
@@ -26,7 +26,7 @@ export default function RogersSpeedTest() {
       "@type": "WebPage",
       "name": "Rogers Speed Test",
       "description": "Test your Rogers internet speed for free. Speed test for Rogers cable and fiber customers.",
-      "url": `${window.location.origin}/providers/ca/rogers`,
+      "url": "https://speedtestboost.com/providers/ca/rogers",
       "provider": {
         "@type": "Organization",
         "name": "Rogers",

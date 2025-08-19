@@ -18,7 +18,7 @@ export default function TPGSpeedTest() {
     // Update canonical tag
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
     if (canonical) {
-      canonical.setAttribute('href', `${window.location.origin}/providers/au/tpg`);
+      canonical.setAttribute('href', 'https://speedtestboost.com/providers/au/tpg');
     }
 
     const structuredData = {
@@ -26,7 +26,7 @@ export default function TPGSpeedTest() {
       "@type": "WebPage",
       "name": "TPG Speed Test",
       "description": "Test your TPG internet speed for free. Speed test for TPG NBN and ADSL customers.",
-      "url": `${window.location.origin}/providers/au/tpg`,
+      "url": "https://speedtestboost.com/providers/au/tpg",
       "provider": {
         "@type": "Organization",
         "name": "TPG",

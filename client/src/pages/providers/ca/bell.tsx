@@ -18,7 +18,7 @@ export default function BellSpeedTest() {
     // Update canonical tag
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
     if (canonical) {
-      canonical.setAttribute('href', `${window.location.origin}/providers/ca/bell`);
+      canonical.setAttribute('href', 'https://speedtestboost.com/providers/ca/bell');
     }
 
     const structuredData = {
@@ -26,7 +26,7 @@ export default function BellSpeedTest() {
       "@type": "WebPage",
       "name": "Bell Internet Speed Test",
       "description": "Test your Bell internet speed for free. Speed test for Bell Fibe and DSL internet customers in Canada.",
-      "url": `${window.location.origin}/providers/ca/bell`,
+      "url": "https://speedtestboost.com/providers/ca/bell",
       "provider": {
         "@type": "Organization",
         "name": "Bell Canada",

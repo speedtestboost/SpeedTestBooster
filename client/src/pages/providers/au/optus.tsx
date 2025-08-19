@@ -18,7 +18,7 @@ export default function OptusSpeedTest() {
     // Update canonical tag
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
     if (canonical) {
-      canonical.setAttribute('href', `${window.location.origin}/providers/au/optus`);
+      canonical.setAttribute('href', 'https://speedtestboost.com/providers/au/optus');
     }
 
     const structuredData = {
@@ -26,7 +26,7 @@ export default function OptusSpeedTest() {
       "@type": "WebPage",
       "name": "Optus Speed Test",
       "description": "Test your Optus internet speed for free. Speed test for Optus NBN and mobile customers.",
-      "url": `${window.location.origin}/providers/au/optus`,
+      "url": "https://speedtestboost.com/providers/au/optus",
       "provider": {
         "@type": "Organization",
         "name": "Optus",

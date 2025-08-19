@@ -18,7 +18,7 @@ export default function VerizonSpeedTest() {
     // Update canonical tag
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
     if (canonical) {
-      canonical.setAttribute('href', `${window.location.origin}/providers/us/verizon`);
+      canonical.setAttribute('href', 'https://speedtestboost.com/providers/us/verizon');
     }
 
     const structuredData = {
@@ -26,7 +26,7 @@ export default function VerizonSpeedTest() {
       "@type": "WebPage",
       "name": "Verizon Speed Test",
       "description": "Test your Verizon internet speed for free. Speed test for Verizon Fios and 5G customers.",
-      "url": `${window.location.origin}/providers/us/verizon`,
+      "url": "https://speedtestboost.com/providers/us/verizon",
       "provider": {
         "@type": "Organization",
         "name": "Verizon",

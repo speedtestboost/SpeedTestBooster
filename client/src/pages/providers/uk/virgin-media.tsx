@@ -18,7 +18,7 @@ export default function VirginMediaSpeedTest() {
     // Update canonical tag
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
     if (canonical) {
-      canonical.setAttribute('href', `${window.location.origin}/providers/uk/virgin-media`);
+      canonical.setAttribute('href', 'https://speedtestboost.com/providers/uk/virgin-media');
     }
 
     const structuredData = {
@@ -26,7 +26,7 @@ export default function VirginMediaSpeedTest() {
       "@type": "WebPage",
       "name": "Virgin Media Speed Test",
       "description": "Test your Virgin Media broadband speed for free. Speed test for Virgin cable internet and TV customers.",
-      "url": `${window.location.origin}/providers/uk/virgin-media`,
+      "url": "https://speedtestboost.com/providers/uk/virgin-media",
       "provider": {
         "@type": "Organization",
         "name": "Virgin Media",

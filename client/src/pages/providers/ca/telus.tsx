@@ -18,7 +18,7 @@ export default function TelusSpeedTest() {
     // Update canonical tag
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
     if (canonical) {
-      canonical.setAttribute('href', `${window.location.origin}/providers/ca/telus`);
+      canonical.setAttribute('href', 'https://speedtestboost.com/providers/ca/telus');
     }
 
     const structuredData = {
@@ -26,7 +26,7 @@ export default function TelusSpeedTest() {
       "@type": "WebPage",
       "name": "Telus Speed Test",
       "description": "Test your Telus internet speed for free. Speed test for Telus fiber and LTE customers.",
-      "url": `${window.location.origin}/providers/ca/telus`,
+      "url": "https://speedtestboost.com/providers/ca/telus",
       "provider": {
         "@type": "Organization",
         "name": "Telus",

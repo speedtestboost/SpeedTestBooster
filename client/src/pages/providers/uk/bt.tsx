@@ -18,7 +18,7 @@ export default function BTSpeedTest() {
     // Update canonical tag
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
     if (canonical) {
-      canonical.setAttribute('href', `${window.location.origin}/providers/uk/bt`);
+      canonical.setAttribute('href', 'https://speedtestboost.com/providers/uk/bt');
     }
 
     const structuredData = {
@@ -26,7 +26,7 @@ export default function BTSpeedTest() {
       "@type": "WebPage",
       "name": "BT Speed Test",
       "description": "Test your BT internet speed for free. Speed test for BT fiber and ADSL customers.",
-      "url": `${window.location.origin}/providers/uk/bt`,
+      "url": "https://speedtestboost.com/providers/uk/bt",
       "provider": {
         "@type": "Organization",
         "name": "BT",

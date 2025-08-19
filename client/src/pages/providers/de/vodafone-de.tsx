@@ -18,7 +18,7 @@ export default function VodafoneDESpeedTest() {
     // Update canonical tag
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
     if (canonical) {
-      canonical.setAttribute('href', `${window.location.origin}/providers/de/vodafone-de`);
+      canonical.setAttribute('href', 'https://speedtestboost.com/providers/de/vodafone-de');
     }
 
     const structuredData = {
@@ -26,7 +26,7 @@ export default function VodafoneDESpeedTest() {
       "@type": "WebPage",
       "name": "Vodafone Germany Speed Test",
       "description": "Test your Vodafone Germany internet speed for free. Speed test for Vodafone cable and mobile customers.",
-      "url": `${window.location.origin}/providers/de/vodafone-de`,
+      "url": "https://speedtestboost.com/providers/de/vodafone-de",
       "provider": {
         "@type": "Organization",
         "name": "Vodafone Germany",

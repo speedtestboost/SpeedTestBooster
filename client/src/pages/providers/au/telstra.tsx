@@ -18,7 +18,7 @@ export default function TelstraSpeedTest() {
     // Update canonical tag
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
     if (canonical) {
-      canonical.setAttribute('href', `${window.location.origin}/providers/au/telstra`);
+      canonical.setAttribute('href', 'https://speedtestboost.com/providers/au/telstra');
     }
 
     const structuredData = {
@@ -26,7 +26,7 @@ export default function TelstraSpeedTest() {
       "@type": "WebPage",
       "name": "Telstra Speed Test",
       "description": "Test your Telstra internet speed for free. Speed test for Telstra NBN and mobile internet customers in Australia.",
-      "url": `${window.location.origin}/providers/au/telstra`,
+      "url": "https://speedtestboost.com/providers/au/telstra",
       "provider": {
         "@type": "Organization",
         "name": "Telstra",
