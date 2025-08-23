@@ -96,6 +96,13 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
                 Home
               </Link>
               
+              <Link 
+                href="/internet-speed-requirements" 
+                className={`text-muted-foreground hover:text-primary transition-colors font-medium ${currentPath === "/internet-speed-requirements" ? "text-primary" : ""}`}
+              >
+                Speed Calculator
+              </Link>
+              
               {/* Internet Providers Dropdown */}
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex items-center space-x-1 text-muted-foreground hover:text-primary transition-colors">
@@ -172,6 +179,13 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
                 onClick={() => setShowMobileMenu(false)}
               >
                 Home
+              </Link>
+              <Link 
+                href="/internet-speed-requirements" 
+                className="text-muted-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setShowMobileMenu(false)}
+              >
+                Speed Calculator
               </Link>
               <Link 
                 href="/internet-providers" 
