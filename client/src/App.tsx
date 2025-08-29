@@ -40,6 +40,11 @@ import O2DESpeedTest from "@/pages/providers/de/o2-de";
 import TelstraSpeedTest from "@/pages/providers/au/telstra";
 import OptusSpeedTest from "@/pages/providers/au/optus";
 import TPGSpeedTest from "@/pages/providers/au/tpg";
+
+// Netherlands Providers
+import KPNSpeedTest from "@/pages/providers/nl/kpn";
+import VodafoneZiggoSpeedTest from "@/pages/providers/nl/vodafoneziggo";
+import OdidoSpeedTest from "@/pages/providers/nl/odido";
 import WiFiAnalyzer from "@/pages/wifi-analyzer";
 import LogoDemo from "@/pages/logo-demo";
 import NotFound from "@/pages/not-found";
@@ -95,6 +100,11 @@ function Router() {
       <Route path="/providers/au/telstra" component={TelstraSpeedTest} />
       <Route path="/providers/au/optus" component={OptusSpeedTest} />
       <Route path="/providers/au/tpg" component={TPGSpeedTest} />
+      
+      {/* Netherlands Provider Routes */}
+      <Route path="/providers/nl/kpn" component={KPNSpeedTest} />
+      <Route path="/providers/nl/vodafoneziggo" component={VodafoneZiggoSpeedTest} />
+      <Route path="/providers/nl/odido" component={OdidoSpeedTest} />
       
       <Route component={NotFound} />
     </Switch>

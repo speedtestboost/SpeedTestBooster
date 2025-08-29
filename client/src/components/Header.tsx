@@ -61,6 +61,16 @@ const countries = [
       { name: "Optus", slug: "optus" },
       { name: "TPG", slug: "tpg" }
     ]
+  },
+  {
+    name: "Netherlands",
+    code: "nl",
+    flag: "🇳🇱",
+    providers: [
+      { name: "KPN", slug: "kpn" },
+      { name: "VodafoneZiggo", slug: "vodafoneziggo" },
+      { name: "Odido", slug: "odido" }
+    ]
   }
 ];
 
