@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { trackEvent } from "@/lib/analytics";
-import { Zap } from "lucide-react";
+import { Zap, Wifi } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
 
 export default function KPNSpeedTest() {
@@ -89,11 +89,6 @@ export default function KPNSpeedTest() {
     });
   }, []);
 
-  const handleSpeedTestClick = () => {
-    trackEvent('provider_speed_test_started', 'kpn', 'netherlands');
-    setShowSpeedTest(true);
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       <Header currentPath="/providers/nl/kpn" />
@@ -101,56 +96,76 @@ export default function KPNSpeedTest() {
       <main className="pt-24 pb-12">
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
           <div className="text-center mb-12">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              KPN Speed Test Nederland
+            <div className="flex items-center justify-center mb-6">
+              <div className="p-4 bg-green-500/10 rounded-full">
+                <Wifi className="h-12 w-12 text-green-500" />
+              </div>
+            </div>
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-green-500 via-green-600 to-green-500 bg-clip-text text-transparent">
+              KPN Speed Test
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Test je KPN internetsnelheid gratis. Controleer glasvezel, fiber en ADSL verbinding snelheden.
+              Test your <span className="font-semibold text-green-500">KPN internet speed</span> for free. Check your glasvezel fiber or ADSL connection performance.
             </p>
             
-            <Button 
-              onClick={handleSpeedTestClick}
-              size="lg"
-              className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-lg px-8 py-4 mb-12"
-            >
-              <Zap className="mr-2 h-5 w-5" />
-              Start KPN Speedtest
-            </Button>
+            <div className="mb-12">
+              <Button 
+                onClick={() => setShowSpeedTest(true)} 
+                size="lg" 
+                className="text-lg px-8 py-6 bg-gradient-to-r from-green-500 to-green-600 hover:opacity-90 transition-opacity"
+              >
+                <Zap className="mr-2 h-5 w-5" />
+                Test KPN Speed Now
+              </Button>
+            </div>
           </div>
 
-          <div className="prose prose-lg dark:prose-invert mx-auto">
-            <h2>Over KPN Nederland</h2>
-            <p>
-              KPN is Nederlands grootste telecommunicatieprovider, opgericht in 1989 als opvolger van PTT Telecom. 
-              Met meer dan 8 miljoen klanten en 40% marktaandeel levert KPN internet, telefonie en televisie diensten 
-              door heel Nederland.
-            </p>
-            
-            <h3>KPN Glasvezel Netwerk</h3>
-            <p>
-              KPN investeert zwaar in glasvezel infrastructuur. Het doel is om tegen 2026 80% van Nederland te voorzien 
-              van fiber-to-the-home (FTTH) verbindingen. KPN glasvezel biedt symmetrische snelheden tot 1000 Mbps 
-              met lage latency voor optimale prestaties.
-            </p>
-            
-            <h3>KPN Internet Snelheden</h3>
-            <p>
-              KPN biedt verschillende internetsnelheden van basis ADSL tot supersnel glasvezel:
-            </p>
-            <ul>
-              <li>Basis Internet: Tot 40 Mbps via ADSL/VDSL</li>
-              <li>Snel Internet: Tot 100 Mbps via glasvezel</li>
-              <li>Supersnel: Tot 500 Mbps via glasvezel</li>
-              <li>Ultra Internet: Tot 1000 Mbps via glasvezel</li>
-            </ul>
-            
-            <h3>Waarom KPN Speedtest Gebruiken?</h3>
-            <p>
-              Een KPN speedtest helpt je controleren of je de internetsnelheid krijgt waarvoor je betaalt. 
-              Test regelmatig je verbinding om netwerk problemen te identificeren en optimale prestaties 
-              te garanderen voor streaming, gaming en werken vanuit huis.
-            </p>
-          </div>
+          <Card>
+            <CardContent className="p-8">
+              <h2 className="text-2xl font-bold mb-6">About KPN</h2>
+              <div className="prose prose-gray dark:prose-invert max-w-none space-y-6">
+                <p className="text-lg text-muted-foreground">
+                  KPN stands as the Netherlands' largest telecommunications company, established in 1989 as the successor to PTT Telecom. 
+                  Serving over 8 million customers with a commanding 40% market share, KPN delivers comprehensive internet, telephony, 
+                  and television services throughout the Netherlands while maintaining its position as the nation's telecommunications 
+                  infrastructure leader and digital innovation pioneer.
+                </p>
+                
+                <h3 className="text-xl font-semibold mb-3">Glasvezel Network Excellence</h3>
+                <p className="text-muted-foreground">
+                  KPN operates the Netherlands' most extensive fiber-optic network, investing heavily in glasvezel infrastructure 
+                  with ambitious plans to provide 80% of Dutch households with fiber-to-the-home (FTTH) connections by 2026. 
+                  The company's glasvezel network delivers symmetrical speeds up to 1000 Mbps with ultra-low latency, providing 
+                  Dutch customers with world-class internet connectivity for modern digital applications.
+                </p>
+
+                <h3 className="text-xl font-semibold mb-3">Comprehensive Service Portfolio</h3>
+                <p className="text-muted-foreground">
+                  KPN offers diverse internet speed tiers ranging from basic ADSL connections to ultra-fast glasvezel services, 
+                  catering to various customer needs from residential browsing to professional applications. The company's 
+                  service portfolio includes internet speeds from 40 Mbps ADSL/VDSL connections to premium 1000 Mbps 
+                  glasvezel packages, complemented by integrated mobile and television bundles.
+                </p>
+
+                <h3 className="text-xl font-semibold mb-3">Market Leadership and Innovation</h3>
+                <p className="text-muted-foreground">
+                  As the Netherlands' dominant telecommunications provider, KPN combines traditional network reliability 
+                  with cutting-edge technology innovation. The company's strategic focus on fiber deployment, 5G mobile 
+                  networks, and digital services positions KPN as the foundation of Dutch digital infrastructure, 
+                  supporting both consumer and enterprise customers across the country.
+                </p>
+
+                <h3 className="text-xl font-semibold mb-3">Performance Testing and Optimization</h3>
+                <p className="text-muted-foreground">
+                  Regular speed testing helps KPN customers monitor their internet performance and ensure optimal service 
+                  delivery from their glasvezel fiber or ADSL connection. Our KPN speed test measures download speeds, 
+                  upload speeds, and network latency, providing insights into your broadband performance to identify 
+                  connectivity issues and ensure you're receiving the premium internet service quality that defines 
+                  KPN's telecommunications excellence in the Netherlands.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </main>
 

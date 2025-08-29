@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { trackEvent } from "@/lib/analytics";
-import { Zap } from "lucide-react";
+import { Zap, Wifi } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
 
 export default function VodafoneZiggoSpeedTest() {
@@ -89,11 +89,6 @@ export default function VodafoneZiggoSpeedTest() {
     });
   }, []);
 
-  const handleSpeedTestClick = () => {
-    trackEvent('provider_speed_test_started', 'vodafoneziggo', 'netherlands');
-    setShowSpeedTest(true);
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       <Header currentPath="/providers/nl/vodafoneziggo" />
@@ -101,63 +96,76 @@ export default function VodafoneZiggoSpeedTest() {
       <main className="pt-24 pb-12">
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
           <div className="text-center mb-12">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <div className="flex items-center justify-center mb-6">
+              <div className="p-4 bg-red-500/10 rounded-full">
+                <Wifi className="h-12 w-12 text-red-500" />
+              </div>
+            </div>
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-red-500 via-red-600 to-red-500 bg-clip-text text-transparent">
               VodafoneZiggo Speed Test
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Test je VodafoneZiggo internetsnelheid gratis. Controleer kabel en glasvezel verbinding prestaties.
+              Test your <span className="font-semibold text-red-500">VodafoneZiggo internet speed</span> for free. Check your cable and fiber connection performance.
             </p>
             
-            <Button 
-              onClick={handleSpeedTestClick}
-              size="lg"
-              className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-lg px-8 py-4 mb-12"
-            >
-              <Zap className="mr-2 h-5 w-5" />
-              Start Ziggo Speedtest
-            </Button>
+            <div className="mb-12">
+              <Button 
+                onClick={() => setShowSpeedTest(true)} 
+                size="lg" 
+                className="text-lg px-8 py-6 bg-gradient-to-r from-red-500 to-red-600 hover:opacity-90 transition-opacity"
+              >
+                <Zap className="mr-2 h-5 w-5" />
+                Test VodafoneZiggo Speed Now
+              </Button>
+            </div>
           </div>
 
-          <div className="prose prose-lg dark:prose-invert mx-auto">
-            <h2>Over VodafoneZiggo</h2>
-            <p>
-              VodafoneZiggo is een joint venture tussen Vodafone en Liberty Global (Ziggo), ontstaan in 2017. 
-              Als één van de grootste telecom providers van Nederland bedient het bedrijf meer dan 7 miljoen klanten 
-              met internet, televisie en mobiele diensten door heel Nederland.
-            </p>
-            
-            <h3>Kabel en Glasvezel Netwerk</h3>
-            <p>
-              VodafoneZiggo combineert Ziggo's uitgebreide kabelnetwerk met moderne glasvezel technologie. 
-              Het bedrijf biedt snelheden tot 2 Gbps via hun premium fiber netwerk en heeft een betrouwbaar 
-              coaxial kabelnetwerk dat grote delen van Nederland bedekt.
-            </p>
-            
-            <h3>VodafoneZiggo Internet Snelheden</h3>
-            <p>
-              VodafoneZiggo biedt verschillende internetsnelheden via kabel en glasvezel:
-            </p>
-            <ul>
-              <li>Start Internet: Tot 100 Mbps via kabel</li>
-              <li>Supersnel: Tot 500 Mbps via kabel</li>
-              <li>Gigasnelheid: Tot 1000 Mbps via kabel/glasvezel</li>
-              <li>Max Fiber: Tot 2000 Mbps via glasvezel</li>
-            </ul>
-            
-            <h3>TV en Entertainment Bundels</h3>
-            <p>
-              VodafoneZiggo staat bekend om uitgebreide televisie en entertainment pakketten gecombineerd 
-              met internet diensten. Het bedrijf biedt toegang tot premium zenders, on-demand content 
-              en streaming diensten als onderdeel van hun bundel oplossingen.
-            </p>
-            
-            <h3>Waarom VodafoneZiggo Speedtest Gebruiken?</h3>
-            <p>
-              Test regelmatig je VodafoneZiggo verbinding om optimale prestaties te garanderen voor 
-              4K streaming, online gaming en werken vanuit huis. Een speedtest helpt identificeren 
-              of je de snelheid krijgt waarvoor je betaalt.
-            </p>
-          </div>
+          <Card>
+            <CardContent className="p-8">
+              <h2 className="text-2xl font-bold mb-6">About VodafoneZiggo</h2>
+              <div className="prose prose-gray dark:prose-invert max-w-none space-y-6">
+                <p className="text-lg text-muted-foreground">
+                  VodafoneZiggo represents a powerful telecommunications alliance formed in 2017 between global mobile leader 
+                  Vodafone and Dutch cable pioneer Liberty Global (Ziggo). As one of the Netherlands' largest telecom providers, 
+                  VodafoneZiggo serves over 7 million customers with comprehensive internet, television, and mobile services, 
+                  combining decades of cable expertise with advanced mobile technology innovation.
+                </p>
+                
+                <h3 className="text-xl font-semibold mb-3">Cable and Fiber Network Infrastructure</h3>
+                <p className="text-muted-foreground">
+                  VodafoneZiggo operates the Netherlands' most extensive cable network infrastructure, combining Ziggo's 
+                  established coaxial cable foundation with cutting-edge fiber-optic technology. The company delivers 
+                  internet speeds up to 2 Gbps through premium fiber connections while maintaining reliable cable 
+                  services that reach virtually every corner of the Netherlands with consistent high-speed connectivity.
+                </p>
+
+                <h3 className="text-xl font-semibold mb-3">Comprehensive Entertainment Solutions</h3>
+                <p className="text-muted-foreground">
+                  VodafoneZiggo distinguishes itself through integrated entertainment and connectivity solutions, offering 
+                  extensive television programming, premium streaming services, and on-demand content alongside high-speed 
+                  internet. The company's bundled packages combine internet connectivity with comprehensive entertainment 
+                  options, making it a preferred choice for Dutch households seeking complete digital solutions.
+                </p>
+
+                <h3 className="text-xl font-semibold mb-3">Mobile and Fixed Convergence</h3>
+                <p className="text-muted-foreground">
+                  The VodafoneZiggo partnership leverages Vodafone's global mobile expertise with Ziggo's Dutch market 
+                  knowledge, creating unique convergent services that seamlessly integrate mobile and fixed connectivity. 
+                  This combination enables innovative service offerings that bridge home and mobile connectivity, 
+                  providing customers with unified digital experiences across all their devices and locations.
+                </p>
+
+                <h3 className="text-xl font-semibold mb-3">Performance Testing and Optimization</h3>
+                <p className="text-muted-foreground">
+                  Regular speed testing helps VodafoneZiggo customers monitor their internet performance and ensure optimal 
+                  service delivery from their cable or fiber connection. Our VodafoneZiggo speed test measures download 
+                  speeds, upload speeds, and network latency, providing insights into your broadband performance to 
+                  identify connectivity issues and ensure you're receiving the premium internet service quality that 
+                  defines VodafoneZiggo's telecommunications excellence in the Netherlands.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </main>
 

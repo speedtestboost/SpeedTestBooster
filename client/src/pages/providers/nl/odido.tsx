@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { trackEvent } from "@/lib/analytics";
-import { Zap } from "lucide-react";
+import { Zap, Wifi } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
 
 export default function OdidoSpeedTest() {
@@ -89,11 +89,6 @@ export default function OdidoSpeedTest() {
     });
   }, []);
 
-  const handleSpeedTestClick = () => {
-    trackEvent('provider_speed_test_started', 'odido', 'netherlands');
-    setShowSpeedTest(true);
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       <Header currentPath="/providers/nl/odido" />
@@ -101,70 +96,79 @@ export default function OdidoSpeedTest() {
       <main className="pt-24 pb-12">
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
           <div className="text-center mb-12">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Odido Speed Test Nederland
+            <div className="flex items-center justify-center mb-6">
+              <div className="p-4 bg-pink-500/10 rounded-full">
+                <Wifi className="h-12 w-12 text-pink-500" />
+              </div>
+            </div>
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-pink-500 via-pink-600 to-pink-500 bg-clip-text text-transparent">
+              Odido Speed Test
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Test je Odido internetsnelheid gratis. Controleer 5G, 4G, glasvezel en wifi verbinding prestaties.
+              Test your <span className="font-semibold text-pink-500">Odido internet speed</span> for free. Check your 5G, 4G, and fiber connection performance.
             </p>
             
-            <Button 
-              onClick={handleSpeedTestClick}
-              size="lg"
-              className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-lg px-8 py-4 mb-12"
-            >
-              <Zap className="mr-2 h-5 w-5" />
-              Start Odido Speedtest
-            </Button>
+            <div className="mb-12">
+              <Button 
+                onClick={() => setShowSpeedTest(true)} 
+                size="lg" 
+                className="text-lg px-8 py-6 bg-gradient-to-r from-pink-500 to-pink-600 hover:opacity-90 transition-opacity"
+              >
+                <Zap className="mr-2 h-5 w-5" />
+                Test Odido Speed Now
+              </Button>
+            </div>
           </div>
 
-          <div className="prose prose-lg dark:prose-invert mx-auto">
-            <h2>Over Odido Nederland</h2>
-            <p>
-              Odido (voorheen T-Mobile Nederland) is een van de leidende mobiele netwerk operators in Nederland, 
-              met meer dan 6 miljoen klanten. Het bedrijf werd gelanceerd als een nieuwe merknaam in 2024, 
-              na de verkoop door Deutsche Telekom aan een consortium van investeerders.
-            </p>
-            
-            <h3>5G en Mobiel Netwerk</h3>
-            <p>
-              Odido focust op innovatieve mobiele technologieën met een sterke nadruk op 5G netwerk uitbreiding. 
-              Het bedrijf biedt ultra-snelle 5G verbindingen in grote Nederlandse steden en heeft uitgebreide 
-              4G dekking door heel Nederland voor betrouwbare mobiele internet ervaring.
-            </p>
-            
-            <h3>Odido Internet Services</h3>
-            <p>
-              Odido biedt verschillende internet oplossingen voor thuis en onderweg:
-            </p>
-            <ul>
-              <li>Basis Internet: Tot 50 Mbps via 4G/glasvezel</li>
-              <li>Snel Internet: Tot 200 Mbps via 5G/glasvezel</li>
-              <li>Super Internet: Tot 500 Mbps via glasvezel</li>
-              <li>Unlimited 5G: 1000+ Mbps mobiele snelheden</li>
-            </ul>
-            
-            <h3>Glasvezel en Thuis Internet</h3>
-            <p>
-              Naast mobiele diensten biedt Odido ook glasvezel internet voor thuisgebruik. 
-              Deze diensten worden vaak gecombineerd met mobiele abonnementen in aantrekkelijke 
-              bundelpakketten die zowel thuis als mobiel internet behoeften dekken.
-            </p>
-            
-            <h3>Zakelijke Oplossingen</h3>
-            <p>
-              Odido levert ook comprehensive zakelijke telecommunicatie oplossingen, van mobiele 
-              abonnementen voor bedrijven tot complete ICT infrastructuur diensten. Het bedrijf 
-              ondersteunt Nederlandse bedrijven met betrouwbare communicatie technologieën.
-            </p>
-            
-            <h3>Waarom Odido Speedtest Gebruiken?</h3>
-            <p>
-              Test regelmatig je Odido verbinding om te controleren of je optimale 5G, 4G of 
-              glasvezel prestaties krijgt. Een speedtest helpt identificeren netwerk problemen 
-              en garandeert beste ervaring voor streaming, gaming en zakelijk gebruik.
-            </p>
-          </div>
+          <Card>
+            <CardContent className="p-8">
+              <h2 className="text-2xl font-bold mb-6">About Odido</h2>
+              <div className="prose prose-gray dark:prose-invert max-w-none space-y-6">
+                <p className="text-lg text-muted-foreground">
+                  Odido emerges as a dynamic telecommunications brand launched in 2024, representing the evolution of 
+                  T-Mobile Nederland following its acquisition by a consortium of investors from Deutsche Telekom. 
+                  Serving over 6 million customers, Odido positions itself as a leading mobile network operator in 
+                  the Netherlands, combining established mobile expertise with fresh innovation in 5G technology and 
+                  digital services.
+                </p>
+                
+                <h3 className="text-xl font-semibold mb-3">5G Network Innovation</h3>
+                <p className="text-muted-foreground">
+                  Odido leads the Netherlands' 5G revolution with ultra-fast mobile internet connections reaching 
+                  1000+ Mbps in major Dutch cities. The company's 5G infrastructure represents cutting-edge wireless 
+                  technology that transforms mobile connectivity, enabling applications from augmented reality to 
+                  IoT solutions while providing extensive 4G coverage across the entire Netherlands for reliable 
+                  nationwide mobile internet access.
+                </p>
+
+                <h3 className="text-xl font-semibold mb-3">Convergent Service Strategy</h3>
+                <p className="text-muted-foreground">
+                  Odido delivers comprehensive internet solutions spanning mobile and fixed connectivity, offering 
+                  fiber-based home internet services alongside industry-leading mobile networks. The company's 
+                  convergent approach combines mobile subscriptions with home internet packages, creating integrated 
+                  digital experiences that serve both residential and business customers with unified connectivity 
+                  solutions.
+                </p>
+
+                <h3 className="text-xl font-semibold mb-3">Business and Enterprise Focus</h3>
+                <p className="text-muted-foreground">
+                  Odido provides sophisticated business telecommunications solutions ranging from enterprise mobile 
+                  plans to comprehensive ICT infrastructure services. The company supports Dutch businesses with 
+                  reliable communication technologies, leveraging its advanced network capabilities to deliver 
+                  professional-grade connectivity solutions that enable digital transformation across industries.
+                </p>
+
+                <h3 className="text-xl font-semibold mb-3">Performance Testing and Optimization</h3>
+                <p className="text-muted-foreground">
+                  Regular speed testing helps Odido customers monitor their internet performance and ensure optimal 
+                  service delivery from their 5G, 4G, or fiber connection. Our Odido speed test measures download 
+                  speeds, upload speeds, and network latency, providing insights into your broadband performance 
+                  to identify connectivity issues and ensure you're receiving the premium internet service quality 
+                  that defines Odido's telecommunications excellence in the Netherlands.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </main>
 
