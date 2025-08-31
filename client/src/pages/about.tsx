@@ -1,13 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, Wifi, Globe, Shield, Zap, Users, Menu, X } from "lucide-react";
+import { CheckCircle, Wifi, Globe, Shield, Zap, Users } from "lucide-react";
 import { Link } from "wouter";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import Header from "@/components/Header";
 
 export default function About() {
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
-  
   useEffect(() => {
     // Update page title and meta description for SEO
     document.title = "About Speed Test & Boost - Professional Internet Speed Testing";
@@ -17,7 +16,7 @@ export default function About() {
     }
     
     // Add canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]');
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
     if (!canonical) {
       canonical = document.createElement('link');
       canonical.rel = 'canonical';
@@ -27,327 +26,83 @@ export default function About() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Animated Header */}
-      <header className="relative overflow-hidden bg-gradient-to-br from-background via-background to-muted/20 min-h-[400px] flex items-center">
-        {/* Background Animation */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-primary/10 to-accent/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-48 h-48 bg-gradient-to-br from-accent/10 to-primary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-primary/5 to-accent/5 rounded-full blur-2xl animate-pulse delay-500"></div>
-        </div>
-
-        {/* Navigation */}
-        <nav className="absolute top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border/20">
-          <div className="max-w-7xl mx-auto px-4 lg:px-8 py-4">
-            <div className="flex items-center justify-between">
-              <Link href="/" className="flex items-center space-x-3">
-                <div className="relative">
-                  <svg className="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="speedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#8B5CF6" />
-                        <stop offset="100%" stopColor="#EC4899" />
-                      </linearGradient>
-                    </defs>
-                    <circle cx="50" cy="50" r="45" stroke="url(#speedGradient)" strokeWidth="6" fill="none" className="animate-spin" style={{animationDuration: '8s'}} />
-                    <path d="M50 20 L55 30 L45 30 Z" fill="url(#speedGradient)" className="animate-pulse" />
-                    <circle cx="50" cy="50" r="4" fill="url(#speedGradient)" className="animate-pulse" />
-                    <path d="M20 50 Q30 40 40 50" stroke="url(#speedGradient)" strokeWidth="2" fill="none" opacity="0.6" className="animate-pulse" style={{animationDelay: '0.5s'}} />
-                    <path d="M60 50 Q70 40 80 50" stroke="url(#speedGradient)" strokeWidth="2" fill="none" opacity="0.6" className="animate-pulse" style={{animationDelay: '1s'}} />
-                    <path d="M50 60 Q60 70 50 80" stroke="url(#speedGradient)" strokeWidth="2" fill="none" opacity="0.6" className="animate-pulse" style={{animationDelay: '1.5s'}} />
-                  </svg>
-                </div>
-                <div className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  Speed Test & Boost
-                </div>
-              </Link>
-              <div className="flex items-center space-x-4">
-                {/* Desktop Navigation */}
-                <div className="hidden lg:flex items-center space-x-6">
-                  <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
-                    Speed Test
-                  </Link>
-                  <Link href="/about" className="text-primary font-medium">
-                    About
-                  </Link>
-                  <Link href="/help" className="text-muted-foreground hover:text-primary transition-colors">
-                    Help
-                  </Link>
-                </div>
-                
-                {/* Mobile Menu Button */}
-                <button
-                  onClick={() => setShowMobileMenu(!showMobileMenu)}
-                  className="lg:hidden p-2 rounded-lg hover:bg-muted/50 transition-colors"
-                  aria-label="Toggle mobile menu"
-                >
-                  {showMobileMenu ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-                </button>
-              </div>
-            </div>
-            
-            {/* Mobile Navigation Menu */}
-            {showMobileMenu && (
-              <div className="lg:hidden mt-4 pt-4 border-t border-border/30">
-                <div className="flex flex-col space-y-3">
-                  <Link 
-                    href="/" 
-                    className="text-muted-foreground hover:text-primary transition-colors py-2"
-                    onClick={() => setShowMobileMenu(false)}
-                  >
-                    Speed Test
-                  </Link>
-                  <Link 
-                    href="/about" 
-                    className="text-primary font-medium py-2"
-                    onClick={() => setShowMobileMenu(false)}
-                  >
-                    About
-                  </Link>
-                  <Link 
-                    href="/help" 
-                    className="text-muted-foreground hover:text-primary transition-colors py-2"
-                    onClick={() => setShowMobileMenu(false)}
-                  >
-                    Help
-                  </Link>
-                </div>
-              </div>
-            )}
-          </div>
-        </nav>
-
-        {/* Main Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8 py-20 text-center">
-          <div className="flex items-center justify-center mb-6">
-            <div className="px-4 py-2 bg-primary/10 text-primary border border-primary/20 rounded-full text-sm font-medium">
-              Professional Network Diagnostics
-            </div>
-          </div>
-          <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-pulse">
-              About Speed Test & Boost
-            </span>
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            The most accurate and comprehensive internet speed testing platform. 
-            Measure your connection speed, diagnose network issues, and optimize your internet performance.
-          </p>
-        </div>
-      </header>
-
-      {/* Features Section */}
-      <section className="py-20 bg-muted/30">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <Header currentPath="/about" />
+      
+      {/* Hero Section */}
+      <section className="pt-24 pb-12">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Why Choose Speed Test & Boost?</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Professional-grade speed testing with advanced features for accurate network diagnostics
+          <div className="text-center mb-12">
+            <div className="flex justify-center mb-6">
+              <div className="p-4 bg-primary/10 rounded-full">
+                <Globe className="h-12 w-12 text-primary" />
+              </div>
+            </div>
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                About Speed Test & Boost
+              </span>
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Your comprehensive internet speed testing solution, providing accurate measurements 
+              and optimization tools for the best network performance.
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="card-hover">
-              <CardContent className="p-8">
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-                  <Zap className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3">Lightning Fast Testing</h3>
-                <p className="text-muted-foreground">
-                  Get accurate speed test results in seconds with our optimized testing algorithm. 
-                  No waiting around for slow, outdated tests.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="card-hover">
-              <CardContent className="p-8">
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-                  <CheckCircle className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3">Highly Accurate</h3>
-                <p className="text-muted-foreground">
-                  Real-world speed measurements using multiple test servers and advanced algorithms. 
-                  Get results that match your actual internet performance.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="card-hover">
-              <CardContent className="p-8">
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-                  <Globe className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3">Global Coverage</h3>
-                <p className="text-muted-foreground">
-                  Test your connection speed from anywhere in the world with our global network 
-                  of test servers and edge locations.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="card-hover">
-              <CardContent className="p-8">
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-                  <Shield className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3">Privacy First</h3>
-                <p className="text-muted-foreground">
-                  Your privacy is our priority. We don't store personal data or track your browsing. 
-                  All tests are anonymous and secure.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="card-hover">
-              <CardContent className="p-8">
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-                  <Wifi className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3">WiFi Optimization</h3>
-                <p className="text-muted-foreground">
-                  Advanced network optimization tools to improve your WiFi performance and 
-                  reduce connection issues.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="card-hover">
-              <CardContent className="p-8">
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-                  <Users className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3">All Devices</h3>
-                <p className="text-muted-foreground">
-                  Works perfectly on desktop, mobile, and tablet. Test your internet speed 
-                  from any device with our responsive design.
-                </p>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </section>
 
-      {/* How It Works Section */}
+      {/* Mission Section */}
       <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">How Speed Test & Boost Works</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Our advanced testing methodology ensures accurate and reliable results every time
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-white">1</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-4">Initialize Connection</h3>
-              <p className="text-muted-foreground">
-                We establish secure connections to our global test servers and detect your network configuration 
-                including IP address, ISP, and connection type.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-white">2</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-4">Multi-Phase Testing</h3>
-              <p className="text-muted-foreground">
-                Our algorithm measures ping latency, download speed, upload speed, and jitter using 
-                multiple concurrent connections for maximum accuracy.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-white">3</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-4">Results & Analysis</h3>
-              <p className="text-muted-foreground">
-                Get detailed results with recommendations for improving your connection speed and 
-                network performance optimization tips.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Technology Section */}
-      <section className="py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-                Advanced Testing Technology
-              </h2>
-              <p className="text-xl text-muted-foreground mb-8">
-                Speed Test & Boost uses cutting-edge technology to provide the most accurate 
-                internet speed measurements available.
+              <h2 className="text-3xl lg:text-4xl font-bold mb-6">Our Mission</h2>
+              <p className="text-lg text-muted-foreground mb-6">
+                We believe everyone deserves reliable, fast internet. Our mission is to provide the most accurate 
+                and comprehensive internet speed testing tools, helping users understand their connection performance 
+                and optimize their network experience.
               </p>
-              
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-                  <div>
-                    <h4 className="font-semibold mb-2">Multiple Test Servers</h4>
-                    <p className="text-muted-foreground">
-                      Global network of test servers ensures accurate measurements regardless of your location
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-                  <div>
-                    <h4 className="font-semibold mb-2">Real-Time Analysis</h4>
-                    <p className="text-muted-foreground">
-                      Advanced algorithms analyze your connection in real-time for immediate results
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-                  <div>
-                    <h4 className="font-semibold mb-2">Comprehensive Metrics</h4>
-                    <p className="text-muted-foreground">
-                      Measure download/upload speeds, ping, jitter, and connection stability
-                    </p>
-                  </div>
-                </div>
+              <p className="text-lg text-muted-foreground mb-8">
+                Whether you're streaming, gaming, working from home, or just browsing, we help you get the most 
+                out of your internet connection with professional-grade testing and optimization tools.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Badge variant="secondary" className="text-sm">
+                  <CheckCircle className="w-3 h-3 mr-1" />
+                  Accurate Testing
+                </Badge>
+                <Badge variant="secondary" className="text-sm">
+                  <CheckCircle className="w-3 h-3 mr-1" />
+                  Real-time Results
+                </Badge>
+                <Badge variant="secondary" className="text-sm">
+                  <CheckCircle className="w-3 h-3 mr-1" />
+                  Network Optimization
+                </Badge>
               </div>
             </div>
-
-            <div className="lg:pl-8">
-              <Card className="card-hover">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur-xl"></div>
+              <Card className="relative bg-background/90 backdrop-blur-sm border-2 border-primary/20">
                 <CardContent className="p-8">
-                  <div className="text-center mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Zap className="w-8 h-8 text-white" />
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-primary mb-2">99.9%</div>
+                      <div className="text-sm text-muted-foreground">Accuracy Rate</div>
                     </div>
-                    <h3 className="text-xl font-semibold">Speed Test Accuracy</h3>
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-primary mb-2">1M+</div>
+                      <div className="text-sm text-muted-foreground">Tests Performed</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-primary mb-2">150+</div>
+                      <div className="text-sm text-muted-foreground">Countries Served</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-primary mb-2">24/7</div>
+                      <div className="text-sm text-muted-foreground">Available</div>
+                    </div>
                   </div>
-                  
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="text-center p-4 bg-muted/50 rounded-lg">
-                      <div className="text-2xl font-bold text-primary">99.9%</div>
-                      <div className="text-sm text-muted-foreground">Accuracy</div>
-                    </div>
-                    <div className="text-center p-4 bg-muted/50 rounded-lg">
-                      <div className="text-2xl font-bold text-primary">&lt;10s</div>
-                      <div className="text-sm text-muted-foreground">Test Time</div>
-                    </div>
-                  </div>
-                  
-                  <Link href="/" className="w-full">
-                    <Button className="w-full gradient-bg text-white">
-                      Test Your Speed Now
-                    </Button>
-                  </Link>
                 </CardContent>
               </Card>
             </div>
@@ -355,26 +110,203 @@ export default function About() {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10">
+      {/* Features Section */}
+      <section className="py-20 bg-muted/50">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">What Makes Us Different</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Advanced features designed for both casual users and network professionals
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="card-hover">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Zap className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Lightning Fast Tests</h3>
+                <p className="text-muted-foreground">
+                  Get accurate speed measurements in under 15 seconds with our optimized testing infrastructure 
+                  and global server network.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="card-hover">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Shield className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Privacy Focused</h3>
+                <p className="text-muted-foreground">
+                  We don't store your personal data or IP address. All speed tests are anonymous and your 
+                  privacy is our priority.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="card-hover">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Wifi className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">WiFi Optimization</h3>
+                <p className="text-muted-foreground">
+                  Advanced WiFi analyzer and network diagnostics tools to help you optimize your wireless 
+                  network performance.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="card-hover">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Globe className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Global Coverage</h3>
+                <p className="text-muted-foreground">
+                  Test servers in major cities worldwide ensure accurate measurements regardless of your 
+                  location or internet provider.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="card-hover">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Multi-Device Support</h3>
+                <p className="text-muted-foreground">
+                  Works perfectly on desktop, mobile, and tablet devices with responsive design and 
+                  device-specific optimizations.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="card-hover">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Detailed Analysis</h3>
+                <p className="text-muted-foreground">
+                  Comprehensive reports including download/upload speeds, ping, jitter, and network 
+                  quality recommendations.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Technology Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Our Technology</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Built with modern web technologies for reliability and performance
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-2xl font-bold mb-6">Advanced Testing Infrastructure</h3>
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold mb-1">Real Network Measurements</h4>
+                    <p className="text-muted-foreground text-sm">
+                      Direct bandwidth testing using actual data transfer, not simulated results
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold mb-1">Multiple Test Servers</h4>
+                    <p className="text-muted-foreground text-sm">
+                      Global network of testing servers for accurate regional measurements
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold mb-1">Concurrent Connections</h4>
+                    <p className="text-muted-foreground text-sm">
+                      Multi-threaded testing methodology for maximum bandwidth utilization
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold mb-1">Session Isolation</h4>
+                    <p className="text-muted-foreground text-sm">
+                      Unique session tracking for personalized test history and analytics
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="lg:text-center">
+              <Card className="bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20">
+                <CardContent className="p-8">
+                  <h4 className="text-lg font-semibold mb-6">Test Metrics</h4>
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center p-3 bg-background/50 rounded-lg">
+                      <span>Download Speed</span>
+                      <Badge variant="outline">Mbps</Badge>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-background/50 rounded-lg">
+                      <span>Upload Speed</span>
+                      <Badge variant="outline">Mbps</Badge>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-background/50 rounded-lg">
+                      <span>Ping Latency</span>
+                      <Badge variant="outline">ms</Badge>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-background/50 rounded-lg">
+                      <span>Jitter</span>
+                      <Badge variant="outline">ms</Badge>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-background/50 rounded-lg">
+                      <span>Server Location</span>
+                      <Badge variant="outline">Auto</Badge>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-primary/10 to-accent/10">
         <div className="max-w-4xl mx-auto px-4 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-            Ready to Test Your Internet Speed?
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            Get accurate speed test results in seconds. No signup required, completely free.
+          <h2 className="text-3xl lg:text-4xl font-bold mb-6">Ready to Test Your Speed?</h2>
+          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Join millions of users worldwide who trust Speed Test & Boost for accurate internet speed measurements.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/">
-              <Button size="lg" className="gradient-bg text-white px-8 py-6">
+            <Button size="lg" asChild>
+              <Link href="/">
+                <Zap className="mr-2 h-5 w-5" />
                 Start Speed Test
-              </Button>
-            </Link>
-            <Link href="/help">
-              <Button size="lg" variant="outline" className="px-8 py-6">
+              </Link>
+            </Button>
+            <Button variant="outline" size="lg" asChild>
+              <Link href="/help">
+                <CheckCircle className="mr-2 h-5 w-5" />
                 Learn More
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

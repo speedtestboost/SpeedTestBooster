@@ -11,16 +11,13 @@ import {
   TrendingUp,
   Clock,
   Signal,
-  AlertCircle,
-  Menu,
-  X
+  AlertCircle
 } from "lucide-react";
 import { Link } from "wouter";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import Header from "@/components/Header";
 
 export default function Help() {
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
-  
   useEffect(() => {
     // Update page title and meta description for SEO
     document.title = "Help & FAQ - Speed Test & Boost | Internet Speed Test Guide";
@@ -30,7 +27,7 @@ export default function Help() {
     }
     
     // Add canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]');
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
     if (!canonical) {
       canonical = document.createElement('link');
       canonical.rel = 'canonical';
@@ -40,118 +37,33 @@ export default function Help() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Animated Header */}
-      <header className="relative overflow-hidden bg-gradient-to-br from-background via-background to-muted/20 min-h-[400px] flex items-center">
-        {/* Background Animation */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-primary/10 to-accent/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-48 h-48 bg-gradient-to-br from-accent/10 to-primary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-primary/5 to-accent/5 rounded-full blur-2xl animate-pulse delay-500"></div>
-        </div>
-
-        {/* Navigation */}
-        <nav className="absolute top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border/20">
-          <div className="max-w-7xl mx-auto px-4 lg:px-8 py-4">
-            <div className="flex items-center justify-between">
-              <Link href="/" className="flex items-center space-x-3">
-                <div className="relative">
-                  <svg className="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="speedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#8B5CF6" />
-                        <stop offset="100%" stopColor="#EC4899" />
-                      </linearGradient>
-                    </defs>
-                    <circle cx="50" cy="50" r="45" stroke="url(#speedGradient)" strokeWidth="6" fill="none" className="animate-spin" style={{animationDuration: '8s'}} />
-                    <path d="M50 20 L55 30 L45 30 Z" fill="url(#speedGradient)" className="animate-pulse" />
-                    <circle cx="50" cy="50" r="4" fill="url(#speedGradient)" className="animate-pulse" />
-                    <path d="M20 50 Q30 40 40 50" stroke="url(#speedGradient)" strokeWidth="2" fill="none" opacity="0.6" className="animate-pulse" style={{animationDelay: '0.5s'}} />
-                    <path d="M60 50 Q70 40 80 50" stroke="url(#speedGradient)" strokeWidth="2" fill="none" opacity="0.6" className="animate-pulse" style={{animationDelay: '1s'}} />
-                    <path d="M50 60 Q60 70 50 80" stroke="url(#speedGradient)" strokeWidth="2" fill="none" opacity="0.6" className="animate-pulse" style={{animationDelay: '1.5s'}} />
-                  </svg>
-                </div>
-                <div className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  Speed Test & Boost
-                </div>
-              </Link>
-              <div className="flex items-center space-x-4">
-                {/* Desktop Navigation */}
-                <div className="hidden lg:flex items-center space-x-6">
-                  <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
-                    Speed Test
-                  </Link>
-                  <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
-                    About
-                  </Link>
-                  <Link href="/help" className="text-primary font-medium">
-                    Help
-                  </Link>
-                </div>
-                
-                {/* Mobile Menu Button */}
-                <button
-                  onClick={() => setShowMobileMenu(!showMobileMenu)}
-                  className="lg:hidden p-2 rounded-lg hover:bg-muted/50 transition-colors"
-                  aria-label="Toggle mobile menu"
-                >
-                  {showMobileMenu ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-                </button>
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <Header currentPath="/help" />
+      
+      {/* Hero Section */}
+      <section className="pt-24 pb-12">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="flex justify-center mb-6">
+              <div className="p-4 bg-primary/10 rounded-full">
+                <HelpCircle className="h-12 w-12 text-primary" />
               </div>
             </div>
-            
-            {/* Mobile Navigation Menu */}
-            {showMobileMenu && (
-              <div className="lg:hidden mt-4 pt-4 border-t border-border/30">
-                <div className="flex flex-col space-y-3">
-                  <Link 
-                    href="/" 
-                    className="text-muted-foreground hover:text-primary transition-colors py-2"
-                    onClick={() => setShowMobileMenu(false)}
-                  >
-                    Speed Test
-                  </Link>
-                  <Link 
-                    href="/about" 
-                    className="text-muted-foreground hover:text-primary transition-colors py-2"
-                    onClick={() => setShowMobileMenu(false)}
-                  >
-                    About
-                  </Link>
-                  <Link 
-                    href="/help" 
-                    className="text-primary font-medium py-2"
-                    onClick={() => setShowMobileMenu(false)}
-                  >
-                    Help
-                  </Link>
-                </div>
-              </div>
-            )}
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                Speed Test Help Center
+              </span>
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Everything you need to know about internet speed testing, troubleshooting connection issues, 
+              and optimizing your network performance.
+            </p>
           </div>
-        </nav>
-
-        {/* Main Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8 py-20 text-center">
-          <div className="flex items-center justify-center mb-6">
-            <div className="px-4 py-2 bg-primary/10 text-primary border border-primary/20 rounded-full text-sm font-medium">
-              Help & Support
-            </div>
-          </div>
-          <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-pulse">
-              Speed Test Help Center
-            </span>
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Everything you need to know about internet speed testing, troubleshooting connection issues, 
-            and optimizing your network performance.
-          </p>
         </div>
-      </header>
+      </section>
 
       {/* Quick Start Guide */}
-      <section className="py-20">
+      <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">Quick Start Guide</h2>
@@ -202,112 +114,10 @@ export default function Help() {
                 <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <span className="text-xl font-bold text-primary">4</span>
                 </div>
-                <h3 className="text-lg font-semibold mb-3">View Results</h3>
+                <h3 className="text-lg font-semibold mb-3">Analyze Results</h3>
                 <p className="text-muted-foreground text-sm">
-                  Review your download speed, upload speed, ping, and jitter results with detailed analysis.
+                  Review your download, upload speeds, and ping to understand your connection performance.
                 </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Understanding Results */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Understanding Your Results</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Learn what each metric means and how it affects your internet experience
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="card-hover">
-              <CardContent className="p-8">
-                <div className="flex items-center mb-4">
-                  <TrendingUp className="w-6 h-6 text-primary mr-3" />
-                  <h3 className="text-xl font-semibold">Download Speed</h3>
-                </div>
-                <p className="text-muted-foreground mb-4">
-                  Measures how fast you can receive data from the internet. This affects streaming, 
-                  downloading files, and loading web pages.
-                </p>
-                <div className="bg-muted/50 p-4 rounded-lg">
-                  <div className="text-sm font-medium mb-2">Speed Requirements:</div>
-                  <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• Web browsing: 1-5 Mbps</li>
-                    <li>• HD video: 5-10 Mbps</li>
-                    <li>• 4K video: 25+ Mbps</li>
-                    <li>• Gaming: 3-6 Mbps</li>
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="card-hover">
-              <CardContent className="p-8">
-                <div className="flex items-center mb-4">
-                  <TrendingUp className="w-6 h-6 text-primary mr-3 rotate-180" />
-                  <h3 className="text-xl font-semibold">Upload Speed</h3>
-                </div>
-                <p className="text-muted-foreground mb-4">
-                  Measures how fast you can send data to the internet. Important for video calls, 
-                  uploading files, and live streaming.
-                </p>
-                <div className="bg-muted/50 p-4 rounded-lg">
-                  <div className="text-sm font-medium mb-2">Speed Requirements:</div>
-                  <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• Video calls: 1-3 Mbps</li>
-                    <li>• File uploads: 5-10 Mbps</li>
-                    <li>• Live streaming: 3-10 Mbps</li>
-                    <li>• Cloud backup: 10+ Mbps</li>
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="card-hover">
-              <CardContent className="p-8">
-                <div className="flex items-center mb-4">
-                  <Clock className="w-6 h-6 text-primary mr-3" />
-                  <h3 className="text-xl font-semibold">Ping (Latency)</h3>
-                </div>
-                <p className="text-muted-foreground mb-4">
-                  Measures the time it takes for data to travel from your device to a server and back. 
-                  Lower ping is better for gaming and video calls.
-                </p>
-                <div className="bg-muted/50 p-4 rounded-lg">
-                  <div className="text-sm font-medium mb-2">Ping Categories:</div>
-                  <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• Excellent: &lt;20ms</li>
-                    <li>• Good: 20-50ms</li>
-                    <li>• Average: 50-100ms</li>
-                    <li>• Poor: &gt;100ms</li>
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="card-hover">
-              <CardContent className="p-8">
-                <div className="flex items-center mb-4">
-                  <Signal className="w-6 h-6 text-primary mr-3" />
-                  <h3 className="text-xl font-semibold">Jitter</h3>
-                </div>
-                <p className="text-muted-foreground mb-4">
-                  Measures the variation in ping times. Lower jitter means more stable connection, 
-                  important for real-time applications.
-                </p>
-                <div className="bg-muted/50 p-4 rounded-lg">
-                  <div className="text-sm font-medium mb-2">Jitter Categories:</div>
-                  <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• Excellent: &lt;10ms</li>
-                    <li>• Good: 10-20ms</li>
-                    <li>• Average: 20-50ms</li>
-                    <li>• Poor: &gt;50ms</li>
-                  </ul>
-                </div>
               </CardContent>
             </Card>
           </div>
@@ -315,150 +125,82 @@ export default function Help() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20">
+      <section className="py-20 bg-muted/50">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Common questions about internet speed testing and network performance
+              Common questions about internet speed testing
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="space-y-6">
-              <Card className="card-hover">
-                <CardContent className="p-6">
-                  <div className="flex items-start space-x-3">
-                    <HelpCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-semibold mb-2">How accurate is this speed test?</h4>
-                      <p className="text-muted-foreground text-sm">
-                        Our speed test uses multiple servers and advanced algorithms to provide highly accurate results. 
-                        We test with real-world conditions and multiple data sizes for maximum accuracy.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+            <Card>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-semibold mb-3 flex items-center">
+                  <Signal className="h-5 w-5 text-primary mr-2" />
+                  What is a good internet speed?
+                </h3>
+                <p className="text-muted-foreground mb-4">
+                  For most households, 25 Mbps download and 3 Mbps upload is sufficient for basic internet usage. 
+                  For streaming 4K content, gaming, or working from home, you'll want 100+ Mbps download speeds.
+                </p>
+                <Badge variant="secondary">Internet Speed</Badge>
+              </CardContent>
+            </Card>
 
-              <Card className="card-hover">
-                <CardContent className="p-6">
-                  <div className="flex items-start space-x-3">
-                    <HelpCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-semibold mb-2">Why is my speed slower than advertised?</h4>
-                      <p className="text-muted-foreground text-sm">
-                        Internet speeds can vary due to network congestion, WiFi interference, device limitations, 
-                        and distance from your router. Test at different times and locations for a complete picture.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+            <Card>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-semibold mb-3 flex items-center">
+                  <Clock className="h-5 w-5 text-primary mr-2" />
+                  Why is my internet slow?
+                </h3>
+                <p className="text-muted-foreground mb-4">
+                  Slow internet can be caused by network congestion, outdated equipment, too many connected devices, 
+                  or interference. Try restarting your router or connecting via ethernet cable.
+                </p>
+                <Badge variant="secondary">Troubleshooting</Badge>
+              </CardContent>
+            </Card>
 
-              <Card className="card-hover">
-                <CardContent className="p-6">
-                  <div className="flex items-start space-x-3">
-                    <HelpCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-semibold mb-2">Should I test on WiFi or ethernet?</h4>
-                      <p className="text-muted-foreground text-sm">
-                        For maximum accuracy, test with an ethernet cable connection. WiFi speeds can be affected 
-                        by interference, distance, and device capabilities. Both tests provide valuable insights.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+            <Card>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-semibold mb-3 flex items-center">
+                  <TrendingUp className="h-5 w-5 text-primary mr-2" />
+                  What affects my speed test results?
+                </h3>
+                <p className="text-muted-foreground mb-4">
+                  Your device, browser, network congestion, server distance, and background applications all affect 
+                  speed test results. Test multiple times for more accurate readings.
+                </p>
+                <Badge variant="secondary">Accuracy</Badge>
+              </CardContent>
+            </Card>
 
-              <Card className="card-hover">
-                <CardContent className="p-6">
-                  <div className="flex items-start space-x-3">
-                    <HelpCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-semibold mb-2">How often should I test my speed?</h4>
-                      <p className="text-muted-foreground text-sm">
-                        Test periodically to monitor your connection quality. Test when experiencing issues, 
-                        after network changes, or to verify your ISP is delivering promised speeds.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="space-y-6">
-              <Card className="card-hover">
-                <CardContent className="p-6">
-                  <div className="flex items-start space-x-3">
-                    <HelpCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-semibold mb-2">What affects my internet speed?</h4>
-                      <p className="text-muted-foreground text-sm">
-                        Network congestion, WiFi interference, outdated equipment, background downloads, 
-                        device limitations, and distance from your router can all impact speed.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="card-hover">
-                <CardContent className="p-6">
-                  <div className="flex items-start space-x-3">
-                    <HelpCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-semibold mb-2">How can I improve my speed?</h4>
-                      <p className="text-muted-foreground text-sm">
-                        Upgrade your internet plan, use wired connections, update your router, reduce interference, 
-                        close unnecessary apps, and position your router centrally for optimal coverage.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="card-hover">
-                <CardContent className="p-6">
-                  <div className="flex items-start space-x-3">
-                    <HelpCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-semibold mb-2">Does this test use data?</h4>
-                      <p className="text-muted-foreground text-sm">
-                        Yes, speed tests consume data to measure your connection. A typical test uses 10-50 MB. 
-                        Be mindful of data usage on mobile or metered connections.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="card-hover">
-                <CardContent className="p-6">
-                  <div className="flex items-start space-x-3">
-                    <HelpCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-semibold mb-2">Is this speed test free?</h4>
-                      <p className="text-muted-foreground text-sm">
-                        Yes, our speed test is completely free with no registration required. 
-                        You can test as many times as you need without any limitations.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+            <Card>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-semibold mb-3 flex items-center">
+                  <Wifi className="h-5 w-5 text-primary mr-2" />
+                  WiFi vs Ethernet speeds?
+                </h3>
+                <p className="text-muted-foreground mb-4">
+                  Ethernet connections typically provide faster, more stable speeds than WiFi. 
+                  WiFi speeds can vary based on distance from router, interference, and device capabilities.
+                </p>
+                <Badge variant="secondary">Connection Types</Badge>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
       {/* Troubleshooting Section */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">Troubleshooting Guide</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Common issues and solutions for improving your internet speed
+              Common solutions for internet speed issues
             </p>
           </div>
 
@@ -466,74 +208,121 @@ export default function Help() {
             <Card className="card-hover">
               <CardContent className="p-6">
                 <div className="flex items-center mb-4">
-                  <AlertCircle className="w-6 h-6 text-orange-500 mr-3" />
-                  <h3 className="text-lg font-semibold">Slow Download Speed</h3>
+                  <Router className="h-8 w-8 text-primary mr-3" />
+                  <h3 className="text-lg font-semibold">Restart Your Router</h3>
                 </div>
-                <ul className="text-sm text-muted-foreground space-y-2">
-                  <li>• Close background apps and downloads</li>
-                  <li>• Connect via ethernet cable</li>
-                  <li>• Restart your modem and router</li>
-                  <li>• Check for interference sources</li>
-                  <li>• Update network drivers</li>
-                </ul>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Unplug your router for 30 seconds, then plug it back in. This can resolve many connectivity issues 
+                  and improve speeds.
+                </p>
+                <Button variant="outline" size="sm" asChild>
+                  <Link href="/wifi-analyzer">Check WiFi Health</Link>
+                </Button>
               </CardContent>
             </Card>
 
             <Card className="card-hover">
               <CardContent className="p-6">
                 <div className="flex items-center mb-4">
-                  <AlertCircle className="w-6 h-6 text-orange-500 mr-3" />
-                  <h3 className="text-lg font-semibold">High Ping/Latency</h3>
+                  <Monitor className="h-8 w-8 text-primary mr-3" />
+                  <h3 className="text-lg font-semibold">Close Background Apps</h3>
                 </div>
-                <ul className="text-sm text-muted-foreground space-y-2">
-                  <li>• Switch to wired connection</li>
-                  <li>• Close online games and streaming</li>
-                  <li>• Choose closer servers</li>
-                  <li>• Update router firmware</li>
-                  <li>• Check for network congestion</li>
-                </ul>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Streaming services, cloud backups, and downloads consume bandwidth. Close unnecessary applications 
+                  before testing.
+                </p>
+                <Button variant="outline" size="sm">
+                  Learn More
+                </Button>
               </CardContent>
             </Card>
 
             <Card className="card-hover">
               <CardContent className="p-6">
                 <div className="flex items-center mb-4">
-                  <AlertCircle className="w-6 h-6 text-orange-500 mr-3" />
-                  <h3 className="text-lg font-semibold">Connection Drops</h3>
+                  <Smartphone className="h-8 w-8 text-primary mr-3" />
+                  <h3 className="text-lg font-semibold">Reduce Connected Devices</h3>
                 </div>
-                <ul className="text-sm text-muted-foreground space-y-2">
-                  <li>• Check cable connections</li>
-                  <li>• Update network equipment</li>
-                  <li>• Reduce WiFi interference</li>
-                  <li>• Contact your ISP</li>
-                  <li>• Check for overheating</li>
-                </ul>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Too many devices sharing your connection can slow speeds. Disconnect unused devices or upgrade 
+                  your internet plan.
+                </p>
+                <Button variant="outline" size="sm" asChild>
+                  <Link href="/internet-speed-requirements">Speed Calculator</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="card-hover">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <Settings className="h-8 w-8 text-primary mr-3" />
+                  <h3 className="text-lg font-semibold">Update Router Firmware</h3>
+                </div>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Outdated router firmware can cause slow speeds and security issues. Check for updates regularly.
+                </p>
+                <Button variant="outline" size="sm">
+                  Learn More
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="card-hover">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <AlertCircle className="h-8 w-8 text-primary mr-3" />
+                  <h3 className="text-lg font-semibold">Contact Your ISP</h3>
+                </div>
+                <p className="text-muted-foreground text-sm mb-4">
+                  If speeds are consistently below your plan's advertised speeds, contact your internet service provider 
+                  for assistance.
+                </p>
+                <Button variant="outline" size="sm" asChild>
+                  <Link href="/internet-providers">Find Providers</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="card-hover">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <Wifi className="h-8 w-8 text-primary mr-3" />
+                  <h3 className="text-lg font-semibold">Optimize WiFi Placement</h3>
+                </div>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Place your router in a central, elevated location away from walls and interference sources for 
+                  better coverage.
+                </p>
+                <Button variant="outline" size="sm">
+                  Learn More
+                </Button>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10">
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-primary/10 to-accent/10">
         <div className="max-w-4xl mx-auto px-4 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-            Ready to Test Your Speed?
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            Put your knowledge to the test and see how your internet connection performs.
+          <h2 className="text-3xl lg:text-4xl font-bold mb-6">Still Need Help?</h2>
+          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Can't find the answer you're looking for? Test your speed now or explore our comprehensive guides.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/">
-              <Button size="lg" className="gradient-bg text-white px-8 py-6">
-                Start Speed Test
-              </Button>
-            </Link>
-            <Link href="/about">
-              <Button size="lg" variant="outline" className="px-8 py-6">
-                Learn More
-              </Button>
-            </Link>
+            <Button size="lg" asChild>
+              <Link href="/">
+                <Wifi className="mr-2 h-5 w-5" />
+                Test Your Speed
+              </Link>
+            </Button>
+            <Button variant="outline" size="lg" asChild>
+              <Link href="/wifi-analyzer">
+                <Settings className="mr-2 h-5 w-5" />
+                WiFi Analyzer
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
