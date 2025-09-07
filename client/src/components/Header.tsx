@@ -113,6 +113,13 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
                 Speed Calculator
               </Link>
               
+              <Link 
+                href="/ai-speed-test" 
+                className={`text-muted-foreground hover:text-primary transition-colors font-medium ${currentPath === "/ai-speed-test" ? "text-primary" : ""}`}
+              >
+                AI Speed Test
+              </Link>
+              
               {/* Internet Providers Dropdown */}
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex items-center space-x-1 text-muted-foreground hover:text-primary transition-colors">
@@ -196,6 +203,13 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
                 onClick={() => setShowMobileMenu(false)}
               >
                 Speed Calculator
+              </Link>
+              <Link 
+                href="/ai-speed-test" 
+                className="text-muted-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setShowMobileMenu(false)}
+              >
+                AI Speed Test
               </Link>
               <Link 
                 href="/internet-providers" 

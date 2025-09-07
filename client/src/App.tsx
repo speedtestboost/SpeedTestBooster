@@ -46,6 +46,7 @@ import KPNSpeedTest from "@/pages/providers/nl/kpn";
 import VodafoneZiggoSpeedTest from "@/pages/providers/nl/vodafoneziggo";
 import OdidoSpeedTest from "@/pages/providers/nl/odido";
 import WiFiAnalyzer from "@/pages/wifi-analyzer";
+import AISpeedTest from "@/pages/ai-speed-test";
 import LogoDemo from "@/pages/logo-demo";
 import NotFound from "@/pages/not-found";
 import { useEffect } from "react";
@@ -74,6 +75,7 @@ function Router() {
       <Route path="/internet-speed-requirements" component={InternetSpeedRequirements} />
       <Route path="/internet-providers" component={InternetProviders} />
       <Route path="/wifi-analyzer" component={WiFiAnalyzer} />
+      <Route path="/ai-speed-test" component={AISpeedTest} />
       <Route path="/logo-demo" component={LogoDemo} />
       
       {/* US Provider Routes */}
