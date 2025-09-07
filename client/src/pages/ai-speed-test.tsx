@@ -562,6 +562,81 @@ export default function AISpeedTest() {
           </Card>
         )}
       </main>
+
+      {/* Footer */}
+      <footer className="bg-background/50 backdrop-blur-sm border-t border-border/20 mt-16">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+          {/* Footer Links and Info */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <h4 className="font-semibold text-foreground mb-3">AI Speed Tests</h4>
+              <div className="space-y-2 text-sm">
+                <Link href="/ai-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
+                  AI Speed Calculator
+                </Link>
+                <Link href="/internet-speed-requirements" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Speed Requirements
+                </Link>
+                <Link href="/wifi-analyzer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  WiFi Analyzer
+                </Link>
+                <div className="text-muted-foreground">Enterprise AI Test</div>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-3">AI Tools Coverage</h4>
+              <div className="space-y-2 text-sm">
+                <div className="text-muted-foreground">ChatGPT Requirements</div>
+                <div className="text-muted-foreground">Midjourney Speed Test</div>
+                <div className="text-muted-foreground">Claude AI Test</div>
+                <div className="text-muted-foreground">DALL-E Speed Check</div>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-3">Internet Providers</h4>
+              <div className="space-y-2 text-sm">
+                <Link href="/internet-providers" className="block text-muted-foreground hover:text-primary transition-colors">
+                  All Providers
+                </Link>
+                <Link href="/providers/us/verizon" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Verizon Speed Test
+                </Link>
+                <Link href="/providers/us/comcast" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Comcast Speed Test
+                </Link>
+                <Link href="/providers/uk/bt" className="block text-muted-foreground hover:text-primary transition-colors">
+                  BT Speed Test
+                </Link>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-3">About & Help</h4>
+              <div className="space-y-2 text-sm">
+                <Link href="/about" className="block text-muted-foreground hover:text-primary transition-colors">
+                  About Us
+                </Link>
+                <Link href="/help" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Help & FAQ
+                </Link>
+                <Link href="/" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Speed Test Home
+                </Link>
+                <a href="https://www.fcc.gov/consumers/guides/broadband-speed-guide" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  FCC Speed Guide
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Copyright */}
+          <div className="text-center pt-8 border-t border-border/30 mt-8">
+            <p className="text-sm text-muted-foreground">
+              © 2025 Speed Test and Boost. AI internet speed requirements calculator for ChatGPT, Midjourney, Claude and enterprise AI workloads. 
+              Compare AI bandwidth needs and optimize your connection for artificial intelligence applications.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
