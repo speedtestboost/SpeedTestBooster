@@ -19,7 +19,8 @@ const countries = [
     providers: [
       { name: "Verizon", slug: "verizon" },
       { name: "Comcast Xfinity", slug: "comcast" },
-      { name: "AT&T", slug: "att" }
+      { name: "AT&T", slug: "att" },
+      { name: "Spectrum", slug: "spectrum" }
     ]
   },
   {

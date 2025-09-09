@@ -20,6 +20,7 @@ import InternetProviders from "@/pages/internet-providers";
 import VerizonSpeedTest from "@/pages/providers/us/verizon";
 import ComcastSpeedTest from "@/pages/providers/us/comcast";
 import ATTSpeedTest from "@/pages/providers/us/att";
+import SpectrumSpeedTest from "@/pages/providers/us/spectrum";
 
 // UK Providers  
 import BTSpeedTest from "@/pages/providers/uk/bt";
@@ -82,6 +83,7 @@ function Router() {
       <Route path="/providers/us/verizon" component={VerizonSpeedTest} />
       <Route path="/providers/us/comcast" component={ComcastSpeedTest} />
       <Route path="/providers/us/att" component={ATTSpeedTest} />
+      <Route path="/providers/us/spectrum" component={SpectrumSpeedTest} />
       
       {/* UK Provider Routes */}
       <Route path="/providers/uk/bt" component={BTSpeedTest} />
