@@ -155,7 +155,7 @@ export default function SpectrumSpeedTest() {
           </Card>
 
           {/* Speed Test Performance Images */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 gap-8 mb-12 mt-12">
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-center justify-center mb-4">
