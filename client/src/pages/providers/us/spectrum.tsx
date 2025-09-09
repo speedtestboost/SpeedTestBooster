@@ -10,11 +10,58 @@ export default function SpectrumSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
+    // SEO Meta Tags
     document.title = "Spectrum Speed Test - Test Charter Spectrum Internet Speed 2025";
+    
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Spectrum internet speed for free. Charter Spectrum speed test for cable internet, WiFi, and gig speeds nationwide across America.');
+      metaDescription.setAttribute('content', 'Free Spectrum internet speed test for Charter Spectrum customers. Test cable internet, WiFi, and gig speeds. Check download, upload speeds, and network performance nationwide.');
     }
+
+    // Add keywords meta tag
+    let metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (!metaKeywords) {
+      metaKeywords = document.createElement('meta');
+      metaKeywords.setAttribute('name', 'keywords');
+      document.head.appendChild(metaKeywords);
+    }
+    metaKeywords.setAttribute('content', 'spectrum speed test, charter spectrum, cable internet speed test, spectrum wifi test, internet speed test, broadband test, spectrum gig speed');
+
+    // Open Graph tags for social sharing
+    const ogTags = [
+      { property: 'og:title', content: 'Spectrum Speed Test - Charter Spectrum Internet Speed Test' },
+      { property: 'og:description', content: 'Free speed test for Charter Spectrum internet customers. Test cable internet and WiFi speeds nationwide.' },
+      { property: 'og:url', content: 'https://speedtestboost.com/providers/us/spectrum' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:site_name', content: 'Speed Test and Boost' }
+    ];
+
+    ogTags.forEach(tag => {
+      let ogTag = document.querySelector(`meta[property="${tag.property}"]`);
+      if (!ogTag) {
+        ogTag = document.createElement('meta');
+        ogTag.setAttribute('property', tag.property);
+        document.head.appendChild(ogTag);
+      }
+      ogTag.setAttribute('content', tag.content);
+    });
+
+    // Twitter Card tags
+    const twitterTags = [
+      { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:title', content: 'Spectrum Speed Test - Charter Spectrum Internet Speed Test' },
+      { name: 'twitter:description', content: 'Free speed test for Charter Spectrum internet customers. Test cable internet and WiFi speeds.' }
+    ];
+
+    twitterTags.forEach(tag => {
+      let twitterTag = document.querySelector(`meta[name="${tag.name}"]`);
+      if (!twitterTag) {
+        twitterTag = document.createElement('meta');
+        twitterTag.setAttribute('name', tag.name);
+        document.head.appendChild(twitterTag);
+      }
+      twitterTag.setAttribute('content', tag.content);
+    });
 
     // Update canonical tag
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
@@ -25,15 +72,55 @@ export default function SpectrumSpeedTest() {
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "Spectrum Speed Test",
-      "description": "Test your Spectrum internet speed for free. Speed test for Charter Spectrum cable internet customers.",
+      "name": "Spectrum Speed Test 2025",
+      "description": "Free Spectrum internet speed test for Charter Spectrum customers. Test cable internet, WiFi, and gig speeds nationwide.",
       "url": "https://speedtestboost.com/providers/us/spectrum",
+      "mainEntity": {
+        "@type": "SoftwareApplication",
+        "name": "Spectrum Speed Test Tool",
+        "applicationCategory": "NetworkingApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
       "provider": {
         "@type": "Organization",
         "name": "Charter Spectrum",
         "description": "America's second-largest cable internet provider offering high-speed internet and TV services",
         "areaServed": { "@type": "Country", "name": "United States" },
         "serviceType": ["Cable Internet", "Gig Internet", "WiFi", "TV", "Mobile Services"]
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://speedtestboost.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Internet Providers",
+            "item": "https://speedtestboost.com/internet-providers"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "US Providers",
+            "item": "https://speedtestboost.com/providers/us"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Spectrum Speed Test",
+            "item": "https://speedtestboost.com/providers/us/spectrum"
+          }
+        ]
       }
     };
 
@@ -61,10 +148,10 @@ export default function SpectrumSpeedTest() {
               </div>
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 bg-clip-text text-transparent">
-              Spectrum Speed Test
+              Spectrum Speed Test 2025
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Test your <span className="font-semibold text-blue-500">Spectrum internet speed</span> for free. Check your Charter Spectrum cable internet performance and WiFi speeds.
+              Test your <span className="font-semibold text-blue-500">Charter Spectrum internet speed</span> for free. Check download speeds, upload speeds, and WiFi performance for cable internet customers nationwide.
             </p>
             
             <div className="mb-12">
@@ -81,24 +168,35 @@ export default function SpectrumSpeedTest() {
 
           <Card>
             <CardContent className="p-8">
-              <h2 className="text-2xl font-bold mb-6">About Charter Spectrum</h2>
+              <h2 className="text-2xl font-bold mb-6">About Charter Spectrum Internet Service</h2>
+              {/* Breadcrumb Navigation */}
+              <nav className="mb-6 text-sm text-muted-foreground">
+                <Link href="/" className="hover:text-primary">Home</Link>
+                <span className="mx-2">›</span>
+                <Link href="/internet-providers" className="hover:text-primary">Internet Providers</Link>
+                <span className="mx-2">›</span>
+                <Link href="/providers/us" className="hover:text-primary">US Providers</Link>
+                <span className="mx-2">›</span>
+                <span className="text-foreground">Spectrum Speed Test</span>
+              </nav>
+              
               <div className="prose prose-gray dark:prose-invert max-w-none space-y-6">
                 <p className="text-lg text-muted-foreground">
-                  Charter Spectrum operates as the second-largest cable internet provider in the United States, 
+                  <strong>Charter Spectrum</strong> operates as the second-largest cable internet provider in the United States, 
                   serving over 32 million customers across 41 states with comprehensive broadband, television, 
                   and mobile services. Following Charter Communications' acquisition of Time Warner Cable and 
                   Bright House Networks, Spectrum has established itself as a dominant force in American 
-                  telecommunications, offering reliable high-speed internet through advanced cable infrastructure.
+                  telecommunications, offering reliable high-speed internet through advanced cable infrastructure and competitive speeds.
                 </p>
                 
-                <h3 className="text-xl font-semibold mb-3">Cable Internet Excellence</h3>
+                <h3 className="text-xl font-semibold mb-3">Cable Internet Excellence and Speed Plans</h3>
                 <p className="text-muted-foreground">
-                  Spectrum's cable internet network utilizes DOCSIS 3.1 technology to deliver high-speed 
+                  Spectrum's cable internet network utilizes <strong>DOCSIS 3.1 technology</strong> to deliver high-speed 
                   broadband connections across urban, suburban, and rural communities throughout America. 
                   The company's hybrid fiber-coaxial infrastructure provides customers with download speeds 
-                  ranging from basic residential service to gigabit connections, supporting everything from 
+                  ranging from 300 Mbps on their base plan to 1 Gig (1000 Mbps) connections, supporting everything from 
                   basic web browsing to demanding applications like 4K streaming, online gaming, and 
-                  remote work requirements.
+                  remote work requirements. Use our <Link href="/internet-speed-requirements" className="text-primary hover:underline">speed requirements calculator</Link> to determine the right plan for your needs.
                 </p>
 
                 <h3 className="text-xl font-semibold mb-3">Nationwide Coverage Network</h3>
@@ -108,6 +206,9 @@ export default function SpectrumSpeedTest() {
                   coast. The company's broad geographic footprint includes significant presence in key 
                   markets such as New York, Los Angeles, Texas, Florida, and the Carolinas, making 
                   Spectrum accessible to millions of American households seeking reliable broadband connectivity.
+                  Compare Spectrum with other major providers like <Link href="/providers/us/verizon" className="text-primary hover:underline">Verizon</Link>, 
+                  <Link href="/providers/us/comcast" className="text-primary hover:underline">Comcast</Link>, and 
+                  <Link href="/providers/us/att" className="text-primary hover:underline">AT&T</Link>.
                 </p>
 
                 <h3 className="text-xl font-semibold mb-3">No Data Caps Policy</h3>
