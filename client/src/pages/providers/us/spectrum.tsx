@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Zap, Wifi } from "lucide-react";
+import { Zap, Wifi, Network, Router, Signal } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
+import { Link } from "wouter";
 
 export default function SpectrumSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
@@ -152,8 +153,177 @@ export default function SpectrumSpeedTest() {
               </div>
             </CardContent>
           </Card>
+
+          {/* Speed Test Performance Images */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex items-center justify-center mb-4">
+                  <div className="p-4 bg-blue-500/10 rounded-full">
+                    <Network className="h-12 w-12 text-blue-500" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-semibold mb-3 text-center">Spectrum Cable Network Infrastructure</h3>
+                <p className="text-sm text-muted-foreground text-center">
+                  Advanced DOCSIS 3.1 technology delivering high-speed internet across America's second-largest cable network
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex items-center justify-center mb-4">
+                  <div className="p-4 bg-green-500/10 rounded-full">
+                    <Signal className="h-12 w-12 text-green-500" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-semibold mb-3 text-center">No Data Caps Policy</h3>
+                <p className="text-sm text-muted-foreground text-center">
+                  Unlimited data usage on all Spectrum residential plans with consistent speed performance
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* FAQ Section */}
+          <Card className="mb-12">
+            <CardContent className="p-8">
+              <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Frequently Asked Questions About Spectrum Speed Test</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-2">What is a good Spectrum internet speed?</h4>
+                    <p className="text-sm text-muted-foreground">
+                      For most households, 100+ Mbps download speed is recommended. Spectrum's base plan offers 300 Mbps download 
+                      and 10 Mbps upload, which supports multiple devices, HD streaming, and remote work requirements.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-2">How do I run an accurate Spectrum speed test?</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Use a wired ethernet connection, close all background applications, disconnect other devices, and run multiple 
+                      tests at different times. This provides the most accurate representation of your Spectrum connection speed.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-2">Why are my Spectrum speeds slower than advertised?</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Common causes include WiFi interference, multiple devices connected, outdated router equipment, network 
+                      congestion during peak hours, or testing during high-usage periods in your area.
+                    </p>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-2">How can I improve my Spectrum internet speed?</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Restart your modem monthly, use ethernet instead of WiFi, relocate your router centrally, disconnect unused 
+                      devices, and ensure your equipment supports your speed tier. Contact Spectrum if issues persist.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-2">When should I contact Spectrum support?</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Contact Spectrum at 800-892-4357 if speed tests consistently show speeds significantly below your plan's 
+                      advertised rate, or if troubleshooting steps don't resolve persistent connectivity issues.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-2">What's the difference between WiFi and wired speeds?</h4>
+                    <p className="text-sm text-muted-foreground">
+                      WiFi speeds typically range 30-50% of advertised speeds due to interference and distance. Ethernet connections 
+                      should reach at least 80% of your Spectrum plan's advertised speed for optimal performance.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </main>
+
+      {/* Footer */}
+      <footer className="bg-background/50 backdrop-blur-sm border-t border-border/20 mt-16">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+          {/* Footer Links and Info */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <h4 className="font-semibold text-foreground mb-3">US Providers</h4>
+              <div className="space-y-2 text-sm">
+                <Link href="/providers/us/spectrum" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Spectrum Speed Test
+                </Link>
+                <Link href="/providers/us/verizon" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Verizon Speed Test
+                </Link>
+                <Link href="/providers/us/comcast" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Comcast Speed Test
+                </Link>
+                <Link href="/providers/us/att" className="block text-muted-foreground hover:text-primary transition-colors">
+                  AT&T Speed Test
+                </Link>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-3">Speed Test Tools</h4>
+              <div className="space-y-2 text-sm">
+                <Link href="/internet-speed-requirements" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Speed Requirements
+                </Link>
+                <Link href="/wifi-analyzer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  WiFi Analyzer
+                </Link>
+                <Link href="/ai-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
+                  AI Speed Test
+                </Link>
+                <div className="text-muted-foreground">Cable Speed Test</div>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-3">External Resources</h4>
+              <div className="space-y-2 text-sm">
+                <a href="https://www.spectrum.com/internet/speed-test" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Official Spectrum Test
+                </a>
+                <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Speedtest by Ookla
+                </a>
+                <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Fast.com by Netflix
+                </a>
+                <a href="https://www.fcc.gov/consumers/guides/broadband-speed-guide" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  FCC Broadband Guide
+                </a>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-3">About & Help</h4>
+              <div className="space-y-2 text-sm">
+                <Link href="/about" className="block text-muted-foreground hover:text-primary transition-colors">
+                  About Us
+                </Link>
+                <Link href="/help" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Help & FAQ
+                </Link>
+                <Link href="/" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Speed Test Home
+                </Link>
+                <Link href="/internet-providers" className="block text-muted-foreground hover:text-primary transition-colors">
+                  All Providers
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Copyright */}
+          <div className="text-center pt-8 border-t border-border/30 mt-8">
+            <p className="text-sm text-muted-foreground">
+              © 2025 Speed Test and Boost. Free Spectrum internet speed test for Charter Spectrum customers. 
+              Test your cable internet speed, WiFi performance, and network connectivity. Compare with official Spectrum speed test results.
+            </p>
+          </div>
+        </div>
+      </footer>
 
       {showSpeedTest && (
         <SpeedTestModal onClose={() => setShowSpeedTest(false)} />
