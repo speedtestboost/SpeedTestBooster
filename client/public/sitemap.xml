@@ -238,4 +238,56 @@
     <priority>0.8</priority>
   </url>
   
+  <!-- Netherlands Internet Providers (3 providers) -->
+  <url>
+    <loc>https://speedtestboost.com/providers/nl/kpn</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://speedtestboost.com/providers/nl/vodafoneziggo</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://speedtestboost.com/providers/nl/odido</loc>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- India Internet Providers (5 providers) -->
+  <url>
+    <loc>https://speedtestboost.com/providers/in/jio-fiber</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://speedtestboost.com/providers/in/airtel-broadband</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://speedtestboost.com/providers/in/act-fibernet</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://speedtestboost.com/providers/in/bsnl-broadband</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://speedtestboost.com/providers/in/hathway-broadband</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  
 </urlset>

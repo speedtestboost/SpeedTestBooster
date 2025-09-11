@@ -72,6 +72,18 @@ const countries = [
       { name: "VodafoneZiggo", slug: "vodafoneziggo" },
       { name: "Odido", slug: "odido" }
     ]
+  },
+  {
+    name: "India",
+    code: "in",
+    flag: "🇮🇳",
+    providers: [
+      { name: "Jio Fiber", slug: "jio-fiber" },
+      { name: "Airtel Broadband", slug: "airtel-broadband" },
+      { name: "ACT Fibernet", slug: "act-fibernet" },
+      { name: "BSNL Broadband", slug: "bsnl-broadband" },
+      { name: "Hathway Broadband", slug: "hathway-broadband" }
+    ]
   }
 ];
 

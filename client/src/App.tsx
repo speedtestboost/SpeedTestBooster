@@ -46,6 +46,14 @@ import TPGSpeedTest from "@/pages/providers/au/tpg";
 import KPNSpeedTest from "@/pages/providers/nl/kpn";
 import VodafoneZiggoSpeedTest from "@/pages/providers/nl/vodafoneziggo";
 import OdidoSpeedTest from "@/pages/providers/nl/odido";
+
+// India Providers
+import JioFiberSpeedTest from "@/pages/providers/in/jio-fiber";
+import AirtelBroadbandSpeedTest from "@/pages/providers/in/airtel-broadband";
+import BSNLBroadbandSpeedTest from "@/pages/providers/in/bsnl-broadband";
+import ACTFibernetSpeedTest from "@/pages/providers/in/act-fibernet";
+import HathwayBroadbandSpeedTest from "@/pages/providers/in/hathway-broadband";
+
 import WiFiAnalyzer from "@/pages/wifi-analyzer";
 import AISpeedTest from "@/pages/ai-speed-test";
 import LogoDemo from "@/pages/logo-demo";
@@ -109,6 +117,13 @@ function Router() {
       <Route path="/providers/nl/kpn" component={KPNSpeedTest} />
       <Route path="/providers/nl/vodafoneziggo" component={VodafoneZiggoSpeedTest} />
       <Route path="/providers/nl/odido" component={OdidoSpeedTest} />
+      
+      {/* India Provider Routes */}
+      <Route path="/providers/in/jio-fiber" component={JioFiberSpeedTest} />
+      <Route path="/providers/in/airtel-broadband" component={AirtelBroadbandSpeedTest} />
+      <Route path="/providers/in/bsnl-broadband" component={BSNLBroadbandSpeedTest} />
+      <Route path="/providers/in/act-fibernet" component={ACTFibernetSpeedTest} />
+      <Route path="/providers/in/hathway-broadband" component={HathwayBroadbandSpeedTest} />
       
       <Route component={NotFound} />
     </Switch>
