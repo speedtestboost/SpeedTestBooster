@@ -18,6 +18,8 @@ Allow: /help
 Allow: /privacy
 Allow: /terms
 Allow: /internet-speed-requirements
+Allow: /wifi-analyzer
+Allow: /ai-speed-test
 
 # Allow city-specific speed test pages
 Allow: /mumbai-speed-test
@@ -40,6 +42,8 @@ Allow: /providers/uk/*
 Allow: /providers/ca/*
 Allow: /providers/de/*
 Allow: /providers/au/*
+Allow: /providers/nl/*
+Allow: /providers/in/*
 
 # Block common crawler traps
 Disallow: /wp-admin/
@@ -81,3 +85,4 @@ Allow: /
 
 User-agent: Twitterbot
 Allow: /
+Crawl-delay: 1
