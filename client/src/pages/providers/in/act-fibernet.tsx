@@ -25,7 +25,7 @@ export default function ACTFibernetSpeedTest() {
       metaKeywords.setAttribute('name', 'keywords');
       document.head.appendChild(metaKeywords);
     }
-    metaKeywords.setAttribute('content', 'act fibernet speed test, act broadband speed test, act fiber speed test, act internet speed, gaming broadband speed test, metro fiber speed test');
+    metaKeywords.setAttribute('content', 'act fibernet speed test, act broadband, gaming fiber');
 
     // Open Graph tags for social sharing
     const ogTags = [

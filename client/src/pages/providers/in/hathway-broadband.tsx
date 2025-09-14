@@ -25,7 +25,7 @@ export default function HathwayBroadbandSpeedTest() {
       metaKeywords.setAttribute('name', 'keywords');
       document.head.appendChild(metaKeywords);
     }
-    metaKeywords.setAttribute('content', 'hathway broadband speed test, hathway cable speed test, hathway internet speed test, cable broadband speed test, hathway wifi test, broadband speed test india');
+    metaKeywords.setAttribute('content', 'hathway broadband speed test, hathway cable, cable internet');
 
     // Open Graph tags for social sharing
     const ogTags = [

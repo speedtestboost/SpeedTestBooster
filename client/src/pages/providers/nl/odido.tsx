@@ -24,7 +24,7 @@ export default function OdidoSpeedTest() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    keywords.content = 'Odido speed test, Odido speedtest Nederland, T-Mobile Nederland snelheid, Odido internet test, Odido glasvezel speedtest, Odido 4G 5G test, Odido wifi snelheid, T-Mobile speedtest gratis, Odido mobiel internet test, Odido netwerk 2025';
+    keywords.content = 'Odido speed test, T-Mobile Nederland, 4G 5G test';
     
     // Open Graph tags
     const ogTags = [

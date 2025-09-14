@@ -24,7 +24,7 @@ export default function KPNSpeedTest() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    keywords.content = 'KPN speed test, KPN speedtest Nederland, KPN glasvezel snelheid, KPN internetsnelheid test, KPN fiber speed test, KPN ADSL speedtest, KPN wifi snelheid meten, snelheidstest KPN gratis, KPN internet test 2025, KPN netwerk prestaties';
+    keywords.content = 'KPN speed test, KPN glasvezel, internet snelheid';
     
     // Open Graph tags
     const ogTags = [

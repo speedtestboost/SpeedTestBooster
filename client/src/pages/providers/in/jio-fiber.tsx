@@ -25,7 +25,7 @@ export default function JioFiberSpeedTest() {
       metaKeywords.setAttribute('name', 'keywords');
       document.head.appendChild(metaKeywords);
     }
-    metaKeywords.setAttribute('content', 'jio fiber speed test, jio broadband speed test, reliance jio speed test, jio wifi test, fiber speed test india, jio gig speed');
+    metaKeywords.setAttribute('content', 'jio fiber speed test, reliance jio broadband, fiber internet');
 
     // Open Graph tags for social sharing
     const ogTags = [

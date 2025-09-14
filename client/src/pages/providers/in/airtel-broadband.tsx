@@ -25,7 +25,7 @@ export default function AirtelBroadbandSpeedTest() {
       metaKeywords.setAttribute('name', 'keywords');
       document.head.appendChild(metaKeywords);
     }
-    metaKeywords.setAttribute('content', 'airtel broadband speed test, airtel fiber speed test, bharti airtel speed test, airtel xstream fiber test, airtel wifi test, broadband speed test india');
+    metaKeywords.setAttribute('content', 'airtel broadband speed test, bharti airtel, xstream fiber');
 
     // Open Graph tags for social sharing
     const ogTags = [

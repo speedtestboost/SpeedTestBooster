@@ -25,7 +25,7 @@ export default function SpectrumSpeedTest() {
       metaKeywords.setAttribute('name', 'keywords');
       document.head.appendChild(metaKeywords);
     }
-    metaKeywords.setAttribute('content', 'spectrum speed test, charter spectrum, cable internet speed test, spectrum wifi test, internet speed test, broadband test, spectrum gig speed');
+    metaKeywords.setAttribute('content', 'spectrum speed test, charter spectrum, cable internet');
 
     // Open Graph tags for social sharing
     const ogTags = [

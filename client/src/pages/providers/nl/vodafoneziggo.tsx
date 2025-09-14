@@ -24,7 +24,7 @@ export default function VodafoneZiggoSpeedTest() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    keywords.content = 'VodafoneZiggo speed test, Ziggo speedtest Nederland, Ziggo internet snelheid, VodafoneZiggo snelheidstest, Ziggo kabel internet test, Ziggo wifi snelheid, Ziggo speedtest gratis, VodafoneZiggo glasvezel test, Ziggo netwerk prestaties 2025';
+    keywords.content = 'VodafoneZiggo speed test, Ziggo internet snelheid, kabel internet';
     
     // Open Graph tags
     const ogTags = [

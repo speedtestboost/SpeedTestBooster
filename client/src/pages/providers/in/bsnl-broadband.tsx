@@ -25,7 +25,7 @@ export default function BSNLBroadbandSpeedTest() {
       metaKeywords.setAttribute('name', 'keywords');
       document.head.appendChild(metaKeywords);
     }
-    metaKeywords.setAttribute('content', 'bsnl broadband speed test, bsnl fiber speed test, bsnl ftth speed test, bsnl wifi test, government broadband speed test, bsnl internet speed');
+    metaKeywords.setAttribute('content', 'bsnl broadband speed test, bsnl ftth, government internet');
 
     // Open Graph tags for social sharing
     const ogTags = [
