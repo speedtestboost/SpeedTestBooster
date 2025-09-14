@@ -38,11 +38,12 @@ export default function CoxSpeedTest() {
 
     const script = document.createElement('script');
     script.type = 'application/ld+json';
+    script.id = 'cox-structured-data';
     script.textContent = JSON.stringify(structuredData);
     document.head.appendChild(script);
 
     return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
+      const existingScript = document.querySelector('script#cox-structured-data');
       if (existingScript) document.head.removeChild(existingScript);
     };
   }, []);

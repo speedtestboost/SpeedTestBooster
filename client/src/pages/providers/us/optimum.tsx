@@ -38,11 +38,12 @@ export default function OptimumSpeedTest() {
 
     const script = document.createElement('script');
     script.type = 'application/ld+json';
+    script.id = 'optimum-structured-data';
     script.textContent = JSON.stringify(structuredData);
     document.head.appendChild(script);
 
     return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
+      const existingScript = document.querySelector('script#optimum-structured-data');
       if (existingScript) document.head.removeChild(existingScript);
     };
   }, []);

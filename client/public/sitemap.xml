@@ -132,7 +132,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- US Internet Providers (3 providers) -->
+  <!-- US Internet Providers (9 providers) -->
   <url>
     <loc>https://speedtestboost.com/providers/us/verizon</loc>
     <lastmod>2025-08-08</lastmod>
@@ -154,6 +154,36 @@
   <url>
     <loc>https://speedtestboost.com/providers/us/spectrum</loc>
     <lastmod>2025-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://speedtestboost.com/providers/us/centurylink</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://speedtestboost.com/providers/us/optimum</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://speedtestboost.com/providers/us/cox</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://speedtestboost.com/providers/us/frontier</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://speedtestboost.com/providers/us/windstream</loc>
+    <lastmod>2025-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -288,6 +318,30 @@
     <lastmod>2025-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+  </url>
+  
+  <!-- France Internet Providers (1 provider) -->
+  <url>
+    <loc>https://speedtestboost.com/providers/fr/orange</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Italy Internet Providers (1 provider) -->
+  <url>
+    <loc>https://speedtestboost.com/providers/it/tim</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Brazil Internet Providers (1 provider) -->
+  <url>
+    <loc>https://speedtestboost.com/providers/br/vivo</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   
 </urlset>

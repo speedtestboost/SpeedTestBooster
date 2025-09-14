@@ -21,6 +21,11 @@ import VerizonSpeedTest from "@/pages/providers/us/verizon";
 import ComcastSpeedTest from "@/pages/providers/us/comcast";
 import ATTSpeedTest from "@/pages/providers/us/att";
 import SpectrumSpeedTest from "@/pages/providers/us/spectrum";
+import CenturyLinkSpeedTest from "@/pages/providers/us/centurylink";
+import OptimumSpeedTest from "@/pages/providers/us/optimum";
+import CoxSpeedTest from "@/pages/providers/us/cox";
+import FrontierSpeedTest from "@/pages/providers/us/frontier";
+import WindstreamSpeedTest from "@/pages/providers/us/windstream";
 
 // UK Providers  
 import BTSpeedTest from "@/pages/providers/uk/bt";
@@ -53,6 +58,15 @@ import AirtelBroadbandSpeedTest from "@/pages/providers/in/airtel-broadband";
 import BSNLBroadbandSpeedTest from "@/pages/providers/in/bsnl-broadband";
 import ACTFibernetSpeedTest from "@/pages/providers/in/act-fibernet";
 import HathwayBroadbandSpeedTest from "@/pages/providers/in/hathway-broadband";
+
+// France Providers
+import OrangeSpeedTest from "@/pages/providers/fr/orange";
+
+// Italy Providers
+import TIMSpeedTest from "@/pages/providers/it/tim";
+
+// Brazil Providers
+import VivoSpeedTest from "@/pages/providers/br/vivo";
 
 import WiFiAnalyzer from "@/pages/wifi-analyzer";
 import AISpeedTest from "@/pages/ai-speed-test";
@@ -92,6 +106,11 @@ function Router() {
       <Route path="/providers/us/comcast" component={ComcastSpeedTest} />
       <Route path="/providers/us/att" component={ATTSpeedTest} />
       <Route path="/providers/us/spectrum" component={SpectrumSpeedTest} />
+      <Route path="/providers/us/centurylink" component={CenturyLinkSpeedTest} />
+      <Route path="/providers/us/optimum" component={OptimumSpeedTest} />
+      <Route path="/providers/us/cox" component={CoxSpeedTest} />
+      <Route path="/providers/us/frontier" component={FrontierSpeedTest} />
+      <Route path="/providers/us/windstream" component={WindstreamSpeedTest} />
       
       {/* UK Provider Routes */}
       <Route path="/providers/uk/bt" component={BTSpeedTest} />
@@ -124,6 +143,15 @@ function Router() {
       <Route path="/providers/in/bsnl-broadband" component={BSNLBroadbandSpeedTest} />
       <Route path="/providers/in/act-fibernet" component={ACTFibernetSpeedTest} />
       <Route path="/providers/in/hathway-broadband" component={HathwayBroadbandSpeedTest} />
+      
+      {/* France Provider Routes */}
+      <Route path="/providers/fr/orange" component={OrangeSpeedTest} />
+      
+      {/* Italy Provider Routes */}
+      <Route path="/providers/it/tim" component={TIMSpeedTest} />
+      
+      {/* Brazil Provider Routes */}
+      <Route path="/providers/br/vivo" component={VivoSpeedTest} />
       
       <Route component={NotFound} />
     </Switch>

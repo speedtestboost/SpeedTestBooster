@@ -38,11 +38,12 @@ export default function CenturyLinkSpeedTest() {
 
     const script = document.createElement('script');
     script.type = 'application/ld+json';
+    script.id = 'centurylink-structured-data';
     script.textContent = JSON.stringify(structuredData);
     document.head.appendChild(script);
 
     return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
+      const existingScript = document.querySelector('script#centurylink-structured-data');
       if (existingScript) document.head.removeChild(existingScript);
     };
   }, []);
