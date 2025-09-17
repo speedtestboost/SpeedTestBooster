@@ -744,13 +744,15 @@ export default function SpeedTest() {
                       </div>
                     </div>
                     
-                    <Link 
-                      href="/wifi-analyzer" 
-                      data-testid="card-wifi-analyzer"
-                      className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary/90 transition-all duration-200 transform hover:scale-105"
-                    >
-                      Launch WiFi Analyzer
-                    </Link>
+                    <div className="text-center">
+                      <Link 
+                        href="/wifi-analyzer" 
+                        data-testid="card-wifi-analyzer"
+                        className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary/90 transition-all duration-200 transform hover:scale-105"
+                      >
+                        Launch WiFi Analyzer
+                      </Link>
+                    </div>
                   </CardContent>
                 </Card>
               </div>
