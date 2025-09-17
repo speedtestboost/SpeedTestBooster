@@ -744,7 +744,7 @@ export default function SpeedTest() {
                       </div>
                     </div>
                     
-                    <div className="text-center">
+                    <div className="text-center mt-4">
                       <Link 
                         href="/wifi-analyzer" 
                         data-testid="card-wifi-analyzer"
