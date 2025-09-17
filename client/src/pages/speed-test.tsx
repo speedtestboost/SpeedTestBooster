@@ -689,6 +689,35 @@ export default function SpeedTest() {
             </div>
           </div>
 
+          {/* Our Product Section */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Our Product</h2>
+            <p className="text-center text-muted-foreground mb-8">
+              Professional network diagnostics and WiFi optimization tools for advanced users and IT professionals
+            </p>
+            <div className="flex justify-center">
+              <Card className="card-hover group max-w-md">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Wifi className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-foreground mb-3">WiFi Analyzer & Network Diagnostics</h3>
+                  <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
+                    Advanced WiFi network analysis tool with real-time signal monitoring, channel optimization, 
+                    interference detection, and comprehensive network diagnostics for optimal performance.
+                  </p>
+                  <Link 
+                    href="/wifi-analyzer" 
+                    data-testid="card-wifi-analyzer"
+                    className="inline-flex items-center justify-center bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                  >
+                    Launch WiFi Analyzer
+                  </Link>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
           {/* FAQ Section */}
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Frequently Asked Questions</h2>

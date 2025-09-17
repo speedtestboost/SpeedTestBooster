@@ -197,13 +197,6 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
                 </DropdownMenuContent>
               </DropdownMenu>
               
-              <Link 
-                href="/wifi-analyzer" 
-                className={`transition-colors ${currentPath === "/wifi-analyzer" ? "text-primary font-medium" : "text-muted-foreground hover:text-primary"}`}
-              >
-                WiFi Analyzer
-              </Link>
-              
               {/* Speed Guides Dropdown */}
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex items-center space-x-1 text-muted-foreground hover:text-primary transition-colors">
@@ -308,13 +301,6 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
                 onClick={() => setShowMobileMenu(false)}
               >
                 All Internet Providers
-              </Link>
-              <Link 
-                href="/wifi-analyzer" 
-                className="text-muted-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setShowMobileMenu(false)}
-              >
-                WiFi Analyzer
               </Link>
               <Link 
                 href="/about" 
