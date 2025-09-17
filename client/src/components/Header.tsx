@@ -203,6 +203,31 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
               >
                 WiFi Analyzer
               </Link>
+              
+              {/* Speed Guides Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger className="flex items-center space-x-1 text-muted-foreground hover:text-primary transition-colors">
+                  <span>Speed Guides</span>
+                  <ChevronDown className="h-3 w-3" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="center" className="w-56">
+                  <DropdownMenuItem asChild>
+                    <Link href="/download-speed-guide" className="w-full" data-testid="link-download-speed-guide">
+                      Download Speed Guide
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/upload-speed-guide" className="w-full" data-testid="link-upload-speed-guide">
+                      Upload Speed Guide
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/wifi-speed-optimization" className="w-full" data-testid="link-wifi-optimization-guide">
+                      WiFi Optimization Guide
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
               <Link 
                 href="/about" 
                 className={`transition-colors ${currentPath === "/about" ? "text-primary font-medium" : "text-muted-foreground hover:text-primary"}`}
@@ -252,6 +277,30 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
                 onClick={() => setShowMobileMenu(false)}
               >
                 AI Speed Test
+              </Link>
+              <Link 
+                href="/download-speed-guide" 
+                className="text-muted-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setShowMobileMenu(false)}
+                data-testid="mobile-link-download-speed-guide"
+              >
+                Download Speed Guide
+              </Link>
+              <Link 
+                href="/upload-speed-guide" 
+                className="text-muted-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setShowMobileMenu(false)}
+                data-testid="mobile-link-upload-speed-guide"
+              >
+                Upload Speed Guide
+              </Link>
+              <Link 
+                href="/wifi-speed-optimization" 
+                className="text-muted-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setShowMobileMenu(false)}
+                data-testid="mobile-link-wifi-optimization-guide"
+              >
+                WiFi Optimization Guide
               </Link>
               <Link 
                 href="/internet-providers" 
