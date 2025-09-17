@@ -617,37 +617,75 @@ export default function SpeedTest() {
             </div>
           </div>
 
-          {/* Featured City Speed Tests Section */}
+          {/* Speed Guide Articles Section */}
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Featured City Speed Tests</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Expert Speed Guides & Optimization</h2>
             <p className="text-center text-muted-foreground mb-8">
-              Get location-specific speed test results optimized for your city's network infrastructure
+              Comprehensive guides to understand, test, and optimize your internet connection for maximum performance
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <Link href="/delhi-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-                <div className="text-sm font-medium text-foreground group-hover:text-primary">Delhi Speed Test</div>
-                <div className="text-xs text-muted-foreground">NCR Network Analysis</div>
-              </Link>
-              <Link href="/mumbai-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-                <div className="text-sm font-medium text-foreground group-hover:text-primary">Mumbai Speed Test</div>
-                <div className="text-xs text-muted-foreground">Financial Hub Analysis</div>
-              </Link>
-              <Link href="/bangalore-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-                <div className="text-sm font-medium text-foreground group-hover:text-primary">Bangalore Speed Test</div>
-                <div className="text-xs text-muted-foreground">Tech Hub Analysis</div>
-              </Link>
-              <Link href="/hyderabad-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-                <div className="text-sm font-medium text-foreground group-hover:text-primary">Hyderabad Speed Test</div>
-                <div className="text-xs text-muted-foreground">IT Hub Analysis</div>
-              </Link>
-              <Link href="/chennai-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-                <div className="text-sm font-medium text-foreground group-hover:text-primary">Chennai Speed Test</div>
-                <div className="text-xs text-muted-foreground">South India Analysis</div>
-              </Link>
-              <Link href="/kolkata-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-                <div className="text-sm font-medium text-foreground group-hover:text-primary">Kolkata Speed Test</div>
-                <div className="text-xs text-muted-foreground">East India Analysis</div>
-              </Link>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Card className="card-hover group">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                      <Gauge className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-foreground">Download Speed Guide</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                    Complete guide to understanding download speeds, requirements for different activities, and optimization techniques for streaming, gaming, and browsing.
+                  </p>
+                  <Link 
+                    href="/download-speed-guide" 
+                    data-testid="card-download-speed-guide"
+                    className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-medium text-sm"
+                  >
+                    Read Complete Guide →
+                  </Link>
+                </CardContent>
+              </Card>
+
+              <Card className="card-hover group">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mr-4">
+                      <Play className="h-6 w-6 text-accent" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-foreground">Upload Speed Guide</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                    Essential upload speed knowledge for video calls, file sharing, streaming, and remote work. Learn requirements and improvement strategies.
+                  </p>
+                  <Link 
+                    href="/upload-speed-guide" 
+                    data-testid="card-upload-speed-guide"
+                    className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-medium text-sm"
+                  >
+                    Read Complete Guide →
+                  </Link>
+                </CardContent>
+              </Card>
+
+              <Card className="card-hover group">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mr-4">
+                      <Wifi className="h-6 w-6 text-secondary" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-foreground">WiFi Optimization Guide</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                    Advanced WiFi optimization techniques, troubleshooting tips, and our interactive WiFi optimization tool to maximize your wireless performance.
+                  </p>
+                  <Link 
+                    href="/wifi-speed-optimization" 
+                    data-testid="card-wifi-optimization-guide"
+                    className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-medium text-sm"
+                  >
+                    Read Complete Guide →
+                  </Link>
+                </CardContent>
+              </Card>
             </div>
           </div>
 
