@@ -20,7 +20,12 @@ const countries = [
       { name: "Verizon", slug: "verizon" },
       { name: "Comcast Xfinity", slug: "comcast" },
       { name: "AT&T", slug: "att" },
-      { name: "Spectrum", slug: "spectrum" }
+      { name: "Spectrum", slug: "spectrum" },
+      { name: "CenturyLink", slug: "centurylink" },
+      { name: "Optimum", slug: "optimum" },
+      { name: "Cox", slug: "cox" },
+      { name: "Frontier", slug: "frontier" },
+      { name: "Windstream", slug: "windstream" }
     ]
   },
   {
@@ -83,6 +88,30 @@ const countries = [
       { name: "ACT Fibernet", slug: "act-fibernet" },
       { name: "BSNL Broadband", slug: "bsnl-broadband" },
       { name: "Hathway Broadband", slug: "hathway-broadband" }
+    ]
+  },
+  {
+    name: "France",
+    code: "fr",
+    flag: "🇫🇷",
+    providers: [
+      { name: "Orange", slug: "orange" }
+    ]
+  },
+  {
+    name: "Italy",
+    code: "it",
+    flag: "🇮🇹",
+    providers: [
+      { name: "TIM", slug: "tim" }
+    ]
+  },
+  {
+    name: "Brazil",
+    code: "br",
+    flag: "🇧🇷",
+    providers: [
+      { name: "Vivo", slug: "vivo" }
     ]
   }
 ];
