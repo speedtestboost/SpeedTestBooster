@@ -624,63 +624,63 @@ export default function SpeedTest() {
               Comprehensive guides to understand, test, and optimize your internet connection for maximum performance
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="card-hover group">
-                <CardContent className="p-6">
+              <Card className="card-hover group h-full">
+                <CardContent className="p-6 h-full flex flex-col">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
                       <Gauge className="h-6 w-6 text-primary" />
                     </div>
                     <h3 className="text-lg font-semibold text-foreground">Download Speed Guide</h3>
                   </div>
-                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed flex-1">
                     Complete guide to understanding download speeds, requirements for different activities, and optimization techniques for streaming, gaming, and browsing.
                   </p>
                   <Link 
                     href="/download-speed-guide" 
                     data-testid="card-download-speed-guide"
-                    className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-medium text-sm"
+                    className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-medium text-sm mt-auto"
                   >
                     Read Complete Guide →
                   </Link>
                 </CardContent>
               </Card>
 
-              <Card className="card-hover group">
-                <CardContent className="p-6">
+              <Card className="card-hover group h-full">
+                <CardContent className="p-6 h-full flex flex-col">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mr-4">
                       <Play className="h-6 w-6 text-accent" />
                     </div>
                     <h3 className="text-lg font-semibold text-foreground">Upload Speed Guide</h3>
                   </div>
-                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed flex-1">
                     Essential upload speed knowledge for video calls, file sharing, streaming, and remote work. Learn requirements and improvement strategies.
                   </p>
                   <Link 
                     href="/upload-speed-guide" 
                     data-testid="card-upload-speed-guide"
-                    className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-medium text-sm"
+                    className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-medium text-sm mt-auto"
                   >
                     Read Complete Guide →
                   </Link>
                 </CardContent>
               </Card>
 
-              <Card className="card-hover group">
-                <CardContent className="p-6">
+              <Card className="card-hover group h-full">
+                <CardContent className="p-6 h-full flex flex-col">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mr-4">
                       <Wifi className="h-6 w-6 text-secondary" />
                     </div>
                     <h3 className="text-lg font-semibold text-foreground">WiFi Optimization Guide</h3>
                   </div>
-                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed flex-1">
                     Advanced WiFi optimization techniques, troubleshooting tips, and our interactive WiFi optimization tool to maximize your wireless performance.
                   </p>
                   <Link 
                     href="/wifi-speed-optimization" 
                     data-testid="card-wifi-optimization-guide"
-                    className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-medium text-sm"
+                    className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-medium text-sm mt-auto"
                   >
                     Read Complete Guide →
                   </Link>
