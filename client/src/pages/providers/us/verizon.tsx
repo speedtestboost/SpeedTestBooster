@@ -1,54 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Zap, Wifi } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
+import ProviderSEO from "@/components/ProviderSEO";
+import { providerKeywords } from "@/seo/providerKeywords";
 
 export default function VerizonSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
-
-  useEffect(() => {
-    document.title = "Verizon Speed Test - Test Verizon Fios Internet Speed 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Verizon internet speed for free. Verizon Fios speed test for fiber internet and 5G home internet nationwide.');
-    }
-
-    // Update canonical tag
-    const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
-    if (canonical) {
-      canonical.setAttribute('href', 'https://speedtestboost.com/providers/us/verizon');
-    }
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Verizon Speed Test",
-      "description": "Test your Verizon internet speed for free. Speed test for Verizon Fios and 5G customers.",
-      "url": "https://speedtestboost.com/providers/us/verizon",
-      "provider": {
-        "@type": "Organization",
-        "name": "Verizon",
-        "description": "Major US telecommunications company providing fiber and 5G internet services",
-        "areaServed": { "@type": "Country", "name": "United States" },
-        "serviceType": ["Fiber Internet", "5G Home", "Mobile", "TV", "Business Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
+  const seoConfig = providerKeywords.verizon;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderSEO providerSlug="verizon" />
       <Header currentPath="/providers/us/verizon" />
       
       <main className="pt-24 pb-12">
@@ -60,7 +25,7 @@ export default function VerizonSpeedTest() {
               </div>
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-red-500 via-red-600 to-red-500 bg-clip-text text-transparent">
-              Verizon Speed Test
+              {seoConfig.h1}
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
               Test your <span className="font-semibold text-red-500">Verizon internet speed</span> for free. Check your Fios fiber or 5G home internet performance.
@@ -134,6 +99,45 @@ export default function VerizonSpeedTest() {
                   performance. This testing helps identify connectivity issues and ensures you're receiving the 
                   premium internet service quality that defines Verizon's telecommunications excellence.
                 </p>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Long-tail Keyword Optimized Sections */}
+          {seoConfig.h2Sections.map((section, index) => (
+            <Card key={index} className="mt-8">
+              <CardContent className="p-8">
+                <h2 className="text-2xl font-bold mb-4">{section.title}</h2>
+                <p className="text-muted-foreground">
+                  {index === 0 && "Test your Verizon Fios internet speed with our advanced online speed test tool. Our platform provides accurate measurements of your fiber optic connection, ensuring you're getting the premium speeds that Verizon Fios delivers across the eastern United States."}
+                  {index === 1 && "Check your Verizon upload speed to ensure optimal performance for video conferencing, file uploads, and cloud backups. Verizon Fios offers symmetrical speeds, meaning your upload speeds should match your download speeds for premium fiber service."}
+                  {index === 2 && "Monitor your Verizon ping and latency for gaming, video calls, and real-time applications. Lower ping times indicate better network responsiveness, which is crucial for competitive gaming and professional video conferencing on Verizon's fiber network."}
+                  {index === 3 && "Test your Verizon 5G Home internet speed to verify wireless broadband performance. Verizon's 5G Ultra Wideband technology provides fiber-like speeds without traditional cable connections in select coverage areas."}
+                  {index === 4 && "Find Verizon speed test locations near you for the most accurate local network performance measurements. Testing from nearby servers provides the best indication of your actual Verizon connection quality and speed."}
+                </p>
+                <div className="mt-4">
+                  <Button 
+                    onClick={() => setShowSpeedTest(true)} 
+                    className="bg-red-500 hover:bg-red-600"
+                  >
+                    Test {section.title.includes('Upload') ? 'Upload' : section.title.includes('Ping') ? 'Ping' : 'Speed'} Now
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+
+          {/* FAQ Section */}
+          <Card className="mt-8">
+            <CardContent className="p-8">
+              <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+              <div className="space-y-6">
+                {seoConfig.faq.map((item, index) => (
+                  <div key={index} className="border-b border-border pb-4 last:border-b-0">
+                    <h3 className="text-lg font-semibold mb-2">{item.question}</h3>
+                    <p className="text-muted-foreground">{item.answer}</p>
+                  </div>
+                ))}
               </div>
             </CardContent>
           </Card>
