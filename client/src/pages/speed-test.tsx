@@ -771,18 +771,6 @@ export default function SpeedTest() {
 
                 <Card className="card-hover">
                   <CardContent className="p-6">
-                    <div className="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center mb-4">
-                      <Gauge className="h-6 w-6 text-secondary" />
-                    </div>
-                    <h4 className="text-lg font-semibold text-foreground mb-3">Network Monitoring</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      Continuous network monitoring with detailed analytics, performance tracking, and instant alerts for network issues.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card className="card-hover">
-                  <CardContent className="p-6">
                     <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
                       <Wifi className="h-6 w-6 text-primary" />
                     </div>
