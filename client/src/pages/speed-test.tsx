@@ -689,32 +689,110 @@ export default function SpeedTest() {
             </div>
           </div>
 
-          {/* Our Product Section */}
+          {/* Professional WiFi Analyzer & Network Tools Section */}
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Our Product</h2>
-            <p className="text-center text-muted-foreground mb-8">
-              Professional network diagnostics and WiFi optimization tools for advanced users and IT professionals
+            <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Professional WiFi Analyzer & Network Tools</h2>
+            <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto text-lg">
+              Advanced network diagnostics and WiFi optimization suite designed for IT professionals, network administrators, and power users who demand comprehensive network analysis
             </p>
-            <div className="flex justify-center">
-              <Card className="card-hover group max-w-md">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Wifi className="h-8 w-8 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-3">WiFi Analyzer & Network Diagnostics</h3>
-                  <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
-                    Advanced WiFi network analysis tool with real-time signal monitoring, channel optimization, 
-                    interference detection, and comprehensive network diagnostics for optimal performance.
-                  </p>
-                  <Link 
-                    href="/wifi-analyzer" 
-                    data-testid="card-wifi-analyzer"
-                    className="inline-flex items-center justify-center bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
-                  >
-                    Launch WiFi Analyzer
-                  </Link>
-                </CardContent>
-              </Card>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Main WiFi Analyzer Card */}
+              <div className="lg:col-span-2">
+                <Card className="card-hover group h-full bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20">
+                  <CardContent className="p-8">
+                    <div className="flex items-center mb-6">
+                      <div className="w-20 h-20 bg-primary/15 rounded-2xl flex items-center justify-center mr-6">
+                        <Wifi className="h-10 w-10 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-foreground mb-2">WiFi Analyzer & Network Diagnostics</h3>
+                        <p className="text-primary font-medium">Professional Network Analysis Tool</p>
+                      </div>
+                    </div>
+                    
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                      Comprehensive WiFi network analysis with real-time signal monitoring, channel optimization, 
+                      interference detection, and advanced network diagnostics. Perfect for troubleshooting 
+                      connectivity issues and optimizing network performance.
+                    </p>
+                    
+                    <div className="grid grid-cols-2 gap-4 mb-8">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <Gauge className="h-4 w-4 text-primary" />
+                        </div>
+                        <span className="text-sm font-medium text-foreground">Real-time Signal Analysis</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <Play className="h-4 w-4 text-primary" />
+                        </div>
+                        <span className="text-sm font-medium text-foreground">Channel Optimization</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <Wifi className="h-4 w-4 text-primary" />
+                        </div>
+                        <span className="text-sm font-medium text-foreground">Interference Detection</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <Gauge className="h-4 w-4 text-primary" />
+                        </div>
+                        <span className="text-sm font-medium text-foreground">Network Diagnostics</span>
+                      </div>
+                    </div>
+                    
+                    <Link 
+                      href="/wifi-analyzer" 
+                      data-testid="card-wifi-analyzer"
+                      className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary/90 transition-all duration-200 transform hover:scale-105"
+                    >
+                      Launch WiFi Analyzer
+                    </Link>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Additional Features */}
+              <div className="space-y-6">
+                <Card className="card-hover">
+                  <CardContent className="p-6">
+                    <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-4">
+                      <Play className="h-6 w-6 text-accent" />
+                    </div>
+                    <h4 className="text-lg font-semibold text-foreground mb-3">Speed Optimization</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Automated WiFi optimization with intelligent QoS configuration and bandwidth management for maximum performance.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card className="card-hover">
+                  <CardContent className="p-6">
+                    <div className="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center mb-4">
+                      <Gauge className="h-6 w-6 text-secondary" />
+                    </div>
+                    <h4 className="text-lg font-semibold text-foreground mb-3">Network Monitoring</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Continuous network monitoring with detailed analytics, performance tracking, and instant alerts for network issues.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card className="card-hover">
+                  <CardContent className="p-6">
+                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                      <Wifi className="h-6 w-6 text-primary" />
+                    </div>
+                    <h4 className="text-lg font-semibold text-foreground mb-3">Professional Reports</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Generate comprehensive network analysis reports with detailed insights and recommendations for IT documentation.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
 
