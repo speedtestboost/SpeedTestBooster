@@ -60,6 +60,12 @@ User-agent: Googlebot
 Allow: /
 Crawl-delay: 1
 
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: Google-Display-Ads-Bot
+Allow: /
+
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
