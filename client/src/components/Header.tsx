@@ -162,6 +162,14 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
                 AI Speed Test
               </Link>
               
+              <Link 
+                href="/ping-test" 
+                className={`text-muted-foreground hover:text-primary transition-colors font-medium ${currentPath === "/ping-test" ? "text-primary" : ""}`}
+                data-testid="link-ping-test"
+              >
+                Ping Test
+              </Link>
+              
               {/* Internet Providers Dropdown */}
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex items-center space-x-1 text-muted-foreground hover:text-primary transition-colors">
@@ -270,6 +278,14 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
                 onClick={() => setShowMobileMenu(false)}
               >
                 AI Speed Test
+              </Link>
+              <Link 
+                href="/ping-test" 
+                className="text-muted-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setShowMobileMenu(false)}
+                data-testid="mobile-link-ping-test"
+              >
+                Ping Test
               </Link>
               <Link 
                 href="/download-speed-guide" 

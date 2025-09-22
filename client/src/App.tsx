@@ -73,6 +73,7 @@ import AISpeedTest from "@/pages/ai-speed-test";
 import DownloadSpeedGuide from "@/pages/download-speed-guide";
 import UploadSpeedGuide from "@/pages/upload-speed-guide";
 import WiFiSpeedOptimization from "@/pages/wifi-speed-optimization";
+import PingTest from "@/pages/ping-test";
 import LogoDemo from "@/pages/logo-demo";
 import NotFound from "@/pages/not-found";
 import { useEffect } from "react";
@@ -105,6 +106,7 @@ function Router() {
       <Route path="/download-speed-guide" component={DownloadSpeedGuide} />
       <Route path="/upload-speed-guide" component={UploadSpeedGuide} />
       <Route path="/wifi-speed-optimization" component={WiFiSpeedOptimization} />
+      <Route path="/ping-test" component={PingTest} />
       <Route path="/logo-demo" component={LogoDemo} />
       
       {/* US Provider Routes */}
