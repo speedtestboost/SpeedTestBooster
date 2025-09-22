@@ -883,6 +883,9 @@ export default function SpeedTest() {
                 <Link href="/help" className="block text-muted-foreground hover:text-primary transition-colors">
                   Help & FAQ
                 </Link>
+                <Link href="/ping-test" className="block text-muted-foreground hover:text-primary transition-colors" data-testid="footer-link-ping-test">
+                  Ping Test Tool
+                </Link>
                 <a href="https://en.wikipedia.org/wiki/Internet_speed_test" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
                   Speed Test Info
                 </a>

@@ -6,6 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/Header";
 import { trackEvent } from "@/lib/analytics";
 import { Zap, Clock, Gauge, CheckCircle, XCircle, Wifi, Globe, Router, Smartphone } from "lucide-react";
+import { Link } from "wouter";
 
 export default function PingTest() {
   const [isTestRunning, setIsTestRunning] = useState(false);
@@ -344,8 +345,44 @@ export default function PingTest() {
         <div className="space-y-8">
           <Separator />
           
+          {/* Table of Contents */}
+          <Card className="bg-muted/30 border-border/50">
+            <CardContent className="p-6">
+              <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center">
+                <Clock className="h-6 w-6 text-primary mr-2" />
+                Table of Contents
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                <a href="#understanding-ping" className="text-muted-foreground hover:text-primary transition-colors">
+                  1. Understanding Ping Test and Network Latency
+                </a>
+                <a href="#how-ping-works" className="text-muted-foreground hover:text-primary transition-colors">
+                  2. How Ping Testing Works
+                </a>
+                <a href="#ping-results" className="text-muted-foreground hover:text-primary transition-colors">
+                  3. Understanding Ping Results
+                </a>
+                <a href="#factors-affecting" className="text-muted-foreground hover:text-primary transition-colors">
+                  4. Factors Affecting Ping Performance
+                </a>
+                <a href="#improving-ping" className="text-muted-foreground hover:text-primary transition-colors">
+                  5. Improving Your Ping Performance
+                </a>
+                <a href="#troubleshooting" className="text-muted-foreground hover:text-primary transition-colors">
+                  6. Network Troubleshooting Guide
+                </a>
+                <a href="#gaming-applications" className="text-muted-foreground hover:text-primary transition-colors">
+                  7. Ping for Gaming and Real-time Applications
+                </a>
+                <a href="#technical-details" className="text-muted-foreground hover:text-primary transition-colors">
+                  8. Technical Implementation Details
+                </a>
+              </div>
+            </CardContent>
+          </Card>
+          
           <article className="prose prose-lg max-w-none">
-            <h2 className="text-3xl font-bold text-foreground mb-6">Understanding Ping Test and Network Latency</h2>
+            <h2 id="understanding-ping" className="text-3xl font-bold text-foreground mb-6">Understanding Ping Test and Network Latency</h2>
             
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p>
@@ -378,7 +415,7 @@ export default function PingTest() {
                 </Card>
               </div>
 
-              <h3 className="text-2xl font-semibold text-foreground mt-8 mb-4">How Ping Testing Works</h3>
+              <h3 id="how-ping-works" className="text-2xl font-semibold text-foreground mt-8 mb-4">How Ping Testing Works</h3>
               
               <p>
                 When you initiate a ping test, your device sends Internet Control Message Protocol (ICMP) packets 
@@ -393,7 +430,7 @@ export default function PingTest() {
                 picture of your overall network performance compared to single-point testing.
               </p>
               
-              <h3 className="text-2xl font-semibold text-foreground mt-8 mb-4">Understanding Ping Results</h3>
+              <h3 id="ping-results" className="text-2xl font-semibold text-foreground mt-8 mb-4">Understanding Ping Results</h3>
               
               <div className="bg-muted/30 rounded-lg p-6 border border-border/50">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -440,7 +477,7 @@ export default function PingTest() {
                 </div>
               </div>
               
-              <h3 className="text-2xl font-semibold text-foreground mt-8 mb-4">Factors Affecting Ping Performance</h3>
+              <h3 id="factors-affecting" className="text-2xl font-semibold text-foreground mt-8 mb-4">Factors Affecting Ping Performance</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
                 <Card className="p-4 text-center">
@@ -474,7 +511,7 @@ export default function PingTest() {
                 all contribute to overall latency measurements.
               </p>
               
-              <h3 className="text-2xl font-semibold text-foreground mt-8 mb-4">Improving Your Ping Performance</h3>
+              <h3 id="improving-ping" className="text-2xl font-semibold text-foreground mt-8 mb-4">Improving Your Ping Performance</h3>
               
               <p>
                 Several strategies can help optimize your network latency and improve ping times. Using wired Ethernet 
@@ -503,6 +540,162 @@ export default function PingTest() {
                 </ul>
               </div>
               
+              <h3 id="troubleshooting" className="text-2xl font-semibold text-foreground mt-8 mb-4">Network Troubleshooting Guide</h3>
+              
+              <p>
+                When experiencing high ping times or inconsistent network performance, systematic troubleshooting can help 
+                identify and resolve underlying issues. Start by testing your connection at different times throughout the 
+                day to establish baseline performance patterns and identify potential congestion periods.
+              </p>
+              
+              <p>
+                Network interference from neighboring WiFi networks, electronic devices, and physical barriers can significantly 
+                impact ping performance. Use our WiFi analyzer tool to identify channel conflicts and optimize your wireless 
+                network configuration. Consider switching to less congested 5GHz bands when available, as they typically 
+                offer better performance for latency-sensitive applications.
+              </p>
+              
+              <div className="bg-muted/30 rounded-lg p-6 border border-border/50 mt-6">
+                <h4 className="font-semibold text-foreground mb-3 flex items-center">
+                  <Globe className="h-5 w-5 text-primary mr-2" />
+                  Systematic Troubleshooting Steps
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <h5 className="font-medium text-foreground mb-2">Basic Diagnostics</h5>
+                    <ul className="space-y-1">
+                      <li>• Test wired vs WiFi connections</li>
+                      <li>• Check for background downloads/uploads</li>
+                      <li>• Restart network equipment</li>
+                      <li>• Update network drivers</li>
+                      <li>• Test different devices</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h5 className="font-medium text-foreground mb-2">Advanced Analysis</h5>
+                    <ul className="space-y-1">
+                      <li>• Monitor network congestion patterns</li>
+                      <li>• Analyze packet loss and jitter</li>
+                      <li>• Check ISP routing efficiency</li>
+                      <li>• Test multiple server locations</li>
+                      <li>• Document performance metrics</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <h3 id="gaming-applications" className="text-2xl font-semibold text-foreground mt-8 mb-4">Ping for Gaming and Real-time Applications</h3>
+              
+              <p>
+                Competitive gaming and real-time applications have stringent latency requirements that make ping performance 
+                critical for optimal user experience. First-person shooters, real-time strategy games, and fighting games 
+                are particularly sensitive to network latency, where even small increases in ping can affect competitive 
+                performance and player satisfaction.
+              </p>
+              
+              <p>
+                Modern online games employ sophisticated networking techniques including client-side prediction, lag compensation, 
+                and server reconciliation to minimize the impact of network latency. However, these techniques have limitations, 
+                and consistently low ping times remain essential for competitive gaming environments and professional esports.
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+                <Card className="p-4 text-center">
+                  <CheckCircle className="h-10 w-10 text-green-500 mx-auto mb-3" />
+                  <h4 className="font-semibold text-foreground mb-2">Competitive Gaming</h4>
+                  <p className="text-sm text-muted-foreground">
+                    0-20ms ping provides optimal responsiveness for competitive gaming, enabling precise aiming and timing.
+                  </p>
+                </Card>
+                
+                <Card className="p-4 text-center">
+                  <Clock className="h-10 w-10 text-blue-500 mx-auto mb-3" />
+                  <h4 className="font-semibold text-foreground mb-2">Video Conferencing</h4>
+                  <p className="text-sm text-muted-foreground">
+                    20-100ms ping ensures smooth video calls with minimal delay in conversation flow and audio synchronization.
+                  </p>
+                </Card>
+                
+                <Card className="p-4 text-center">
+                  <Wifi className="h-10 w-10 text-purple-500 mx-auto mb-3" />
+                  <h4 className="font-semibold text-foreground mb-2">Remote Work</h4>
+                  <p className="text-sm text-muted-foreground">
+                    50-150ms ping supports remote desktop applications and cloud-based productivity tools effectively.
+                  </p>
+                </Card>
+              </div>
+              
+              <p>
+                Voice over IP (VoIP) applications and video conferencing platforms like Zoom, Teams, and Discord have adaptive 
+                algorithms that adjust quality and buffering based on network conditions. However, maintaining consistent low 
+                ping times improves call quality, reduces audio dropouts, and provides better overall communication experience 
+                for professional and personal use.
+              </p>
+              
+              <h3 id="technical-details" className="text-2xl font-semibold text-foreground mt-8 mb-4">Technical Implementation Details</h3>
+              
+              <p>
+                Our ping test implementation uses modern web browser capabilities to measure network latency through HTTP requests 
+                to multiple geographically distributed servers. While traditional ping utilities use ICMP (Internet Control Message 
+                Protocol) packets, browser-based implementations rely on HTTP/HTTPS requests due to security restrictions in web 
+                environments.
+              </p>
+              
+              <p>
+                The measurement process involves sending timestamped requests to reliable endpoints including content delivery 
+                networks and major technology providers. Each test performs multiple measurements to calculate average latency 
+                and statistical variance (jitter), providing comprehensive network performance analysis beyond simple round-trip time.
+              </p>
+              
+              <div className="bg-muted/30 rounded-lg p-6 border border-border/50 mt-6">
+                <h4 className="font-semibold text-foreground mb-3 flex items-center">
+                  <Gauge className="h-5 w-5 text-primary mr-2" />
+                  Technical Measurement Process
+                </h4>
+                <div className="space-y-3 text-sm">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">
+                      <span className="text-xs font-medium text-primary">1</span>
+                    </div>
+                    <div>
+                      <strong className="text-foreground">Request Initialization:</strong> Browser creates timestamped HTTP requests 
+                      with cache-busting parameters to prevent cached responses from skewing measurements.
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">
+                      <span className="text-xs font-medium text-primary">2</span>
+                    </div>
+                    <div>
+                      <strong className="text-foreground">Network Transmission:</strong> Requests traverse internet infrastructure 
+                      including ISP networks, routing equipment, and content delivery networks.
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">
+                      <span className="text-xs font-medium text-primary">3</span>
+                    </div>
+                    <div>
+                      <strong className="text-foreground">Statistical Analysis:</strong> Multiple measurements enable calculation 
+                      of average latency, minimum/maximum values, and jitter for comprehensive performance assessment.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <p>
+                Measurement accuracy depends on various factors including network congestion, server load, routing efficiency, 
+                and local device performance. Our multi-server approach provides more representative results by testing connectivity 
+                to different geographic regions and network providers, offering insights into overall internet performance rather 
+                than single-point measurements.
+              </p>
+              
+              <p>
+                Professional network administrators and IT teams can use these measurements for capacity planning, service level 
+                agreement monitoring, and network optimization initiatives. Regular ping testing helps establish performance 
+                baselines, identify degradation trends, and validate network infrastructure improvements over time.
+              </p>
+              
               <p>
                 Our free ping test tool provides professional-grade network analysis capabilities, helping you understand 
                 and optimize your internet connection performance. Whether you're a gamer seeking competitive advantage, 
@@ -513,6 +706,125 @@ export default function PingTest() {
           </article>
         </div>
       </main>
+
+      {/* SEO-Optimized Footer Content */}
+      <footer className="bg-card/30 backdrop-blur-sm border-t border-border/50 mt-12">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+          {/* Educational Content Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <Card className="card-hover">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-foreground mb-3">About Ping Testing</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Ping testing measures network latency and connection responsiveness. 
+                  Our professional ping test tool provides accurate measurements to multiple servers worldwide 
+                  for comprehensive network analysis and troubleshooting.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="card-hover">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-foreground mb-3">Network Optimization</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Improve your network performance with our comprehensive guides and tools. 
+                  Learn optimization techniques for gaming, video conferencing, and professional applications 
+                  requiring low latency connections.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="card-hover">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-foreground mb-3">Professional Tools</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Access our suite of network diagnostic tools including speed tests, WiFi analyzers, 
+                  and ping measurements. Perfect for IT professionals, network administrators, 
+                  and power users requiring detailed network analysis.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Footer Links and Info */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-8 border-t border-border/30">
+            <div>
+              <h4 className="font-semibold text-foreground mb-3">Network Tools</h4>
+              <div className="space-y-2 text-sm">
+                <Link href="/" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Speed Test
+                </Link>
+                <Link href="/wifi-analyzer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  WiFi Analyzer
+                </Link>
+                <Link href="/internet-speed-requirements" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Speed Calculator
+                </Link>
+                <Link href="/ai-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
+                  AI Speed Test
+                </Link>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-3">Speed Guides</h4>
+              <div className="space-y-2 text-sm">
+                <Link href="/download-speed-guide" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Download Speed Guide
+                </Link>
+                <Link href="/upload-speed-guide" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Upload Speed Guide
+                </Link>
+                <Link href="/wifi-speed-optimization" className="block text-muted-foreground hover:text-primary transition-colors">
+                  WiFi Optimization
+                </Link>
+                <div className="text-muted-foreground">Network Troubleshooting</div>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-3">External Resources</h4>
+              <div className="space-y-2 text-sm">
+                <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Speedtest by Ookla
+                </a>
+                <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Fast.com by Netflix
+                </a>
+                <a href="https://www.google.com/search?q=ping+test" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Google Ping Test
+                </a>
+                <a href="https://www.fcc.gov/consumers/guides/broadband-speed-guide" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  FCC Broadband Guide
+                </a>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-3">About & Help</h4>
+              <div className="space-y-2 text-sm">
+                <Link href="/about" className="block text-muted-foreground hover:text-primary transition-colors">
+                  About Us
+                </Link>
+                <Link href="/help" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Help & FAQ
+                </Link>
+                <a href="https://en.wikipedia.org/wiki/Ping_(networking_utility)" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Ping Test Info
+                </a>
+                <a href="https://www.cloudflare.com/learning/network-layer/what-is-latency/" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Network Latency Guide
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Copyright */}
+          <div className="text-center pt-8 border-t border-border/30 mt-8">
+            <p className="text-sm text-muted-foreground">
+              © 2025 Speed Test and Boost. Free ping test tool for network latency measurement and analysis. 
+              Professional network diagnostics for optimal performance. Compare with other tools like <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Fast.com</a> and <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Speedtest.net</a>.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
