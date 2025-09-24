@@ -356,6 +356,7 @@ export default function SpeedTest() {
               testStatus={testStatus}
               result={displayResult}
               onStartTest={handleStartTest}
+              onOptimizeWifi={handleOptimizeWifi}
             />
           </div>
 
@@ -439,6 +440,7 @@ export default function SpeedTest() {
             testStatus={testStatus}
             result={displayResult}
             onStartTest={handleStartTest}
+            onOptimizeWifi={handleOptimizeWifi}
           />
 
           {/* Test Controls */}
