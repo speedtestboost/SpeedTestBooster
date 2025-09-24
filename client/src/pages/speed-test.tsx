@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
-import ModernSpeedGauge from "@/components/ModernSpeedGauge";
+import SpeedGauge from "@/components/SpeedGauge";
 import TestHistory from "@/components/TestHistory";
 import NetworkInfo from "@/components/NetworkInfo";
 import OptimizationModal from "@/components/OptimizationModal";
@@ -36,7 +36,7 @@ export default function SpeedTest() {
     }
     
     // Keywords meta tag
-    let keywords = document.querySelector('meta[name="keywords"]') as HTMLMetaElement;
+    let keywords = document.querySelector('meta[name="keywords"]');
     if (!keywords) {
       keywords = document.createElement('meta');
       keywords.name = 'keywords';
@@ -72,7 +72,7 @@ export default function SpeedTest() {
     ];
     
     twitterTags.forEach(tag => {
-      let twitterTag = document.querySelector(`meta[name="${tag.name}"]`) as HTMLMetaElement;
+      let twitterTag = document.querySelector(`meta[name="${tag.name}"]`);
       if (!twitterTag) {
         twitterTag = document.createElement('meta');
         twitterTag.name = tag.name;
@@ -82,7 +82,7 @@ export default function SpeedTest() {
     });
     
     // Canonical URL for homepage
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');
       canonical.rel = 'canonical';
@@ -91,7 +91,7 @@ export default function SpeedTest() {
     canonical.href = 'https://speedtestboost.com/';
     
     // Structured Data (JSON-LD)
-    let structuredData = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
+    let structuredData = document.querySelector('script[type="application/ld+json"]');
     if (!structuredData) {
       structuredData = document.createElement('script');
       structuredData.type = 'application/ld+json';
@@ -127,17 +127,12 @@ export default function SpeedTest() {
   }, []);
 
   // Fetch network info
-  const { data: networkInfo } = useQuery<{
-    ipAddress: string;
-    connectionType: string;
-    serverLocation: string;
-    isp: string;
-  }>({
+  const { data: networkInfo } = useQuery({
     queryKey: ["/api/network-info"],
   });
 
   // Fetch speed test history
-  const { data: speedTests = [], isLoading: isLoadingHistory } = useQuery<SpeedTestResult[]>({
+  const { data: speedTests, isLoading: isLoadingHistory } = useQuery({
     queryKey: ["/api/speed-tests"],
   });
 
@@ -348,16 +343,17 @@ export default function SpeedTest() {
             <NetworkInfo networkInfo={networkInfo} />
           </div>
 
-          {/* Center Column - Modern Speed Test */}
-          <div className="lg:col-span-2">
-            <ModernSpeedGauge
-              isTestRunning={isTestRunning}
-              testProgress={testProgress}
-              testStatus={testStatus}
-              result={displayResult}
-              onStartTest={handleStartTest}
-              onOptimizeWifi={handleOptimizeWifi}
-            />
+          {/* Center Column - Speed Gauge */}
+          <div className="flex items-start justify-center">
+            <div className="w-full max-w-md">
+              <SpeedGauge
+                currentSpeed={displayResult?.downloadSpeed || 0}
+                isTestRunning={isTestRunning}
+                testProgress={testProgress}
+                testStatus={testStatus}
+                lastTest={lastTest}
+              />
+            </div>
           </div>
 
           {/* Right Column - Results & History */}
@@ -433,14 +429,13 @@ export default function SpeedTest() {
             </CardContent>
           </Card>
 
-          {/* Modern Speed Test */}
-          <ModernSpeedGauge
+          {/* Speed Gauge */}
+          <SpeedGauge
+            currentSpeed={displayResult?.downloadSpeed || 0}
             isTestRunning={isTestRunning}
             testProgress={testProgress}
             testStatus={testStatus}
-            result={displayResult}
-            onStartTest={handleStartTest}
-            onOptimizeWifi={handleOptimizeWifi}
+            lastTest={lastTest}
           />
 
           {/* Test Controls */}
