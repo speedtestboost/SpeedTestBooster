@@ -12,7 +12,7 @@ export default function SkySpeedTest() {
     document.title = "Sky Broadband Speed Test - Test Sky Fibre Internet UK 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Sky broadband speed for free. Sky UK broadband speed test for fibre internet, superfast broadband, and Sky TV customers nationwide.');
+      metaDescription.setAttribute('content', 'Sky broadband speed test - UK\'s premium fibre internet with TV bundles. Check Sky superfast speeds now.');
     }
 
     // Update canonical tag

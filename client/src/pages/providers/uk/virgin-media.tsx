@@ -12,7 +12,7 @@ export default function VirginMediaSpeedTest() {
     document.title = "Virgin Media Speed Test - Test Virgin Broadband Internet UK 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Virgin Media broadband speed for free. Virgin Media UK speed test for cable internet, fibre broadband, and TV customers nationwide.');
+      metaDescription.setAttribute('content', 'Virgin Media speed test - UK\'s fastest cable network with ultrafast speeds. Check Virgin broadband performance.');
     }
 
     // Update canonical tag

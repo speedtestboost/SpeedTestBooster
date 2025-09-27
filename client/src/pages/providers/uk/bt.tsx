@@ -12,7 +12,7 @@ export default function BTSpeedTest() {
     document.title = "BT Speed Test - Test BT Broadband Internet Speed UK 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your BT internet speed for free. BT UK speed test for fiber broadband, ADSL, and full fiber services nationwide.');
+      metaDescription.setAttribute('content', 'BT broadband speed test - UK\'s largest network with fiber and ADSL. Check BT internet speeds instantly.');
     }
 
     // Update canonical tag
