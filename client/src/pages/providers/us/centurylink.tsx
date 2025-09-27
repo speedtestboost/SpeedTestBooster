@@ -12,7 +12,7 @@ export default function CenturyLinkSpeedTest() {
     document.title = "CenturyLink Speed Test - Test CenturyLink Internet Speed 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your CenturyLink internet speed for free. CenturyLink fiber speed test and DSL broadband speed check nationwide.');
+      metaDescription.setAttribute('content', 'CenturyLink speed test - Rural fiber leader serving all 50 states. Check CenturyLink fiber and DSL speeds instantly.');
     }
 
     // Update canonical tag

@@ -15,7 +15,7 @@ export default function SpectrumSpeedTest() {
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Spectrum internet speed test for Charter Spectrum customers. Test cable internet, WiFi, and gig speeds. Check download, upload speeds, and network performance nationwide.');
+      metaDescription.setAttribute('content', 'Charter Spectrum speed test - No data caps, cable speeds up to 1 Gig. Test your Spectrum internet performance across 41 states.');
     }
 
     // Add keywords meta tag

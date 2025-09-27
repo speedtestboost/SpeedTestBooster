@@ -12,7 +12,7 @@ export default function ComcastSpeedTest() {
     document.title = "Comcast Xfinity Speed Test - Test Xfinity Internet Speed 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Comcast Xfinity internet speed for free. Xfinity speed test for cable internet and fiber services nationwide.');
+      metaDescription.setAttribute('content', 'Xfinity speed test by Comcast - America\'s largest cable provider. Check Xfinity cable, fiber and WiFi speeds instantly.');
     }
 
     // Update canonical tag

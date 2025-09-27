@@ -12,7 +12,7 @@ export default function WindstreamSpeedTest() {
     document.title = "Windstream Speed Test - Test Windstream Internet Speed 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Windstream internet speed for free. Windstream fiber speed test and DSL broadband check across rural America.');
+      metaDescription.setAttribute('content', 'Windstream speed test - Rural fiber and business solutions in 18 states. Check Windstream internet speeds instantly.');
     }
 
     // Update canonical tag

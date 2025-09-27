@@ -12,7 +12,7 @@ export default function FrontierSpeedTest() {
     document.title = "Frontier Speed Test - Test Frontier Internet Speed 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Frontier internet speed for free. Frontier fiber speed test and DSL broadband check across rural and suburban areas.');
+      metaDescription.setAttribute('content', 'Frontier Communications speed test - Rural broadband specialist in 25 states. Test fiber and DSL speeds for rural customers.');
     }
 
     // Update canonical tag

@@ -12,7 +12,7 @@ export default function OptimumSpeedTest() {
     document.title = "Optimum Speed Test - Test Optimum Internet Speed 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Optimum internet speed for free. Optimum cable internet speed test and fiber broadband check in NY, NJ, CT.');
+      metaDescription.setAttribute('content', 'Optimum speed test - Tri-state leader in NY, NJ, CT. Check Optimum cable and fiber speeds from Altice USA.');
     }
 
     // Update canonical tag

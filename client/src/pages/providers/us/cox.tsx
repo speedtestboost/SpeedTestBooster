@@ -12,7 +12,7 @@ export default function CoxSpeedTest() {
     document.title = "Cox Speed Test - Test Cox Internet Speed 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Cox internet speed for free. Cox cable internet speed test and gigabit broadband check across multiple states.');
+      metaDescription.setAttribute('content', 'Cox Communications speed test - Gigabit cable internet across 18 states. Check Cox internet speeds in Arizona, California, Florida.');
     }
 
     // Update canonical tag

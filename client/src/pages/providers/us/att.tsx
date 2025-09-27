@@ -12,7 +12,7 @@ export default function ATTSpeedTest() {
     document.title = "AT&T Speed Test - Test AT&T Fiber Internet Speed 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your AT&T internet speed for free. AT&T fiber speed test for gigabit internet and DSL services nationwide.');
+      metaDescription.setAttribute('content', 'AT&T Fiber speed test - Check your gigabit internet performance. Free speed test for AT&T customers nationwide with accurate results.');
     }
 
     // Update canonical tag
