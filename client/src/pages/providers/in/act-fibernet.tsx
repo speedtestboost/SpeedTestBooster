@@ -15,7 +15,7 @@ export default function ACTFibernetSpeedTest() {
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free ACT Fibernet speed test for ACT broadband customers. Test ACT fiber internet speeds up to 1 Gbps. Check download, upload speeds, and gaming performance in metro cities.');
+      metaDescription.setAttribute('content', 'ACT Fibernet speed test - Premium fiber provider for metro cities with 1 Gbps gaming speeds. Check ACT performance.');
     }
 
     // Add keywords meta tag

@@ -15,7 +15,7 @@ export default function JioFiberSpeedTest() {
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Jio Fiber speed test for Reliance Jio broadband customers. Test fiber internet speeds up to 1 Gbps. Check download, upload speeds, and WiFi performance across India.');
+      metaDescription.setAttribute('content', 'Jio Fiber speed test - India\'s largest fiber network with 1 Gbps speeds. Check Reliance Jio broadband performance.');
     }
 
     // Add keywords meta tag

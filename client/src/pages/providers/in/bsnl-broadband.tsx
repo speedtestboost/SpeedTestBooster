@@ -15,7 +15,7 @@ export default function BSNLBroadbandSpeedTest() {
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free BSNL Broadband speed test for BSNL fiber customers. Test BSNL FTTH speeds across India. Check download, upload speeds, and WiFi performance for government broadband service.');
+      metaDescription.setAttribute('content', 'BSNL Broadband speed test - Government FTTH fiber service across India. Check BSNL internet speeds instantly.');
     }
 
     // Add keywords meta tag

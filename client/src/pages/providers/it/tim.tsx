@@ -12,7 +12,7 @@ export default function TIMSpeedTest() {
     document.title = "TIM Speed Test - Test TIM Internet Speed Italy 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your TIM internet speed for free. TIM fiber speed test and ADSL broadband check across Italy.');
+      metaDescription.setAttribute('content', 'TIM speed test Italy - Leading telecom with fiber and mobile services. Check TIM internet speeds instantly.');
     }
 
     // Update canonical tag

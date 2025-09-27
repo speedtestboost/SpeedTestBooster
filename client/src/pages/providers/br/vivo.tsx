@@ -12,7 +12,7 @@ export default function VivoSpeedTest() {
     document.title = "Vivo Speed Test - Test Vivo Internet Speed Brazil 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Vivo internet speed for free. Vivo fiber speed test and broadband check across Brazil.');
+      metaDescription.setAttribute('content', 'Vivo speed test Brazil - Leading telecom with fiber and mobile services. Check Vivo internet speeds now.');
     }
 
     // Update canonical tag

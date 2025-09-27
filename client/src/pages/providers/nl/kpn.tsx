@@ -14,7 +14,7 @@ export default function KPNSpeedTest() {
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test KPN internet speed in Netherlands. Free KPN speedtest for glasvezel, fiber & ADSL connections. Check KPN internetsnelheid, upload, download speeds. Official KPN snelheidstest tool 2025.');
+      metaDescription.setAttribute('content', 'KPN speed test Netherlands - Glasvezel fiber leader with nationwide coverage. Check KPN internet speeds.');
     }
     
     // Keywords targeting low-competition Dutch terms

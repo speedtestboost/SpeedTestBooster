@@ -12,7 +12,7 @@ export default function O2DESpeedTest() {
     document.title = "O2 Germany Speed Test - Test O2 Internet Speed Germany 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your O2 Germany internet speed for free. O2 DE speed test for DSL, LTE, and mobile internet services nationwide.');
+      metaDescription.setAttribute('content', 'O2 Germany speed test - Affordable DSL and LTE provider. Check O2 DE internet speeds and performance.');
     }
 
     // Update canonical tag

@@ -12,7 +12,7 @@ export default function OrangeSpeedTest() {
     document.title = "Orange Speed Test - Test Orange Internet Speed France 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Orange internet speed for free. Orange fiber speed test and ADSL broadband check across France.');
+      metaDescription.setAttribute('content', 'Orange speed test France - Leading telecom with fiber and mobile services. Check Orange internet speeds.');
     }
 
     // Update canonical tag

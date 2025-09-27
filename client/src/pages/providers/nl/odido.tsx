@@ -14,7 +14,7 @@ export default function OdidoSpeedTest() {
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Odido (T-Mobile) internet speed in Netherlands. Free Odido speedtest for fiber, mobile internet. Check Odido internetsnelheid, 4G, 5G speeds. Official Odido snelheidstest 2025.');
+      metaDescription.setAttribute('content', 'Odido speed test Netherlands - T-Mobile mobile and fiber services. Check 4G, 5G and fiber speeds instantly.');
     }
     
     // Keywords targeting low-competition Dutch terms

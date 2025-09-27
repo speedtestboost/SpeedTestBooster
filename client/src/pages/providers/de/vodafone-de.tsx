@@ -12,7 +12,7 @@ export default function VodafoneDESpeedTest() {
     document.title = "Vodafone Germany Speed Test - Test Vodafone Internet Speed 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Vodafone Germany internet speed for free. Vodafone DE speed test for cable internet, 5G, and mobile services nationwide.');
+      metaDescription.setAttribute('content', 'Vodafone Germany speed test - Cable internet leader with 5G coverage. Check Vodafone DE speeds instantly.');
     }
 
     // Update canonical tag

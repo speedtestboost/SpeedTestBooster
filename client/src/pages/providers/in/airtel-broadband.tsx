@@ -15,7 +15,7 @@ export default function AirtelBroadbandSpeedTest() {
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Airtel Broadband speed test for Bharti Airtel fiber customers. Test Airtel Xstream Fiber speeds up to 1 Gbps. Check download, upload speeds, and WiFi performance across India.');
+      metaDescription.setAttribute('content', 'Airtel Broadband speed test - Bharti Airtel Xstream Fiber with 1 Gbps speeds. Check Airtel internet performance.');
     }
 
     // Add keywords meta tag

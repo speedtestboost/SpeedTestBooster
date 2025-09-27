@@ -15,7 +15,7 @@ export default function HathwayBroadbandSpeedTest() {
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Hathway Broadband speed test for Hathway cable internet customers. Test Hathway fiber speeds across India. Check download, upload speeds, and cable broadband performance.');
+      metaDescription.setAttribute('content', 'Hathway Broadband speed test - Cable internet provider with fiber options. Check Hathway speeds across India.');
     }
 
     // Add keywords meta tag

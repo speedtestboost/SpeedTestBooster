@@ -12,7 +12,7 @@ export default function DeutscheTelekomSpeedTest() {
     document.title = "Deutsche Telekom Speed Test - Test Telekom Internet Germany 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Deutsche Telekom internet speed for free. Telekom Germany speed test for DSL, fibre, and 5G internet services nationwide.');
+      metaDescription.setAttribute('content', 'Deutsche Telekom speed test - Germany\'s largest telecom with DSL and fiber. Check Telekom internet speeds.');
     }
 
     // Update canonical tag
