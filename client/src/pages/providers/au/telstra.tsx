@@ -12,7 +12,7 @@ export default function TelstraSpeedTest() {
     document.title = "Telstra Speed Test - Test Telstra NBN Internet Australia 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Telstra internet speed for free. Telstra Australia speed test for NBN broadband, mobile, and 5G internet services nationwide.');
+      metaDescription.setAttribute('content', 'Telstra speed test - Australia\'s largest network covering 99.5% population. Check Telstra NBN and 5G speeds.');
     }
 
     // Update canonical tag

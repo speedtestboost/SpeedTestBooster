@@ -12,7 +12,7 @@ export default function RogersSpeedTest() {
     document.title = "Rogers Speed Test - Test Rogers Internet Speed Canada 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Rogers internet speed for free. Rogers Canada speed test for cable internet, fiber, and 5G services nationwide.');
+      metaDescription.setAttribute('content', 'Rogers speed test - Eastern Canada\'s largest cable provider. Check Rogers cable, fiber and 5G speeds instantly.');
     }
 
     // Update canonical tag

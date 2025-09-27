@@ -12,7 +12,7 @@ export default function BellSpeedTest() {
     document.title = "Bell Internet Speed Test - Test Bell Fibe Internet Canada 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Bell internet speed for free. Bell Canada speed test for Fibe internet, DSL broadband, and telecommunications services nationwide.');
+      metaDescription.setAttribute('content', 'Bell Canada speed test - Nation\'s largest telecom with Bell Fibe. Check Bell fiber and DSL speeds nationwide.');
     }
 
     // Update canonical tag

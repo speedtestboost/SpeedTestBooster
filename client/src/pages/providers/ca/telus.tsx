@@ -12,7 +12,7 @@ export default function TelusSpeedTest() {
     document.title = "Telus Speed Test - Test Telus Internet Speed Canada 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Telus internet speed for free. Telus Canada speed test for fiber internet, LTE, and telecommunications services.');
+      metaDescription.setAttribute('content', 'Telus speed test - Western Canada\'s leader with PureFibre technology. Check Telus fiber and LTE speeds instantly.');
     }
 
     // Update canonical tag
