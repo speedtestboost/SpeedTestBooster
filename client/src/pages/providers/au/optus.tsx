@@ -12,7 +12,7 @@ export default function OptusSpeedTest() {
     document.title = "Optus Speed Test - Test Optus NBN Internet Speed Australia 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your Optus internet speed for free. Optus Australia speed test for NBN broadband, 5G home internet, and mobile services nationwide.');
+      metaDescription.setAttribute('content', 'Optus speed test - Australia\'s second-largest network with 5G and NBN. Check Optus internet speeds instantly.');
     }
 
     // Update canonical tag

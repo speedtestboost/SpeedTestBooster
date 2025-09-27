@@ -12,7 +12,7 @@ export default function TPGSpeedTest() {
     document.title = "TPG Speed Test - Test TPG NBN Internet Speed Australia 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your TPG internet speed for free. TPG Australia speed test for NBN broadband and ADSL internet services nationwide.');
+      metaDescription.setAttribute('content', 'TPG speed test - Australia\'s value-focused NBN provider with competitive pricing. Check TPG internet speeds.');
     }
 
     // Update canonical tag
