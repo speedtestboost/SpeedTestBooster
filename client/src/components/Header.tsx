@@ -113,6 +113,105 @@ const countries = [
     providers: [
       { name: "Vivo", slug: "vivo" }
     ]
+  },
+  {
+    name: "Mexico",
+    code: "mx",
+    flag: "🇲🇽",
+    providers: [
+      { name: "Telmex", slug: "telmex" },
+      { name: "Izzi", slug: "izzi" },
+      { name: "Megacable", slug: "megacable" },
+      { name: "Totalplay", slug: "totalplay" }
+    ]
+  },
+  {
+    name: "Philippines",
+    code: "ph",
+    flag: "🇵🇭",
+    providers: [
+      { name: "PLDT", slug: "pldt" },
+      { name: "Globe", slug: "globe" },
+      { name: "Converge", slug: "converge" },
+      { name: "DITO", slug: "dito" }
+    ]
+  },
+  {
+    name: "Indonesia",
+    code: "id",
+    flag: "🇮🇩",
+    providers: [
+      { name: "IndiHome", slug: "indihome" },
+      { name: "Biznet", slug: "biznet" },
+      { name: "First Media", slug: "first-media" },
+      { name: "MyRepublic", slug: "myrepublic" }
+    ]
+  },
+  {
+    name: "Spain",
+    code: "es",
+    flag: "🇪🇸",
+    providers: [
+      { name: "Movistar", slug: "movistar" },
+      { name: "Orange", slug: "orange-es" },
+      { name: "Vodafone", slug: "vodafone-es" },
+      { name: "MásOrange", slug: "masorange" }
+    ]
+  },
+  {
+    name: "South Africa",
+    code: "za",
+    flag: "🇿🇦",
+    providers: [
+      { name: "Rain", slug: "rain" },
+      { name: "Vodacom Fibre", slug: "vodacom-fibre" },
+      { name: "Cool Ideas", slug: "cool-ideas" },
+      { name: "Afrihost", slug: "afrihost" }
+    ]
+  },
+  {
+    name: "Malaysia",
+    code: "my",
+    flag: "🇲🇾",
+    providers: [
+      { name: "Unifi", slug: "unifi" },
+      { name: "Maxis", slug: "maxis" },
+      { name: "TIME", slug: "time" },
+      { name: "Celcom", slug: "celcom" }
+    ]
+  },
+  {
+    name: "Argentina",
+    code: "ar",
+    flag: "🇦🇷",
+    providers: [
+      { name: "Movistar", slug: "movistar-ar" },
+      { name: "Personal", slug: "personal" },
+      { name: "Claro", slug: "claro" },
+      { name: "Telecentro", slug: "telecentro" }
+    ]
+  },
+  {
+    name: "UAE",
+    code: "ae",
+    flag: "🇦🇪",
+    providers: [
+      { name: "Etisalat", slug: "etisalat" },
+      { name: "du", slug: "du" },
+      { name: "Virgin Mobile", slug: "virgin-mobile-ae" },
+      { name: "Yalla", slug: "yalla" }
+    ]
+  },
+  {
+    name: "Saudi Arabia",
+    code: "sa",
+    flag: "🇸🇦",
+    providers: [
+      { name: "STC", slug: "stc" },
+      { name: "Mobily", slug: "mobily" },
+      { name: "Zain", slug: "zain" },
+      { name: "GO", slug: "go" }
+    ]
   }
 ];
 
