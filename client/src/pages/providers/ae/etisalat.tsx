@@ -10,10 +10,10 @@ export default function EtisalatSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Etisalat Speed Test - Test Etisalat eLife Internet Speed UAE 2025";
+    document.title = "Etisalat Speed Test UAE - Check eLife Fiber Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Etisalat speed test for eLife fiber customers. Test Etisalat internet speeds across UAE. Check world-leading fiber download, upload speeds.');
+      metaDescription.setAttribute('content', 'Test Etisalat eLife internet speed instantly - Free fiber speed checker for UAE. Accurate download/upload speeds & ping results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

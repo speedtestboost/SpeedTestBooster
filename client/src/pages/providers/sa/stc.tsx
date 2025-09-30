@@ -10,10 +10,10 @@ export default function STCSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "STC Speed Test - Test STC Fiber Internet Speed Saudi Arabia 2025";
+    document.title = "STC Speed Test Saudi Arabia - Check STC Fiber & 5G Internet Speed 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free STC speed test for fiber customers. Test STC internet speeds across Saudi Arabia. Check fiber download, upload speeds and 5G performance.');
+      metaDescription.setAttribute('content', 'Test STC fiber & 5G internet speed instantly - Free speed checker for Saudi Arabia. Accurate performance results for download, upload & latency.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

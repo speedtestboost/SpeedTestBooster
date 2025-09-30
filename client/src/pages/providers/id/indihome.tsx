@@ -10,10 +10,10 @@ export default function IndiHomeSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "IndiHome Speed Test - Test Telkomsel IndiHome Fiber Indonesia 2025";
+    document.title = "IndiHome Speed Test Indonesia - Check Telkomsel Fiber Internet Speed 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free IndiHome speed test for Telkomsel fiber customers. Test IndiHome speeds across Indonesia. Check fiber download, upload speeds and latency.');
+      metaDescription.setAttribute('content', 'Test IndiHome fiber speed instantly - Free internet speed checker for Indonesia. Get accurate Telkomsel IndiHome download/upload results now.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

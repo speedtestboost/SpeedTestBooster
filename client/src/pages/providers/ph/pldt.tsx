@@ -10,10 +10,10 @@ export default function PLDTSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "PLDT Speed Test - Test PLDT Fibr Internet Speed Philippines 2025";
+    document.title = "PLDT Speed Test Philippines - Check PLDT Fibr Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free PLDT speed test for Fibr customers. Test PLDT internet speeds across Philippines. Check download, upload speeds for fiber broadband and DSL.');
+      metaDescription.setAttribute('content', 'Test PLDT Fibr internet speed instantly - Free speed checker for Philippines. Accurate download/upload speeds, ping & jitter results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

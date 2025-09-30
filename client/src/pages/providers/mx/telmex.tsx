@@ -10,10 +10,10 @@ export default function TelmexSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Telmex Speed Test - Test Telmex Infinitum Internet Speed Mexico 2025";
+    document.title = "Telmex Speed Test Mexico - Check Infinitum Fiber Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Telmex speed test for Infinitum fiber and DSL customers. Test Telmex internet speeds across Mexico. Check download, upload speeds and latency.');
+      metaDescription.setAttribute('content', 'Test Telmex Infinitum internet speed instantly - Free speed test for fiber & DSL across Mexico. Check real download/upload speeds & latency now.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
