@@ -68,6 +68,66 @@ import TIMSpeedTest from "@/pages/providers/it/tim";
 // Brazil Providers
 import VivoSpeedTest from "@/pages/providers/br/vivo";
 
+// Mexico Providers
+import TelmexSpeedTest from "@/pages/providers/mx/telmex";
+import IzziSpeedTest from "@/pages/providers/mx/izzi";
+import MegacableSpeedTest from "@/pages/providers/mx/megacable";
+import TotalplaySpeedTest from "@/pages/providers/mx/totalplay";
+
+// Malaysia Providers
+import UnifiSpeedTest from "@/pages/providers/my/unifi";
+import MaxisSpeedTest from "@/pages/providers/my/maxis";
+import TIMESpeedTest from "@/pages/providers/my/time";
+import CelcomSpeedTest from "@/pages/providers/my/celcom";
+
+// Spain Providers
+import MovistarSpeedTest from "@/pages/providers/es/movistar";
+import OrangeSpainSpeedTest from "@/pages/providers/es/orange-es";
+import VodafoneSpainSpeedTest from "@/pages/providers/es/vodafone-es";
+import MasOrangeSpeedTest from "@/pages/providers/es/masorange";
+
+// Philippines Providers
+import PLDTSpeedTest from "@/pages/providers/ph/pldt";
+import GlobeSpeedTest from "@/pages/providers/ph/globe";
+import ConvergeSpeedTest from "@/pages/providers/ph/converge";
+import DITOSpeedTest from "@/pages/providers/ph/dito";
+
+// Indonesia Providers
+import IndiHomeSpeedTest from "@/pages/providers/id/indihome";
+import BiznetSpeedTest from "@/pages/providers/id/biznet";
+import FirstMediaSpeedTest from "@/pages/providers/id/first-media";
+import MyRepublicSpeedTest from "@/pages/providers/id/myrepublic";
+
+// Pakistan Providers
+import PTCLSpeedTest from "@/pages/providers/pk/ptcl";
+import StormFiberSpeedTest from "@/pages/providers/pk/stormfiber";
+import NayatelSpeedTest from "@/pages/providers/pk/nayatel";
+import TransworldSpeedTest from "@/pages/providers/pk/transworld";
+
+// South Africa Providers
+import RainSpeedTest from "@/pages/providers/za/rain";
+import VodacomFibreSpeedTest from "@/pages/providers/za/vodacom-fibre";
+import CoolIdeasSpeedTest from "@/pages/providers/za/cool-ideas";
+import AfrihostSpeedTest from "@/pages/providers/za/afrihost";
+
+// Argentina Providers
+import MovistarArgentinaSpeedTest from "@/pages/providers/ar/movistar-ar";
+import PersonalSpeedTest from "@/pages/providers/ar/personal";
+import ClaroArgentinaSpeedTest from "@/pages/providers/ar/claro";
+import TelecentroSpeedTest from "@/pages/providers/ar/telecentro";
+
+// UAE Providers
+import EtisalatSpeedTest from "@/pages/providers/ae/etisalat";
+import DuSpeedTest from "@/pages/providers/ae/du";
+import VirginMobileAESpeedTest from "@/pages/providers/ae/virgin-mobile-ae";
+import YallaSpeedTest from "@/pages/providers/ae/yalla";
+
+// Saudi Arabia Providers
+import STCSpeedTest from "@/pages/providers/sa/stc";
+import MobilySpeedTest from "@/pages/providers/sa/mobily";
+import ZainSpeedTest from "@/pages/providers/sa/zain";
+import GOSpeedTest from "@/pages/providers/sa/go";
+
 import WiFiAnalyzer from "@/pages/wifi-analyzer";
 import AISpeedTest from "@/pages/ai-speed-test";
 import DownloadSpeedGuide from "@/pages/download-speed-guide";
@@ -160,6 +220,66 @@ function Router() {
       
       {/* Brazil Provider Routes */}
       <Route path="/providers/br/vivo" component={VivoSpeedTest} />
+      
+      {/* Mexico Provider Routes */}
+      <Route path="/providers/mx/telmex" component={TelmexSpeedTest} />
+      <Route path="/providers/mx/izzi" component={IzziSpeedTest} />
+      <Route path="/providers/mx/megacable" component={MegacableSpeedTest} />
+      <Route path="/providers/mx/totalplay" component={TotalplaySpeedTest} />
+      
+      {/* Malaysia Provider Routes */}
+      <Route path="/providers/my/unifi" component={UnifiSpeedTest} />
+      <Route path="/providers/my/maxis" component={MaxisSpeedTest} />
+      <Route path="/providers/my/time" component={TIMESpeedTest} />
+      <Route path="/providers/my/celcom" component={CelcomSpeedTest} />
+      
+      {/* Philippines Provider Routes */}
+      <Route path="/providers/ph/pldt" component={PLDTSpeedTest} />
+      <Route path="/providers/ph/globe" component={GlobeSpeedTest} />
+      <Route path="/providers/ph/converge" component={ConvergeSpeedTest} />
+      <Route path="/providers/ph/dito" component={DITOSpeedTest} />
+      
+      {/* Indonesia Provider Routes */}
+      <Route path="/providers/id/indihome" component={IndiHomeSpeedTest} />
+      <Route path="/providers/id/biznet" component={BiznetSpeedTest} />
+      <Route path="/providers/id/first-media" component={FirstMediaSpeedTest} />
+      <Route path="/providers/id/myrepublic" component={MyRepublicSpeedTest} />
+      
+      {/* Pakistan Provider Routes */}
+      <Route path="/providers/pk/ptcl" component={PTCLSpeedTest} />
+      <Route path="/providers/pk/stormfiber" component={StormFiberSpeedTest} />
+      <Route path="/providers/pk/nayatel" component={NayatelSpeedTest} />
+      <Route path="/providers/pk/transworld" component={TransworldSpeedTest} />
+      
+      {/* Spain Provider Routes */}
+      <Route path="/providers/es/movistar" component={MovistarSpeedTest} />
+      <Route path="/providers/es/orange-es" component={OrangeSpainSpeedTest} />
+      <Route path="/providers/es/vodafone-es" component={VodafoneSpainSpeedTest} />
+      <Route path="/providers/es/masorange" component={MasOrangeSpeedTest} />
+      
+      {/* South Africa Provider Routes */}
+      <Route path="/providers/za/rain" component={RainSpeedTest} />
+      <Route path="/providers/za/vodacom-fibre" component={VodacomFibreSpeedTest} />
+      <Route path="/providers/za/cool-ideas" component={CoolIdeasSpeedTest} />
+      <Route path="/providers/za/afrihost" component={AfrihostSpeedTest} />
+      
+      {/* Argentina Provider Routes */}
+      <Route path="/providers/ar/movistar-ar" component={MovistarArgentinaSpeedTest} />
+      <Route path="/providers/ar/personal" component={PersonalSpeedTest} />
+      <Route path="/providers/ar/claro" component={ClaroArgentinaSpeedTest} />
+      <Route path="/providers/ar/telecentro" component={TelecentroSpeedTest} />
+      
+      {/* UAE Provider Routes */}
+      <Route path="/providers/ae/etisalat" component={EtisalatSpeedTest} />
+      <Route path="/providers/ae/du" component={DuSpeedTest} />
+      <Route path="/providers/ae/virgin-mobile-ae" component={VirginMobileAESpeedTest} />
+      <Route path="/providers/ae/yalla" component={YallaSpeedTest} />
+      
+      {/* Saudi Arabia Provider Routes */}
+      <Route path="/providers/sa/stc" component={STCSpeedTest} />
+      <Route path="/providers/sa/mobily" component={MobilySpeedTest} />
+      <Route path="/providers/sa/zain" component={ZainSpeedTest} />
+      <Route path="/providers/sa/go" component={GOSpeedTest} />
       
       <Route component={NotFound} />
     </Switch>
