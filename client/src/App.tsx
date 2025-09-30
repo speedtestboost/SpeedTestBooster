@@ -98,12 +98,6 @@ import BiznetSpeedTest from "@/pages/providers/id/biznet";
 import FirstMediaSpeedTest from "@/pages/providers/id/first-media";
 import MyRepublicSpeedTest from "@/pages/providers/id/myrepublic";
 
-// Pakistan Providers
-import PTCLSpeedTest from "@/pages/providers/pk/ptcl";
-import StormFiberSpeedTest from "@/pages/providers/pk/stormfiber";
-import NayatelSpeedTest from "@/pages/providers/pk/nayatel";
-import TransworldSpeedTest from "@/pages/providers/pk/transworld";
-
 // South Africa Providers
 import RainSpeedTest from "@/pages/providers/za/rain";
 import VodacomFibreSpeedTest from "@/pages/providers/za/vodacom-fibre";
@@ -244,12 +238,6 @@ function Router() {
       <Route path="/providers/id/biznet" component={BiznetSpeedTest} />
       <Route path="/providers/id/first-media" component={FirstMediaSpeedTest} />
       <Route path="/providers/id/myrepublic" component={MyRepublicSpeedTest} />
-      
-      {/* Pakistan Provider Routes */}
-      <Route path="/providers/pk/ptcl" component={PTCLSpeedTest} />
-      <Route path="/providers/pk/stormfiber" component={StormFiberSpeedTest} />
-      <Route path="/providers/pk/nayatel" component={NayatelSpeedTest} />
-      <Route path="/providers/pk/transworld" component={TransworldSpeedTest} />
       
       {/* Spain Provider Routes */}
       <Route path="/providers/es/movistar" component={MovistarSpeedTest} />
