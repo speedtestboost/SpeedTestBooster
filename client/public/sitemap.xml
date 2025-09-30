@@ -422,32 +422,6 @@
     <priority>0.8</priority>
   </url>
   
-  <!-- Pakistan Internet Providers (4 providers) -->
-  <url>
-    <loc>https://speedtestboost.com/providers/pk/ptcl</loc>
-    <lastmod>2025-09-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://speedtestboost.com/providers/pk/stormfiber</loc>
-    <lastmod>2025-09-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://speedtestboost.com/providers/pk/nayatel</loc>
-    <lastmod>2025-09-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://speedtestboost.com/providers/pk/transworld</loc>
-    <lastmod>2025-09-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
   <!-- Spain Internet Providers (4 providers) -->
   <url>
     <loc>https://speedtestboost.com/providers/es/movistar</loc>
