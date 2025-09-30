@@ -10,10 +10,10 @@ export default function DuSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "du Speed Test - Test du Home Fiber Internet Speed UAE 2025";
+    document.title = "du Speed Test UAE - Check du Fiber & 5G Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free du speed test for Home Fiber customers. Test du internet speeds in UAE. Check high-speed fiber broadband and 5G performance.');
+      metaDescription.setAttribute('content', 'Test du fiber & 5G internet speed instantly - Free speed test for UAE. Accurate download/upload speeds and latency results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

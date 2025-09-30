@@ -10,11 +10,11 @@ export default function VodafoneZiggoSpeedTest() {
 
   useEffect(() => {
     // SEO meta tags
-    document.title = "VodafoneZiggo Speed Test Netherlands 2025 - Ziggo Internet Snelheid Test | Speed Test & Boost";
+    document.title = "VodafoneZiggo Speed Test Netherlands - Check Cable Internet Free 2025";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'VodafoneZiggo speed test Netherlands - Cable internet leader with fiber options. Check Ziggo speeds instantly.');
+      metaDescription.setAttribute('content', 'Test VodafoneZiggo cable internet speed instantly - Free speed test for Netherlands. Accurate Ziggo download/upload performance results now.');
     }
     
     // Keywords targeting low-competition Dutch terms

@@ -10,10 +10,10 @@ export default function VirginMobileAESpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Virgin Mobile Speed Test - Test Virgin Mobile Internet Speed UAE 2025";
+    document.title = "Virgin Mobile UAE Speed Test - Check 5G Mobile Internet Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Virgin Mobile speed test for mobile broadband. Test Virgin Mobile speeds in UAE. Check 4G, 5G mobile internet performance and home broadband.');
+      metaDescription.setAttribute('content', 'Test Virgin Mobile 5G internet speed instantly - Free speed checker for UAE. Accurate mobile broadband performance results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

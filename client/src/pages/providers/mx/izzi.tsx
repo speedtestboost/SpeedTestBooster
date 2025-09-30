@@ -10,10 +10,10 @@ export default function IzziSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Izzi Speed Test - Test Izzi Telecom Internet Speed Mexico 2025";
+    document.title = "Izzi Speed Test Mexico - Check Cable & Fiber Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Izzi speed test for cable and fiber internet customers. Test Izzi Telecom speeds across Mexico. Check download, upload speeds for streaming and gaming.');
+      metaDescription.setAttribute('content', 'Test Izzi cable & fiber internet speed instantly - Free speed test for Mexico. Accurate download/upload streaming & gaming results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

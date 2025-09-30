@@ -10,11 +10,11 @@ export default function KPNSpeedTest() {
 
   useEffect(() => {
     // SEO meta tags
-    document.title = "KPN Speed Test Netherlands 2025 - Glasvezel & Internet Snelheid Test | Speed Test & Boost";
+    document.title = "KPN Speed Test Netherlands - Check Glasvezel Fiber Internet Free 2025";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'KPN speed test Netherlands - Glasvezel fiber leader with nationwide coverage. Check KPN internet speeds.');
+      metaDescription.setAttribute('content', 'Test KPN Glasvezel fiber internet speed instantly - Free speed test for Netherlands. Accurate download/upload performance results in seconds.');
     }
     
     // Keywords targeting low-competition Dutch terms

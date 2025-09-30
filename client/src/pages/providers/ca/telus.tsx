@@ -9,10 +9,10 @@ export default function TelusSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Telus Speed Test - Test Telus Internet Speed Canada 2025";
+    document.title = "Telus Speed Test Canada - Check PureFibre Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Telus speed test - Western Canada\'s leader with PureFibre technology. Check Telus fiber and LTE speeds instantly.');
+      metaDescription.setAttribute('content', 'Test Telus PureFibre internet speed instantly - Free speed test for Canada. Accurate fiber download/upload & LTE performance results now.');
     }
 
     // Update canonical tag

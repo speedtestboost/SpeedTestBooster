@@ -9,10 +9,10 @@ export default function VivoSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Vivo Speed Test - Test Vivo Internet Speed Brazil 2025";
+    document.title = "Vivo Speed Test Brazil - Check Fiber Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Vivo speed test Brazil - Leading telecom with fiber and mobile services. Check Vivo internet speeds now.');
+      metaDescription.setAttribute('content', 'Test Vivo fiber internet speed instantly - Free speed test for Brazil. Accurate download/upload speeds and broadband results in seconds.');
     }
 
     // Update canonical tag

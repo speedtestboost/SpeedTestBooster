@@ -9,10 +9,10 @@ export default function FrontierSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Frontier Speed Test - Test Frontier Internet Speed 2025";
+    document.title = "Frontier Speed Test USA - Check Fiber & DSL Internet Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Frontier Communications speed test - Rural broadband specialist in 25 states. Test fiber and DSL speeds for rural customers.');
+      metaDescription.setAttribute('content', 'Test Frontier fiber & DSL internet speed instantly - Free speed test for USA. Accurate rural broadband performance results in seconds.');
     }
 
     // Update canonical tag

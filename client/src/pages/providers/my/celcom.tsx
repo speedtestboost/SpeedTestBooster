@@ -10,10 +10,10 @@ export default function CelcomSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Celcom Speed Test - Test Celcom Home Fiber Internet Malaysia 2025";
+    document.title = "Celcom Speed Test Malaysia - Check Home Fiber Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Celcom speed test for Home Fiber customers. Test Celcom speeds in Malaysia. Check mobile and fiber broadband performance nationwide.');
+      metaDescription.setAttribute('content', 'Test Celcom Home Fiber internet speed instantly - Free speed test for Malaysia. Accurate fiber & mobile broadband performance results now.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

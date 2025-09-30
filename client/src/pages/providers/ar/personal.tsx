@@ -10,10 +10,10 @@ export default function PersonalSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Personal Speed Test - Test Personal Flow Internet Speed Argentina 2025";
+    document.title = "Personal Speed Test Argentina - Check Flow Fiber Internet Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Personal speed test for Flow customers. Test Personal internet speeds in Argentina. Check fiber and cable broadband performance nationwide.');
+      metaDescription.setAttribute('content', 'Test Personal Flow internet speed instantly - Free speed test for Argentina. Accurate fiber & cable broadband performance results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

@@ -9,10 +9,10 @@ export default function TelstraSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Telstra Speed Test - Test Telstra NBN Internet Australia 2025";
+    document.title = "Telstra Speed Test Australia - Check NBN & 5G Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Telstra speed test - Australia\'s largest network covering 99.5% population. Check Telstra NBN and 5G speeds.');
+      metaDescription.setAttribute('content', 'Test Telstra NBN & 5G internet speed instantly - Free speed checker for Australia. Accurate broadband performance results in seconds.');
     }
 
     // Update canonical tag

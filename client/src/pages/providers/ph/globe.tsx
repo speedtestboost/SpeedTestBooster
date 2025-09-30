@@ -10,10 +10,10 @@ export default function GlobeSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Globe Speed Test - Test Globe At Home Fiber Internet Philippines 2025";
+    document.title = "Globe Speed Test Philippines - Check At Home Fiber Internet Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Globe speed test for At Home Fiber customers. Test Globe internet speeds in Philippines. Check fiber download, upload speeds and WiFi performance.');
+      metaDescription.setAttribute('content', 'Test Globe At Home Fiber internet speed instantly - Free speed test for Philippines. Accurate download/upload WiFi performance results now.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

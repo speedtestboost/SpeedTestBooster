@@ -10,10 +10,10 @@ export default function DITOSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "DITO Speed Test - Test DITO Telecommunity Internet Speed Philippines 2025";
+    document.title = "DITO Speed Test Philippines - Check 5G & Home Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free DITO speed test for mobile and home broadband. Test DITO Telecommunity speeds in Philippines. Check 4G, 5G speeds and home WiFi performance.');
+      metaDescription.setAttribute('content', 'Test DITO 5G & home broadband internet speed instantly - Free speed test for Philippines. Accurate mobile WiFi performance results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

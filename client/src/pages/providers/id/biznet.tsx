@@ -10,10 +10,10 @@ export default function BiznetSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Biznet Speed Test - Test Biznet Home Fiber Internet Indonesia 2025";
+    document.title = "Biznet Speed Test Indonesia - Check Home Fiber Internet Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Biznet speed test for fiber customers. Test Biznet Home speeds in Indonesian cities. Check high-speed fiber download, upload performance.');
+      metaDescription.setAttribute('content', 'Test Biznet Home fiber internet speed instantly - Free speed test for Indonesia. Accurate download/upload speeds & gaming performance now.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

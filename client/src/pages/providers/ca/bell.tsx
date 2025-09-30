@@ -9,10 +9,10 @@ export default function BellSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Bell Internet Speed Test - Test Bell Fibe Internet Canada 2025";
+    document.title = "Bell Speed Test Canada - Check Fibe Fiber Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Bell Canada speed test - Nation\'s largest telecom with Bell Fibe. Check Bell fiber and DSL speeds nationwide.');
+      metaDescription.setAttribute('content', 'Test Bell Fibe fiber internet speed instantly - Free speed checker for Canada. Accurate download/upload speeds & DSL results in seconds.');
     }
 
     // Update canonical tag

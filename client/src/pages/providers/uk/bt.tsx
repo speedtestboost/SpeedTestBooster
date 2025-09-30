@@ -9,10 +9,10 @@ export default function BTSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "BT Speed Test - Test BT Broadband Internet Speed UK 2025";
+    document.title = "BT Speed Test UK - Check Fiber & ADSL Broadband Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'BT broadband speed test - UK\'s largest network with fiber and ADSL. Check BT internet speeds instantly.');
+      metaDescription.setAttribute('content', 'Test BT fiber & ADSL broadband speed instantly - Free speed test for UK. Accurate download/upload performance results in seconds.');
     }
 
     // Update canonical tag

@@ -9,10 +9,10 @@ export default function OptusSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Optus Speed Test - Test Optus NBN Internet Speed Australia 2025";
+    document.title = "Optus Speed Test Australia - Check NBN & 5G Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Optus speed test - Australia\'s second-largest network with 5G and NBN. Check Optus internet speeds instantly.');
+      metaDescription.setAttribute('content', 'Test Optus NBN & 5G internet speed instantly - Free speed test for Australia. Accurate download/upload performance results in seconds.');
     }
 
     // Update canonical tag

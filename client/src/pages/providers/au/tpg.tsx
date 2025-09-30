@@ -9,10 +9,10 @@ export default function TPGSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "TPG Speed Test - Test TPG NBN Internet Speed Australia 2025";
+    document.title = "TPG Speed Test Australia - Check NBN Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'TPG speed test - Australia\'s value-focused NBN provider with competitive pricing. Check TPG internet speeds.');
+      metaDescription.setAttribute('content', 'Test TPG NBN internet speed instantly - Free speed test for Australia. Accurate download/upload speeds and performance results now.');
     }
 
     // Update canonical tag

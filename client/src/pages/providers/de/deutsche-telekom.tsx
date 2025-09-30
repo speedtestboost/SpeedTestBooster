@@ -9,10 +9,10 @@ export default function DeutscheTelekomSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Deutsche Telekom Speed Test - Test Telekom Internet Germany 2025";
+    document.title = "Deutsche Telekom Speed Test Germany - Check Fiber & DSL Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Deutsche Telekom speed test - Germany\'s largest telecom with DSL and fiber. Check Telekom internet speeds.');
+      metaDescription.setAttribute('content', 'Test Deutsche Telekom fiber & DSL speed instantly - Free speed test for Germany. Accurate download/upload performance results in seconds.');
     }
 
     // Update canonical tag

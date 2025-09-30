@@ -10,10 +10,10 @@ export default function VodacomFibreSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Vodacom Fibre Speed Test - Test Vodacom Internet Speed South Africa 2025";
+    document.title = "Vodacom Speed Test South Africa - Check Fibre Internet Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Vodacom Fibre speed test for fiber customers. Test Vodacom internet speeds in South Africa. Check fiber download, upload speeds.');
+      metaDescription.setAttribute('content', 'Test Vodacom Fibre internet speed instantly - Free speed test for South Africa. Accurate download/upload performance results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

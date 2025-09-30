@@ -10,10 +10,10 @@ export default function TelecentroSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Telecentro Speed Test - Test Telecentro Cable Internet Argentina 2025";
+    document.title = "Telecentro Speed Test Argentina - Check Cable Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Telecentro speed test for cable customers. Test Telecentro speeds in Argentina. Check high-speed cable broadband and fiber performance.');
+      metaDescription.setAttribute('content', 'Test Telecentro cable internet speed instantly - Free speed checker for Argentina. Accurate broadband & fiber performance results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

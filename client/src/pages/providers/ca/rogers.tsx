@@ -9,10 +9,10 @@ export default function RogersSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Rogers Speed Test - Test Rogers Internet Speed Canada 2025";
+    document.title = "Rogers Speed Test Canada - Check Cable & Fiber Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Rogers speed test - Eastern Canada\'s largest cable provider. Check Rogers cable, fiber and 5G speeds instantly.');
+      metaDescription.setAttribute('content', 'Test Rogers cable & fiber internet speed instantly - Free speed test for Canada. Accurate download/upload performance & 5G results now.');
     }
 
     // Update canonical tag

@@ -9,10 +9,10 @@ export default function O2DESpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "O2 Germany Speed Test - Test O2 Internet Speed Germany 2025";
+    document.title = "O2 Speed Test Germany - Check DSL & LTE Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'O2 Germany speed test - Affordable DSL and LTE provider. Check O2 DE internet speeds and performance.');
+      metaDescription.setAttribute('content', 'Test O2 DSL & LTE internet speed instantly - Free speed checker for Germany. Accurate download/upload performance results in seconds.');
     }
 
     // Update canonical tag

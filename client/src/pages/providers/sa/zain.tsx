@@ -10,10 +10,10 @@ export default function ZainSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Zain Speed Test - Test Zain Fiber Internet Speed Saudi Arabia 2025";
+    document.title = "Zain Speed Test Saudi Arabia - Check Fiber Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Zain speed test for fiber customers. Test Zain internet speeds in Saudi Arabia. Check competitive fiber download, upload performance.');
+      metaDescription.setAttribute('content', 'Test Zain fiber internet speed instantly - Free speed test for Saudi Arabia. Accurate download/upload mobile performance results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

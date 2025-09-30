@@ -10,10 +10,10 @@ export default function CoolIdeasSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Cool Ideas Speed Test - Test Cool Ideas Fiber Internet South Africa 2025";
+    document.title = "Cool Ideas Speed Test South Africa - Check Fiber Internet Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Cool Ideas speed test for fiber customers. Test Cool Ideas speeds in South Africa. Check award-winning fiber performance and customer service.');
+      metaDescription.setAttribute('content', 'Test Cool Ideas fiber internet speed instantly - Free speed test for South Africa. Accurate download/upload performance results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

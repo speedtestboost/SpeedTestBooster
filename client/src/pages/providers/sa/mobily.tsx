@@ -10,10 +10,10 @@ export default function MobilySpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Mobily Speed Test - Test Mobily Fiber Internet Speed Saudi Arabia 2025";
+    document.title = "Mobily Speed Test Saudi Arabia - Check Fiber & 5G Internet Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Mobily speed test for fiber customers. Test Mobily internet speeds in Saudi Arabia. Check high-speed fiber broadband and mobile performance.');
+      metaDescription.setAttribute('content', 'Test Mobily fiber & 5G internet speed instantly - Free speed test for Saudi Arabia. Accurate download/upload broadband performance results now.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

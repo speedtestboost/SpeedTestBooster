@@ -10,10 +10,10 @@ export default function FirstMediaSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "First Media Speed Test - Test First Media Cable Internet Indonesia 2025";
+    document.title = "First Media Speed Test Indonesia - Check Cable Internet Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free First Media speed test for cable internet customers. Test First Media speeds across Indonesia. Check cable download, upload speeds.');
+      metaDescription.setAttribute('content', 'Test First Media cable internet speed instantly - Free speed test for Indonesia. Accurate download/upload performance results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

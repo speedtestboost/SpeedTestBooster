@@ -9,10 +9,10 @@ export default function ComcastSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Comcast Xfinity Speed Test - Test Xfinity Internet Speed 2025";
+    document.title = "Comcast Xfinity Speed Test USA - Check Cable Internet Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Xfinity speed test by Comcast - America\'s largest cable provider. Check Xfinity cable, fiber and WiFi speeds instantly.');
+      metaDescription.setAttribute('content', 'Test Comcast Xfinity cable internet speed instantly - Free speed test for USA. Accurate download/upload WiFi performance results now.');
     }
 
     // Update canonical tag

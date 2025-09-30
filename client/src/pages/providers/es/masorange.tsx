@@ -10,10 +10,10 @@ export default function MasOrangeSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "MásOrange Speed Test - Test MásOrange Internet Speed Spain 2025";
+    document.title = "MásOrange Speed Test Spain - Check Fiber Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free MásOrange speed test for fiber customers. Test MásOrange speeds in Spain. Check merged network fiber performance and coverage.');
+      metaDescription.setAttribute('content', 'Test MásOrange fiber internet speed instantly - Free speed test for Spain. Accurate download/upload performance results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

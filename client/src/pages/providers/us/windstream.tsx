@@ -9,10 +9,10 @@ export default function WindstreamSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Windstream Speed Test - Test Windstream Internet Speed 2025";
+    document.title = "Windstream Speed Test USA - Check Fiber & DSL Internet Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Windstream speed test - Rural fiber and business solutions in 18 states. Check Windstream internet speeds instantly.');
+      metaDescription.setAttribute('content', 'Test Windstream fiber & DSL internet speed instantly - Free speed test for USA. Accurate rural broadband performance results in seconds.');
     }
 
     // Update canonical tag

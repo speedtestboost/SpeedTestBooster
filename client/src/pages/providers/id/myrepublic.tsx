@@ -10,10 +10,10 @@ export default function MyRepublicSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "MyRepublic Speed Test - Test MyRepublic Fiber Internet Indonesia 2025";
+    document.title = "MyRepublic Speed Test Indonesia - Check Fiber Internet Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free MyRepublic speed test for fiber customers. Test MyRepublic speeds in Indonesia. Check competitive fiber download, upload performance.');
+      metaDescription.setAttribute('content', 'Test MyRepublic fiber internet speed instantly - Free speed test for Indonesia. Accurate download/upload & gaming performance results now.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

@@ -10,10 +10,10 @@ export default function ConvergeSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Converge Speed Test - Test Converge ICT Fiber Internet Philippines 2025";
+    document.title = "Converge Speed Test Philippines - Check Fiber Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Converge speed test for pure fiber customers. Test Converge ICT speeds in Philippines. Check fiber-only network download, upload performance.');
+      metaDescription.setAttribute('content', 'Test Converge pure fiber internet speed instantly - Free speed test for Philippines. Accurate download/upload FTTH performance results now.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

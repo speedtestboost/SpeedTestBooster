@@ -10,10 +10,10 @@ export default function GOSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "GO Speed Test - Test GO Internet Speed Saudi Arabia 2025";
+    document.title = "GO Speed Test Saudi Arabia - Check Fiber Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free GO speed test for fiber and mobile customers. Test GO internet speeds in Saudi Arabia. Check alternative provider performance and value.');
+      metaDescription.setAttribute('content', 'Test GO fiber internet speed instantly - Free speed test for Saudi Arabia. Accurate download/upload mobile performance results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

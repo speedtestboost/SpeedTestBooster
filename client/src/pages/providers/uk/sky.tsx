@@ -9,10 +9,10 @@ export default function SkySpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Sky Broadband Speed Test - Test Sky Fibre Internet UK 2025";
+    document.title = "Sky Speed Test UK - Check Fibre Broadband Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Sky broadband speed test - UK\'s premium fibre internet with TV bundles. Check Sky superfast speeds now.');
+      metaDescription.setAttribute('content', 'Test Sky Fibre broadband speed instantly - Free speed test for UK. Accurate download/upload superfast performance results in seconds.');
     }
 
     // Update canonical tag

@@ -11,11 +11,11 @@ export default function ACTFibernetSpeedTest() {
 
   useEffect(() => {
     // SEO Meta Tags
-    document.title = "ACT Fibernet Speed Test - Test ACT Broadband Fiber Speed 2025";
+    document.title = "ACT Fibernet Speed Test India - Check Fiber Internet Speed Free 2025";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'ACT Fibernet speed test - Premium fiber provider for metro cities with 1 Gbps gaming speeds. Check ACT performance.');
+      metaDescription.setAttribute('content', 'Test ACT Fibernet internet speed instantly - Free speed test for India. Accurate 1 Gbps fiber download/upload & gaming performance now.');
     }
 
     // Add keywords meta tag

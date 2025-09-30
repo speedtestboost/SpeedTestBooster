@@ -11,11 +11,11 @@ export default function JioFiberSpeedTest() {
 
   useEffect(() => {
     // SEO Meta Tags
-    document.title = "Jio Fiber Speed Test - Test Reliance Jio Broadband Speed 2025";
+    document.title = "Jio Fiber Speed Test India - Check Reliance Fiber Internet Free 2025";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Jio Fiber speed test - India\'s largest fiber network with 1 Gbps speeds. Check Reliance Jio broadband performance.');
+      metaDescription.setAttribute('content', 'Test Jio Fiber internet speed instantly - Free speed test for India. Accurate 1 Gbps download/upload & WiFi performance results in seconds.');
     }
 
     // Add keywords meta tag

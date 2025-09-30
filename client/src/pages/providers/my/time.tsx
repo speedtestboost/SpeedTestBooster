@@ -10,10 +10,10 @@ export default function TIMESpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "TIME Speed Test - Test TIME Fiber Internet Speed Malaysia 2025";
+    document.title = "TIME Speed Test Malaysia - Check Fiber Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free TIME speed test for fiber customers. Test TIME internet speeds in Malaysia. Check high-speed fiber broadband performance and low latency.');
+      metaDescription.setAttribute('content', 'Test TIME gigabit fiber internet speed instantly - Free speed test for Malaysia. Accurate download/upload performance & low latency results now.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

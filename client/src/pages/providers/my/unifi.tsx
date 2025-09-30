@@ -10,10 +10,10 @@ export default function UnifiSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Unifi Speed Test - Test Unifi Fiber Internet Speed Malaysia 2025";
+    document.title = "Unifi Speed Test Malaysia - Check FTTH Fiber Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Unifi speed test for fiber customers. Test Unifi internet speeds across Malaysia. Check Telekom Malaysia fiber download, upload performance.');
+      metaDescription.setAttribute('content', 'Test Unifi FTTH fiber internet speed instantly - Free speed test for Malaysia. Accurate Telekom download/upload performance results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

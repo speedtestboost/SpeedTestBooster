@@ -9,10 +9,10 @@ export default function CenturyLinkSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "CenturyLink Speed Test - Test CenturyLink Internet Speed 2025";
+    document.title = "CenturyLink Speed Test USA - Check Fiber & DSL Internet Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'CenturyLink speed test - Rural fiber leader serving all 50 states. Check CenturyLink fiber and DSL speeds instantly.');
+      metaDescription.setAttribute('content', 'Test CenturyLink fiber & DSL internet speed instantly - Free speed test for USA. Accurate download/upload performance results in seconds.');
     }
 
     // Update canonical tag

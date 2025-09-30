@@ -9,10 +9,10 @@ export default function OptimumSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Optimum Speed Test - Test Optimum Internet Speed 2025";
+    document.title = "Optimum Speed Test USA - Check Cable & Fiber Internet Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Optimum speed test - Tri-state leader in NY, NJ, CT. Check Optimum cable and fiber speeds from Altice USA.');
+      metaDescription.setAttribute('content', 'Test Optimum cable & fiber internet speed instantly - Free speed test for USA. Accurate download/upload performance results in seconds.');
     }
 
     // Update canonical tag

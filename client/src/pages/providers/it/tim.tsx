@@ -9,10 +9,10 @@ export default function TIMSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "TIM Speed Test - Test TIM Internet Speed Italy 2025";
+    document.title = "TIM Speed Test Italy - Check Fiber & ADSL Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'TIM speed test Italy - Leading telecom with fiber and mobile services. Check TIM internet speeds instantly.');
+      metaDescription.setAttribute('content', 'Test TIM fiber & ADSL internet speed instantly - Free speed test for Italy. Accurate download/upload broadband performance results now.');
     }
 
     // Update canonical tag

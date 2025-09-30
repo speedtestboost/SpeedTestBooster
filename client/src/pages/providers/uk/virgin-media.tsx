@@ -9,10 +9,10 @@ export default function VirginMediaSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Virgin Media Speed Test - Test Virgin Broadband Internet UK 2025";
+    document.title = "Virgin Media Speed Test UK - Check Cable Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Virgin Media speed test - UK\'s fastest cable network with ultrafast speeds. Check Virgin broadband performance.');
+      metaDescription.setAttribute('content', 'Test Virgin Media cable internet speed instantly - Free speed test for UK. Accurate ultrafast download/upload performance results now.');
     }
 
     // Update canonical tag

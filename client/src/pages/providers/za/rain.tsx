@@ -10,10 +10,10 @@ export default function RainSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Rain Speed Test - Test Rain 4G 5G Internet Speed South Africa 2025";
+    document.title = "Rain Speed Test South Africa - Check 5G Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Rain speed test for 4G, 5G home internet. Test Rain wireless speeds across South Africa. Check mobile broadband download, upload performance.');
+      metaDescription.setAttribute('content', 'Test Rain 5G & 4G internet speed instantly - Free speed test for South Africa. Accurate wireless broadband performance results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

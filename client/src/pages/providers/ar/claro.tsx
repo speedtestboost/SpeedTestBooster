@@ -10,10 +10,10 @@ export default function ClaroArgentinaSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Claro Speed Test - Test Claro Internet Speed Argentina 2025";
+    document.title = "Claro Speed Test Argentina - Check Fiber & Cable Internet Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Claro speed test for fiber and cable customers. Test Claro internet speeds across Argentina. Check broadband download, upload performance.');
+      metaDescription.setAttribute('content', 'Test Claro fiber & cable internet speed instantly - Free speed test for Argentina. Accurate download/upload performance results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

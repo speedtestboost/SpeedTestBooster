@@ -9,10 +9,10 @@ export default function VodafoneDESpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Vodafone Germany Speed Test - Test Vodafone Internet Speed 2025";
+    document.title = "Vodafone Speed Test Germany - Check Cable & 5G Internet Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Vodafone Germany speed test - Cable internet leader with 5G coverage. Check Vodafone DE speeds instantly.');
+      metaDescription.setAttribute('content', 'Test Vodafone cable & 5G internet speed instantly - Free speed test for Germany. Accurate download/upload performance results now.');
     }
 
     // Update canonical tag

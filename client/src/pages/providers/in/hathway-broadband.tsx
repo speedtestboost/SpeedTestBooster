@@ -11,11 +11,11 @@ export default function HathwayBroadbandSpeedTest() {
 
   useEffect(() => {
     // SEO Meta Tags
-    document.title = "Hathway Broadband Speed Test - Test Hathway Cable Internet Speed 2025";
+    document.title = "Hathway Speed Test India - Check Cable & Fiber Internet Speed Free 2025";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Hathway Broadband speed test - Cable internet provider with fiber options. Check Hathway speeds across India.');
+      metaDescription.setAttribute('content', 'Test Hathway cable & fiber internet speed instantly - Free speed test for India. Accurate broadband download/upload performance results now.');
     }
 
     // Add keywords meta tag

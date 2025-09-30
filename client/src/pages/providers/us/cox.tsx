@@ -9,10 +9,10 @@ export default function CoxSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Cox Speed Test - Test Cox Internet Speed 2025";
+    document.title = "Cox Speed Test USA - Check Gigabit Cable Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Cox Communications speed test - Gigabit cable internet across 18 states. Check Cox internet speeds in Arizona, California, Florida.');
+      metaDescription.setAttribute('content', 'Test Cox gigabit cable internet speed instantly - Free speed test for USA. Accurate download/upload performance results in seconds.');
     }
 
     // Update canonical tag

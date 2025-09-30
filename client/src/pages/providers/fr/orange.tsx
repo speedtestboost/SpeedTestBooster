@@ -9,10 +9,10 @@ export default function OrangeSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Orange Speed Test - Test Orange Internet Speed France 2025";
+    document.title = "Orange Speed Test France - Check Fiber Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Orange speed test France - Leading telecom with fiber and mobile services. Check Orange internet speeds.');
+      metaDescription.setAttribute('content', 'Test Orange fiber internet speed instantly - Free speed test for France. Accurate download/upload speeds & ADSL performance results now.');
     }
 
     // Update canonical tag

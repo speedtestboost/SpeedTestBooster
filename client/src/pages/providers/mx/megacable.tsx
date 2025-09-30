@@ -10,10 +10,10 @@ export default function MegacableSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Megacable Speed Test - Test Megacable MCM Internet Speed Mexico 2025";
+    document.title = "Megacable Speed Test Mexico - Check Cable & Fiber Internet Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Megacable speed test for cable internet customers. Test Megacable MCM speeds in western Mexico. Check download, upload speeds for fiber and cable broadband.');
+      metaDescription.setAttribute('content', 'Test Megacable cable & fiber internet speed instantly - Free speed test for Mexico. Accurate download/upload broadband results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

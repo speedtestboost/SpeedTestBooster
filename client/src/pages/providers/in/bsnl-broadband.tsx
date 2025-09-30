@@ -11,11 +11,11 @@ export default function BSNLBroadbandSpeedTest() {
 
   useEffect(() => {
     // SEO Meta Tags
-    document.title = "BSNL Broadband Speed Test - Test BSNL Fiber Internet Speed 2025";
+    document.title = "BSNL Speed Test India - Check FTTH Fiber Internet Speed Free 2025";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'BSNL Broadband speed test - Government FTTH fiber service across India. Check BSNL internet speeds instantly.');
+      metaDescription.setAttribute('content', 'Test BSNL FTTH fiber internet speed instantly - Free speed test for India. Accurate government broadband performance results in seconds.');
     }
 
     // Add keywords meta tag

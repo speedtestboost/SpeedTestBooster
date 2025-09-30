@@ -10,10 +10,10 @@ export default function YallaSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Yalla Speed Test - Test Yalla Internet Speed UAE 2025";
+    document.title = "Yalla Speed Test UAE - Check Yalla Fiber Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Yalla speed test for fiber and broadband customers. Test Yalla internet speeds in UAE. Check alternative provider performance and value.');
+      metaDescription.setAttribute('content', 'Test Yalla fiber internet speed instantly - Free speed test for UAE. Accurate download/upload speeds and performance results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

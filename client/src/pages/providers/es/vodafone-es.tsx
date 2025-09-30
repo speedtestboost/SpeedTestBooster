@@ -10,10 +10,10 @@ export default function VodafoneSpainSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Vodafone Speed Test - Test Vodafone Fibra Internet Speed Spain 2025";
+    document.title = "Vodafone Speed Test Spain - Check Fibra Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Vodafone speed test for fibra customers. Test Vodafone internet speeds across Spain. Check fiber and mobile broadband performance.');
+      metaDescription.setAttribute('content', 'Test Vodafone Fibra internet speed instantly - Free speed test for Spain. Accurate fiber & mobile broadband performance results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

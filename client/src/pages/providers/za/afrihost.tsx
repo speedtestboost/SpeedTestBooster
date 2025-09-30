@@ -10,10 +10,10 @@ export default function AfrihostSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Afrihost Speed Test - Test Afrihost Fiber Internet South Africa 2025";
+    document.title = "Afrihost Speed Test South Africa - Check Fiber Internet Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Afrihost speed test for fiber customers. Test Afrihost internet speeds in South Africa. Check reliable fiber download, upload performance.');
+      metaDescription.setAttribute('content', 'Test Afrihost fiber internet speed instantly - Free speed test for South Africa. Accurate download/upload performance results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

@@ -10,10 +10,10 @@ export default function OrangeSpainSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Orange Speed Test - Test Orange Fiber Internet Speed Spain 2025";
+    document.title = "Orange Speed Test Spain - Check Fiber Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Orange speed test for fiber customers. Test Orange internet speeds in Spain. Check high-performance fiber download, upload speeds.');
+      metaDescription.setAttribute('content', 'Test Orange fiber internet speed instantly - Free speed test for Spain. Accurate download/upload speeds and performance results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

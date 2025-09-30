@@ -10,10 +10,10 @@ export default function MaxisSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Maxis Speed Test - Test Maxis Fiber Home Internet Malaysia 2025";
+    document.title = "Maxis Speed Test Malaysia - Check Fiber & 5G Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Maxis speed test for Fiber Home customers. Test Maxis internet speeds in Malaysia. Check fiber and mobile broadband performance.');
+      metaDescription.setAttribute('content', 'Test Maxis Fiber & 5G internet speed instantly - Free speed test for Malaysia. Accurate download/upload mobile broadband results in seconds.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');

@@ -11,11 +11,11 @@ export default function SpectrumSpeedTest() {
 
   useEffect(() => {
     // SEO Meta Tags
-    document.title = "Spectrum Speed Test - Test Charter Spectrum Internet Speed 2025";
+    document.title = "Spectrum Speed Test USA - Check Charter Cable Internet Free 2025";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Charter Spectrum speed test - No data caps, cable speeds up to 1 Gig. Test your Spectrum internet performance across 41 states.');
+      metaDescription.setAttribute('content', 'Test Charter Spectrum cable internet speed instantly - Free speed test for USA. Accurate 1 Gig download/upload performance results in seconds.');
     }
 
     // Add keywords meta tag

@@ -11,11 +11,11 @@ export default function AirtelBroadbandSpeedTest() {
 
   useEffect(() => {
     // SEO Meta Tags
-    document.title = "Airtel Broadband Speed Test - Test Bharti Airtel Fiber Speed 2025";
+    document.title = "Airtel Speed Test India - Check Xstream Fiber Internet Speed Free 2025";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Airtel Broadband speed test - Bharti Airtel Xstream Fiber with 1 Gbps speeds. Check Airtel internet performance.');
+      metaDescription.setAttribute('content', 'Test Airtel Xstream Fiber speed instantly - Free speed checker for India. Accurate 1 Gbps download/upload broadband results in seconds.');
     }
 
     // Add keywords meta tag

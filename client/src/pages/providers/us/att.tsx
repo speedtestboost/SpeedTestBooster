@@ -9,10 +9,10 @@ export default function ATTSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "AT&T Speed Test - Test AT&T Fiber Internet Speed 2025";
+    document.title = "AT&T Speed Test USA - Check Fiber Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'AT&T Fiber speed test - Check your gigabit internet performance. Free speed test for AT&T customers nationwide with accurate results.');
+      metaDescription.setAttribute('content', 'Test AT&T Fiber internet speed instantly - Free speed test for USA. Accurate gigabit download/upload performance results in seconds.');
     }
 
     // Update canonical tag

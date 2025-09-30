@@ -10,10 +10,10 @@ export default function MovistarSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Movistar Speed Test - Test Movistar Fibra Internet Speed Spain 2025";
+    document.title = "Movistar Speed Test Spain - Check Fibra Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Movistar speed test for fibra customers. Test Movistar internet speeds across Spain. Check fiber download, upload speeds and FTTH performance.');
+      metaDescription.setAttribute('content', 'Test Movistar Fibra internet speed instantly - Free speed checker for Spain. Accurate fiber download/upload & FTTH performance results now.');
     }
 
     const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
