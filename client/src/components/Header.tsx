@@ -258,7 +258,7 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
           
           <div className="flex items-center space-x-4">
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-6">
+            <div className="hidden lg:flex items-center space-x-6 lg:ml-8">
               <Link 
                 href="/" 
                 className={`bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors ${currentPath === "/" ? "bg-primary/90" : ""}`}
