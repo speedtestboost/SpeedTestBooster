@@ -263,7 +263,7 @@ export default function SpeedTest() {
       <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-6 space-y-6">
         {/* Desktop Layout - Three Column Grid */}
         <div className="hidden lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
-          {/* Left Column - Speed Test */}
+          {/* Left Column - Connection Status & Network Info */}
           <div className="space-y-6">
             {/* Connection Status */}
             <Card className="card-hover">
@@ -286,10 +286,23 @@ export default function SpeedTest() {
               </CardContent>
             </Card>
 
-            {/* Test Controls */}
-            <Card className="card-hover">
-              <CardContent className="p-6 space-y-4">
-                <h3 className="text-lg font-semibold text-foreground text-center">Speed Test</h3>
+            {/* Network Info */}
+            <NetworkInfo networkInfo={networkInfo} />
+          </div>
+
+          {/* Center Column - Speed Odometer & Test Controls */}
+          <div className="flex flex-col items-center justify-start">
+            <div className="w-full max-w-md">
+              <SpeedGauge
+                currentSpeed={displayResult?.downloadSpeed || 0}
+                isTestRunning={isTestRunning}
+                testProgress={testProgress}
+                testStatus={testStatus}
+                lastTest={lastTest}
+              />
+              
+              {/* Test Control Buttons Below Odometer */}
+              <div className="space-y-4 mt-6">
                 <Button
                   onClick={handleStartTest}
                   disabled={isTestRunning}
@@ -304,24 +317,6 @@ export default function SpeedTest() {
                   </div>
                 </Button>
 
-                {isTestRunning && (
-                  <div className="bg-muted/30 rounded-xl p-4 border border-border/50">
-                    <div className="flex items-center justify-between text-sm text-muted-foreground mb-2">
-                      <span>Test Progress</span>
-                      <span>{testProgress.toFixed(0)}%</span>
-                    </div>
-                    <div className="w-full bg-muted rounded-full h-2 mb-2">
-                      <div 
-                        className="bg-gradient-to-r from-primary to-accent h-2 rounded-full transition-all duration-300"
-                        style={{ width: `${testProgress}%` }}
-                      />
-                    </div>
-                    <div className="text-xs text-foreground text-center">
-                      {testStatus}
-                    </div>
-                  </div>
-                )}
-
                 <Button
                   onClick={handleOptimizeWifi}
                   disabled={isTestRunning}
@@ -335,24 +330,7 @@ export default function SpeedTest() {
                     <span>Optimize WiFi Speed</span>
                   </div>
                 </Button>
-
-              </CardContent>
-            </Card>
-
-            {/* Network Info */}
-            <NetworkInfo networkInfo={networkInfo} />
-          </div>
-
-          {/* Center Column - Speed Gauge */}
-          <div className="flex items-start justify-center">
-            <div className="w-full max-w-md">
-              <SpeedGauge
-                currentSpeed={displayResult?.downloadSpeed || 0}
-                isTestRunning={isTestRunning}
-                testProgress={testProgress}
-                testStatus={testStatus}
-                lastTest={lastTest}
-              />
+              </div>
             </div>
           </div>
 
@@ -429,7 +407,7 @@ export default function SpeedTest() {
             </CardContent>
           </Card>
 
-          {/* Speed Gauge */}
+          {/* Speed Odometer */}
           <SpeedGauge
             currentSpeed={displayResult?.downloadSpeed || 0}
             isTestRunning={isTestRunning}
@@ -438,7 +416,7 @@ export default function SpeedTest() {
             lastTest={lastTest}
           />
 
-          {/* Test Controls */}
+          {/* Test Control Buttons Below Odometer */}
           <div className="space-y-4">
             <Button
               onClick={handleStartTest}
@@ -454,24 +432,6 @@ export default function SpeedTest() {
               </div>
             </Button>
 
-            {isTestRunning && (
-              <div className="bg-muted/30 rounded-xl p-4 border border-border/50">
-                <div className="flex items-center justify-between text-sm text-muted-foreground mb-2">
-                  <span>Test Progress</span>
-                  <span>{testProgress.toFixed(0)}%</span>
-                </div>
-                <div className="w-full bg-muted rounded-full h-2 mb-2">
-                  <div 
-                    className="bg-gradient-to-r from-primary to-accent h-2 rounded-full transition-all duration-300"
-                    style={{ width: `${testProgress}%` }}
-                  />
-                </div>
-                <div className="text-xs text-foreground text-center">
-                  {testStatus}
-                </div>
-              </div>
-            )}
-
             <Button
               onClick={handleOptimizeWifi}
               disabled={isTestRunning}
@@ -485,7 +445,6 @@ export default function SpeedTest() {
                 <span>Optimize WiFi Speed</span>
               </div>
             </Button>
-
           </div>
 
           {/* Test Results */}
