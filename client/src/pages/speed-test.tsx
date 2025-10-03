@@ -289,16 +289,16 @@ export default function SpeedTest() {
             {/* Test Controls */}
             <Card className="card-hover">
               <CardContent className="p-6 space-y-4">
-                <h3 className="text-lg font-semibold text-foreground">Speed Test</h3>
+                <h3 className="text-lg font-semibold text-foreground text-center">Speed Test</h3>
                 <Button
                   onClick={handleStartTest}
                   disabled={isTestRunning}
-                  className="w-full gradient-bg text-white rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50"
+                  className="w-full gradient-bg text-white rounded-2xl py-8 px-8 font-bold text-xl hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50 shadow-lg hover:shadow-xl"
                   size="lg"
                 >
                   <div className="flex items-center justify-center">
-                    <div className="w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">
-                      <Play className="h-6 w-6" />
+                    <div className="w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">
+                      <Play className="h-8 w-8" />
                     </div>
                     <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
                   </div>
@@ -325,12 +325,12 @@ export default function SpeedTest() {
                 <Button
                   onClick={handleOptimizeWifi}
                   disabled={isTestRunning}
-                  className="w-full bg-secondary text-secondary-foreground rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50"
+                  className="w-full bg-secondary text-secondary-foreground rounded-2xl py-8 px-8 font-bold text-xl hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50 shadow-lg hover:shadow-xl"
                   size="lg"
                 >
                   <div className="flex items-center justify-center">
-                    <div className="w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">
-                      <Wifi className="h-6 w-6" />
+                    <div className="w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">
+                      <Wifi className="h-8 w-8" />
                     </div>
                     <span>Optimize WiFi Speed</span>
                   </div>
@@ -443,12 +443,12 @@ export default function SpeedTest() {
             <Button
               onClick={handleStartTest}
               disabled={isTestRunning}
-              className="w-full gradient-bg text-white rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50 glow-effect"
+              className="w-full gradient-bg text-white rounded-2xl py-8 px-8 font-bold text-xl hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50 shadow-lg hover:shadow-xl"
               size="lg"
             >
               <div className="flex items-center justify-center">
-                <div className="w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">
-                  <Play className="h-6 w-6" />
+                <div className="w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">
+                  <Play className="h-8 w-8" />
                 </div>
                 <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
               </div>
@@ -475,12 +475,12 @@ export default function SpeedTest() {
             <Button
               onClick={handleOptimizeWifi}
               disabled={isTestRunning}
-              className="w-full bg-secondary text-secondary-foreground rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50"
+              className="w-full bg-secondary text-secondary-foreground rounded-2xl py-8 px-8 font-bold text-xl hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50 shadow-lg hover:shadow-xl"
               size="lg"
             >
               <div className="flex items-center justify-center">
-                <div className="w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">
-                  <Wifi className="h-6 w-6" />
+                <div className="w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">
+                  <Wifi className="h-8 w-8" />
                 </div>
                 <span>Optimize WiFi Speed</span>
               </div>
