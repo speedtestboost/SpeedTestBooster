@@ -29,153 +29,61 @@ export default function SpeedGauge({
     return `Last test: ${date.toLocaleDateString()}`;
   };
 
-  // Calculate gauge percentage (0-100 scale for speed up to 100 Mbps)
-  const displayValue = isTestRunning ? testProgress : currentSpeed;
-  const gaugePercentage = Math.min(displayValue / 100, 1) * 100;
+  // Calculate gauge percentage (0-100 scale)
+  const gaugePercentage = Math.min(currentSpeed / 100, 1) * 100;
   
-  // SVG circle calculations for animated ring
-  const radius = 85;
-  const strokeWidth = 12;
-  const normalizedRadius = radius - strokeWidth / 2;
-  const circumference = 2 * Math.PI * normalizedRadius;
+  // SVG circle calculations
+  const radius = 40;
+  const circumference = 2 * Math.PI * radius;
   const strokeDashOffset = circumference - (gaugePercentage / 100) * circumference;
-
-  // Format speed display with leading zeros like an odometer
-  const formattedSpeed = displayValue.toFixed(1).padStart(6, '0');
-  const [whole, decimal] = formattedSpeed.split('.');
 
   return (
     <div className="text-center mb-6">
-      <div className="relative w-64 h-64 lg:w-96 lg:h-96 mx-auto mb-6">
-        {/* Outer circular gauge */}
-        <svg className="w-full h-full transform -rotate-90" viewBox="0 0 200 200">
+      <div className="relative w-52 h-52 lg:w-80 lg:h-80 mx-auto mb-6">
+        {/* Speed Gauge Circle */}
+        <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
           {/* Background circle */}
           <circle
-            cx="100"
-            cy="100"
-            r={normalizedRadius}
+            cx="50"
+            cy="50"
+            r={radius}
             fill="none"
             stroke="hsl(240, 3.7%, 15.9%)"
-            strokeWidth={strokeWidth}
+            strokeWidth="6"
           />
-          
-          {/* Animated progress circle */}
+          {/* Progress circle */}
           <circle
-            cx="100"
-            cy="100"
-            r={normalizedRadius}
+            cx="50"
+            cy="50"
+            r={radius}
             fill="none"
-            stroke="url(#speedGradient)"
-            strokeWidth={strokeWidth}
+            stroke="url(#gradient)"
+            strokeWidth="6"
             strokeLinecap="round"
             strokeDasharray={circumference}
             strokeDashoffset={strokeDashOffset}
-            className="transition-all duration-700 ease-out"
-            style={{
-              filter: 'drop-shadow(0 0 8px rgba(168, 85, 247, 0.4))'
-            }}
+            className="transition-all duration-1000 ease-out"
           />
-          
           {/* Gradient definition */}
           <defs>
-            <linearGradient id="speedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="hsl(262, 83%, 58%)" />
-              <stop offset="50%" stopColor="hsl(276, 80%, 59%)" />
               <stop offset="100%" stopColor="hsl(290, 76%, 60%)" />
             </linearGradient>
           </defs>
         </svg>
-
-        {/* Digital odometer display in center */}
+        {/* Speed display */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
-            {/* Speed digits with odometer styling */}
-            <div className="flex items-end justify-center gap-1 mb-2">
-              {whole.split('').map((digit, index) => (
-                <div
-                  key={index}
-                  className="relative overflow-hidden bg-gradient-to-b from-card to-muted/50 border-2 border-primary/20 rounded-md px-2 py-1 lg:px-3 lg:py-2"
-                  style={{
-                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.1)'
-                  }}
-                >
-                  <div className="font-mono font-bold text-3xl lg:text-5xl gradient-text transition-all duration-500 animate-in">
-                    {digit}
-                  </div>
-                </div>
-              ))}
-              
-              {/* Decimal point */}
-              <div className="text-3xl lg:text-5xl font-bold gradient-text mb-1">.</div>
-              
-              {/* Decimal digit */}
-              <div
-                className="relative overflow-hidden bg-gradient-to-b from-card to-muted/50 border-2 border-primary/20 rounded-md px-2 py-1 lg:px-3 lg:py-2"
-                style={{
-                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.1)'
-                }}
-              >
-                <div className="font-mono font-bold text-3xl lg:text-5xl gradient-text transition-all duration-500">
-                  {decimal}
-                </div>
-              </div>
+            <div className="text-4xl lg:text-6xl font-bold gradient-text mb-1">
+              {isTestRunning ? testProgress.toFixed(0) : currentSpeed.toFixed(1)}
             </div>
-            
-            {/* Unit label */}
-            <div className="text-sm lg:text-base text-muted-foreground font-semibold tracking-wider uppercase">
-              {isTestRunning ? "Percent" : "Mbps"}
-            </div>
-
-            {/* Animated indicator lights */}
-            <div className="flex gap-1 justify-center mt-4">
-              {[...Array(8)].map((_, i) => {
-                const threshold = (i + 1) * 12.5;
-                const isActive = displayValue >= threshold;
-                return (
-                  <div
-                    key={i}
-                    className={`
-                      w-1.5 h-6 lg:w-2 lg:h-8 rounded-full transition-all duration-300
-                      ${isActive 
-                        ? 'bg-gradient-to-t from-primary via-accent to-primary shadow-lg animate-pulse' 
-                        : 'bg-muted/30'
-                      }
-                    `}
-                    style={{
-                      transitionDelay: `${i * 50}ms`
-                    }}
-                  />
-                );
-              })}
+            <div className="text-sm lg:text-base text-muted-foreground font-medium">
+              {isTestRunning ? "%" : "Mbps"}
             </div>
           </div>
         </div>
-
-        {/* Speed markers around the circle */}
-        <div className="absolute inset-0 pointer-events-none">
-          {[0, 25, 50, 75, 100].map((value, index) => {
-            const angle = (value / 100) * 270 - 135; // Start from bottom left, go clockwise
-            const x = 50 + 45 * Math.cos((angle * Math.PI) / 180);
-            const y = 50 + 45 * Math.sin((angle * Math.PI) / 180);
-            
-            return (
-              <div
-                key={index}
-                className="absolute text-xs lg:text-sm text-muted-foreground font-semibold"
-                style={{
-                  left: `${x}%`,
-                  top: `${y}%`,
-                  transform: 'translate(-50%, -50%)'
-                }}
-              >
-                {value}
-              </div>
-            );
-          })}
-        </div>
       </div>
-      
-      {/* Status text */}
       <div className="text-sm lg:text-base text-foreground mb-2 font-medium">
         {isTestRunning ? testStatus : "Ready to test"}
       </div>
