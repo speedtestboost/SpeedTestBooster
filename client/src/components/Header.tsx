@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "wouter";
-import { Menu, X, ChevronDown, Wifi, Sun, Moon } from "lucide-react";
+import { Menu, X, ChevronDown, Wifi } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -221,25 +221,6 @@ interface HeaderProps {
 
 export default function Header({ currentPath = "/" }: HeaderProps) {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
-
-  useEffect(() => {
-    // Initialize theme from localStorage
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" || "dark";
-    setTheme(savedTheme);
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    
-    if (newTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  };
 
   return (
     <nav className="relative z-10 bg-background/80 backdrop-blur-sm border-b border-border/20">
@@ -258,7 +239,7 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
           
           <div className="flex items-center space-x-4">
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-6 lg:ml-8">
+            <div className="hidden lg:flex items-center space-x-6">
               <Link 
                 href="/" 
                 className={`bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors ${currentPath === "/" ? "bg-primary/90" : ""}`}
@@ -352,19 +333,6 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
               >
                 Help
               </Link>
-              
-              {/* Theme Toggle - Small */}
-              <button
-                onClick={toggleTheme}
-                className="p-1.5 rounded-md hover:bg-muted/50 transition-colors"
-                aria-label="Toggle theme"
-              >
-                {theme === "dark" ? (
-                  <Sun className="h-4 w-4 text-muted-foreground" />
-                ) : (
-                  <Moon className="h-4 w-4 text-muted-foreground" />
-                )}
-              </button>
             </div>
             
             {/* Mobile Menu Button */}
@@ -448,24 +416,6 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
               >
                 Help
               </Link>
-              
-              {/* Theme Toggle - Mobile */}
-              <button
-                onClick={toggleTheme}
-                className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors py-2"
-              >
-                {theme === "dark" ? (
-                  <>
-                    <Sun className="h-4 w-4" />
-                    <span>Light Mode</span>
-                  </>
-                ) : (
-                  <>
-                    <Moon className="h-4 w-4" />
-                    <span>Dark Mode</span>
-                  </>
-                )}
-              </button>
             </div>
           </div>
         )}
