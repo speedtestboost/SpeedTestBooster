@@ -65,7 +65,9 @@ Disallow: /admin/
 Disallow: /login/
 Disallow: /register/
 Disallow: /*.json$
-Disallow: /*.xml$
+
+# Allow sitemap explicitly (override any wildcards)
+Allow: /sitemap.xml
 
 # Allow Google, Bing, and other major search engines
 User-agent: Googlebot
