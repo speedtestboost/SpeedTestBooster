@@ -44,6 +44,18 @@ Allow: /providers/de/*
 Allow: /providers/au/*
 Allow: /providers/nl/*
 Allow: /providers/in/*
+Allow: /providers/fr/*
+Allow: /providers/it/*
+Allow: /providers/br/*
+Allow: /providers/mx/*
+Allow: /providers/ph/*
+Allow: /providers/id/*
+Allow: /providers/es/*
+Allow: /providers/za/*
+Allow: /providers/my/*
+Allow: /providers/ar/*
+Allow: /providers/ae/*
+Allow: /providers/sa/*
 
 # Block common crawler traps
 Disallow: /wp-admin/
