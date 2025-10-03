@@ -29,61 +29,80 @@ export default function SpeedGauge({
     return `Last test: ${date.toLocaleDateString()}`;
   };
 
-  // Calculate gauge percentage (0-100 scale)
-  const gaugePercentage = Math.min(currentSpeed / 100, 1) * 100;
-  
-  // SVG circle calculations
-  const radius = 40;
-  const circumference = 2 * Math.PI * radius;
-  const strokeDashOffset = circumference - (gaugePercentage / 100) * circumference;
+  // Format speed to show digits like an odometer
+  const displayValue = isTestRunning ? testProgress.toFixed(0) : currentSpeed.toFixed(1);
+  const digits = displayValue.split('');
 
   return (
     <div className="text-center mb-6">
-      <div className="relative w-52 h-52 lg:w-80 lg:h-80 mx-auto mb-6">
-        {/* Speed Gauge Circle */}
-        <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-          {/* Background circle */}
-          <circle
-            cx="50"
-            cy="50"
-            r={radius}
-            fill="none"
-            stroke="hsl(240, 3.7%, 15.9%)"
-            strokeWidth="6"
-          />
-          {/* Progress circle */}
-          <circle
-            cx="50"
-            cy="50"
-            r={radius}
-            fill="none"
-            stroke="url(#gradient)"
-            strokeWidth="6"
-            strokeLinecap="round"
-            strokeDasharray={circumference}
-            strokeDashoffset={strokeDashOffset}
-            className="transition-all duration-1000 ease-out glow-effect"
-          />
-          {/* Gradient definition */}
-          <defs>
-            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="hsl(262, 83%, 58%)" />
-              <stop offset="100%" stopColor="hsl(290, 76%, 60%)" />
-            </linearGradient>
-          </defs>
-        </svg>
-        {/* Speed display */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <div className="text-4xl lg:text-6xl font-bold gradient-text mb-1">
-              {isTestRunning ? testProgress.toFixed(0) : currentSpeed.toFixed(1)}
+      {/* Odometer-style display */}
+      <div className="relative mx-auto mb-6">
+        <Card className="card-hover bg-gradient-to-br from-background to-muted/30 border-2">
+          <CardContent className="p-8">
+            {/* Odometer Label */}
+            <div className="text-xs uppercase tracking-widest text-muted-foreground mb-4 font-semibold">
+              {isTestRunning ? "Test Progress" : "Download Speed"}
             </div>
-            <div className="text-sm lg:text-base text-muted-foreground font-medium">
-              {isTestRunning ? "%" : "Mbps"}
+            
+            {/* Odometer Digits Container */}
+            <div className="flex items-center justify-center gap-2 mb-4">
+              {digits.map((digit, index) => (
+                <div
+                  key={index}
+                  className={`
+                    ${digit === '.' ? 'w-3' : 'w-12 lg:w-16'}
+                    h-16 lg:h-20
+                    flex items-center justify-center
+                    ${digit === '.' 
+                      ? 'bg-transparent' 
+                      : 'bg-gradient-to-b from-card to-muted/50 border-2 border-primary/30 rounded-lg shadow-lg'
+                    }
+                    transition-all duration-500
+                  `}
+                >
+                  <span className={`
+                    font-mono font-bold
+                    ${digit === '.' 
+                      ? 'text-4xl lg:text-5xl gradient-text' 
+                      : 'text-4xl lg:text-5xl gradient-text'
+                    }
+                  `}>
+                    {digit}
+                  </span>
+                </div>
+              ))}
             </div>
-          </div>
-        </div>
+
+            {/* Unit Display */}
+            <div className="text-lg lg:text-xl text-muted-foreground font-semibold tracking-wider">
+              {isTestRunning ? "PERCENT" : "MBPS"}
+            </div>
+
+            {/* Speed Indicator Bars */}
+            <div className="mt-6 flex gap-1 justify-center">
+              {[...Array(10)].map((_, i) => {
+                const threshold = (i + 1) * 10;
+                const currentValue = isTestRunning ? testProgress : currentSpeed;
+                const isActive = currentValue >= threshold;
+                return (
+                  <div
+                    key={i}
+                    className={`
+                      w-2 h-8 rounded-full transition-all duration-300
+                      ${isActive 
+                        ? 'bg-gradient-to-t from-primary to-accent shadow-lg' 
+                        : 'bg-muted/30'
+                      }
+                    `}
+                  />
+                );
+              })}
+            </div>
+          </CardContent>
+        </Card>
       </div>
+
+      {/* Status Text */}
       <div className="text-sm lg:text-base text-foreground mb-2 font-medium">
         {isTestRunning ? testStatus : "Ready to test"}
       </div>
