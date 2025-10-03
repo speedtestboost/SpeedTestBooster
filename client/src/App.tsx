@@ -130,6 +130,8 @@ import WiFiSpeedOptimization from "@/pages/wifi-speed-optimization";
 import PingTest from "@/pages/ping-test";
 import LogoDemo from "@/pages/logo-demo";
 import NotFound from "@/pages/not-found";
+import SpanishSpeedTest from "@/pages/spanish-speed-test";
+import IndonesianSpeedTest from "@/pages/indonesian-speed-test";
 import { useEffect, useState } from "react";
 import { initGA } from "./lib/analytics";
 import { useAnalytics } from "./hooks/use-analytics";
@@ -163,6 +165,10 @@ function Router() {
       <Route path="/wifi-speed-optimization" component={WiFiSpeedOptimization} />
       <Route path="/ping-test" component={PingTest} />
       <Route path="/logo-demo" component={LogoDemo} />
+      
+      {/* Language-Specific Pages */}
+      <Route path="/es" component={SpanishSpeedTest} />
+      <Route path="/id" component={IndonesianSpeedTest} />
       
       {/* US Provider Routes */}
       <Route path="/providers/us/verizon" component={VerizonSpeedTest} />
