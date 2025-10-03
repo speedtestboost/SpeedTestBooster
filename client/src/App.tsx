@@ -130,9 +130,10 @@ import WiFiSpeedOptimization from "@/pages/wifi-speed-optimization";
 import PingTest from "@/pages/ping-test";
 import LogoDemo from "@/pages/logo-demo";
 import NotFound from "@/pages/not-found";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { initGA } from "./lib/analytics";
 import { useAnalytics } from "./hooks/use-analytics";
+import { Sun, Moon } from "lucide-react";
 
 function Router() {
   // Track page views when routes change
@@ -275,19 +276,56 @@ function Router() {
 }
 
 function App() {
-  // Initialize Google Analytics when app loads
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
+
+  // Initialize Google Analytics and theme when app loads
   useEffect(() => {
     if (!import.meta.env.VITE_GA_MEASUREMENT_ID) {
       console.warn('Missing Google Analytics key: VITE_GA_MEASUREMENT_ID. Add it to your environment variables for tracking.');
     } else {
       initGA();
     }
+
+    // Initialize theme from localStorage
+    const savedTheme = localStorage.getItem("theme") as "light" | "dark" || "dark";
+    setTheme(savedTheme);
+    if (savedTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
 
   return (
     <TooltipProvider>
       <Toaster />
       <Router />
+      
+      {/* Floating Theme Toggle Button */}
+      <button
+        onClick={toggleTheme}
+        className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200"
+        aria-label="Toggle theme"
+        data-testid="button-theme-toggle"
+      >
+        {theme === "dark" ? (
+          <Sun className="h-5 w-5" />
+        ) : (
+          <Moon className="h-5 w-5" />
+        )}
+      </button>
     </TooltipProvider>
   );
 }
