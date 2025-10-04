@@ -90,6 +90,34 @@ export default function SpeedTest() {
     }
     canonical.href = 'https://speedtestboost.com/';
     
+    // Hreflang tags for multilingual support
+    const existingHreflang = document.querySelectorAll('link[rel="alternate"][hreflang]');
+    existingHreflang.forEach(link => link.remove());
+
+    const hreflangEn = document.createElement('link');
+    hreflangEn.setAttribute('rel', 'alternate');
+    hreflangEn.setAttribute('hreflang', 'en');
+    hreflangEn.setAttribute('href', 'https://speedtestboost.com/');
+    document.head.appendChild(hreflangEn);
+
+    const hreflangEs = document.createElement('link');
+    hreflangEs.setAttribute('rel', 'alternate');
+    hreflangEs.setAttribute('hreflang', 'es');
+    hreflangEs.setAttribute('href', 'https://speedtestboost.com/es');
+    document.head.appendChild(hreflangEs);
+
+    const hreflangId = document.createElement('link');
+    hreflangId.setAttribute('rel', 'alternate');
+    hreflangId.setAttribute('hreflang', 'id');
+    hreflangId.setAttribute('href', 'https://speedtestboost.com/id');
+    document.head.appendChild(hreflangId);
+
+    const hreflangDefault = document.createElement('link');
+    hreflangDefault.setAttribute('rel', 'alternate');
+    hreflangDefault.setAttribute('hreflang', 'x-default');
+    hreflangDefault.setAttribute('href', 'https://speedtestboost.com/');
+    document.head.appendChild(hreflangDefault);
+    
     // Structured Data (JSON-LD)
     let structuredData = document.querySelector('script[type="application/ld+json"]');
     if (!structuredData) {
