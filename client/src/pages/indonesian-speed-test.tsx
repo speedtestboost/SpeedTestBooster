@@ -17,10 +17,40 @@ export default function IndonesianSpeedTest() {
       metaDescription.setAttribute('content', 'Tes kecepatan internet gratis untuk Indonesia. Ukur kecepatan download, upload dan ping untuk IndiHome, Biznet, First Media, MyRepublic. Hasil akurat real-time.');
     }
 
-    const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
-    if (canonical) {
-      canonical.setAttribute('href', 'https://speedtestboost.com/id');
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
     }
+    canonical.setAttribute('href', 'https://speedtestboost.com/id');
+
+    const existingHreflang = document.querySelectorAll('link[rel="alternate"][hreflang]');
+    existingHreflang.forEach(link => link.remove());
+
+    const hreflangEn = document.createElement('link');
+    hreflangEn.setAttribute('rel', 'alternate');
+    hreflangEn.setAttribute('hreflang', 'en');
+    hreflangEn.setAttribute('href', 'https://speedtestboost.com/');
+    document.head.appendChild(hreflangEn);
+
+    const hreflangEs = document.createElement('link');
+    hreflangEs.setAttribute('rel', 'alternate');
+    hreflangEs.setAttribute('hreflang', 'es');
+    hreflangEs.setAttribute('href', 'https://speedtestboost.com/es');
+    document.head.appendChild(hreflangEs);
+
+    const hreflangId = document.createElement('link');
+    hreflangId.setAttribute('rel', 'alternate');
+    hreflangId.setAttribute('hreflang', 'id');
+    hreflangId.setAttribute('href', 'https://speedtestboost.com/id');
+    document.head.appendChild(hreflangId);
+
+    const hreflangDefault = document.createElement('link');
+    hreflangDefault.setAttribute('rel', 'alternate');
+    hreflangDefault.setAttribute('hreflang', 'x-default');
+    hreflangDefault.setAttribute('href', 'https://speedtestboost.com/');
+    document.head.appendChild(hreflangDefault);
 
     const structuredData = {
       "@context": "https://schema.org",
@@ -44,6 +74,9 @@ export default function IndonesianSpeedTest() {
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
+      
+      const hreflangLinks = document.querySelectorAll('link[rel="alternate"][hreflang]');
+      hreflangLinks.forEach(link => link.remove());
     };
   }, []);
 
