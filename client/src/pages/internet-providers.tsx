@@ -243,6 +243,15 @@ export default function InternetProviders() {
       metaDescription.setAttribute('content', 'Compare internet service providers worldwide. Test speeds for major ISPs including Verizon, BT, Bell, Telstra, Deutsche Telekom, Jio Fiber, Orange, Vivo, NTT, and KT. Find the best broadband plans in your country.');
     }
 
+    // Add canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.href = 'https://speedtestboost.com/internet-providers';
+
     // Add JSON-LD structured data
     const structuredData = {
       "@context": "https://schema.org",

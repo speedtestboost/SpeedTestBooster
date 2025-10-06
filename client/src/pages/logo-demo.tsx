@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -44,6 +44,28 @@ const logoOptions = [
 
 export default function LogoDemo() {
   const [selectedLogo, setSelectedLogo] = useState<number | null>(null);
+
+  useEffect(() => {
+    document.title = "Logo Options - Speed Test & Boost";
+    
+    // Add canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.href = 'https://speedtestboost.com/logo-demo';
+    
+    // Add noindex meta tag since this is an internal demo page
+    let robotsMeta = document.querySelector('meta[name="robots"]') as HTMLMetaElement;
+    if (!robotsMeta) {
+      robotsMeta = document.createElement('meta');
+      robotsMeta.name = 'robots';
+      document.head.appendChild(robotsMeta);
+    }
+    robotsMeta.content = 'noindex, nofollow';
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
