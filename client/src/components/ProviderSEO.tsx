@@ -22,11 +22,14 @@ export function ProviderSEO({ providerSlug }: ProviderSEOProps) {
       metaDescription.setAttribute('content', config.metaTemplate);
     }
 
-    // Update canonical URL - preserves existing pattern
-    const canonicalLink = document.querySelector('link[rel="canonical"]#canonical-tag');
-    if (canonicalLink) {
-      canonicalLink.setAttribute('href', `https://speedtestboost.com/providers/${providerSlug.includes('/') ? providerSlug : `us/${providerSlug}`}`);
+    // Update canonical URL - create if doesn't exist
+    let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalLink);
     }
+    canonicalLink.setAttribute('href', `https://speedtestboost.com/providers/${providerSlug.includes('/') ? providerSlug : `us/${providerSlug}`}`);
 
     // Create Open Graph meta tags
     const createOrUpdateMetaTag = (property: string, content: string) => {
