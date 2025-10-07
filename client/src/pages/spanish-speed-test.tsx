@@ -74,9 +74,6 @@ export default function SpanishSpeedTest() {
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
-      
-      const hreflangLinks = document.querySelectorAll('link[rel="alternate"][hreflang]');
-      hreflangLinks.forEach(link => link.remove());
     };
   }, []);
 
