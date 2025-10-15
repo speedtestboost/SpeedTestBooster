@@ -124,13 +124,31 @@ export default function ProviderFooter() {
                 </Link>
               </li>
               <li>
-                <span className="text-muted-foreground">About Speed Tests</span>
+                <Link 
+                  href="/help" 
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  data-testid="link-footer-help"
+                >
+                  Help & FAQ
+                </Link>
               </li>
               <li>
-                <span className="text-muted-foreground">Network Diagnostics</span>
+                <Link 
+                  href="/internet-speed-requirements" 
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  data-testid="link-footer-speed-requirements"
+                >
+                  Speed Requirements
+                </Link>
               </li>
               <li>
-                <span className="text-muted-foreground">Troubleshooting</span>
+                <Link 
+                  href="/wifi-analyzer" 
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  data-testid="link-footer-wifi-analyzer"
+                >
+                  WiFi Analyzer
+                </Link>
               </li>
             </ul>
           </div>
