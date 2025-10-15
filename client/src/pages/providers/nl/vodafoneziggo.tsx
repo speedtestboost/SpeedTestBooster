@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Zap, Wifi } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
+import RelatedProviders from "@/components/RelatedProviders";
 
 export default function VodafoneZiggoSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
@@ -166,6 +167,8 @@ export default function VodafoneZiggoSpeedTest() {
               </div>
             </CardContent>
           </Card>
+
+          <RelatedProviders currentCountryCode="nl" currentProviderSlug="vodafoneziggo" />
         </div>
       </main>
 

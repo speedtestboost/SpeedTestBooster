@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Zap, Wifi, Network, Router, Signal } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
+import RelatedProviders from "@/components/RelatedProviders";
 import { Link } from "wouter";
 
 export default function AirtelBroadbandSpeedTest() {
@@ -324,6 +325,7 @@ export default function AirtelBroadbandSpeedTest() {
               </div>
             </CardContent>
           </Card>
+          <RelatedProviders currentCountryCode="in" currentProviderSlug="airtel-broadband" />
         </div>
       </main>
 

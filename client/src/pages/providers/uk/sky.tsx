@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Zap, Wifi } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
+import RelatedProviders from "@/components/RelatedProviders";
 
 export default function SkySpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
@@ -134,6 +135,8 @@ export default function SkySpeedTest() {
               </div>
             </CardContent>
           </Card>
+
+          <RelatedProviders currentCountryCode="uk" currentProviderSlug="sky" />
         </div>
       </main>
 

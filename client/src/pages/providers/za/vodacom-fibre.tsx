@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Zap, Wifi } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
+import RelatedProviders from "@/components/RelatedProviders";
 import ProviderFooter from "@/components/ProviderFooter";
 
 export default function VodacomFibreSpeedTest() {
@@ -104,6 +105,7 @@ export default function VodacomFibreSpeedTest() {
               </div>
             </CardContent>
           </Card>
+          <RelatedProviders currentCountryCode="za" currentProviderSlug="vodacom-fibre" />
         </div>
       </main>
 

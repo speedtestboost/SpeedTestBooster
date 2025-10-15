@@ -6,6 +6,7 @@ import { Zap, Wifi } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
 import ProviderSEO from "@/components/ProviderSEO";
 import { providerKeywords } from "@/seo/providerKeywords";
+import RelatedProviders from "@/components/RelatedProviders";
 
 export default function VerizonSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
@@ -141,6 +142,8 @@ export default function VerizonSpeedTest() {
               </div>
             </CardContent>
           </Card>
+
+          <RelatedProviders currentCountryCode="us" currentProviderSlug="verizon" />
         </div>
       </main>
 

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Zap, Wifi, Network, Router, Signal } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
 import { Link } from "wouter";
+import RelatedProviders from "@/components/RelatedProviders";
 
 export default function SpectrumSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
@@ -340,6 +341,8 @@ export default function SpectrumSpeedTest() {
               </div>
             </CardContent>
           </Card>
+
+          <RelatedProviders currentCountryCode="us" currentProviderSlug="spectrum" />
         </div>
       </main>
 
