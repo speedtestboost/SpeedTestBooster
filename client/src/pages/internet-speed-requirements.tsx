@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
+import GenericFooter from "@/components/GenericFooter";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -530,6 +531,8 @@ export default function InternetSpeedRequirements() {
           </div>
         </div>
       </main>
+
+      <GenericFooter />
     </div>
   );
 }

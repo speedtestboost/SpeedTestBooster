@@ -5,6 +5,7 @@ import { CheckCircle, Wifi, Globe, Shield, Zap, Users } from "lucide-react";
 import { Link } from "wouter";
 import { useEffect } from "react";
 import Header from "@/components/Header";
+import GenericFooter from "@/components/GenericFooter";
 
 export default function About() {
   useEffect(() => {
@@ -310,6 +311,8 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      <GenericFooter />
     </div>
   );
 }

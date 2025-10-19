@@ -27,6 +27,7 @@ import {
 import SpeedTestModal from "@/components/SpeedTestModal";
 import Header from "@/components/Header";
 import { Link } from "wouter";
+import GenericFooter from "@/components/GenericFooter";
 import { trackEvent, trackEngagement } from "@/lib/analytics";
 
 interface NetworkInfo {
@@ -689,6 +690,8 @@ export default function WiFiAnalyzer() {
           onClose={() => setShowSpeedTest(false)} 
         />
       )}
+
+      <GenericFooter />
       </div>
     </div>
   );

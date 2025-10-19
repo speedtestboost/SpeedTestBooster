@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/Header";
+import GenericFooter from "@/components/GenericFooter";
 import { trackEvent } from "@/lib/analytics";
 import { Zap, Clock, Gauge, CheckCircle, XCircle, Wifi, Globe, Router, Smartphone } from "lucide-react";
 import { Link } from "wouter";
@@ -825,6 +826,8 @@ export default function PingTest() {
           </div>
         </div>
       </footer>
+
+      <GenericFooter />
     </div>
   );
 }

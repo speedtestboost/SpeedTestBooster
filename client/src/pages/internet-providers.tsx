@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import Header from "@/components/Header";
+import GenericFooter from "@/components/GenericFooter";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -474,6 +475,8 @@ export default function InternetProviders() {
       {showSpeedTest && (
         <SpeedTestModal onClose={() => setShowSpeedTest(false)} />
       )}
+
+      <GenericFooter />
     </div>
   );
 }

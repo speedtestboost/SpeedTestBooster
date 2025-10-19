@@ -8,6 +8,7 @@ import { Progress } from "@/components/ui/progress";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Header from "@/components/Header";
+import GenericFooter from "@/components/GenericFooter";
 import { Brain, Zap, Clock, Users, Play, CheckCircle, AlertCircle, Info, Code2, Mic, Video } from "lucide-react";
 
 interface SpeedTestResult {
@@ -638,6 +639,8 @@ export default function AISpeedTest() {
           </div>
         </div>
       </footer>
+
+      <GenericFooter />
     </div>
   );
 }

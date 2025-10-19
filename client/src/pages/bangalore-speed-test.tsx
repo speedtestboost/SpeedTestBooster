@@ -11,6 +11,7 @@ import TestHistory from "@/components/TestHistory";
 import NetworkInfo from "@/components/NetworkInfo";
 import OptimizationModal from "@/components/OptimizationModal";
 import Header from "@/components/Header";
+import GenericFooter from "@/components/GenericFooter";
 import { performSpeedTest, type SpeedTestResult } from "@/lib/speedTest";
 import { Play, Gauge, Wifi } from "lucide-react";
 import { Link } from "wouter";
@@ -559,6 +560,8 @@ export default function BangaloreSpeedTest() {
         isOpen={showOptimization}
         onClose={() => setShowOptimization(false)}
       />
+
+      <GenericFooter />
     </div>
   );
 }

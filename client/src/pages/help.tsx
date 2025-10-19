@@ -16,6 +16,7 @@ import {
 import { Link } from "wouter";
 import { useEffect } from "react";
 import Header from "@/components/Header";
+import GenericFooter from "@/components/GenericFooter";
 
 export default function Help() {
   useEffect(() => {
@@ -326,6 +327,8 @@ export default function Help() {
           </div>
         </div>
       </section>
+
+      <GenericFooter />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import Header from "@/components/Header";
+import GenericFooter from "@/components/GenericFooter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Zap, Download, Wifi, Clock, Monitor, Smartphone, Tv } from "lucide-react";
@@ -527,6 +528,8 @@ export default function DownloadSpeedGuide() {
       {showSpeedTest && (
         <SpeedTestModal onClose={() => setShowSpeedTest(false)} />
       )}
+
+      <GenericFooter />
     </div>
   );
 }

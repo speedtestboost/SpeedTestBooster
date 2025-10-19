@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
+import GenericFooter from "@/components/GenericFooter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Zap, Wifi, Globe } from "lucide-react";
@@ -184,6 +185,8 @@ export default function IndonesianSpeedTest() {
       )}
       
       <ProviderFooter />
+
+      <GenericFooter />
     </div>
   );
 }
