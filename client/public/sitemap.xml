@@ -75,6 +75,20 @@
     <priority>0.95</priority>
   </url>
   
+  <url>
+    <loc>https://speedtestboost.com/pt-br</loc>
+    <lastmod>2025-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  
+  <url>
+    <loc>https://speedtestboost.com/fr</loc>
+    <lastmod>2025-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  
   <!-- Country-specific Speed Test Pages -->
   <url>
     <loc>https://speedtestboost.com/us-speed-test</loc>

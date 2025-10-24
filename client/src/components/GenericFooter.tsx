@@ -246,6 +246,20 @@ export default function GenericFooter() {
                 >
                   🇮🇩 Indonesia
                 </Link>
+                <Link 
+                  href="/pt-br" 
+                  className="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors"
+                  data-testid="link-footer-lang-pt-br"
+                >
+                  🇧🇷 Português
+                </Link>
+                <Link 
+                  href="/fr" 
+                  className="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors"
+                  data-testid="link-footer-lang-fr"
+                >
+                  🇫🇷 Français
+                </Link>
               </div>
             </CardContent>
           </Card>

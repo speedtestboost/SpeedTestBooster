@@ -132,6 +132,8 @@ import LogoDemo from "@/pages/logo-demo";
 import NotFound from "@/pages/not-found";
 import SpanishSpeedTest from "@/pages/spanish-speed-test";
 import IndonesianSpeedTest from "@/pages/indonesian-speed-test";
+import PortugueseSpeedTest from "@/pages/portuguese-speed-test";
+import FrenchSpeedTest from "@/pages/french-speed-test";
 import { useEffect, useState } from "react";
 import { initGA } from "./lib/analytics";
 import { useAnalytics } from "./hooks/use-analytics";
@@ -169,6 +171,8 @@ function Router() {
       {/* Language-Specific Pages */}
       <Route path="/es" component={SpanishSpeedTest} />
       <Route path="/id" component={IndonesianSpeedTest} />
+      <Route path="/pt-br" component={PortugueseSpeedTest} />
+      <Route path="/fr" component={FrenchSpeedTest} />
       
       {/* US Provider Routes */}
       <Route path="/providers/us/verizon" component={VerizonSpeedTest} />
