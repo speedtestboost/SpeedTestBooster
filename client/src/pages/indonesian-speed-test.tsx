@@ -5,7 +5,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Zap, Wifi, Globe } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
-import ProviderFooter from "@/components/ProviderFooter";
 import { Link } from "wouter";
 
 export default function IndonesianSpeedTest() {
@@ -195,8 +194,6 @@ export default function IndonesianSpeedTest() {
       {showSpeedTest && (
         <SpeedTestModal onClose={() => setShowSpeedTest(false)} />
       )}
-      
-      <ProviderFooter />
 
       <GenericFooter />
     </div>

@@ -5,7 +5,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Zap, Wifi, Globe } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
-import ProviderFooter from "@/components/ProviderFooter";
 import { Link } from "wouter";
 
 export default function FrenchSpeedTest() {
@@ -220,8 +219,6 @@ export default function FrenchSpeedTest() {
               </div>
             </CardContent>
           </Card>
-
-          <ProviderFooter />
         </div>
       </main>
 
