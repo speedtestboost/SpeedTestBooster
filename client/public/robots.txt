@@ -35,6 +35,12 @@ Allow: /uk-speed-test
 Allow: /au-speed-test
 Allow: /ca-speed-test
 
+# Allow multilingual pages
+Allow: /es
+Allow: /id
+Allow: /pt-br
+Allow: /fr
+
 # Allow internet providers pages
 Allow: /internet-providers
 Allow: /providers/us/*

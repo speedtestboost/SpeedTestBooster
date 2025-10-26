@@ -81,6 +81,15 @@ export default function SpeedTest() {
       twitterTag.content = tag.content;
     });
     
+    // Bing-specific content-language meta tag
+    let contentLanguage = document.querySelector('meta[http-equiv="content-language"]');
+    if (!contentLanguage) {
+      contentLanguage = document.createElement('meta');
+      contentLanguage.setAttribute('http-equiv', 'content-language');
+      document.head.appendChild(contentLanguage);
+    }
+    contentLanguage.setAttribute('content', 'en-US');
+    
     // Canonical URL for homepage
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
@@ -111,6 +120,18 @@ export default function SpeedTest() {
     hreflangId.setAttribute('hreflang', 'id');
     hreflangId.setAttribute('href', 'https://speedtestboost.com/id');
     document.head.appendChild(hreflangId);
+
+    const hreflangPtBr = document.createElement('link');
+    hreflangPtBr.setAttribute('rel', 'alternate');
+    hreflangPtBr.setAttribute('hreflang', 'pt-BR');
+    hreflangPtBr.setAttribute('href', 'https://speedtestboost.com/pt-br');
+    document.head.appendChild(hreflangPtBr);
+
+    const hreflangFr = document.createElement('link');
+    hreflangFr.setAttribute('rel', 'alternate');
+    hreflangFr.setAttribute('hreflang', 'fr');
+    hreflangFr.setAttribute('href', 'https://speedtestboost.com/fr');
+    document.head.appendChild(hreflangFr);
 
     const hreflangDefault = document.createElement('link');
     hreflangDefault.setAttribute('rel', 'alternate');

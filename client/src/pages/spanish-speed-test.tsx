@@ -17,6 +17,14 @@ export default function SpanishSpeedTest() {
       metaDescription.setAttribute('content', 'Test de velocidad de internet gratis en español. Mide tu velocidad de descarga, subida y ping para proveedores en España, México, Argentina y América Latina. Resultados precisos en tiempo real.');
     }
 
+    let contentLanguage = document.querySelector('meta[http-equiv="content-language"]');
+    if (!contentLanguage) {
+      contentLanguage = document.createElement('meta');
+      contentLanguage.setAttribute('http-equiv', 'content-language');
+      document.head.appendChild(contentLanguage);
+    }
+    contentLanguage.setAttribute('content', 'es');
+
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');

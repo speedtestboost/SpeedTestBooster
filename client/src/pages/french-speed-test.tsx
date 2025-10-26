@@ -17,6 +17,14 @@ export default function FrenchSpeedTest() {
       metaDescription.setAttribute('content', 'Test de vitesse internet gratuit en français. Mesurez votre vitesse de téléchargement, upload et ping pour les fournisseurs au Canada et en France. Résultats précis en temps réel pour Bell, Rogers, Bouygues et plus.');
     }
 
+    let contentLanguage = document.querySelector('meta[http-equiv="content-language"]');
+    if (!contentLanguage) {
+      contentLanguage = document.createElement('meta');
+      contentLanguage.setAttribute('http-equiv', 'content-language');
+      document.head.appendChild(contentLanguage);
+    }
+    contentLanguage.setAttribute('content', 'fr');
+
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');

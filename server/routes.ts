@@ -205,6 +205,53 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json({ timestamp: Date.now() });
   });
 
+  // IndexNow endpoint for Bing real-time indexing
+  app.post("/api/indexnow", async (req, res) => {
+    try {
+      const { urls } = req.body;
+      
+      if (!urls || !Array.isArray(urls) || urls.length === 0) {
+        return res.status(400).json({ error: "URLs array is required" });
+      }
+
+      const indexNowPayload = {
+        host: "speedtestboost.com",
+        key: "a1b2c3d4e5f6",
+        keyLocation: "https://speedtestboost.com/a1b2c3d4e5f6.txt",
+        urlList: urls.map(url => {
+          // If URL is already absolute, use it as-is; otherwise prepend domain
+          if (url.startsWith('http://') || url.startsWith('https://')) {
+            return url;
+          }
+          return `https://speedtestboost.com${url.startsWith('/') ? url : '/' + url}`;
+        })
+      };
+
+      // Submit to Bing IndexNow API
+      const response = await fetch("https://api.indexnow.org/indexnow", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(indexNowPayload)
+      });
+
+      if (response.ok || response.status === 202) {
+        console.log("IndexNow submission successful for URLs:", urls);
+        res.json({ success: true, message: "URLs submitted to IndexNow", urls });
+      } else {
+        console.error("IndexNow submission failed:", response.status, response.statusText);
+        res.status(response.status).json({ 
+          error: "IndexNow submission failed", 
+          status: response.status 
+        });
+      }
+    } catch (error) {
+      console.error("IndexNow error:", error);
+      res.status(500).json({ error: "Failed to submit to IndexNow" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

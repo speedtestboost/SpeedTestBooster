@@ -17,6 +17,14 @@ export default function IndonesianSpeedTest() {
       metaDescription.setAttribute('content', 'Tes kecepatan internet gratis untuk Indonesia. Ukur kecepatan download, upload dan ping untuk IndiHome, Biznet, First Media, MyRepublic. Hasil akurat real-time.');
     }
 
+    let contentLanguage = document.querySelector('meta[http-equiv="content-language"]');
+    if (!contentLanguage) {
+      contentLanguage = document.createElement('meta');
+      contentLanguage.setAttribute('http-equiv', 'content-language');
+      document.head.appendChild(contentLanguage);
+    }
+    contentLanguage.setAttribute('content', 'id');
+
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');

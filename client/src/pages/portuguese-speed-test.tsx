@@ -17,6 +17,14 @@ export default function PortugueseSpeedTest() {
       metaDescription.setAttribute('content', 'Teste de velocidade da internet grátis em português. Meça sua velocidade de download, upload e ping para provedores no Brasil. Resultados precisos em tempo real para Vivo, Claro, TIM, Oi e mais.');
     }
 
+    let contentLanguage = document.querySelector('meta[http-equiv="content-language"]');
+    if (!contentLanguage) {
+      contentLanguage = document.createElement('meta');
+      contentLanguage.setAttribute('http-equiv', 'content-language');
+      document.head.appendChild(contentLanguage);
+    }
+    contentLanguage.setAttribute('content', 'pt-BR');
+
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');
