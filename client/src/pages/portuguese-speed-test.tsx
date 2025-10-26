@@ -60,6 +60,12 @@ export default function PortugueseSpeedTest() {
     hreflangPtBr.setAttribute('href', 'https://speedtestboost.com/pt-br');
     document.head.appendChild(hreflangPtBr);
 
+    const hreflangFr = document.createElement('link');
+    hreflangFr.setAttribute('rel', 'alternate');
+    hreflangFr.setAttribute('hreflang', 'fr');
+    hreflangFr.setAttribute('href', 'https://speedtestboost.com/fr');
+    document.head.appendChild(hreflangFr);
+
     const hreflangDefault = document.createElement('link');
     hreflangDefault.setAttribute('rel', 'alternate');
     hreflangDefault.setAttribute('hreflang', 'x-default');
