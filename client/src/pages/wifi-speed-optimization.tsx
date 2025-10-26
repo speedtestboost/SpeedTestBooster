@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Zap, Wifi, Settings, Shield, Gauge, Router, Smartphone, CheckCircle, AlertCircle } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 interface OptimizationStep {
   id: string;
@@ -66,14 +67,13 @@ export default function WiFiSpeedOptimization() {
     }
 
     // Update canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
+    let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      canonical.setAttribute('id', 'canonical-tag');
+      canonical.rel = 'canonical';
       document.head.appendChild(canonical);
     }
-    canonical.setAttribute('href', 'https://speedtestboost.com/wifi-speed-optimization');
+    canonical.href = 'https://speedtestboost.com/wifi-speed-optimization';
 
     // Open Graph and Twitter meta tags
     const createOrUpdateMetaTag = (property: string, content: string) => {
@@ -280,7 +280,16 @@ export default function WiFiSpeedOptimization() {
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       <Header currentPath="/wifi-speed-optimization" />
       
+      
+      
       <main className="pt-24 pb-12">
+        <Breadcrumbs 
+          items={[
+            { label: "Tools", href: "/" },
+            { label: "Wifi Speed Optimization", href: "/wifi-speed-optimization" }
+          ]} 
+        />
+
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
           {/* Hero Section */}
           <div className="text-center mb-12">

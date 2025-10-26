@@ -29,6 +29,7 @@ import Header from "@/components/Header";
 import { Link } from "wouter";
 import GenericFooter from "@/components/GenericFooter";
 import { trackEvent, trackEngagement } from "@/lib/analytics";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 interface NetworkInfo {
   ssid: string;

@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { trackEvent } from "@/lib/analytics";
 import { 
+import Breadcrumbs from "@/components/Breadcrumbs";
   Wifi, 
   Gamepad2, 
   Video, 
@@ -143,10 +144,13 @@ export default function InternetSpeedRequirements() {
     });
     
     // Update canonical tag
-    const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
-    if (canonical) {
-      canonical.setAttribute('href', 'https://speedtestboost.com/internet-speed-requirements');
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
     }
+    canonical.href = 'https://speedtestboost.com/internet-speed-requirements';
     
     // Structured Data (JSON-LD)
     let structuredData = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
@@ -238,7 +242,16 @@ export default function InternetSpeedRequirements() {
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       <Header currentPath="/internet-speed-requirements" />
       
+      
+      
       <main className="pt-24 pb-12">
+        <Breadcrumbs 
+          items={[
+            { label: "Tools", href: "/" },
+            { label: "Internet Speed Requirements", href: "/internet-speed-requirements" }
+          ]} 
+        />
+
         <div className="max-w-6xl mx-auto px-4 lg:px-8">
           {/* Hero Section */}
           <div className="text-center mb-12">

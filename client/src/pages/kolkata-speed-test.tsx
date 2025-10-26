@@ -12,6 +12,7 @@ import NetworkInfo from "@/components/NetworkInfo";
 import OptimizationModal from "@/components/OptimizationModal";
 import Header from "@/components/Header";
 import GenericFooter from "@/components/GenericFooter";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { performSpeedTest, type SpeedTestResult } from "@/lib/speedTest";
 import { Play, Gauge, Wifi } from "lucide-react";
 import { Link } from "wouter";
@@ -81,10 +82,13 @@ export default function KolkataSpeedTest() {
     });
     
     // Update canonical tag
-    const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
-    if (canonical) {
-      canonical.setAttribute('href', 'https://speedtestboost.com/kolkata-speed-test');
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
     }
+    canonical.href = 'https://speedtestboost.com/kolkata-speed-test';
     
     // Structured Data (JSON-LD)
     let structuredData = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;

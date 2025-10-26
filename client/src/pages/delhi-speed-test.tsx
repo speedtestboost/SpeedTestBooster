@@ -12,6 +12,7 @@ import NetworkInfo from "@/components/NetworkInfo";
 import OptimizationModal from "@/components/OptimizationModal";
 import Header from "@/components/Header";
 import GenericFooter from "@/components/GenericFooter";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 import { performSpeedTest, type SpeedTestResult } from "@/lib/speedTest";
 import { Play, Gauge, Wifi } from "lucide-react";
@@ -257,7 +258,6 @@ export default function DelhiSpeedTest() {
       </section>
 
       {/* Main Content - Same layout as Mumbai */}
-      <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-6 space-y-6">
         <div className="hidden lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
           <div className="space-y-6">
             <Card className="card-hover">

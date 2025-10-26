@@ -8,6 +8,7 @@ import GenericFooter from "@/components/GenericFooter";
 import { trackEvent } from "@/lib/analytics";
 import { Zap, Clock, Gauge, CheckCircle, XCircle, Wifi, Globe, Router, Smartphone } from "lucide-react";
 import { Link } from "wouter";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export default function PingTest() {
   const [isTestRunning, setIsTestRunning] = useState(false);
@@ -250,7 +251,16 @@ export default function PingTest() {
     <div className="min-h-screen bg-background">
       <Header currentPath="/ping-test" />
 
+      
+      
       <main className="max-w-4xl mx-auto px-4 lg:px-8 py-8 space-y-8">
+        <Breadcrumbs 
+          items={[
+            { label: "Tools", href: "/" },
+            { label: "Ping Test", href: "/ping-test" }
+          ]} 
+        />
+
         {/* Hero Section */}
         <div className="text-center space-y-4">
           <h1 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">

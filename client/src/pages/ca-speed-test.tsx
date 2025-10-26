@@ -12,6 +12,7 @@ import NetworkInfo from "@/components/NetworkInfo";
 import OptimizationModal from "@/components/OptimizationModal";
 import Header from "@/components/Header";
 import GenericFooter from "@/components/GenericFooter";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 import { performSpeedTest, type SpeedTestResult } from "@/lib/speedTest";
 import { Play, Gauge, Wifi } from "lucide-react";
@@ -196,8 +197,15 @@ export default function CASpeedTest() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
       <Header currentPath="/ca-speed-test" />
+      
+      <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 pt-24 pb-6 space-y-6">
+        <Breadcrumbs 
+          items={[
+            { label: "Country Tests", href: "/" },
+            { label: "Ca Speed Test", href: "/ca-speed-test" }
+          ]} 
+        />
 
-      <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-6 space-y-6">
         {/* Desktop Layout */}
         <div className="hidden lg:grid lg:grid-cols-3 lg:gap-8">
           {/* Left Column */}
