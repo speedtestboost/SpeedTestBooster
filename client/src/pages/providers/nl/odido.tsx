@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Zap, Wifi } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
 import RelatedProviders from "@/components/RelatedProviders";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import GenericFooter from "@/components/GenericFooter";
 
 export default function OdidoSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
@@ -47,10 +49,13 @@ export default function OdidoSpeedTest() {
     });
     
     // Update canonical tag
-    const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
-    if (canonical) {
-      canonical.setAttribute('href', 'https://speedtestboost.com/providers/nl/odido');
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
     }
+    canonical.href = 'https://speedtestboost.com/providers/nl/odido';
     
     // Structured Data
     let structuredData = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
@@ -96,6 +101,14 @@ export default function OdidoSpeedTest() {
       
       <main className="pt-24 pb-12">
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
+          <Breadcrumbs 
+            items={[
+              { label: "Internet Providers", href: "/internet-providers" },
+              { label: "Netherlands", href: "/internet-providers" },
+              { label: "Odido", href: "/providers/nl/odido" }
+            ]} 
+          />
+          
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-6">
               <div className="p-4 bg-pink-500/10 rounded-full">

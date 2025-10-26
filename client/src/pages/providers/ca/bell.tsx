@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Zap, Wifi } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
 import RelatedProviders from "@/components/RelatedProviders";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import GenericFooter from "@/components/GenericFooter";
 
 export default function BellSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
@@ -17,10 +19,13 @@ export default function BellSpeedTest() {
     }
 
     // Update canonical tag
-    const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
-    if (canonical) {
-      canonical.setAttribute('href', 'https://speedtestboost.com/providers/ca/bell');
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
     }
+    canonical.href = 'https://speedtestboost.com/providers/ca/bell';
 
     const structuredData = {
       "@context": "https://schema.org",
@@ -54,6 +59,14 @@ export default function BellSpeedTest() {
       
       <main className="pt-24 pb-12">
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
+          <Breadcrumbs 
+            items={[
+              { label: "Internet Providers", href: "/internet-providers" },
+              { label: "Canada", href: "/internet-providers" },
+              { label: "Bell", href: "/providers/ca/bell" }
+            ]} 
+          />
+          
           {/* Hero Section with Speed Test */}
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-6">

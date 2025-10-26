@@ -7,6 +7,8 @@ import SpeedTestModal from "@/components/SpeedTestModal";
 import ProviderSEO from "@/components/ProviderSEO";
 import { providerKeywords } from "@/seo/providerKeywords";
 import RelatedProviders from "@/components/RelatedProviders";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import GenericFooter from "@/components/GenericFooter";
 
 export default function VerizonSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
@@ -19,6 +21,14 @@ export default function VerizonSpeedTest() {
       
       <main className="pt-24 pb-12">
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
+          <Breadcrumbs 
+            items={[
+              { label: "Internet Providers", href: "/internet-providers" },
+              { label: "United States", href: "/internet-providers" },
+              { label: "Verizon", href: "/providers/us/verizon" }
+            ]} 
+          />
+          
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-6">
               <div className="p-4 bg-red-500/10 rounded-full">

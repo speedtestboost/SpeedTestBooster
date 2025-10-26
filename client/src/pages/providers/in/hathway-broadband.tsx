@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Zap, Wifi, Network, Router, Signal } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
 import RelatedProviders from "@/components/RelatedProviders";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import GenericFooter from "@/components/GenericFooter";
 import { Link } from "wouter";
 
 export default function HathwayBroadbandSpeedTest() {
@@ -65,10 +67,13 @@ export default function HathwayBroadbandSpeedTest() {
     });
 
     // Update canonical tag
-    const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
-    if (canonical) {
-      canonical.setAttribute('href', 'https://speedtestboost.com/providers/in/hathway-broadband');
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
     }
+    canonical.href = 'https://speedtestboost.com/providers/in/hathway-broadband';
 
     const structuredData = {
       "@context": "https://schema.org",
@@ -142,6 +147,14 @@ export default function HathwayBroadbandSpeedTest() {
       
       <main className="pt-24 pb-12">
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
+          <Breadcrumbs 
+            items={[
+              { label: "Internet Providers", href: "/internet-providers" },
+              { label: "India", href: "/internet-providers" },
+              { label: "Hathway Broadband", href: "/providers/in/hathway-broadband" }
+            ]} 
+          />
+          
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-6">
               <div className="p-4 bg-orange-500/10 rounded-full">

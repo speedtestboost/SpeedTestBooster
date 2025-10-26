@@ -5,7 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Zap, Wifi } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
 import RelatedProviders from "@/components/RelatedProviders";
-import ProviderFooter from "@/components/ProviderFooter";
+import GenericFooter from "@/components/GenericFooter";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import GenericFooter from "@/components/GenericFooter";
 
 export default function STCSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
@@ -17,10 +19,13 @@ export default function STCSpeedTest() {
       metaDescription.setAttribute('content', 'Test STC fiber & 5G internet speed instantly - Free speed checker for Saudi Arabia. Accurate performance results for download, upload & latency.');
     }
 
-    const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
-    if (canonical) {
-      canonical.setAttribute('href', 'https://speedtestboost.com/providers/sa/stc');
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
     }
+    canonical.href = 'https://speedtestboost.com/providers/sa/stc';
 
     const structuredData = {
       "@context": "https://schema.org",
@@ -54,6 +59,14 @@ export default function STCSpeedTest() {
       
       <main className="pt-24 pb-12">
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
+          <Breadcrumbs 
+            items={[
+              { label: "Internet Providers", href: "/internet-providers" },
+              { label: "Saudi Arabia", href: "/internet-providers" },
+              { label: "Stc", href: "/providers/sa/stc" }
+            ]} 
+          />
+          
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-6">
               <div className="p-4 bg-purple-500/10 rounded-full">
@@ -113,7 +126,7 @@ export default function STCSpeedTest() {
         <SpeedTestModal onClose={() => setShowSpeedTest(false)} />
       )}
       
-      <ProviderFooter />
+      <GenericFooter />
     </div>
   );
 }

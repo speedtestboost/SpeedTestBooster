@@ -5,7 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Zap, Wifi } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
 import RelatedProviders from "@/components/RelatedProviders";
-import ProviderFooter from "@/components/ProviderFooter";
+import GenericFooter from "@/components/GenericFooter";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import GenericFooter from "@/components/GenericFooter";
 
 export default function TotalplaySpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
@@ -17,10 +19,13 @@ export default function TotalplaySpeedTest() {
       metaDescription.setAttribute('content', 'Test Totalplay gigabit fiber internet speed instantly - Free speed test for Mexico. Accurate download/upload speeds & low latency results now.');
     }
 
-    const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
-    if (canonical) {
-      canonical.setAttribute('href', 'https://speedtestboost.com/providers/mx/totalplay');
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
     }
+    canonical.href = 'https://speedtestboost.com/providers/mx/totalplay';
 
     const structuredData = {
       "@context": "https://schema.org",
@@ -54,6 +59,14 @@ export default function TotalplaySpeedTest() {
       
       <main className="pt-24 pb-12">
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
+          <Breadcrumbs 
+            items={[
+              { label: "Internet Providers", href: "/internet-providers" },
+              { label: "Mexico", href: "/internet-providers" },
+              { label: "Totalplay", href: "/providers/mx/totalplay" }
+            ]} 
+          />
+          
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-6">
               <div className="p-4 bg-purple-500/10 rounded-full">
@@ -113,7 +126,7 @@ export default function TotalplaySpeedTest() {
         <SpeedTestModal onClose={() => setShowSpeedTest(false)} />
       )}
       
-      <ProviderFooter />
+      <GenericFooter />
     </div>
   );
 }

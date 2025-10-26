@@ -9,6 +9,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Header from "@/components/Header";
 import GenericFooter from "@/components/GenericFooter";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { Brain, Zap, Clock, Users, Play, CheckCircle, AlertCircle, Info, Code2, Mic, Video } from "lucide-react";
 
 interface SpeedTestResult {
@@ -107,10 +108,13 @@ export default function AISpeedTest() {
 
   // Set canonical URL and SEO
   useEffect(() => {
-    const canonicalTag = document.getElementById('canonical-tag') as HTMLLinkElement;
-    if (canonicalTag) {
-      canonicalTag.href = 'https://speedtestboost.com/ai-speed-test';
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
     }
+    canonical.href = 'https://speedtestboost.com/ai-speed-test';
     
     // Update page title and meta description
     document.title = "AI Internet Speed Test & Requirements Calculator 2025 - ChatGPT, Claude, Midjourney Speed Requirements";
@@ -182,6 +186,13 @@ export default function AISpeedTest() {
       <Header currentPath="/ai-speed-test" />
       
       <main className="max-w-7xl mx-auto px-4 lg:px-8 py-8">
+        <Breadcrumbs 
+          items={[
+            { label: "Tools", href: "/" },
+            { label: "AI Speed Test", href: "/ai-speed-test" }
+          ]} 
+        />
+        
         {/* Hero Section */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center mb-6">

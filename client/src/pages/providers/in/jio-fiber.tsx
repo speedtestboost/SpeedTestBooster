@@ -6,6 +6,8 @@ import { Zap, Wifi, Network, Router, Signal } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
 import RelatedProviders from "@/components/RelatedProviders";
 import { Link } from "wouter";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import GenericFooter from "@/components/GenericFooter";
 
 export default function JioFiberSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
@@ -65,10 +67,13 @@ export default function JioFiberSpeedTest() {
     });
 
     // Update canonical tag
-    const canonical = document.querySelector('link[rel="canonical"]#canonical-tag');
-    if (canonical) {
-      canonical.setAttribute('href', 'https://speedtestboost.com/providers/in/jio-fiber');
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
     }
+    canonical.href = 'https://speedtestboost.com/providers/in/jio-fiber';
 
     const structuredData = {
       "@context": "https://schema.org",
@@ -142,6 +147,14 @@ export default function JioFiberSpeedTest() {
       
       <main className="pt-24 pb-12">
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
+          <Breadcrumbs 
+            items={[
+              { label: "Internet Providers", href: "/internet-providers" },
+              { label: "India", href: "/internet-providers" },
+              { label: "Jio Fiber", href: "/providers/in/jio-fiber" }
+            ]} 
+          />
+          
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-6">
               <div className="p-4 bg-blue-500/10 rounded-full">
