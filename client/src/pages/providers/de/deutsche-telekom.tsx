@@ -61,8 +61,6 @@ export default function DeutscheTelekomSpeedTest() {
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
           <Breadcrumbs 
             items={[
-              { label: "Internet Providers", href: "/internet-providers" },
-              { label: "Germany", href: "/internet-providers" },
               { label: "Deutsche Telekom", href: "/providers/de/deutsche-telekom" }
             ]} 
           />

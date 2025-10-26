@@ -61,8 +61,6 @@ export default function TelstraSpeedTest() {
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
           <Breadcrumbs 
             items={[
-              { label: "Internet Providers", href: "/internet-providers" },
-              { label: "Australia", href: "/internet-providers" },
               { label: "Telstra", href: "/providers/au/telstra" }
             ]} 
           />

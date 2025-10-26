@@ -149,8 +149,6 @@ export default function HathwayBroadbandSpeedTest() {
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
           <Breadcrumbs 
             items={[
-              { label: "Internet Providers", href: "/internet-providers" },
-              { label: "India", href: "/internet-providers" },
               { label: "Hathway Broadband", href: "/providers/in/hathway-broadband" }
             ]} 
           />

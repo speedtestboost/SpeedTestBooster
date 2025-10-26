@@ -61,8 +61,6 @@ export default function IzziSpeedTest() {
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
           <Breadcrumbs 
             items={[
-              { label: "Internet Providers", href: "/internet-providers" },
-              { label: "Mexico", href: "/internet-providers" },
               { label: "Izzi", href: "/providers/mx/izzi" }
             ]} 
           />

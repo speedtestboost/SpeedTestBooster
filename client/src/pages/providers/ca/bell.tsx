@@ -61,8 +61,6 @@ export default function BellSpeedTest() {
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
           <Breadcrumbs 
             items={[
-              { label: "Internet Providers", href: "/internet-providers" },
-              { label: "Canada", href: "/internet-providers" },
               { label: "Bell", href: "/providers/ca/bell" }
             ]} 
           />

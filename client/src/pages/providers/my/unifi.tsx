@@ -61,8 +61,6 @@ export default function UnifiSpeedTest() {
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
           <Breadcrumbs 
             items={[
-              { label: "Internet Providers", href: "/internet-providers" },
-              { label: "Malaysia", href: "/internet-providers" },
               { label: "Unifi", href: "/providers/my/unifi" }
             ]} 
           />

@@ -149,8 +149,6 @@ export default function SpectrumSpeedTest() {
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
           <Breadcrumbs 
             items={[
-              { label: "Internet Providers", href: "/internet-providers" },
-              { label: "United States", href: "/internet-providers" },
               { label: "Spectrum", href: "/providers/us/spectrum" }
             ]} 
           />

@@ -62,8 +62,6 @@ export default function TIMSpeedTest() {
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
           <Breadcrumbs 
             items={[
-              { label: "Internet Providers", href: "/internet-providers" },
-              { label: "Italy", href: "/internet-providers" },
               { label: "Tim", href: "/providers/it/tim" }
             ]} 
           />

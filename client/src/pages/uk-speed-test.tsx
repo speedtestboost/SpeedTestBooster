@@ -201,7 +201,6 @@ export default function UKSpeedTest() {
       <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 pt-24 pb-6 space-y-6">
         <Breadcrumbs 
           items={[
-            { label: "Country Tests", href: "/" },
             { label: "UK Speed Test", href: "/uk-speed-test" }
           ]} 
         />

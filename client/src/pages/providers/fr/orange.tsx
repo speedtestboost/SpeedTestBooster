@@ -62,8 +62,6 @@ export default function OrangeSpeedTest() {
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
           <Breadcrumbs 
             items={[
-              { label: "Internet Providers", href: "/internet-providers" },
-              { label: "France", href: "/internet-providers" },
               { label: "Orange", href: "/providers/fr/orange" }
             ]} 
           />

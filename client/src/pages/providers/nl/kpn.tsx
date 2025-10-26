@@ -103,8 +103,6 @@ export default function KPNSpeedTest() {
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
           <Breadcrumbs 
             items={[
-              { label: "Internet Providers", href: "/internet-providers" },
-              { label: "Netherlands", href: "/internet-providers" },
               { label: "Kpn", href: "/providers/nl/kpn" }
             ]} 
           />

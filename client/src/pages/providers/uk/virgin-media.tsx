@@ -61,8 +61,6 @@ export default function VirginMediaSpeedTest() {
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
           <Breadcrumbs 
             items={[
-              { label: "Internet Providers", href: "/internet-providers" },
-              { label: "United Kingdom", href: "/internet-providers" },
               { label: "Virgin Media", href: "/providers/uk/virgin-media" }
             ]} 
           />
