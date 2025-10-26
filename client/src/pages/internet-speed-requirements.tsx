@@ -10,7 +10,6 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { trackEvent } from "@/lib/analytics";
 import { 
-import Breadcrumbs from "@/components/Breadcrumbs";
   Wifi, 
   Gamepad2, 
   Video, 
@@ -25,6 +24,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
   TrendingUp,
   Globe
 } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 interface ActivityRequirement {
   name: string;

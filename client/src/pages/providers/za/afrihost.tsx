@@ -7,7 +7,6 @@ import SpeedTestModal from "@/components/SpeedTestModal";
 import RelatedProviders from "@/components/RelatedProviders";
 import GenericFooter from "@/components/GenericFooter";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import GenericFooter from "@/components/GenericFooter";
 
 export default function AfrihostSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
