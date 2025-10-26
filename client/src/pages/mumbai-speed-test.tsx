@@ -162,6 +162,13 @@ export default function MumbaiSpeedTest() {
         </div>
       </section>
 
+      <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-6 space-y-6">
+        <Breadcrumbs 
+          items={[
+            { label: "Mumbai Speed Test", href: "/mumbai-speed-test" }
+          ]} 
+        />
+        
         {/* Desktop Layout - Three Column Grid */}
         <div className="hidden lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
           {/* Left Column - Speed Test */}

@@ -233,6 +233,13 @@ export default function HyderabadSpeedTest() {
         </div>
       </section>
 
+      <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-6 space-y-6">
+        <Breadcrumbs 
+          items={[
+            { label: "Hyderabad Speed Test", href: "/hyderabad-speed-test" }
+          ]} 
+        />
+        
         <div className="hidden lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
           <div className="space-y-6">
             <Card className="card-hover">
