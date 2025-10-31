@@ -7,9 +7,6 @@ Sitemap: https://speedtestboost.com/sitemap.xml
 # Crawl-delay for bots
 Crawl-delay: 1
 
-# Disallow crawling of API endpoints
-Disallow: /api/
-
 # Allow important SEO pages
 Allow: /
 Allow: /speed-test
@@ -71,6 +68,9 @@ Disallow: /admin/
 Disallow: /login/
 Disallow: /register/
 Disallow: /*.json$
+
+# Disallow crawling of API endpoints (placed after Allow rules)
+Disallow: /api/
 
 # Allow sitemap explicitly (override any wildcards)
 Allow: /sitemap.xml
