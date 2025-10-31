@@ -27,12 +27,12 @@ export default function SpeedTest() {
 
   // SEO Meta Tags for homepage
   useEffect(() => {
-    document.title = "Free Internet Speed Test - Check WiFi & Broadband Speed | Speed Test & Boost";
+    document.title = "Speed Test - Free WiFi Speed Test & Internet Speed Check Online";
     
     // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free internet speed test tool. Test WiFi and broadband speeds instantly with accurate results. Check download, upload speeds and ping. Works globally with all ISPs.');
+      metaDescription.setAttribute('content', 'Free speed test online - Check WiFi speed test, internet speed test, and fiber speed test in seconds. Run net speed test, data speed test, and broadband speed checker. Test your speed now!');
     }
     
     // Keywords meta tag
@@ -42,7 +42,7 @@ export default function SpeedTest() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    keywords.content = 'internet speed test, wifi speed test, broadband speed test, speed test online, check internet speed, bandwidth test, network speed test, fast speed test';
+    keywords.content = 'speed test, wifi speed test, internet speed test, wifispeed, net speed test, fiber speed test, data speed test, run speed test, speed test online, test wifi speed, my fiber speed test, wifi test, net speed, check internet speed, internet speed check, free internet speed test, spped test, test my speed, speed test fast';
     
     // Open Graph tags
     const ogTags = [
@@ -794,16 +794,49 @@ export default function SpeedTest() {
             </div>
           </div>
 
+          {/* Speed Test Types Section */}
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Types of Internet Speed Tests</h2>
+            <p className="text-center text-muted-foreground mb-8 max-w-3xl mx-auto">
+              Run different speed tests based on your connection type. Our free speed test online supports WiFi speed test, fiber speed test, net speed test, and broadband speed checker.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Card className="card-hover">
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold text-foreground mb-3">WiFi Speed Test</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Check WiFi speed test, test wifi speed, and wifi signal strength test. Run wifi speed checker to test my wifi speed and optimize wireless performance.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className="card-hover">
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold text-foreground mb-3">Fiber Speed Test</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    My fiber speed test for Jio Fiber, Airtel Xstream, ACT Fibernet. Run fiber speed test to check internet speed and broadband performance.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className="card-hover">
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold text-foreground mb-3">Data Speed Test</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Data speed test online, net speed test, and bandwidth test. Test internet speed, check my internet speed, and run speed test for accurate results.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
           {/* FAQ Section */}
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Frequently Asked Questions</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-semibold text-foreground mb-2">How accurate is this speed test?</h4>
+                  <h4 className="font-semibold text-foreground mb-2">How to run speed test online?</h4>
                   <p className="text-sm text-muted-foreground">
-                    Our speed test uses multiple test servers and advanced algorithms to provide highly accurate results. 
-                    We measure real-world performance using multiple data sizes and connection protocols.
+                    Simply click "Start Test" to run speed test. Our free internet speed test checks download, upload, ping, and jitter in seconds. Works on all devices.
                   </p>
                 </div>
                 <div>
@@ -816,17 +849,16 @@ export default function SpeedTest() {
               </div>
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-semibold text-foreground mb-2">When should I test my speed?</h4>
+                  <h4 className="font-semibold text-foreground mb-2">Is this speed test free?</h4>
                   <p className="text-sm text-muted-foreground">
-                    Test during different times of day to get a complete picture. Peak hours (evening) often show 
-                    slower speeds due to network congestion.
+                    Yes! Free internet speed test, free wifi speed test online, no signup required. Check internet speed test free, wifi test free anytime.
                   </p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-2">How can I improve my internet speed?</h4>
                   <p className="text-sm text-muted-foreground">
                     Upgrade your plan, use wired connections, update your router, reduce network interference, 
-                    and close unnecessary applications consuming bandwidth. Consult your ISP's support pages like <a href="https://www.jio.com/fiber/en-in" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Jio Fiber</a> or <a href="https://www.airtel.in/broadband" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Airtel Broadband</a> for optimization tips.
+                    and close unnecessary applications consuming bandwidth.
                   </p>
                 </div>
               </div>

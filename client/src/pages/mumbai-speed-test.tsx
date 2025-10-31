@@ -29,11 +29,20 @@ export default function MumbaiSpeedTest() {
 
   // SEO Meta Tags
   useEffect(() => {
-    document.title = "Mumbai Internet Speed Test - Check Your Connection Speed | Speed Test & Boost";
+    document.title = "Mumbai Speed Test - Free Internet Speed Test Mumbai India | WiFi Speed Check";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your internet speed in Mumbai. Get accurate broadband speed results for BSNL, Airtel, Jio, and Vi networks. Free speed test with WiFi optimization tips for Mumbai users.');
+      metaDescription.setAttribute('content', 'Mumbai speed test - Free speed test India for Jio Fiber, Airtel Xstream, ACT Fibernet, BSNL. Check WiFi speed test Mumbai, internet speed test India, fiber speed test. Test your speed now!');
     }
+    
+    // Keywords meta tag for India/Mumbai
+    let keywords = document.querySelector('meta[name="keywords"]');
+    if (!keywords) {
+      keywords = document.createElement('meta');
+      keywords.name = 'keywords';
+      document.head.appendChild(keywords);
+    }
+    keywords.content = 'mumbai speed test, speed test india, speed test in india, internet speed test india, wifi speed test mumbai, fiber speed test india, jio fiber speed test, airtel speed test mumbai, broadband speed test india, net speed test mumbai, data speed test india';
     
     // Add canonical URL
     let canonical = document.querySelector('link[rel="canonical"]');

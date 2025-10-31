@@ -57,12 +57,12 @@ export default function WiFiAnalyzer() {
 
   // SEO Meta Tags for WiFi Analyzer page
   useEffect(() => {
-    document.title = "WiFi Analyzer & Network Diagnostics Tool - Free Network Scanner 2025";
+    document.title = "WiFi Speed Test - Free WiFi Analyzer & Signal Strength Test Online";
     
     // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Professional WiFi analyzer and network diagnostics tool. Scan WiFi networks, analyze signal strength, diagnose network issues, and optimize wireless performance. Free network scanner for Windows, Mac, Android & iOS.');
+      metaDescription.setAttribute('content', 'Free WiFi speed test and analyzer. Check wifi signal strength test, wifi checker, wifi speed tester, and wifi test speed online. Run wifi network speed test, wifi strength test, and optimize your wireless connection now!');
     }
     
     // Keywords meta tag
@@ -72,7 +72,7 @@ export default function WiFiAnalyzer() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    keywords.content = 'wifi analyzer, network diagnostics, wifi scanner, wireless network analyzer, wifi signal analyzer, network diagnostic tools, wifi channel analyzer, wireless diagnostics, mesh network analyzer, wifi troubleshooting';
+    keywords.content = 'wifi speed test, wifi test, wifi checker, wifi speed checker, test wifi speed, wifi signal strength test, wifi tester speed free, wifi strength test, my wifi speed, wifi test speed, free wifi speed test, wifi speed test online, wifi analyzer, wifi speed test free, test wifi, wifi test free, wifi network speed test, wifi signal speed checker';
     
     // Open Graph tags
     const ogTags = [
