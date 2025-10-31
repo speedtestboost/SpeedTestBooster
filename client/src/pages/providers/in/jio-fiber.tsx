@@ -28,7 +28,7 @@ export default function JioFiberSpeedTest() {
       metaKeywords.setAttribute('name', 'keywords');
       document.head.appendChild(metaKeywords);
     }
-    metaKeywords.setAttribute('content', 'jio fiber speed test, speed test india, speed test in india, jio fiber speed test india, my fiber speed test, fiber speed test india, wifi speed test india, internet speed test india, reliance jio speed test, jio broadband speed test, jio wifi speed test';
+    metaKeywords.setAttribute('content', 'jio fiber speed test, speed test india, speed test in india, jio fiber speed test india, my fiber speed test, fiber speed test india, wifi speed test india, internet speed test india, reliance jio speed test, jio broadband speed test, jio wifi speed test');
 
     // Open Graph tags for social sharing
     const ogTags = [
@@ -67,7 +67,7 @@ export default function JioFiberSpeedTest() {
     });
 
     // Update canonical tag
-    let canonical = document.querySelector('link[rel="canonical"]');
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
     if (!canonical) {
       canonical = document.createElement('link');
       canonical.rel = 'canonical';
