@@ -32,8 +32,8 @@ export default function SpectrumSpeedTest() {
 
     // Open Graph tags for social sharing
     const ogTags = [
-      { property: 'og:title', content: 'Spectrum Speed Test - Charter Spectrum Internet Speed Test' },
-      { property: 'og:description', content: 'Free speed test for Charter Spectrum internet customers. Test cable internet and WiFi speeds nationwide.' },
+      { property: 'og:title', content: 'Spectrum Speed Test - Free Charter Spectrum Internet Speed Test 2025' },
+      { property: 'og:description', content: 'Free Spectrum internet speed test - Test Charter Spectrum cable internet, WiFi speed, broadband. Check download/upload speeds and ping. Accurate results.' },
       { property: 'og:url', content: 'https://speedtestboost.com/providers/us/spectrum' },
       { property: 'og:type', content: 'website' },
       { property: 'og:site_name', content: 'Speed Test and Boost' }
@@ -52,8 +52,8 @@ export default function SpectrumSpeedTest() {
     // Twitter Card tags
     const twitterTags = [
       { name: 'twitter:card', content: 'summary' },
-      { name: 'twitter:title', content: 'Spectrum Speed Test - Charter Spectrum Internet Speed Test' },
-      { name: 'twitter:description', content: 'Free speed test for Charter Spectrum internet customers. Test cable internet and WiFi speeds.' }
+      { name: 'twitter:title', content: 'Spectrum Speed Test - Free Charter Spectrum Internet Speed Test 2025' },
+      { name: 'twitter:description', content: 'Free Spectrum internet speed test - Test Charter Spectrum cable internet, WiFi speed, broadband checker. Accurate results in seconds.' }
     ];
 
     twitterTags.forEach(tag => {
@@ -285,9 +285,37 @@ export default function SpectrumSpeedTest() {
                   The company's hybrid fiber-coaxial infrastructure provides customers with download speeds 
                   ranging from 300 Mbps on their base plan to 1 Gig (1000 Mbps) connections, supporting everything from 
                   basic web browsing to demanding applications like 4K streaming, online gaming, and 
-                  remote work requirements. Use our <Link href="/internet-speed-requirements" className="text-primary hover:underline">speed requirements calculator</Link> to determine the right plan for your needs.
+                  remote work requirements. Use our <Link href="/internet-speed-requirements" className="text-primary hover:underline">speed requirements calculator</Link> to determine the right plan for your needs. 
+                  Regular <strong>Spectrum internet speed tests</strong> help ensure you're getting the performance you're paying for.
                 </p>
+              </div>
+            </CardContent>
+          </Card>
 
+          {/* Pro Tip Callout 2 */}
+          <Card className="mb-12 border-primary/20 bg-primary/5">
+            <CardContent className="p-6">
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0">
+                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                    <span className="text-2xl">💡</span>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-2">Pro Tip: Optimize Your Spectrum WiFi Performance</h3>
+                  <p className="text-sm text-muted-foreground">
+                    For best <strong>charter spectrum wifi test</strong> results, position your router in a central location at least 3 feet off the ground. 
+                    Avoid placing it near metal objects, microwaves, or thick walls. If you have a multi-story home, consider upgrading to a WiFi 6 router 
+                    or mesh system for whole-home coverage. Test your <strong>spectrum broadband</strong> speed regularly to monitor performance.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="p-8">
+              <div className="prose prose-gray dark:prose-invert max-w-none space-y-6">
                 <h3 className="text-xl font-semibold mb-3">Nationwide Coverage Network</h3>
                 <p className="text-muted-foreground">
                   Spectrum maintains one of America's most extensive cable networks, providing internet 
