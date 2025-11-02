@@ -11,10 +11,18 @@ export default function IndonesianSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Tes Kecepatan Internet - Cek Kecepatan WiFi Gratis 2025";
+    document.title = "Tes Kecepatan Internet Gratis - Cek WiFi & Broadband 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Tes kecepatan internet gratis untuk Indonesia. Ukur kecepatan download, upload dan ping untuk IndiHome, Biznet, First Media, MyRepublic. Hasil akurat real-time.');
+      metaDescription.setAttribute('content', 'Tes kecepatan internet gratis untuk WiFi dan broadband. Cek download, upload, ping & jitter akurat untuk IndiHome, Biznet, First Media.');
+    }
+    
+    const metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (!metaKeywords) {
+      const keywords = document.createElement('meta');
+      keywords.setAttribute('name', 'keywords');
+      keywords.setAttribute('content', 'tes kecepatan internet gratis, cek kecepatan wifi, uji kecepatan broadband, test internet speed indonesia, cek ping dan jitter, kecepatan indihome, kecepatan biznet');
+      document.head.appendChild(keywords);
     }
 
     let contentLanguage = document.querySelector('meta[http-equiv="content-language"]');
@@ -110,10 +118,10 @@ export default function IndonesianSpeedTest() {
               </div>
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-              Tes Kecepatan Internet
+              Tes Kecepatan Internet Gratis untuk WiFi dan Broadband
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Ukur <span className="font-semibold text-primary">kecepatan internet</span> Anda gratis. Tes koneksi WiFi, fiber optik atau data seluler dengan hasil akurat secara real-time.
+              Alat terbaik untuk cek kecepatan unduh dan unggah secara online akurat. Tes koneksi WiFi, fiber optik atau data seluler dengan hasil real-time untuk ping dan jitter.
             </p>
             
             <div className="mb-12">
@@ -137,9 +145,14 @@ export default function IndonesianSpeedTest() {
                   Alat tes kecepatan internet kami adalah solusi paling akurat dan terpercaya untuk mengukur performa koneksi internet Anda di Indonesia. Dengan dukungan khusus untuk semua penyedia layanan internet utama termasuk IndiHome, Biznet, First Media, dan MyRepublic, kami menyediakan pengukuran presisi untuk kecepatan download, kecepatan upload, latensi (ping), dan stabilitas koneksi di seluruh jaringan Indonesia.
                 </p>
                 
-                <h3 className="text-xl font-semibold mb-3">Mengapa Perlu Tes Kecepatan Internet?</h3>
+                <h3 className="text-xl font-semibold mb-3">Cara Menguji Kecepatan Internet di HP dan Komputer</h3>
                 <p className="text-muted-foreground">
-                  Tes kecepatan internet membantu Anda memverifikasi apakah kecepatan yang diterima sesuai dengan paket berlangganan. IndiHome sebagai penyedia terbesar di Indonesia menawarkan fiber optik hingga 300 Mbps di kota-kota besar seperti Jakarta, Surabaya, Bandung, dan Medan. Biznet Home dengan jaringan fiber premium mereka mengklaim kecepatan simetris hingga 1 Gbps untuk segmen premium. First Media yang melayani area Jabodetabek menyediakan kabel internet berkecepatan tinggi, sementara MyRepublic fokus pada gamer dan streamer dengan paket low-latency. Dengan kondisi geografis Indonesia yang unik sebagai negara kepulauan terbesar di dunia, kualitas internet bisa sangat bervariasi antar wilayah.
+                  Kami menyediakan <strong>alat terbaik untuk cek ping dan jitter koneksi internet</strong> yang bekerja sempurna di semua perangkat. Untuk menguji kecepatan internet di smartphone Android atau iPhone, cukup buka browser dan klik tombol "Mulai Tes Kecepatan". Untuk pengguna desktop Windows atau Mac, tes berjalan langsung di browser tanpa perlu install aplikasi. Alat kami mengukur <strong>kecepatan unduh dan unggah secara online akurat</strong> dengan teknologi multi-server untuk hasil presisi tinggi.
+                </p>
+
+                <h3 className="text-xl font-semibold mb-3">Uji Kecepatan Jaringan untuk Pengguna IndiHome dan Biznet</h3>
+                <p className="text-muted-foreground">
+                  <strong>Tes kecepatan internet gratis untuk WiFi dan broadband</strong> ini dioptimalkan khusus untuk pengguna IndiHome dan Biznet. IndiHome sebagai penyedia terbesar di Indonesia menawarkan fiber optik hingga 300 Mbps di kota-kota besar seperti Jakarta, Surabaya, Bandung, dan Medan. Biznet Home dengan jaringan fiber premium mereka mengklaim kecepatan simetris hingga 1 Gbps untuk segmen premium. First Media yang melayani area Jabodetabek menyediakan kabel internet berkecepatan tinggi, sementara MyRepublic fokus pada gamer dan streamer dengan paket low-latency. Dengan kondisi geografis Indonesia yang unik sebagai negara kepulauan terbesar di dunia, kualitas internet bisa sangat bervariasi antar wilayah.
                 </p>
 
                 <h3 className="text-xl font-semibold mb-3">Provider Internet yang Didukung</h3>
