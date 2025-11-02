@@ -1,155 +1,30 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Zap, Wifi, Network, Router, Signal } from "lucide-react";
+import { Zap, Wifi, Router, Network, Signal } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
+import ProviderSEO from "@/components/ProviderSEO";
+import { providerKeywords } from "@/seo/providerKeywords";
 import RelatedProviders from "@/components/RelatedProviders";
-import { Link } from "wouter";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import GenericFooter from "@/components/GenericFooter";
+import { Link } from "wouter";
 
 export default function ACTFibernetSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
-
-  useEffect(() => {
-    // SEO Meta Tags
-    document.title = "ACT Fibernet Speed Test India - Check Fiber Internet Speed Free 2025";
-    
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test ACT Fibernet internet speed instantly - Free speed test for India. Accurate 1 Gbps fiber download/upload & gaming performance now.');
-    }
-
-    // Add keywords meta tag
-    let metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (!metaKeywords) {
-      metaKeywords = document.createElement('meta');
-      metaKeywords.setAttribute('name', 'keywords');
-      document.head.appendChild(metaKeywords);
-    }
-    metaKeywords.setAttribute('content', 'act fibernet speed test, act broadband, gaming fiber');
-
-    // Open Graph tags for social sharing
-    const ogTags = [
-      { property: 'og:title', content: 'ACT Fibernet Speed Test - ACT Broadband Fiber Speed Test' },
-      { property: 'og:description', content: 'Free speed test for ACT Fibernet customers. Test ACT fiber internet speeds up to 1 Gbps in metro cities across India.' },
-      { property: 'og:url', content: 'https://speedtestboost.com/providers/in/act-fibernet' },
-      { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Speed Test and Boost' }
-    ];
-
-    ogTags.forEach(tag => {
-      let ogTag = document.querySelector(`meta[property="${tag.property}"]`);
-      if (!ogTag) {
-        ogTag = document.createElement('meta');
-        ogTag.setAttribute('property', tag.property);
-        document.head.appendChild(ogTag);
-      }
-      ogTag.setAttribute('content', tag.content);
-    });
-
-    // Twitter Card tags
-    const twitterTags = [
-      { name: 'twitter:card', content: 'summary' },
-      { name: 'twitter:title', content: 'ACT Fibernet Speed Test - ACT Broadband Fiber Speed Test' },
-      { name: 'twitter:description', content: 'Free speed test for ACT Fibernet customers. Test ACT fiber internet speeds up to 1 Gbps.' }
-    ];
-
-    twitterTags.forEach(tag => {
-      let twitterTag = document.querySelector(`meta[name="${tag.name}"]`);
-      if (!twitterTag) {
-        twitterTag = document.createElement('meta');
-        twitterTag.setAttribute('name', tag.name);
-        document.head.appendChild(twitterTag);
-      }
-      twitterTag.setAttribute('content', tag.content);
-    });
-
-    // Update canonical tag
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.rel = 'canonical';
-      document.head.appendChild(canonical);
-    }
-    canonical.href = 'https://speedtestboost.com/providers/in/act-fibernet';
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "ACT Fibernet Speed Test 2025",
-      "description": "Free ACT Fibernet speed test for ACT broadband customers. Test ACT fiber internet speeds up to 1 Gbps in metro cities.",
-      "url": "https://speedtestboost.com/providers/in/act-fibernet",
-      "mainEntity": {
-        "@type": "SoftwareApplication",
-        "name": "ACT Fibernet Speed Test Tool",
-        "applicationCategory": "NetworkingApplication",
-        "operatingSystem": "Web Browser",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "INR"
-        }
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "ACT Fibernet",
-        "description": "Leading fiber broadband provider in Indian metropolitan cities specializing in high-speed internet and gaming",
-        "areaServed": { "@type": "Country", "name": "India" },
-        "serviceType": ["Fiber Internet", "Gaming Broadband", "Business Internet", "WiFi Services"]
-      },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://speedtestboost.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Internet Providers",
-            "item": "https://speedtestboost.com/internet-providers"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "India Providers",
-            "item": "https://speedtestboost.com/providers/in"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "ACT Fibernet Speed Test",
-            "item": "https://speedtestboost.com/providers/in/act-fibernet"
-          }
-        ]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
+  const seoConfig = providerKeywords.actfibernet;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderSEO providerSlug="in/act-fibernet" />
       <Header currentPath="/providers/in/act-fibernet" />
       
       <main className="pt-24 pb-12">
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
           <Breadcrumbs 
             items={[
-              { label: "Act Fibernet", href: "/providers/in/act-fibernet" }
+              { label: "ACT Fibernet", href: "/providers/in/act-fibernet" }
             ]} 
           />
           
@@ -160,10 +35,10 @@ export default function ACTFibernetSpeedTest() {
               </div>
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-500 bg-clip-text text-transparent">
-              ACT Fibernet Speed Test 2025
+              {seoConfig.h1}
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Test your <span className="font-semibold text-purple-500">ACT Fibernet internet speed</span> for free. Check ACT broadband speeds up to 1 Gbps, gaming performance, and fiber connectivity in metro cities.
+              Test your <span className="font-semibold text-purple-500">ACT Fibernet internet speed</span> for free. Check your GPON fiber or gaming broadband performance in metro cities.
             </p>
             
             <div className="mb-12">
@@ -171,260 +46,364 @@ export default function ACTFibernetSpeedTest() {
                 onClick={() => setShowSpeedTest(true)} 
                 size="lg" 
                 className="text-lg px-8 py-6 bg-gradient-to-r from-purple-500 to-purple-600 hover:opacity-90 transition-opacity"
+                data-testid="button-test-act-speed-primary"
               >
                 <Zap className="mr-2 h-5 w-5" />
-                Test ACT Speed Now
+                Test ACT Fibernet Speed Now
               </Button>
+            </div>
+          </div>
+
+          {/* Pro Tip Callout 1 */}
+          <Card className="mb-12 border-primary/20 bg-primary/5">
+            <CardContent className="p-6">
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0">
+                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                    <span className="text-2xl">🔍</span>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-2">Pro Tip: Get the Most Accurate ACT Fibernet Speed Test Results</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Connect via Ethernet cable directly to your ACT Fibernet router for the most accurate gaming fiber speed test results. 
+                    Close all background gaming apps and disconnect other devices during testing. Test at multiple times throughout the day, 
+                    avoiding peak gaming hours (6-11 PM) when network traffic is highest in metro cities.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Understanding Your Speed Test Results */}
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Understanding Your ACT Fibernet Speed Test Results</h2>
+            <p className="text-center text-muted-foreground mb-8 max-w-3xl mx-auto">
+              Learn what your ACT Fibernet internet speed test results mean and how to interpret download speeds, upload speeds, and ping for optimal gaming fiber internet performance.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-center mb-4">
+                    <div className="w-16 h-16 bg-purple-500/10 rounded-full flex items-center justify-center">
+                      <span className="text-3xl">⬇️</span>
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3 text-center">Download Speed</h3>
+                  <p className="text-sm text-muted-foreground text-center">
+                    <strong>Download speed</strong> measures how fast data travels from the internet to your device. 
+                    ACT Fibernet GPON fiber delivers symmetrical speeds, so your download speed can range from 100 Mbps to 1 Gbps 
+                    depending on your plan. This speed determines how quickly you can stream 4K video, download games, and browse websites.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-center mb-4">
+                    <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center">
+                      <span className="text-3xl">⬆️</span>
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3 text-center">Upload Speed</h3>
+                  <p className="text-sm text-muted-foreground text-center">
+                    <strong>Upload speed</strong> shows how fast you can send data from your device to the internet. 
+                    <strong>ACT Fibernet offers symmetrical speeds</strong>—meaning your upload speed 
+                    matches your download speed. This is ideal for live streaming, video conferencing, cloud gaming, and content creation.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-center mb-4">
+                    <div className="w-16 h-16 bg-orange-500/10 rounded-full flex items-center justify-center">
+                      <span className="text-3xl">⚡</span>
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3 text-center">Ping Rate (Latency)</h3>
+                  <p className="text-sm text-muted-foreground text-center">
+                    <strong>Ping</strong> measures network latency—how long it takes for data to travel to a server and back. 
+                    ACT Fibernet typically delivers ping under 5-15 ms to Indian servers thanks to its gaming-optimized fiber connection, 
+                    making it excellent for competitive gaming, esports, and real-time multiplayer applications.
+                  </p>
+                </CardContent>
+              </Card>
             </div>
           </div>
 
           <Card>
             <CardContent className="p-8">
-              <h2 className="text-2xl font-bold mb-6">About ACT Fibernet Broadband Service</h2>
-              {/* Breadcrumb Navigation */}
-              <nav className="mb-6 text-sm text-muted-foreground">
-                <Link href="/" className="hover:text-primary">Home</Link>
-                <span className="mx-2">›</span>
-                <Link href="/internet-providers" className="hover:text-primary">Internet Providers</Link>
-                <span className="mx-2">›</span>
-                <Link href="/providers/in" className="hover:text-primary">India Providers</Link>
-                <span className="mx-2">›</span>
-                <span className="text-foreground">ACT Fibernet Speed Test</span>
-              </nav>
-              
+              <h2 className="text-2xl font-bold mb-6">About ACT Fibernet</h2>
               <div className="prose prose-gray dark:prose-invert max-w-none space-y-6">
                 <p className="text-lg text-muted-foreground">
-                  <strong>ACT Fibernet</strong> operates as India's premier fiber broadband provider specializing in 
-                  high-speed internet services across major metropolitan cities and urban centers. Known for delivering 
-                  exceptional speeds and reliability, ACT Fibernet has established itself as the preferred choice for 
-                  gaming enthusiasts, content creators, and professionals requiring ultra-fast internet connectivity 
-                  with speeds ranging from 50 Mbps to 1 Gbps across cities including Bengaluru, Chennai, Hyderabad, 
-                  Delhi, and other major Indian metros.
+                  ACT Fibernet stands as India's premier gaming-focused fiber broadband provider, renowned for 
+                  its GPON fiber-optic network infrastructure and ultra-low latency technology. Operating 
+                  primarily in major metropolitan cities across India, ACT Fibernet serves millions of gamers and power users with comprehensive 
+                  internet and digital services while maintaining a reputation for gaming performance and 
+                  technological innovation in the competitive Indian telecommunications market.
                 </p>
                 
-                <h3 className="text-xl font-semibold mb-3">High-Performance Fiber Network and Gaming Focus</h3>
+                <h3 className="text-xl font-semibold mb-3">Gaming-Optimized GPON Fiber Network</h3>
                 <p className="text-muted-foreground">
-                  ACT Fibernet utilizes cutting-edge <strong>fiber-optic infrastructure</strong> designed specifically 
-                  for low-latency, high-bandwidth applications, making it the optimal choice for online gaming, live 
-                  streaming, video conferencing, and bandwidth-intensive professional work. The service offers comprehensive 
-                  speed plans including 50 Mbps, 100 Mbps, 150 Mbps, 200 Mbps, 300 Mbps, 500 Mbps, and 1 Gbps options, 
-                  each optimized for minimal ping times and consistent performance during peak usage hours. Use our <Link href="/internet-speed-requirements" className="text-primary hover:underline">speed requirements calculator</Link> to determine the ideal ACT Fibernet plan for gaming, streaming, or professional requirements.
+                  ACT Fibernet represents one of India's most extensive gaming-focused pure fiber-optic networks, 
+                  delivering symmetrical upload and download speeds directly to homes and businesses. The company's 
+                  GPON fiber infrastructure spans major metropolitan areas across Hyderabad, Bangalore, Delhi, Chennai, Mumbai, 
+                  and other tier-1 cities, providing gamers and content creators 
+                  with reliable, low-latency internet connections that support bandwidth-intensive applications 
+                  including competitive gaming, 4K streaming, cloud computing, and esports technologies.
                 </p>
 
-                <h3 className="text-xl font-semibold mb-3">Metropolitan Coverage and Urban Excellence</h3>
+                <h3 className="text-xl font-semibold mb-3">Ultra-Low Latency Gaming Excellence</h3>
                 <p className="text-muted-foreground">
-                  ACT Fibernet focuses on providing premium broadband services across India's major metropolitan areas, 
-                  with extensive coverage in technology hubs like Bengaluru, Chennai, Hyderabad, Delhi NCR, Mumbai, 
-                  Pune, and other tier-1 cities. The company's strategic approach emphasizes quality over quantity, 
-                  ensuring superior network performance and customer service within its coverage areas rather than 
-                  pursuing widespread geographical expansion. Compare ACT Fibernet with other major Indian providers 
-                  like <Link href="/providers/in/jio-fiber" className="text-primary hover:underline">Jio Fiber</Link>, 
-                  <Link href="/providers/in/airtel-broadband" className="text-primary hover:underline">Airtel Broadband</Link>, and 
-                  <Link href="/providers/in/bsnl-broadband" className="text-primary hover:underline">BSNL Broadband</Link>.
+                  ACT Fibernet operates India's premier gaming-optimized broadband network, pioneering ultra-low latency fiber 
+                  technology in major cities across the country. The company's GPON infrastructure supports not only 
+                  competitive gaming but also streaming services that provide symmetric speeds and consistent performance 
+                  to traditional fixed-line gaming connections. This gaming innovation positions ACT Fibernet at the forefront 
+                  of next-generation esports telecommunications technology in India.
                 </p>
 
-                <h3 className="text-xl font-semibold mb-3">Gaming and Entertainment Optimization</h3>
+                <h3 className="text-xl font-semibold mb-3">Premium Gaming Service Quality</h3>
                 <p className="text-muted-foreground">
-                  ACT Fibernet has built its reputation as India's premier gaming broadband provider, offering optimized 
-                  network routes for popular gaming platforms, minimal latency to international gaming servers, and 
-                  specialized plans designed for competitive gaming and esports enthusiasts. The service includes features 
-                  like gaming VPN services, priority bandwidth allocation for gaming traffic, and partnerships with gaming 
-                  platforms to ensure optimal performance for multiplayer gaming, live streaming, and content creation activities.
+                  ACT Fibernet distinguishes itself through consistent focus on gaming performance and customer service 
+                  excellence, operating premium telecommunications infrastructure that emphasizes ultra-low ping and 
+                  performance over aggressive pricing strategies. The company's approach appeals to customers who 
+                  prioritize gaming quality and technological innovation, making ACT Fibernet particularly attractive 
+                  to esports professionals, streamers, and gaming-focused consumers.
                 </p>
 
-                <h3 className="text-xl font-semibold mb-3">Unlimited Data and Performance Guarantee</h3>
+                <h3 className="text-xl font-semibold mb-3">Metro City Gaming Solutions</h3>
                 <p className="text-muted-foreground">
-                  ACT Fibernet provides truly unlimited data usage across all residential plans without fair usage policy 
-                  limitations or speed throttling, ensuring consistent performance regardless of consumption patterns. 
-                  The service particularly appeals to power users including software developers, content creators, online 
-                  gamers, streamers, and work-from-home professionals who require reliable, high-speed connectivity for 
-                  demanding applications without data restrictions or performance degradation during peak usage hours.
+                  ACT Fibernet provides comprehensive metro gaming telecommunications solutions including dedicated gaming routes, 
+                  cloud gaming services, VPN optimization, and streaming applications that support Indian gamers across all 
+                  esports titles. The company's gaming division leverages its advanced GPON network infrastructure to 
+                  deliver sophisticated gaming solutions while maintaining the ultra-low latency and performance standards 
+                  required by competitive gamers and content creators.
                 </p>
 
-                <h3 className="text-xl font-semibold mb-3">Premium Customer Support and Technical Excellence</h3>
+                <h3 className="text-xl font-semibold mb-3">Performance Testing and Gaming Optimization</h3>
                 <p className="text-muted-foreground">
-                  ACT Fibernet emphasizes premium customer service with dedicated technical support teams, rapid response 
-                  times for service issues, and proactive network monitoring to maintain optimal performance. The company 
-                  provides 24/7 customer support through multiple channels including phone, email, and online portals, 
-                  with local technical teams ensuring quick resolution of connectivity issues and installation services. 
-                  Regular network upgrades and infrastructure investments maintain ACT Fibernet's position as a technology 
-                  leader in India's competitive broadband market.
+                  Regular speed testing helps ACT Fibernet customers monitor their gaming performance and ensure optimal 
+                  service delivery from their GPON fiber or gaming broadband connection. Our <strong>ACT Fibernet speed test</strong> measures 
+                  download speeds, upload speeds, and gaming latency, providing insights into your broadband 
+                  performance. This testing helps identify connectivity issues and ensures you're receiving the 
+                  premium gaming internet service quality that defines ACT Fibernet's telecommunications excellence. Regular 
+                  <strong>ACT broadband speed tests</strong> ensure you're getting the gaming fiber performance you pay for.
                 </p>
               </div>
             </CardContent>
           </Card>
 
-          {/* Speed Test Performance Images */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12 mt-12">
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center justify-center mb-4">
-                  <div className="p-4 bg-purple-500/10 rounded-full">
-                    <Network className="h-12 w-12 text-purple-500" />
+          {/* Pro Tip Callout 2 */}
+          <Card className="mb-12 mt-8 border-primary/20 bg-primary/5">
+            <CardContent className="p-6">
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0">
+                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                    <span className="text-2xl">💡</span>
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-center">Gaming-Optimized Network</h3>
-                <p className="text-sm text-muted-foreground text-center">
-                  High-performance fiber infrastructure optimized for gaming with ultra-low latency and speeds up to 1 Gbps
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center justify-center mb-4">
-                  <div className="p-4 bg-indigo-500/10 rounded-full">
-                    <Signal className="h-12 w-12 text-indigo-500" />
-                  </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-2">Pro Tip: Maximize Your ACT Fibernet Gaming Performance</h3>
+                  <p className="text-sm text-muted-foreground">
+                    To get the best <strong>ACT Fibernet speed test</strong> results, ensure your gaming equipment supports your plan speed. 
+                    Gigabit plans require a Gigabit-capable gaming router. Position your ACT router centrally and avoid interference 
+                    from thick walls or electronics. For competitive gaming, use ethernet connections and enable QoS settings for gaming traffic prioritization.
+                  </p>
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-center">Metro City Excellence</h3>
-                <p className="text-sm text-muted-foreground text-center">
-                  Premium broadband service focused on metropolitan areas with superior customer support
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+              </div>
+            </CardContent>
+          </Card>
 
-          {/* FAQ Section */}
+          {/* Cities with Fastest ACT Fibernet Speeds */}
           <Card className="mb-12">
             <CardContent className="p-8">
-              <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Frequently Asked Questions About ACT Fibernet Speed Test</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">What is a good ACT Fibernet internet speed for gaming?</h4>
-                    <p className="text-sm text-muted-foreground">
-                      For competitive gaming, 100+ Mbps download speed is recommended. ACT's popular gaming plans offer 
-                      150 Mbps, 300 Mbps, and 1 Gbps speeds with optimized latency for esports and multiplayer gaming.
-                    </p>
+              <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Cities with Fastest ACT Fibernet Gaming Speeds</h2>
+              <p className="text-center text-muted-foreground mb-8 max-w-3xl mx-auto">
+                ACT Fibernet delivers exceptional gaming fiber internet speeds across major Indian metros with symmetrical Gigabit speeds widely available and industry-leading ultra-low latency.
+              </p>
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div className="text-center p-4 bg-primary/5 rounded-lg">
+                  <div className="text-2xl font-bold text-primary mb-1">Hyderabad</div>
+                  <div className="text-sm text-muted-foreground">Up to 1 Gbps</div>
+                </div>
+                <div className="text-center p-4 bg-primary/5 rounded-lg">
+                  <div className="text-2xl font-bold text-primary mb-1">Bangalore</div>
+                  <div className="text-sm text-muted-foreground">Up to 1 Gbps</div>
+                </div>
+                <div className="text-center p-4 bg-primary/5 rounded-lg">
+                  <div className="text-2xl font-bold text-primary mb-1">Delhi NCR</div>
+                  <div className="text-sm text-muted-foreground">Up to 1 Gbps</div>
+                </div>
+                <div className="text-center p-4 bg-primary/5 rounded-lg">
+                  <div className="text-2xl font-bold text-primary mb-1">Chennai</div>
+                  <div className="text-sm text-muted-foreground">Up to 1 Gbps</div>
+                </div>
+              </div>
+              
+              <p className="text-sm text-muted-foreground text-center">
+                Other top-performing ACT Fibernet markets include Mumbai, Pune, Vizag, and Coimbatore. 
+                ACT's 100% GPON fiber-optic network ensures ultra-reliable high-speed gaming connectivity with symmetrical upload/download speeds and ultra-low ping.
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* Second CTA */}
+          <div className="text-center mb-12">
+            <Button 
+              onClick={() => setShowSpeedTest(true)} 
+              size="lg" 
+              className="text-lg px-8 py-6 bg-gradient-to-r from-purple-500 to-purple-600 hover:opacity-90 transition-opacity"
+              data-testid="button-test-act-speed-secondary"
+            >
+              <Zap className="mr-2 h-5 w-5" />
+              Test Your ACT Fibernet Speed
+            </Button>
+          </div>
+
+          {/* Troubleshooting Section */}
+          <Card className="mb-12">
+            <CardContent className="p-8">
+              <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Troubleshooting Slow ACT Fibernet Speeds</h2>
+              <p className="text-center text-muted-foreground mb-8 max-w-3xl mx-auto">
+                If your ACT Fibernet speed test results are below expectations, try these proven gaming optimization solutions before contacting technical support:
+              </p>
+              
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center">
+                      <Wifi className="h-6 w-6 text-purple-500" />
+                    </div>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-2">How do I test my ACT Fibernet speed accurately?</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Connect directly to your ACT router via ethernet cable, close gaming applications and streaming services, 
-                      disconnect other devices, and run multiple tests to get consistent speed measurements.
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">Why is my ACT Fibernet slower than expected?</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Common causes include WiFi interference, multiple gaming devices connected, router overheating, 
-                      background downloads, or network congestion during peak gaming hours (6-11 PM).
-                    </p>
+                    <h3 className="text-lg font-semibold text-foreground mb-2">1. Optimize Gaming Wi-Fi Signal Strength</h3>
+                    <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                      <li>Position your <strong>ACT Fibernet router</strong> centrally and elevated for maximum gaming coverage</li>
+                      <li>Keep the router away from thick walls, metal objects, and electronic interference</li>
+                      <li>Consider a <strong>WiFi 6 gaming router</strong> or mesh system for larger homes and multiple devices</li>
+                      <li>Check your <Link href="/wifi-analyzer" className="text-primary hover:underline">WiFi analyzer</Link> for optimal channel selection</li>
+                    </ul>
                   </div>
                 </div>
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">How can I optimize my ACT Fibernet for gaming?</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Use wired ethernet connections for gaming, enable QoS settings for gaming traffic, restart router regularly, 
-                      optimize router placement, and consider ACT's gaming VPN services for international servers.
-                    </p>
+
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center">
+                      <Router className="h-6 w-6 text-green-500" />
+                    </div>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-2">When should I contact ACT Fibernet support?</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Contact ACT support through their app or 04468186186 if speed tests consistently show significantly 
-                      lower speeds than your plan, high ping times affecting gaming, or persistent connectivity issues.
-                    </p>
+                    <h3 className="text-lg font-semibold text-foreground mb-2">2. Verify Gaming Equipment Compatibility</h3>
+                    <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                      <li>Ensure your gaming router supports your subscribed speed tier (Gigabit-capable for Gig gaming plans)</li>
+                      <li>Check that Ethernet cables are <strong>Cat5e or Cat6</strong> for optimal fiber gaming performance</li>
+                      <li>Update your ACT Fibernet router firmware through the ACT Fibernet app or portal</li>
+                      <li>Contact <a href="https://actcorp.in/support" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">ACT Fibernet support</a> for equipment upgrades if needed</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-orange-500/10 rounded-lg flex items-center justify-center">
+                      <Network className="h-6 w-6 text-orange-500" />
+                    </div>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-2">What ping should I expect with ACT Fibernet for gaming?</h4>
-                    <p className="text-sm text-muted-foreground">
-                      ACT Fibernet typically provides 5-15ms ping to Indian servers and 50-80ms to international gaming servers. 
-                      Ethernet connections and gaming plans offer the lowest latency for competitive gaming.
-                    </p>
+                    <h3 className="text-lg font-semibold text-foreground mb-2">3. Test With Ethernet Gaming Connection</h3>
+                    <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                      <li>Use a <strong>wired Ethernet gaming connection</strong> to eliminate WiFi as the bottleneck for competitive gaming</li>
+                      <li>If wired speeds are normal but WiFi is slow, the issue is your wireless gaming setup</li>
+                      <li>Run a <Link href="/ping-test" className="text-primary hover:underline">ping test</Link> to check for latency issues affecting gaming</li>
+                      <li>ACT Fibernet should deliver 85%+ of plan speed on wired connections for optimal gaming</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                      <Signal className="h-6 w-6 text-blue-500" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground mb-2">4. Manage Connected Gaming Devices</h3>
+                    <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                      <li>Disconnect unused devices that may be consuming gaming bandwidth during competitive sessions</li>
+                      <li>Limit simultaneous 4K streams and large downloads during gaming speed tests</li>
+                      <li>Use <strong>Quality of Service (QoS)</strong> settings to prioritize gaming traffic for esports</li>
+                      <li>Check your <Link href="/wifi-speed-optimization" className="text-primary hover:underline">WiFi optimization guide</Link> for advanced gaming tips</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center">
+                      <Zap className="h-6 w-6 text-red-500" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground mb-2">5. Contact ACT Fibernet Gaming Technical Support</h3>
+                    <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                      <li>If gaming issues persist, contact ACT Fibernet support at <strong>1800-419-2225</strong></li>
+                      <li>Check for fiber line issues or local network outages on <a href="https://actcorp.in" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">ACT Fibernet's website</a></li>
+                      <li>Request a technician visit to inspect your fiber connection and ONT for gaming optimization</li>
+                      <li>Ask about gaming plan upgrades if your current speed tier isn't meeting your esports needs</li>
+                    </ul>
                   </div>
                 </div>
               </div>
             </CardContent>
           </Card>
+
+          {/* Long-tail Keyword Optimized Sections */}
+          {seoConfig.h2Sections.map((section, index) => (
+            <Card key={index} className="mt-8">
+              <CardContent className="p-8">
+                <h2 className="text-2xl font-bold mb-4">{section.title}</h2>
+                <p className="text-muted-foreground">
+                  {index === 0 && "Test your ACT Fibernet internet speed with our advanced online speed test tool. Our platform provides accurate measurements of your GPON fiber optic connection, ensuring you're getting the premium gaming speeds that ACT Fibernet delivers across Indian metropolitan cities."}
+                  {index === 1 && "Check your ACT broadband upload speed to ensure optimal performance for live streaming, cloud gaming, file uploads, and content creation. ACT Fibernet offers symmetrical speeds, meaning your upload speeds should match your download speeds for premium fiber gaming service."}
+                  {index === 2 && "Monitor your ACT Fibernet ping and latency for competitive gaming, esports, video calls, and real-time applications. Lower ping times indicate better network responsiveness, which is crucial for competitive gaming and professional esports on ACT's gaming-optimized fiber network."}
+                  {index === 3 && "Test your ACT gaming internet speed to verify competitive gaming performance and esports readiness. ACT Fibernet's gaming-focused GPON technology provides ultra-low latency speeds without throttling for optimal gaming performance in Indian metro cities."}
+                  {index === 4 && "Find ACT Fibernet speed test locations near you for the most accurate local network gaming performance measurements. Testing from nearby servers provides the best indication of your actual ACT connection quality, speed, and gaming latency."}
+                </p>
+                <div className="mt-4">
+                  <Button 
+                    onClick={() => setShowSpeedTest(true)} 
+                    className="bg-purple-500 hover:bg-purple-600"
+                  >
+                    Test {section.title.includes('Upload') ? 'Upload' : section.title.includes('Ping') ? 'Ping' : section.title.includes('Gaming') ? 'Gaming' : 'Speed'} Now
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+
+          {/* FAQ Section */}
+          <Card className="mt-8">
+            <CardContent className="p-8">
+              <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+              <div className="space-y-6">
+                {seoConfig.faq.map((item, index) => (
+                  <div key={index} className="border-b border-border pb-4 last:border-b-0">
+                    <h3 className="text-lg font-semibold mb-2">{item.question}</h3>
+                    <p className="text-muted-foreground">{item.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
           <RelatedProviders currentCountryCode="in" currentProviderSlug="act-fibernet" />
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-background/50 backdrop-blur-sm border-t border-border/20 mt-16">
-        <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12">
-          {/* Footer Links and Info */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <h4 className="font-semibold text-foreground mb-3">India Providers</h4>
-              <div className="space-y-2 text-sm">
-                <Link href="/providers/in/jio-fiber" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Jio Fiber Speed Test
-                </Link>
-                <Link href="/providers/in/airtel-broadband" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Airtel Broadband Speed Test
-                </Link>
-                <Link href="/providers/in/act-fibernet" className="block text-muted-foreground hover:text-primary transition-colors">
-                  ACT Fibernet Speed Test
-                </Link>
-                <Link href="/providers/in/bsnl-broadband" className="block text-muted-foreground hover:text-primary transition-colors">
-                  BSNL Broadband Speed Test
-                </Link>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-3">Speed Test Tools</h4>
-              <div className="space-y-2 text-sm">
-                <Link href="/internet-speed-requirements" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Speed Requirements
-                </Link>
-                <Link href="/wifi-analyzer" className="block text-muted-foreground hover:text-primary transition-colors">
-                  WiFi Analyzer
-                </Link>
-                <Link href="/ai-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
-                  AI Speed Test
-                </Link>
-                <div className="text-muted-foreground">Gaming Speed Test</div>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-3">External Resources</h4>
-              <div className="space-y-2 text-sm">
-                <a href="https://www.actcorp.in/" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Official ACT Fibernet
-                </a>
-                <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Speedtest by Ookla
-                </a>
-                <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Fast.com by Netflix
-                </a>
-                <a href="https://www.trai.gov.in/" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
-                  TRAI Broadband Guide
-                </a>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-3">About & Help</h4>
-              <div className="space-y-2 text-sm">
-                <Link href="/about" className="block text-muted-foreground hover:text-primary transition-colors">
-                  About Us
-                </Link>
-                <Link href="/help" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Help & FAQ
-                </Link>
-                <Link href="/" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Speed Test Home
-                </Link>
-                <Link href="/internet-providers" className="block text-muted-foreground hover:text-primary transition-colors">
-                  All Providers
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Copyright */}
-          <div className="text-center pt-8 border-t border-border/30 mt-8">
-            <p className="text-sm text-muted-foreground">
-              © 2025 Speed Test and Boost. Free ACT Fibernet internet speed test for ACT broadband customers. 
-              Test your ACT fiber speed, gaming performance, and network connectivity in metro cities across India.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <GenericFooter />
 
       {showSpeedTest && (
         <SpeedTestModal onClose={() => setShowSpeedTest(false)} />
