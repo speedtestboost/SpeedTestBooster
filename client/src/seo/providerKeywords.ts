@@ -68,6 +68,26 @@ export const providerKeywords: Record<string, ProviderSEOConfig> = {
       {
         question: "How accurate is this Verizon speed test?",
         answer: "Our speed test uses multiple test servers and measures sustained peak bandwidth similar to Netflix's Fast.com methodology for accurate Verizon Fios results."
+      },
+      {
+        question: "Does Verizon Fios throttle internet speeds?",
+        answer: "Verizon Fios generally does not throttle speeds for home internet customers. Their fiber network provides consistent speeds without data caps. If you experience slowdowns, it's more likely due to WiFi issues or equipment problems."
+      },
+      {
+        question: "What's the difference between WiFi and wired speeds on Verizon Fios?",
+        answer: "WiFi speeds typically range 40-60% of your plan speed due to interference and distance. Ethernet connections should reach 90-95% of your Verizon Fios plan's advertised fiber speed for optimal performance."
+      },
+      {
+        question: "When should I contact Verizon support about slow speeds?",
+        answer: "Contact Verizon at 1-800-VERIZON if wired speed tests consistently show speeds below 80% of your plan, or if troubleshooting steps don't resolve persistent connectivity issues."
+      },
+      {
+        question: "How fast should my Verizon Fios connection be?",
+        answer: "Your speeds should reach at least 90% of your plan's advertised rate on wired connections. Common Verizon Fios plans: 300 Mbps, 500 Mbps, 1 Gig (1000 Mbps), and 2 Gig (2000 Mbps)."
+      },
+      {
+        question: "How much internet speed does my household need?",
+        answer: "For basic use, 100-200 Mbps works well. Multiple 4K streams and gaming require 300-500 Mbps. Heavy usage households benefit from Gigabit plans. Use our internet speed requirements calculator for personalized recommendations."
       }
     ]
   },
