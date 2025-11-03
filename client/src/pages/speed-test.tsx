@@ -170,20 +170,22 @@ export default function SpeedTest() {
           </p>
         </div>
 
-        {/* OpenSpeedTest Embed */}
+        {/* Speed Test Widget */}
         <Card className="mb-8">
-          <CardContent className="p-0 overflow-hidden">
-            <div style={{ minHeight: '600px', width: '100%' }}>
+          <CardContent className="p-0 overflow-hidden rounded-lg">
+            <div style={{ minHeight: '500px', width: '100%', position: 'relative' }}>
               <iframe 
-                src="https://openspeedtest.com/" 
+                src="https://openspeedtest.com/speedtest" 
                 style={{
                   border: 'none',
                   width: '100%',
-                  height: '700px',
-                  minHeight: '600px'
+                  height: '550px',
+                  minHeight: '500px',
+                  display: 'block'
                 }}
                 title="Internet Speed Test"
                 data-testid="speed-test-iframe"
+                allowFullScreen
               />
             </div>
           </CardContent>
