@@ -35,9 +35,9 @@ export default function Help() {
     document.head.appendChild(canonical);
 
     return () => {
-      const existingCanonical = document.querySelector('link[rel="canonical"]');
-      if (existingCanonical) {
-        document.head.removeChild(existingCanonical);
+      // Remove the specific canonical element we created
+      if (canonical.parentNode) {
+        canonical.parentNode.removeChild(canonical);
       }
     };
   }, []);

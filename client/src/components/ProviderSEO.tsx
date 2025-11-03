@@ -108,10 +108,9 @@ export function ProviderSEO({ providerSlug }: ProviderSEOProps) {
         scriptToRemove.remove();
       }
       
-      // Remove canonical tag
-      const existingCanonical = document.querySelector('link[rel="canonical"]');
-      if (existingCanonical) {
-        document.head.removeChild(existingCanonical);
+      // Remove the specific canonical element we created
+      if (canonicalLink.parentNode) {
+        canonicalLink.parentNode.removeChild(canonicalLink);
       }
       
       // Remove Open Graph and Twitter tags

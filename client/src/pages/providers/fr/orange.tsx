@@ -51,12 +51,10 @@ export default function OrangeSpeedTest() {
     return () => {
       const existingScript = document.querySelector('script#orange-structured-data');
       if (existingScript) document.head.removeChild(existingScript);
-    };
 
-    return () => {
-      const existingCanonical = document.querySelector('link[rel="canonical"]');
-      if (existingCanonical) {
-        document.head.removeChild(existingCanonical);
+      // Remove the specific canonical element we created
+      if (canonical.parentNode) {
+        canonical.parentNode.removeChild(canonical);
       }
     };
   }, []);
