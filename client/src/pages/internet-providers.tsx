@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import Header from "@/components/Header";
 import GenericFooter from "@/components/GenericFooter";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -245,13 +246,10 @@ export default function InternetProviders() {
     }
 
     // Add canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.rel = 'canonical';
-      document.head.appendChild(canonical);
-    }
+    const canonical = document.createElement('link');
+    canonical.rel = 'canonical';
     canonical.href = 'https://speedtestboost.com/internet-providers';
+    document.head.appendChild(canonical);
 
     // Add JSON-LD structured data
     const structuredData = {
@@ -303,6 +301,11 @@ export default function InternetProviders() {
     document.head.appendChild(script);
 
     return () => {
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) {
+        document.head.removeChild(existingCanonical);
+      }
+      
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) {
         document.head.removeChild(existingScript);
@@ -328,6 +331,7 @@ export default function InternetProviders() {
       
       <main className="pt-24 pb-12">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
+          <Breadcrumbs items={[{ label: "Internet Providers", href: "/internet-providers" }]} />
           {/* Hero Section */}
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-6">

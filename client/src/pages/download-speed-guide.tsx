@@ -20,13 +20,13 @@ export default function DownloadSpeedGuide() {
     }
 
     // Update canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.rel = 'canonical';
-      document.head.appendChild(canonical);
-    }
+    const canonical = document.createElement('link');
+
+    canonical.rel = 'canonical';
+
     canonical.href = 'https://speedtestboost.com/download-speed-guide';
+
+    document.head.appendChild(canonical);
 
     // Open Graph and Twitter meta tags
     const createOrUpdateMetaTag = (property: string, content: string) => {
@@ -129,6 +129,11 @@ export default function DownloadSpeedGuide() {
     document.head.appendChild(script);
 
     return () => {
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) {
+        document.head.removeChild(existingCanonical);
+      }
+      
       const existingScript = document.querySelector('script#download-speed-guide-structured-data');
       if (existingScript) existingScript.remove();
       

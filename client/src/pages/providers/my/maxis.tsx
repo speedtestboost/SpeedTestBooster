@@ -18,13 +18,16 @@ export default function MaxisSpeedTest() {
       metaDescription.setAttribute('content', 'Test Maxis Fiber & 5G internet speed instantly - Free speed test for Malaysia. Accurate download/upload mobile broadband results in seconds.');
     }
 
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.rel = 'canonical';
-      document.head.appendChild(canonical);
-    }
+    const canonical = document.createElement('link');
+
+
+    canonical.rel = 'canonical';
+
+
     canonical.href = 'https://speedtestboost.com/providers/my/maxis';
+
+
+    document.head.appendChild(canonical);
 
     const structuredData = {
       "@context": "https://schema.org",
@@ -49,6 +52,13 @@ export default function MaxisSpeedTest() {
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
+    };
+
+    return () => {
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) {
+        document.head.removeChild(existingCanonical);
+      }
     };
   }, []);
 

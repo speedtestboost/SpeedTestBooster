@@ -19,13 +19,13 @@ export default function O2DESpeedTest() {
     }
 
     // Update canonical tag
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.rel = 'canonical';
-      document.head.appendChild(canonical);
-    }
+    const canonical = document.createElement('link');
+
+    canonical.rel = 'canonical';
+
     canonical.href = 'https://speedtestboost.com/providers/de/o2-de';
+
+    document.head.appendChild(canonical);
 
     const structuredData = {
       "@context": "https://schema.org",
@@ -50,6 +50,13 @@ export default function O2DESpeedTest() {
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
+    };
+
+    return () => {
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) {
+        document.head.removeChild(existingCanonical);
+      }
     };
   }, []);
 

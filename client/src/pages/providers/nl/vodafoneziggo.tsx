@@ -49,13 +49,13 @@ export default function VodafoneZiggoSpeedTest() {
     });
     
     // Update canonical tag
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.rel = 'canonical';
-      document.head.appendChild(canonical);
-    }
+    const canonical = document.createElement('link');
+
+    canonical.rel = 'canonical';
+
     canonical.href = 'https://speedtestboost.com/providers/nl/vodafoneziggo';
+
+    document.head.appendChild(canonical);
     
     // Structured Data
     let structuredData = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
@@ -93,6 +93,13 @@ export default function VodafoneZiggoSpeedTest() {
         "addressRegion": "Netherlands"
       }
     });
+
+    return () => {
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) {
+        document.head.removeChild(existingCanonical);
+      }
+    };
   }, []);
 
   return (

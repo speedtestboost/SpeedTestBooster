@@ -88,14 +88,19 @@ export default function SpeedTest() {
     }
     contentLanguage.setAttribute('content', 'en-US');
     
-    // Canonical URL for homepage
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute('href', 'https://speedtestboost.com/');
+    // Canonical URL
+
+    
+    const canonical = document.createElement('link');
+
+    
+    canonical.rel = 'canonical';
+
+    
+    canonical.href = 'https://speedtestboost.com/';
+
+    
+    document.head.appendChild(canonical);
     
     // Hreflang tags for multilingual support
     const existingHreflang = document.querySelectorAll('link[rel="alternate"][hreflang]');
@@ -171,6 +176,13 @@ export default function SpeedTest() {
         "All ISP support"
       ]
     });
+
+    return () => {
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) {
+        document.head.removeChild(existingCanonical);
+      }
+    };
   }, []);
 
   // Fetch network info

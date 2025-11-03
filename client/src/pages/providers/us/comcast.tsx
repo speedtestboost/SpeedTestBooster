@@ -60,13 +60,16 @@ export default function ComcastSpeedTest() {
       twitterTag.setAttribute('content', tag.content);
     });
 
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.rel = 'canonical';
-      document.head.appendChild(canonical);
-    }
+    const canonical = document.createElement('link');
+
+
+    canonical.rel = 'canonical';
+
+
     canonical.href = 'https://speedtestboost.com/providers/us/comcast';
+
+
+    document.head.appendChild(canonical);
 
     const structuredData = {
       "@context": "https://schema.org",
@@ -129,6 +132,11 @@ export default function ComcastSpeedTest() {
     document.head.appendChild(script);
 
     return () => {
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) {
+        document.head.removeChild(existingCanonical);
+      }
+      
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
     };

@@ -18,13 +18,16 @@ export default function EtisalatSpeedTest() {
       metaDescription.setAttribute('content', 'Test Etisalat eLife internet speed instantly - Free fiber speed checker for UAE. Accurate download/upload speeds & ping results in seconds.');
     }
 
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.rel = 'canonical';
-      document.head.appendChild(canonical);
-    }
+    const canonical = document.createElement('link');
+
+
+    canonical.rel = 'canonical';
+
+
     canonical.href = 'https://speedtestboost.com/providers/ae/etisalat';
+
+
+    document.head.appendChild(canonical);
 
     const structuredData = {
       "@context": "https://schema.org",
@@ -49,6 +52,13 @@ export default function EtisalatSpeedTest() {
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
+    };
+
+    return () => {
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) {
+        document.head.removeChild(existingCanonical);
+      }
     };
   }, []);
 

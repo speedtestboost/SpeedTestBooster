@@ -144,13 +144,13 @@ export default function InternetSpeedRequirements() {
     });
     
     // Update canonical tag
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.rel = 'canonical';
-      document.head.appendChild(canonical);
-    }
+    const canonical = document.createElement('link');
+
+    canonical.rel = 'canonical';
+
     canonical.href = 'https://speedtestboost.com/internet-speed-requirements';
+
+    document.head.appendChild(canonical);
     
     // Structured Data (JSON-LD)
     let structuredData = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
@@ -190,6 +190,13 @@ export default function InternetSpeedRequirements() {
         "audienceType": ["Gamers", "Remote Workers", "Streamers", "Home Users"]
       }
     });
+
+    return () => {
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) {
+        document.head.removeChild(existingCanonical);
+      }
+    };
   }, []);
 
   const calculateRequirements = () => {

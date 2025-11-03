@@ -18,13 +18,16 @@ export default function TelecentroSpeedTest() {
       metaDescription.setAttribute('content', 'Test Telecentro cable internet speed instantly - Free speed checker for Argentina. Accurate broadband & fiber performance results in seconds.');
     }
 
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.rel = 'canonical';
-      document.head.appendChild(canonical);
-    }
+    const canonical = document.createElement('link');
+
+
+    canonical.rel = 'canonical';
+
+
     canonical.href = 'https://speedtestboost.com/providers/ar/telecentro';
+
+
+    document.head.appendChild(canonical);
 
     const structuredData = {
       "@context": "https://schema.org",
@@ -49,6 +52,13 @@ export default function TelecentroSpeedTest() {
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
+    };
+
+    return () => {
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) {
+        document.head.removeChild(existingCanonical);
+      }
     };
   }, []);
 

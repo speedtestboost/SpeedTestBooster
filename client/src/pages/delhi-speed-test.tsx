@@ -84,13 +84,18 @@ export default function DelhiSpeedTest() {
     });
     
     // Canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.rel = 'canonical';
-      document.head.appendChild(canonical);
-    }
+
+    
+    const canonical = document.createElement('link');
+
+    
+    canonical.rel = 'canonical';
+
+    
     canonical.href = 'https://speedtestboost.com/delhi-speed-test';
+
+    
+    document.head.appendChild(canonical);
     
     // Structured Data (JSON-LD)
     let structuredData = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
@@ -128,6 +133,13 @@ export default function DelhiSpeedTest() {
         }
       }
     });
+
+    return () => {
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) {
+        document.head.removeChild(existingCanonical);
+      }
+    };
   }, []);
 
   // ... [Rest of the component logic is identical to Mumbai page] ...

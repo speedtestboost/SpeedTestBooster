@@ -17,6 +17,7 @@ import { Link } from "wouter";
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import GenericFooter from "@/components/GenericFooter";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export default function Help() {
   useEffect(() => {
@@ -28,13 +29,17 @@ export default function Help() {
     }
     
     // Add canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.rel = 'canonical';
-      document.head.appendChild(canonical);
-    }
+    const canonical = document.createElement('link');
+    canonical.rel = 'canonical';
     canonical.href = 'https://speedtestboost.com/help';
+    document.head.appendChild(canonical);
+
+    return () => {
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) {
+        document.head.removeChild(existingCanonical);
+      }
+    };
   }, []);
 
   return (
@@ -44,6 +49,7 @@ export default function Help() {
       {/* Hero Section */}
       <section className="pt-24 pb-12">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
+          <Breadcrumbs items={[{ label: "Help & FAQ", href: "/help" }]} />
           <div className="text-center mb-12">
             <div className="flex justify-center mb-6">
               <div className="p-4 bg-primary/10 rounded-full">

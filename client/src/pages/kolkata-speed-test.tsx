@@ -82,13 +82,13 @@ export default function KolkataSpeedTest() {
     });
     
     // Update canonical tag
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.rel = 'canonical';
-      document.head.appendChild(canonical);
-    }
+    const canonical = document.createElement('link');
+
+    canonical.rel = 'canonical';
+
     canonical.href = 'https://speedtestboost.com/kolkata-speed-test';
+
+    document.head.appendChild(canonical);
     
     // Structured Data (JSON-LD)
     let structuredData = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
@@ -127,6 +127,13 @@ export default function KolkataSpeedTest() {
         }
       }
     });
+
+    return () => {
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) {
+        document.head.removeChild(existingCanonical);
+      }
+    };
   }, []);
 
   const { data: networkInfo } = useQuery({ queryKey: ["/api/network-info"] });

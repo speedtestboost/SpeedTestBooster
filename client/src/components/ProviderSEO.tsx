@@ -22,14 +22,11 @@ export function ProviderSEO({ providerSlug }: ProviderSEOProps) {
       metaDescription.setAttribute('content', config.metaTemplate);
     }
 
-    // Update canonical URL - create if doesn't exist
-    let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
-    if (!canonicalLink) {
-      canonicalLink = document.createElement('link');
-      canonicalLink.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonicalLink);
-    }
+    // Create canonical URL
+    const canonicalLink = document.createElement('link');
+    canonicalLink.setAttribute('rel', 'canonical');
     canonicalLink.setAttribute('href', `https://speedtestboost.com/providers/${providerSlug.includes('/') ? providerSlug : `us/${providerSlug}`}`);
+    document.head.appendChild(canonicalLink);
 
     // Create Open Graph meta tags
     const createOrUpdateMetaTag = (property: string, content: string) => {
@@ -109,6 +106,12 @@ export function ProviderSEO({ providerSlug }: ProviderSEOProps) {
       const scriptToRemove = document.querySelector(`script#${scriptId}`);
       if (scriptToRemove) {
         scriptToRemove.remove();
+      }
+      
+      // Remove canonical tag
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) {
+        document.head.removeChild(existingCanonical);
       }
       
       // Remove Open Graph and Twitter tags

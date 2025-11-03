@@ -48,14 +48,19 @@ export default function LogoDemo() {
   useEffect(() => {
     document.title = "Logo Options - Speed Test & Boost";
     
-    // Add canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.rel = 'canonical';
-      document.head.appendChild(canonical);
-    }
+    // Canonical URL
+
+    
+    const canonical = document.createElement('link');
+
+    
+    canonical.rel = 'canonical';
+
+    
     canonical.href = 'https://speedtestboost.com/logo-demo';
+
+    
+    document.head.appendChild(canonical);
     
     // Add noindex meta tag since this is an internal demo page
     let robotsMeta = document.querySelector('meta[name="robots"]') as HTMLMetaElement;
@@ -65,6 +70,13 @@ export default function LogoDemo() {
       document.head.appendChild(robotsMeta);
     }
     robotsMeta.content = 'noindex, nofollow';
+
+    return () => {
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) {
+        document.head.removeChild(existingCanonical);
+      }
+    };
   }, []);
 
   return (

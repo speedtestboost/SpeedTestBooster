@@ -26,13 +26,16 @@ export default function SpanishSpeedTest() {
     }
     contentLanguage.setAttribute('content', 'es');
 
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute('href', 'https://speedtestboost.com/es');
+    const canonical = document.createElement('link');
+
+
+    canonical.rel = 'canonical';
+
+
+    canonical.href = 'https://speedtestboost.com/es';
+
+
+    document.head.appendChild(canonical);
 
     const existingHreflang = document.querySelectorAll('link[rel="alternate"][hreflang]');
     existingHreflang.forEach(link => link.remove());
@@ -93,6 +96,11 @@ export default function SpanishSpeedTest() {
     document.head.appendChild(script);
 
     return () => {
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) {
+        document.head.removeChild(existingCanonical);
+      }
+      
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
     };

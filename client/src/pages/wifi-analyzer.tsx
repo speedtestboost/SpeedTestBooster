@@ -112,13 +112,13 @@ export default function WiFiAnalyzer() {
     });
     
     // Canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.rel = 'canonical';
-      document.head.appendChild(canonical);
-    }
+    const canonical = document.createElement('link');
+
+    canonical.rel = 'canonical';
+
     canonical.href = 'https://speedtestboost.com/wifi-analyzer';
+
+    document.head.appendChild(canonical);
     
     // Structured Data (JSON-LD)
     let structuredData = document.querySelector('script[type="application/ld+json"]');
@@ -157,6 +157,13 @@ export default function WiFiAnalyzer() {
       ],
       "keywords": "wifi analyzer, network diagnostics, wifi scanner, wireless analyzer, network scanner, wifi troubleshooting"
     });
+
+    return () => {
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) {
+        document.head.removeChild(existingCanonical);
+      }
+    };
   }, []);
 
   // Mock network data for demonstration

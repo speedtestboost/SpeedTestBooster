@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import GenericFooter from "@/components/GenericFooter";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Zap, Wifi, Globe } from "lucide-react";
@@ -33,13 +34,16 @@ export default function IndonesianSpeedTest() {
     }
     contentLanguage.setAttribute('content', 'id');
 
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute('href', 'https://speedtestboost.com/id');
+    const canonical = document.createElement('link');
+
+
+    canonical.rel = 'canonical';
+
+
+    canonical.href = 'https://speedtestboost.com/id';
+
+
+    document.head.appendChild(canonical);
 
     const existingHreflang = document.querySelectorAll('link[rel="alternate"][hreflang]');
     existingHreflang.forEach(link => link.remove());
@@ -100,6 +104,11 @@ export default function IndonesianSpeedTest() {
     document.head.appendChild(script);
 
     return () => {
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) {
+        document.head.removeChild(existingCanonical);
+      }
+      
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
     };
@@ -111,6 +120,7 @@ export default function IndonesianSpeedTest() {
       
       <main className="pt-24 pb-12">
         <div className="max-w-4xl mx-auto px-4 lg:px-8">
+          <Breadcrumbs items={[{ label: "Tes Kecepatan Internet", href: "/id" }]} />
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-6">
               <div className="p-4 bg-primary/10 rounded-full">

@@ -108,13 +108,13 @@ export default function AISpeedTest() {
 
   // Set canonical URL and SEO
   useEffect(() => {
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.rel = 'canonical';
-      document.head.appendChild(canonical);
-    }
+    const canonical = document.createElement('link');
+
+    canonical.rel = 'canonical';
+
     canonical.href = 'https://speedtestboost.com/ai-speed-test';
+
+    document.head.appendChild(canonical);
     
     // Update page title and meta description
     document.title = "AI Internet Speed Test & Requirements Calculator 2025 - ChatGPT, Claude, Midjourney Speed Requirements";
@@ -123,6 +123,13 @@ export default function AISpeedTest() {
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Calculate exact internet speed requirements for AI tools like ChatGPT, Claude, Midjourney, and enterprise AI workloads. Free AI speed test with personalized recommendations and optimization tips for 2025.');
     }
+
+    return () => {
+      const existingCanonical = document.querySelector('link[rel="canonical"]');
+      if (existingCanonical) {
+        document.head.removeChild(existingCanonical);
+      }
+    };
   }, []);
 
   const { data: networkInfo } = useQuery({
