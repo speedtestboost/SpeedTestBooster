@@ -230,9 +230,9 @@ export default function DelhiSpeedTest() {
       {/* Delhi-specific SEO Content */}
       <section className="max-w-4xl mx-auto px-4 lg:px-8 py-8">
         <div className="text-center mb-8">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          <h1 className="text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             Delhi NCR Internet Speed Test
-          </h2>
+          </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
             Test your internet speed in Delhi, Gurgaon, Noida, Faridabad, and Greater NCR with our comprehensive speed testing tool. 
             Get accurate results for all major ISPs including Airtel Xstream Fiber, Jio Fiber, BSNL Bharat Fiber, Excitel, ACT Fibernet, and local cable operators. 
