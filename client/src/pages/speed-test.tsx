@@ -12,8 +12,16 @@ import OptimizationModal from "@/components/OptimizationModal";
 import Header from "@/components/Header";
 import { performSpeedTest, type SpeedTestResult } from "@/lib/speedTest";
 import { trackEvent, trackSpeedTest, trackWifiOptimization } from "@/lib/analytics";
-import { Play, Wifi } from "lucide-react";
+import { Play, Wifi, Monitor, Globe, Zap, CheckCircle2 } from "lucide-react";
 import { Link } from "wouter";
+import type { SpeedTest } from "@shared/schema";
+
+type NetworkInfo = {
+  ipAddress: string;
+  connectionType: string;
+  serverLocation: string;
+  isp: string;
+};
 
 export default function SpeedTest() {
   const [isTestRunning, setIsTestRunning] = useState(false);
@@ -25,12 +33,12 @@ export default function SpeedTest() {
 
   // SEO Meta Tags for homepage
   useEffect(() => {
-    document.title = "Speed Test - Free WiFi Speed Test & Internet Speed Check Online";
+    document.title = "HTML5 Speed Test - Free WiFi & Internet Speed Test | No Apps Required";
     
     // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free speed test online - Check WiFi speed test, internet speed test, and fiber speed test in seconds. Run net speed test, data speed test, and broadband speed checker. Test your speed now!');
+      metaDescription.setAttribute('content', 'Free HTML5 speed test - No apps, no downloads, no plugins! Browser-based WiFi speed test works on any device. Test internet speed instantly with our web-based speed checker.');
     }
     
     // Keywords meta tag
@@ -40,12 +48,12 @@ export default function SpeedTest() {
       keywords.setAttribute('name', 'keywords');
       document.head.appendChild(keywords);
     }
-    keywords.setAttribute('content', 'speed test, wifi speed test, internet speed test, wifispeed, net speed test, fiber speed test, data speed test, run speed test, speed test online, test wifi speed, my fiber speed test, wifi test, net speed, check internet speed, internet speed check, free internet speed test, spped test, test my speed, speed test fast');
+    keywords.setAttribute('content', 'html5 speed test, browser based speed test, no download speed test, web based speed test, no app speed test, no plugin speed test, speed test, wifi speed test, internet speed test, net speed test, speed test online, test wifi speed, check internet speed, free internet speed test');
     
     // Open Graph tags
     const ogTags = [
-      { property: 'og:title', content: 'Free Internet Speed Test - Check WiFi & Broadband Speed' },
-      { property: 'og:description', content: 'Free internet speed test tool. Test WiFi and broadband speeds instantly with accurate results. Check download, upload speeds and ping. Works globally with all ISPs.' },
+      { property: 'og:title', content: 'HTML5 Speed Test - No Apps, No Downloads Required' },
+      { property: 'og:description', content: 'Free HTML5 internet speed test - 100% browser-based, no apps or plugins needed. Test WiFi and broadband speeds instantly on any device with our web-based speed checker.' },
       { property: 'og:url', content: 'https://speedtestboost.com/' },
       { property: 'og:type', content: 'website' },
       { property: 'og:site_name', content: 'Speed Test & Boost' },
@@ -65,8 +73,8 @@ export default function SpeedTest() {
     // Twitter Card tags
     const twitterTags = [
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'Free Internet Speed Test - Check WiFi & Broadband Speed' },
-      { name: 'twitter:description', content: 'Free internet speed test tool. Test WiFi and broadband speeds instantly with accurate results.' }
+      { name: 'twitter:title', content: 'HTML5 Speed Test - No Apps or Downloads Required' },
+      { name: 'twitter:description', content: 'Free HTML5 speed test - 100% browser-based. Test internet speed on any device without apps or plugins.' }
     ];
     
     twitterTags.forEach(tag => {
@@ -152,11 +160,12 @@ export default function SpeedTest() {
     structuredData.textContent = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Speed Test & Boost",
-      "description": "Free internet speed test tool with global coverage. Test WiFi and broadband speeds instantly with accurate results for all ISPs.",
+      "name": "Speed Test & Boost - HTML5 Internet Speed Test",
+      "description": "Free HTML5 internet speed test - 100% browser-based with no apps, downloads, or plugins required. Test WiFi and broadband speeds instantly on any device with our web-based speed checker.",
       "url": "https://speedtestboost.com/",
       "applicationCategory": "NetworkingApplication",
       "operatingSystem": "Web Browser",
+      "browserRequirements": "Requires HTML5-capable browser",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -168,6 +177,9 @@ export default function SpeedTest() {
         "url": "https://speedtestboost.com/"
       },
       "featureList": [
+        "HTML5-based speed test (no plugins required)",
+        "Browser-based testing (no app downloads)",
+        "Cross-platform compatibility (works on any device)",
         "Download speed test",
         "Upload speed test", 
         "Ping test",
@@ -186,12 +198,12 @@ export default function SpeedTest() {
   }, []);
 
   // Fetch network info
-  const { data: networkInfo } = useQuery({
+  const { data: networkInfo } = useQuery<NetworkInfo>({
     queryKey: ["/api/network-info"],
   });
 
   // Fetch speed test history
-  const { data: speedTests, isLoading: isLoadingHistory } = useQuery({
+  const { data: speedTests, isLoading: isLoadingHistory } = useQuery<SpeedTest[]>({
     queryKey: ["/api/speed-tests"],
   });
 
@@ -315,6 +327,43 @@ export default function SpeedTest() {
     <div className="min-h-screen bg-background">
       <Header currentPath="/" />
 
+      {/* HTML5 Hero Banner */}
+      <div className="gradient-bg py-8 px-4 border-b border-border/10">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center space-y-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
+              HTML5 Internet Speed Test
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 font-medium">
+              No Apps • No Downloads • No Plugins Required!
+            </p>
+            <p className="text-base md:text-lg text-white/80 max-w-3xl mx-auto">
+              100% browser-based speed test that works on any device. Web-based bandwidth test with instant results for download, upload, ping & jitter.
+            </p>
+            
+            {/* Feature Icons */}
+            <div className="flex flex-wrap justify-center gap-4 md:gap-8 pt-4">
+              <div className="flex items-center space-x-2 text-white/90">
+                <Monitor className="h-5 w-5" />
+                <span className="text-sm md:text-base font-medium">Works on Any Device</span>
+              </div>
+              <div className="flex items-center space-x-2 text-white/90">
+                <Globe className="h-5 w-5" />
+                <span className="text-sm md:text-base font-medium">No Installation</span>
+              </div>
+              <div className="flex items-center space-x-2 text-white/90">
+                <Zap className="h-5 w-5" />
+                <span className="text-sm md:text-base font-medium">Instant Results</span>
+              </div>
+              <div className="flex items-center space-x-2 text-white/90">
+                <CheckCircle2 className="h-5 w-5" />
+                <span className="text-sm md:text-base font-medium">100% Free</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-6 space-y-6">
         {/* Desktop Layout - Three Column Grid */}
         <div className="hidden lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
@@ -345,6 +394,14 @@ export default function SpeedTest() {
 
           {/* Center Column - Speed Gauge & Test Controls */}
           <div className="flex flex-col items-center justify-start">
+            {/* HTML5 Badge */}
+            <div className="mb-4 px-4 py-2 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30">
+              <p className="text-sm md:text-base font-medium text-foreground flex items-center space-x-2">
+                <Zap className="h-4 w-4 text-primary" />
+                <span>100% Web-Based HTML5 Test • No Flash • No Java • Works Everywhere</span>
+              </p>
+            </div>
+            
             <div className="w-full max-w-md">
               <SpeedGauge
                 currentSpeed={displayResult?.downloadSpeed || 0}
