@@ -305,6 +305,11 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="center" className="w-56">
                   <DropdownMenuItem asChild>
+                    <Link href="/speed-test-faq" className="w-full" data-testid="link-speed-test-faq">
+                      Speed Test FAQ
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
                     <Link href="/download-speed-guide" className="w-full" data-testid="link-download-speed-guide">
                       Download Speed Guide
                     </Link>
@@ -370,6 +375,14 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
                 onClick={() => setShowMobileMenu(false)}
               >
                 AI Speed Test
+              </Link>
+              <Link 
+                href="/speed-test-faq" 
+                className="text-muted-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setShowMobileMenu(false)}
+                data-testid="mobile-link-speed-test-faq"
+              >
+                Speed Test FAQ
               </Link>
               <Link 
                 href="/download-speed-guide" 
