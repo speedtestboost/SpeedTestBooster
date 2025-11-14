@@ -9,27 +9,51 @@ export default function SpeedTestFAQ() {
   useEffect(() => {
     window.scrollTo(0, 0);
     
-    // Set page title and meta tags
+    // Store original values for cleanup
+    const originalTitle = document.title;
+    const metaDescription = document.querySelector('meta[name="description"]');
+    const originalDescription = metaDescription?.getAttribute('content') || '';
+    
+    // Track created/modified elements for cleanup
+    const createdElements: Element[] = [];
+    const modifiedElements: Map<Element, Map<string, string>> = new Map();
+    
+    // Set page title
     document.title = "Internet Speed Test FAQ - Common Questions Answered | Speed Test & Boost";
     
-    const metaDescription = document.querySelector('meta[name="description"]');
+    // Update meta description
     if (metaDescription) {
+      modifiedElements.set(metaDescription, new Map([['content', originalDescription]]));
       metaDescription.setAttribute('content', 'Get answers to the most common speed test questions. Learn why your speed test shows fast but internet feels slow, what speeds you need for Zoom and gaming, how to improve results, and more.');
     }
 
-    // Update canonical URL
-    const canonical = document.createElement('link');
-    canonical.rel = 'canonical';
-    canonical.href = 'https://speedtestboost.com/speed-test-faq';
-    document.head.appendChild(canonical);
+    // Update or create canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (canonical) {
+      // Reuse existing canonical, track original href
+      const originalHref = canonical.getAttribute('href') || '';
+      modifiedElements.set(canonical, new Map([['href', originalHref]]));
+      canonical.href = 'https://speedtestboost.com/speed-test-faq';
+    } else {
+      // Create new canonical
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      canonical.href = 'https://speedtestboost.com/speed-test-faq';
+      document.head.appendChild(canonical);
+      createdElements.push(canonical);
+    }
 
-    // Open Graph and Twitter meta tags
+    // Helper to create or update meta tags with tracking
     const createOrUpdateMetaTag = (property: string, content: string) => {
       let metaTag = document.querySelector(`meta[property="${property}"]`);
       if (!metaTag) {
         metaTag = document.createElement('meta');
         metaTag.setAttribute('property', property);
         document.head.appendChild(metaTag);
+        createdElements.push(metaTag);
+      } else {
+        const originalContent = metaTag.getAttribute('content') || '';
+        modifiedElements.set(metaTag, new Map([['content', originalContent]]));
       }
       metaTag.setAttribute('content', content);
     };
@@ -40,6 +64,10 @@ export default function SpeedTestFAQ() {
         metaTag = document.createElement('meta');
         metaTag.setAttribute('name', name);
         document.head.appendChild(metaTag);
+        createdElements.push(metaTag);
+      } else {
+        const originalContent = metaTag.getAttribute('content') || '';
+        modifiedElements.set(metaTag, new Map([['content', originalContent]]));
       }
       metaTag.setAttribute('content', content);
     };
@@ -50,6 +78,10 @@ export default function SpeedTestFAQ() {
         metaTag = document.createElement('meta');
         metaTag.setAttribute('name', 'keywords');
         document.head.appendChild(metaTag);
+        createdElements.push(metaTag);
+      } else {
+        const originalContent = metaTag.getAttribute('content') || '';
+        modifiedElements.set(metaTag, new Map([['content', originalContent]]));
       }
       metaTag.setAttribute('content', content);
     };
@@ -65,7 +97,7 @@ export default function SpeedTestFAQ() {
     
     createOrUpdateKeywordsMetaTag('speed test faq, speed test showing fast but slow internet, speed test for zoom, gaming speed test, internet speed requirements, how to improve speed test, speed test results explained, speed test slower than expected');
 
-    // FAQ Schema structured data
+    // Comprehensive FAQ Schema structured data with all 18 questions
     const faqSchema = {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -75,23 +107,15 @@ export default function SpeedTestFAQ() {
           "name": "Why is my speed test showing fast but my internet feels slow?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "This is one of the most common frustrations people experience. Your speed test might show 100 Mbps or higher, but web pages load slowly, videos buffer, or downloads crawl. The issue isn't your speed - it's usually about latency, network congestion, DNS problems, or server-side issues. Speed tests measure your connection to a nearby test server under ideal conditions, but real internet usage involves connecting to servers worldwide, often during peak times."
+            "text": "Your speed test might show 100 Mbps or higher, but web pages load slowly, videos buffer, or downloads crawl. The issue isn't your speed - it's usually about latency, network congestion, DNS problems, or server-side issues. Speed tests measure your connection to a nearby test server under ideal conditions, but real internet usage involves connecting to servers worldwide during peak times. High ping over 100ms can make browsing feel sluggish even with fast download speeds."
           }
         },
         {
           "@type": "Question",
-          "name": "What internet speed do I need for Zoom calls?",
+          "name": "Why do I get different results every time I test?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "For standard Zoom video calls, you need at least 3 Mbps download and 3 Mbps upload for HD quality (720p). For Full HD (1080p) calls, Zoom recommends 3.8 Mbps download and upload. However, these are minimums - I recommend having at least 10-15 Mbps to account for other devices on your network and to ensure smooth, uninterrupted calls."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What's the best speed for gaming?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "For online gaming, download speed isn't as critical as you might think. Most games run smoothly on just 3-6 Mbps download. What really matters for gaming is low ping (latency) and low jitter. Aim for ping under 20ms for competitive gaming, under 50ms for casual gaming. Jitter should be below 5ms."
+            "text": "It's completely normal for speed test results to vary by 10-30% between tests. Network congestion changes minute by minute, your test might connect to different servers, background processes can steal bandwidth, and WiFi interference varies constantly. The time of day matters tremendously - testing at 3 PM versus 3 AM will give different results."
           }
         },
         {
@@ -99,7 +123,39 @@ export default function SpeedTestFAQ() {
           "name": "What is a good internet speed test result?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A good speed test result depends on your needs. For basic browsing and email, 10-25 Mbps is fine. For HD streaming and video calls, aim for 25-50 Mbps. For 4K streaming, gaming, and multiple users, 100-200 Mbps is ideal. Your actual speed should be close to what you're paying for - if you're getting less than 80% of your plan's advertised speed, contact your ISP."
+            "text": "A good speed test result depends on your needs. For basic browsing, 10-25 Mbps is fine. For HD streaming and video calls, aim for 25-50 Mbps. For 4K streaming, gaming, and multiple users, 100-200 Mbps is ideal. Your actual speed should be at least 80% of your plan's advertised speed. Look for ping under 50ms and jitter under 10ms."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What internet speed do I need for Zoom calls?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For standard Zoom video calls, you need at least 3-5 Mbps download and upload for HD quality. For group calls and screen sharing, aim for 10-15 Mbps. If you're hosting large meetings or using virtual backgrounds, you'll want 15-25 Mbps upload speed. Upload speed is crucial for video calls since you're broadcasting your video to others."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the best speed for gaming?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For online gaming, download speed isn't as critical as you might think. Most games run smoothly on just 3-6 Mbps download. What really matters for gaming is low ping (latency) and low jitter. Aim for ping under 20ms for competitive gaming, under 50ms for casual gaming. Jitter should be below 5ms for smooth gameplay."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between upload and download speed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Download speed is how fast data comes TO you from the internet (watching Netflix, browsing websites, downloading files). Upload speed is how fast you send data OUT to the internet (video calls, uploading photos, live streaming, cloud backup). Most plans offer asymmetric speeds with higher download than upload."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do ping and jitter mean in my speed test?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ping measures the round-trip time for data to travel from your device to a server and back, measured in milliseconds. Low ping means instant response. Jitter measures how much your ping varies - high jitter causes choppy audio and frozen video in calls. For good performance, aim for ping under 50ms and jitter under 10ms."
           }
         },
         {
@@ -107,25 +163,123 @@ export default function SpeedTestFAQ() {
           "name": "How can I improve my speed test results?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "To improve your speed test results: connect via Ethernet cable instead of WiFi, close all unnecessary programs and browser tabs, restart your modem and router, move closer to your router if using WiFi, update your router firmware, change your WiFi channel to avoid interference, and make sure no one else is streaming or downloading during the test."
+            "text": "To improve your speed test results: connect via Ethernet cable instead of WiFi, close all unnecessary programs and browser tabs, restart your modem and router, move closer to your router if using WiFi, update router firmware, change WiFi channel to avoid interference, disconnect other devices during testing, clear browser cache, and disable VPN."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my speed test slower than what I'm paying for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ISPs advertise 'up to' speeds, not guaranteed speeds. Getting 80-95% is normal. Main reasons for slow speeds: WiFi limitations, network congestion during peak hours, old equipment, too many connected devices, ISP throttling, or infrastructure issues. Test via Ethernet directly to modem to rule out WiFi problems."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much speed do I need for 4K streaming?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For 4K streaming, Netflix requires 15-25 Mbps, YouTube requires 20 Mbps, Disney+ requires 25 Mbps. However, for comfortable 4K streaming with multiple devices, I recommend at least 50-100 Mbps to account for fluctuations and other network usage. HDR content uses even more bandwidth than regular 4K."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I test speed on WiFi or Ethernet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For accurate testing of your actual internet connection, always use Ethernet to remove WiFi-related variables. For testing what speeds you'll get in daily use, test on WiFi. WiFi is almost always slower than Ethernet - typically 50-90% of Ethernet speed depending on distance from router and interference."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is the best time to run a speed test?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Time of day dramatically affects speed test results. Worst times are 6-11 PM on weekdays and weekends (30-50% slower). Best times are 2-6 AM or mid-afternoon 1-4 PM on weekdays. Test at multiple times to get the full picture of your connection performance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do multiple devices affect my speed test?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every device shares your total bandwidth. Active streaming uses 10-25 Mbps constantly, while idle devices use minimal bandwidth. For 1-5 devices, 50 Mbps is adequate. For 5-10 devices, aim for 100-200 Mbps. For 10-20 devices (smart home, multiple users), 200-500 Mbps is recommended."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does using a VPN affect my speed test?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, VPNs almost always reduce speed by 10-80% depending on VPN quality. Good VPNs reduce speeds by 10-30%, while free or poor VPNs can reduce speeds by 50-80%. Ping increases dramatically with VPNs, adding 100-200ms latency for international servers. Always disable VPN before testing your actual ISP connection."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my mobile speed test different from desktop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mobile and desktop show different speeds due to WiFi hardware differences, processing power, and device capabilities. Desktop computers have better WiFi antennas and support newer standards. Phones have smaller WiFi chips limited by size and battery. Older phones might max out at 100-300 Mbps regardless of your internet speed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Speed test shows 100 Mbps but Netflix keeps buffering - why?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Common causes: ISP throttling streaming traffic while leaving speed tests untouched, WiFi congestion in the room where TV is located, smart TV limitations with outdated WiFi chips, or background bandwidth hogs. Solution: connect TV via Ethernet cable, use a streaming device instead of built-in smart TV apps, or change DNS to Google or Cloudflare."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I run the most accurate speed test?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For most accurate results: use Ethernet cable directly to modem, close all programs and browser tabs, disconnect all other devices, disable VPN and security software, restart modem and router, clear browser cache. Run 5 tests on multiple services at different times of day and calculate the average."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my ISP throttling my connection?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Signs of ISP throttling: speed tests show great speeds but streaming services buffer constantly, specific websites are slow while others are fast, speeds drop during evening hours, using a VPN suddenly makes everything faster. To test: run speed test normally, connect to VPN, run again. If VPN is significantly faster, ISP is likely throttling."
           }
         }
       ]
     };
 
-    const scriptTag = document.createElement('script');
-    scriptTag.type = 'application/ld+json';
-    scriptTag.text = JSON.stringify(faqSchema);
-    document.head.appendChild(scriptTag);
+    // Create or update FAQ schema script tag
+    let existingScript = document.querySelector('script[type="application/ld+json"][data-faq-schema]');
+    if (existingScript) {
+      existingScript.textContent = JSON.stringify(faqSchema);
+    } else {
+      const scriptTag = document.createElement('script');
+      scriptTag.type = 'application/ld+json';
+      scriptTag.setAttribute('data-faq-schema', 'true');
+      scriptTag.textContent = JSON.stringify(faqSchema);
+      document.head.appendChild(scriptTag);
+      createdElements.push(scriptTag);
+    }
 
-    // Cleanup function to remove added elements
+    // Comprehensive cleanup function
     return () => {
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
-      if (scriptTag.parentNode) {
-        scriptTag.parentNode.removeChild(scriptTag);
-      }
+      // Restore original title
+      document.title = originalTitle;
+      
+      // Remove all created elements
+      createdElements.forEach(element => {
+        if (element.parentNode) {
+          element.parentNode.removeChild(element);
+        }
+      });
+      
+      // Restore all modified elements to original values (including empty strings)
+      modifiedElements.forEach((originalAttrs, element) => {
+        originalAttrs.forEach((value, attr) => {
+          element.setAttribute(attr, value);
+        });
+      });
     };
   }, []);
 
