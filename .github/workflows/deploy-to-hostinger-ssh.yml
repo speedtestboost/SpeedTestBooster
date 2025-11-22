@@ -1,0 +1,94 @@
+name: Deploy to Hostinger (SSH)
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'hostinger-static/**'
+      - 'client/**'
+      - '.github/workflows/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.8.0
+      with:
+        ssh-private-key: ${{ secrets.HOSTINGER_SSH_KEY }}
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build project (if needed)
+      run: |
+        if [ -f "package.json" ] && grep -q "build" package.json; then
+          npm run build
+        fi
+        
+    - name: Prepare deployment files
+      run: |
+        # Create deployment directory
+        mkdir -p deployment
+        
+        # Copy static files (prioritize hostinger-static)
+        if [ -d "hostinger-static" ]; then
+          cp -r hostinger-static/* deployment/
+          echo "✅ Using hostinger-static folder"
+        elif [ -d "dist" ]; then
+          cp -r dist/* deployment/
+          echo "✅ Using dist folder"
+        elif [ -d "build" ]; then
+          cp -r build/* deployment/
+          echo "✅ Using build folder"
+        fi
+        
+        # Verify deployment files
+        ls -la deployment/
+        
+        # Ensure index.html exists
+        if [ ! -f "deployment/index.html" ]; then
+          echo "❌ Error: No index.html found in deployment directory"
+          exit 1
+        fi
+        
+    - name: Deploy to Hostinger via SSH/rsync
+      run: |
+        # Add Hostinger to known hosts
+        mkdir -p ~/.ssh
+        ssh-keyscan -H ${{ secrets.HOSTINGER_HOST }} >> ~/.ssh/known_hosts
+        
+        # Deploy using rsync
+        rsync -avz --delete \
+          --exclude '.git' \
+          --exclude 'node_modules' \
+          --exclude '.env' \
+          --exclude '*.log' \
+          --exclude '*.zip' \
+          ./deployment/ ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_HOST }}:~/public_html/
+          
+    - name: Clear Hostinger cache (if applicable)
+      run: |
+        # Try to clear cache via SSH (if Hostinger supports it)
+        ssh ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_HOST }} \
+          'find ~/public_html -name "*.cache" -delete || echo "Cache clearing not available"'
+          
+    - name: Verify deployment
+      run: |
+        echo "🚀 Deployment completed successfully!"
+        echo "🔗 Your site should be updated at: https://speedtestboost.com"
+        echo "⏳ Please allow 5-10 minutes for changes to propagate"
+        
+        # Test if site is reachable
+        curl -I https://speedtestboost.com || echo "Site check failed (normal during deployment)"

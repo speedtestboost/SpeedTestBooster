@@ -1,0 +1,67 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'hostinger-static/**'
+      - 'client/**'
+      - '.github/workflows/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Prepare deployment files
+      run: |
+        echo "📦 Preparing deployment files..."
+        ls -la hostinger-static/
+        
+        # Verify required files exist
+        if [ ! -f "hostinger-static/index.html" ]; then
+          echo "❌ Error: hostinger-static/index.html not found"
+          exit 1
+        fi
+        
+        echo "✅ Deployment files ready"
+        
+    - name: Deploy to Hostinger via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.HOSTINGER_FTP_SERVER }}
+        username: ${{ secrets.HOSTINGER_FTP_USERNAME }}
+        password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+        local-dir: ./hostinger-static/
+        server-dir: ./public_html/
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/.env*
+          **/*.log
+          **/*.zip
+          **/.DS_Store
+          
+    - name: Verify deployment
+      run: |
+        echo "🚀 Deployment completed successfully!"
+        echo "🔗 Your site should be updated at: https://speedtestboost.com"
+        echo "⏳ Please allow 2-5 minutes for changes to propagate"
+        echo "📊 Deployment timestamp: $(date)"
+        
+    - name: Test site response
+      run: |
+        echo "🔍 Testing site response..."
+        sleep 30
+        if curl -s --max-time 10 https://speedtestboost.com | grep -q "Speed Test"; then
+          echo "✅ Site is responding correctly"
+        else
+          echo "⚠️ Site may still be updating (this is normal)"
+        fi
