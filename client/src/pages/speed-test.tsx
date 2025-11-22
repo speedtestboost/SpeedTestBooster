@@ -332,7 +332,7 @@ export default function SpeedTest() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-4">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
-              HTML5 Internet Speed Test
+              Internet and Wifi Speed Test
             </h1>
             <p className="text-xl md:text-2xl text-white/90 font-medium">
               No Apps • No Downloads • No Plugins Required!
