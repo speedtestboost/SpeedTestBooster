@@ -29,3 +29,7 @@ yarn-error.log*
 # Temporary files
 *.tmp
 *.temp
+# Backup files and archives
+backups/
+*.zip
+speedtestbooster-*.zip
