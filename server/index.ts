@@ -62,11 +62,17 @@ app.use((req, res, next) => {
   // It is the only port that is not firewalled.
   const port = parseInt(process.env.PORT || '5000', 10);
   const host = process.env.NODE_ENV === 'development' ? 'localhost' : '0.0.0.0';
+  
   server.listen({
     port,
     host,
     reusePort: process.env.NODE_ENV !== 'development',
   }, () => {
     log(`serving on ${host}:${port}`);
+    log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+    log(`Database: ${process.env.DATABASE_URL ? 'Connected' : 'Not configured'}`);
   });
 })();
+
+// Export for Hostinger deployment
+export default app;

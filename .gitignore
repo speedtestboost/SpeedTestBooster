@@ -29,3 +29,11 @@ yarn-error.log*
 # Temporary files
 *.tmp
 *.temp
+
+# Deployment files (don't push to git)
+hostinger-deploy/
+speedtestbooster-hostinger-*.zip
+*-deploy.zip
+
+# Build artifacts
+dist/
