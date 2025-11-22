@@ -1,0 +1,114 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://speedtestboost.com/sitemap.xml
+
+# Crawl-delay for bots
+Crawl-delay: 1
+
+# Allow important SEO pages
+Allow: /
+Allow: /speed-test
+Allow: /about
+Allow: /help
+Allow: /privacy
+Allow: /terms
+Allow: /internet-speed-requirements
+Allow: /wifi-analyzer
+Allow: /ai-speed-test
+
+# Allow city-specific speed test pages
+Allow: /mumbai-speed-test
+Allow: /delhi-speed-test
+Allow: /bangalore-speed-test
+Allow: /hyderabad-speed-test
+Allow: /chennai-speed-test
+Allow: /kolkata-speed-test
+
+# Allow country-specific speed test pages
+Allow: /us-speed-test
+Allow: /uk-speed-test
+Allow: /au-speed-test
+Allow: /ca-speed-test
+
+# Allow multilingual pages
+Allow: /es
+Allow: /id
+Allow: /pt-br
+Allow: /fr
+
+# Allow internet providers pages
+Allow: /internet-providers
+Allow: /providers/us/*
+Allow: /providers/uk/*
+Allow: /providers/ca/*
+Allow: /providers/de/*
+Allow: /providers/au/*
+Allow: /providers/nl/*
+Allow: /providers/in/*
+Allow: /providers/fr/*
+Allow: /providers/it/*
+Allow: /providers/br/*
+Allow: /providers/mx/*
+Allow: /providers/ph/*
+Allow: /providers/id/*
+Allow: /providers/es/*
+Allow: /providers/za/*
+Allow: /providers/my/*
+Allow: /providers/ar/*
+Allow: /providers/ae/*
+Allow: /providers/sa/*
+
+# Block common crawler traps
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-content/
+Disallow: /admin/
+Disallow: /login/
+Disallow: /register/
+Disallow: /*.json$
+
+# Disallow crawling of API endpoints (placed after Allow rules)
+Disallow: /api/
+
+# Allow sitemap explicitly (override any wildcards)
+Allow: /sitemap.xml
+
+# Allow Google, Bing, and other major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: Google-Display-Ads-Bot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+Crawl-delay: 1
