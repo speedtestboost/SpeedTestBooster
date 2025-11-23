@@ -44,7 +44,43 @@ export default function USSpeedTest() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    keywords.content = 'internet speed test USA, wifi speed test US, broadband speed test America, Verizon speed test, AT&T speed test, Comcast speed test, Spectrum speed test, fiber speed test USA, online speed test US';
+    // Comprehensive US keyword targeting for high search volume
+    const usKeywords = [
+      // Primary US keywords (high volume)
+      'internet speed test usa', 'wifi speed test us', 'speed test america', 'us broadband test',
+      'internet speed test united states', 'wifi speed test united states free', 'usa speed test online',
+      
+      // ISP specific keywords (high commercial value)
+      'verizon speed test', 'at&t speed test', 'comcast speed test', 'spectrum speed test',
+      'cox speed test', 'centurylink speed test', 'optimum speed test', 'frontier speed test',
+      'xfinity speed test', 'charter speed test', 'windstream speed test',
+      
+      // State-specific opportunities (expanding reach)
+      'california internet speed test', 'texas wifi speed test', 'florida broadband test',
+      'new york speed test', 'illinois internet test', 'pennsylvania wifi test',
+      
+      // Technology specific US keywords
+      'usa fiber speed test', 'america 5g speed test', 'us cable internet test',
+      'american wifi 6 speed test', 'usa ethernet speed test',
+      
+      // City-specific high-value keywords
+      'new york city speed test', 'los angeles wifi test', 'chicago internet speed',
+      'houston broadband test', 'phoenix speed test', 'philadelphia wifi speed',
+      
+      // Problem-solving + location
+      'slow internet usa', 'wifi troubleshooting america', 'internet not working us',
+      'check internet speed usa', 'test wifi speed america', 'measure broadband usa',
+      
+      // Comparative and quality keywords
+      'best internet speed test usa', 'accurate speed test america', 'reliable us speed test',
+      'free online speed test usa', 'professional network test us',
+      
+      // Long-tail high-intent keywords
+      'internet speed test usa no download', 'wifi speed test america online free',
+      'real time speed test united states', 'html5 speed test usa',
+      'bandwidth test usa free', 'network performance test america'
+    ];
+    keywords.content = usKeywords.join(', ');
     
     // Open Graph tags
     const ogTags = [

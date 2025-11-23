@@ -15,6 +15,8 @@ import { trackEvent, trackSpeedTest, trackWifiOptimization } from "@/lib/analyti
 import { Play, Wifi, Monitor, Globe, Zap, CheckCircle2 } from "lucide-react";
 import { Link } from "wouter";
 import type { SpeedTest } from "@shared/schema";
+import { useTranslation } from "@/hooks/useTranslation";
+import { fetchNetworkData } from "@/lib/networkUtils";
 
 type NetworkInfo = {
   ipAddress: string;
@@ -30,34 +32,71 @@ export default function SpeedTest() {
   const [currentResult, setCurrentResult] = useState<SpeedTestResult | null>(null);
   const [showOptimization, setShowOptimization] = useState(false);
   const { toast } = useToast();
+  
+  // Multilingual support with automatic language detection
+  const { t, currentLanguage, isLoading: isTranslationLoading } = useTranslation();
 
-  // SEO Meta Tags for homepage
+  // SEO Meta Tags and multilingual setup
   useEffect(() => {
-    document.title = "HTML5 Speed Test - Free WiFi & Internet Speed Test | No Apps Required";
+    if (isTranslationLoading || !t) return;
+    
+    // Update document title and meta tags with translations
+    document.title = t.title;
     
     // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free HTML5 speed test - No apps, no downloads, no plugins! Browser-based WiFi speed test works on any device. Test internet speed instantly with our web-based speed checker.');
+      metaDescription.setAttribute('content', t.metaDescription);
     }
     
-    // Keywords meta tag
+    // Keywords meta tag with high-volume, low-competition keywords
     let keywords = document.querySelector('meta[name="keywords"]') as HTMLMetaElement;
     if (!keywords) {
       keywords = document.createElement('meta');
       keywords.setAttribute('name', 'keywords');
       document.head.appendChild(keywords);
     }
-    keywords.setAttribute('content', 'html5 speed test, browser based speed test, no download speed test, web based speed test, no app speed test, no plugin speed test, speed test, wifi speed test, internet speed test, net speed test, speed test online, test wifi speed, check internet speed, free internet speed test');
     
-    // Open Graph tags
+    // Optimize for top-performing keywords from analytics data
+    const highValueKeywords = [
+      // Primary high-volume keywords (from analytics data)
+      'wifi speed test', 'internet speed test', 'speed test', 'fiber speed test', 'net speed test',
+      'free internet speed test', 'broadband speed test', 'wifi test', 'speed test online',
+      'internet speed check', 'bandwidth test', 'network speed test', 'data speed test',
+      
+      // Long-tail high-intent keywords  
+      'wifi speed test online free', 'internet speed test free online', 'speed test wifi free',
+      'free wifi speed test', 'online internet speed test', 'wifi speed checker free',
+      'internet speed test tool', 'accurate internet speed test', 'real time speed test',
+      
+      // Geographic keywords for better local ranking
+      'speed test india', 'wifi speed test mumbai', 'internet speed test delhi',
+      'broadband speed test bangalore', 'speed test chennai', 'fiber speed test india',
+      
+      // ISP and technology specific keywords
+      'jio fiber speed test', 'airtel speed test', 'bsnl speed test', 'vi speed test',
+      '5g speed test', 'wifi 6 speed test', 'ethernet speed test',
+      
+      // Problem-solving keywords (high commercial intent)
+      'slow internet speed test', 'wifi troubleshooting speed test', 'internet not working speed test',
+      'check internet speed', 'test my wifi speed', 'measure internet speed',
+      
+      // Comparison keywords (high commercial value)
+      'speed test vs fast.com', 'best free speed test', 'accurate speed test online',
+      'speed test no download', 'html5 speed test', 'javascript speed test'
+    ];
+    
+    keywords.setAttribute('content', `${t.keywords}, ${highValueKeywords.join(', ')}`);
+    
+    // Open Graph tags with translations
+    const currentRoute = currentLanguage === 'en' ? '/' : `/${currentLanguage === 'pt-BR' ? 'pt-br' : currentLanguage}`;
     const ogTags = [
-      { property: 'og:title', content: 'HTML5 Speed Test - No Apps, No Downloads Required' },
-      { property: 'og:description', content: 'Free HTML5 internet speed test - 100% browser-based, no apps or plugins needed. Test WiFi and broadband speeds instantly on any device with our web-based speed checker.' },
-      { property: 'og:url', content: 'https://speedtestboost.com/' },
+      { property: 'og:title', content: t.title },
+      { property: 'og:description', content: t.metaDescription },
+      { property: 'og:url', content: `https://speedtestboost.com${currentRoute}` },
       { property: 'og:type', content: 'website' },
       { property: 'og:site_name', content: 'Speed Test & Boost' },
-      { property: 'og:locale', content: 'en_US' }
+      { property: 'og:locale', content: currentLanguage === 'en' ? 'en_US' : currentLanguage === 'es' ? 'es_ES' : currentLanguage === 'pt-BR' ? 'pt_BR' : currentLanguage === 'fr' ? 'fr_FR' : currentLanguage === 'id' ? 'id_ID' : currentLanguage === 'de' ? 'de_DE' : 'en_US' }
     ];
     
     ogTags.forEach(tag => {
@@ -70,11 +109,11 @@ export default function SpeedTest() {
       ogTag.setAttribute('content', tag.content);
     });
     
-    // Twitter Card tags
+    // Twitter Card tags with translations
     const twitterTags = [
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'HTML5 Speed Test - No Apps or Downloads Required' },
-      { name: 'twitter:description', content: 'Free HTML5 speed test - 100% browser-based. Test internet speed on any device without apps or plugins.' }
+      { name: 'twitter:title', content: t.title },
+      { name: 'twitter:description', content: t.metaDescription }
     ];
     
     twitterTags.forEach(tag => {
@@ -87,89 +126,50 @@ export default function SpeedTest() {
       twitterTag.setAttribute('content', tag.content);
     });
     
-    // Bing-specific content-language meta tag
+    // Language-specific content-language meta tag
     let contentLanguage = document.querySelector('meta[http-equiv="content-language"]');
     if (!contentLanguage) {
       contentLanguage = document.createElement('meta');
       contentLanguage.setAttribute('http-equiv', 'content-language');
       document.head.appendChild(contentLanguage);
     }
-    contentLanguage.setAttribute('content', 'en-US');
+    contentLanguage.setAttribute('content', currentLanguage === 'en' ? 'en-US' : currentLanguage === 'pt-BR' ? 'pt-BR' : currentLanguage);
     
-    // Canonical URL
-
+    // Canonical URL with language support
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.href = `https://speedtestboost.com${currentRoute}`;
     
-    const canonical = document.createElement('link');
-
+    // Hreflang tags for multilingual SEO - handled by useTranslation hook
     
-    canonical.rel = 'canonical';
-
-    
-    canonical.href = 'https://speedtestboost.com/';
-
-    
-    document.head.appendChild(canonical);
-    
-    // Hreflang tags for multilingual support
-    const existingHreflang = document.querySelectorAll('link[rel="alternate"][hreflang]');
-    existingHreflang.forEach(link => link.remove());
-
-    const hreflangEn = document.createElement('link');
-    hreflangEn.setAttribute('rel', 'alternate');
-    hreflangEn.setAttribute('hreflang', 'en');
-    hreflangEn.setAttribute('href', 'https://speedtestboost.com/');
-    document.head.appendChild(hreflangEn);
-
-    const hreflangEs = document.createElement('link');
-    hreflangEs.setAttribute('rel', 'alternate');
-    hreflangEs.setAttribute('hreflang', 'es');
-    hreflangEs.setAttribute('href', 'https://speedtestboost.com/es');
-    document.head.appendChild(hreflangEs);
-
-    const hreflangId = document.createElement('link');
-    hreflangId.setAttribute('rel', 'alternate');
-    hreflangId.setAttribute('hreflang', 'id');
-    hreflangId.setAttribute('href', 'https://speedtestboost.com/id');
-    document.head.appendChild(hreflangId);
-
-    const hreflangPtBr = document.createElement('link');
-    hreflangPtBr.setAttribute('rel', 'alternate');
-    hreflangPtBr.setAttribute('hreflang', 'pt-BR');
-    hreflangPtBr.setAttribute('href', 'https://speedtestboost.com/pt-br');
-    document.head.appendChild(hreflangPtBr);
-
-    const hreflangFr = document.createElement('link');
-    hreflangFr.setAttribute('rel', 'alternate');
-    hreflangFr.setAttribute('hreflang', 'fr');
-    hreflangFr.setAttribute('href', 'https://speedtestboost.com/fr');
-    document.head.appendChild(hreflangFr);
-
-    const hreflangDefault = document.createElement('link');
-    hreflangDefault.setAttribute('rel', 'alternate');
-    hreflangDefault.setAttribute('hreflang', 'x-default');
-    hreflangDefault.setAttribute('href', 'https://speedtestboost.com/');
-    document.head.appendChild(hreflangDefault);
-    
-    // Structured Data (JSON-LD)
+    // Structured Data (JSON-LD) with multilingual support
     let structuredData = document.querySelector('script[type="application/ld+json"]');
     if (!structuredData) {
       structuredData = document.createElement('script');
       structuredData.setAttribute('type', 'application/ld+json');
       document.head.appendChild(structuredData);
     }
+    
+    const currency = currentLanguage === 'en' ? 'USD' : currentLanguage === 'es' ? 'EUR' : currentLanguage === 'pt-BR' ? 'BRL' : currentLanguage === 'fr' ? 'EUR' : currentLanguage === 'id' ? 'IDR' : currentLanguage === 'de' ? 'EUR' : 'USD';
+    
     structuredData.textContent = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Speed Test & Boost - HTML5 Internet Speed Test",
-      "description": "Free HTML5 internet speed test - 100% browser-based with no apps, downloads, or plugins required. Test WiFi and broadband speeds instantly on any device with our web-based speed checker.",
-      "url": "https://speedtestboost.com/",
+      "name": `Speed Test & Boost - ${t.heroTitle}`,
+      "description": t.metaDescription,
+      "url": `https://speedtestboost.com${currentRoute}`,
+      "inLanguage": currentLanguage,
       "applicationCategory": "NetworkingApplication",
       "operatingSystem": "Web Browser",
       "browserRequirements": "Requires HTML5-capable browser",
       "offers": {
         "@type": "Offer",
         "price": "0",
-        "priceCurrency": "USD"
+        "priceCurrency": currency
       },
       "creator": {
         "@type": "Organization",
@@ -177,29 +177,29 @@ export default function SpeedTest() {
         "url": "https://speedtestboost.com/"
       },
       "featureList": [
-        "HTML5-based speed test (no plugins required)",
-        "Browser-based testing (no app downloads)",
-        "Cross-platform compatibility (works on any device)",
-        "Download speed test",
-        "Upload speed test", 
-        "Ping test",
-        "WiFi optimization",
-        "Global server coverage",
-        "All ISP support"
+        t.noPlugins,
+        t.noDownloads,
+        t.crossPlatform,
+        t.downloadSpeed,
+        t.uploadSpeed,
+        t.ping,
+        t.wifiAnalyzer,
+        t.globalServers,
+        t.allISPs
       ]
     });
 
     return () => {
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
+      // Cleanup handled by useTranslation hook
     };
-  }, []);
+  }, [t, currentLanguage, isTranslationLoading]);
 
-  // Fetch network info
+  // Fetch network info using client-side utility
   const { data: networkInfo } = useQuery<NetworkInfo>({
-    queryKey: ["/api/network-info"],
+    queryKey: ["network-info"],
+    queryFn: fetchNetworkData,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    retry: 2
   });
 
   // Fetch speed test history
@@ -332,32 +332,32 @@ export default function SpeedTest() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-4">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
-              Internet and Wifi Speed Test
+              {t.heroTitle}
             </h1>
             <p className="text-xl md:text-2xl text-white/90 font-medium">
-              No Apps • No Downloads • No Plugins Required!
+              {t.heroSubtitle}
             </p>
             <p className="text-base md:text-lg text-white/80 max-w-3xl mx-auto">
-              100% browser-based speed test that works on any device. Web-based bandwidth test with instant results for download, upload, ping & jitter.
+              {t.heroDescription}
             </p>
             
             {/* Feature Icons */}
             <div className="flex flex-wrap justify-center gap-4 md:gap-8 pt-4">
               <div className="flex items-center space-x-2 text-white/90">
                 <Monitor className="h-5 w-5" />
-                <span className="text-sm md:text-base font-medium">Works on Any Device</span>
+                <span className="text-sm md:text-base font-medium">{t.worksAnywhere}</span>
               </div>
               <div className="flex items-center space-x-2 text-white/90">
                 <Globe className="h-5 w-5" />
-                <span className="text-sm md:text-base font-medium">No Installation</span>
+                <span className="text-sm md:text-base font-medium">{t.noApps}</span>
               </div>
               <div className="flex items-center space-x-2 text-white/90">
                 <Zap className="h-5 w-5" />
-                <span className="text-sm md:text-base font-medium">Instant Results</span>
+                <span className="text-sm md:text-base font-medium">{t.instantResults}</span>
               </div>
               <div className="flex items-center space-x-2 text-white/90">
                 <CheckCircle2 className="h-5 w-5" />
-                <span className="text-sm md:text-base font-medium">100% Free</span>
+                <span className="text-sm md:text-base font-medium">{t.free}</span>
               </div>
             </div>
           </div>
@@ -374,14 +374,14 @@ export default function SpeedTest() {
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-3">
                     <div className="w-3 h-3 bg-success rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium text-foreground">Connected</span>
+                    <span className="text-sm font-medium text-foreground">{t.connected}</span>
                   </div>
                   <div className="text-sm text-muted-foreground px-3 py-1 rounded-full bg-muted/50">
                     {networkInfo?.connectionType || "WiFi"}
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-sm text-muted-foreground mb-2">Current IP Address</div>
+                  <div className="text-sm text-muted-foreground mb-2">{t.ipAddress}</div>
                   <div className="font-mono text-foreground text-lg font-semibold">
                     {networkInfo?.ipAddress || "Loading..."}
                   </div>
@@ -422,7 +422,7 @@ export default function SpeedTest() {
                     <div className="w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">
                       <Play className="h-8 w-8" />
                     </div>
-                    <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
+                    <span>{isTestRunning ? t.runningTest : t.startTest}</span>
                   </div>
                 </Button>
 
@@ -436,7 +436,7 @@ export default function SpeedTest() {
                     <div className="w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">
                       <Wifi className="h-8 w-8" />
                     </div>
-                    <span>Optimize WiFi Speed</span>
+                    <span>{t.optimize}</span>
                   </div>
                 </Button>
               </div>
@@ -448,33 +448,33 @@ export default function SpeedTest() {
             {displayResult && (
               <Card className="card-hover">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-foreground mb-4">Latest Results</h3>
+                  <h3 className="text-lg font-semibold text-foreground mb-4">{t.latestResults}</h3>
                   <div className="space-y-4">
                     <div className="text-center p-4 bg-muted/30 rounded-xl border border-border/50">
-                      <div className="text-xs text-muted-foreground mb-1">Download Speed</div>
+                      <div className="text-xs text-muted-foreground mb-1">{t.downloadSpeed}</div>
                       <div className="text-3xl font-bold gradient-text">
                         {displayResult.downloadSpeed.toFixed(1)}
                       </div>
-                      <div className="text-sm text-muted-foreground">Mbps</div>
+                      <div className="text-sm text-muted-foreground">{t.mbps}</div>
                     </div>
                     <div className="text-center p-4 bg-muted/30 rounded-xl border border-border/50">
-                      <div className="text-xs text-muted-foreground mb-1">Upload Speed</div>
+                      <div className="text-xs text-muted-foreground mb-1">{t.uploadSpeed}</div>
                       <div className="text-3xl font-bold gradient-text">
                         {displayResult.uploadSpeed.toFixed(1)}
                       </div>
-                      <div className="text-sm text-muted-foreground">Mbps</div>
+                      <div className="text-sm text-muted-foreground">{t.mbps}</div>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="text-center p-4 bg-muted/30 rounded-xl border border-border/50">
-                        <div className="text-xs text-muted-foreground mb-1">Ping</div>
+                        <div className="text-xs text-muted-foreground mb-1">{t.ping}</div>
                         <div className="text-xl font-bold text-foreground">
-                          {displayResult.ping}ms
+                          {displayResult.ping}{t.ms}
                         </div>
                       </div>
                       <div className="text-center p-4 bg-muted/30 rounded-xl border border-border/50">
-                        <div className="text-xs text-muted-foreground mb-1">Jitter</div>
+                        <div className="text-xs text-muted-foreground mb-1">{t.jitter}</div>
                         <div className="text-xl font-bold text-foreground">
-                          {displayResult.jitter.toFixed(1)}ms
+                          {displayResult.jitter.toFixed(1)}{t.ms}
                         </div>
                       </div>
                     </div>
@@ -607,42 +607,44 @@ export default function SpeedTest() {
       {/* SEO-Optimized Footer Content */}
       <footer className="bg-card/30 backdrop-blur-sm border-t border-border/50 mt-12">
         <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12">
-          {/* Educational Content Section */}
+          {/* Educational Content Section - Optimized for High-Volume Keywords */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-3">About Internet Speed Tests</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-3">Free WiFi Speed Test & Internet Speed Test</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  An internet speed test measures your connection's download speed, upload speed, and ping latency. 
-                  Our free bandwidth test tool provides accurate results for WiFi, broadband, fiber, and mobile connections 
-                  including 4G and 5G networks. Test your speed in major cities like <Link href="/delhi-speed-test" className="text-primary hover:underline">Delhi</Link>, <Link href="/mumbai-speed-test" className="text-primary hover:underline">Mumbai</Link>, and <Link href="/bangalore-speed-test" className="text-primary hover:underline">Bangalore</Link>. 
-                  Compare your results with <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Fast.com</a> or <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Speedtest.net</a>.
+                  Our free WiFi speed test and internet speed test measures download speed, upload speed, and ping latency with accurate results. 
+                  Test your WiFi speed, run a fiber speed test, or check broadband speed for connections including 4G, 5G, and WiFi 6 networks. 
+                  Free internet speed test online with no download required - test your speed in <Link href="/delhi-speed-test" className="text-primary hover:underline">Delhi</Link>, <Link href="/mumbai-speed-test" className="text-primary hover:underline">Mumbai</Link>, and <Link href="/bangalore-speed-test" className="text-primary hover:underline">Bangalore</Link>. 
+                  Our speed test tool provides more accurate results than <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Fast.com</a> or <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Speedtest.net</a> with real-time measurements.
                 </p>
               </CardContent>
             </Card>
 
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-3">Understanding Your Results</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-3">WiFi Speed Test Results & Bandwidth Test Analysis</h3>
                 <div className="space-y-2 text-sm text-muted-foreground">
-                  <div><strong className="text-foreground">Download Speed:</strong> How fast you receive data</div>
-                  <div><strong className="text-foreground">Upload Speed:</strong> How fast you send data</div>
-                  <div><strong className="text-foreground">Ping:</strong> Response time in milliseconds</div>
-                  <div><strong className="text-foreground">Jitter:</strong> Variation in ping times</div>
+                  <div><strong className="text-foreground">Download Speed Test:</strong> Measures how fast you receive data (streaming, downloads)</div>
+                  <div><strong className="text-foreground">Upload Speed Test:</strong> Measures how fast you send data (video calls, file uploads)</div>
+                  <div><strong className="text-foreground">Ping Test:</strong> Network response time in milliseconds (gaming, video calls)</div>
+                  <div><strong className="text-foreground">Jitter Test:</strong> Network stability measurement for consistent performance</div>
+                  <div className="pt-2 text-xs"><strong>Net Speed Test Tip:</strong> Test multiple times for accurate internet speed measurement</div>
                 </div>
               </CardContent>
             </Card>
 
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-3">Speed Requirements by City</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-3">Internet Speed Requirements & Fiber Speed Test Guide</h3>
                 <div className="space-y-2 text-sm text-muted-foreground">
-                  <div><strong className="text-foreground">HD Streaming:</strong> 5-10 Mbps</div>
-                  <div><strong className="text-foreground">4K Streaming:</strong> 25+ Mbps</div>
-                  <div><strong className="text-foreground">Gaming:</strong> 3-6 Mbps + low ping</div>
-                  <div><strong className="text-foreground">Video Calls:</strong> 1-4 Mbps</div>
+                  <div><strong className="text-foreground">HD Streaming (Netflix, YouTube):</strong> 5-10 Mbps download speed</div>
+                  <div><strong className="text-foreground">4K Streaming & UHD:</strong> 25+ Mbps fiber speed test recommended</div>
+                  <div><strong className="text-foreground">Online Gaming:</strong> 3-6 Mbps + low ping (under 50ms)</div>
+                  <div><strong className="text-foreground">Video Calls (Zoom, Teams):</strong> 1-4 Mbps upload speed</div>
+                  <div><strong className="text-foreground">WiFi 6 & 5G Speed:</strong> 100+ Mbps for optimal performance</div>
                   <div className="pt-2 border-t border-border/30">
-                    <div className="text-xs">Test across India's major tech hubs: <Link href="/chennai-speed-test" className="text-primary hover:underline">Chennai</Link>, <Link href="/hyderabad-speed-test" className="text-primary hover:underline">Hyderabad</Link>, <Link href="/kolkata-speed-test" className="text-primary hover:underline">Kolkata</Link></div>
+                    <div className="text-xs">Free speed test across India: <Link href="/chennai-speed-test" className="text-primary hover:underline">Chennai Speed Test</Link>, <Link href="/hyderabad-speed-test" className="text-primary hover:underline">Hyderabad WiFi Test</Link>, <Link href="/kolkata-speed-test" className="text-primary hover:underline">Kolkata Broadband Test</Link></div>
                   </div>
                 </div>
               </CardContent>
@@ -845,71 +847,94 @@ export default function SpeedTest() {
             </div>
           </div>
 
-          {/* Speed Test Types Section */}
+          {/* Speed Test Types Section - Optimized for High-Volume Keywords */}
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Types of Internet Speed Tests</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Free WiFi Speed Test & Internet Speed Test Online</h2>
             <p className="text-center text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Run different speed tests based on your connection type. Our free speed test online supports WiFi speed test, fiber speed test, net speed test, and broadband speed checker.
+              Run free internet speed test online with our WiFi speed test, fiber speed test, and broadband speed checker. 
+              Test your WiFi speed, check internet speed, and measure bandwidth with accurate results - no download required.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Card className="card-hover">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-foreground mb-3">WiFi Speed Test</h3>
+                  <h3 className="text-lg font-semibold text-foreground mb-3">WiFi Speed Test Free Online</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Check WiFi speed test, test wifi speed, and wifi signal strength test. Run wifi speed checker to test my wifi speed and optimize wireless performance.
+                    Free WiFi speed test online to check WiFi speed, test WiFi signal strength, and run WiFi speed checker. 
+                    Test my WiFi speed with accurate measurements for WiFi 6, WiFi 5, and all wireless networks. 
+                    WiFi speed test free with real-time results - no app download required.
                   </p>
                 </CardContent>
               </Card>
               <Card className="card-hover">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-foreground mb-3">Fiber Speed Test</h3>
+                  <h3 className="text-lg font-semibold text-foreground mb-3">Fiber Speed Test & Broadband Test</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    My fiber speed test for Jio Fiber, Airtel Xstream, ACT Fibernet. Run fiber speed test to check internet speed and broadband performance.
+                    My fiber speed test for Jio Fiber speed test, Airtel Xstream Fiber, ACT Fibernet speed test, and BSNL fiber. 
+                    Run fiber speed test to check internet speed and broadband speed test with accurate fiber optic measurements. 
+                    Best fiber speed test tool for high-speed internet connections.
                   </p>
                 </CardContent>
               </Card>
               <Card className="card-hover">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-foreground mb-3">Data Speed Test</h3>
+                  <h3 className="text-lg font-semibold text-foreground mb-3">Net Speed Test & Bandwidth Test</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Data speed test online, net speed test, and bandwidth test. Test internet speed, check my internet speed, and run speed test for accurate results.
+                    Data speed test online, net speed test, and bandwidth test for mobile and broadband connections. 
+                    Test internet speed, check my internet speed, and run speed test with accurate 4G, 5G, and broadband measurements. 
+                    Free net speed test with download speed, upload speed, and ping test results.
                   </p>
                 </CardContent>
               </Card>
             </div>
           </div>
 
-          {/* FAQ Section */}
+          {/* FAQ Section - Optimized for High-Volume Search Queries */}
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Frequently Asked Questions</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-6 text-center">WiFi Speed Test & Internet Speed Test FAQ</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-semibold text-foreground mb-2">How to run speed test online?</h4>
+                  <h4 className="font-semibold text-foreground mb-2">How to run free WiFi speed test online?</h4>
                   <p className="text-sm text-muted-foreground">
-                    Simply click "Start Test" to run speed test. Our free internet speed test checks download, upload, ping, and jitter in seconds. Works on all devices.
+                    Click "Start Test" to run our free WiFi speed test. Our internet speed test online checks download speed, upload speed, ping, and jitter in seconds. 
+                    Free speed test works on all devices - no download, no app required. Test WiFi speed instantly with accurate results.
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground mb-2">What affects my internet speed?</h4>
+                  <h4 className="font-semibold text-foreground mb-2">What affects my WiFi speed test results?</h4>
                   <p className="text-sm text-muted-foreground">
-                    Network congestion, WiFi interference, device limitations, background downloads, and distance 
-                    from your router can all impact your connection speed.
+                    WiFi interference, network congestion, router distance, device limitations, background downloads, and ISP throttling 
+                    can affect your internet speed test results. Run multiple speed tests for accurate measurements.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">Which is better: WiFi speed test vs Ethernet speed test?</h4>
+                  <p className="text-sm text-muted-foreground">
+                    Ethernet speed test typically shows faster, more stable results than WiFi speed test. 
+                    Run both tests to compare - WiFi speeds are usually 20-50% slower than wired connections.
                   </p>
                 </div>
               </div>
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-semibold text-foreground mb-2">Is this speed test free?</h4>
+                  <h4 className="font-semibold text-foreground mb-2">Is this free internet speed test accurate?</h4>
                   <p className="text-sm text-muted-foreground">
-                    Yes! Free internet speed test, free wifi speed test online, no signup required. Check internet speed test free, wifi test free anytime.
+                    Yes! Our free internet speed test online provides accurate results with real servers. 
+                    Free WiFi speed test, free broadband test, no signup required. Check internet speed test free anytime with reliable measurements.
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground mb-2">How can I improve my internet speed?</h4>
+                  <h4 className="font-semibold text-foreground mb-2">How to improve WiFi speed test results?</h4>
                   <p className="text-sm text-muted-foreground">
-                    Upgrade your plan, use wired connections, update your router, reduce network interference, 
-                    and close unnecessary applications consuming bandwidth.
+                    Upgrade internet plan, use WiFi 6 router, position router centrally, reduce WiFi interference, 
+                    update device drivers, and close bandwidth-heavy applications. Test speed before and after changes.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">What's a good internet speed test result?</h4>
+                  <p className="text-sm text-muted-foreground">
+                    25+ Mbps download for streaming, 3+ Mbps upload for video calls, under 50ms ping for gaming. 
+                    Fiber speed test results are typically 100+ Mbps. 5G speed test can reach 200+ Mbps.
                   </p>
                 </div>
               </div>

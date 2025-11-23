@@ -260,6 +260,13 @@ export default function GenericFooter() {
                 >
                   🇫🇷 Français
                 </Link>
+                <Link 
+                  href="/de" 
+                  className="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors"
+                  data-testid="link-footer-lang-de"
+                >
+                  🇩🇪 Deutsch
+                </Link>
               </div>
             </CardContent>
           </Card>

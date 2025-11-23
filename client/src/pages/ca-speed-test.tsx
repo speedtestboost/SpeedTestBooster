@@ -44,7 +44,51 @@ export default function CASpeedTest() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    keywords.content = 'internet speed test Canada, wifi speed test Canada, broadband speed test CA, Rogers speed test, Bell speed test, Telus speed test, Shaw speed test, Videotron speed test, fibre speed test Canada';
+    // Comprehensive Canada keyword targeting for maximum reach
+    const canadaKeywords = [
+      // Primary Canada internet keywords (high volume)
+      'internet speed test canada', 'wifi speed test canada', 'speed test canada', 'broadband speed test canada',
+      'internet speed test ca', 'wifi speed test ca', 'canada internet test', 'canadian broadband test',
+      'free internet speed test canada', 'free wifi speed test canada', 'speed test canada free',
+      
+      // Major Canadian ISP keywords (high commercial value)
+      'rogers speed test', 'rogers internet speed test', 'bell speed test', 'bell fibe speed test',
+      'telus speed test', 'telus fibre speed test', 'shaw speed test', 'shaw internet test',
+      'videotron speed test', 'cogeco speed test', 'eastlink speed test', 'sasktel speed test',
+      'freedom mobile speed test', 'fido internet speed test', 'virgin mobile canada speed test',
+      
+      // Province-specific targeting (expanding reach)
+      'ontario internet speed test', 'quebec wifi speed test', 'british columbia broadband test',
+      'alberta internet speed test', 'manitoba wifi speed test', 'saskatchewan broadband test',
+      'nova scotia internet test', 'new brunswick wifi test', 'newfoundland speed test',
+      
+      // Canadian city-specific keywords (local SEO)
+      'toronto internet speed test', 'vancouver wifi speed test', 'montreal broadband test',
+      'calgary internet speed test', 'ottawa wifi speed test', 'edmonton broadband test',
+      'winnipeg internet test', 'quebec city wifi test', 'hamilton speed test',
+      
+      // Technology + Canada keywords
+      'canada fibre speed test', 'canada fiber speed test', 'canada 5g speed test',
+      'canadian wifi 6 speed test', 'canada cable internet test', 'dsl speed test canada',
+      
+      // Problem-solving Canada keywords (high intent)
+      'slow internet canada', 'wifi not working canada', 'internet problems canada',
+      'check internet speed canada', 'test my internet canada', 'measure broadband canada',
+      
+      // Comparative Canada keywords
+      'best internet speed test canada', 'accurate speed test canada', 'reliable canada speed test',
+      'crtc internet speed test', 'canada vs usa internet speed', 'canadian broadband comparison',
+      
+      // French-Canadian keywords (Quebec market)
+      'test vitesse internet canada', 'test wifi canada', 'vitesse internet quebec',
+      'test debit internet canada', 'mesurer vitesse internet',
+      
+      // Long-tail high-value Canada keywords
+      'internet speed test canada no download', 'wifi speed test canada online free',
+      'real time internet test canada', 'professional network test canada',
+      'bandwidth test canada free', 'network performance canada'
+    ];
+    keywords.content = canadaKeywords.join(', ');
     
     // Open Graph tags
     const ogTags = [

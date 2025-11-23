@@ -42,7 +42,49 @@ export default function MumbaiSpeedTest() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    keywords.content = 'mumbai speed test, speed test india, speed test in india, internet speed test india, wifi speed test mumbai, fiber speed test india, jio fiber speed test, airtel speed test mumbai, broadband speed test india, net speed test mumbai, data speed test india';
+    // Comprehensive Mumbai keyword targeting with high-volume opportunities
+    const mumbaiKeywords = [
+      // Primary Mumbai keywords (leveraging high search volume)
+      'mumbai speed test', 'speed test mumbai', 'mumbai internet speed test', 'wifi speed test mumbai',
+      'speed test india mumbai', 'mumbai broadband speed test', 'internet speed test mumbai free',
+      
+      // India-wide targeting (massive search volume)
+      'speed test india', 'internet speed test india', 'wifi speed test india', 'fiber speed test india',
+      'broadband speed test india', 'net speed test india', 'data speed test india',
+      'free internet speed test india', 'online speed test india',
+      
+      // ISP specific Mumbai/India keywords (high commercial intent)
+      'jio fiber speed test mumbai', 'jio fiber speed test india', 'airtel speed test mumbai',
+      'airtel xstream speed test', 'act fibernet speed test mumbai', 'bsnl speed test mumbai',
+      'hathway speed test mumbai', 'tikona speed test india', 'spectranet mumbai speed test',
+      
+      // Mumbai area specific targeting
+      'mumbai wifi speed test free', 'mumbai internet speed checker', 'mumbai broadband test online',
+      'bandra internet speed test', 'andheri wifi speed test', 'borivali broadband test',
+      'powai internet speed', 'malad wifi speed test', 'goregaon broadband speed',
+      
+      // Technology + Mumbai keywords
+      'mumbai 5g speed test', 'mumbai fiber speed test', 'mumbai wifi 6 speed test',
+      '4g speed test mumbai', 'cable internet mumbai speed test',
+      
+      // Problem-solving Mumbai keywords (high intent)
+      'slow internet mumbai', 'wifi not working mumbai', 'internet troubleshooting mumbai',
+      'check internet speed mumbai', 'test wifi speed mumbai online', 'measure broadband mumbai',
+      
+      // Comparative Mumbai keywords
+      'best internet speed test mumbai', 'accurate speed test mumbai', 'reliable mumbai speed test',
+      'mumbai vs delhi internet speed', 'mumbai vs bangalore broadband speed',
+      
+      // Long-tail high-value Mumbai keywords
+      'mumbai internet speed test no download', 'wifi speed test mumbai online free',
+      'real time speed test mumbai', 'professional network test mumbai',
+      'bandwidth test mumbai free', 'network performance mumbai',
+      
+      // Regional Maharashtra keywords
+      'maharashtra internet speed test', 'pune speed test', 'nagpur wifi speed test',
+      'nashik broadband test', 'aurangabad internet speed'
+    ];
+    keywords.content = mumbaiKeywords.join(', ');
     
     // Add canonical URL
     const canonical = document.createElement('link');

@@ -44,7 +44,57 @@ export default function AUSpeedTest() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    keywords.content = 'internet speed test Australia, NBN speed test, wifi speed test Australia, Telstra speed test, Optus speed test, TPG speed test, Aussie Broadband speed test, fibre speed test Australia, broadband speed test AU';
+    // Comprehensive Australia keyword targeting with NBN focus
+    const australiaKeywords = [
+      // Primary Australia internet keywords (high volume)
+      'internet speed test australia', 'nbn speed test', 'wifi speed test australia', 'speed test australia',
+      'broadband speed test australia', 'internet speed test au', 'australia internet test',
+      'free internet speed test australia', 'free nbn speed test', 'australia speed test free',
+      
+      // NBN specific keywords (high commercial value in Australia)
+      'nbn speed test', 'nbn fibre speed test', 'nbn fttp speed test', 'nbn fttn speed test',
+      'nbn fttc speed test', 'nbn hfc speed test', 'nbn wireless speed test', 'nbn satellite speed test',
+      'my nbn speed test', 'check nbn speed', 'test nbn connection', 'nbn speed checker',
+      
+      // Major Australian ISP keywords (high commercial intent)
+      'telstra speed test', 'telstra nbn speed test', 'optus speed test', 'optus nbn speed test',
+      'tpg speed test', 'tpg nbn speed test', 'aussie broadband speed test', 'iinet speed test',
+      'dodo speed test', 'belong speed test', 'spintel speed test', 'superloop speed test',
+      'mate communicate speed test', 'myrepublic australia speed test',
+      
+      // State-specific targeting (local SEO)
+      'nsw internet speed test', 'victoria wifi speed test', 'queensland broadband test',
+      'western australia internet test', 'south australia wifi test', 'tasmania speed test',
+      'act internet speed test', 'northern territory broadband test',
+      
+      // Australian city-specific keywords
+      'sydney internet speed test', 'melbourne wifi speed test', 'brisbane broadband test',
+      'perth internet speed test', 'adelaide wifi speed test', 'canberra broadband test',
+      'hobart internet test', 'darwin wifi test', 'gold coast speed test',
+      
+      // Technology + Australia keywords
+      'australia fibre speed test', 'australia 5g speed test', 'australian wifi 6 speed test',
+      'cable internet australia speed test', 'adsl speed test australia',
+      
+      // Problem-solving Australia keywords (high intent)
+      'slow internet australia', 'nbn not working', 'wifi problems australia',
+      'check internet speed australia', 'test my nbn speed', 'measure broadband australia',
+      'nbn troubleshooting speed test', 'slow nbn speed test',
+      
+      // Comparative Australia keywords
+      'best internet speed test australia', 'accurate nbn speed test', 'reliable australia speed test',
+      'acma internet speed test', 'australia vs global internet speed', 'nbn speed comparison',
+      
+      // Regional Australia keywords
+      'rural internet speed test australia', 'regional nbn speed test', 'country internet australia',
+      'satellite internet speed test australia', 'fixed wireless nbn speed test',
+      
+      // Long-tail high-value Australia keywords
+      'internet speed test australia no download', 'nbn speed test online free',
+      'real time nbn speed test', 'professional network test australia',
+      'bandwidth test australia free', 'network performance test nbn'
+    ];
+    keywords.content = australiaKeywords.join(', ');
     
     // Open Graph tags
     const ogTags = [

@@ -70,6 +70,12 @@ export default function FrenchSpeedTest() {
     hreflangFr.setAttribute('href', 'https://speedtestboost.com/fr');
     document.head.appendChild(hreflangFr);
 
+    const hreflangDe = document.createElement('link');
+    hreflangDe.setAttribute('rel', 'alternate');
+    hreflangDe.setAttribute('hreflang', 'de');
+    hreflangDe.setAttribute('href', 'https://speedtestboost.com/de');
+    document.head.appendChild(hreflangDe);
+
     const hreflangDefault = document.createElement('link');
     hreflangDefault.setAttribute('rel', 'alternate');
     hreflangDefault.setAttribute('hreflang', 'x-default');

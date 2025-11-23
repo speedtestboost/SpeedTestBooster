@@ -116,13 +116,61 @@ export default function AISpeedTest() {
 
     document.head.appendChild(canonical);
     
-    // Update page title and meta description
-    document.title = "AI Internet Speed Test & Requirements Calculator 2025 - ChatGPT, Claude, Midjourney Speed Requirements";
+    // Update page title and meta description with AI keyword optimization
+    document.title = "AI Internet Speed Test 2025 - ChatGPT, Claude, Midjourney Speed Requirements Calculator";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Calculate exact internet speed requirements for AI tools like ChatGPT, Claude, Midjourney, and enterprise AI workloads. Free AI speed test with personalized recommendations and optimization tips for 2025.');
+      metaDescription.setAttribute('content', 'Free AI internet speed test and requirements calculator for ChatGPT, Claude, Midjourney, DALL-E, and AI tools. Check if your internet speed supports AI workloads with personalized recommendations.');
     }
+    
+    // Keywords meta tag optimized for AI + speed test combinations
+    let keywords = document.querySelector('meta[name="keywords"]') as HTMLMetaElement;
+    if (!keywords) {
+      keywords = document.createElement('meta');
+      keywords.setAttribute('name', 'keywords');
+      document.head.appendChild(keywords);
+    }
+    
+    // AI + Speed Test keyword combinations (emerging high-volume market)
+    const aiSpeedKeywords = [
+      // Primary AI speed test keywords (emerging high-volume)
+      'ai internet speed test', 'ai speed test', 'chatgpt speed test', 'ai speed requirements',
+      'internet speed for ai', 'ai bandwidth requirements', 'chatgpt internet requirements',
+      'claude speed test', 'midjourney speed requirements', 'ai tool speed test',
+      
+      // Specific AI tool + speed combinations
+      'chatgpt internet speed', 'claude internet speed', 'midjourney bandwidth requirements',
+      'dall-e speed requirements', 'stable diffusion speed test', 'ai image generation speed',
+      'ai video processing speed', 'ai coding speed requirements', 'github copilot speed',
+      
+      // AI speed calculator keywords
+      'ai speed calculator', 'ai bandwidth calculator', 'ai internet requirements calculator',
+      'chatgpt speed calculator', 'ai tool bandwidth calculator', 'machine learning speed test',
+      
+      // Enterprise AI speed keywords (high commercial value)
+      'enterprise ai speed test', 'business ai internet requirements', 'ai workload speed test',
+      'corporate ai bandwidth', 'professional ai speed requirements', 'ai development speed test',
+      
+      // Problem-solving AI speed keywords (high intent)
+      'slow ai performance', 'chatgpt running slow', 'ai tool lag issues', 'improve ai speed',
+      'optimize internet for ai', 'ai speed troubleshooting', 'fast internet for ai',
+      
+      // Technology + AI speed combinations
+      'wifi 6 for ai', '5g ai speed test', 'fiber internet ai requirements', 'ai over wifi',
+      'ethernet vs wifi ai performance', 'best internet for ai', 'ai speed optimization',
+      
+      // Long-tail AI speed keywords (low competition, high intent)
+      'how much internet speed for chatgpt', 'minimum internet speed for ai tools',
+      'best broadband for ai development', 'internet requirements for machine learning',
+      'bandwidth needed for ai image generation', 'speed test for ai applications',
+      
+      // AI trend keywords for 2025
+      'ai speed test 2025', 'chatgpt 4 speed requirements', 'claude 3 internet speed',
+      'ai agent speed requirements', 'autonomous ai speed test', 'ai workflow speed optimization'
+    ];
+    
+    keywords.setAttribute('content', aiSpeedKeywords.join(', '));
 
     return () => {
       // Remove the specific canonical element we created

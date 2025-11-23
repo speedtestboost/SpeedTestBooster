@@ -10,6 +10,8 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
 } from "@/components/ui/dropdown-menu";
+import LanguageSelector from "@/components/LanguageSelector";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const countries = [
   {
@@ -221,6 +223,7 @@ interface HeaderProps {
 
 export default function Header({ currentPath = "/" }: HeaderProps) {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const { currentLanguage } = useTranslation();
 
   return (
     <nav className="relative z-10 bg-background/80 backdrop-blur-sm border-b border-border/20">
@@ -245,13 +248,6 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
                 className={`bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors ${currentPath === "/" ? "bg-primary/90" : ""}`}
               >
                 Home
-              </Link>
-              
-              <Link 
-                href="/internet-speed-requirements" 
-                className={`text-muted-foreground hover:text-primary transition-colors font-medium ${currentPath === "/internet-speed-requirements" ? "text-primary" : ""}`}
-              >
-                Speed Calculator
               </Link>
               
               <Link 
@@ -305,6 +301,11 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="center" className="w-56">
                   <DropdownMenuItem asChild>
+                    <Link href="/speed-test-guide" className="w-full" data-testid="link-speed-test-guide">
+                      Complete Speed Test Guide
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
                     <Link href="/speed-test-faq" className="w-full" data-testid="link-speed-test-faq">
                       Speed Test FAQ
                     </Link>
@@ -338,6 +339,13 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
               >
                 Help
               </Link>
+              
+              {/* Language Selector */}
+              <LanguageSelector 
+                currentLanguage={currentLanguage}
+                variant="header"
+                showLabel={false}
+              />
             </div>
             
             {/* Mobile Menu Button */}
@@ -363,18 +371,19 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
                 Home
               </Link>
               <Link 
-                href="/internet-speed-requirements" 
-                className="text-muted-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setShowMobileMenu(false)}
-              >
-                Speed Calculator
-              </Link>
-              <Link 
                 href="/ai-speed-test" 
                 className="text-muted-foreground hover:text-primary transition-colors py-2"
                 onClick={() => setShowMobileMenu(false)}
               >
                 AI Speed Test
+              </Link>
+              <Link 
+                href="/speed-test-guide" 
+                className="text-muted-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setShowMobileMenu(false)}
+                data-testid="mobile-link-speed-test-guide"
+              >
+                Complete Speed Test Guide
               </Link>
               <Link 
                 href="/speed-test-faq" 
