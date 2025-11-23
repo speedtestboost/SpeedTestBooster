@@ -128,8 +128,6 @@ import DownloadSpeedGuide from "@/pages/download-speed-guide";
 import UploadSpeedGuide from "@/pages/upload-speed-guide";
 import WiFiSpeedOptimization from "@/pages/wifi-speed-optimization";
 import SpeedTestFAQ from "@/pages/speed-test-faq";
-import SpeedTestGuide from "@/pages/speed-test-guide";
-import FiveGSpeedTest from "@/pages/5g-speed-test";
 import PingTest from "@/pages/ping-test";
 import LogoDemo from "@/pages/logo-demo";
 import NotFound from "@/pages/not-found";
@@ -137,7 +135,6 @@ import SpanishSpeedTest from "@/pages/spanish-speed-test";
 import IndonesianSpeedTest from "@/pages/indonesian-speed-test";
 import PortugueseSpeedTest from "@/pages/portuguese-speed-test";
 import FrenchSpeedTest from "@/pages/french-speed-test";
-import GermanSpeedTest from "@/pages/german-speed-test";
 import { useEffect, useState } from "react";
 import { initGA } from "./lib/analytics";
 import { useAnalytics } from "./hooks/use-analytics";
@@ -170,8 +167,6 @@ function Router() {
       <Route path="/upload-speed-guide" component={UploadSpeedGuide} />
       <Route path="/wifi-speed-optimization" component={WiFiSpeedOptimization} />
       <Route path="/speed-test-faq" component={SpeedTestFAQ} />
-      <Route path="/speed-test-guide" component={SpeedTestGuide} />
-      <Route path="/5g-speed-test" component={FiveGSpeedTest} />
       <Route path="/ping-test" component={PingTest} />
       <Route path="/logo-demo" component={LogoDemo} />
       
@@ -180,7 +175,6 @@ function Router() {
       <Route path="/id" component={IndonesianSpeedTest} />
       <Route path="/pt-br" component={PortugueseSpeedTest} />
       <Route path="/fr" component={FrenchSpeedTest} />
-      <Route path="/de" component={GermanSpeedTest} />
       
       {/* US Provider Routes */}
       <Route path="/providers/us/verizon" component={VerizonSpeedTest} />

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Homepage - Primary keyword target -->
+  <url>
+    <loc>https://speedtestbooster.com/</loc>
+    <lastmod>2024-11-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Speed Test - High-volume keyword -->
+  <url>
+    <loc>https://speedtestbooster.com/speed-test</loc>
+    <lastmod>2024-11-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Geographic Pages - Country/City Targeting -->
+  <url>
+    <loc>https://speedtestbooster.com/delhi-speed-test</loc>
+    <lastmod>2024-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://speedtestbooster.com/mumbai-speed-test</loc>
+    <lastmod>2024-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://speedtestbooster.com/us-speed-test</loc>
+    <lastmod>2024-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://speedtestbooster.com/uk-speed-test</loc>
+    <lastmod>2024-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://speedtestbooster.com/ca-speed-test</loc>
+    <lastmod>2024-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://speedtestbooster.com/au-speed-test</loc>
+    <lastmod>2024-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Technology Pages - Emerging Keywords -->
+  <url>
+    <loc>https://speedtestbooster.com/5g-speed-test</loc>
+    <lastmod>2024-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://speedtestbooster.com/ai-speed-test</loc>
+    <lastmod>2024-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Educational Content - How-to Keywords -->
+  <url>
+    <loc>https://speedtestbooster.com/speed-test-guide</loc>
+    <lastmod>2024-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Additional Pages -->
+  <url>
+    <loc>https://speedtestbooster.com/about</loc>
+    <lastmod>2024-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://speedtestbooster.com/privacy</loc>
+    <lastmod>2024-11-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>

@@ -44,47 +44,7 @@ export default function UKSpeedTest() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    // Comprehensive UK keyword targeting for high search volume
-    const ukKeywords = [
-      // Primary UK broadband keywords (high volume, medium competition)
-      'broadband speed test uk', 'internet speed test uk', 'wifi speed test uk', 'speed test uk',
-      'broadband speed test britain', 'internet speed test britain', 'uk broadband test',
-      'free broadband speed test uk', 'free internet speed test uk', 'wifi speed test uk free',
-      
-      // Major UK ISP keywords (high commercial intent)
-      'bt speed test', 'bt broadband speed test', 'sky speed test', 'sky broadband speed test',
-      'virgin media speed test', 'virgin media broadband test', 'talktalk speed test',
-      'plusnet speed test', 'ee speed test', 'three speed test', 'vodafone uk speed test',
-      'now broadband speed test', 'shell energy broadband speed test',
-      
-      // UK technology specific keywords
-      'fibre speed test uk', 'full fibre speed test uk', 'fttc speed test uk', 'fttp speed test uk',
-      'superfast broadband test uk', 'ultrafast broadband test uk', '5g speed test uk',
-      'wifi 6 speed test uk', 'gigabit broadband test uk',
-      
-      // UK city/region specific keywords
-      'london broadband speed test', 'manchester internet speed test', 'birmingham wifi speed test',
-      'glasgow broadband test', 'edinburgh speed test', 'liverpool internet test',
-      'bristol broadband speed', 'leeds wifi speed test', 'cardiff internet speed',
-      
-      // UK postcode area targeting
-      'broadband speed test london', 'internet speed test manchester', 'wifi speed test birmingham',
-      'speed test scotland', 'broadband test wales', 'internet speed test northern ireland',
-      
-      // Problem-solving UK keywords (high intent)
-      'slow broadband uk', 'wifi not working uk', 'internet problems uk',
-      'check broadband speed uk', 'test my broadband uk', 'measure internet speed uk',
-      
-      // Comparative UK keywords
-      'best broadband speed test uk', 'accurate speed test uk', 'reliable uk speed test',
-      'ofcom broadband speed test', 'which broadband speed test', 'uk broadband comparison',
-      
-      // Long-tail high-value UK keywords
-      'broadband speed test uk no download', 'wifi speed test uk online free',
-      'real time broadband test uk', 'professional network test uk',
-      'bandwidth test uk free', 'network performance test britain'
-    ];
-    keywords.content = ukKeywords.join(', ');
+    keywords.content = 'broadband speed test UK, internet speed test Britain, wifi speed test UK, BT speed test, Sky speed test, Virgin Media speed test, TalkTalk speed test, Plusnet speed test, fibre speed test UK';
     
     // Open Graph tags
     const ogTags = [

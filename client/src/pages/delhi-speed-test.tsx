@@ -44,42 +44,7 @@ export default function DelhiSpeedTest() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    // Comprehensive Delhi keyword targeting based on high-volume opportunities
-    const delhiKeywords = [
-      // Primary Delhi keywords
-      'delhi internet speed test', 'delhi wifi speed test', 'speed test delhi', 'delhi broadband test',
-      'internet speed test delhi online free', 'wifi speed test delhi free', 'delhi speed test free',
-      
-      // NCR region targeting
-      'ncr internet speed test', 'gurgaon speed test', 'noida speed test', 'faridabad speed test',
-      'ghaziabad speed test', 'greater noida speed test', 'delhi ncr broadband test',
-      
-      // ISP specific Delhi keywords (high commercial intent)
-      'airtel delhi speed test', 'jio fiber delhi speed test', 'bsnl delhi speed test',
-      'excitel delhi speed test', 'hathway delhi speed test', 'spectranet delhi speed test',
-      'act fibernet delhi speed test', 'den broadband delhi speed test',
-      
-      // Technology + location keywords
-      'delhi 5g speed test', 'delhi fiber speed test', 'delhi wifi 6 speed test',
-      'delhi ethernet speed test', 'delhi broadband speed checker',
-      
-      // Problem-solving + location (high intent)
-      'slow internet delhi', 'wifi not working delhi', 'internet troubleshooting delhi',
-      'check internet speed delhi', 'test wifi speed delhi', 'measure broadband speed delhi',
-      
-      // Comparative keywords
-      'best internet speed test delhi', 'accurate speed test delhi', 'reliable speed test delhi',
-      'free online speed test delhi', 'delhi vs mumbai internet speed',
-      
-      // Local area specific
-      'connaught place internet speed', 'karol bagh wifi speed test', 'lajpat nagar broadband test',
-      'rohini internet speed test', 'dwarka wifi speed test', 'vasant kunj speed test',
-      
-      // Long-tail high-value keywords
-      'delhi internet speed test no download', 'delhi wifi speed test online free',
-      'real time internet speed test delhi', 'professional network test delhi'
-    ];
-    keywords.content = delhiKeywords.join(', ');
+    keywords.content = 'delhi internet speed test, delhi wifi speed test, NCR broadband test, gurgaon speed test, noida speed test, faridabad speed test, airtel delhi speed, jio fiber delhi, excitel speed test, delhi 5G speed test';
     
     // Open Graph tags
     const ogTags = [
