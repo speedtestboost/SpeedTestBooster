@@ -12,10 +12,10 @@ export default function ComcastSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Comcast Xfinity Speed Test No Ads - Comcast USA - Check Cable Internet Free 2025";
+    document.title = "Comcast Xfinity Speed Test USA - Check Cable Internet Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Comcast Xfinity cable lightweight speed test for Comcast instantly - Free speed test for USA. Accurate download/upload WiFi performance results now.');
+      metaDescription.setAttribute('content', 'Test Comcast Xfinity cable internet speed instantly - Free speed test for USA. Accurate download/upload WiFi performance results now.');
     }
 
     let metaKeywords = document.querySelector('meta[name="keywords"]');
@@ -24,14 +24,14 @@ export default function ComcastSpeedTest() {
       metaKeywords.setAttribute('name', 'keywords');
       document.head.appendChild(metaKeywords);
     }
-    metaKeywords.setAttribute('content', 'xfinity speed test, comcast speed test, comcast xfinity speed test, xfinity lightweight speed test for Comcast test, comcast cable test, xfinity wifi speed test, comcast lightweight speed test for Comcast test, xfinity broadband test, comcast upload speed test, test xfinity speed, comcast cable internet test, xfinity gig speed test');
+    metaKeywords.setAttribute('content', 'xfinity speed test, comcast speed test, comcast xfinity speed test, xfinity internet speed test, comcast cable test, xfinity wifi speed test, comcast internet speed test, xfinity broadband test, comcast upload speed test, test xfinity speed, comcast cable internet test, xfinity gig speed test');
 
     const ogTags = [
-      { property: 'og:title', content: 'Comcast Xfinity Speed Test No Ads - Comcast USA - Free Cable Internet Speed Test No Ads - Comcast 2025' },
-      { property: 'og:description', content: 'Test Comcast Xfinity cable lightweight speed test for Comcast. Check download/upload speeds and ping. Accurate Xfinity speed test results.' },
+      { property: 'og:title', content: 'Comcast Xfinity Speed Test USA - Free Cable Internet Speed Test 2025' },
+      { property: 'og:description', content: 'Test Comcast Xfinity cable internet speed. Check download/upload speeds and ping. Accurate Xfinity speed test results.' },
       { property: 'og:url', content: 'https://speedtestboost.com/providers/us/comcast' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Speed Test No Ads - Comcast and Boost' }
+      { property: 'og:site_name', content: 'Speed Test and Boost' }
     ];
 
     ogTags.forEach(tag => {
@@ -46,8 +46,8 @@ export default function ComcastSpeedTest() {
 
     const twitterTags = [
       { name: 'twitter:card', content: 'summary' },
-      { name: 'twitter:title', content: 'Comcast Xfinity Speed Test No Ads - Comcast USA - Free Cable Internet Speed Test No Ads - Comcast 2025' },
-      { name: 'twitter:description', content: 'Test Comcast Xfinity cable lightweight speed test for Comcast. Accurate Xfinity speed test for download, upload, and ping.' }
+      { name: 'twitter:title', content: 'Comcast Xfinity Speed Test USA - Free Cable Internet Speed Test 2025' },
+      { name: 'twitter:description', content: 'Test Comcast Xfinity cable internet speed. Accurate Xfinity speed test for download, upload, and ping.' }
     ];
 
     twitterTags.forEach(tag => {
@@ -74,12 +74,12 @@ export default function ComcastSpeedTest() {
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "Comcast Xfinity Speed Test No Ads - Comcast 2025",
-      "description": "Test your Comcast Xfinity lightweight speed test for Comcast for free. Speed test for Xfinity cable and fiber customers.",
+      "name": "Comcast Xfinity Speed Test 2025",
+      "description": "Test your Comcast Xfinity internet speed for free. Speed test for Xfinity cable and fiber customers.",
       "url": "https://speedtestboost.com/providers/us/comcast",
       "mainEntity": {
         "@type": "SoftwareApplication",
-        "name": "Comcast Xfinity Speed Test No Ads - Comcast Tool",
+        "name": "Comcast Xfinity Speed Test Tool",
         "applicationCategory": "NetworkingApplication",
         "operatingSystem": "Web Browser",
         "offers": {
@@ -119,7 +119,7 @@ export default function ComcastSpeedTest() {
           {
             "@type": "ListItem",
             "position": 4,
-            "name": "Comcast Xfinity Speed Test No Ads - Comcast",
+            "name": "Comcast Xfinity Speed Test",
             "item": "https://speedtestboost.com/providers/us/comcast"
           }
         ]
@@ -161,10 +161,10 @@ export default function ComcastSpeedTest() {
               </div>
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 bg-clip-text text-transparent">
-              Comcast Xfinity Speed Test No Ads - Comcast
+              Comcast Xfinity Speed Test
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Test your <span className="font-semibold text-blue-500">Comcast Xfinity lightweight speed test for Comcast</span> for free. Check your cable or fiber internet performance with accurate download, upload, and ping measurements.
+              Test your <span className="font-semibold text-blue-500">Comcast Xfinity internet speed</span> for free. Check your cable or fiber internet performance with accurate download, upload, and ping measurements.
             </p>
             
             <div className="mb-12">
@@ -190,20 +190,20 @@ export default function ComcastSpeedTest() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-2">Pro Tip: Get the Most Accurate Xfinity Speed Test No Ads - Comcast Results</h3>
+                  <h3 className="font-semibold text-foreground mb-2">Pro Tip: Get the Most Accurate Xfinity Speed Test Results</h3>
                   <p className="text-sm text-muted-foreground">
                     Connect via Ethernet cable directly to your Xfinity gateway for the most accurate <strong>comcast cable test</strong> results. 
                     Close all background apps and disconnect other devices during testing. Test at multiple times throughout the day, 
-                    avoiding peak hours (6-11 PM) when network traffic is highest for the best <strong>xfinity lightweight speed test for Comcast test</strong> accuracy.
+                    avoiding peak hours (6-11 PM) when network traffic is highest for the best <strong>xfinity internet speed test</strong> accuracy.
                   </p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* Understanding Your Speed Test No Ads - Comcast Results */}
+          {/* Understanding Your Speed Test Results */}
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Understanding Your Comcast Xfinity Speed Test No Ads - Comcast Results</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Understanding Your Comcast Xfinity Speed Test Results</h2>
             <p className="text-center text-muted-foreground mb-8 max-w-3xl mx-auto">
               Learn what your <strong>Xfinity speed test</strong> results mean and how to interpret download speeds, upload speeds, and ping for optimal cable internet performance.
             </p>
@@ -269,7 +269,7 @@ export default function ComcastSpeedTest() {
                 <span className="mx-2">›</span>
                 <Link href="/providers/us" className="hover:text-primary">US Providers</Link>
                 <span className="mx-2">›</span>
-                <span className="text-foreground">Comcast Xfinity Speed Test No Ads - Comcast</span>
+                <span className="text-foreground">Comcast Xfinity Speed Test</span>
               </nav>
               
               <div className="prose prose-gray dark:prose-invert max-w-none space-y-6">
@@ -309,7 +309,7 @@ export default function ComcastSpeedTest() {
                   fiber network expansion, and emerging wireless technologies that enhance internet service capabilities. 
                   The company's technical innovation focus includes exploring next-generation cable technologies, 
                   improving network capacity, and developing customer experience technologies that modernize traditional 
-                  cable television and internet service delivery. Regular <strong>comcast lightweight speed test for Comcast tests</strong> verify network performance.
+                  cable television and internet service delivery. Regular <strong>comcast internet speed tests</strong> verify network performance.
                 </p>
 
                 <h3 className="text-xl font-semibold mb-3">Business and Commercial Services</h3>
@@ -356,7 +356,7 @@ export default function ComcastSpeedTest() {
             </CardContent>
           </Card>
 
-          {/* Speed Test No Ads - Comcast Performance Images */}
+          {/* Speed Test Performance Images */}
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <Card>
               <CardContent className="p-6">
@@ -443,7 +443,7 @@ export default function ComcastSpeedTest() {
             <CardContent className="p-8">
               <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Troubleshooting Slow Comcast Xfinity Speeds</h2>
               <p className="text-center text-muted-foreground mb-8 max-w-3xl mx-auto">
-                If your <strong>xfinity lightweight speed test for Comcast test</strong> results are below expectations, try these proven solutions before contacting technical support:
+                If your <strong>xfinity internet speed test</strong> results are below expectations, try these proven solutions before contacting technical support:
               </p>
               
               <div className="space-y-6">
@@ -538,13 +538,13 @@ export default function ComcastSpeedTest() {
           {/* FAQ Section */}
           <Card className="mb-12">
             <CardContent className="p-8">
-              <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Frequently Asked Questions About Comcast Xfinity Speed Test No Ads - Comcast</h2>
+              <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Frequently Asked Questions About Comcast Xfinity Speed Test</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold text-foreground mb-2">How do I test my Comcast Xfinity lightweight speed test for Comcast?</h4>
+                    <h4 className="font-semibold text-foreground mb-2">How do I test my Comcast Xfinity internet speed?</h4>
                     <p className="text-sm text-muted-foreground">
-                      Use our speed test tool above by clicking 'Start Speed Test No Ads - Comcast'. It will measure your Xfinity cable internet download speed, upload speed, and ping in seconds for accurate results.
+                      Use our speed test tool above by clicking 'Start Speed Test'. It will measure your Xfinity cable internet download speed, upload speed, and ping in seconds for accurate results.
                     </p>
                   </div>
                   <div>
@@ -566,7 +566,7 @@ export default function ComcastSpeedTest() {
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-2">Does Comcast Xfinity throttle lightweight speed test for Comcasts?</h4>
+                    <h4 className="font-semibold text-foreground mb-2">Does Comcast Xfinity throttle internet speeds?</h4>
                     <p className="text-sm text-muted-foreground">
                       Comcast doesn't impose data caps on most residential plans, but network management during peak congestion can affect speeds. If you consistently experience throttling, run regular speed tests and contact Xfinity support at 1-800-XFINITY.
                     </p>
@@ -592,9 +592,9 @@ export default function ComcastSpeedTest() {
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-2">How much lightweight speed test for Comcast does my household need?</h4>
+                    <h4 className="font-semibold text-foreground mb-2">How much internet speed does my household need?</h4>
                     <p className="text-sm text-muted-foreground">
-                      For basic use, 100-200 Mbps works well. Multiple 4K streams and gaming require 300-500 Mbps. Heavy usage households benefit from Gigabit plans. Use our <Link href="/internet-speed-requirements" className="text-primary hover:underline">lightweight speed test for Comcast requirements calculator</Link> for personalized recommendations.
+                      For basic use, 100-200 Mbps works well. Multiple 4K streams and gaming require 300-500 Mbps. Heavy usage households benefit from Gigabit plans. Use our <Link href="/internet-speed-requirements" className="text-primary hover:underline">internet speed requirements calculator</Link> for personalized recommendations.
                     </p>
                   </div>
                 </div>
@@ -614,21 +614,21 @@ export default function ComcastSpeedTest() {
               <h4 className="font-semibold text-foreground mb-3">US Providers</h4>
               <div className="space-y-2 text-sm">
                 <Link href="/providers/us/comcast" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Comcast Speed Test No Ads - Comcast
+                  Comcast Speed Test
                 </Link>
                 <Link href="/providers/us/verizon" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Verizon Speed Test No Ads - Comcast
+                  Verizon Speed Test
                 </Link>
                 <Link href="/providers/us/spectrum" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Spectrum Speed Test No Ads - Comcast
+                  Spectrum Speed Test
                 </Link>
                 <Link href="/providers/us/att" className="block text-muted-foreground hover:text-primary transition-colors">
-                  AT&T Speed Test No Ads - Comcast
+                  AT&T Speed Test
                 </Link>
               </div>
             </div>
             <div>
-              <h4 className="font-semibold text-foreground mb-3">Speed Test No Ads - Comcast Tools</h4>
+              <h4 className="font-semibold text-foreground mb-3">Speed Test Tools</h4>
               <div className="space-y-2 text-sm">
                 <Link href="/internet-speed-requirements" className="block text-muted-foreground hover:text-primary transition-colors">
                   Speed Requirements
@@ -654,7 +654,7 @@ export default function ComcastSpeedTest() {
                   Xfinity Support Center
                 </a>
                 <a href="https://speedtest.xfinity.com/" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Xfinity Speed Test No Ads - Comcast Tool
+                  Xfinity Speed Test Tool
                 </a>
                 <a href="https://www.fcc.gov/consumers/guides/broadband-speed-guide" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
                   FCC Broadband Guide
@@ -671,7 +671,7 @@ export default function ComcastSpeedTest() {
                   Help & FAQ
                 </Link>
                 <Link href="/" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Speed Test No Ads - Comcast Home
+                  Speed Test Home
                 </Link>
                 <Link href="/internet-providers" className="block text-muted-foreground hover:text-primary transition-colors">
                   All Providers
@@ -682,8 +682,8 @@ export default function ComcastSpeedTest() {
 
           <div className="text-center pt-8 border-t border-border/30 mt-8">
             <p className="text-sm text-muted-foreground">
-              © 2025 Speed Test No Ads - Comcast and Boost. Free Comcast Xfinity lightweight speed test for Comcast test. 
-              Test your cable lightweight speed test for Comcast, WiFi performance, and network connectivity with our accurate Xfinity speed test tool.
+              © 2025 Speed Test and Boost. Free Comcast Xfinity internet speed test. 
+              Test your cable internet speed, WiFi performance, and network connectivity with our accurate Xfinity speed test tool.
             </p>
           </div>
         </div>

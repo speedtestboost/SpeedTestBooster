@@ -27,7 +27,7 @@ export default function BangaloreSpeedTest() {
   const { toast } = useToast();
 
   useEffect(() => {
-    document.title = "Bangalore Internet Speed Test - Free Tech Hub WiFi & Fiber Speed Checker | Speed Test & Boost";
+    document.title = "Bangalore Internet Free Internet Speed Test Online - No Ads - Free Tech Hub WiFi & Fiber Speed Checker | Free Internet Speed Test Online - No Ads & Boost";
     
     // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -42,15 +42,15 @@ export default function BangaloreSpeedTest() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    keywords.content = 'bangalore internet speed test, bengaluru wifi speed test, silicon valley india broadband, whitefield speed test, electronic city speed test, koramangala speed test, ACT fibernet bangalore, airtel bangalore fiber, jio fiber bengaluru';
+    keywords.content = 'bangalore internet speed booster test Bangalore, bengaluru wifi speed test, silicon valley india broadband, whitefield speed test, electronic city speed test, koramangala speed test, ACT fibernet bangalore, airtel bangalore fiber, jio fiber bengaluru';
     
     // Open Graph tags
     const ogTags = [
-      { property: 'og:title', content: 'Bangalore Internet Speed Test - Free Tech Hub WiFi & Fiber Speed Checker' },
+      { property: 'og:title', content: 'Bangalore Internet Free Internet Speed Test Online - No Ads - Free Tech Hub WiFi & Fiber Speed Checker' },
       { property: 'og:description', content: 'Test your internet speed in Bangalore (Bengaluru) Silicon Valley. Free speed test for ACT Fibernet, Airtel, Jio Fiber, and BSNL. Check WiFi, fiber, and 5G speeds optimized for tech professionals.' },
       { property: 'og:url', content: 'https://speedtestboost.com/bangalore-speed-test' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Speed Test & Boost' },
+      { property: 'og:site_name', content: 'Free Internet Speed Test Online - No Ads & Boost' },
       { property: 'og:locale', content: 'en_IN' }
     ];
     
@@ -67,7 +67,7 @@ export default function BangaloreSpeedTest() {
     // Twitter Card tags
     const twitterTags = [
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'Bangalore Internet Speed Test - Free Tech Hub WiFi & Fiber Speed Checker' },
+      { name: 'twitter:title', content: 'Bangalore Internet Free Internet Speed Test Online - No Ads - Free Tech Hub WiFi & Fiber Speed Checker' },
       { name: 'twitter:description', content: 'Test your internet speed in Bangalore Silicon Valley. Free speed test for ACT Fibernet, Airtel, Jio Fiber optimized for tech professionals.' }
     ];
     
@@ -105,8 +105,8 @@ export default function BangaloreSpeedTest() {
     structuredData.textContent = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Bangalore Internet Speed Test",
-      "description": "Free online internet speed test for Bangalore tech professionals with ACT Fibernet, Airtel, Jio Fiber, and BSNL ISP support",
+      "name": "Bangalore Internet Free Internet Speed Test Online - No Ads",
+      "description": "Free online internet speed booster test Bangalore for Bangalore tech professionals with ACT Fibernet, Airtel, Jio Fiber, and BSNL ISP support",
       "url": "https://speedtestboost.com/bangalore-speed-test",
       "applicationCategory": "NetworkingApplication",
       "operatingSystem": "Web Browser",
@@ -117,7 +117,7 @@ export default function BangaloreSpeedTest() {
       },
       "creator": {
         "@type": "Organization",
-        "name": "Speed Test & Boost"
+        "name": "Free Internet Speed Test Online - No Ads & Boost"
       },
       "audience": {
         "@type": "Audience",
@@ -217,7 +217,7 @@ export default function BangaloreSpeedTest() {
       <section className="max-w-4xl mx-auto px-4 lg:px-8 py-8">
         <div className="text-center mb-8">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Bangalore Silicon Valley Speed Test
+            Bangalore Silicon Valley Free Internet Speed Test Online - No Ads
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
             Test your internet speed in Bangalore (Bengaluru), India's Silicon Valley and tech capital. 
@@ -246,7 +246,7 @@ export default function BangaloreSpeedTest() {
       <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-6 space-y-6">
         <Breadcrumbs 
           items={[
-            { label: "Bangalore Speed Test", href: "/bangalore-speed-test" }
+            { label: "Bangalore Free Internet Speed Test Online - No Ads", href: "/bangalore-speed-test" }
           ]} 
         />
         
@@ -273,7 +273,7 @@ export default function BangaloreSpeedTest() {
             </Card>
             <Card className="card-hover">
               <CardContent className="p-6 space-y-4">
-                <h3 className="text-lg font-semibold text-foreground">Speed Test</h3>
+                <h3 className="text-lg font-semibold text-foreground">Free Internet Speed Test Online - No Ads</h3>
                 <Button
                   onClick={handleStartTest}
                   disabled={isTestRunning}
@@ -281,7 +281,7 @@ export default function BangaloreSpeedTest() {
                   size="lg"
                 >
                   <Play className="h-6 w-6 mr-3" />
-                  <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
+                  <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
                 </Button>
                 {isTestRunning && (
                   <div className="bg-muted/30 rounded-xl p-4 border border-border/50">
@@ -362,7 +362,7 @@ export default function BangaloreSpeedTest() {
                 size="lg"
               >
                 <Play className="h-6 w-6 mr-3" />
-                <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
+                <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
               </Button>
               {isTestRunning && (
                 <div className="bg-muted/30 rounded-xl p-4 border border-border/50">
@@ -414,27 +414,27 @@ export default function BangaloreSpeedTest() {
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <div className="text-center">
             <h3 className="text-lg font-semibold text-foreground mb-4">Test Internet Speed in Other Cities</h3>
-            <p className="text-sm text-muted-foreground mb-6">Check your internet speed and boost performance in other major Indian cities</p>
+            <p className="text-sm text-muted-foreground mb-6">Test your internet speed for free with no ads or downloads in Bangalore and boost performance in other major Indian cities</p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               <Link href="/mumbai-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Mumbai</div>
-                <div className="text-xs text-muted-foreground">Financial Hub Speed Test</div>
+                <div className="text-xs text-muted-foreground">Financial Hub Free Internet Speed Test Online - No Ads</div>
               </Link>
               <Link href="/delhi-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Delhi</div>
-                <div className="text-xs text-muted-foreground">Capital Speed Test</div>
+                <div className="text-xs text-muted-foreground">Capital Free Internet Speed Test Online - No Ads</div>
               </Link>
               <Link href="/hyderabad-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Hyderabad</div>
-                <div className="text-xs text-muted-foreground">Cyberabad Speed Test</div>
+                <div className="text-xs text-muted-foreground">Cyberabad Free Internet Speed Test Online - No Ads</div>
               </Link>
               <Link href="/chennai-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Chennai</div>
-                <div className="text-xs text-muted-foreground">South India Speed Test</div>
+                <div className="text-xs text-muted-foreground">South India Free Internet Speed Test Online - No Ads</div>
               </Link>
               <Link href="/kolkata-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Kolkata</div>
-                <div className="text-xs text-muted-foreground">East India Speed Test</div>
+                <div className="text-xs text-muted-foreground">East India Free Internet Speed Test Online - No Ads</div>
               </Link>
             </div>
           </div>
@@ -524,10 +524,10 @@ export default function BangaloreSpeedTest() {
           {/* Footer Links and Info */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-8 border-t border-border/30">
             <div>
-              <h4 className="font-semibold text-foreground mb-3">Speed Test Tools</h4>
+              <h4 className="font-semibold text-foreground mb-3">Free Internet Speed Test Online - No Ads Tools</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <div>Download Speed Test</div>
-                <div>Upload Speed Test</div>
+                <div>Download Free Internet Speed Test Online - No Ads</div>
+                <div>Upload Free Internet Speed Test Online - No Ads</div>
                 <div>Ping Test Tool</div>
                 <div>Bandwidth Checker</div>
               </div>
@@ -535,16 +535,16 @@ export default function BangaloreSpeedTest() {
             <div>
               <h4 className="font-semibold text-foreground mb-3">Connection Types</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <div>WiFi Speed Test</div>
-                <div>Fiber Speed Test</div>
-                <div>Cable Speed Test</div>
-                <div>Mobile Speed Test</div>
+                <div>WiFi Free Internet Speed Test Online - No Ads</div>
+                <div>Fiber Free Internet Speed Test Online - No Ads</div>
+                <div>Cable Free Internet Speed Test Online - No Ads</div>
+                <div>Mobile Free Internet Speed Test Online - No Ads</div>
               </div>
             </div>
             <div>
               <h4 className="font-semibold text-foreground mb-3">Resources</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <div>Speed Test History</div>
+                <div>Free Internet Speed Test Online - No Ads History</div>
                 <div>Network Diagnostics</div>
                 <div>Connection Optimization</div>
                 <div>Speed Comparisons</div>
@@ -568,7 +568,7 @@ export default function BangaloreSpeedTest() {
           {/* Copyright */}
           <div className="text-center pt-8 border-t border-border/30 mt-8">
             <p className="text-sm text-muted-foreground">
-              © 2025 Speed Test and Boost. Free internet speed test tool for accurate bandwidth measurement. 
+              © 2025 Free Internet Speed Test Online - No Ads and Boost. Free internet speed booster test Bangalore tool for accurate bandwidth measurement. 
               Test your connection speed on any device.
             </p>
           </div>

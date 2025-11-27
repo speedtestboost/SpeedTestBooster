@@ -29,7 +29,7 @@ export default function USSpeedTest() {
 
   // SEO Meta Tags
   useEffect(() => {
-    document.title = "Internet Speed Test USA - Free WiFi & Broadband Speed Checker | Speed Test & Boost";
+    document.title = "Internet Free Internet Speed Test Online - No Ads USA - Free WiFi & Broadband Speed Checker | Free Internet Speed Test Online - No Ads & Boost";
     
     // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -44,15 +44,15 @@ export default function USSpeedTest() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    keywords.content = 'internet speed test USA, wifi speed test US, broadband speed test America, Verizon speed test, AT&T speed test, Comcast speed test, Spectrum speed test, fiber speed test USA, online speed test US';
+    keywords.content = 'internet speed booster test USA USA, wifi speed test US, broadband speed test America, Verizon speed test, AT&T speed test, Comcast speed test, Spectrum speed test, fiber speed test USA, online speed test US';
     
     // Open Graph tags
     const ogTags = [
-      { property: 'og:title', content: 'Internet Speed Test USA - Free WiFi & Broadband Speed Checker' },
+      { property: 'og:title', content: 'Internet Free Internet Speed Test Online - No Ads USA - Free WiFi & Broadband Speed Checker' },
       { property: 'og:description', content: 'Test your internet speed in the United States. Free online speed test for Verizon, AT&T, Comcast, and Spectrum. Check WiFi, broadband, and fiber speeds with accurate US server results.' },
       { property: 'og:url', content: 'https://speedtestboost.com/us-speed-test' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Speed Test & Boost' },
+      { property: 'og:site_name', content: 'Free Internet Speed Test Online - No Ads & Boost' },
       { property: 'og:locale', content: 'en_US' }
     ];
     
@@ -69,7 +69,7 @@ export default function USSpeedTest() {
     // Twitter Card tags
     const twitterTags = [
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'Internet Speed Test USA - Free WiFi & Broadband Speed Checker' },
+      { name: 'twitter:title', content: 'Internet Free Internet Speed Test Online - No Ads USA - Free WiFi & Broadband Speed Checker' },
       { name: 'twitter:description', content: 'Test your internet speed in the United States. Free online speed test for Verizon, AT&T, Comcast, and Spectrum.' }
     ];
     
@@ -102,8 +102,8 @@ export default function USSpeedTest() {
     structuredData.textContent = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Internet Speed Test USA",
-      "description": "Free online internet speed test for USA users with Verizon, AT&T, Comcast, and Spectrum ISP support",
+      "name": "Internet Free Internet Speed Test Online - No Ads USA",
+      "description": "Free online internet speed booster test USA for USA users with Verizon, AT&T, Comcast, and Spectrum ISP support",
       "url": "https://speedtestboost.com/us-speed-test",
       "applicationCategory": "NetworkingApplication",
       "operatingSystem": "Web Browser",
@@ -114,7 +114,7 @@ export default function USSpeedTest() {
       },
       "creator": {
         "@type": "Organization",
-        "name": "Speed Test & Boost"
+        "name": "Free Internet Speed Test Online - No Ads & Boost"
       },
       "audience": {
         "@type": "Audience",
@@ -208,7 +208,7 @@ export default function USSpeedTest() {
       <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 pt-24 pb-6 space-y-6">
         <Breadcrumbs 
           items={[
-            { label: "US Speed Test", href: "/us-speed-test" }
+            { label: "US Free Internet Speed Test Online - No Ads", href: "/us-speed-test" }
           ]} 
         />
         {/* Desktop Layout */}
@@ -237,7 +237,7 @@ export default function USSpeedTest() {
 
             <Card className="card-hover">
               <CardContent className="p-6 space-y-4">
-                <h3 className="text-lg font-semibold text-foreground">US Speed Test</h3>
+                <h3 className="text-lg font-semibold text-foreground">US Free Internet Speed Test Online - No Ads</h3>
                 <Button
                   onClick={handleStartTest}
                   disabled={isTestRunning}
@@ -246,7 +246,7 @@ export default function USSpeedTest() {
                 >
                   <div className="flex items-center justify-center">
                     <Play className="h-6 w-6 mr-3" />
-                    <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
+                    <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
                   </div>
                 </Button>
 
@@ -354,7 +354,7 @@ export default function USSpeedTest() {
 
           <Card className="card-hover">
             <CardContent className="p-6 space-y-4">
-              <h3 className="text-lg font-semibold text-foreground">US Speed Test</h3>
+              <h3 className="text-lg font-semibold text-foreground">US Free Internet Speed Test Online - No Ads</h3>
               <Button
                 onClick={handleStartTest}
                 disabled={isTestRunning}
@@ -363,7 +363,7 @@ export default function USSpeedTest() {
               >
                 <div className="flex items-center justify-center">
                   <Play className="h-6 w-6 mr-3" />
-                  <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
+                  <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
                 </div>
               </Button>
 
@@ -449,7 +449,7 @@ export default function USSpeedTest() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h2 className="text-lg font-semibold text-foreground mb-3">Internet Speed Test USA</h2>
+                <h2 className="text-lg font-semibold text-foreground mb-3">Internet Free Internet Speed Test Online - No Ads USA</h2>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Test your internet speed across the United States with our free online speed checker. 
                   Get accurate results for Verizon, AT&T, Comcast, Spectrum, and other major US ISPs. 
@@ -472,7 +472,7 @@ export default function USSpeedTest() {
 
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h2 className="text-lg font-semibold text-foreground mb-3">US Speed Test Servers</h2>
+                <h2 className="text-lg font-semibold text-foreground mb-3">US Free Internet Speed Test Online - No Ads Servers</h2>
                 <div className="space-y-2 text-sm text-muted-foreground">
                   <div><strong className="text-foreground">East Coast:</strong> New York, Atlanta, Miami</div>
                   <div><strong className="text-foreground">West Coast:</strong> Los Angeles, San Francisco, Seattle</div>
@@ -484,7 +484,7 @@ export default function USSpeedTest() {
           </div>
 
           <div className="text-center">
-            <h2 className="text-2xl font-bold text-foreground mb-6">Why Choose Our US Speed Test?</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-6">Why Choose Our US Free Internet Speed Test Online - No Ads?</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
               <div className="space-y-4">
                 <div>
@@ -504,7 +504,7 @@ export default function USSpeedTest() {
               </div>
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-semibold text-foreground mb-2">Free WiFi Speed Testing</h4>
+                  <h4 className="font-semibold text-foreground mb-2">Free WiFi Free Internet Speed Test Online - No Adsing</h4>
                   <p className="text-sm text-muted-foreground">
                     Test your WiFi speed, broadband connection, or mobile internet for free. No registration 
                     required - just click start and get instant results with download, upload, and ping measurements.

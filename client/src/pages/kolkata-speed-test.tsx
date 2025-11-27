@@ -27,7 +27,7 @@ export default function KolkataSpeedTest() {
   const { toast } = useToast();
 
   useEffect(() => {
-    document.title = "Kolkata Internet Speed Test - Free East India WiFi & Broadband Speed Checker | Speed Test & Boost";
+    document.title = "Kolkata Internet Free Internet Speed Test Online - No Ads - Free East India WiFi & Broadband Speed Checker | Free Internet Speed Test Online - No Ads & Boost";
     
     // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -42,15 +42,15 @@ export default function KolkataSpeedTest() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    keywords.content = 'kolkata internet speed test, calcutta wifi speed test, east india broadband, salt lake speed test, howrah speed test, park street speed test, airtel kolkata fiber, jio fiber kolkata, wishnet kolkata, BSNL kolkata';
+    keywords.content = 'kolkata internet speed booster test Kolkata, calcutta wifi speed test, east india broadband, salt lake speed test, howrah speed test, park street speed test, airtel kolkata fiber, jio fiber kolkata, wishnet kolkata, BSNL kolkata';
     
     // Open Graph tags
     const ogTags = [
-      { property: 'og:title', content: 'Kolkata Internet Speed Test - Free East India WiFi & Broadband Speed Checker' },
+      { property: 'og:title', content: 'Kolkata Internet Free Internet Speed Test Online - No Ads - Free East India WiFi & Broadband Speed Checker' },
       { property: 'og:description', content: 'Test your internet speed in Kolkata (Calcutta) East India. Free speed test for Airtel, Jio Fiber, BSNL, and Wishnet. Check WiFi, broadband speeds optimized for banking and port operations.' },
       { property: 'og:url', content: 'https://speedtestboost.com/kolkata-speed-test' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Speed Test & Boost' },
+      { property: 'og:site_name', content: 'Free Internet Speed Test Online - No Ads & Boost' },
       { property: 'og:locale', content: 'en_IN' }
     ];
     
@@ -67,7 +67,7 @@ export default function KolkataSpeedTest() {
     // Twitter Card tags
     const twitterTags = [
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'Kolkata Internet Speed Test - Free East India WiFi & Broadband Speed Checker' },
+      { name: 'twitter:title', content: 'Kolkata Internet Free Internet Speed Test Online - No Ads - Free East India WiFi & Broadband Speed Checker' },
       { name: 'twitter:description', content: 'Test your internet speed in Kolkata East India. Free speed test for Airtel, Jio Fiber, BSNL, Wishnet optimized for banking.' }
     ];
     
@@ -100,8 +100,8 @@ export default function KolkataSpeedTest() {
     structuredData.textContent = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Kolkata Internet Speed Test",
-      "description": "Free online internet speed test for Kolkata East India with Airtel, Jio Fiber, BSNL, and Wishnet ISP support",
+      "name": "Kolkata Internet Free Internet Speed Test Online - No Ads",
+      "description": "Free online internet speed booster test Kolkata for Kolkata East India with Airtel, Jio Fiber, BSNL, and Wishnet ISP support",
       "url": "https://speedtestboost.com/kolkata-speed-test",
       "applicationCategory": "NetworkingApplication",
       "operatingSystem": "Web Browser",
@@ -112,7 +112,7 @@ export default function KolkataSpeedTest() {
       },
       "creator": {
         "@type": "Organization",
-        "name": "Speed Test & Boost"
+        "name": "Free Internet Speed Test Online - No Ads & Boost"
       },
       "audience": {
         "@type": "Audience",
@@ -213,7 +213,7 @@ export default function KolkataSpeedTest() {
       <section className="max-w-4xl mx-auto px-4 lg:px-8 py-8">
         <div className="text-center mb-8">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Kolkata East India Speed Test
+            Kolkata East India Free Internet Speed Test Online - No Ads
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
             Test your internet speed in Kolkata (Calcutta), East India's financial and cultural capital. 
@@ -264,7 +264,7 @@ export default function KolkataSpeedTest() {
             </Card>
             <Card className="card-hover">
               <CardContent className="p-6 space-y-4">
-                <h3 className="text-lg font-semibold text-foreground">Speed Test</h3>
+                <h3 className="text-lg font-semibold text-foreground">Free Internet Speed Test Online - No Ads</h3>
                 <Button
                   onClick={handleStartTest}
                   disabled={isTestRunning}
@@ -272,7 +272,7 @@ export default function KolkataSpeedTest() {
                   size="lg"
                 >
                   <Play className="h-6 w-6 mr-3" />
-                  <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
+                  <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
                 </Button>
                 {isTestRunning && (
                   <div className="bg-muted/30 rounded-xl p-4 border border-border/50">
@@ -353,7 +353,7 @@ export default function KolkataSpeedTest() {
                 size="lg"
               >
                 <Play className="h-6 w-6 mr-3" />
-                <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
+                <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
               </Button>
               {isTestRunning && (
                 <div className="bg-muted/30 rounded-xl p-4 border border-border/50">
@@ -405,27 +405,27 @@ export default function KolkataSpeedTest() {
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <div className="text-center">
             <h3 className="text-lg font-semibold text-foreground mb-4">Test Internet Speed in Other Cities</h3>
-            <p className="text-sm text-muted-foreground mb-6">Check your internet speed and boost performance in other major Indian cities</p>
+            <p className="text-sm text-muted-foreground mb-6">Test your internet speed for free with no ads or downloads in Kolkata and boost performance in other major Indian cities</p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               <Link href="/mumbai-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Mumbai</div>
-                <div className="text-xs text-muted-foreground">Financial Hub Speed Test</div>
+                <div className="text-xs text-muted-foreground">Financial Hub Free Internet Speed Test Online - No Ads</div>
               </Link>
               <Link href="/delhi-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Delhi</div>
-                <div className="text-xs text-muted-foreground">Capital Speed Test</div>
+                <div className="text-xs text-muted-foreground">Capital Free Internet Speed Test Online - No Ads</div>
               </Link>
               <Link href="/bangalore-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Bangalore</div>
-                <div className="text-xs text-muted-foreground">Tech Hub Speed Test</div>
+                <div className="text-xs text-muted-foreground">Tech Hub Free Internet Speed Test Online - No Ads</div>
               </Link>
               <Link href="/hyderabad-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Hyderabad</div>
-                <div className="text-xs text-muted-foreground">Cyberabad Speed Test</div>
+                <div className="text-xs text-muted-foreground">Cyberabad Free Internet Speed Test Online - No Ads</div>
               </Link>
               <Link href="/chennai-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Chennai</div>
-                <div className="text-xs text-muted-foreground">South India Speed Test</div>
+                <div className="text-xs text-muted-foreground">South India Free Internet Speed Test Online - No Ads</div>
               </Link>
             </div>
           </div>
@@ -439,9 +439,9 @@ export default function KolkataSpeedTest() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-3">About Internet Speed Tests</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-3">About Internet Free Internet Speed Test Online - No Adss</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  An internet speed test measures your connection's download speed, upload speed, and ping latency. 
+                  An internet speed booster test Kolkata measures your connection's download speed, upload speed, and ping latency. 
                   Our free bandwidth test tool provides accurate results for WiFi, broadband, fiber, and mobile connections 
                   including 4G and 5G networks.
                 </p>
@@ -515,10 +515,10 @@ export default function KolkataSpeedTest() {
           {/* Footer Links and Info */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-8 border-t border-border/30">
             <div>
-              <h4 className="font-semibold text-foreground mb-3">Speed Test Tools</h4>
+              <h4 className="font-semibold text-foreground mb-3">Free Internet Speed Test Online - No Ads Tools</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <div>Download Speed Test</div>
-                <div>Upload Speed Test</div>
+                <div>Download Free Internet Speed Test Online - No Ads</div>
+                <div>Upload Free Internet Speed Test Online - No Ads</div>
                 <div>Ping Test Tool</div>
                 <div>Bandwidth Checker</div>
               </div>
@@ -526,16 +526,16 @@ export default function KolkataSpeedTest() {
             <div>
               <h4 className="font-semibold text-foreground mb-3">Connection Types</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <div>WiFi Speed Test</div>
-                <div>Fiber Speed Test</div>
-                <div>Cable Speed Test</div>
-                <div>Mobile Speed Test</div>
+                <div>WiFi Free Internet Speed Test Online - No Ads</div>
+                <div>Fiber Free Internet Speed Test Online - No Ads</div>
+                <div>Cable Free Internet Speed Test Online - No Ads</div>
+                <div>Mobile Free Internet Speed Test Online - No Ads</div>
               </div>
             </div>
             <div>
               <h4 className="font-semibold text-foreground mb-3">Resources</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <div>Speed Test History</div>
+                <div>Free Internet Speed Test Online - No Ads History</div>
                 <div>Network Diagnostics</div>
                 <div>Connection Optimization</div>
                 <div>Speed Comparisons</div>
@@ -559,7 +559,7 @@ export default function KolkataSpeedTest() {
           {/* Copyright */}
           <div className="text-center pt-8 border-t border-border/30 mt-8">
             <p className="text-sm text-muted-foreground">
-              © 2025 Speed Test and Boost. Free internet speed test tool for accurate bandwidth measurement. 
+              © 2025 Free Internet Speed Test Online - No Ads and Boost. Free internet speed booster test Kolkata tool for accurate bandwidth measurement. 
               Test your connection speed on any device.
             </p>
           </div>

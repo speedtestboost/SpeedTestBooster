@@ -13,12 +13,11 @@ import OptimizationModal from "@/components/OptimizationModal";
 import Header from "@/components/Header";
 import GenericFooter from "@/components/GenericFooter";
 import Breadcrumbs from "@/components/Breadcrumbs";
-
 import { performSpeedTest, type SpeedTestResult } from "@/lib/speedTest";
 import { Play, Gauge, Wifi } from "lucide-react";
 import { Link } from "wouter";
 
-export default function DelhiSpeedTest() {
+export default function HyderabadSpeedTest() {
   const [isTestRunning, setIsTestRunning] = useState(false);
   const [testProgress, setTestProgress] = useState(0);
   const [testStatus, setTestStatus] = useState("Ready to test");
@@ -27,14 +26,13 @@ export default function DelhiSpeedTest() {
 
   const { toast } = useToast();
 
-  // SEO Meta Tags
   useEffect(() => {
-    document.title = "Delhi Internet Free Internet Speed Test Online - No Ads - Free WiFi & Broadband Speed Checker NCR | Free Internet Speed Test Online - No Ads & Boost";
+    document.title = "Hyderabad Internet Speed Test - Free Cyberabad WiFi & Fiber Speed Checker | Speed Test & Boost";
     
     // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your internet speed in Delhi NCR and Gurgaon. Free speed test for Airtel, Jio Fiber, BSNL, and Excitel. Check WiFi, broadband, and 5G speeds with accurate Delhi server results.');
+      metaDescription.setAttribute('content', 'Test your internet speed in Hyderabad (Cyberabad). Free speed test for Airtel, Jio Fiber, ACT Fibernet, and Railwire. Check WiFi, fiber speeds optimized for HITEC City, Gachibowli, and pharma industries.');
     }
     
     // Keywords meta tag
@@ -44,15 +42,15 @@ export default function DelhiSpeedTest() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    keywords.content = 'delhi internet speed booster test Delhi, delhi wifi speed test, NCR broadband test, gurgaon speed test, noida speed test, faridabad speed test, airtel delhi speed, jio fiber delhi, excitel speed test, delhi 5G speed test';
+    keywords.content = 'hyderabad internet speed test, cyberabad wifi speed test, hitec city speed test, gachibowli speed test, madhapur speed test, secunderabad speed test, airtel hyderabad fiber, jio fiber cyberabad, ACT fibernet hyderabad';
     
     // Open Graph tags
     const ogTags = [
-      { property: 'og:title', content: 'Delhi Internet Free Internet Speed Test Online - No Ads - Free WiFi & Broadband Speed Checker NCR' },
-      { property: 'og:description', content: 'Test your internet speed in Delhi NCR and Gurgaon. Free speed test for Airtel, Jio Fiber, BSNL, and Excitel. Check WiFi, broadband, and 5G speeds with accurate Delhi server results.' },
-      { property: 'og:url', content: 'https://speedtestboost.com/delhi-speed-test' },
+      { property: 'og:title', content: 'Hyderabad Internet Speed Test - Free Cyberabad WiFi & Fiber Speed Checker' },
+      { property: 'og:description', content: 'Test your internet speed in Hyderabad (Cyberabad). Free speed test for Airtel, Jio Fiber, ACT Fibernet, and Railwire. Check WiFi, fiber speeds optimized for HITEC City and pharma industries.' },
+      { property: 'og:url', content: 'https://speedtestboost.com/hyderabad-speed-test' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Free Internet Speed Test Online - No Ads & Boost' },
+      { property: 'og:site_name', content: 'Speed Test & Boost' },
       { property: 'og:locale', content: 'en_IN' }
     ];
     
@@ -69,8 +67,8 @@ export default function DelhiSpeedTest() {
     // Twitter Card tags
     const twitterTags = [
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'Delhi Internet Free Internet Speed Test Online - No Ads - Free WiFi & Broadband Speed Checker NCR' },
-      { name: 'twitter:description', content: 'Test your internet speed in Delhi NCR and Gurgaon. Free speed test for Airtel, Jio Fiber, BSNL, and Excitel.' }
+      { name: 'twitter:title', content: 'Hyderabad Internet Speed Test - Free Cyberabad WiFi & Fiber Speed Checker' },
+      { name: 'twitter:description', content: 'Test your internet speed in Hyderabad Cyberabad. Free speed test for Airtel, Jio Fiber, ACT Fibernet optimized for HITEC City.' }
     ];
     
     twitterTags.forEach(tag => {
@@ -92,7 +90,7 @@ export default function DelhiSpeedTest() {
     canonical.rel = 'canonical';
 
     
-    canonical.href = 'https://speedtestboost.com/delhi-speed-test';
+    canonical.href = 'https://speedtestboost.com/hyderabad-speed-test';
 
     
     document.head.appendChild(canonical);
@@ -107,9 +105,9 @@ export default function DelhiSpeedTest() {
     structuredData.textContent = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Delhi Internet Free Internet Speed Test Online - No Ads",
-      "description": "Free online internet speed booster test Delhi for Delhi NCR users with Airtel, Jio Fiber, BSNL, and Excitel ISP support",
-      "url": "https://speedtestboost.com/delhi-speed-test",
+      "name": "Hyderabad Internet Speed Test",
+      "description": "Free online internet speed test for Hyderabad Cyberabad with Airtel, Jio Fiber, ACT Fibernet, and Railwire ISP support",
+      "url": "https://speedtestboost.com/hyderabad-speed-test",
       "applicationCategory": "NetworkingApplication",
       "operatingSystem": "Web Browser",
       "offers": {
@@ -119,13 +117,14 @@ export default function DelhiSpeedTest() {
       },
       "creator": {
         "@type": "Organization",
-        "name": "Free Internet Speed Test Online - No Ads & Boost"
+        "name": "Speed Test & Boost"
       },
       "audience": {
         "@type": "Audience",
         "geographicArea": {
           "@type": "City",
-          "name": "Delhi",
+          "name": "Hyderabad",
+          "alternateName": "Cyberabad",
           "containedInPlace": {
             "@type": "Country",
             "name": "India"
@@ -142,33 +141,21 @@ export default function DelhiSpeedTest() {
     };
   }, []);
 
-  // ... [Rest of the component logic is identical to Mumbai page] ...
-
-  const { data: networkInfo } = useQuery({
-    queryKey: ["/api/network-info"],
-  });
-
-  const { data: speedTests, isLoading: isLoadingHistory } = useQuery({
-    queryKey: ["/api/speed-tests"],
-  });
+  const { data: networkInfo } = useQuery({ queryKey: ["/api/network-info"] });
+  const { data: speedTests, isLoading: isLoadingHistory } = useQuery({ queryKey: ["/api/speed-tests"] });
 
   const saveSpeedTest = useMutation({
     mutationFn: async (result: SpeedTestResult) => {
       const sessionId = getSessionId();
       const response = await fetch("/api/speed-tests", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Session-ID": sessionId
-        },
+        headers: { "Content-Type": "application/json", "X-Session-ID": sessionId },
         body: JSON.stringify(result),
       });
       if (!response.ok) throw new Error("Failed to save speed test");
       return response.json();
     },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["/api/speed-tests"] });
-    },
+    onSuccess: () => { queryClient.invalidateQueries({ queryKey: ["/api/speed-tests"] }); },
   });
 
   const clearHistory = useMutation({
@@ -176,26 +163,17 @@ export default function DelhiSpeedTest() {
       const sessionId = getSessionId();
       const response = await fetch("/api/speed-tests", {
         method: "DELETE",
-        headers: {
-          "X-Session-ID": sessionId
-        }
+        headers: { "X-Session-ID": sessionId }
       });
       if (!response.ok) throw new Error("Failed to clear history");
       return response.json();
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/speed-tests"] });
-      toast({
-        title: "History cleared",
-        description: "All speed test history has been cleared.",
-      });
+      toast({ title: "History cleared", description: "All speed test history has been cleared." });
     },
     onError: () => {
-      toast({
-        title: "Error",
-        description: "Failed to clear history.",
-        variant: "destructive",
-      });
+      toast({ title: "Error", description: "Failed to clear history.", variant: "destructive" });
     },
   });
 
@@ -228,52 +206,49 @@ export default function DelhiSpeedTest() {
     }
   };
 
-  const handleOptimizeWifi = () => {
-    setShowOptimization(true);
-  };
-
+  const handleOptimizeWifi = () => { setShowOptimization(true); };
   const lastTest = speedTests?.[0];
   const displayResult = currentResult || lastTest;
 
   return (
     <div className="min-h-screen bg-background">
-      <Header currentPath="/delhi-speed-test" />
+      <Header currentPath="/hyderabad-speed-test" />
 
-      {/* Delhi-specific SEO Content */}
+
       <section className="max-w-4xl mx-auto px-4 lg:px-8 py-8">
         <div className="text-center mb-8">
-          <h1 className="text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Delhi NCR Internet Free Internet Speed Test Online - No Ads
-          </h1>
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            Hyderabad Cyberabad Speed Test
+          </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Test your internet speed in Delhi, Gurgaon, Noida, Faridabad, and Greater NCR with our comprehensive speed testing tool. 
-            Get accurate results for all major ISPs including Airtel Xstream Fiber, Jio Fiber, BSNL Bharat Fiber, Excitel, ACT Fibernet, and local cable operators. 
-            As India's capital and political center, Delhi NCR requires ultra-reliable internet for government services, corporate headquarters, 
-            embassies, and millions of professionals working in Connaught Place, Cyber City Gurgaon, and Sector 62 Noida.
+            Test your internet speed in Hyderabad (Cyberabad), India's leading biotech and pharmaceutical hub. 
+            Get accurate results for all major ISPs including Airtel Xstream Fiber, Jio Fiber, ACT Fibernet, Railwire, and BSNL Bharat Fiber. 
+            Hyderabad's HITEC City, Gachibowli, and Madhapur house global pharmaceutical giants like Dr. Reddy's, Aurobindo Pharma, 
+            plus major IT companies in Financial District demanding ultra-reliable gigabit connections 
+            for research operations, clinical trials, regulatory compliance, and 24/7 global pharmaceutical manufacturing.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
             <div className="bg-card/50 rounded-lg p-6 border border-border/50">
-              <h3 className="font-semibold text-foreground mb-2">NCR Coverage</h3>
-              <p className="text-sm text-muted-foreground">Delhi, Gurgaon, Noida, Faridabad, Ghaziabad</p>
+              <h3 className="font-semibold text-foreground mb-2">Tech Corridors</h3>
+              <p className="text-sm text-muted-foreground">HITEC City, Gachibowli, Madhapur, Financial District</p>
             </div>
             <div className="bg-card/50 rounded-lg p-6 border border-border/50">
-              <h3 className="font-semibold text-foreground mb-2">Popular ISPs</h3>
-              <p className="text-sm text-muted-foreground">Airtel, Jio Fiber, BSNL, Excitel, ACT</p>
+              <h3 className="font-semibold text-foreground mb-2">Premium ISPs</h3>
+              <p className="text-sm text-muted-foreground">Airtel, Jio Fiber, ACT, Railwire, BSNL</p>
             </div>
             <div className="bg-card/50 rounded-lg p-6 border border-border/50">
-              <h3 className="font-semibold text-foreground mb-2">Connection Types</h3>
-              <p className="text-sm text-muted-foreground">Fiber, Cable, 4G, 5G, Broadband</p>
+              <h3 className="font-semibold text-foreground mb-2">Key Industries</h3>
+              <p className="text-sm text-muted-foreground">Pharma, Biotech, IT services, Financial services</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Main Content - Same layout as Mumbai */}
       <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-6 space-y-6">
         <Breadcrumbs 
           items={[
-            { label: "Delhi Free Internet Speed Test Online - No Ads", href: "/delhi-speed-test" }
+            { label: "Hyderabad Speed Test", href: "/hyderabad-speed-test" }
           ]} 
         />
         
@@ -298,20 +273,17 @@ export default function DelhiSpeedTest() {
                 </div>
               </CardContent>
             </Card>
-
             <Card className="card-hover">
               <CardContent className="p-6 space-y-4">
-                <h3 className="text-lg font-semibold text-foreground">Free Internet Speed Test Online - No Ads</h3>
+                <h3 className="text-lg font-semibold text-foreground">Speed Test</h3>
                 <Button
                   onClick={handleStartTest}
                   disabled={isTestRunning}
                   className="w-full gradient-bg text-white rounded-xl py-6 px-6 font-bold text-lg hover:opacity-90 active:scale-95 transition-all duration-200 disabled:opacity-50"
                   size="lg"
                 >
-                  <div className="flex items-center justify-center">
-                    <Play className="h-6 w-6 mr-3" />
-                    <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
-                  </div>
+                  <Play className="h-6 w-6 mr-3" />
+                  <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
                 </Button>
                 {isTestRunning && (
                   <div className="bg-muted/30 rounded-xl p-4 border border-border/50">
@@ -340,7 +312,6 @@ export default function DelhiSpeedTest() {
               </CardContent>
             </Card>
           </div>
-
           <div className="space-y-6">
             <Card className="card-hover">
               <CardContent className="p-8">
@@ -359,7 +330,6 @@ export default function DelhiSpeedTest() {
               </CardContent>
             </Card>
           </div>
-
           <div className="space-y-6">
             <Card className="card-hover">
               <CardContent className="p-6">
@@ -373,7 +343,6 @@ export default function DelhiSpeedTest() {
           </div>
         </div>
 
-        {/* Mobile Layout */}
         <div className="lg:hidden space-y-6">
           <Card className="card-hover">
             <CardContent className="p-6">
@@ -395,7 +364,7 @@ export default function DelhiSpeedTest() {
                 size="lg"
               >
                 <Play className="h-6 w-6 mr-3" />
-                <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
+                <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
               </Button>
               {isTestRunning && (
                 <div className="bg-muted/30 rounded-xl p-4 border border-border/50">
@@ -442,142 +411,33 @@ export default function DelhiSpeedTest() {
         </div>
       </main>
 
-      {/* NCR Areas Coverage */}
-      <section className="bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5 py-12 mt-8">
-        <div className="max-w-6xl mx-auto px-4 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl lg:text-3xl font-bold mb-4">
-              Delhi NCR Internet Speed Coverage
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Test your internet speed across the National Capital Region
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-card/60 backdrop-blur-sm rounded-lg p-6 border border-border/50 hover:border-primary/30 transition-all duration-200">
-              <h3 className="font-semibold text-foreground mb-2">New Delhi</h3>
-              <p className="text-sm text-muted-foreground mb-3">Central Delhi, Connaught Place, India Gate</p>
-              <div className="text-xs text-primary font-medium">Airtel, Jio Fiber, BSNL coverage</div>
-            </div>
-            
-            <div className="bg-card/60 backdrop-blur-sm rounded-lg p-6 border border-border/50 hover:border-primary/30 transition-all duration-200">
-              <h3 className="font-semibold text-foreground mb-2">Gurgaon</h3>
-              <p className="text-sm text-muted-foreground mb-3">Cyber City, Golf Course Road, MG Road</p>
-              <div className="text-xs text-primary font-medium">Excitel, Airtel, ACT Fibernet</div>
-            </div>
-            
-            <div className="bg-card/60 backdrop-blur-sm rounded-lg p-6 border border-border/50 hover:border-primary/30 transition-all duration-200">
-              <h3 className="font-semibold text-foreground mb-2">Noida</h3>
-              <p className="text-sm text-muted-foreground mb-3">Sector 62, Film City, Expressway</p>
-              <div className="text-xs text-primary font-medium">Jio Fiber, Airtel, Local Cable</div>
-            </div>
-            
-            <div className="bg-card/60 backdrop-blur-sm rounded-lg p-6 border border-border/50 hover:border-primary/30 transition-all duration-200">
-              <h3 className="font-semibold text-foreground mb-2">Faridabad</h3>
-              <p className="text-sm text-muted-foreground mb-3">Industrial Area, Sector 15, NIT</p>
-              <div className="text-xs text-primary font-medium">BSNL Fiber, Jio, Airtel</div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
       {/* Other Cities Navigation */}
       <section className="bg-card/30 border-t border-border/30 py-8 mt-8">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <div className="text-center">
             <h3 className="text-lg font-semibold text-foreground mb-4">Test Internet Speed in Other Cities</h3>
-            <p className="text-sm text-muted-foreground mb-6">Test your internet speed for free with no ads or downloads in Delhi and boost performance in other major Indian cities</p>
+            <p className="text-sm text-muted-foreground mb-6">Check your internet speed and boost performance in other major Indian cities</p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               <Link href="/mumbai-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Mumbai</div>
-                <div className="text-xs text-muted-foreground">Financial Hub Free Internet Speed Test Online - No Ads</div>
+                <div className="text-xs text-muted-foreground">Financial Hub Speed Test</div>
+              </Link>
+              <Link href="/delhi-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+                <div className="text-sm font-medium text-foreground">Delhi</div>
+                <div className="text-xs text-muted-foreground">Capital Speed Test</div>
               </Link>
               <Link href="/bangalore-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Bangalore</div>
-                <div className="text-xs text-muted-foreground">Tech Hub Free Internet Speed Test Online - No Ads</div>
-              </Link>
-              <Link href="/hyderabad-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-                <div className="text-sm font-medium text-foreground">Hyderabad</div>
-                <div className="text-xs text-muted-foreground">Cyberabad Free Internet Speed Test Online - No Ads</div>
+                <div className="text-xs text-muted-foreground">Tech Hub Speed Test</div>
               </Link>
               <Link href="/chennai-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Chennai</div>
-                <div className="text-xs text-muted-foreground">South India Free Internet Speed Test Online - No Ads</div>
+                <div className="text-xs text-muted-foreground">South India Speed Test</div>
               </Link>
               <Link href="/kolkata-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Kolkata</div>
-                <div className="text-xs text-muted-foreground">East India Free Internet Speed Test Online - No Ads</div>
+                <div className="text-xs text-muted-foreground">East India Speed Test</div>
               </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Delhi-specific Educational Content */}
-      <section className="bg-card/30 backdrop-blur-sm border-t border-border/50 mt-8">
-        <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            <Card className="card-hover">
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-3">Delhi Internet Infrastructure</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Delhi benefits from robust fiber optic infrastructure with multiple Tier-1 ISPs. 
-                  Most areas in South Delhi, Central Delhi, and Gurgaon have access to gigabit fiber connections 
-                  from Airtel Xstream Fiber, Jio Fiber, and Excitel, making it ideal for businesses and remote work.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="card-hover">
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-3">Popular ISPs in Delhi NCR</h3>
-                <div className="space-y-2 text-sm text-muted-foreground">
-                  <div><strong className="text-foreground">Airtel Xstream Fiber:</strong> Up to 1 Gbps, wide coverage</div>
-                  <div><strong className="text-foreground">Jio Fiber:</strong> Competitive pricing, good speeds</div>
-                  <div><strong className="text-foreground">Excitel:</strong> Local favorite, affordable plans</div>
-                  <div><strong className="text-foreground">ACT Fibernet:</strong> High-speed in select areas</div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="card-hover">
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-3">Speed Recommendations</h3>
-                <div className="space-y-2 text-sm text-muted-foreground">
-                  <div><strong className="text-foreground">Corporate Use:</strong> 100+ Mbps for offices</div>
-                  <div><strong className="text-foreground">Work from Home:</strong> 50+ Mbps recommended</div>
-                  <div><strong className="text-foreground">Family Streaming:</strong> 25+ Mbps for 4K</div>
-                  <div><strong className="text-foreground">Gaming:</strong> 10+ Mbps with low ping</div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Delhi Internet Speed FAQ</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">Which is the fastest internet in Delhi?</h4>
-                  <p className="text-sm text-muted-foreground">Airtel Xstream Fiber and Jio Fiber offer the fastest speeds up to 1 Gbps in most Delhi NCR areas. Excitel is also popular for high-speed connections in specific localities.</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">What's the average internet speed in Delhi?</h4>
-                  <p className="text-sm text-muted-foreground">Average broadband speeds in Delhi range from 50-100 Mbps for residential connections, with business connections often exceeding 200 Mbps.</p>
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">Best internet for Delhi Metro areas?</h4>
-                  <p className="text-sm text-muted-foreground">Connaught Place, Karol Bagh, and South Extension have excellent Airtel and Jio Fiber coverage with speeds up to 1 Gbps and reliable connectivity.</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">Is 5G available in Delhi?</h4>
-                  <p className="text-sm text-muted-foreground">Yes, both Jio and Airtel have rolled out 5G services in Delhi NCR, offering mobile internet speeds of 200+ Mbps in covered areas.</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -590,9 +450,9 @@ export default function DelhiSpeedTest() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-3">About Internet Free Internet Speed Test Online - No Adss</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-3">About Internet Speed Tests</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  An internet speed booster test Delhi measures your connection's download speed, upload speed, and ping latency. 
+                  An internet speed test measures your connection's download speed, upload speed, and ping latency. 
                   Our free bandwidth test tool provides accurate results for WiFi, broadband, fiber, and mobile connections 
                   including 4G and 5G networks.
                 </p>
@@ -666,10 +526,10 @@ export default function DelhiSpeedTest() {
           {/* Footer Links and Info */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-8 border-t border-border/30">
             <div>
-              <h4 className="font-semibold text-foreground mb-3">Free Internet Speed Test Online - No Ads Tools</h4>
+              <h4 className="font-semibold text-foreground mb-3">Speed Test Tools</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <div>Download Free Internet Speed Test Online - No Ads</div>
-                <div>Upload Free Internet Speed Test Online - No Ads</div>
+                <div>Download Speed Test</div>
+                <div>Upload Speed Test</div>
                 <div>Ping Test Tool</div>
                 <div>Bandwidth Checker</div>
               </div>
@@ -677,16 +537,16 @@ export default function DelhiSpeedTest() {
             <div>
               <h4 className="font-semibold text-foreground mb-3">Connection Types</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <div>WiFi Free Internet Speed Test Online - No Ads</div>
-                <div>Fiber Free Internet Speed Test Online - No Ads</div>
-                <div>Cable Free Internet Speed Test Online - No Ads</div>
-                <div>Mobile Free Internet Speed Test Online - No Ads</div>
+                <div>WiFi Speed Test</div>
+                <div>Fiber Speed Test</div>
+                <div>Cable Speed Test</div>
+                <div>Mobile Speed Test</div>
               </div>
             </div>
             <div>
               <h4 className="font-semibold text-foreground mb-3">Resources</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <div>Free Internet Speed Test Online - No Ads History</div>
+                <div>Speed Test History</div>
                 <div>Network Diagnostics</div>
                 <div>Connection Optimization</div>
                 <div>Speed Comparisons</div>
@@ -710,7 +570,7 @@ export default function DelhiSpeedTest() {
           {/* Copyright */}
           <div className="text-center pt-8 border-t border-border/30 mt-8">
             <p className="text-sm text-muted-foreground">
-              © 2025 Free Internet Speed Test Online - No Ads and Boost. Free internet speed booster test Delhi tool for accurate bandwidth measurement. 
+              © 2025 Speed Test and Boost. Free internet speed test tool for accurate bandwidth measurement. 
               Test your connection speed on any device.
             </p>
           </div>

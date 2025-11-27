@@ -29,7 +29,7 @@ export default function AUSpeedTest() {
 
   // SEO Meta Tags
   useEffect(() => {
-    document.title = "Internet Speed Test Australia - Free NBN & WiFi Speed Checker | Speed Test & Boost";
+    document.title = "Internet Free Internet Speed Test Online - No Ads Australia - Free NBN & WiFi Speed Checker | Free Internet Speed Test Online - No Ads & Boost";
     
     // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -44,15 +44,15 @@ export default function AUSpeedTest() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    keywords.content = 'internet speed test Australia, NBN speed test, wifi speed test Australia, Telstra speed test, Optus speed test, TPG speed test, Aussie Broadband speed test, fibre speed test Australia, broadband speed test AU';
+    keywords.content = 'internet speed booster test Australia Australia, NBN speed test, wifi speed test Australia, Telstra speed test, Optus speed test, TPG speed test, Aussie Broadband speed test, fibre speed test Australia, broadband speed test AU';
     
     // Open Graph tags
     const ogTags = [
-      { property: 'og:title', content: 'Internet Speed Test Australia - Free NBN & WiFi Speed Checker' },
+      { property: 'og:title', content: 'Internet Free Internet Speed Test Online - No Ads Australia - Free NBN & WiFi Speed Checker' },
       { property: 'og:description', content: 'Test your internet speed in Australia. Free online speed test for NBN, Telstra, Optus, TPG, and Aussie Broadband. Check WiFi and fibre speeds with accurate Australian server results.' },
       { property: 'og:url', content: 'https://speedtestboost.com/au-speed-test' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Speed Test & Boost' },
+      { property: 'og:site_name', content: 'Free Internet Speed Test Online - No Ads & Boost' },
       { property: 'og:locale', content: 'en_AU' }
     ];
     
@@ -69,7 +69,7 @@ export default function AUSpeedTest() {
     // Twitter Card tags
     const twitterTags = [
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'Internet Speed Test Australia - Free NBN & WiFi Speed Checker' },
+      { name: 'twitter:title', content: 'Internet Free Internet Speed Test Online - No Ads Australia - Free NBN & WiFi Speed Checker' },
       { name: 'twitter:description', content: 'Test your internet speed in Australia. Free online speed test for NBN, Telstra, Optus, TPG, and Aussie Broadband.' }
     ];
     
@@ -102,8 +102,8 @@ export default function AUSpeedTest() {
     structuredData.textContent = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Internet Speed Test Australia",
-      "description": "Free online internet speed test for Australian users with NBN, Telstra, Optus, TPG, and Aussie Broadband ISP support",
+      "name": "Internet Free Internet Speed Test Online - No Ads Australia",
+      "description": "Free online internet speed booster test Australia for Australian users with NBN, Telstra, Optus, TPG, and Aussie Broadband ISP support",
       "url": "https://speedtestboost.com/au-speed-test",
       "applicationCategory": "NetworkingApplication",
       "operatingSystem": "Web Browser",
@@ -114,7 +114,7 @@ export default function AUSpeedTest() {
       },
       "creator": {
         "@type": "Organization",
-        "name": "Speed Test & Boost"
+        "name": "Free Internet Speed Test Online - No Ads & Boost"
       },
       "audience": {
         "@type": "Audience",
@@ -208,7 +208,7 @@ export default function AUSpeedTest() {
       <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 pt-24 pb-6 space-y-6">
         <Breadcrumbs 
           items={[
-            { label: "Au Speed Test", href: "/au-speed-test" }
+            { label: "Au Free Internet Speed Test Online - No Ads", href: "/au-speed-test" }
           ]} 
         />
 
@@ -247,7 +247,7 @@ export default function AUSpeedTest() {
                 >
                   <div className="flex items-center justify-center">
                     <Play className="h-6 w-6 mr-3" />
-                    <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
+                    <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
                   </div>
                 </Button>
 
@@ -364,7 +364,7 @@ export default function AUSpeedTest() {
               >
                 <div className="flex items-center justify-center">
                   <Play className="h-6 w-6 mr-3" />
-                  <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
+                  <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
                 </div>
               </Button>
 
@@ -450,7 +450,7 @@ export default function AUSpeedTest() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h2 className="text-lg font-semibold text-foreground mb-3">Internet Speed Test Australia</h2>
+                <h2 className="text-lg font-semibold text-foreground mb-3">Internet Free Internet Speed Test Online - No Ads Australia</h2>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Test your internet speed across Australia with our free online speed checker. 
                   Get accurate results for NBN, Telstra, Optus, TPG, Aussie Broadband, and other major Australian ISPs. 
@@ -473,7 +473,7 @@ export default function AUSpeedTest() {
 
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h2 className="text-lg font-semibold text-foreground mb-3">Australian Speed Test Servers</h2>
+                <h2 className="text-lg font-semibold text-foreground mb-3">Australian Free Internet Speed Test Online - No Ads Servers</h2>
                 <div className="space-y-2 text-sm text-muted-foreground">
                   <div><strong className="text-foreground">NSW:</strong> Sydney, Newcastle</div>
                   <div><strong className="text-foreground">VIC:</strong> Melbourne, Geelong</div>
@@ -505,7 +505,7 @@ export default function AUSpeedTest() {
               </div>
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-semibold text-foreground mb-2">Free WiFi Speed Testing</h4>
+                  <h4 className="font-semibold text-foreground mb-2">Free WiFi Free Internet Speed Test Online - No Adsing</h4>
                   <p className="text-sm text-muted-foreground">
                     Test your WiFi speed, NBN connection, or mobile internet for free. No registration 
                     required - just click start and get instant results with download, upload, and ping measurements.

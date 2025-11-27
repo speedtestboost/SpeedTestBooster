@@ -38,7 +38,7 @@ export default function VerizonSpeedTest() {
               {seoConfig.h1}
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Test your <span className="font-semibold text-red-500">Verizon lightweight speed test for Verizon</span> for free. Check your Fios fiber or 5G home internet performance.
+              Test your <span className="font-semibold text-red-500">Verizon internet speed</span> for free. Check your Fios fiber or 5G home internet performance.
             </p>
             
             <div className="mb-12">
@@ -64,7 +64,7 @@ export default function VerizonSpeedTest() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-2">Pro Tip: Get the Most Accurate Verizon Fios Speed Test No Ads - Verizon Results</h3>
+                  <h3 className="font-semibold text-foreground mb-2">Pro Tip: Get the Most Accurate Verizon Fios Speed Test Results</h3>
                   <p className="text-sm text-muted-foreground">
                     Connect via Ethernet cable directly to your Verizon router for the most accurate fiber speed test results. 
                     Close all background apps and disconnect other devices during testing. Test at multiple times throughout the day, 
@@ -75,11 +75,11 @@ export default function VerizonSpeedTest() {
             </CardContent>
           </Card>
 
-          {/* Understanding Your Speed Test No Ads - Verizon Results */}
+          {/* Understanding Your Speed Test Results */}
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Understanding Your Verizon Speed Test No Ads - Verizon Results</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Understanding Your Verizon Speed Test Results</h2>
             <p className="text-center text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Learn what your Verizon Fios lightweight speed test for Verizon test results mean and how to interpret download speeds, upload speeds, and ping for optimal fiber internet performance.
+              Learn what your Verizon Fios internet speed test results mean and how to interpret download speeds, upload speeds, and ping for optimal fiber internet performance.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -188,7 +188,7 @@ export default function VerizonSpeedTest() {
                   download speeds, upload speeds, and network latency, providing insights into your broadband 
                   performance. This testing helps identify connectivity issues and ensures you're receiving the 
                   premium internet service quality that defines Verizon's telecommunications excellence. Regular 
-                  <strong>Verizon lightweight speed test for Verizon tests</strong> ensure you're getting the fiber performance you pay for.
+                  <strong>Verizon internet speed tests</strong> ensure you're getting the fiber performance you pay for.
                 </p>
               </div>
             </CardContent>
@@ -220,7 +220,7 @@ export default function VerizonSpeedTest() {
             <CardContent className="p-8">
               <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Cities with Fastest Verizon Fios Internet Speeds</h2>
               <p className="text-center text-muted-foreground mb-8 max-w-3xl mx-auto">
-                Verizon Fios delivers exceptional fiber lightweight speed test for Verizons across major East Coast metros with symmetrical Gigabit speeds widely available and industry-leading reliability.
+                Verizon Fios delivers exceptional fiber internet speeds across major East Coast metros with symmetrical Gigabit speeds widely available and industry-leading reliability.
               </p>
               
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
@@ -365,10 +365,10 @@ export default function VerizonSpeedTest() {
               <CardContent className="p-8">
                 <h2 className="text-2xl font-bold mb-4">{section.title}</h2>
                 <p className="text-muted-foreground">
-                  {index === 0 && "Test your Verizon Fios lightweight speed test for Verizon with our advanced online speed test tool. Our platform provides accurate measurements of your fiber optic connection, ensuring you're getting the premium speeds that Verizon Fios delivers across the eastern United States."}
+                  {index === 0 && "Test your Verizon Fios internet speed with our advanced online speed test tool. Our platform provides accurate measurements of your fiber optic connection, ensuring you're getting the premium speeds that Verizon Fios delivers across the eastern United States."}
                   {index === 1 && "Check your Verizon upload speed to ensure optimal performance for video conferencing, file uploads, and cloud backups. Verizon Fios offers symmetrical speeds, meaning your upload speeds should match your download speeds for premium fiber service."}
                   {index === 2 && "Monitor your Verizon ping and latency for gaming, video calls, and real-time applications. Lower ping times indicate better network responsiveness, which is crucial for competitive gaming and professional video conferencing on Verizon's fiber network."}
-                  {index === 3 && "Test your Verizon 5G Home lightweight speed test for Verizon to verify wireless broadband performance. Verizon's 5G Ultra Wideband technology provides fiber-like speeds without traditional cable connections in select coverage areas."}
+                  {index === 3 && "Test your Verizon 5G Home internet speed to verify wireless broadband performance. Verizon's 5G Ultra Wideband technology provides fiber-like speeds without traditional cable connections in select coverage areas."}
                   {index === 4 && "Find Verizon speed test locations near you for the most accurate local network performance measurements. Testing from nearby servers provides the best indication of your actual Verizon connection quality and speed."}
                 </p>
                 <div className="mt-4">

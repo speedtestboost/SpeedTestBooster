@@ -15,7 +15,6 @@ import { trackEvent, trackSpeedTest, trackWifiOptimization } from "@/lib/analyti
 import { Play, Wifi, Monitor, Globe, Zap, CheckCircle2 } from "lucide-react";
 import { Link } from "wouter";
 import type { SpeedTest } from "@shared/schema";
-
 type NetworkInfo = {
   ipAddress: string;
   connectionType: string;
@@ -33,12 +32,12 @@ export default function SpeedTest() {
 
   // SEO Meta Tags for homepage
   useEffect(() => {
-    document.title = "HTML5 Speed Test - Free WiFi & Internet Speed Test | No Apps Required";
+    document.title = "Free Internet Speed Test Online - No Ads, No Downloads Required";
     
     // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free HTML5 speed test - No apps, no downloads, no plugins! Browser-based WiFi speed test works on any device. Test internet speed instantly with our web-based speed checker.');
+      metaDescription.setAttribute('content', 'Free internet speed test online with no ads or downloads. Accurate wifi speed test and bandwidth checker. Lightweight speed booster test works on mobile and desktop.');
     }
     
     // Keywords meta tag
@@ -48,7 +47,7 @@ export default function SpeedTest() {
       keywords.setAttribute('name', 'keywords');
       document.head.appendChild(keywords);
     }
-    keywords.setAttribute('content', 'html5 speed test, browser based speed test, no download speed test, web based speed test, no app speed test, no plugin speed test, speed test, wifi speed test, internet speed test, net speed test, speed test online, test wifi speed, check internet speed, free internet speed test');
+    keywords.setAttribute('content', 'free internet speed test online, speed test no ads, wifi speed test, internet speed booster test, speed test no download, lightweight speed test, accurate speed test, bandwidth test, mobile speed test, speed test for gaming');
     
     // Open Graph tags
     const ogTags = [
@@ -603,6 +602,12 @@ export default function SpeedTest() {
         isOpen={showOptimization}
         onClose={() => setShowOptimization(false)}
       />
+
+      {/* Speed Requirements Guide Section - Temporarily commented out */}
+      {/* <SpeedRequirementsGuide /> */}
+
+      {/* Enhanced FAQ Section with High-Opportunity Keywords - Temporarily commented out */}
+      {/* <KeywordOptimizedFAQ /> */}
 
       {/* SEO-Optimized Footer Content */}
       <footer className="bg-card/30 backdrop-blur-sm border-t border-border/50 mt-12">

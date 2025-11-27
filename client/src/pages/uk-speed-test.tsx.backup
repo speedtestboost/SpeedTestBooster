@@ -29,7 +29,7 @@ export default function UKSpeedTest() {
 
   // SEO Meta Tags
   useEffect(() => {
-    document.title = "Broadband Free Internet Speed Test Online - No Ads UK - Free Internet Speed Checker | Free Internet Speed Test Online - No Ads & Boost";
+    document.title = "Broadband Speed Test UK - Free Internet Speed Checker | Speed Test & Boost";
     
     // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -44,15 +44,15 @@ export default function UKSpeedTest() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    keywords.content = 'broadband speed test UK, internet speed booster test UK Britain, wifi speed test UK, BT speed test, Sky speed test, Virgin Media speed test, TalkTalk speed test, Plusnet speed test, fibre speed test UK';
+    keywords.content = 'broadband speed test UK, internet speed test Britain, wifi speed test UK, BT speed test, Sky speed test, Virgin Media speed test, TalkTalk speed test, Plusnet speed test, fibre speed test UK';
     
     // Open Graph tags
     const ogTags = [
-      { property: 'og:title', content: 'Broadband Free Internet Speed Test Online - No Ads UK - Free Internet Speed Checker' },
+      { property: 'og:title', content: 'Broadband Speed Test UK - Free Internet Speed Checker' },
       { property: 'og:description', content: 'Test your broadband speed in the UK. Free online speed test for BT, Sky, Virgin Media, TalkTalk, and Plusnet. Check WiFi and fibre speeds with accurate UK server results.' },
       { property: 'og:url', content: 'https://speedtestboost.com/uk-speed-test' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Free Internet Speed Test Online - No Ads & Boost' },
+      { property: 'og:site_name', content: 'Speed Test & Boost' },
       { property: 'og:locale', content: 'en_GB' }
     ];
     
@@ -69,7 +69,7 @@ export default function UKSpeedTest() {
     // Twitter Card tags
     const twitterTags = [
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'Broadband Free Internet Speed Test Online - No Ads UK - Free Internet Speed Checker' },
+      { name: 'twitter:title', content: 'Broadband Speed Test UK - Free Internet Speed Checker' },
       { name: 'twitter:description', content: 'Test your broadband speed in the UK. Free online speed test for BT, Sky, Virgin Media, TalkTalk, and Plusnet.' }
     ];
     
@@ -102,7 +102,7 @@ export default function UKSpeedTest() {
     structuredData.textContent = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Broadband Free Internet Speed Test Online - No Ads UK",
+      "name": "Broadband Speed Test UK",
       "description": "Free online broadband speed test for UK users with BT, Sky, Virgin Media, TalkTalk, and Plusnet ISP support",
       "url": "https://speedtestboost.com/uk-speed-test",
       "applicationCategory": "NetworkingApplication",
@@ -114,7 +114,7 @@ export default function UKSpeedTest() {
       },
       "creator": {
         "@type": "Organization",
-        "name": "Free Internet Speed Test Online - No Ads & Boost"
+        "name": "Speed Test & Boost"
       },
       "audience": {
         "@type": "Audience",
@@ -208,7 +208,7 @@ export default function UKSpeedTest() {
       <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 pt-24 pb-6 space-y-6">
         <Breadcrumbs 
           items={[
-            { label: "UK Free Internet Speed Test Online - No Ads", href: "/uk-speed-test" }
+            { label: "UK Speed Test", href: "/uk-speed-test" }
           ]} 
         />
         {/* Desktop Layout */}
@@ -246,7 +246,7 @@ export default function UKSpeedTest() {
                 >
                   <div className="flex items-center justify-center">
                     <Play className="h-6 w-6 mr-3" />
-                    <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
+                    <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
                   </div>
                 </Button>
 
@@ -363,7 +363,7 @@ export default function UKSpeedTest() {
               >
                 <div className="flex items-center justify-center">
                   <Play className="h-6 w-6 mr-3" />
-                  <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
+                  <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
                 </div>
               </Button>
 
@@ -449,7 +449,7 @@ export default function UKSpeedTest() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h2 className="text-lg font-semibold text-foreground mb-3">Broadband Free Internet Speed Test Online - No Ads UK</h2>
+                <h2 className="text-lg font-semibold text-foreground mb-3">Broadband Speed Test UK</h2>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Test your broadband speed across the United Kingdom with our free online speed checker. 
                   Get accurate results for BT, Sky, Virgin Media, TalkTalk, Plusnet, and other major UK ISPs. 
@@ -472,7 +472,7 @@ export default function UKSpeedTest() {
 
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h2 className="text-lg font-semibold text-foreground mb-3">UK Free Internet Speed Test Online - No Ads Servers</h2>
+                <h2 className="text-lg font-semibold text-foreground mb-3">UK Speed Test Servers</h2>
                 <div className="space-y-2 text-sm text-muted-foreground">
                   <div><strong className="text-foreground">England:</strong> London, Manchester, Birmingham</div>
                   <div><strong className="text-foreground">Scotland:</strong> Edinburgh, Glasgow</div>
@@ -504,7 +504,7 @@ export default function UKSpeedTest() {
               </div>
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-semibold text-foreground mb-2">Free WiFi Free Internet Speed Test Online - No Adsing</h4>
+                  <h4 className="font-semibold text-foreground mb-2">Free WiFi Speed Testing</h4>
                   <p className="text-sm text-muted-foreground">
                     Test your WiFi speed, broadband connection, or mobile internet for free. No registration 
                     required - just click start and get instant results with download, upload, and ping measurements.

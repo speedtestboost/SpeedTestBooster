@@ -29,10 +29,10 @@ export default function MumbaiSpeedTest() {
 
   // SEO Meta Tags
   useEffect(() => {
-    document.title = "Mumbai Speed Test - Free Internet Speed Test Mumbai India | WiFi Speed Check";
+    document.title = "Mumbai Free Internet Speed Test Online - No Ads - Free Internet Free Internet Speed Test Online - No Ads Mumbai India | WiFi Speed Check";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Mumbai speed test - Free speed test India for Jio Fiber, Airtel Xstream, ACT Fibernet, BSNL. Check WiFi speed test Mumbai, internet speed test India, fiber speed test. Test your speed now!');
+      metaDescription.setAttribute('content', 'Mumbai speed test - Free speed test India for Jio Fiber, Airtel Xstream, ACT Fibernet, BSNL. Check WiFi speed test Mumbai, internet speed booster test Mumbai India, fiber speed test. Test your speed now!');
     }
     
     // Keywords meta tag for India/Mumbai
@@ -42,7 +42,7 @@ export default function MumbaiSpeedTest() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    keywords.content = 'mumbai speed test, speed test india, speed test in india, internet speed test india, wifi speed test mumbai, fiber speed test india, jio fiber speed test, airtel speed test mumbai, broadband speed test india, net speed test mumbai, data speed test india';
+    keywords.content = 'mumbai speed test, speed test india, speed test in india, internet speed booster test Mumbai india, wifi speed test mumbai, fiber speed test india, jio fiber speed test, airtel speed test mumbai, broadband speed test india, net speed test mumbai, data speed test india';
     
     // Add canonical URL
     const canonical = document.createElement('link');
@@ -168,7 +168,7 @@ export default function MumbaiSpeedTest() {
       <section className="max-w-4xl mx-auto px-4 lg:px-8 py-8">
         <div className="text-center mb-8">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Mumbai Internet Speed Test
+            Mumbai Internet Free Internet Speed Test Online - No Ads
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
             Test your internet speed in Mumbai and get accurate results for all major ISPs including BSNL, Airtel, Jio Fiber, and Vi. 
@@ -181,13 +181,13 @@ export default function MumbaiSpeedTest() {
       <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-6 space-y-6">
         <Breadcrumbs 
           items={[
-            { label: "Mumbai Speed Test", href: "/mumbai-speed-test" }
+            { label: "Mumbai Free Internet Speed Test Online - No Ads", href: "/mumbai-speed-test" }
           ]} 
         />
         
         {/* Desktop Layout - Three Column Grid */}
         <div className="hidden lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
-          {/* Left Column - Speed Test */}
+          {/* Left Column - Free Internet Speed Test Online - No Ads */}
           <div className="space-y-6">
             {/* Connection Status */}
             <Card className="card-hover">
@@ -213,7 +213,7 @@ export default function MumbaiSpeedTest() {
             {/* Test Controls */}
             <Card className="card-hover">
               <CardContent className="p-6 space-y-4">
-                <h3 className="text-lg font-semibold text-foreground">Speed Test</h3>
+                <h3 className="text-lg font-semibold text-foreground">Free Internet Speed Test Online - No Ads</h3>
                 <Button
                   onClick={handleStartTest}
                   disabled={isTestRunning}
@@ -224,7 +224,7 @@ export default function MumbaiSpeedTest() {
                     <div className="w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">
                       <Play className="h-6 w-6" />
                     </div>
-                    <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
+                    <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
                   </div>
                 </Button>
 
@@ -327,7 +327,7 @@ export default function MumbaiSpeedTest() {
                   <div className="w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">
                     <Play className="h-6 w-6" />
                   </div>
-                  <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
+                  <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
                 </div>
               </Button>
 
@@ -389,18 +389,18 @@ export default function MumbaiSpeedTest() {
         </div>
       </main>
 
-      {/* Main Speed Test Call-to-Action */}
+      {/* Main Free Internet Speed Test Online - No Ads Call-to-Action */}
       <section className="bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 py-12 mt-8">
         <div className="max-w-4xl mx-auto px-4 lg:px-8 text-center">
           <h2 className="text-2xl lg:text-3xl font-bold mb-4">
-            Try Our Universal Speed Test
+            Try Our Universal Free Internet Speed Test Online - No Ads
           </h2>
           <p className="text-lg text-muted-foreground mb-6">
             Test your internet speed with our main tool that works across all locations and ISPs
           </p>
           <Link href="/">
             <Button size="lg" className="gradient-bg text-white px-8 py-4 text-lg">
-              Go to Main Speed Test
+              Go to Main Free Internet Speed Test Online - No Ads
             </Button>
           </Link>
         </div>
@@ -411,27 +411,27 @@ export default function MumbaiSpeedTest() {
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <div className="text-center">
             <h3 className="text-lg font-semibold text-foreground mb-4">Test Internet Speed in Other Cities</h3>
-            <p className="text-sm text-muted-foreground mb-6">Check your internet speed and boost performance in other major Indian cities</p>
+            <p className="text-sm text-muted-foreground mb-6">Test your internet speed for free with no ads or downloads in Mumbai and boost performance in other major Indian cities</p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               <Link href="/delhi-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Delhi</div>
-                <div className="text-xs text-muted-foreground">Capital Speed Test</div>
+                <div className="text-xs text-muted-foreground">Capital Free Internet Speed Test Online - No Ads</div>
               </Link>
               <Link href="/bangalore-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Bangalore</div>
-                <div className="text-xs text-muted-foreground">Tech Hub Speed Test</div>
+                <div className="text-xs text-muted-foreground">Tech Hub Free Internet Speed Test Online - No Ads</div>
               </Link>
               <Link href="/hyderabad-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Hyderabad</div>
-                <div className="text-xs text-muted-foreground">Cyberabad Speed Test</div>
+                <div className="text-xs text-muted-foreground">Cyberabad Free Internet Speed Test Online - No Ads</div>
               </Link>
               <Link href="/chennai-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Chennai</div>
-                <div className="text-xs text-muted-foreground">South India Speed Test</div>
+                <div className="text-xs text-muted-foreground">South India Free Internet Speed Test Online - No Ads</div>
               </Link>
               <Link href="/kolkata-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Kolkata</div>
-                <div className="text-xs text-muted-foreground">East India Speed Test</div>
+                <div className="text-xs text-muted-foreground">East India Free Internet Speed Test Online - No Ads</div>
               </Link>
             </div>
           </div>
@@ -445,9 +445,9 @@ export default function MumbaiSpeedTest() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-3">About Internet Speed Tests</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-3">About Internet Free Internet Speed Test Online - No Adss</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  An internet speed test measures your connection's download speed, upload speed, and ping latency. 
+                  An internet speed booster test Mumbai measures your connection's download speed, upload speed, and ping latency. 
                   Our free bandwidth test tool provides accurate results for WiFi, broadband, fiber, and mobile connections 
                   including 4G and 5G networks.
                 </p>
@@ -524,16 +524,16 @@ export default function MumbaiSpeedTest() {
               <h4 className="font-semibold text-foreground mb-3">Other City Tests</h4>
               <div className="space-y-2 text-sm">
                 <Link href="/" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Main Speed Test
+                  Main Free Internet Speed Test Online - No Ads
                 </Link>
                 <Link href="/delhi-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Delhi Speed Test
+                  Delhi Free Internet Speed Test Online - No Ads
                 </Link>
                 <Link href="/bangalore-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Bangalore Speed Test
+                  Bangalore Free Internet Speed Test Online - No Ads
                 </Link>
                 <Link href="/hyderabad-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Hyderabad Speed Test
+                  Hyderabad Free Internet Speed Test Online - No Ads
                 </Link>
               </div>
             </div>
@@ -541,13 +541,13 @@ export default function MumbaiSpeedTest() {
               <h4 className="font-semibold text-foreground mb-3">More Cities</h4>
               <div className="space-y-2 text-sm">
                 <Link href="/chennai-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Chennai Speed Test
+                  Chennai Free Internet Speed Test Online - No Ads
                 </Link>
                 <Link href="/kolkata-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Kolkata Speed Test
+                  Kolkata Free Internet Speed Test Online - No Ads
                 </Link>
-                <div className="text-muted-foreground">WiFi Speed Test</div>
-                <div className="text-muted-foreground">Fiber Speed Test</div>
+                <div className="text-muted-foreground">WiFi Free Internet Speed Test Online - No Ads</div>
+                <div className="text-muted-foreground">Fiber Free Internet Speed Test Online - No Ads</div>
               </div>
             </div>
             <div>
@@ -589,7 +589,7 @@ export default function MumbaiSpeedTest() {
           {/* Copyright */}
           <div className="text-center pt-8 border-t border-border/30 mt-8">
             <p className="text-sm text-muted-foreground">
-              © 2025 Speed Test and Boost. Free Mumbai internet speed test tool for accurate bandwidth measurement. 
+              © 2025 Free Internet Speed Test Online - No Ads and Boost. Free Mumbai internet speed booster test Mumbai tool for accurate bandwidth measurement. 
               Test your connection speed on any device. Compare with <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Fast.com</a> and <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Speedtest.net</a>.
             </p>
           </div>

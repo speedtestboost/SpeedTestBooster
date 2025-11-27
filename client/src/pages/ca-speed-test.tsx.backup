@@ -18,7 +18,7 @@ import { performSpeedTest, type SpeedTestResult } from "@/lib/speedTest";
 import { Play, Gauge, Wifi } from "lucide-react";
 import { Link } from "wouter";
 
-export default function UKSpeedTest() {
+export default function CASpeedTest() {
   const [isTestRunning, setIsTestRunning] = useState(false);
   const [testProgress, setTestProgress] = useState(0);
   const [testStatus, setTestStatus] = useState("Ready to test");
@@ -29,12 +29,12 @@ export default function UKSpeedTest() {
 
   // SEO Meta Tags
   useEffect(() => {
-    document.title = "Broadband Free Internet Speed Test Online - No Ads UK - Free Internet Speed Checker | Free Internet Speed Test Online - No Ads & Boost";
+    document.title = "Internet Speed Test Canada - Free WiFi & Broadband Speed Checker | Speed Test & Boost";
     
     // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test your broadband speed in the UK. Free online speed test for BT, Sky, Virgin Media, TalkTalk, and Plusnet. Check WiFi and fibre speeds with accurate UK server results.');
+      metaDescription.setAttribute('content', 'Test your internet speed in Canada. Free online speed test for Rogers, Bell, Telus, Shaw, and Videotron. Check WiFi and fibre speeds with accurate Canadian server results.');
     }
     
     // Keywords meta tag
@@ -44,16 +44,16 @@ export default function UKSpeedTest() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    keywords.content = 'broadband speed test UK, internet speed booster test UK Britain, wifi speed test UK, BT speed test, Sky speed test, Virgin Media speed test, TalkTalk speed test, Plusnet speed test, fibre speed test UK';
+    keywords.content = 'internet speed test Canada, wifi speed test Canada, broadband speed test CA, Rogers speed test, Bell speed test, Telus speed test, Shaw speed test, Videotron speed test, fibre speed test Canada';
     
     // Open Graph tags
     const ogTags = [
-      { property: 'og:title', content: 'Broadband Free Internet Speed Test Online - No Ads UK - Free Internet Speed Checker' },
-      { property: 'og:description', content: 'Test your broadband speed in the UK. Free online speed test for BT, Sky, Virgin Media, TalkTalk, and Plusnet. Check WiFi and fibre speeds with accurate UK server results.' },
-      { property: 'og:url', content: 'https://speedtestboost.com/uk-speed-test' },
+      { property: 'og:title', content: 'Internet Speed Test Canada - Free WiFi & Broadband Speed Checker' },
+      { property: 'og:description', content: 'Test your internet speed in Canada. Free online speed test for Rogers, Bell, Telus, Shaw, and Videotron. Check WiFi and fibre speeds with accurate Canadian server results.' },
+      { property: 'og:url', content: 'https://speedtestboost.com/ca-speed-test' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Free Internet Speed Test Online - No Ads & Boost' },
-      { property: 'og:locale', content: 'en_GB' }
+      { property: 'og:site_name', content: 'Speed Test & Boost' },
+      { property: 'og:locale', content: 'en_CA' }
     ];
     
     ogTags.forEach(tag => {
@@ -69,8 +69,8 @@ export default function UKSpeedTest() {
     // Twitter Card tags
     const twitterTags = [
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'Broadband Free Internet Speed Test Online - No Ads UK - Free Internet Speed Checker' },
-      { name: 'twitter:description', content: 'Test your broadband speed in the UK. Free online speed test for BT, Sky, Virgin Media, TalkTalk, and Plusnet.' }
+      { name: 'twitter:title', content: 'Internet Speed Test Canada - Free WiFi & Broadband Speed Checker' },
+      { name: 'twitter:description', content: 'Test your internet speed in Canada. Free online speed test for Rogers, Bell, Telus, Shaw, and Videotron.' }
     ];
     
     twitterTags.forEach(tag => {
@@ -88,7 +88,7 @@ export default function UKSpeedTest() {
 
     canonical.rel = 'canonical';
 
-    canonical.href = 'https://speedtestboost.com/uk-speed-test';
+    canonical.href = 'https://speedtestboost.com/ca-speed-test';
 
     document.head.appendChild(canonical);
     
@@ -102,25 +102,25 @@ export default function UKSpeedTest() {
     structuredData.textContent = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Broadband Free Internet Speed Test Online - No Ads UK",
-      "description": "Free online broadband speed test for UK users with BT, Sky, Virgin Media, TalkTalk, and Plusnet ISP support",
-      "url": "https://speedtestboost.com/uk-speed-test",
+      "name": "Internet Speed Test Canada",
+      "description": "Free online internet speed test for Canadian users with Rogers, Bell, Telus, Shaw, and Videotron ISP support",
+      "url": "https://speedtestboost.com/ca-speed-test",
       "applicationCategory": "NetworkingApplication",
       "operatingSystem": "Web Browser",
       "offers": {
         "@type": "Offer",
         "price": "0",
-        "priceCurrency": "GBP"
+        "priceCurrency": "CAD"
       },
       "creator": {
         "@type": "Organization",
-        "name": "Free Internet Speed Test Online - No Ads & Boost"
+        "name": "Speed Test & Boost"
       },
       "audience": {
         "@type": "Audience",
         "geographicArea": {
           "@type": "Country",
-          "name": "United Kingdom"
+          "name": "Canada"
         }
       }
     });
@@ -173,7 +173,7 @@ export default function UKSpeedTest() {
     if (isTestRunning) return;
     setIsTestRunning(true);
     setTestProgress(0);
-    setTestStatus("Initialising test...");
+    setTestStatus("Initializing test...");
     setCurrentResult(null);
 
     try {
@@ -203,14 +203,15 @@ export default function UKSpeedTest() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      <Header currentPath="/uk-speed-test" />
+      <Header currentPath="/ca-speed-test" />
       
       <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 pt-24 pb-6 space-y-6">
         <Breadcrumbs 
           items={[
-            { label: "UK Free Internet Speed Test Online - No Ads", href: "/uk-speed-test" }
+            { label: "Ca Speed Test", href: "/ca-speed-test" }
           ]} 
         />
+
         {/* Desktop Layout */}
         <div className="hidden lg:grid lg:grid-cols-3 lg:gap-8">
           {/* Left Column */}
@@ -237,7 +238,7 @@ export default function UKSpeedTest() {
 
             <Card className="card-hover">
               <CardContent className="p-6 space-y-4">
-                <h3 className="text-lg font-semibold text-foreground">UK Broadband Test</h3>
+                <h3 className="text-lg font-semibold text-foreground">Canada Speed Test</h3>
                 <Button
                   onClick={handleStartTest}
                   disabled={isTestRunning}
@@ -246,7 +247,7 @@ export default function UKSpeedTest() {
                 >
                   <div className="flex items-center justify-center">
                     <Play className="h-6 w-6 mr-3" />
-                    <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
+                    <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
                   </div>
                 </Button>
 
@@ -274,7 +275,7 @@ export default function UKSpeedTest() {
                 >
                   <div className="flex items-center justify-center">
                     <Wifi className="h-6 w-6 mr-3" />
-                    <span>Optimise WiFi Speed</span>
+                    <span>Optimize WiFi Speed</span>
                   </div>
                 </Button>
               </CardContent>
@@ -354,7 +355,7 @@ export default function UKSpeedTest() {
 
           <Card className="card-hover">
             <CardContent className="p-6 space-y-4">
-              <h3 className="text-lg font-semibold text-foreground">UK Broadband Test</h3>
+              <h3 className="text-lg font-semibold text-foreground">Canada Speed Test</h3>
               <Button
                 onClick={handleStartTest}
                 disabled={isTestRunning}
@@ -363,7 +364,7 @@ export default function UKSpeedTest() {
               >
                 <div className="flex items-center justify-center">
                   <Play className="h-6 w-6 mr-3" />
-                  <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
+                  <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
                 </div>
               </Button>
 
@@ -391,7 +392,7 @@ export default function UKSpeedTest() {
               >
                 <div className="flex items-center justify-center">
                   <Wifi className="h-6 w-6 mr-3" />
-                  <span>Optimise WiFi Speed</span>
+                  <span>Optimize WiFi Speed</span>
                 </div>
               </Button>
             </CardContent>
@@ -449,72 +450,72 @@ export default function UKSpeedTest() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h2 className="text-lg font-semibold text-foreground mb-3">Broadband Free Internet Speed Test Online - No Ads UK</h2>
+                <h2 className="text-lg font-semibold text-foreground mb-3">Internet Speed Test Canada</h2>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Test your broadband speed across the United Kingdom with our free online speed checker. 
-                  Get accurate results for BT, Sky, Virgin Media, TalkTalk, Plusnet, and other major UK ISPs. 
-                  Our UK servers provide precise measurements for fibre, ADSL, and WiFi connections.
+                  Test your internet speed across Canada with our free online speed checker. 
+                  Get accurate results for Rogers, Bell, Telus, Shaw, Videotron, and other major Canadian ISPs. 
+                  Our Canadian servers provide precise measurements for fibre, cable, DSL, and WiFi connections.
                 </p>
               </CardContent>
             </Card>
 
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h2 className="text-lg font-semibold text-foreground mb-3">Major UK Internet Providers</h2>
+                <h2 className="text-lg font-semibold text-foreground mb-3">Major Canadian Internet Providers</h2>
                 <div className="space-y-2 text-sm text-muted-foreground">
-                  <div><strong className="text-foreground">BT Fibre:</strong> Superfast fibre up to 67 Mbps</div>
-                  <div><strong className="text-foreground">Sky Superfast:</strong> Fibre speeds up to 59 Mbps</div>
-                  <div><strong className="text-foreground">Virgin Media:</strong> Cable speeds up to 1130 Mbps</div>
-                  <div><strong className="text-foreground">TalkTalk:</strong> Fibre packages up to 67 Mbps</div>
+                  <div><strong className="text-foreground">Rogers:</strong> Cable and fibre up to 1500 Mbps</div>
+                  <div><strong className="text-foreground">Bell:</strong> Fibe fibre speeds up to 1500 Mbps</div>
+                  <div><strong className="text-foreground">Telus:</strong> PureFibre up to 2500 Mbps</div>
+                  <div><strong className="text-foreground">Shaw:</strong> Cable speeds up to 1000 Mbps</div>
                 </div>
               </CardContent>
             </Card>
 
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h2 className="text-lg font-semibold text-foreground mb-3">UK Free Internet Speed Test Online - No Ads Servers</h2>
+                <h2 className="text-lg font-semibold text-foreground mb-3">Canadian Speed Test Servers</h2>
                 <div className="space-y-2 text-sm text-muted-foreground">
-                  <div><strong className="text-foreground">England:</strong> London, Manchester, Birmingham</div>
-                  <div><strong className="text-foreground">Scotland:</strong> Edinburgh, Glasgow</div>
-                  <div><strong className="text-foreground">Wales:</strong> Cardiff, Swansea</div>
-                  <div><strong className="text-foreground">N. Ireland:</strong> Belfast coverage</div>
+                  <div><strong className="text-foreground">Ontario:</strong> Toronto, Ottawa</div>
+                  <div><strong className="text-foreground">Quebec:</strong> Montreal, Quebec City</div>
+                  <div><strong className="text-foreground">BC:</strong> Vancouver, Victoria</div>
+                  <div><strong className="text-foreground">Alberta:</strong> Calgary, Edmonton</div>
                 </div>
               </CardContent>
             </Card>
           </div>
 
           <div className="text-center">
-            <h2 className="text-2xl font-bold text-foreground mb-6">Why Choose Our UK Broadband Test?</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-6">Why Choose Our Canadian Speed Test?</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-semibold text-foreground mb-2">Accurate UK Measurements</h4>
+                  <h4 className="font-semibold text-foreground mb-2">Accurate Canadian Measurements</h4>
                   <p className="text-sm text-muted-foreground">
-                    Our speed test uses multiple UK-based servers to provide the most accurate broadband speed 
-                    measurements for British users. Test your connection against servers across England, Scotland, Wales, and Northern Ireland.
+                    Our speed test uses multiple Canadian-based servers to provide the most accurate internet speed 
+                    measurements for Canadian users. Test your connection against servers from coast to coast.
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground mb-2">All Major UK ISPs Supported</h4>
+                  <h4 className="font-semibold text-foreground mb-2">All Major Canadian ISPs Supported</h4>
                   <p className="text-sm text-muted-foreground">
-                    Whether you're using BT, Sky, Virgin Media, TalkTalk, Plusnet, or any other UK internet provider, 
-                    our test works with all networks including fibre, cable, and ADSL connections.
+                    Whether you're using Rogers, Bell, Telus, Shaw, Videotron, or any other Canadian internet provider, 
+                    our test works with all networks including fibre, cable, DSL, and satellite connections.
                   </p>
                 </div>
               </div>
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-semibold text-foreground mb-2">Free WiFi Free Internet Speed Test Online - No Adsing</h4>
+                  <h4 className="font-semibold text-foreground mb-2">Free WiFi Speed Testing</h4>
                   <p className="text-sm text-muted-foreground">
-                    Test your WiFi speed, broadband connection, or mobile internet for free. No registration 
+                    Test your WiFi speed, fibre connection, or mobile internet for free. No registration 
                     required - just click start and get instant results with download, upload, and ping measurements.
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground mb-2">Optimise Your UK Connection</h4>
+                  <h4 className="font-semibold text-foreground mb-2">Optimize Your Canadian Connection</h4>
                   <p className="text-sm text-muted-foreground">
-                    Get personalised recommendations to improve your internet speed based on your UK location 
-                    and ISP. Learn how to optimise your home network for better performance across the British Isles.
+                    Get personalized recommendations to improve your internet speed based on your Canadian location 
+                    and ISP. Learn how to optimize your home network for better performance across the Great White North.
                   </p>
                 </div>
               </div>

@@ -29,7 +29,7 @@ export default function DelhiSpeedTest() {
 
   // SEO Meta Tags
   useEffect(() => {
-    document.title = "Delhi Internet Free Internet Speed Test Online - No Ads - Free WiFi & Broadband Speed Checker NCR | Free Internet Speed Test Online - No Ads & Boost";
+    document.title = "Delhi Internet Speed Test - Free WiFi & Broadband Speed Checker NCR | Speed Test & Boost";
     
     // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -44,15 +44,15 @@ export default function DelhiSpeedTest() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    keywords.content = 'delhi internet speed booster test Delhi, delhi wifi speed test, NCR broadband test, gurgaon speed test, noida speed test, faridabad speed test, airtel delhi speed, jio fiber delhi, excitel speed test, delhi 5G speed test';
+    keywords.content = 'delhi internet speed test, delhi wifi speed test, NCR broadband test, gurgaon speed test, noida speed test, faridabad speed test, airtel delhi speed, jio fiber delhi, excitel speed test, delhi 5G speed test';
     
     // Open Graph tags
     const ogTags = [
-      { property: 'og:title', content: 'Delhi Internet Free Internet Speed Test Online - No Ads - Free WiFi & Broadband Speed Checker NCR' },
+      { property: 'og:title', content: 'Delhi Internet Speed Test - Free WiFi & Broadband Speed Checker NCR' },
       { property: 'og:description', content: 'Test your internet speed in Delhi NCR and Gurgaon. Free speed test for Airtel, Jio Fiber, BSNL, and Excitel. Check WiFi, broadband, and 5G speeds with accurate Delhi server results.' },
       { property: 'og:url', content: 'https://speedtestboost.com/delhi-speed-test' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Free Internet Speed Test Online - No Ads & Boost' },
+      { property: 'og:site_name', content: 'Speed Test & Boost' },
       { property: 'og:locale', content: 'en_IN' }
     ];
     
@@ -69,7 +69,7 @@ export default function DelhiSpeedTest() {
     // Twitter Card tags
     const twitterTags = [
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'Delhi Internet Free Internet Speed Test Online - No Ads - Free WiFi & Broadband Speed Checker NCR' },
+      { name: 'twitter:title', content: 'Delhi Internet Speed Test - Free WiFi & Broadband Speed Checker NCR' },
       { name: 'twitter:description', content: 'Test your internet speed in Delhi NCR and Gurgaon. Free speed test for Airtel, Jio Fiber, BSNL, and Excitel.' }
     ];
     
@@ -107,8 +107,8 @@ export default function DelhiSpeedTest() {
     structuredData.textContent = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Delhi Internet Free Internet Speed Test Online - No Ads",
-      "description": "Free online internet speed booster test Delhi for Delhi NCR users with Airtel, Jio Fiber, BSNL, and Excitel ISP support",
+      "name": "Delhi Internet Speed Test",
+      "description": "Free online internet speed test for Delhi NCR users with Airtel, Jio Fiber, BSNL, and Excitel ISP support",
       "url": "https://speedtestboost.com/delhi-speed-test",
       "applicationCategory": "NetworkingApplication",
       "operatingSystem": "Web Browser",
@@ -119,7 +119,7 @@ export default function DelhiSpeedTest() {
       },
       "creator": {
         "@type": "Organization",
-        "name": "Free Internet Speed Test Online - No Ads & Boost"
+        "name": "Speed Test & Boost"
       },
       "audience": {
         "@type": "Audience",
@@ -243,7 +243,7 @@ export default function DelhiSpeedTest() {
       <section className="max-w-4xl mx-auto px-4 lg:px-8 py-8">
         <div className="text-center mb-8">
           <h1 className="text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Delhi NCR Internet Free Internet Speed Test Online - No Ads
+            Delhi NCR Internet Speed Test
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
             Test your internet speed in Delhi, Gurgaon, Noida, Faridabad, and Greater NCR with our comprehensive speed testing tool. 
@@ -273,7 +273,7 @@ export default function DelhiSpeedTest() {
       <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-6 space-y-6">
         <Breadcrumbs 
           items={[
-            { label: "Delhi Free Internet Speed Test Online - No Ads", href: "/delhi-speed-test" }
+            { label: "Delhi Speed Test", href: "/delhi-speed-test" }
           ]} 
         />
         
@@ -301,7 +301,7 @@ export default function DelhiSpeedTest() {
 
             <Card className="card-hover">
               <CardContent className="p-6 space-y-4">
-                <h3 className="text-lg font-semibold text-foreground">Free Internet Speed Test Online - No Ads</h3>
+                <h3 className="text-lg font-semibold text-foreground">Speed Test</h3>
                 <Button
                   onClick={handleStartTest}
                   disabled={isTestRunning}
@@ -310,7 +310,7 @@ export default function DelhiSpeedTest() {
                 >
                   <div className="flex items-center justify-center">
                     <Play className="h-6 w-6 mr-3" />
-                    <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
+                    <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
                   </div>
                 </Button>
                 {isTestRunning && (
@@ -395,7 +395,7 @@ export default function DelhiSpeedTest() {
                 size="lg"
               >
                 <Play className="h-6 w-6 mr-3" />
-                <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
+                <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
               </Button>
               {isTestRunning && (
                 <div className="bg-muted/30 rounded-xl p-4 border border-border/50">
@@ -487,27 +487,27 @@ export default function DelhiSpeedTest() {
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <div className="text-center">
             <h3 className="text-lg font-semibold text-foreground mb-4">Test Internet Speed in Other Cities</h3>
-            <p className="text-sm text-muted-foreground mb-6">Test your internet speed for free with no ads or downloads in Delhi and boost performance in other major Indian cities</p>
+            <p className="text-sm text-muted-foreground mb-6">Check your internet speed and boost performance in other major Indian cities</p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               <Link href="/mumbai-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Mumbai</div>
-                <div className="text-xs text-muted-foreground">Financial Hub Free Internet Speed Test Online - No Ads</div>
+                <div className="text-xs text-muted-foreground">Financial Hub Speed Test</div>
               </Link>
               <Link href="/bangalore-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Bangalore</div>
-                <div className="text-xs text-muted-foreground">Tech Hub Free Internet Speed Test Online - No Ads</div>
+                <div className="text-xs text-muted-foreground">Tech Hub Speed Test</div>
               </Link>
               <Link href="/hyderabad-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Hyderabad</div>
-                <div className="text-xs text-muted-foreground">Cyberabad Free Internet Speed Test Online - No Ads</div>
+                <div className="text-xs text-muted-foreground">Cyberabad Speed Test</div>
               </Link>
               <Link href="/chennai-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Chennai</div>
-                <div className="text-xs text-muted-foreground">South India Free Internet Speed Test Online - No Ads</div>
+                <div className="text-xs text-muted-foreground">South India Speed Test</div>
               </Link>
               <Link href="/kolkata-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Kolkata</div>
-                <div className="text-xs text-muted-foreground">East India Free Internet Speed Test Online - No Ads</div>
+                <div className="text-xs text-muted-foreground">East India Speed Test</div>
               </Link>
             </div>
           </div>
@@ -590,9 +590,9 @@ export default function DelhiSpeedTest() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-3">About Internet Free Internet Speed Test Online - No Adss</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-3">About Internet Speed Tests</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  An internet speed booster test Delhi measures your connection's download speed, upload speed, and ping latency. 
+                  An internet speed test measures your connection's download speed, upload speed, and ping latency. 
                   Our free bandwidth test tool provides accurate results for WiFi, broadband, fiber, and mobile connections 
                   including 4G and 5G networks.
                 </p>
@@ -666,10 +666,10 @@ export default function DelhiSpeedTest() {
           {/* Footer Links and Info */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-8 border-t border-border/30">
             <div>
-              <h4 className="font-semibold text-foreground mb-3">Free Internet Speed Test Online - No Ads Tools</h4>
+              <h4 className="font-semibold text-foreground mb-3">Speed Test Tools</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <div>Download Free Internet Speed Test Online - No Ads</div>
-                <div>Upload Free Internet Speed Test Online - No Ads</div>
+                <div>Download Speed Test</div>
+                <div>Upload Speed Test</div>
                 <div>Ping Test Tool</div>
                 <div>Bandwidth Checker</div>
               </div>
@@ -677,16 +677,16 @@ export default function DelhiSpeedTest() {
             <div>
               <h4 className="font-semibold text-foreground mb-3">Connection Types</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <div>WiFi Free Internet Speed Test Online - No Ads</div>
-                <div>Fiber Free Internet Speed Test Online - No Ads</div>
-                <div>Cable Free Internet Speed Test Online - No Ads</div>
-                <div>Mobile Free Internet Speed Test Online - No Ads</div>
+                <div>WiFi Speed Test</div>
+                <div>Fiber Speed Test</div>
+                <div>Cable Speed Test</div>
+                <div>Mobile Speed Test</div>
               </div>
             </div>
             <div>
               <h4 className="font-semibold text-foreground mb-3">Resources</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <div>Free Internet Speed Test Online - No Ads History</div>
+                <div>Speed Test History</div>
                 <div>Network Diagnostics</div>
                 <div>Connection Optimization</div>
                 <div>Speed Comparisons</div>
@@ -710,7 +710,7 @@ export default function DelhiSpeedTest() {
           {/* Copyright */}
           <div className="text-center pt-8 border-t border-border/30 mt-8">
             <p className="text-sm text-muted-foreground">
-              © 2025 Free Internet Speed Test Online - No Ads and Boost. Free internet speed booster test Delhi tool for accurate bandwidth measurement. 
+              © 2025 Speed Test and Boost. Free internet speed test tool for accurate bandwidth measurement. 
               Test your connection speed on any device.
             </p>
           </div>

@@ -29,7 +29,7 @@ export default function CASpeedTest() {
 
   // SEO Meta Tags
   useEffect(() => {
-    document.title = "Internet Speed Test Canada - Free WiFi & Broadband Speed Checker | Speed Test & Boost";
+    document.title = "Internet Free Internet Speed Test Online - No Ads Canada - Free WiFi & Broadband Speed Checker | Free Internet Speed Test Online - No Ads & Boost";
     
     // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -44,15 +44,15 @@ export default function CASpeedTest() {
       keywords.name = 'keywords';
       document.head.appendChild(keywords);
     }
-    keywords.content = 'internet speed test Canada, wifi speed test Canada, broadband speed test CA, Rogers speed test, Bell speed test, Telus speed test, Shaw speed test, Videotron speed test, fibre speed test Canada';
+    keywords.content = 'internet speed booster test Canada Canada, wifi speed test Canada, broadband speed test CA, Rogers speed test, Bell speed test, Telus speed test, Shaw speed test, Videotron speed test, fibre speed test Canada';
     
     // Open Graph tags
     const ogTags = [
-      { property: 'og:title', content: 'Internet Speed Test Canada - Free WiFi & Broadband Speed Checker' },
+      { property: 'og:title', content: 'Internet Free Internet Speed Test Online - No Ads Canada - Free WiFi & Broadband Speed Checker' },
       { property: 'og:description', content: 'Test your internet speed in Canada. Free online speed test for Rogers, Bell, Telus, Shaw, and Videotron. Check WiFi and fibre speeds with accurate Canadian server results.' },
       { property: 'og:url', content: 'https://speedtestboost.com/ca-speed-test' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Speed Test & Boost' },
+      { property: 'og:site_name', content: 'Free Internet Speed Test Online - No Ads & Boost' },
       { property: 'og:locale', content: 'en_CA' }
     ];
     
@@ -69,7 +69,7 @@ export default function CASpeedTest() {
     // Twitter Card tags
     const twitterTags = [
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'Internet Speed Test Canada - Free WiFi & Broadband Speed Checker' },
+      { name: 'twitter:title', content: 'Internet Free Internet Speed Test Online - No Ads Canada - Free WiFi & Broadband Speed Checker' },
       { name: 'twitter:description', content: 'Test your internet speed in Canada. Free online speed test for Rogers, Bell, Telus, Shaw, and Videotron.' }
     ];
     
@@ -102,8 +102,8 @@ export default function CASpeedTest() {
     structuredData.textContent = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Internet Speed Test Canada",
-      "description": "Free online internet speed test for Canadian users with Rogers, Bell, Telus, Shaw, and Videotron ISP support",
+      "name": "Internet Free Internet Speed Test Online - No Ads Canada",
+      "description": "Free online internet speed booster test Canada for Canadian users with Rogers, Bell, Telus, Shaw, and Videotron ISP support",
       "url": "https://speedtestboost.com/ca-speed-test",
       "applicationCategory": "NetworkingApplication",
       "operatingSystem": "Web Browser",
@@ -114,7 +114,7 @@ export default function CASpeedTest() {
       },
       "creator": {
         "@type": "Organization",
-        "name": "Speed Test & Boost"
+        "name": "Free Internet Speed Test Online - No Ads & Boost"
       },
       "audience": {
         "@type": "Audience",
@@ -208,7 +208,7 @@ export default function CASpeedTest() {
       <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 pt-24 pb-6 space-y-6">
         <Breadcrumbs 
           items={[
-            { label: "Ca Speed Test", href: "/ca-speed-test" }
+            { label: "Ca Free Internet Speed Test Online - No Ads", href: "/ca-speed-test" }
           ]} 
         />
 
@@ -238,7 +238,7 @@ export default function CASpeedTest() {
 
             <Card className="card-hover">
               <CardContent className="p-6 space-y-4">
-                <h3 className="text-lg font-semibold text-foreground">Canada Speed Test</h3>
+                <h3 className="text-lg font-semibold text-foreground">Canada Free Internet Speed Test Online - No Ads</h3>
                 <Button
                   onClick={handleStartTest}
                   disabled={isTestRunning}
@@ -247,7 +247,7 @@ export default function CASpeedTest() {
                 >
                   <div className="flex items-center justify-center">
                     <Play className="h-6 w-6 mr-3" />
-                    <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
+                    <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
                   </div>
                 </Button>
 
@@ -355,7 +355,7 @@ export default function CASpeedTest() {
 
           <Card className="card-hover">
             <CardContent className="p-6 space-y-4">
-              <h3 className="text-lg font-semibold text-foreground">Canada Speed Test</h3>
+              <h3 className="text-lg font-semibold text-foreground">Canada Free Internet Speed Test Online - No Ads</h3>
               <Button
                 onClick={handleStartTest}
                 disabled={isTestRunning}
@@ -364,7 +364,7 @@ export default function CASpeedTest() {
               >
                 <div className="flex items-center justify-center">
                   <Play className="h-6 w-6 mr-3" />
-                  <span>{isTestRunning ? "Running Test..." : "Start Speed Test"}</span>
+                  <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
                 </div>
               </Button>
 
@@ -450,7 +450,7 @@ export default function CASpeedTest() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h2 className="text-lg font-semibold text-foreground mb-3">Internet Speed Test Canada</h2>
+                <h2 className="text-lg font-semibold text-foreground mb-3">Internet Free Internet Speed Test Online - No Ads Canada</h2>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Test your internet speed across Canada with our free online speed checker. 
                   Get accurate results for Rogers, Bell, Telus, Shaw, Videotron, and other major Canadian ISPs. 
@@ -473,7 +473,7 @@ export default function CASpeedTest() {
 
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h2 className="text-lg font-semibold text-foreground mb-3">Canadian Speed Test Servers</h2>
+                <h2 className="text-lg font-semibold text-foreground mb-3">Canadian Free Internet Speed Test Online - No Ads Servers</h2>
                 <div className="space-y-2 text-sm text-muted-foreground">
                   <div><strong className="text-foreground">Ontario:</strong> Toronto, Ottawa</div>
                   <div><strong className="text-foreground">Quebec:</strong> Montreal, Quebec City</div>
@@ -485,7 +485,7 @@ export default function CASpeedTest() {
           </div>
 
           <div className="text-center">
-            <h2 className="text-2xl font-bold text-foreground mb-6">Why Choose Our Canadian Speed Test?</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-6">Why Choose Our Canadian Free Internet Speed Test Online - No Ads?</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
               <div className="space-y-4">
                 <div>
@@ -505,7 +505,7 @@ export default function CASpeedTest() {
               </div>
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-semibold text-foreground mb-2">Free WiFi Speed Testing</h4>
+                  <h4 className="font-semibold text-foreground mb-2">Free WiFi Free Internet Speed Test Online - No Adsing</h4>
                   <p className="text-sm text-muted-foreground">
                     Test your WiFi speed, fibre connection, or mobile internet for free. No registration 
                     required - just click start and get instant results with download, upload, and ping measurements.

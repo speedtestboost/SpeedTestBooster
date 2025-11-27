@@ -14,11 +14,11 @@ export default function SpectrumSpeedTest() {
 
   useEffect(() => {
     // SEO Meta Tags
-    document.title = "Spectrum Speed Test No Ads - Spectrum - Free Charter Spectrum Internet Speed Test No Ads - Spectrum 2025";
+    document.title = "Spectrum Speed Test - Free Charter Spectrum Internet Speed Test 2025";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Spectrum lightweight speed test for Spectrum test - Test Charter Spectrum cable internet, WiFi speed test, broadband speed checker. Check Spectrum download/upload speeds, ping test. Accurate results in seconds.');
+      metaDescription.setAttribute('content', 'Free Spectrum internet speed test - Test Charter Spectrum cable internet, WiFi speed test, broadband speed checker. Check Spectrum download/upload speeds, ping test. Accurate results in seconds.');
     }
 
     // Add keywords meta tag
@@ -28,15 +28,15 @@ export default function SpectrumSpeedTest() {
       metaKeywords.setAttribute('name', 'keywords');
       document.head.appendChild(metaKeywords);
     }
-    metaKeywords.setAttribute('content', 'spectrum speed test, charter spectrum speed test, spectrum lightweight speed test for Spectrum test, charter spectrum wifi test, spectrum cable internet test, spectrum broadband test, charter lightweight speed test for Spectrum test, spectrum wifi speed test, spectrum download speed test, test spectrum lightweight speed test for Spectrum, charter spectrum cable test, spectrum gig speed test');
+    metaKeywords.setAttribute('content', 'spectrum speed test, charter spectrum speed test, spectrum internet speed test, charter spectrum wifi test, spectrum cable internet test, spectrum broadband test, charter internet speed test, spectrum wifi speed test, spectrum download speed test, test spectrum internet speed, charter spectrum cable test, spectrum gig speed test');
 
     // Open Graph tags for social sharing
     const ogTags = [
-      { property: 'og:title', content: 'Spectrum Speed Test No Ads - Spectrum - Free Charter Spectrum Internet Speed Test No Ads - Spectrum 2025' },
-      { property: 'og:description', content: 'Free Spectrum lightweight speed test for Spectrum test - Test Charter Spectrum cable internet, WiFi speed, broadband. Check download/upload speeds and ping. Accurate results.' },
+      { property: 'og:title', content: 'Spectrum Speed Test - Free Charter Spectrum Internet Speed Test 2025' },
+      { property: 'og:description', content: 'Free Spectrum internet speed test - Test Charter Spectrum cable internet, WiFi speed, broadband. Check download/upload speeds and ping. Accurate results.' },
       { property: 'og:url', content: 'https://speedtestboost.com/providers/us/spectrum' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Speed Test No Ads - Spectrum and Boost' }
+      { property: 'og:site_name', content: 'Speed Test and Boost' }
     ];
 
     ogTags.forEach(tag => {
@@ -52,8 +52,8 @@ export default function SpectrumSpeedTest() {
     // Twitter Card tags
     const twitterTags = [
       { name: 'twitter:card', content: 'summary' },
-      { name: 'twitter:title', content: 'Spectrum Speed Test No Ads - Spectrum - Free Charter Spectrum Internet Speed Test No Ads - Spectrum 2025' },
-      { name: 'twitter:description', content: 'Free Spectrum lightweight speed test for Spectrum test - Test Charter Spectrum cable internet, WiFi speed, broadband checker. Accurate results in seconds.' }
+      { name: 'twitter:title', content: 'Spectrum Speed Test - Free Charter Spectrum Internet Speed Test 2025' },
+      { name: 'twitter:description', content: 'Free Spectrum internet speed test - Test Charter Spectrum cable internet, WiFi speed, broadband checker. Accurate results in seconds.' }
     ];
 
     twitterTags.forEach(tag => {
@@ -78,12 +78,12 @@ export default function SpectrumSpeedTest() {
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "Spectrum Speed Test No Ads - Spectrum 2025",
-      "description": "Free Spectrum lightweight speed test for Spectrum test for Charter Spectrum customers. Test cable internet, WiFi, and gig speeds nationwide.",
+      "name": "Spectrum Speed Test 2025",
+      "description": "Free Spectrum internet speed test for Charter Spectrum customers. Test cable internet, WiFi, and gig speeds nationwide.",
       "url": "https://speedtestboost.com/providers/us/spectrum",
       "mainEntity": {
         "@type": "SoftwareApplication",
-        "name": "Spectrum Speed Test No Ads - Spectrum Tool",
+        "name": "Spectrum Speed Test Tool",
         "applicationCategory": "NetworkingApplication",
         "operatingSystem": "Web Browser",
         "offers": {
@@ -123,7 +123,7 @@ export default function SpectrumSpeedTest() {
           {
             "@type": "ListItem",
             "position": 4,
-            "name": "Spectrum Speed Test No Ads - Spectrum",
+            "name": "Spectrum Speed Test",
             "item": "https://speedtestboost.com/providers/us/spectrum"
           }
         ]
@@ -165,10 +165,10 @@ export default function SpectrumSpeedTest() {
               </div>
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 bg-clip-text text-transparent">
-              Spectrum Speed Test No Ads - Spectrum 2025
+              Spectrum Speed Test 2025
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Test your <span className="font-semibold text-blue-500">Charter Spectrum lightweight speed test for Spectrum</span> for free. Check download speeds, upload speeds, and WiFi performance for cable internet customers nationwide.
+              Test your <span className="font-semibold text-blue-500">Charter Spectrum internet speed</span> for free. Check download speeds, upload speeds, and WiFi performance for cable internet customers nationwide.
             </p>
             
             <div className="mb-12">
@@ -205,11 +205,11 @@ export default function SpectrumSpeedTest() {
             </CardContent>
           </Card>
 
-          {/* Understanding Your Speed Test No Ads - Spectrum Results */}
+          {/* Understanding Your Speed Test Results */}
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Understanding Your Spectrum Speed Test No Ads - Spectrum Results</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Understanding Your Spectrum Speed Test Results</h2>
             <p className="text-center text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Learn what your Spectrum lightweight speed test for Spectrum test results mean and how to interpret download speeds, upload speeds, and ping for optimal cable internet performance.
+              Learn what your Spectrum internet speed test results mean and how to interpret download speeds, upload speeds, and ping for optimal cable internet performance.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -271,7 +271,7 @@ export default function SpectrumSpeedTest() {
                 <span className="mx-2">›</span>
                 <Link href="/providers/us" className="hover:text-primary">US Providers</Link>
                 <span className="mx-2">›</span>
-                <span className="text-foreground">Spectrum Speed Test No Ads - Spectrum</span>
+                <span className="text-foreground">Spectrum Speed Test</span>
               </nav>
               
               <div className="prose prose-gray dark:prose-invert max-w-none space-y-6">
@@ -291,7 +291,7 @@ export default function SpectrumSpeedTest() {
                   ranging from 300 Mbps on their base plan to 1 Gig (1000 Mbps) connections, supporting everything from 
                   basic web browsing to demanding applications like 4K streaming, online gaming, and 
                   remote work requirements. Use our <Link href="/internet-speed-requirements" className="text-primary hover:underline">speed requirements calculator</Link> to determine the right plan for your needs. 
-                  Regular <strong>Spectrum lightweight speed test for Spectrum tests</strong> help ensure you're getting the performance you're paying for.
+                  Regular <strong>Spectrum internet speed tests</strong> help ensure you're getting the performance you're paying for.
                 </p>
               </div>
             </CardContent>
@@ -377,7 +377,7 @@ export default function SpectrumSpeedTest() {
             </CardContent>
           </Card>
 
-          {/* Speed Test No Ads - Spectrum Performance Images */}
+          {/* Speed Test Performance Images */}
           <div className="grid md:grid-cols-2 gap-8 mb-12 mt-12">
             <Card>
               <CardContent className="p-6">
@@ -555,11 +555,11 @@ export default function SpectrumSpeedTest() {
           {/* FAQ Section */}
           <Card className="mb-12">
             <CardContent className="p-8">
-              <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Frequently Asked Questions About Spectrum Speed Test No Ads - Spectrum</h2>
+              <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Frequently Asked Questions About Spectrum Speed Test</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold text-foreground mb-2">What is a good Spectrum lightweight speed test for Spectrum?</h4>
+                    <h4 className="font-semibold text-foreground mb-2">What is a good Spectrum internet speed?</h4>
                     <p className="text-sm text-muted-foreground">
                       For most households, 100+ Mbps download speed is recommended. Spectrum's base plan offers 300 Mbps download 
                       and 10 Mbps upload, which supports multiple devices, HD streaming, and remote work requirements.
@@ -590,7 +590,7 @@ export default function SpectrumSpeedTest() {
                 </div>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold text-foreground mb-2">How can I improve my Spectrum lightweight speed test for Spectrum?</h4>
+                    <h4 className="font-semibold text-foreground mb-2">How can I improve my Spectrum internet speed?</h4>
                     <p className="text-sm text-muted-foreground">
                       Restart your modem monthly, use ethernet instead of WiFi, relocate your router centrally, disconnect unused 
                       devices, and ensure your equipment supports your speed tier. Contact Spectrum if issues persist.
@@ -621,7 +621,7 @@ export default function SpectrumSpeedTest() {
                     <h4 className="font-semibold text-foreground mb-2">How much speed does my household need?</h4>
                     <p className="text-sm text-muted-foreground">
                       For basic browsing and streaming, 50-100 Mbps works well. If you have multiple users or want 4K streaming and gaming, 
-                      aim for 300+ Mbps. Use our <Link href="/internet-speed-requirements" className="text-primary hover:underline">lightweight speed test for Spectrum calculator</Link> to get personalized recommendations.
+                      aim for 300+ Mbps. Use our <Link href="/internet-speed-requirements" className="text-primary hover:underline">internet speed calculator</Link> to get personalized recommendations.
                     </p>
                   </div>
                 </div>
@@ -642,21 +642,21 @@ export default function SpectrumSpeedTest() {
               <h4 className="font-semibold text-foreground mb-3">US Providers</h4>
               <div className="space-y-2 text-sm">
                 <Link href="/providers/us/spectrum" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Spectrum Speed Test No Ads - Spectrum
+                  Spectrum Speed Test
                 </Link>
                 <Link href="/providers/us/verizon" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Verizon Speed Test No Ads - Spectrum
+                  Verizon Speed Test
                 </Link>
                 <Link href="/providers/us/comcast" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Comcast Speed Test No Ads - Spectrum
+                  Comcast Speed Test
                 </Link>
                 <Link href="/providers/us/att" className="block text-muted-foreground hover:text-primary transition-colors">
-                  AT&T Speed Test No Ads - Spectrum
+                  AT&T Speed Test
                 </Link>
               </div>
             </div>
             <div>
-              <h4 className="font-semibold text-foreground mb-3">Speed Test No Ads - Spectrum Tools</h4>
+              <h4 className="font-semibold text-foreground mb-3">Speed Test Tools</h4>
               <div className="space-y-2 text-sm">
                 <Link href="/internet-speed-requirements" className="block text-muted-foreground hover:text-primary transition-colors">
                   Speed Requirements
@@ -665,9 +665,9 @@ export default function SpectrumSpeedTest() {
                   WiFi Analyzer
                 </Link>
                 <Link href="/ai-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
-                  AI Speed Test No Ads - Spectrum
+                  AI Speed Test
                 </Link>
-                <div className="text-muted-foreground">Cable Speed Test No Ads - Spectrum</div>
+                <div className="text-muted-foreground">Cable Speed Test</div>
               </div>
             </div>
             <div>
@@ -697,7 +697,7 @@ export default function SpectrumSpeedTest() {
                   Help & FAQ
                 </Link>
                 <Link href="/" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Speed Test No Ads - Spectrum Home
+                  Speed Test Home
                 </Link>
                 <Link href="/internet-providers" className="block text-muted-foreground hover:text-primary transition-colors">
                   All Providers
@@ -709,8 +709,8 @@ export default function SpectrumSpeedTest() {
           {/* Copyright */}
           <div className="text-center pt-8 border-t border-border/30 mt-8">
             <p className="text-sm text-muted-foreground">
-              © 2025 Speed Test No Ads - Spectrum and Boost. Free Spectrum lightweight speed test for Spectrum test for Charter Spectrum customers. 
-              Test your cable lightweight speed test for Spectrum, WiFi performance, and network connectivity. Compare with official Spectrum speed test results.
+              © 2025 Speed Test and Boost. Free Spectrum internet speed test for Charter Spectrum customers. 
+              Test your cable internet speed, WiFi performance, and network connectivity. Compare with official Spectrum speed test results.
             </p>
           </div>
         </div>
