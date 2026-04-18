@@ -1,8 +1,21 @@
+# Deploy static site (hostinger-static/) over SSH/rsync — no npm/build (avoids CI failures
+# when you only need the same output as the FTP workflow).
+#
+# Secrets (Settings → Secrets and variables → Actions):
+#   HOSTINGER_SSH_KEY   — private key (full PEM), public key added in hPanel → Advanced → SSH
+#   HOSTINGER_HOST      — SSH hostname from hPanel (e.g. xxx.hstgr.io or IP if allowed)
+#   HOSTINGER_SSH_USER  — SSH username (often same style as FTP user u828619841)
+#
+# Optional repository VARIABLE:
+#   HOSTINGER_SSH_REMOTE_DIR — target path on server, default ~/public_html/
+#   Examples if ~/public_html is wrong for your site:
+#     ~/domains/speedtestboost.com/public_html/
+
 name: Deploy to Hostinger (SSH)
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
     paths:
       - 'hostinger-static/**'
       - 'client/**'
@@ -12,83 +25,73 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      
-    - name: Setup SSH
-      uses: webfactory/ssh-agent@v0.8.0
-      with:
-        ssh-private-key: ${{ secrets.HOSTINGER_SSH_KEY }}
-        
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'npm'
-        
-    - name: Install dependencies
-      run: npm ci
-      
-    - name: Build project (if needed)
-      run: |
-        if [ -f "package.json" ] && grep -q "build" package.json; then
-          npm run build
-        fi
-        
-    - name: Prepare deployment files
-      run: |
-        # Create deployment directory
-        mkdir -p deployment
-        
-        # Copy static files (prioritize hostinger-static)
-        if [ -d "hostinger-static" ]; then
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate SSH secrets
+        env:
+          KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
+          HOST: ${{ secrets.HOSTINGER_HOST }}
+          USER: ${{ secrets.HOSTINGER_SSH_USER }}
+        run: |
+          missing=0
+          [ -z "$KEY" ] && { echo "::error::HOSTINGER_SSH_KEY is empty"; missing=1; }
+          [ -z "$HOST" ] && { echo "::error::HOSTINGER_HOST is empty"; missing=1; }
+          [ -z "$USER" ] && { echo "::error::HOSTINGER_SSH_USER is empty"; missing=1; }
+          [ "$missing" -ne 0 ] && exit 1
+          echo "✅ SSH secrets are set"
+
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.HOSTINGER_SSH_KEY }}
+
+      - name: Prepare deployment files
+        run: |
+          mkdir -p deployment
           cp -r hostinger-static/* deployment/
-          echo "✅ Using hostinger-static folder"
-        elif [ -d "dist" ]; then
-          cp -r dist/* deployment/
-          echo "✅ Using dist folder"
-        elif [ -d "build" ]; then
-          cp -r build/* deployment/
-          echo "✅ Using build folder"
-        fi
-        
-        # Verify deployment files
-        ls -la deployment/
-        
-        # Ensure index.html exists
-        if [ ! -f "deployment/index.html" ]; then
-          echo "❌ Error: No index.html found in deployment directory"
-          exit 1
-        fi
-        
-    - name: Deploy to Hostinger via SSH/rsync
-      run: |
-        # Add Hostinger to known hosts
-        mkdir -p ~/.ssh
-        ssh-keyscan -H ${{ secrets.HOSTINGER_HOST }} >> ~/.ssh/known_hosts
-        
-        # Deploy using rsync
-        rsync -avz --delete \
-          --exclude '.git' \
-          --exclude 'node_modules' \
-          --exclude '.env' \
-          --exclude '*.log' \
-          --exclude '*.zip' \
-          ./deployment/ ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_HOST }}:~/public_html/
-          
-    - name: Clear Hostinger cache (if applicable)
-      run: |
-        # Try to clear cache via SSH (if Hostinger supports it)
-        ssh ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_HOST }} \
-          'find ~/public_html -name "*.cache" -delete || echo "Cache clearing not available"'
-          
-    - name: Verify deployment
-      run: |
-        echo "🚀 Deployment completed successfully!"
-        echo "🔗 Your site should be updated at: https://speedtestboost.com"
-        echo "⏳ Please allow 5-10 minutes for changes to propagate"
-        
-        # Test if site is reachable
-        curl -I https://speedtestboost.com || echo "Site check failed (normal during deployment)"
+          ls -la deployment/
+          test -f deployment/index.html
+
+      - name: Resolve rsync destination
+        id: dest
+        env:
+          OVERRIDE: ${{ vars.HOSTINGER_SSH_REMOTE_DIR }}
+        run: |
+          if [ -n "$OVERRIDE" ]; then
+            DIR="$OVERRIDE"
+          else
+            DIR="~/public_html/"
+          fi
+          echo "Rsync target suffix: $DIR"
+          echo "path=$DIR" >> "$GITHUB_OUTPUT"
+
+      - name: Add SSH host keys
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -T 30 -H "${{ secrets.HOSTINGER_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || {
+            echo "::error::ssh-keyscan failed for HOSTINGER_HOST (wrong hostname or SSH not reachable)"
+            exit 1
+          }
+
+      - name: Deploy via rsync
+        env:
+          SSH_USER: ${{ secrets.HOSTINGER_SSH_USER }}
+          SSH_HOST: ${{ secrets.HOSTINGER_HOST }}
+          REMOTE_PATH: ${{ steps.dest.outputs.path }}
+        run: |
+          set -e
+          rsync -avz --delete \
+            --exclude '.git' \
+            --exclude 'node_modules' \
+            --exclude '.env' \
+            --exclude '*.log' \
+            --exclude '*.zip' \
+            ./deployment/ "${SSH_USER}@${SSH_HOST}:${REMOTE_PATH}"
+
+      - name: Verify deployment
+        run: |
+          echo "SSH deploy finished."
+          echo "If the site did not update, set variable HOSTINGER_SSH_REMOTE_DIR to e.g. ~/domains/speedtestboost.com/public_html/"

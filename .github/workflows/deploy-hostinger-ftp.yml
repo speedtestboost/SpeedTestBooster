@@ -3,7 +3,16 @@
 # Required secret (Settings → Secrets and variables → Actions):
 #   HOSTINGER_FTP_PASSWORD — FTP password for user u828619841 (reset in hPanel if unknown)
 #
-# FTP target: IP 82.197.83.17 + user u828619841 + public_html (from hPanel).
+# FTP target: IP 82.197.83.17 + user u828619841 (from hPanel).
+#
+# Remote folder: default is public_html/ relative to the FTP account root. If the job
+# succeeds but File Manager shows no updates, your site root may differ — set a
+# repository VARIABLE (Settings → Secrets and variables → Actions → Variables):
+#   HOSTINGER_FTP_REMOTE_DIR
+# Try one of (must end with /):
+#   domains/speedtestboost.com/public_html/
+#   ./
+#   public_html/
 #
 # TLS: Hostinger's cert is for *.hstgr.io, not the raw IP. Connecting by IP requires
 #       security: loose (otherwise ERR_TLS_CERT_ALTNAME_INVALID).
@@ -47,6 +56,20 @@ jobs:
           fi
           ls -la hostinger-static/
 
+      - name: Resolve FTP remote directory
+        id: ftpdir
+        env:
+          OVERRIDE: ${{ vars.HOSTINGER_FTP_REMOTE_DIR }}
+        run: |
+          if [ -n "$OVERRIDE" ]; then
+            DIR="$OVERRIDE"
+          else
+            DIR="public_html/"
+          fi
+          case "$DIR" in */) ;; *) DIR="${DIR}/" ;; esac
+          echo "Remote upload path (relative to FTP login root): $DIR"
+          echo "dir=$DIR" >> "$GITHUB_OUTPUT"
+
       - name: Deploy via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
@@ -58,7 +81,8 @@ jobs:
           # loose: required when `server` is an IP (cert is issued for *.hstgr.io, not the IP).
           security: loose
           local-dir: ./hostinger-static/
-          server-dir: public_html/
+          server-dir: ${{ steps.ftpdir.outputs.dir }}
+          log-level: standard
           timeout: 120000
           exclude: |
             **/.git*
