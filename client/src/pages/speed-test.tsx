@@ -214,10 +214,12 @@ export default function SpeedTest() {
 
   // Fetch network info (API when available; otherwise public geo so static hosting still works)
   const { data: networkInfo } = useQuery<PublicNetworkInfo>({
-    queryKey: ["network-info", "v2"],
+    queryKey: ["network-info", "v3-geojs"],
     queryFn: loadNetworkInfoWithFallback,
     staleTime: 60_000,
-    retry: 1,
+    retry: 2,
+    retryDelay: (attempt) => Math.min(1500 * attempt, 4000),
+    throwOnError: false,
   });
 
   // Fetch speed test history — tolerate missing API (empty list)
