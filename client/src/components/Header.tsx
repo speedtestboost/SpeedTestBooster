@@ -212,6 +212,36 @@ const countries = [
       { name: "Zain", slug: "zain" },
       { name: "GO", slug: "go" }
     ]
+  },
+  {
+    name: "Singapore",
+    code: "sg",
+    flag: "🇸🇬",
+    providers: [
+      { name: "Singtel", slug: "singtel" },
+      { name: "StarHub", slug: "starhub" },
+      { name: "M1", slug: "m1" }
+    ]
+  },
+  {
+    name: "Thailand",
+    code: "th",
+    flag: "🇹🇭",
+    providers: [
+      { name: "AIS Fibre", slug: "ais" },
+      { name: "True", slug: "true-th" },
+      { name: "3BB", slug: "3bb" }
+    ]
+  },
+  {
+    name: "Poland",
+    code: "pl",
+    flag: "🇵🇱",
+    providers: [
+      { name: "Orange", slug: "orange-pl" },
+      { name: "Play", slug: "play-pl" },
+      { name: "T-Mobile", slug: "t-mobile-pl" }
+    ]
   }
 ];
 
