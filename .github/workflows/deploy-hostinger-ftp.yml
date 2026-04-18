@@ -1,5 +1,4 @@
 # Deploy static site to Hostinger via FTPS (explicit TLS, port 21).
-# If you still use deploy-to-hostinger.yml, both may run on the same push — disable one or remove duplicate triggers.
 #
 # Required secret (Settings → Secrets and variables → Actions):
 #   HOSTINGER_FTP_PASSWORD — FTP password for user u828619841 (reset in hPanel if unknown)
@@ -14,7 +13,7 @@ on:
     paths:
       - 'hostinger-static/**'
       - 'client/**'
-      - '.github/workflows/deploy-hostinger-ftp.yml'
+      - '.github/workflows/**'
   workflow_dispatch:
 
 jobs:
@@ -51,8 +50,8 @@ jobs:
           password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
           protocol: ftps
           port: 21
+          # If FTPS fails with certificate errors, change strict → loose
           security: strict
-          # If FTPS fails with certificate errors, try security: loose
           local-dir: ./hostinger-static/
           server-dir: public_html/
           timeout: 120000
@@ -65,6 +64,17 @@ jobs:
             **/*.zip
             **/.DS_Store
 
-      - name: Post-deploy note
+      - name: Verify deployment
         run: |
-          echo "Deploy finished. Allow a few minutes for the site to update."
+          echo "Deployment completed."
+          echo "Site: https://speedtestboost.com"
+          echo "Timestamp: $(date)"
+
+      - name: Test site response
+        run: |
+          sleep 30
+          if curl -s --max-time 15 https://speedtestboost.com | grep -q "Speed Test"; then
+            echo "Site is responding (smoke check OK)"
+          else
+            echo "Site may still be updating (smoke check inconclusive)"
+          fi
