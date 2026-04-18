@@ -3,7 +3,12 @@
 # Required secret (Settings → Secrets and variables → Actions):
 #   HOSTINGER_FTP_PASSWORD — FTP password for user u828619841 (reset in hPanel if unknown)
 #
-# Server, username, port, and folder match Hostinger FTP for this project (see hPanel → Files → FTP).
+# FTP target: IP 82.197.83.17 + user u828619841 + public_html (from hPanel).
+#
+# TLS: Hostinger's cert is for *.hstgr.io, not the raw IP. Connecting by IP requires
+#       security: loose (otherwise ERR_TLS_CERT_ALTNAME_INVALID).
+#       Optional: in hPanel → Files → FTP, copy the FTP *hostname* (e.g. xxx.hstgr.io),
+#       replace `server:` below with that name, then you can try security: strict.
 
 name: Deploy to Hostinger (FTP)
 
@@ -50,8 +55,8 @@ jobs:
           password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
           protocol: ftps
           port: 21
-          # If FTPS fails with certificate errors, change strict → loose
-          security: strict
+          # loose: required when `server` is an IP (cert is issued for *.hstgr.io, not the IP).
+          security: loose
           local-dir: ./hostinger-static/
           server-dir: public_html/
           timeout: 120000
