@@ -1,5 +1,15 @@
 name: Deploy to Hostinger
 
+# Required GitHub repo secrets (Settings → Secrets and variables → Actions):
+#   HOSTINGER_FTP_SERVER   → hostname ONLY from hPanel → Files → FTP Accounts
+#                            (e.g. ftpuploads.hostinger.com or ftp.yourdomain.com)
+#                            No https://, no path, no trailing slash.
+#   HOSTINGER_FTP_USERNAME → full FTP username from the same screen
+#   HOSTINGER_FTP_PASSWORD → FTP password for that user
+#
+# If the job fails with ENOTFOUND, the server hostname is wrong or empty.
+# If it fails with TLS/certificate errors, change `security` below from strict → loose.
+
 on:
   push:
     branches:
@@ -14,32 +24,51 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-      
+
+    - name: Validate FTP secrets are set
+      env:
+        FTP_SERVER: ${{ secrets.HOSTINGER_FTP_SERVER }}
+        FTP_USER: ${{ secrets.HOSTINGER_FTP_USERNAME }}
+        FTP_PASS: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+      run: |
+        missing=0
+        if [ -z "$FTP_SERVER" ]; then echo "::error::Secret HOSTINGER_FTP_SERVER is empty. Set it to the FTP hostname from Hostinger hPanel (hostname only)."; missing=1; fi
+        if [ -z "$FTP_USER" ]; then echo "::error::Secret HOSTINGER_FTP_USERNAME is empty."; missing=1; fi
+        if [ -z "$FTP_PASS" ]; then echo "::error::Secret HOSTINGER_FTP_PASSWORD is empty."; missing=1; fi
+        if [ "$missing" -ne 0 ]; then exit 1; fi
+        echo "✅ FTP secrets are non-empty (hostname length: ${#FTP_SERVER})"
+
     - name: Prepare deployment files
       run: |
         echo "📦 Preparing deployment files..."
         ls -la hostinger-static/
-        
+
         # Verify required files exist
         if [ ! -f "hostinger-static/index.html" ]; then
           echo "❌ Error: hostinger-static/index.html not found"
           exit 1
         fi
-        
+
         echo "✅ Deployment files ready"
-        
+
+    # Hostinger shared hosting expects explicit FTPS on port 21 (not plain FTP).
+    # server-dir: web root for the default domain is usually public_html/
     - name: Deploy to Hostinger via FTP
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
       with:
         server: ${{ secrets.HOSTINGER_FTP_SERVER }}
         username: ${{ secrets.HOSTINGER_FTP_USERNAME }}
         password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+        protocol: ftps
+        port: 21
+        security: strict
         local-dir: ./hostinger-static/
-        server-dir: ./public_html/
+        server-dir: public_html/
+        timeout: 120000
         exclude: |
           **/.git*
           **/.git*/**
