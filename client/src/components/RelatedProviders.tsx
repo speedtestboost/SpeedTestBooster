@@ -120,6 +120,21 @@ const providersByCountry: Record<string, Provider[]> = {
     { name: "Mobily", slug: "mobily", type: "Fiber/5G", coverage: "Nationwide" },
     { name: "Zain", slug: "zain", type: "Fiber/5G", coverage: "Major Cities" },
     { name: "GO", slug: "go", type: "Fiber/4G", coverage: "Urban Areas" }
+  ],
+  sg: [
+    { name: "Singtel", slug: "singtel", type: "Fibre/5G", coverage: "Nationwide" },
+    { name: "StarHub", slug: "starhub", type: "Fibre/Cable", coverage: "Nationwide" },
+    { name: "M1", slug: "m1", type: "Fibre", coverage: "Nationwide" }
+  ],
+  th: [
+    { name: "AIS Fibre", slug: "ais", type: "Fibre/5G", coverage: "Nationwide" },
+    { name: "True", slug: "true-th", type: "Fibre/5G", coverage: "Nationwide" },
+    { name: "3BB", slug: "3bb", type: "Fibre", coverage: "Major cities" }
+  ],
+  pl: [
+    { name: "Orange", slug: "orange-pl", type: "Fibre/DSL", coverage: "Nationwide" },
+    { name: "Play", slug: "play-pl", type: "5G/Fibre", coverage: "Nationwide" },
+    { name: "T-Mobile", slug: "t-mobile-pl", type: "Fibre/DSL", coverage: "Nationwide" }
   ]
 };
 

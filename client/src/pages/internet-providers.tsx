@@ -230,6 +230,39 @@ const countries = [
       { name: "Zain", slug: "zain", type: "Fiber/5G", coverage: "Major Cities" },
       { name: "GO", slug: "go", type: "Fiber/4G", coverage: "Urban Areas" }
     ]
+  },
+  {
+    name: "Singapore",
+    code: "sg",
+    flag: "🇸🇬",
+    population: "6M",
+    providers: [
+      { name: "Singtel", slug: "singtel", type: "Fibre/5G", coverage: "Nationwide" },
+      { name: "StarHub", slug: "starhub", type: "Fibre/Cable", coverage: "Nationwide" },
+      { name: "M1", slug: "m1", type: "Fibre", coverage: "Nationwide" }
+    ]
+  },
+  {
+    name: "Thailand",
+    code: "th",
+    flag: "🇹🇭",
+    population: "71M",
+    providers: [
+      { name: "AIS Fibre", slug: "ais", type: "Fibre/5G", coverage: "Nationwide" },
+      { name: "True", slug: "true-th", type: "Fibre/5G", coverage: "Nationwide" },
+      { name: "3BB", slug: "3bb", type: "Fibre", coverage: "Major cities" }
+    ]
+  },
+  {
+    name: "Poland",
+    code: "pl",
+    flag: "🇵🇱",
+    population: "38M",
+    providers: [
+      { name: "Orange", slug: "orange-pl", type: "Fibre/DSL", coverage: "Nationwide" },
+      { name: "Play", slug: "play-pl", type: "5G/Fibre", coverage: "Nationwide" },
+      { name: "T-Mobile", slug: "t-mobile-pl", type: "Fibre/DSL", coverage: "Nationwide" }
+    ]
   }
 ];
 

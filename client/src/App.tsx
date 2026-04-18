@@ -14,6 +14,9 @@ import USSpeedTest from "@/pages/us-speed-test";
 import UKSpeedTest from "@/pages/uk-speed-test";
 import AUSpeedTest from "@/pages/au-speed-test";
 import CASpeedTest from "@/pages/ca-speed-test";
+import DESpeedTest from "@/pages/de-speed-test";
+import SGSpeedTest from "@/pages/sg-speed-test";
+import THSpeedTest from "@/pages/th-speed-test";
 import InternetSpeedRequirements from "@/pages/internet-speed-requirements";
 import InternetProviders from "@/pages/internet-providers";
 // US Providers
@@ -122,6 +125,21 @@ import MobilySpeedTest from "@/pages/providers/sa/mobily";
 import ZainSpeedTest from "@/pages/providers/sa/zain";
 import GOSpeedTest from "@/pages/providers/sa/go";
 
+// Singapore Providers
+import SingtelSpeedTest from "@/pages/providers/sg/singtel";
+import StarhubSpeedTest from "@/pages/providers/sg/starhub";
+import M1SpeedTest from "@/pages/providers/sg/m1";
+
+// Thailand Providers
+import AisSpeedTest from "@/pages/providers/th/ais";
+import TrueThSpeedTest from "@/pages/providers/th/true-th";
+import ThreeBbSpeedTest from "@/pages/providers/th/3bb";
+
+// Poland Providers
+import OrangePlSpeedTest from "@/pages/providers/pl/orange-pl";
+import PlayPlSpeedTest from "@/pages/providers/pl/play-pl";
+import TMobilePlSpeedTest from "@/pages/providers/pl/t-mobile-pl";
+
 import WiFiAnalyzer from "@/pages/wifi-analyzer";
 import AISpeedTest from "@/pages/ai-speed-test";
 import DownloadSpeedGuide from "@/pages/download-speed-guide";
@@ -159,6 +177,9 @@ function Router() {
       <Route path="/uk-speed-test" component={UKSpeedTest} />
       <Route path="/au-speed-test" component={AUSpeedTest} />
       <Route path="/ca-speed-test" component={CASpeedTest} />
+      <Route path="/de-speed-test" component={DESpeedTest} />
+      <Route path="/sg-speed-test" component={SGSpeedTest} />
+      <Route path="/th-speed-test" component={THSpeedTest} />
       <Route path="/internet-speed-requirements" component={InternetSpeedRequirements} />
       <Route path="/internet-providers" component={InternetProviders} />
       <Route path="/wifi-analyzer" component={WiFiAnalyzer} />
@@ -281,6 +302,21 @@ function Router() {
       <Route path="/providers/sa/mobily" component={MobilySpeedTest} />
       <Route path="/providers/sa/zain" component={ZainSpeedTest} />
       <Route path="/providers/sa/go" component={GOSpeedTest} />
+
+      {/* Singapore Provider Routes */}
+      <Route path="/providers/sg/singtel" component={SingtelSpeedTest} />
+      <Route path="/providers/sg/starhub" component={StarhubSpeedTest} />
+      <Route path="/providers/sg/m1" component={M1SpeedTest} />
+
+      {/* Thailand Provider Routes */}
+      <Route path="/providers/th/ais" component={AisSpeedTest} />
+      <Route path="/providers/th/true-th" component={TrueThSpeedTest} />
+      <Route path="/providers/th/3bb" component={ThreeBbSpeedTest} />
+
+      {/* Poland Provider Routes */}
+      <Route path="/providers/pl/orange-pl" component={OrangePlSpeedTest} />
+      <Route path="/providers/pl/play-pl" component={PlayPlSpeedTest} />
+      <Route path="/providers/pl/t-mobile-pl" component={TMobilePlSpeedTest} />
       
       <Route component={NotFound} />
     </Switch>
