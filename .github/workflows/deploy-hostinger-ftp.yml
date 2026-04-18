@@ -5,9 +5,10 @@
 # Secret: HOSTINGER_FTP_PASSWORD (user u828619841)
 # FTP: 82.197.83.17, FTPS, security loose.
 #
-# Default remote path matches File Manager:
-#   …/files/domains/speedtestboost.com/public_html/
-# (see https://srv1454-files.hstgr.io/.../files/domains/speedtestboost.com/public_html/)
+# Default remote path is relative to the FTP account root (where you already see `domains/`).
+# Use: domains/speedtestboost.com/public_html/
+# Do NOT prefix with `files/` — the File Manager URL contains …/files/… but FTP is usually
+# already rooted under that tree, so `files/domains/...` would create a duplicate nested folder.
 # Override with repository variable HOSTINGER_FTP_REMOTE_DIR (must end with /).
 
 name: Deploy to Hostinger (FTP)
@@ -75,7 +76,7 @@ jobs:
           if [ -n "$OVERRIDE" ]; then
             DIR="$OVERRIDE"
           else
-            DIR="files/domains/speedtestboost.com/public_html/"
+            DIR="domains/speedtestboost.com/public_html/"
           fi
           case "$DIR" in */) ;; *) DIR="${DIR}/" ;; esac
           echo "Remote upload path (relative to FTP login root): $DIR"

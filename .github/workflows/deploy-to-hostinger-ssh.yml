@@ -3,8 +3,9 @@
 # Uploads dist/public/ after npm run build. Not the full Git repo.
 #
 # Secrets: HOSTINGER_SSH_KEY, HOSTINGER_HOST, HOSTINGER_SSH_USER
-# Optional variable HOSTINGER_SSH_REMOTE_DIR — default matches:
-#   ~/files/domains/speedtestboost.com/public_html/
+# Optional variable HOSTINGER_SSH_REMOTE_DIR — default:
+#   ~/domains/speedtestboost.com/public_html/
+# (Same as FTP: do not use ~/files/domains/… unless your SSH home is above `files/`.)
 
 name: Deploy to Hostinger (SSH)
 
@@ -77,7 +78,7 @@ jobs:
           if [ -n "$OVERRIDE" ]; then
             DIR="$OVERRIDE"
           else
-            DIR="~/files/domains/speedtestboost.com/public_html/"
+            DIR="~/domains/speedtestboost.com/public_html/"
           fi
           echo "Rsync target suffix: $DIR"
           echo "path=$DIR" >> "$GITHUB_OUTPUT"
@@ -107,4 +108,4 @@ jobs:
 
       - name: Verify deployment
         run: |
-          echo "SSH deploy finished (dist/public/ → ~/files/domains/speedtestboost.com/public_html/)."
+          echo "SSH deploy finished (dist/public/ → ~/domains/speedtestboost.com/public_html/)."
