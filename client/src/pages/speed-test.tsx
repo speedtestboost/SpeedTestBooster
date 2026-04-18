@@ -358,7 +358,7 @@ export default function SpeedTest() {
               No Apps • No Downloads • No Plugins Required!
             </p>
             <p className="text-base md:text-lg text-white/80 max-w-3xl mx-auto">
-              100% browser-based speed test that works on any device. Web-based bandwidth test with instant results for download, upload, ping & jitter.
+              100% browser-based speed test that works on any devices. Web-based bandwidth test with instant results for download, upload, ping & jitter.
             </p>
             
             {/* Feature Icons */}

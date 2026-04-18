@@ -1,14 +1,10 @@
-# Deploy static site (hostinger-static/) over SSH/rsync — no npm/build (avoids CI failures
-# when you only need the same output as the FTP workflow).
+# Deploy production build over SSH/rsync (same payload as FTP workflow).
 #
-# Secrets (Settings → Secrets and variables → Actions):
-#   HOSTINGER_SSH_KEY   — private key (full PEM), public key added in hPanel → Advanced → SSH
-#   HOSTINGER_HOST      — SSH hostname from hPanel (e.g. xxx.hstgr.io or IP if allowed)
-#   HOSTINGER_SSH_USER  — SSH username (often same style as FTP user u828619841)
+# Uploads dist/public/ after npm run build. Not the full Git repo.
 #
-# Optional repository VARIABLE:
-#   HOSTINGER_SSH_REMOTE_DIR — target on server (default matches hPanel …/files/public_html/)
-#   Example override: ~/domains/speedtestboost.com/public_html/
+# Secrets: HOSTINGER_SSH_KEY, HOSTINGER_HOST, HOSTINGER_SSH_USER
+# Optional variable HOSTINGER_SSH_REMOTE_DIR — default matches:
+#   ~/files/domains/speedtestboost.com/public_html/
 
 name: Deploy to Hostinger (SSH)
 
@@ -16,9 +12,13 @@ on:
   push:
     branches: [main, master]
     paths:
-      - 'hostinger-static/**'
       - 'client/**'
-      - '.github/workflows/**'
+      - 'shared/**'
+      - 'hostinger-static/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.ts'
+      - '.github/workflows/deploy-to-hostinger-ssh.yml'
   workflow_dispatch:
 
 jobs:
@@ -42,17 +42,32 @@ jobs:
           [ "$missing" -ne 0 ] && exit 1
           echo "✅ SSH secrets are set"
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies and build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Stage Hostinger-only extras (Apache + PHP)
+        run: |
+          test -f dist/public/index.html
+          if [ -f hostinger-static/.htaccess ]; then
+            cp -f hostinger-static/.htaccess dist/public/
+          fi
+          if [ -f hostinger-static/api.php ]; then
+            cp -f hostinger-static/api.php dist/public/
+          fi
+          find dist/public -type f | wc -l
+
       - name: Setup SSH agent
         uses: webfactory/ssh-agent@v0.8.0
         with:
           ssh-private-key: ${{ secrets.HOSTINGER_SSH_KEY }}
-
-      - name: Prepare deployment files
-        run: |
-          mkdir -p deployment
-          cp -r hostinger-static/* deployment/
-          ls -la deployment/
-          test -f deployment/index.html
 
       - name: Resolve rsync destination
         id: dest
@@ -62,7 +77,7 @@ jobs:
           if [ -n "$OVERRIDE" ]; then
             DIR="$OVERRIDE"
           else
-            DIR="~/files/public_html/"
+            DIR="~/files/domains/speedtestboost.com/public_html/"
           fi
           echo "Rsync target suffix: $DIR"
           echo "path=$DIR" >> "$GITHUB_OUTPUT"
@@ -71,7 +86,7 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan -T 30 -H "${{ secrets.HOSTINGER_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || {
-            echo "::error::ssh-keyscan failed for HOSTINGER_HOST (wrong hostname or SSH not reachable)"
+            echo "::error::ssh-keyscan failed for HOSTINGER_HOST"
             exit 1
           }
 
@@ -88,9 +103,8 @@ jobs:
             --exclude '.env' \
             --exclude '*.log' \
             --exclude '*.zip' \
-            ./deployment/ "${SSH_USER}@${SSH_HOST}:${REMOTE_PATH}"
+            ./dist/public/ "${SSH_USER}@${SSH_HOST}:${REMOTE_PATH}"
 
       - name: Verify deployment
         run: |
-          echo "SSH deploy finished."
-          echo "If the site did not update, set HOSTINGER_SSH_REMOTE_DIR (e.g. ~/public_html/ or ~/domains/speedtestboost.com/public_html/)"
+          echo "SSH deploy finished (dist/public/ → ~/files/domains/speedtestboost.com/public_html/)."

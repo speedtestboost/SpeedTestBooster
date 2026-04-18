@@ -1,13 +1,14 @@
-# Deploy static site to Hostinger via FTPS (explicit TLS, port 21).
+# Deploy production build to Hostinger via FTPS.
 #
-# Required secret (Settings → Secrets and variables → Actions):
-#   HOSTINGER_FTP_PASSWORD — FTP password for user u828619841 (reset in hPanel if unknown)
+# Uploads Vite output dist/public/ (not the full repo). Copies .htaccess + api.php from hostinger-static/.
 #
-# FTP user: u828619841 + server IP 82.197.83.17 (FTPS, security: loose — cert is *.hstgr.io).
+# Secret: HOSTINGER_FTP_PASSWORD (user u828619841)
+# FTP: 82.197.83.17, FTPS, security loose.
 #
-# Remote folder matches File Manager path …/files/public_html/ → default server-dir is
-# files/public_html/ (see https://srv1454-files.hstgr.io/.../files/public_html/).
-# Override with repository VARIABLE HOSTINGER_FTP_REMOTE_DIR if needed (must end with /).
+# Default remote path matches File Manager:
+#   …/files/domains/speedtestboost.com/public_html/
+# (see https://srv1454-files.hstgr.io/.../files/domains/speedtestboost.com/public_html/)
+# Override with repository variable HOSTINGER_FTP_REMOTE_DIR (must end with /).
 
 name: Deploy to Hostinger (FTP)
 
@@ -15,9 +16,13 @@ on:
   push:
     branches: [main, master]
     paths:
-      - 'hostinger-static/**'
       - 'client/**'
-      - '.github/workflows/**'
+      - 'shared/**'
+      - 'hostinger-static/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.ts'
+      - '.github/workflows/deploy-hostinger-ftp.yml'
   workflow_dispatch:
 
 jobs:
@@ -38,13 +43,29 @@ jobs:
           fi
           echo "✅ FTP password secret is set"
 
-      - name: Prepare deployment files
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies and build
         run: |
-          if [ ! -f "hostinger-static/index.html" ]; then
-            echo "::error::hostinger-static/index.html not found"
-            exit 1
+          npm ci
+          npm run build
+
+      - name: Stage Hostinger-only extras (Apache + PHP)
+        run: |
+          test -f dist/public/index.html
+          if [ -f hostinger-static/.htaccess ]; then
+            cp -f hostinger-static/.htaccess dist/public/
           fi
-          ls -la hostinger-static/
+          if [ -f hostinger-static/api.php ]; then
+            cp -f hostinger-static/api.php dist/public/
+          fi
+          echo "Deploy payload (file count):"
+          find dist/public -type f | wc -l
+          du -sh dist/public
 
       - name: Resolve FTP remote directory
         id: ftpdir
@@ -54,8 +75,7 @@ jobs:
           if [ -n "$OVERRIDE" ]; then
             DIR="$OVERRIDE"
           else
-            # Matches File Manager: …/files/public_html/ (see hPanel URL)
-            DIR="files/public_html/"
+            DIR="files/domains/speedtestboost.com/public_html/"
           fi
           case "$DIR" in */) ;; *) DIR="${DIR}/" ;; esac
           echo "Remote upload path (relative to FTP login root): $DIR"
@@ -70,7 +90,7 @@ jobs:
           protocol: ftps
           port: 21
           security: loose
-          local-dir: ./hostinger-static/
+          local-dir: ./dist/public/
           server-dir: ${{ steps.ftpdir.outputs.dir }}
           log-level: standard
           timeout: 120000
