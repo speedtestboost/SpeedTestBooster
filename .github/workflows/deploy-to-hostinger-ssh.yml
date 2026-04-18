@@ -7,9 +7,8 @@
 #   HOSTINGER_SSH_USER  — SSH username (often same style as FTP user u828619841)
 #
 # Optional repository VARIABLE:
-#   HOSTINGER_SSH_REMOTE_DIR — target path on server, default ~/public_html/
-#   Examples if ~/public_html is wrong for your site:
-#     ~/domains/speedtestboost.com/public_html/
+#   HOSTINGER_SSH_REMOTE_DIR — target on server (default matches hPanel …/files/public_html/)
+#   Example override: ~/domains/speedtestboost.com/public_html/
 
 name: Deploy to Hostinger (SSH)
 
@@ -63,7 +62,7 @@ jobs:
           if [ -n "$OVERRIDE" ]; then
             DIR="$OVERRIDE"
           else
-            DIR="~/public_html/"
+            DIR="~/files/public_html/"
           fi
           echo "Rsync target suffix: $DIR"
           echo "path=$DIR" >> "$GITHUB_OUTPUT"
@@ -94,4 +93,4 @@ jobs:
       - name: Verify deployment
         run: |
           echo "SSH deploy finished."
-          echo "If the site did not update, set variable HOSTINGER_SSH_REMOTE_DIR to e.g. ~/domains/speedtestboost.com/public_html/"
+          echo "If the site did not update, set HOSTINGER_SSH_REMOTE_DIR (e.g. ~/public_html/ or ~/domains/speedtestboost.com/public_html/)"

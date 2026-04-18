@@ -3,21 +3,11 @@
 # Required secret (Settings → Secrets and variables → Actions):
 #   HOSTINGER_FTP_PASSWORD — FTP password for user u828619841 (reset in hPanel if unknown)
 #
-# FTP target: IP 82.197.83.17 + user u828619841 (from hPanel).
+# FTP user: u828619841 + server IP 82.197.83.17 (FTPS, security: loose — cert is *.hstgr.io).
 #
-# Remote folder: default is public_html/ relative to the FTP account root. If the job
-# succeeds but File Manager shows no updates, your site root may differ — set a
-# repository VARIABLE (Settings → Secrets and variables → Actions → Variables):
-#   HOSTINGER_FTP_REMOTE_DIR
-# Try one of (must end with /):
-#   domains/speedtestboost.com/public_html/
-#   ./
-#   public_html/
-#
-# TLS: Hostinger's cert is for *.hstgr.io, not the raw IP. Connecting by IP requires
-#       security: loose (otherwise ERR_TLS_CERT_ALTNAME_INVALID).
-#       Optional: in hPanel → Files → FTP, copy the FTP *hostname* (e.g. xxx.hstgr.io),
-#       replace `server:` below with that name, then you can try security: strict.
+# Remote folder matches File Manager path …/files/public_html/ → default server-dir is
+# files/public_html/ (see https://srv1454-files.hstgr.io/.../files/public_html/).
+# Override with repository VARIABLE HOSTINGER_FTP_REMOTE_DIR if needed (must end with /).
 
 name: Deploy to Hostinger (FTP)
 
@@ -64,7 +54,8 @@ jobs:
           if [ -n "$OVERRIDE" ]; then
             DIR="$OVERRIDE"
           else
-            DIR="public_html/"
+            # Matches File Manager: …/files/public_html/ (see hPanel URL)
+            DIR="files/public_html/"
           fi
           case "$DIR" in */) ;; *) DIR="${DIR}/" ;; esac
           echo "Remote upload path (relative to FTP login root): $DIR"
@@ -78,7 +69,6 @@ jobs:
           password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
           protocol: ftps
           port: 21
-          # loose: required when `server` is an IP (cert is issued for *.hstgr.io, not the IP).
           security: loose
           local-dir: ./hostinger-static/
           server-dir: ${{ steps.ftpdir.outputs.dir }}
