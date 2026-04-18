@@ -7,21 +7,35 @@ import { Link } from "wouter";
 export default function NotFound() {
   useEffect(() => {
     document.title = "404 Page Not Found | Speed Test & Boost";
-    
-    const metaDescription = document.querySelector('meta[name="description"]');
+
+    const metaDescription = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
+    const previousDescription = metaDescription?.getAttribute("content") ?? "";
+
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Page not found. Return to Speed Test & Boost for free internet speed testing, WiFi analyzer, and network diagnostics.');
+      metaDescription.setAttribute(
+        "content",
+        "Page not found. Return to Speed Test & Boost for free internet speed testing, WiFi analyzer, and network diagnostics.",
+      );
     }
-    
-    const canonical = document.createElement('link');
-    canonical.rel = 'canonical';
-    canonical.href = 'https://speedtestboost.com/not-found';
-    document.head.appendChild(canonical);
-    
+
+    let robots = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
+    const createdRobots = !robots;
+    const previousRobots = robots?.getAttribute("content") ?? "";
+    if (!robots) {
+      robots = document.createElement("meta");
+      robots.setAttribute("name", "robots");
+      document.head.appendChild(robots);
+    }
+    robots.setAttribute("content", "noindex, nofollow");
+
     return () => {
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
+      if (metaDescription) {
+        metaDescription.setAttribute("content", previousDescription);
+      }
+      if (createdRobots) {
+        robots?.remove();
+      } else if (robots) {
+        robots.setAttribute("content", previousRobots || "index, follow");
       }
     };
   }, []);

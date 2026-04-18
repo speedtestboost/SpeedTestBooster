@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     
     <!-- Primary SEO Meta Tags -->
     <title>Speed Test - Free WiFi Speed Test & Internet Speed Check Online</title>
@@ -26,11 +26,14 @@
     <meta property="og:description" content="Test your internet speed instantly with our accurate speed test tool. Check download, upload, ping & jitter. Works with all ISPs - Jio, Airtel, BSNL, Vi. Free & no signup required." />
     <meta property="og:url" content="https://speedtestboost.com/" />
     <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://speedtestboost.com/apple-touch-icon.png" />
+    <meta property="og:image:alt" content="Speed Test and Boost" />
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Free Internet Speed Test - Accurate WiFi & Broadband Speed Checker" />
     <meta name="twitter:description" content="Test your internet speed instantly with our accurate speed test tool. Check download, upload, ping & jitter. Works with all ISPs - Jio, Airtel, BSNL, Vi. Free & no signup required." />
+    <meta name="twitter:image" content="https://speedtestboost.com/apple-touch-icon.png" />
     
     <!-- Additional SEO Meta Tags -->
     <meta name="application-name" content="Speed Test and Boost" />
@@ -51,31 +54,49 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Speed Test & Boost",
-      "description": "Free internet speed test tool to check your connection speed, download speed, upload speed, and ping. Optimize your WiFi performance with our network diagnostics.",
-      "url": "https://speedtestboost.com/",
-      "applicationCategory": "NetworkingApplication",
-      "operatingSystem": "Any",
-      "browserRequirements": "Modern web browser with JavaScript support",
-      "offers": {
-        "@type": "Offer",
-        "price": "0.00",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Speed Test & Boost",
-        "url": "https://speedtestboost.com/"
-      },
-      "featureList": [
-        "Download speed test",
-        "Upload speed test", 
-        "Ping latency test",
-        "Jitter measurement",
-        "WiFi optimization",
-        "Network diagnostics"
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://speedtestboost.com/#organization",
+          "name": "Speed Test & Boost",
+          "url": "https://speedtestboost.com/",
+          "logo": "https://speedtestboost.com/apple-touch-icon.png"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://speedtestboost.com/#website",
+          "url": "https://speedtestboost.com/",
+          "name": "Speed Test & Boost",
+          "description": "Free speed test - Check WiFi speed test, internet speed test, fiber speed test, net speed test online.",
+          "inLanguage": "en-US",
+          "publisher": { "@id": "https://speedtestboost.com/#organization" }
+        },
+        {
+          "@type": "WebApplication",
+          "@id": "https://speedtestboost.com/#webapp",
+          "name": "Speed Test & Boost",
+          "description": "Free internet speed test tool to check your connection speed, download speed, upload speed, and ping. Optimize your WiFi performance with our network diagnostics.",
+          "url": "https://speedtestboost.com/",
+          "applicationCategory": "NetworkingApplication",
+          "operatingSystem": "Any",
+          "browserRequirements": "Modern web browser with JavaScript support",
+          "isPartOf": { "@id": "https://speedtestboost.com/#website" },
+          "offers": {
+            "@type": "Offer",
+            "price": "0.00",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          },
+          "publisher": { "@id": "https://speedtestboost.com/#organization" },
+          "featureList": [
+            "Download speed test",
+            "Upload speed test",
+            "Ping latency test",
+            "Jitter measurement",
+            "WiFi optimization",
+            "Network diagnostics"
+          ]
+        }
       ]
     }
     </script>
@@ -114,7 +135,5 @@
   </head>
   <body>
     <div id="root"></div>
-    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
-    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
   </body>
 </html>

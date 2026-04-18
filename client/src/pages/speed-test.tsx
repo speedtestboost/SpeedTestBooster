@@ -56,7 +56,9 @@ export default function SpeedTest() {
       { property: 'og:url', content: 'https://speedtestboost.com/' },
       { property: 'og:type', content: 'website' },
       { property: 'og:site_name', content: 'Speed Test & Boost' },
-      { property: 'og:locale', content: 'en_US' }
+      { property: 'og:locale', content: 'en_US' },
+      { property: 'og:image', content: 'https://speedtestboost.com/apple-touch-icon.png' },
+      { property: 'og:image:alt', content: 'Speed Test & Boost' },
     ];
     
     ogTags.forEach(tag => {
@@ -73,7 +75,8 @@ export default function SpeedTest() {
     const twitterTags = [
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: 'HTML5 Speed Test - No Apps or Downloads Required' },
-      { name: 'twitter:description', content: 'Free HTML5 speed test - 100% browser-based. Test internet speed on any device without apps or plugins.' }
+      { name: 'twitter:description', content: 'Free HTML5 speed test - 100% browser-based. Test internet speed on any device without apps or plugins.' },
+      { name: 'twitter:image', content: 'https://speedtestboost.com/apple-touch-icon.png' },
     ];
     
     twitterTags.forEach(tag => {
@@ -158,34 +161,52 @@ export default function SpeedTest() {
     }
     structuredData.textContent = JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Speed Test & Boost - HTML5 Internet Speed Test",
-      "description": "Free HTML5 internet speed test - 100% browser-based with no apps, downloads, or plugins required. Test WiFi and broadband speeds instantly on any device with our web-based speed checker.",
-      "url": "https://speedtestboost.com/",
-      "applicationCategory": "NetworkingApplication",
-      "operatingSystem": "Web Browser",
-      "browserRequirements": "Requires HTML5-capable browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "creator": {
-        "@type": "Organization",
-        "name": "Speed Test & Boost",
-        "url": "https://speedtestboost.com/"
-      },
-      "featureList": [
-        "HTML5-based speed test (no plugins required)",
-        "Browser-based testing (no app downloads)",
-        "Cross-platform compatibility (works on any device)",
-        "Download speed test",
-        "Upload speed test", 
-        "Ping test",
-        "WiFi optimization",
-        "Global server coverage",
-        "All ISP support"
-      ]
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://speedtestboost.com/#organization",
+          "name": "Speed Test & Boost",
+          "url": "https://speedtestboost.com/",
+          "logo": "https://speedtestboost.com/apple-touch-icon.png",
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://speedtestboost.com/#website",
+          "url": "https://speedtestboost.com/",
+          "name": "Speed Test & Boost",
+          "description": "Free HTML5 internet speed test - 100% browser-based with no apps, downloads, or plugins required.",
+          "inLanguage": "en-US",
+          "publisher": { "@id": "https://speedtestboost.com/#organization" },
+        },
+        {
+          "@type": "WebApplication",
+          "@id": "https://speedtestboost.com/#webapp",
+          "name": "Speed Test & Boost - HTML5 Internet Speed Test",
+          "description": "Free HTML5 internet speed test - 100% browser-based with no apps, downloads, or plugins required. Test WiFi and broadband speeds instantly on any device with our web-based speed checker.",
+          "url": "https://speedtestboost.com/",
+          "applicationCategory": "NetworkingApplication",
+          "operatingSystem": "Web Browser",
+          "browserRequirements": "Requires HTML5-capable browser",
+          "isPartOf": { "@id": "https://speedtestboost.com/#website" },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+          },
+          "publisher": { "@id": "https://speedtestboost.com/#organization" },
+          "featureList": [
+            "HTML5-based speed test (no plugins required)",
+            "Browser-based testing (no app downloads)",
+            "Cross-platform compatibility (works on any device)",
+            "Download speed test",
+            "Upload speed test",
+            "Ping test",
+            "WiFi optimization",
+            "Global server coverage",
+            "All ISP support",
+          ],
+        },
+      ],
     });
 
     return () => {

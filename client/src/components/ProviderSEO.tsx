@@ -28,8 +28,7 @@ export function ProviderSEO({ providerSlug }: ProviderSEOProps) {
     canonicalLink.setAttribute('href', `https://speedtestboost.com/providers/${providerSlug.includes('/') ? providerSlug : `us/${providerSlug}`}`);
     document.head.appendChild(canonicalLink);
 
-    // Create Open Graph meta tags
-    const createOrUpdateMetaTag = (property: string, content: string) => {
+    const createOrUpdateMetaProperty = (property: string, content: string) => {
       let metaTag = document.querySelector(`meta[property="${property}"]`);
       if (!metaTag) {
         metaTag = document.createElement('meta');
@@ -39,17 +38,31 @@ export function ProviderSEO({ providerSlug }: ProviderSEOProps) {
       metaTag.setAttribute('content', content);
     };
 
-    // Open Graph tags
-    createOrUpdateMetaTag('og:title', config.titleTemplate);
-    createOrUpdateMetaTag('og:description', config.metaTemplate);
-    createOrUpdateMetaTag('og:type', 'website');
-    createOrUpdateMetaTag('og:url', `https://speedtestboost.com/providers/${providerSlug.includes('/') ? providerSlug : `us/${providerSlug}`}`);
-    createOrUpdateMetaTag('og:image', config.ogImage || 'https://speedtestboost.com/logo-option-5.svg');
+    const createOrUpdateMetaName = (name: string, content: string) => {
+      let metaTag = document.querySelector(`meta[name="${name}"]`);
+      if (!metaTag) {
+        metaTag = document.createElement('meta');
+        metaTag.setAttribute('name', name);
+        document.head.appendChild(metaTag);
+      }
+      metaTag.setAttribute('content', content);
+    };
 
-    // Twitter Card tags
-    createOrUpdateMetaTag('twitter:card', 'summary_large_image');
-    createOrUpdateMetaTag('twitter:title', config.titleTemplate);
-    createOrUpdateMetaTag('twitter:description', config.metaTemplate);
+    const ogImageUrl = config.ogImage || 'https://speedtestboost.com/apple-touch-icon.png';
+
+    // Open Graph (Open Graph protocol uses `property`)
+    createOrUpdateMetaProperty('og:title', config.titleTemplate);
+    createOrUpdateMetaProperty('og:description', config.metaTemplate);
+    createOrUpdateMetaProperty('og:type', 'website');
+    createOrUpdateMetaProperty('og:url', `https://speedtestboost.com/providers/${providerSlug.includes('/') ? providerSlug : `us/${providerSlug}`}`);
+    createOrUpdateMetaProperty('og:image', ogImageUrl);
+    createOrUpdateMetaProperty('og:image:alt', config.titleTemplate);
+
+    // Twitter Cards use `name`, not `property`
+    createOrUpdateMetaName('twitter:card', 'summary_large_image');
+    createOrUpdateMetaName('twitter:title', config.titleTemplate);
+    createOrUpdateMetaName('twitter:description', config.metaTemplate);
+    createOrUpdateMetaName('twitter:image', ogImageUrl);
 
     // Create JSON-LD structured data
     const structuredData = {
@@ -113,24 +126,7 @@ export function ProviderSEO({ providerSlug }: ProviderSEOProps) {
         canonicalLink.parentNode.removeChild(canonicalLink);
       }
       
-      // Remove Open Graph and Twitter tags
-      const tagsToRemove = [
-        'meta[property="og:title"]',
-        'meta[property="og:description"]', 
-        'meta[property="og:type"]',
-        'meta[property="og:url"]',
-        'meta[property="og:image"]',
-        'meta[property="twitter:card"]',
-        'meta[property="twitter:title"]',
-        'meta[property="twitter:description"]'
-      ];
-      
-      tagsToRemove.forEach(selector => {
-        const tag = document.querySelector(selector);
-        if (tag) {
-          tag.remove();
-        }
-      });
+      // Leave og:/twitter: tags in place; other routes (e.g. homepage) update them in-place.
     };
   }, [providerSlug]);
 
