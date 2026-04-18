@@ -1,0 +1,70 @@
+# Deploy static site to Hostinger via FTPS (explicit TLS, port 21).
+# If you still use deploy-to-hostinger.yml, both may run on the same push — disable one or remove duplicate triggers.
+#
+# Required secret (Settings → Secrets and variables → Actions):
+#   HOSTINGER_FTP_PASSWORD — FTP password for user u828619841 (reset in hPanel if unknown)
+#
+# Server, username, port, and folder match Hostinger FTP for this project (see hPanel → Files → FTP).
+
+name: Deploy to Hostinger (FTP)
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'hostinger-static/**'
+      - 'client/**'
+      - '.github/workflows/deploy-hostinger-ftp.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check FTP password secret
+        env:
+          FTP_PASS: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+        run: |
+          if [ -z "$FTP_PASS" ]; then
+            echo "::error::Add repository secret HOSTINGER_FTP_PASSWORD (FTP password for u828619841 in Hostinger hPanel)."
+            exit 1
+          fi
+          echo "✅ FTP password secret is set"
+
+      - name: Prepare deployment files
+        run: |
+          if [ ! -f "hostinger-static/index.html" ]; then
+            echo "::error::hostinger-static/index.html not found"
+            exit 1
+          fi
+          ls -la hostinger-static/
+
+      - name: Deploy via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: 82.197.83.17
+          username: u828619841
+          password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          security: strict
+          # If FTPS fails with certificate errors, try security: loose
+          local-dir: ./hostinger-static/
+          server-dir: public_html/
+          timeout: 120000
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.env*
+            **/*.log
+            **/*.zip
+            **/.DS_Store
+
+      - name: Post-deploy note
+        run: |
+          echo "Deploy finished. Allow a few minutes for the site to update."
