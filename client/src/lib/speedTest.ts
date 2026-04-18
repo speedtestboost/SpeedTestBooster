@@ -112,6 +112,66 @@ async function measureRealPing(): Promise<number> {
   return pingResults[Math.floor(pingResults.length / 2)];
 }
 
+/** Public CDN fallback when our /api/speed-test/download is unavailable (e.g. static hosting). */
+async function measureCloudflareDownload(onProgress?: (progress: number) => void): Promise<number> {
+  const bytes = 50 * 1024 * 1024;
+  const url = `https://speed.cloudflare.com/__down?bytes=${bytes}`;
+  const startTime = performance.now();
+  let totalBytes = 0;
+  const response = await fetch(url, {
+    cache: "no-cache",
+    mode: "cors",
+    headers: { "Cache-Control": "no-cache" },
+  });
+  if (!response.ok || !response.body) {
+    throw new Error("Cloudflare download not available");
+  }
+  const reader = response.body.getReader();
+  const maxMs = 14000;
+  while (true) {
+    const { value, done } = await reader.read();
+    if (value) totalBytes += value.length;
+    const elapsed = (performance.now() - startTime) / 1000;
+    onProgress?.(Math.min((elapsed / 12) * 100, 100));
+    if (done) break;
+    if (performance.now() - startTime > maxMs) {
+      try {
+        await reader.cancel();
+      } catch {
+        /* ignore */
+      }
+      break;
+    }
+  }
+  const duration = (performance.now() - startTime) / 1000;
+  if (duration < 0.25 || totalBytes < 512 * 1024) {
+    throw new Error("Cloudflare download sample too small");
+  }
+  return (totalBytes * 8) / (duration * 1000 * 1000);
+}
+
+async function measureHttpBinUpload(size: number): Promise<number> {
+  const capped = Math.min(size, 2 * 1024 * 1024);
+  const data = new Uint8Array(capped);
+  if (crypto.getRandomValues) {
+    crypto.getRandomValues(data);
+  } else {
+    for (let j = 0; j < capped; j++) data[j] = Math.floor(Math.random() * 256);
+  }
+  const startTime = performance.now();
+  const response = await fetch("https://httpbin.org/post", {
+    method: "POST",
+    body: data,
+    headers: { "Content-Type": "application/octet-stream", "Cache-Control": "no-cache" },
+    mode: "cors",
+  });
+  if (!response.ok) throw new Error("httpbin upload failed");
+  const endTime = performance.now();
+  const durationSeconds = (endTime - startTime) / 1000;
+  if (durationSeconds < 0.15) throw new Error("httpbin upload too fast");
+  return (capped * 8) / (durationSeconds * 1000 * 1000);
+}
+
 // Real download speed measurement using fast.com methodology with global bandwidth tracking
 async function measureRealDownloadSpeed(onProgress?: (progress: number) => void): Promise<number> {
   const testDuration = 8; // 8 seconds for faster results
@@ -181,6 +241,21 @@ async function measureRealDownloadSpeed(onProgress?: (progress: number) => void)
   
   // Wait for all concurrent connections
   await Promise.all(testPromises);
+
+  if (speedMeasurements.length === 0) {
+    console.warn("No samples from origin server; trying Cloudflare download fallback");
+    try {
+      const cfMbps = await measureCloudflareDownload((p) => {
+        onProgress?.(15 + (p * 0.65));
+      });
+      if (cfMbps > 0) {
+        onProgress?.(80);
+        return cfMbps;
+      }
+    } catch (e) {
+      console.warn("Cloudflare download fallback failed:", e);
+    }
+  }
   
   if (speedMeasurements.length === 0) {
     console.warn('All concurrent tests failed, trying single large download');
@@ -300,7 +375,14 @@ async function measureRealUploadSpeed(onProgress?: (progress: number) => void): 
   }
   
   if (speeds.length === 0) {
-    console.warn('All upload tests failed, using estimate based on download speed');
+    console.warn("Origin upload failed; trying httpbin.org fallback");
+    try {
+      const mbps = await measureHttpBinUpload(1024 * 1024);
+      if (mbps > 0) return mbps;
+    } catch (e) {
+      console.warn("Upload fallback failed:", e);
+    }
+    console.warn("All upload tests failed, using conservative estimate");
     return 15; // Conservative fallback
   }
   

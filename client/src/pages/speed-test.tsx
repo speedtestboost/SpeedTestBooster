@@ -15,12 +15,7 @@ import { trackEvent, trackSpeedTest, trackWifiOptimization } from "@/lib/analyti
 import { Play, Wifi, Monitor, Globe, Zap, CheckCircle2 } from "lucide-react";
 import { Link } from "wouter";
 import type { SpeedTest } from "@shared/schema";
-type NetworkInfo = {
-  ipAddress: string;
-  connectionType: string;
-  serverLocation: string;
-  isp: string;
-};
+import { loadNetworkInfoWithFallback, type PublicNetworkInfo } from "@/lib/networkInfo";
 
 export default function SpeedTest() {
   const [isTestRunning, setIsTestRunning] = useState(false);
@@ -217,14 +212,32 @@ export default function SpeedTest() {
     };
   }, []);
 
-  // Fetch network info
-  const { data: networkInfo } = useQuery<NetworkInfo>({
-    queryKey: ["/api/network-info"],
+  // Fetch network info (API when available; otherwise public geo so static hosting still works)
+  const { data: networkInfo } = useQuery<PublicNetworkInfo>({
+    queryKey: ["network-info", "v2"],
+    queryFn: loadNetworkInfoWithFallback,
+    staleTime: 60_000,
+    retry: 1,
   });
 
-  // Fetch speed test history
+  // Fetch speed test history — tolerate missing API (empty list)
   const { data: speedTests, isLoading: isLoadingHistory } = useQuery<SpeedTest[]>({
     queryKey: ["/api/speed-tests"],
+    queryFn: async () => {
+      try {
+        const sessionId = getSessionId();
+        const res = await fetch("/api/speed-tests", {
+          credentials: "include",
+          headers: { "X-Session-ID": sessionId },
+        });
+        if (!res.ok) return [];
+        return (await res.json()) as SpeedTest[];
+      } catch {
+        return [];
+      }
+    },
+    staleTime: 30_000,
+    retry: 1,
   });
 
   // Save speed test mutation
@@ -315,10 +328,9 @@ export default function SpeedTest() {
       });
 
       setCurrentResult(result);
-      await saveSpeedTest.mutateAsync(result);
-      
       trackSpeedTest(result);
       trackEvent('speed_test_completed', 'speed_test', 'success');
+      saveSpeedTest.mutate(result);
     } catch (error) {
       console.error('Speed test error:', error);
       trackEvent('speed_test_failed', 'speed_test', 'error');

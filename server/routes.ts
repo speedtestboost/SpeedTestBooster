@@ -56,6 +56,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Extract IPv4 address only
       let ipAddress = forwardedFor?.split(',')[0]?.trim() || realIp || remoteAddress || "127.0.0.1";
+
+      if (ipAddress.startsWith("::ffff:")) {
+        ipAddress = ipAddress.slice(7);
+      }
       
       // Filter out IPv6 and keep only first public IPv4
       if (ipAddress.includes(',')) {
