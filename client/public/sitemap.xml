@@ -720,28 +720,7 @@
     <priority>0.8</priority>
   </url>
   
-  <!-- Speed Guide Articles -->
-  <url>
-    <loc>https://speedtestboost.com/download-speed-guide</loc>
-    <lastmod>2025-10-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://speedtestboost.com/upload-speed-guide</loc>
-    <lastmod>2025-10-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://speedtestboost.com/wifi-speed-optimization</loc>
-    <lastmod>2025-10-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
+  <!-- Additional Tool Pages -->
   <url>
     <loc>https://speedtestboost.com/ping-test</loc>
     <lastmod>2025-10-31</lastmod>

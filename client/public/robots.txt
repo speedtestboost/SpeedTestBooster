@@ -12,8 +12,6 @@ Allow: /
 Allow: /speed-test
 Allow: /about
 Allow: /help
-Allow: /privacy
-Allow: /terms
 Allow: /internet-speed-requirements
 Allow: /wifi-analyzer
 Allow: /ai-speed-test

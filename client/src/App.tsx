@@ -165,6 +165,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={SpeedTest} />
+      <Route path="/speed-test" component={SpeedTest} />
       <Route path="/about" component={About} />
       <Route path="/help" component={Help} />
       <Route path="/mumbai-speed-test" component={MumbaiSpeedTest} />
