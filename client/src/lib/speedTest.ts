@@ -9,437 +9,277 @@ export interface SpeedTestResult {
 
 export interface SpeedTestOptions {
   onProgress?: (progress: number, status: string) => void;
+  onLiveSpeed?: (mbps: number, phase: "download" | "upload") => void;
 }
 
-export async function performSpeedTest(options: SpeedTestOptions = {}): Promise<SpeedTestResult> {
-  const { onProgress } = options;
-  
+const ORIGIN_PING = "/api/speed-test/ping";
+const ORIGIN_DOWNLOAD = "/api/speed-test/download/52428800";
+const ORIGIN_UPLOAD = "/api/speed-test/upload";
+
+const CF_TRACE = "https://www.cloudflare.com/cdn-cgi/trace";
+const CF_DOWNLOAD = "https://speed.cloudflare.com/__down?bytes=52428800";
+const HTTPBIN_POST = "https://httpbin.org/post";
+
+function round2(value: number): number {
+  return Math.round(value * 100) / 100;
+}
+
+function median(values: number[]): number {
+  if (!values.length) return 0;
+  const sorted = [...values].sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+  return sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
+}
+
+function percentile(values: number[], pct: number): number {
+  if (!values.length) return 0;
+  const sorted = [...values].sort((a, b) => a - b);
+  const idx = Math.max(0, Math.min(sorted.length - 1, Math.floor((pct / 100) * sorted.length)));
+  return sorted[idx];
+}
+
+async function timedFetch(url: string, init: RequestInit = {}, timeoutMs = 8000): Promise<Response> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
   try {
-    // Phase 1: Real ping test
-    onProgress?.(10, "Measuring ping...");
-    const pingResult = await measureRealPing();
-    
-    // Phase 2: Real download test (main test)
-    onProgress?.(15, "Testing download speed...");
-    const downloadSpeed = await measureRealDownloadSpeed((p) => {
-      const phaseProgress = 15 + (p * 0.65); // 15% to 80%
-      onProgress?.(phaseProgress, "Testing download speed...");
+    return await fetch(url, {
+      ...init,
+      signal: controller.signal,
+      cache: "no-store",
+      headers: {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        ...(init.headers || {}),
+      },
     });
-    
-    // Phase 3: Real upload test
-    onProgress?.(80, "Testing upload speed...");
-    const uploadSpeed = await measureRealUploadSpeed((p) => {
-      const phaseProgress = 80 + (p * 0.15); // 80% to 95%
-      onProgress?.(phaseProgress, "Testing upload speed...");
-    });
-    
-    // Phase 4: Real jitter calculation
-    onProgress?.(95, "Calculating jitter...");
-    const jitter = await measureRealJitter();
-    
-    onProgress?.(100, "Test complete!");
-    
-    // Return actual measured values
-    const result = {
-      downloadSpeed: Math.round(downloadSpeed * 100) / 100,
-      uploadSpeed: Math.round(uploadSpeed * 100) / 100,
-      ping: Math.round(pingResult * 100) / 100,
-      jitter: Math.round(jitter * 100) / 100,
-      serverLocation: "Global Edge Network",
-      connectionType: "Broadband"
-    };
-    
-    console.log(`Speed test results: Download: ${downloadSpeed.toFixed(2)} Mbps, Upload: ${uploadSpeed.toFixed(2)} Mbps, Ping: ${pingResult.toFixed(2)}ms, Jitter: ${jitter.toFixed(2)}ms`);
-    return result;
-    
-  } catch (error) {
-    console.error("Speed test failed:", error);
-    throw new Error("Speed test failed");
+  } finally {
+    clearTimeout(timer);
   }
 }
 
-// Real ping measurement using our own server and reliable endpoints
-async function measureRealPing(): Promise<number> {
-  const endpoints = [
-    '/api/speed-test/ping',                        // Our own server (no CORS issues)
-    'https://www.cloudflare.com/cdn-cgi/trace',    // Cloudflare
-    'https://httpbin.org/get'                      // HTTPBin
-  ];
-  
-  const pingResults: number[] = [];
-  const testCount = 8; // Multiple tests for accuracy
-  
-  for (let i = 0; i < testCount; i++) {
-    const endpoint = endpoints[i % endpoints.length];
-    
+function fillRandomBytes(buffer: Uint8Array): void {
+  const CHUNK = 65536;
+  let offset = 0;
+  while (offset < buffer.length) {
+    const end = Math.min(offset + CHUNK, buffer.length);
+    crypto.getRandomValues(buffer.subarray(offset, end));
+    offset = end;
+  }
+}
+
+async function measurePingSamples(count = 10): Promise<number[]> {
+  const endpoints = [ORIGIN_PING, CF_TRACE];
+  const samples: number[] = [];
+
+  for (let i = 0; i < count; i++) {
+    const endpoint = `${endpoints[i % endpoints.length]}?t=${Date.now()}-${i}`;
     try {
-      const startTime = performance.now();
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 3000);
-      
-      const response = await fetch(endpoint + '?t=' + Date.now(), { 
-        method: 'GET',
-        cache: 'no-cache',
-        signal: controller.signal,
-        headers: {
-          'Cache-Control': 'no-cache, no-store, must-revalidate',
-          'Pragma': 'no-cache'
-        }
-      });
-      
-      clearTimeout(timeoutId);
-      
-      if (response.ok) {
-        const endTime = performance.now();
-        const pingTime = endTime - startTime;
-        if (pingTime > 0 && pingTime < 3000) { // Valid ping range
-          pingResults.push(pingTime);
-          console.log(`Ping test ${i+1}: ${pingTime.toFixed(2)}ms`);
-        }
-      }
-    } catch (error) {
-      console.error(`Ping test ${i+1} failed:`, error);
+      const start = performance.now();
+      const res = await timedFetch(endpoint, { method: "GET" }, 4000);
+      if (!res.ok) continue;
+      const ping = performance.now() - start;
+      if (ping > 0 && ping < 3000) samples.push(ping);
+    } catch {
+      // Ignore and continue sampling.
     }
   }
-  
-  if (pingResults.length === 0) {
-    console.warn('All ping tests failed, using default estimate');
-    return 100; // Conservative fallback
-  }
-  
-  // Return median ping to avoid outliers
-  pingResults.sort((a, b) => a - b);
-  return pingResults[Math.floor(pingResults.length / 2)];
+
+  return samples;
 }
 
-/** Public CDN fallback when our /api/speed-test/download is unavailable (e.g. static hosting). */
-async function measureCloudflareDownload(onProgress?: (progress: number) => void): Promise<number> {
-  const bytes = 50 * 1024 * 1024;
-  const url = `https://speed.cloudflare.com/__down?bytes=${bytes}`;
+async function measureStreamingDownload(
+  url: string,
+  maxDurationMs: number,
+  onProgress?: (progress: number) => void,
+  onLiveSpeed?: (mbps: number) => void,
+): Promise<number> {
   const startTime = performance.now();
-  let totalBytes = 0;
-  const response = await fetch(url, {
-    cache: "no-cache",
-    mode: "cors",
-    headers: { "Cache-Control": "no-cache" },
-  });
+  const response = await timedFetch(`${url}${url.includes("?") ? "&" : "?"}t=${Date.now()}`, { method: "GET" }, maxDurationMs + 2500);
   if (!response.ok || !response.body) {
-    throw new Error("Cloudflare download not available");
+    throw new Error(`Download endpoint failed: ${response.status}`);
   }
+
   const reader = response.body.getReader();
-  const maxMs = 14000;
+  let totalBytes = 0;
+  let lastSampleAt = startTime;
+  const samples: number[] = [];
+
   while (true) {
     const { value, done } = await reader.read();
     if (value) totalBytes += value.length;
-    const elapsed = (performance.now() - startTime) / 1000;
-    onProgress?.(Math.min((elapsed / 12) * 100, 100));
-    if (done) break;
-    if (performance.now() - startTime > maxMs) {
+
+    const now = performance.now();
+    const elapsedMs = now - startTime;
+    if (now - lastSampleAt >= 75) {
+      const seconds = elapsedMs / 1000;
+      if (seconds > 0.2) {
+        const mbps = (totalBytes * 8) / (seconds * 1000 * 1000);
+        if (mbps > 0 && Number.isFinite(mbps)) {
+          samples.push(mbps);
+          onLiveSpeed?.(mbps);
+        }
+      }
+      onProgress?.(Math.min((elapsedMs / maxDurationMs) * 100, 100));
+      lastSampleAt = now;
+    }
+
+    if (done || elapsedMs >= maxDurationMs) {
       try {
         await reader.cancel();
       } catch {
-        /* ignore */
+        // Ignore cancellation errors.
       }
       break;
     }
   }
-  const duration = (performance.now() - startTime) / 1000;
-  if (duration < 0.25 || totalBytes < 512 * 1024) {
-    throw new Error("Cloudflare download sample too small");
+
+  const totalSeconds = (performance.now() - startTime) / 1000;
+  if (totalBytes > 0 && totalSeconds > 0.01) {
+    const endMbps = (totalBytes * 8) / (totalSeconds * 1000 * 1000);
+    if (endMbps > 0 && Number.isFinite(endMbps)) {
+      samples.push(endMbps);
+      onLiveSpeed?.(endMbps);
+    }
   }
-  return (totalBytes * 8) / (duration * 1000 * 1000);
+
+  if (!samples.length || totalBytes < 128 * 1024) {
+    throw new Error("Insufficient download samples");
+  }
+
+  // 75th percentile balances burst and sustained throughput.
+  return percentile(samples, 75);
 }
 
-async function measureHttpBinUpload(size: number): Promise<number> {
-  const capped = Math.min(size, 2 * 1024 * 1024);
-  const data = new Uint8Array(capped);
-  if (crypto.getRandomValues) {
-    crypto.getRandomValues(data);
-  } else {
-    for (let j = 0; j < capped; j++) data[j] = Math.floor(Math.random() * 256);
+async function measureUploadSingle(
+  size: number,
+  endpoint: string,
+  onLiveSpeed?: (mbps: number) => void,
+): Promise<number> {
+  const data = new Uint8Array(size);
+  fillRandomBytes(data);
+  const start = performance.now();
+  const response = await timedFetch(
+    `${endpoint}${endpoint.includes("?") ? "&" : "?"}t=${Date.now()}`,
+    {
+      method: "POST",
+      body: data,
+      headers: { "Content-Type": "application/octet-stream" },
+      mode: endpoint.startsWith("http") ? "cors" : "same-origin",
+    },
+    12000,
+  );
+  if (!response.ok) {
+    throw new Error(`Upload endpoint failed: ${response.status}`);
   }
-  const startTime = performance.now();
-  const response = await fetch("https://httpbin.org/post", {
-    method: "POST",
-    body: data,
-    headers: { "Content-Type": "application/octet-stream", "Cache-Control": "no-cache" },
-    mode: "cors",
-  });
-  if (!response.ok) throw new Error("httpbin upload failed");
-  const endTime = performance.now();
-  const durationSeconds = (endTime - startTime) / 1000;
-  if (durationSeconds < 0.15) throw new Error("httpbin upload too fast");
-  return (capped * 8) / (durationSeconds * 1000 * 1000);
+  const seconds = (performance.now() - start) / 1000;
+  if (seconds <= 0.15) {
+    throw new Error("Upload duration too short");
+  }
+  const mbps = (size * 8) / (seconds * 1000 * 1000);
+  onLiveSpeed?.(mbps);
+  return mbps;
 }
 
-// Real download speed measurement using fast.com methodology with global bandwidth tracking
-async function measureRealDownloadSpeed(onProgress?: (progress: number) => void): Promise<number> {
-  const testDuration = 8; // 8 seconds for faster results
-  
-  console.log('Starting fast.com-style bandwidth measurement...');
-  
-  // Global bandwidth tracking across all connections
-  let globalBytesDownloaded = 0;
-  let globalStartTime = performance.now();
-  const speedMeasurements: number[] = [];
-  
-  // Use 6 concurrent connections like fast.com
-  const concurrentConnections = 6;
-  const testSize = 25 * 1024 * 1024; // 25MB per connection
-  
-  const testPromises = Array.from({ length: concurrentConnections }, async (_, index) => {
-    try {
-      const testUrl = `/api/speed-test/download/${testSize}`;
-      console.log(`Starting connection ${index + 1}: ${testUrl}`);
-      
-      const response = await fetch(testUrl, {
-        cache: 'no-cache',
-        headers: {
-          'Cache-Control': 'no-cache, no-store, must-revalidate',
-          'Pragma': 'no-cache'
-        }
-      });
-      
-      if (response.ok && response.body) {
-        const reader = response.body.getReader();
-        
-        while (true) {
-          const { value, done } = await reader.read();
-          const currentTime = performance.now();
-          
-          if (value) {
-            globalBytesDownloaded += value.length;
-          }
-          
-          // Calculate global bandwidth every 200ms
-          const elapsedTime = (currentTime - globalStartTime) / 1000;
-          if (elapsedTime >= 0.5) { // At least 500ms of data
-            const bitsPerSecond = (globalBytesDownloaded * 8) / elapsedTime;
-            const mbps = bitsPerSecond / (1000 * 1000);
-            speedMeasurements.push(mbps);
-            console.log(`Global bandwidth at ${elapsedTime.toFixed(1)}s: ${mbps.toFixed(2)} Mbps (${(globalBytesDownloaded / 1024 / 1024).toFixed(2)} MB total)`);
-            onProgress?.(Math.min((elapsedTime / testDuration) * 100, 100));
-          }
-          
-          // Stop after testDuration or when done
-          if (done || (currentTime - globalStartTime) >= testDuration * 1000) {
-            break;
-          }
-        }
-        
-        // Cancel remaining download
-        try {
-          await reader.cancel();
-        } catch (e) {
-          // Ignore cancellation errors
-        }
-      }
-    } catch (error) {
-      console.error(`Connection ${index + 1} failed:`, error);
-    }
-  });
-  
-  // Wait for all concurrent connections
-  await Promise.all(testPromises);
-
-  if (speedMeasurements.length === 0) {
-    console.warn("No samples from origin server; trying Cloudflare download fallback");
-    try {
-      const cfMbps = await measureCloudflareDownload((p) => {
-        onProgress?.(15 + (p * 0.65));
-      });
-      if (cfMbps > 0) {
-        onProgress?.(80);
-        return cfMbps;
-      }
-    } catch (e) {
-      console.warn("Cloudflare download fallback failed:", e);
-    }
+async function measureRealDownloadSpeed(
+  onProgress?: (progress: number) => void,
+  onLiveSpeed?: (mbps: number) => void,
+): Promise<number> {
+  try {
+    return await measureStreamingDownload(ORIGIN_DOWNLOAD, 9000, onProgress, onLiveSpeed);
+  } catch {
+    return await measureStreamingDownload(CF_DOWNLOAD, 10000, onProgress, onLiveSpeed);
   }
-  
-  if (speedMeasurements.length === 0) {
-    console.warn('All concurrent tests failed, trying single large download');
-    
-    // Try a single large download as fallback
-    try {
-      const testUrl = `/api/speed-test/download/${50 * 1024 * 1024}`; // 50MB
-      console.log(`Trying fallback large download: ${testUrl}`);
-      
-      const startTime = performance.now();
-      const response = await fetch(testUrl, { 
-        cache: 'no-cache',
-        headers: {
-          'Cache-Control': 'no-cache, no-store, must-revalidate'
-        }
-      });
-      
-      if (response.ok && response.body) {
-        const reader = response.body.getReader();
-        let totalBytes = 0;
-        
-        while (true) {
-          const { value, done } = await reader.read();
-          if (value) totalBytes += value.length;
-          if (done) break;
-        }
-        
-        const endTime = performance.now();
-        const duration = (endTime - startTime) / 1000;
-        if (duration >= 2 && totalBytes > 5000000) {
-          const mbps = (totalBytes * 8) / (duration * 1000 * 1000);
-          console.log(`Fallback test successful: ${totalBytes} bytes in ${duration.toFixed(2)}s = ${mbps.toFixed(2)} Mbps`);
-          return mbps;
-        }
-      }
-    } catch (e) {
-      console.error('Fallback test failed:', e);
-    }
-    
-    return 50; // Final fallback
-  }
-  
-  // Use the peak sustained bandwidth (like fast.com does)
-  speedMeasurements.sort((a, b) => b - a);
-  
-  // Take the top 20% of measurements for sustained speed
-  const topMeasurements = speedMeasurements.slice(0, Math.max(1, Math.floor(speedMeasurements.length * 0.2)));
-  const sustainedSpeed = topMeasurements.reduce((sum, speed) => sum + speed, 0) / topMeasurements.length;
-  
-  // Also calculate peak speed
-  const peakSpeed = speedMeasurements[0];
-  
-  // Use the higher of sustained or peak speed
-  const finalSpeed = Math.max(sustainedSpeed, peakSpeed);
-  
-  console.log(`Download speed result: ${finalSpeed.toFixed(2)} Mbps (peak: ${peakSpeed.toFixed(2)}, sustained: ${sustainedSpeed.toFixed(2)})`);
-  console.log(`Total data downloaded: ${(globalBytesDownloaded / 1024 / 1024).toFixed(2)} MB`);
-  
-  return finalSpeed;
 }
 
-// Real upload speed measurement using our own server endpoint
-async function measureRealUploadSpeed(onProgress?: (progress: number) => void): Promise<number> {
-  const speeds: number[] = [];
-  
-  // Use larger file sizes for better upload measurement
-  const testSizes = [
-    2 * 1024 * 1024,   // 2MB
-    5 * 1024 * 1024,   // 5MB
-    10 * 1024 * 1024   // 10MB
-  ];
-  
-  const testEndpoint = '/api/speed-test/upload';
-  
-  for (let i = 0; i < testSizes.length; i++) {
-    const size = testSizes[i];
-    onProgress?.((i / testSizes.length) * 100);
-    
+async function measureRealUploadSpeed(
+  onProgress?: (progress: number) => void,
+  onLiveSpeed?: (mbps: number) => void,
+): Promise<number> {
+  const sizes = [256 * 1024, 1024 * 1024, 2 * 1024 * 1024];
+  const values: number[] = [];
+
+  for (let i = 0; i < sizes.length; i++) {
+    const p = ((i + 1) / sizes.length) * 100;
+    onProgress?.(p);
     try {
-      // Create random data for upload
-      const data = new Uint8Array(size);
-      if (crypto.getRandomValues) {
-        crypto.getRandomValues(data);
-      } else {
-        for (let j = 0; j < size; j++) {
-          data[j] = Math.floor(Math.random() * 256);
-        }
-      }
-      
-      console.log(`Upload test ${i+1}: ${(size / 1024 / 1024).toFixed(1)}MB to ${testEndpoint}`);
-      const startTime = performance.now();
-      
-      const response = await fetch(testEndpoint, {
-        method: 'POST',
-        body: data,
-        headers: {
-          'Content-Type': 'application/octet-stream',
-          'Cache-Control': 'no-cache'
-        }
-      });
-      
-      if (response.ok) {
-        const endTime = performance.now();
-        const durationSeconds = (endTime - startTime) / 1000;
-        
-        if (durationSeconds > 0.3) { // Valid measurement
-          const bitsPerSecond = (size * 8) / durationSeconds;
-          const mbps = bitsPerSecond / (1000 * 1000);
-          speeds.push(mbps);
-          console.log(`Upload test ${i+1}: ${mbps.toFixed(2)} Mbps (${(size / 1024 / 1024).toFixed(1)}MB in ${durationSeconds.toFixed(2)}s)`);
-          break; // Success, move to next size
-        }
-      }
-    } catch (error) {
-      console.error(`Upload test ${i+1} failed:`, error);
+      const mbps = await measureUploadSingle(sizes[i], ORIGIN_UPLOAD, onLiveSpeed);
+      if (mbps > 0) values.push(mbps);
+    } catch {
+      // keep trying next size/endpoint
     }
   }
-  
-  if (speeds.length === 0) {
-    console.warn("Origin upload failed; trying httpbin.org fallback");
+
+  if (!values.length) {
+    // Cross-origin fallback for static hosts where /api is missing.
     try {
-      const mbps = await measureHttpBinUpload(1024 * 1024);
-      if (mbps > 0) return mbps;
-    } catch (e) {
-      console.warn("Upload fallback failed:", e);
+      const mbps = await measureUploadSingle(512 * 1024, HTTPBIN_POST, onLiveSpeed);
+      if (mbps > 0) values.push(mbps);
+    } catch {
+      // ignore
     }
-    console.warn("All upload tests failed, using conservative estimate");
-    return 15; // Conservative fallback
   }
-  
-  // Return the highest upload speed achieved
-  speeds.sort((a, b) => b - a);
-  const bestUploadSpeed = speeds[0];
-  console.log(`Upload speed result: ${bestUploadSpeed.toFixed(2)} Mbps`);
-  return bestUploadSpeed;
+
+  if (!values.length) return 15;
+  return median(values);
 }
 
-// Real jitter measurement using ping variance
+async function measureRealPing(): Promise<number> {
+  const samples = await measurePingSamples(10);
+  if (!samples.length) return 90;
+  return median(samples);
+}
+
 async function measureRealJitter(): Promise<number> {
-  const pings: number[] = [];
-  const endpoints = [
-    'https://www.google.com/generate_204',
-    'https://httpbin.org/get'
-  ];
-  
-  for (let i = 0; i < 8; i++) {
-    const endpoint = endpoints[i % endpoints.length];
-    
-    try {
-      const startTime = performance.now();
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 2000);
-      
-      const response = await fetch(endpoint + '?t=' + Date.now(), { 
-        method: 'GET',
-        cache: 'no-cache',
-        signal: controller.signal,
-        headers: {
-          'Cache-Control': 'no-cache, no-store, must-revalidate'
-        }
-      });
-      
-      clearTimeout(timeoutId);
-      
-      if (response.ok) {
-        const endTime = performance.now();
-        const pingTime = endTime - startTime;
-        if (pingTime > 0 && pingTime < 2000) {
-          pings.push(pingTime);
-        }
-      }
-    } catch (error) {
-      console.error(`Jitter test ${i+1} failed:`, error);
-    }
-  }
-  
-  if (pings.length < 3) {
-    console.warn('Insufficient ping samples for jitter calculation');
-    return 5; // Conservative fallback
-  }
-  
-  // Calculate jitter as standard deviation
-  const average = pings.reduce((sum, ping) => sum + ping, 0) / pings.length;
-  const variance = pings.reduce((sum, ping) => sum + Math.pow(ping - average, 2), 0) / pings.length;
-  
+  const samples = await measurePingSamples(10);
+  if (samples.length < 3) return 5;
+  const avg = samples.reduce((sum, v) => sum + v, 0) / samples.length;
+  const variance = samples.reduce((sum, v) => sum + (v - avg) ** 2, 0) / samples.length;
   return Math.sqrt(variance);
+}
+
+function detectConnectionType(): string {
+  const nav = navigator as Navigator & {
+    connection?: NetworkInformation;
+    mozConnection?: NetworkInformation;
+    webkitConnection?: NetworkInformation;
+  };
+  const conn = nav.connection || nav.mozConnection || nav.webkitConnection;
+  if (!conn) return "Broadband";
+  if (conn.effectiveType) return conn.effectiveType.toUpperCase();
+  if (conn.type) return conn.type;
+  return "Broadband";
+}
+
+export async function performSpeedTest(options: SpeedTestOptions = {}): Promise<SpeedTestResult> {
+  const { onProgress, onLiveSpeed } = options;
+
+  onProgress?.(5, "Preparing test...");
+  const pingPromise = (async () => {
+    onProgress?.(12, "Measuring latency...");
+    return measureRealPing();
+  })();
+
+  onProgress?.(18, "Testing download speed...");
+  const downloadSpeed = await measureRealDownloadSpeed((p) => {
+    onProgress?.(18 + p * 0.58, "Testing download speed...");
+  }, (mbps) => onLiveSpeed?.(mbps, "download"));
+
+  onProgress?.(78, "Testing upload speed...");
+  const uploadSpeed = await measureRealUploadSpeed((p) => {
+    onProgress?.(78 + p * 0.14, "Testing upload speed...");
+  }, (mbps) => onLiveSpeed?.(mbps, "upload"));
+
+  onProgress?.(94, "Calculating stability...");
+  const [ping, jitter] = await Promise.all([pingPromise, measureRealJitter()]);
+
+  const result: SpeedTestResult = {
+    downloadSpeed: round2(downloadSpeed),
+    uploadSpeed: round2(uploadSpeed),
+    ping: round2(ping),
+    jitter: round2(jitter),
+    serverLocation: "Global edge network",
+    connectionType: detectConnectionType(),
+  };
+
+  onProgress?.(100, "Test complete!");
+  return result;
 }

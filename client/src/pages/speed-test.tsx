@@ -22,6 +22,8 @@ export default function SpeedTest() {
   const [testProgress, setTestProgress] = useState(0);
   const [testStatus, setTestStatus] = useState("Ready to test");
   const [currentResult, setCurrentResult] = useState<SpeedTestResult | null>(null);
+  const [liveSpeed, setLiveSpeed] = useState(0);
+  const [livePhase, setLivePhase] = useState<"download" | "upload" | "idle">("idle");
   const [showOptimization, setShowOptimization] = useState(false);
   const { toast } = useToast();
 
@@ -320,12 +322,18 @@ export default function SpeedTest() {
     setTestProgress(0);
     setTestStatus("Initializing test...");
     setCurrentResult(null);
+    setLiveSpeed(0);
+    setLivePhase("idle");
 
     try {
       const result = await performSpeedTest({
         onProgress: (progress, status) => {
           setTestProgress(progress);
           setTestStatus(status);
+        },
+        onLiveSpeed: (mbps, phase) => {
+          setLiveSpeed(mbps);
+          setLivePhase(phase);
         },
       });
 
@@ -345,6 +353,8 @@ export default function SpeedTest() {
       setIsTestRunning(false);
       setTestProgress(0);
       setTestStatus("Ready to test");
+      setLiveSpeed(0);
+      setLivePhase("idle");
     }
   };
 
@@ -443,6 +453,8 @@ export default function SpeedTest() {
                 testProgress={testProgress}
                 testStatus={testStatus}
                 lastTest={lastTest}
+                liveSpeed={liveSpeed}
+                livePhase={livePhase}
               />
               
               <div className="space-y-4 mt-6">
@@ -553,6 +565,8 @@ export default function SpeedTest() {
             testProgress={testProgress}
             testStatus={testStatus}
             lastTest={lastTest}
+            liveSpeed={liveSpeed}
+            livePhase={livePhase}
           />
 
           <div className="space-y-4">
