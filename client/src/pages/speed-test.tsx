@@ -696,7 +696,7 @@ export default function SpeedTest() {
             <p className="text-center text-muted-foreground mb-8">
               Test your internet speed with servers optimized for your country's network infrastructure
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
               <Link href="/us-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground group-hover:text-primary">🇺🇸 USA Speed Test</div>
                 <div className="text-xs text-muted-foreground">Verizon, AT&T, Comcast</div>
@@ -712,6 +712,26 @@ export default function SpeedTest() {
               <Link href="/ca-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground group-hover:text-primary">🇨🇦 Canada Speed Test</div>
                 <div className="text-xs text-muted-foreground">Rogers, Bell, Telus</div>
+              </Link>
+              <Link href="/de-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+                <div className="text-sm font-medium text-foreground group-hover:text-primary">🇩🇪 Germany Speed Test</div>
+                <div className="text-xs text-muted-foreground">Telekom, Vodafone, O2</div>
+              </Link>
+              <Link href="/sg-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+                <div className="text-sm font-medium text-foreground group-hover:text-primary">🇸🇬 Singapore Speed Test</div>
+                <div className="text-xs text-muted-foreground">Singtel, StarHub, M1</div>
+              </Link>
+              <Link href="/th-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
+                <div className="text-sm font-medium text-foreground group-hover:text-primary">🇹🇭 Thailand Speed Test</div>
+                <div className="text-xs text-muted-foreground">AIS, True, 3BB</div>
+              </Link>
+            </div>
+            <div className="text-center mt-6">
+              <Link
+                href="/internet-providers"
+                className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-medium"
+              >
+                Browse all countries and ISP pages →
               </Link>
             </div>
           </div>

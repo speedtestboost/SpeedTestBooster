@@ -63,7 +63,9 @@ export default function LogoDemo() {
     document.head.appendChild(canonical);
     
     // Add noindex meta tag since this is an internal demo page
-    let robotsMeta = document.querySelector('meta[name="robots"]') as HTMLMetaElement;
+    let robotsMeta = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
+    const createdRobots = !robotsMeta;
+    const previousRobots = robotsMeta?.getAttribute('content') ?? '';
     if (!robotsMeta) {
       robotsMeta = document.createElement('meta');
       robotsMeta.name = 'robots';
@@ -75,6 +77,11 @@ export default function LogoDemo() {
       // Remove the specific canonical element we created
       if (canonical.parentNode) {
         canonical.parentNode.removeChild(canonical);
+      }
+      if (createdRobots) {
+        robotsMeta?.remove();
+      } else if (robotsMeta) {
+        robotsMeta.setAttribute('content', previousRobots || 'index, follow');
       }
     };
   }, []);
