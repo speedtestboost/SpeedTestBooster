@@ -33,6 +33,21 @@ Allow: /ca-speed-test
 Allow: /de-speed-test
 Allow: /sg-speed-test
 Allow: /th-speed-test
+Allow: /nl-speed-test
+Allow: /in-speed-test
+Allow: /mx-speed-test
+Allow: /my-speed-test
+Allow: /id-speed-test
+Allow: /es-speed-test
+Allow: /za-speed-test
+Allow: /ar-speed-test
+Allow: /ae-speed-test
+Allow: /sa-speed-test
+Allow: /pl-speed-test
+Allow: /fr-speed-test
+Allow: /it-speed-test
+Allow: /br-speed-test
+Allow: /ph-speed-test
 
 # Allow multilingual pages
 Allow: /es

@@ -17,6 +17,21 @@ import CASpeedTest from "@/pages/ca-speed-test";
 import DESpeedTest from "@/pages/de-speed-test";
 import SGSpeedTest from "@/pages/sg-speed-test";
 import THSpeedTest from "@/pages/th-speed-test";
+import NLSpeedTest from "@/pages/nl-speed-test";
+import INSpeedTest from "@/pages/in-speed-test";
+import MXSpeedTest from "@/pages/mx-speed-test";
+import MYSpeedTest from "@/pages/my-speed-test";
+import IDSpeedTest from "@/pages/id-speed-test";
+import ESSpeedTest from "@/pages/es-speed-test";
+import ZASpeedTest from "@/pages/za-speed-test";
+import ARSpeedTest from "@/pages/ar-speed-test";
+import AESpeedTest from "@/pages/ae-speed-test";
+import SASpeedTest from "@/pages/sa-speed-test";
+import PLSpeedTest from "@/pages/pl-speed-test";
+import FRSpeedTest from "@/pages/fr-speed-test";
+import ITSpeedTest from "@/pages/it-speed-test";
+import BRSpeedTest from "@/pages/br-speed-test";
+import PHSpeedTest from "@/pages/ph-speed-test";
 import InternetSpeedRequirements from "@/pages/internet-speed-requirements";
 import InternetProviders from "@/pages/internet-providers";
 // US Providers
@@ -181,6 +196,21 @@ function Router() {
       <Route path="/de-speed-test" component={DESpeedTest} />
       <Route path="/sg-speed-test" component={SGSpeedTest} />
       <Route path="/th-speed-test" component={THSpeedTest} />
+      <Route path="/nl-speed-test" component={NLSpeedTest} />
+      <Route path="/in-speed-test" component={INSpeedTest} />
+      <Route path="/mx-speed-test" component={MXSpeedTest} />
+      <Route path="/my-speed-test" component={MYSpeedTest} />
+      <Route path="/id-speed-test" component={IDSpeedTest} />
+      <Route path="/es-speed-test" component={ESSpeedTest} />
+      <Route path="/za-speed-test" component={ZASpeedTest} />
+      <Route path="/ar-speed-test" component={ARSpeedTest} />
+      <Route path="/ae-speed-test" component={AESpeedTest} />
+      <Route path="/sa-speed-test" component={SASpeedTest} />
+      <Route path="/pl-speed-test" component={PLSpeedTest} />
+      <Route path="/fr-speed-test" component={FRSpeedTest} />
+      <Route path="/it-speed-test" component={ITSpeedTest} />
+      <Route path="/br-speed-test" component={BRSpeedTest} />
+      <Route path="/ph-speed-test" component={PHSpeedTest} />
       <Route path="/internet-speed-requirements" component={InternetSpeedRequirements} />
       <Route path="/internet-providers" component={InternetProviders} />
       <Route path="/wifi-analyzer" component={WiFiAnalyzer} />
