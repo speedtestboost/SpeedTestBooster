@@ -169,6 +169,7 @@ import IndonesianSpeedTest from "@/pages/indonesian-speed-test";
 import PortugueseSpeedTest from "@/pages/portuguese-speed-test";
 import FrenchSpeedTest from "@/pages/french-speed-test";
 import { useEffect, useState } from "react";
+import ScrollToTop from "@/components/ScrollToTop";
 import { initGA } from "./lib/analytics";
 import { useAnalytics } from "./hooks/use-analytics";
 import { Sun, Moon } from "lucide-react";
@@ -178,7 +179,9 @@ function Router() {
   useAnalytics();
   
   return (
-    <Switch>
+    <>
+      <ScrollToTop />
+      <Switch>
       <Route path="/" component={SpeedTest} />
       <Route path="/speed-test" component={SpeedTest} />
       <Route path="/about" component={About} />
@@ -350,7 +353,8 @@ function Router() {
       <Route path="/providers/pl/t-mobile-pl" component={TMobilePlSpeedTest} />
       
       <Route component={NotFound} />
-    </Switch>
+      </Switch>
+    </>
   );
 }
 

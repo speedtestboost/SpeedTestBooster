@@ -13,12 +13,25 @@ export interface SpeedTestOptions {
 }
 
 const ORIGIN_PING = "/api/speed-test/ping";
-const ORIGIN_DOWNLOAD = "/api/speed-test/download/52428800";
+const ORIGIN_DOWNLOAD_PREFIX = "/api/speed-test/download/";
+/** Large payload so multi-connection tests do not run out of bytes on fast links */
+const ORIGIN_DOWNLOAD_BYTES = 125_829_120; // 120 MiB
 const ORIGIN_UPLOAD = "/api/speed-test/upload";
 
 const CF_TRACE = "https://www.cloudflare.com/cdn-cgi/trace";
-const CF_DOWNLOAD = "https://speed.cloudflare.com/__down?bytes=52428800";
+const CF_DOWNLOAD_BASE = "https://speed.cloudflare.com/__down?bytes=";
+/** Per-connection byte budget (Cloudflare caps stream length; enough for ~15s+ at multi-gig) */
+const CF_DOWNLOAD_BYTES_PER_CONN = 536_870_912; // 512 MiB
+
 const HTTPBIN_POST = "https://httpbin.org/post";
+
+const PARALLEL_DOWNLOADS = 6;
+const DOWNLOAD_DURATION_MS = 12_000;
+const DOWNLOAD_WARMUP_MS = 1_000;
+const SPEED_SAMPLE_MS = 200;
+
+const PARALLEL_UPLOADS = 4;
+const UPLOAD_BYTES_PER_CONN = 2 * 1024 * 1024; // 2 MiB each → realistic TCP ramp on parallel streams
 
 function isLocalRuntime(): boolean {
   const h = window.location.hostname;
@@ -36,41 +49,21 @@ function median(values: number[]): number {
   return sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
 }
 
-function percentile(values: number[], pct: number): number {
-  if (!values.length) return 0;
-  const sorted = [...values].sort((a, b) => a - b);
-  const idx = Math.max(0, Math.min(sorted.length - 1, Math.floor((pct / 100) * sorted.length)));
-  return sorted[idx];
+/** Trimmed median: drop outer deciles to reduce TCP ramp / tail noise */
+function trimmedMedianMbps(samples: number[]): number {
+  if (!samples.length) return 0;
+  const sorted = [...samples].sort((a, b) => a - b);
+  const n = sorted.length;
+  if (n <= 4) return median(sorted);
+  const lo = Math.floor(n * 0.1);
+  const hi = Math.ceil(n * 0.9);
+  const slice = sorted.slice(lo, Math.max(lo + 1, hi));
+  return median(slice);
 }
 
-function estimateFallbackDownload(pingMs: number): number {
-  const downlink = (navigator as Navigator & { connection?: NetworkInformation }).connection?.downlink;
-  if (typeof downlink === "number" && Number.isFinite(downlink) && downlink > 0) {
-    return Math.max(5, downlink * 8); // downlink is Mbps-ish in many browsers; slightly upscale conservatively.
-  }
-  if (pingMs <= 20) return 120;
-  if (pingMs <= 40) return 80;
-  if (pingMs <= 80) return 45;
-  if (pingMs <= 140) return 25;
-  return 12;
-}
-
-function sanitizeDownloadMbps(value: number): number {
-  if (!Number.isFinite(value) || value <= 0) return 25;
-  const downlink = (navigator as Navigator & { connection?: NetworkInformation }).connection?.downlink;
-  if (typeof downlink === "number" && Number.isFinite(downlink) && downlink > 0) {
-    // Keep reported values within a realistic bound around browser-reported downlink
-    // without forcing a fixed floor such as 60 Mbps.
-    const maxFromDownlink = Math.max(12, downlink * 4);
-    return Math.min(value, maxFromDownlink);
-  }
-  // Hard upper bound to avoid absurd loopback/server-throughput numbers.
-  return Math.min(value, 1500);
-}
-
-function sanitizeUploadMbps(value: number, downloadMbps: number): number {
-  if (!Number.isFinite(value) || value <= 0) return Math.max(1, downloadMbps * 0.2);
-  return Math.min(value, Math.max(5, downloadMbps * 0.9));
+function clampMbps(value: number, max = 10_000): number {
+  if (!Number.isFinite(value) || value <= 0) return 0.5;
+  return Math.min(value, max);
 }
 
 async function timedFetch(url: string, init: RequestInit = {}, timeoutMs = 8000): Promise<Response> {
@@ -101,192 +94,193 @@ function fillRandomBytes(buffer: Uint8Array): void {
   }
 }
 
-async function measurePingSamples(count = 10): Promise<number[]> {
-  const endpoints = [ORIGIN_PING, CF_TRACE];
-  const samples: number[] = [];
+async function fetchCfTraceText(): Promise<string> {
+  const res = await timedFetch(`${CF_TRACE}?t=${Date.now()}`, { method: "GET" }, 6000);
+  if (!res.ok) throw new Error("cf trace");
+  return res.text();
+}
 
+async function getServerLocationLabel(): Promise<string> {
+  try {
+    const text = await fetchCfTraceText();
+    const loc = text
+      .split("\n")
+      .find((l) => l.startsWith("loc="))
+      ?.slice(4)
+      ?.trim();
+    const colo = text
+      .split("\n")
+      .find((l) => l.startsWith("colo="))
+      ?.slice(5)
+      ?.trim();
+    if (loc && colo) return `${loc} · ${colo}`;
+    if (colo) return `Cloudflare · ${colo}`;
+    if (loc) return `${loc} · Cloudflare`;
+    return "Cloudflare global edge";
+  } catch {
+    return "Global edge network";
+  }
+}
+
+async function measurePingSamplesMs(count: number): Promise<number[]> {
+  const samples: number[] = [];
   for (let i = 0; i < count; i++) {
-    const endpoint = `${endpoints[i % endpoints.length]}?t=${Date.now()}-${i}`;
     try {
       const start = performance.now();
-      const res = await timedFetch(endpoint, { method: "GET" }, 4000);
-      if (!res.ok) continue;
-      const ping = performance.now() - start;
-      if (ping > 0 && ping < 3000) samples.push(ping);
+      await timedFetch(`${CF_TRACE}?t=${Date.now()}-${i}`, { method: "GET" }, 4000);
+      const ms = performance.now() - start;
+      if (ms > 0 && ms < 4000) samples.push(ms);
     } catch {
-      // Ignore and continue sampling.
+      try {
+        const start = performance.now();
+        const res = await timedFetch(`${ORIGIN_PING}?t=${Date.now()}-${i}`, { method: "GET" }, 4000);
+        if (res.ok) {
+          const ms = performance.now() - start;
+          if (ms > 0 && ms < 4000) samples.push(ms);
+        }
+      } catch {
+        /* continue */
+      }
     }
   }
-
   return samples;
 }
 
-async function measureStreamingDownload(
-  url: string,
-  maxDurationMs: number,
-  onProgress?: (progress: number) => void,
+function jitterFromSamples(samples: number[]): number {
+  if (samples.length < 2) return 0;
+  const m = median(samples);
+  const mad = samples.reduce((s, v) => s + Math.abs(v - m), 0) / samples.length;
+  return mad;
+}
+
+/**
+ * Multi-connection download: sums throughput across parallel HTTP streams (similar idea to major speed tests).
+ */
+async function measureParallelDownloadMbps(
+  buildUrl: (connIndex: number) => string,
+  durationMs: number,
+  onProgress?: (pct: number) => void,
   onLiveSpeed?: (mbps: number) => void,
 ): Promise<number> {
-  const startTime = performance.now();
-  const response = await timedFetch(`${url}${url.includes("?") ? "&" : "?"}t=${Date.now()}`, { method: "GET" }, maxDurationMs + 2500);
-  if (!response.ok || !response.body) {
-    throw new Error(`Download endpoint failed: ${response.status}`);
-  }
-
-  const reader = response.body.getReader();
+  const globalStart = performance.now();
   let totalBytes = 0;
-  let lastSampleAt = startTime;
-  const samples: number[] = [];
+  let lastMarkBytes = 0;
+  let lastMarkAt = globalStart;
+  const instSamples: number[] = [];
 
-  while (true) {
-    const { value, done } = await reader.read();
-    if (value) totalBytes += value.length;
-
-    const now = performance.now();
-    const elapsedMs = now - startTime;
-    if (now - lastSampleAt >= 75) {
-      const seconds = elapsedMs / 1000;
-      if (seconds > 0.2) {
-        const mbps = (totalBytes * 8) / (seconds * 1000 * 1000);
-        if (mbps > 0 && Number.isFinite(mbps)) {
-          samples.push(mbps);
-          onLiveSpeed?.(mbps);
-        }
+  const worker = async (connIndex: number) => {
+    try {
+      const url = buildUrl(connIndex);
+      const res = await timedFetch(url, { method: "GET" }, durationMs + 15_000);
+      if (!res.ok || !res.body) return;
+      const reader = res.body.getReader();
+      while (performance.now() - globalStart < durationMs) {
+        const { value, done } = await reader.read();
+        if (value) totalBytes += value.length;
+        if (done) break;
       }
-      onProgress?.(Math.min((elapsedMs / maxDurationMs) * 100, 100));
-      lastSampleAt = now;
-    }
-
-    if (done || elapsedMs >= maxDurationMs) {
       try {
         await reader.cancel();
       } catch {
-        // Ignore cancellation errors.
+        /* ignore */
       }
-      break;
+    } catch {
+      /* one stream may fail; others continue */
     }
-  }
+  };
 
-  const totalSeconds = (performance.now() - startTime) / 1000;
-  if (totalBytes > 0 && totalSeconds > 0.01) {
-    const endMbps = (totalBytes * 8) / (totalSeconds * 1000 * 1000);
-    if (endMbps > 0 && Number.isFinite(endMbps)) {
-      samples.push(endMbps);
-      onLiveSpeed?.(endMbps);
+  const sampleTimer = window.setInterval(() => {
+    const now = performance.now();
+    const elapsed = now - globalStart;
+    const dt = (now - lastMarkAt) / 1000;
+    const db = totalBytes - lastMarkBytes;
+    if (elapsed >= DOWNLOAD_WARMUP_MS && dt > 0.05 && db >= 0) {
+      const mbps = (db * 8) / (dt * 1_000_000);
+      if (mbps > 0 && Number.isFinite(mbps)) {
+        instSamples.push(mbps);
+        onLiveSpeed?.(mbps);
+      }
     }
+    lastMarkBytes = totalBytes;
+    lastMarkAt = now;
+    onProgress?.(Math.min(100, (elapsed / durationMs) * 100));
+  }, SPEED_SAMPLE_MS);
+
+  const wallClockDone = new Promise<void>((resolve) => {
+    window.setTimeout(() => resolve(), durationMs);
+  });
+
+  await Promise.all([
+    Promise.allSettled([...Array(PARALLEL_DOWNLOADS)].map((_, i) => worker(i))),
+    wallClockDone,
+  ]);
+
+  window.clearInterval(sampleTimer);
+
+  const totalSec = (performance.now() - globalStart) / 1000;
+  const overall = totalBytes > 0 && totalSec > 0.4 ? (totalBytes * 8) / (totalSec * 1_000_000) : 0;
+  if (overall > 0) instSamples.push(overall);
+
+  if (!instSamples.length || totalBytes < 256 * 1024) {
+    throw new Error("Insufficient download data");
   }
 
-  if (!samples.length || totalBytes < 128 * 1024) {
-    throw new Error("Insufficient download samples");
-  }
-
-  // 75th percentile balances burst and sustained throughput.
-  return percentile(samples, 75);
+  return trimmedMedianMbps(instSamples);
 }
 
-async function measureUploadSingle(
-  size: number,
+async function measureUploadParallelMbps(
   endpoint: string,
+  cors: boolean,
+  parallel: number,
+  bytesPerConn: number,
   onLiveSpeed?: (mbps: number) => void,
 ): Promise<number> {
-  const data = new Uint8Array(size);
-  fillRandomBytes(data);
+  const bodies = [...Array(parallel)].map(() => {
+    const b = new Uint8Array(bytesPerConn);
+    fillRandomBytes(b);
+    return b;
+  });
+
   const start = performance.now();
-  const response = await timedFetch(
-    `${endpoint}${endpoint.includes("?") ? "&" : "?"}t=${Date.now()}`,
-    {
-      method: "POST",
-      body: data,
-      headers: { "Content-Type": "application/octet-stream" },
-      mode: endpoint.startsWith("http") ? "cors" : "same-origin",
-    },
-    12000,
+  await Promise.all(
+    bodies.map((body, idx) =>
+      timedFetch(`${endpoint}${endpoint.includes("?") ? "&" : "?"}u=${idx}&t=${Date.now()}`, {
+        method: "POST",
+        body,
+        headers: { "Content-Type": "application/octet-stream" },
+        mode: cors ? "cors" : "same-origin",
+      }, 90_000).then(async (res) => {
+        if (!res.ok) throw new Error(`upload ${res.status}`);
+        await res.text();
+      }),
+    ),
   );
-  if (!response.ok) {
-    throw new Error(`Upload endpoint failed: ${response.status}`);
-  }
-  const seconds = (performance.now() - start) / 1000;
-  if (seconds <= 0.15) {
-    throw new Error("Upload duration too short");
-  }
-  const mbps = (size * 8) / (seconds * 1000 * 1000);
+
+  const elapsed = (performance.now() - start) / 1000;
+  const totalBytes = parallel * bytesPerConn;
+  if (elapsed < 0.15) throw new Error("Upload too fast");
+  const mbps = (totalBytes * 8) / (elapsed * 1_000_000);
   onLiveSpeed?.(mbps);
   return mbps;
 }
 
-async function measureRealDownloadSpeed(
-  onProgress?: (progress: number) => void,
-  onLiveSpeed?: (mbps: number) => void,
-): Promise<number> {
-  if (isLocalRuntime()) {
-    return await measureStreamingDownload(CF_DOWNLOAD, 10000, onProgress, onLiveSpeed);
+function estimateFallbackDownloadFromPing(pingMs: number): number {
+  const nav = navigator as Navigator & { connection?: { downlink?: number } };
+  const downlink = nav.connection?.downlink;
+  if (typeof downlink === "number" && Number.isFinite(downlink) && downlink > 0) {
+    return Math.max(4, downlink * 8);
   }
-  try {
-    return await measureStreamingDownload(ORIGIN_DOWNLOAD, 9000, onProgress, onLiveSpeed);
-  } catch {
-    return await measureStreamingDownload(CF_DOWNLOAD, 10000, onProgress, onLiveSpeed);
-  }
-}
-
-async function measureRealUploadSpeed(
-  onProgress?: (progress: number) => void,
-  onLiveSpeed?: (mbps: number) => void,
-): Promise<number> {
-  if (isLocalRuntime()) {
-    try {
-      const mbps = await measureUploadSingle(512 * 1024, HTTPBIN_POST, onLiveSpeed);
-      return mbps > 0 ? mbps : 15;
-    } catch {
-      return 15;
-    }
-  }
-  const sizes = [256 * 1024, 1024 * 1024, 2 * 1024 * 1024];
-  const values: number[] = [];
-
-  for (let i = 0; i < sizes.length; i++) {
-    const p = ((i + 1) / sizes.length) * 100;
-    onProgress?.(p);
-    try {
-      const mbps = await measureUploadSingle(sizes[i], ORIGIN_UPLOAD, onLiveSpeed);
-      if (mbps > 0) values.push(mbps);
-    } catch {
-      // keep trying next size/endpoint
-    }
-  }
-
-  if (!values.length) {
-    // Cross-origin fallback for static hosts where /api is missing.
-    try {
-      const mbps = await measureUploadSingle(512 * 1024, HTTPBIN_POST, onLiveSpeed);
-      if (mbps > 0) values.push(mbps);
-    } catch {
-      // ignore
-    }
-  }
-
-  if (!values.length) return 15;
-  return median(values);
-}
-
-async function measureRealPing(): Promise<number> {
-  const samples = await measurePingSamples(10);
-  if (!samples.length) return 90;
-  return median(samples);
-}
-
-async function measureRealJitter(): Promise<number> {
-  const samples = await measurePingSamples(10);
-  if (samples.length < 3) return 5;
-  const avg = samples.reduce((sum, v) => sum + v, 0) / samples.length;
-  const variance = samples.reduce((sum, v) => sum + (v - avg) ** 2, 0) / samples.length;
-  return Math.sqrt(variance);
+  if (pingMs <= 25) return 150;
+  if (pingMs <= 55) return 85;
+  if (pingMs <= 120) return 40;
+  return 15;
 }
 
 function detectConnectionType(): string {
   const nav = navigator as Navigator & {
-    connection?: NetworkInformation;
-    mozConnection?: NetworkInformation;
-    webkitConnection?: NetworkInformation;
+    connection?: { effectiveType?: string; type?: string };
+    mozConnection?: { effectiveType?: string; type?: string };
+    webkitConnection?: { effectiveType?: string; type?: string };
   };
   const conn = nav.connection || nav.mozConnection || nav.webkitConnection;
   if (!conn) return "Broadband";
@@ -298,54 +292,88 @@ function detectConnectionType(): string {
 export async function performSpeedTest(options: SpeedTestOptions = {}): Promise<SpeedTestResult> {
   const { onProgress, onLiveSpeed } = options;
 
-  onProgress?.(5, "Preparing test...");
-  let ping = 90;
+  onProgress?.(4, "Preparing test...");
+  const serverLocationPromise = getServerLocationLabel();
+
+  onProgress?.(10, "Measuring latency...");
+  let pingSamples: number[] = [];
   try {
-    onProgress?.(12, "Measuring latency...");
-    ping = await measureRealPing();
+    pingSamples = await measurePingSamplesMs(14);
   } catch {
-    ping = 90;
+    pingSamples = [];
+  }
+  const pingMs = pingSamples.length ? median(pingSamples) : 85;
+  const jitterMs = pingSamples.length >= 2 ? jitterFromSamples(pingSamples) : 4;
+
+  let downloadMbps = 0;
+  onProgress?.(22, "Testing download (multi-connection)...");
+
+  const originDownUrl = (conn: number) =>
+    `${ORIGIN_DOWNLOAD_PREFIX}${ORIGIN_DOWNLOAD_BYTES}?c=${conn}&t=${Date.now()}`;
+  const cfDownUrl = (conn: number) =>
+    `${CF_DOWNLOAD_BASE}${CF_DOWNLOAD_BYTES_PER_CONN}&c=${conn}&t=${Date.now()}`;
+
+  try {
+    if (isLocalRuntime()) {
+      downloadMbps = await measureParallelDownloadMbps(cfDownUrl, DOWNLOAD_DURATION_MS, (p) => {
+        onProgress?.(22 + p * 0.48, "Testing download (multi-connection)...");
+      }, (m) => onLiveSpeed?.(m, "download"));
+    } else {
+      try {
+        downloadMbps = await measureParallelDownloadMbps(originDownUrl, DOWNLOAD_DURATION_MS, (p) => {
+          onProgress?.(22 + p * 0.48, "Testing download (multi-connection)...");
+        }, (m) => onLiveSpeed?.(m, "download"));
+      } catch {
+        downloadMbps = await measureParallelDownloadMbps(cfDownUrl, DOWNLOAD_DURATION_MS, (p) => {
+          onProgress?.(22 + p * 0.48, "Testing download (multi-connection)...");
+        }, (m) => onLiveSpeed?.(m, "download"));
+      }
+    }
+  } catch {
+    downloadMbps = estimateFallbackDownloadFromPing(pingMs);
+    onLiveSpeed?.(downloadMbps, "download");
   }
 
-  let downloadSpeed = 0;
-  onProgress?.(18, "Testing download speed...");
+  let uploadMbps = Math.max(1, downloadMbps * 0.22);
+  onProgress?.(74, "Testing upload (parallel)...");
+
   try {
-    downloadSpeed = await measureRealDownloadSpeed((p) => {
-      onProgress?.(18 + p * 0.58, "Testing download speed...");
-    }, (mbps) => onLiveSpeed?.(mbps, "download"));
+    if (isLocalRuntime()) {
+      uploadMbps = await measureUploadParallelMbps(HTTPBIN_POST, true, 3, 512 * 1024, (m) =>
+        onLiveSpeed?.(m, "upload"),
+      );
+    } else {
+      try {
+        uploadMbps = await measureUploadParallelMbps(
+          ORIGIN_UPLOAD,
+          false,
+          PARALLEL_UPLOADS,
+          UPLOAD_BYTES_PER_CONN,
+          (m) => onLiveSpeed?.(m, "upload"),
+        );
+      } catch {
+        uploadMbps = await measureUploadParallelMbps(HTTPBIN_POST, true, 3, 768 * 1024, (m) =>
+          onLiveSpeed?.(m, "upload"),
+        );
+      }
+    }
   } catch {
-    downloadSpeed = estimateFallbackDownload(ping);
-    onLiveSpeed?.(downloadSpeed, "download");
+    uploadMbps = Math.max(1.5, round2(downloadMbps * 0.28));
+    onLiveSpeed?.(uploadMbps, "upload");
   }
 
-  let uploadSpeed = 15;
-  onProgress?.(78, "Testing upload speed...");
-  try {
-    uploadSpeed = await measureRealUploadSpeed((p) => {
-      onProgress?.(78 + p * 0.14, "Testing upload speed...");
-    }, (mbps) => onLiveSpeed?.(mbps, "upload"));
-  } catch {
-    uploadSpeed = Math.max(5, round2(downloadSpeed * 0.25));
-    onLiveSpeed?.(uploadSpeed, "upload");
-  }
+  const serverLocation = await serverLocationPromise.catch(() => "Global edge network");
 
-  onProgress?.(94, "Calculating stability...");
-  let jitter = 5;
-  try {
-    jitter = await measureRealJitter();
-  } catch {
-    jitter = 5;
-  }
+  onProgress?.(100, "Test complete!");
 
   const result: SpeedTestResult = {
-    downloadSpeed: round2(Math.max(1, sanitizeDownloadMbps(downloadSpeed))),
-    uploadSpeed: round2(Math.max(0.5, sanitizeUploadMbps(uploadSpeed, downloadSpeed))),
-    ping: round2(ping),
-    jitter: round2(jitter),
-    serverLocation: "Global edge network",
+    downloadSpeed: round2(clampMbps(downloadMbps)),
+    uploadSpeed: round2(clampMbps(uploadMbps)),
+    ping: round2(Math.min(999, Math.max(1, pingMs))),
+    jitter: round2(Math.min(200, Math.max(0, jitterMs))),
+    serverLocation,
     connectionType: detectConnectionType(),
   };
 
-  onProgress?.(100, "Test complete!");
   return result;
 }

@@ -25,6 +25,7 @@ export default function CountrySpeedTestPage({
   const canonicalUrl = `https://speedtestboost.com/${slug}`;
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     document.title = `${countryName} Speed Test - Check Internet Speed Free 2026`;
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {

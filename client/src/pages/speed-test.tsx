@@ -12,7 +12,7 @@ import OptimizationModal from "@/components/OptimizationModal";
 import Header from "@/components/Header";
 import { performSpeedTest, type SpeedTestResult } from "@/lib/speedTest";
 import { trackEvent, trackSpeedTest, trackWifiOptimization } from "@/lib/analytics";
-import { Play, Wifi, Monitor, Globe, Zap, CheckCircle2 } from "lucide-react";
+import { Play, Wifi, Monitor, Globe, Zap, CheckCircle2, Activity, BarChart3, Gauge, TrendingUp, Shield, Clock } from "lucide-react";
 import { Link } from "wouter";
 import type { SpeedTest } from "@shared/schema";
 import { loadNetworkInfoWithFallback, type PublicNetworkInfo } from "@/lib/networkInfo";
@@ -195,13 +195,59 @@ export default function SpeedTest() {
             "HTML5-based speed test (no plugins required)",
             "Browser-based testing (no app downloads)",
             "Cross-platform compatibility (works on any device)",
-            "Download speed test",
+            "Multi-connection parallel download measurement",
             "Upload speed test",
-            "Ping test",
+            "Ping and jitter test",
             "WiFi optimization",
-            "Global server coverage",
+            "Global CDN edge server coverage",
             "All ISP support",
           ],
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://speedtestboost.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How does this internet speed test work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Our test opens multiple parallel TCP connections to CDN edge servers worldwide and measures how much data can be downloaded in ~12 seconds. The trimmed median of those samples gives you an accurate download Mbps. Upload is measured similarly with parallel POST requests. Ping and jitter are sampled against Cloudflare trace endpoints."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is a good internet speed?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "For most households: 25 Mbps download covers basic streaming and browsing. 100 Mbps suits HD video and remote work. 300+ Mbps is comfortable for multiple 4K streams and gaming simultaneously. For gaming, low ping (under 30ms) matters more than raw speed."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why does my speed test show a different result than my ISP plan?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "ISP plans are theoretical maximums over a wired connection. Your actual speed can be lower due to WiFi overhead, router limitations, network congestion, the number of devices sharing the connection, and VPN usage. Test over a wired (Ethernet) connection to see your true line speed."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is this speed test free?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes — completely free, no account required, no ads, no app downloads. Works entirely in your browser."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What affects WiFi speed?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Distance from your router, physical obstacles (walls, floors), channel congestion from neighbouring networks, router age, number of connected devices, and 2.4 GHz vs 5 GHz band selection all impact WiFi speed. Use the Optimize WiFi feature for personalised tips."
+              }
+            }
+          ]
         },
       ],
     });
@@ -371,39 +417,65 @@ export default function SpeedTest() {
     <div className="min-h-screen bg-background">
       <Header currentPath="/" />
 
-      {/* HTML5 Hero Banner */}
-      <div className="gradient-bg py-8 px-4 border-b border-border/10">
+      {/* Hero Banner */}
+      <div className="gradient-bg py-10 px-4 border-b border-border/10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-4">
+            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-white/80 text-sm font-medium mb-2">
+              <Shield className="h-3.5 w-3.5" />
+              <span>No account · No ads · No app downloads</span>
+            </div>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
-              Internet and Wifi Speed Test
+              Free Internet &amp; WiFi Speed Test
             </h1>
             <p className="text-xl md:text-2xl text-white/90 font-medium">
-              No Apps • No Downloads • No Plugins Required!
+              Multi-connection test · CDN edge servers · Instant results
             </p>
             <p className="text-base md:text-lg text-white/80 max-w-3xl mx-auto">
-              100% browser-based speed test that works on any devices. Web-based bandwidth test with instant results for download, upload, ping & jitter.
+              100% browser-based bandwidth test — measures download, upload, ping &amp; jitter using parallel connections for accuracy on any device.
             </p>
-            
-            {/* Feature Icons */}
+
+            {/* Trust badges */}
             <div className="flex flex-wrap justify-center gap-4 md:gap-8 pt-4">
               <div className="flex items-center space-x-2 text-white/90">
                 <Monitor className="h-5 w-5" />
-                <span className="text-sm md:text-base font-medium">Works on Any Device</span>
+                <span className="text-sm md:text-base font-medium">Mobile &amp; Desktop</span>
               </div>
               <div className="flex items-center space-x-2 text-white/90">
                 <Globe className="h-5 w-5" />
-                <span className="text-sm md:text-base font-medium">No Installation</span>
+                <span className="text-sm md:text-base font-medium">Global CDN Servers</span>
               </div>
               <div className="flex items-center space-x-2 text-white/90">
                 <Zap className="h-5 w-5" />
-                <span className="text-sm md:text-base font-medium">Instant Results</span>
+                <span className="text-sm md:text-base font-medium">Parallel Connections</span>
               </div>
               <div className="flex items-center space-x-2 text-white/90">
                 <CheckCircle2 className="h-5 w-5" />
                 <span className="text-sm md:text-base font-medium">100% Free</span>
               </div>
             </div>
+
+            {/* Quick tools nav */}
+            <nav aria-label="Quick tools" className="flex flex-wrap justify-center gap-2 pt-4">
+              <Link href="/ping-test" className="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-3 py-1.5 text-white/90 text-sm font-medium transition-all">
+                <Activity className="h-3.5 w-3.5" />Ping Test
+              </Link>
+              <Link href="/wifi-analyzer" className="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-3 py-1.5 text-white/90 text-sm font-medium transition-all">
+                <BarChart3 className="h-3.5 w-3.5" />WiFi Analyzer
+              </Link>
+              <Link href="/speed-test-faq" className="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-3 py-1.5 text-white/90 text-sm font-medium transition-all">
+                <Gauge className="h-3.5 w-3.5" />Speed FAQ
+              </Link>
+              <Link href="/ai-speed-test" className="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-3 py-1.5 text-white/90 text-sm font-medium transition-all">
+                <TrendingUp className="h-3.5 w-3.5" />AI Speed Test
+              </Link>
+              <Link href="/internet-speed-requirements" className="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-3 py-1.5 text-white/90 text-sm font-medium transition-all">
+                <BarChart3 className="h-3.5 w-3.5" />Speed Guide
+              </Link>
+              <Link href="/in-speed-test" className="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-3 py-1.5 text-white/90 text-sm font-medium transition-all">
+                🇮🇳 India Test
+              </Link>
+            </nav>
           </div>
         </div>
       </div>
@@ -436,16 +508,15 @@ export default function SpeedTest() {
             <NetworkInfo networkInfo={networkInfo} />
           </div>
 
-          {/* Center Column - Speed Gauge & Test Controls */}
+          {/* Center Column — multi-connection HTML5 speed test */}
           <div className="flex flex-col items-center justify-start">
-            {/* HTML5 Badge */}
             <div className="mb-4 px-4 py-2 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30">
               <p className="text-sm md:text-base font-medium text-foreground flex items-center space-x-2">
                 <Zap className="h-4 w-4 text-primary" />
-                <span>100% Web-Based HTML5 Test • No Flash • No Java • Works Everywhere</span>
+                <span>Multi-connection HTML5 test • CDN edge download • Parallel upload</span>
               </p>
             </div>
-            
+
             <div className="w-full max-w-md">
               <SpeedGauge
                 currentSpeed={displayResult?.downloadSpeed || 0}
@@ -456,7 +527,7 @@ export default function SpeedTest() {
                 liveSpeed={liveSpeed}
                 livePhase={livePhase}
               />
-              
+
               <div className="space-y-4 mt-6">
                 <Button
                   onClick={handleStartTest}
@@ -652,11 +723,84 @@ export default function SpeedTest() {
         onClose={() => setShowOptimization(false)}
       />
 
-      {/* Speed Requirements Guide Section - Temporarily commented out */}
-      {/* <SpeedRequirementsGuide /> */}
+      {/* ── How It Works ───────────────────────────────────────────────── */}
+      <section className="max-w-7xl mx-auto px-4 lg:px-8 py-12" aria-labelledby="how-it-works-heading">
+        <h2 id="how-it-works-heading" className="text-2xl md:text-3xl font-bold text-foreground text-center mb-2">
+          How Our Speed Test Works
+        </h2>
+        <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
+          Three-phase measurement using multiple parallel connections for results you can trust
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-card border border-border/50 shadow-sm">
+            <div className="w-14 h-14 rounded-full gradient-bg flex items-center justify-center mb-4 shadow">
+              <Activity className="h-7 w-7 text-white" />
+            </div>
+            <span className="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Phase 1</span>
+            <h3 className="font-bold text-foreground text-lg mb-2">Ping &amp; Jitter</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              14 sequential requests to Cloudflare's global edge measure your latency (ping) and variation (jitter) — the metrics that matter most for gaming and video calls.
+            </p>
+          </div>
+          <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-card border border-border/50 shadow-sm">
+            <div className="w-14 h-14 rounded-full gradient-bg flex items-center justify-center mb-4 shadow">
+              <BarChart3 className="h-7 w-7 text-white" />
+            </div>
+            <span className="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Phase 2</span>
+            <h3 className="font-bold text-foreground text-lg mb-2">Download Speed</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              6 parallel streams download from CDN edge servers for ~12 seconds. A trimmed median of interval samples eliminates TCP warm-up noise — similar to how Cloudflare and Netflix measure speed.
+            </p>
+          </div>
+          <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-card border border-border/50 shadow-sm">
+            <div className="w-14 h-14 rounded-full gradient-bg flex items-center justify-center mb-4 shadow">
+              <TrendingUp className="h-7 w-7 text-white" />
+            </div>
+            <span className="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Phase 3</span>
+            <h3 className="font-bold text-foreground text-lg mb-2">Upload Speed</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              4 parallel 2 MiB POST requests saturate your uplink simultaneously, giving a realistic picture of your upload capacity for video calls, cloud backups, and live streaming.
+            </p>
+          </div>
+        </div>
+        <div className="text-center mt-8">
+          <Link href="/speed-test-faq" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium text-sm transition-colors">
+            <Clock className="h-4 w-4" />Read full methodology &amp; FAQ →
+          </Link>
+        </div>
+      </section>
 
-      {/* Enhanced FAQ Section with High-Opportunity Keywords - Temporarily commented out */}
-      {/* <KeywordOptimizedFAQ /> */}
+      {/* ── Speed Standards Benchmark ───────────────────────────────────── */}
+      <section className="bg-muted/30 border-y border-border/40 py-12" aria-labelledby="speed-standards-heading">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8">
+          <h2 id="speed-standards-heading" className="text-2xl md:text-3xl font-bold text-foreground text-center mb-2">
+            Is Your Speed Fast Enough?
+          </h2>
+          <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
+            Compare your results against recommended speeds for common activities.
+            <Link href="/internet-speed-requirements" className="text-primary hover:underline ml-1">View full speed requirements guide →</Link>
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { icon: "📺", label: "HD Streaming", speed: "5–10 Mbps", ping: "—", color: "from-blue-500/10 to-blue-500/5", border: "border-blue-500/20" },
+              { icon: "📡", label: "4K Streaming", speed: "25+ Mbps", ping: "—", color: "from-purple-500/10 to-purple-500/5", border: "border-purple-500/20" },
+              { icon: "🎮", label: "Online Gaming", speed: "3–6 Mbps", ping: "<30 ms", color: "from-green-500/10 to-green-500/5", border: "border-green-500/20" },
+              { icon: "📹", label: "Video Calls", speed: "1–4 Mbps", ping: "<50 ms", color: "from-orange-500/10 to-orange-500/5", border: "border-orange-500/20" },
+              { icon: "🏠", label: "Work From Home", speed: "25+ Mbps", ping: "<60 ms", color: "from-cyan-500/10 to-cyan-500/5", border: "border-cyan-500/20" },
+              { icon: "☁️", label: "Cloud Backup", speed: "10+ Mbps↑", ping: "—", color: "from-indigo-500/10 to-indigo-500/5", border: "border-indigo-500/20" },
+              { icon: "🎵", label: "Music Streaming", speed: "1 Mbps", ping: "—", color: "from-pink-500/10 to-pink-500/5", border: "border-pink-500/20" },
+              { icon: "⚡", label: "Smart Home", speed: "5–25 Mbps", ping: "—", color: "from-yellow-500/10 to-yellow-500/5", border: "border-yellow-500/20" },
+            ].map(({ icon, label, speed, ping, color, border }) => (
+              <div key={label} className={`p-4 rounded-xl bg-gradient-to-br ${color} border ${border} flex flex-col items-center text-center gap-1`}>
+                <span className="text-2xl">{icon}</span>
+                <span className="text-sm font-semibold text-foreground">{label}</span>
+                <span className="text-xs text-primary font-bold">{speed}</span>
+                {ping !== "—" && <span className="text-xs text-muted-foreground">Ping {ping}</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* SEO-Optimized Footer Content */}
       <footer className="bg-card/30 backdrop-blur-sm border-t border-border/50 mt-12">
@@ -706,46 +850,44 @@ export default function SpeedTest() {
 
           {/* International Country Speed Tests Section */}
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-foreground mb-6 text-center">International Speed Tests</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-2 text-center">Speed Tests by Country</h2>
             <p className="text-center text-muted-foreground mb-8">
-              Test your internet speed with servers optimized for your country's network infrastructure
+              Country-specific results compared against local ISP benchmarks
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-              <Link href="/us-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-                <div className="text-sm font-medium text-foreground group-hover:text-primary">🇺🇸 USA Speed Test</div>
-                <div className="text-xs text-muted-foreground">Verizon, AT&T, Comcast</div>
-              </Link>
-              <Link href="/uk-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-                <div className="text-sm font-medium text-foreground group-hover:text-primary">🇬🇧 UK Speed Test</div>
-                <div className="text-xs text-muted-foreground">BT, Sky, Virgin Media</div>
-              </Link>
-              <Link href="/au-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-                <div className="text-sm font-medium text-foreground group-hover:text-primary">🇦🇺 Australia Speed Test</div>
-                <div className="text-xs text-muted-foreground">NBN, Telstra, Optus</div>
-              </Link>
-              <Link href="/ca-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-                <div className="text-sm font-medium text-foreground group-hover:text-primary">🇨🇦 Canada Speed Test</div>
-                <div className="text-xs text-muted-foreground">Rogers, Bell, Telus</div>
-              </Link>
-              <Link href="/de-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-                <div className="text-sm font-medium text-foreground group-hover:text-primary">🇩🇪 Germany Speed Test</div>
-                <div className="text-xs text-muted-foreground">Telekom, Vodafone, O2</div>
-              </Link>
-              <Link href="/sg-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-                <div className="text-sm font-medium text-foreground group-hover:text-primary">🇸🇬 Singapore Speed Test</div>
-                <div className="text-xs text-muted-foreground">Singtel, StarHub, M1</div>
-              </Link>
-              <Link href="/th-speed-test" className="group block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
-                <div className="text-sm font-medium text-foreground group-hover:text-primary">🇹🇭 Thailand Speed Test</div>
-                <div className="text-xs text-muted-foreground">AIS, True, 3BB</div>
-              </Link>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+              {[
+                { href: "/us-speed-test", flag: "🇺🇸", name: "USA", isps: "Verizon, AT&T" },
+                { href: "/uk-speed-test", flag: "🇬🇧", name: "UK", isps: "BT, Sky, Virgin" },
+                { href: "/in-speed-test", flag: "🇮🇳", name: "India", isps: "Jio, Airtel, BSNL" },
+                { href: "/au-speed-test", flag: "🇦🇺", name: "Australia", isps: "NBN, Telstra" },
+                { href: "/ca-speed-test", flag: "🇨🇦", name: "Canada", isps: "Rogers, Bell" },
+                { href: "/de-speed-test", flag: "🇩🇪", name: "Germany", isps: "Telekom, O2" },
+                { href: "/sg-speed-test", flag: "🇸🇬", name: "Singapore", isps: "Singtel, StarHub" },
+                { href: "/th-speed-test", flag: "🇹🇭", name: "Thailand", isps: "AIS, True, 3BB" },
+                { href: "/fr-speed-test", flag: "🇫🇷", name: "France", isps: "Orange, SFR" },
+                { href: "/br-speed-test", flag: "🇧🇷", name: "Brazil", isps: "Claro, Vivo" },
+                { href: "/mx-speed-test", flag: "🇲🇽", name: "Mexico", isps: "Telmex, Izzi" },
+                { href: "/id-speed-test", flag: "🇮🇩", name: "Indonesia", isps: "Indihome, Biznet" },
+                { href: "/my-speed-test", flag: "🇲🇾", name: "Malaysia", isps: "Maxis, Unifi" },
+                { href: "/ph-speed-test", flag: "🇵🇭", name: "Philippines", isps: "PLDT, Globe" },
+                { href: "/nl-speed-test", flag: "🇳🇱", name: "Netherlands", isps: "KPN, Ziggo" },
+                { href: "/es-speed-test", flag: "🇪🇸", name: "Spain", isps: "Movistar, Orange" },
+                { href: "/it-speed-test", flag: "🇮🇹", name: "Italy", isps: "TIM, Vodafone" },
+                { href: "/za-speed-test", flag: "🇿🇦", name: "South Africa", isps: "Afrihost, Rain" },
+                { href: "/ae-speed-test", flag: "🇦🇪", name: "UAE", isps: "Etisalat, du" },
+                { href: "/sa-speed-test", flag: "🇸🇦", name: "Saudi Arabia", isps: "STC, Zain" },
+                { href: "/pl-speed-test", flag: "🇵🇱", name: "Poland", isps: "Orange, Play" },
+                { href: "/ar-speed-test", flag: "🇦🇷", name: "Argentina", isps: "Movistar, Claro" },
+              ].map(({ href, flag, name, isps }) => (
+                <Link key={href} href={href} className="group block min-h-[4.5rem] p-3 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/30 transition-all duration-200">
+                  <div className="text-sm font-medium text-foreground group-hover:text-primary leading-snug">{flag} {name}</div>
+                  <div className="text-xs text-muted-foreground mt-1 leading-snug line-clamp-2">{isps}</div>
+                </Link>
+              ))}
             </div>
             <div className="text-center mt-6">
-              <Link
-                href="/internet-providers"
-                className="inline-flex items-center text-primary hover:text-primary/80 transition-colors font-medium"
-              >
-                Browse all countries and ISP pages →
+              <Link href="/internet-providers" className="inline-flex items-center gap-1 text-primary hover:text-primary/80 transition-colors font-medium">
+                Browse all countries &amp; ISP pages →
               </Link>
             </div>
           </div>
@@ -921,33 +1063,39 @@ export default function SpeedTest() {
 
           {/* Speed Test Types Section */}
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Types of Internet Speed Tests</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 text-center">Types of Internet Speed Tests</h2>
             <p className="text-center text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Run different speed tests based on your connection type. Our free speed test online supports WiFi speed test, fiber speed test, net speed test, and broadband speed checker.
+              Choose the right test for your connection type — WiFi, fiber, mobile data, or broadband.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="card-hover">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-foreground mb-3">WiFi Speed Test</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Check WiFi speed test, test wifi speed, and wifi signal strength test. Run wifi speed checker to test my wifi speed and optimize wireless performance.
+              <Card className="card-hover h-full">
+                <CardContent className="p-6 flex flex-col h-full">
+                  <div className="w-11 h-11 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4 text-xl">📶</div>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">WiFi Speed Test</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
+                    Test wireless speed from your router. Identify whether slow speeds are a WiFi issue or an ISP issue by comparing wired vs wireless. Use our <Link href="/wifi-analyzer" className="text-primary hover:underline">WiFi Analyzer</Link> to optimize channel and signal strength.
                   </p>
+                  <Link href="/wifi-speed-optimization" className="text-sm text-primary hover:text-primary/80 font-medium mt-auto">WiFi Optimization Guide →</Link>
                 </CardContent>
               </Card>
-              <Card className="card-hover">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-foreground mb-3">Fiber Speed Test</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    My fiber speed test for Jio Fiber, Airtel Xstream, ACT Fibernet. Run fiber speed test to check internet speed and broadband performance.
+              <Card className="card-hover h-full">
+                <CardContent className="p-6 flex flex-col h-full">
+                  <div className="w-11 h-11 rounded-xl bg-green-500/10 flex items-center justify-center mb-4 text-xl">⚡</div>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">Fiber &amp; Broadband Speed Test</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
+                    Verify your fiber or cable broadband plan is delivering its promised speed. Popular in India for Jio Fiber, Airtel Xstream, ACT Fibernet. Check our <Link href="/download-speed-guide" className="text-primary hover:underline">download speed guide</Link> to understand your results.
                   </p>
+                  <Link href="/in-speed-test" className="text-sm text-primary hover:text-primary/80 font-medium mt-auto">India Fiber Speed Test →</Link>
                 </CardContent>
               </Card>
-              <Card className="card-hover">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-foreground mb-3">Data Speed Test</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Data speed test online, net speed test, and bandwidth test. Test internet speed, check my internet speed, and run speed test for accurate results.
+              <Card className="card-hover h-full">
+                <CardContent className="p-6 flex flex-col h-full">
+                  <div className="w-11 h-11 rounded-xl bg-purple-500/10 flex items-center justify-center mb-4 text-xl">📱</div>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">Mobile Data Speed Test</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
+                    Test 4G/5G speed on the go. Our browser-based test works on any smartphone without installing an app. Compare results for <Link href="/in-speed-test" className="text-primary hover:underline">Jio, Vi, Airtel 5G</Link> or any global carrier.
                   </p>
+                  <Link href="/ping-test" className="text-sm text-primary hover:text-primary/80 font-medium mt-auto">Check Mobile Ping &amp; Latency →</Link>
                 </CardContent>
               </Card>
             </div>
@@ -955,108 +1103,105 @@ export default function SpeedTest() {
 
           {/* FAQ Section */}
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Frequently Asked Questions</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 text-center">Frequently Asked Questions</h2>
+            <p className="text-center text-muted-foreground mb-8">
+              Common questions about internet speed tests, results, and optimization.&nbsp;
+              <Link href="/speed-test-faq" className="text-primary hover:underline">See full FAQ →</Link>
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">How to run speed test online?</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Simply click "Start Test" to run speed test. Our free internet speed test checks download, upload, ping, and jitter in seconds. Works on all devices.
-                  </p>
+              {[
+                {
+                  q: "How does this speed test work?",
+                  a: <>Opens 6 parallel download streams to CDN edge servers for ~12 s, samples throughput every 200 ms, then returns a trimmed-median Mbps. Upload uses 4 parallel POST streams. Ping/jitter are sampled from 14 sequential Cloudflare requests. <Link href="/speed-test-faq" className="text-primary hover:underline">Full methodology →</Link></>
+                },
+                {
+                  q: "What is a good internet speed?",
+                  a: <>25 Mbps covers basic browsing and HD streaming. 100 Mbps suits most households. 300+ Mbps is comfortable for multiple 4K streams. For gaming, ping under 30 ms matters more than raw speed. <Link href="/internet-speed-requirements" className="text-primary hover:underline">See full requirements →</Link></>
+                },
+                {
+                  q: "Why is my result lower than my ISP plan?",
+                  a: "ISP plans are theoretical maximums over a wired connection. WiFi overhead, router age, network congestion, and shared connections all reduce your measured speed. Test with a wired Ethernet cable for your true line speed."
+                },
+                {
+                  q: "What affects WiFi speed?",
+                  a: <>Distance from router, walls and floors, 2.4 GHz vs 5 GHz band, channel congestion, and the number of connected devices. Use the <Link href="/wifi-analyzer" className="text-primary hover:underline">WiFi Analyzer</Link> or click <strong>"Optimize WiFi Speed"</strong> for personalised tips.</>
+                },
+                {
+                  q: "How can I improve my internet speed?",
+                  a: <>Switch to a wired connection, restart your router, move closer to your router, change your WiFi channel, or contact your ISP. Our <Link href="/wifi-speed-optimization" className="text-primary hover:underline">WiFi Optimization Guide</Link> walks through each step.</>
+                },
+                {
+                  q: "Why do different speed tests give different results?",
+                  a: "Each tool uses different server locations, connection counts, and scoring methods. Our tool uses Cloudflare CDN edge servers and parallel connections — similar to how Netflix's Fast.com and Cloudflare Speed test work."
+                },
+              ].map(({ q, a }) => (
+                <div key={q} className="p-5 rounded-xl bg-card border border-border/50">
+                  <h3 className="font-semibold text-foreground mb-2 text-base">{q}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{a}</p>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">What affects my internet speed?</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Network congestion, WiFi interference, device limitations, background downloads, and distance 
-                    from your router can all impact your connection speed.
-                  </p>
-                </div>
-              </div>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">Is this speed test free?</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Yes! Free internet speed test, free wifi speed test online, no signup required. Check internet speed test free, wifi test free anytime.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">How can I improve my internet speed?</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Upgrade your plan, use wired connections, update your router, reduce network interference, 
-                    and close unnecessary applications consuming bandwidth.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
           {/* Footer Links and Info */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-8 border-t border-border/30">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 pt-8 border-t border-border/30">
             <div>
-              <h4 className="font-semibold text-foreground mb-3">Major City Tests</h4>
+              <h4 className="font-semibold text-foreground mb-3">India City Tests</h4>
               <div className="space-y-2 text-sm">
-                <Link href="/delhi-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Delhi Speed Test
-                </Link>
-                <Link href="/mumbai-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Mumbai Speed Test
-                </Link>
-                <Link href="/bangalore-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Bangalore Speed Test
-                </Link>
-                <Link href="/chennai-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Chennai Speed Test
-                </Link>
+                <Link href="/in-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">India Speed Test</Link>
+                <Link href="/delhi-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">Delhi Speed Test</Link>
+                <Link href="/mumbai-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">Mumbai Speed Test</Link>
+                <Link href="/bangalore-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">Bangalore Speed Test</Link>
+                <Link href="/chennai-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">Chennai Speed Test</Link>
+                <Link href="/hyderabad-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">Hyderabad Speed Test</Link>
+                <Link href="/kolkata-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">Kolkata Speed Test</Link>
               </div>
             </div>
             <div>
-              <h4 className="font-semibold text-foreground mb-3">Regional Cities</h4>
+              <h4 className="font-semibold text-foreground mb-3">Country Tests</h4>
               <div className="space-y-2 text-sm">
-                <Link href="/hyderabad-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Hyderabad Speed Test
-                </Link>
-                <Link href="/kolkata-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Kolkata Speed Test
-                </Link>
-                <div className="text-muted-foreground">WiFi Speed Test</div>
-                <div className="text-muted-foreground">Fiber Speed Test</div>
+                <Link href="/us-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">USA Speed Test</Link>
+                <Link href="/uk-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">UK Speed Test</Link>
+                <Link href="/au-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">Australia Speed Test</Link>
+                <Link href="/ca-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">Canada Speed Test</Link>
+                <Link href="/de-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">Germany Speed Test</Link>
+                <Link href="/sg-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">Singapore Speed Test</Link>
+                <Link href="/internet-providers" className="block text-primary hover:text-primary/80 font-medium transition-colors">All Countries →</Link>
               </div>
             </div>
             <div>
-              <h4 className="font-semibold text-foreground mb-3">External Resources</h4>
+              <h4 className="font-semibold text-foreground mb-3">Guides &amp; Tools</h4>
               <div className="space-y-2 text-sm">
-                <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Speedtest by Ookla
-                </a>
-                <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Fast.com by Netflix
-                </a>
-                <a href="https://www.google.com/search?q=internet+speed+test" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Google Speed Test
-                </a>
-                <a href="https://www.fcc.gov/consumers/guides/broadband-speed-guide" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
-                  FCC Broadband Guide
-                </a>
+                <Link href="/ping-test" className="block text-muted-foreground hover:text-primary transition-colors" data-testid="footer-link-ping-test">Ping Test Tool</Link>
+                <Link href="/wifi-analyzer" className="block text-muted-foreground hover:text-primary transition-colors">WiFi Analyzer</Link>
+                <Link href="/ai-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">AI Speed Test</Link>
+                <Link href="/download-speed-guide" className="block text-muted-foreground hover:text-primary transition-colors">Download Speed Guide</Link>
+                <Link href="/upload-speed-guide" className="block text-muted-foreground hover:text-primary transition-colors">Upload Speed Guide</Link>
+                <Link href="/wifi-speed-optimization" className="block text-muted-foreground hover:text-primary transition-colors">WiFi Optimization</Link>
+                <Link href="/internet-speed-requirements" className="block text-muted-foreground hover:text-primary transition-colors">Speed Requirements</Link>
               </div>
             </div>
             <div>
-              <h4 className="font-semibold text-foreground mb-3">About & Help</h4>
+              <h4 className="font-semibold text-foreground mb-3">ISP Speed Tests</h4>
               <div className="space-y-2 text-sm">
-                <Link href="/about" className="block text-muted-foreground hover:text-primary transition-colors">
-                  About Us
-                </Link>
-                <Link href="/help" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Help & FAQ
-                </Link>
-                <Link href="/ping-test" className="block text-muted-foreground hover:text-primary transition-colors" data-testid="footer-link-ping-test">
-                  Ping Test Tool
-                </Link>
-                <a href="https://en.wikipedia.org/wiki/Internet_speed_test" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
-                  Speed Test Info
-                </a>
-                <a href="https://www.fcc.gov/consumers/guides/broadband-speed-guide" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">
-                  FCC Speed Guide
-                </a>
+                <Link href="/providers/us/comcast" className="block text-muted-foreground hover:text-primary transition-colors">Comcast Speed Test</Link>
+                <Link href="/providers/us/verizon" className="block text-muted-foreground hover:text-primary transition-colors">Verizon Speed Test</Link>
+                <Link href="/providers/uk/bt" className="block text-muted-foreground hover:text-primary transition-colors">BT Speed Test</Link>
+                <Link href="/providers/uk/sky" className="block text-muted-foreground hover:text-primary transition-colors">Sky Speed Test</Link>
+                <Link href="/providers/in/jio-fiber" className="block text-muted-foreground hover:text-primary transition-colors">Jio Fiber Speed Test</Link>
+                <Link href="/providers/in/airtel-broadband" className="block text-muted-foreground hover:text-primary transition-colors">Airtel Speed Test</Link>
+                <Link href="/internet-providers" className="block text-primary hover:text-primary/80 font-medium transition-colors">All ISPs →</Link>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground mb-3">About &amp; Help</h4>
+              <div className="space-y-2 text-sm">
+                <Link href="/about" className="block text-muted-foreground hover:text-primary transition-colors">About Us</Link>
+                <Link href="/help" className="block text-muted-foreground hover:text-primary transition-colors">Help &amp; FAQ</Link>
+                <Link href="/speed-test-faq" className="block text-muted-foreground hover:text-primary transition-colors">Speed Test FAQ</Link>
+                <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">Fast.com (Netflix)</a>
+                <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">Speedtest.net (Ookla)</a>
+                <a href="https://www.fcc.gov/consumers/guides/broadband-speed-guide" target="_blank" rel="noopener noreferrer" className="block text-muted-foreground hover:text-primary transition-colors">FCC Broadband Guide</a>
               </div>
             </div>
           </div>
@@ -1064,8 +1209,8 @@ export default function SpeedTest() {
           {/* Copyright */}
           <div className="text-center pt-8 border-t border-border/30 mt-8">
             <p className="text-sm text-muted-foreground">
-              © 2025 Speed Test and Boost. Free internet speed test tool for accurate bandwidth measurement. 
-              Test your connection speed on any device. Compare with <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Fast.com</a> and <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Speedtest.net</a>.
+              © 2026 Speed Test &amp; Boost — Free internet speed test for accurate bandwidth measurement.
+              Compare with <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Fast.com</a> and <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Speedtest.net</a>.
             </p>
           </div>
         </div>
