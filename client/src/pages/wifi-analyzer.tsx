@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { setCanonicalHref } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -112,13 +113,7 @@ export default function WiFiAnalyzer() {
     });
     
     // Canonical URL
-    const canonical = document.createElement('link');
-
-    canonical.rel = 'canonical';
-
-    canonical.href = 'https://speedtestboost.com/wifi-analyzer';
-
-    document.head.appendChild(canonical);
+    setCanonicalHref('https://speedtestboost.com/wifi-analyzer');
     
     // Structured Data (JSON-LD)
     let structuredData = document.querySelector('script[type="application/ld+json"]');
@@ -159,10 +154,6 @@ export default function WiFiAnalyzer() {
     });
 
     return () => {
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
     };
   }, []);
 

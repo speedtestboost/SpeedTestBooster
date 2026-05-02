@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { setCanonicalHref } from "@/lib/seo";
 import { Link } from "wouter";
 import Header from "@/components/Header";
 import GenericFooter from "@/components/GenericFooter";
@@ -67,13 +68,7 @@ export default function WiFiSpeedOptimization() {
     }
 
     // Update canonical URL
-    const canonical = document.createElement('link');
-
-    canonical.rel = 'canonical';
-
-    canonical.href = 'https://speedtestboost.com/wifi-speed-optimization';
-
-    document.head.appendChild(canonical);
+    setCanonicalHref('https://speedtestboost.com/wifi-speed-optimization');
 
     // Open Graph and Twitter meta tags
     const createOrUpdateMetaTag = (property: string, content: string) => {
@@ -221,10 +216,6 @@ export default function WiFiSpeedOptimization() {
     document.head.appendChild(script);
 
     return () => {
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
       
       const existingScript = document.querySelector('script#wifi-optimization-structured-data');
       if (existingScript) existingScript.remove();

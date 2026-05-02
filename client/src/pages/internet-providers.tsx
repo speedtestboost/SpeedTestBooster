@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { setCanonicalHref } from "@/lib/seo";
 import { Link } from "wouter";
 import Header from "@/components/Header";
 import GenericFooter from "@/components/GenericFooter";
@@ -279,10 +280,7 @@ export default function InternetProviders() {
     }
 
     // Add canonical URL
-    const canonical = document.createElement('link');
-    canonical.rel = 'canonical';
-    canonical.href = 'https://speedtestboost.com/internet-providers';
-    document.head.appendChild(canonical);
+    setCanonicalHref('https://speedtestboost.com/internet-providers');
 
     // Add JSON-LD structured data
     const structuredData = {
@@ -334,10 +332,6 @@ export default function InternetProviders() {
     document.head.appendChild(script);
 
     return () => {
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
       
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) {

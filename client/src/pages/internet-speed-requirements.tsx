@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import GenericFooter from "@/components/GenericFooter";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -144,13 +145,7 @@ export default function InternetSpeedRequirements() {
     });
     
     // Update canonical tag
-    const canonical = document.createElement('link');
-
-    canonical.rel = 'canonical';
-
-    canonical.href = 'https://speedtestboost.com/internet-speed-requirements';
-
-    document.head.appendChild(canonical);
+    setCanonicalHref('https://speedtestboost.com/internet-speed-requirements');
     
     // Structured Data (JSON-LD)
     let structuredData = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
@@ -192,10 +187,6 @@ export default function InternetSpeedRequirements() {
     });
 
     return () => {
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
     };
   }, []);
 

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -19,13 +20,7 @@ export default function StarhubSpeedTest() {
     }
 
     // Update canonical tag
-    const canonical = document.createElement('link');
-
-    canonical.rel = 'canonical';
-
-    canonical.href = 'https://speedtestboost.com/providers/sg/starhub';
-
-    document.head.appendChild(canonical);
+    setCanonicalHref('https://speedtestboost.com/providers/sg/starhub');
 
     const structuredData = {
       "@context": "https://schema.org",
@@ -50,11 +45,6 @@ export default function StarhubSpeedTest() {
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
-
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
     };
   }, []);
 

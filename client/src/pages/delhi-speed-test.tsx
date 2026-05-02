@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { setCanonicalHref } from "@/lib/seo";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { queryClient } from "@/lib/queryClient";
 import { getSessionId } from "@/lib/sessionManager";
@@ -86,16 +87,7 @@ export default function DelhiSpeedTest() {
     // Canonical URL
 
     
-    const canonical = document.createElement('link');
-
-    
-    canonical.rel = 'canonical';
-
-    
-    canonical.href = 'https://speedtestboost.com/delhi-speed-test';
-
-    
-    document.head.appendChild(canonical);
+    setCanonicalHref('https://speedtestboost.com/delhi-speed-test');
     
     // Structured Data (JSON-LD)
     let structuredData = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
@@ -135,10 +127,6 @@ export default function DelhiSpeedTest() {
     });
 
     return () => {
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
     };
   }, []);
 

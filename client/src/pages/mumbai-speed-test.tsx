@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { setCanonicalHref } from "@/lib/seo";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { queryClient } from "@/lib/queryClient";
 import { getSessionId } from "@/lib/sessionManager";
@@ -45,19 +46,9 @@ export default function MumbaiSpeedTest() {
     keywords.content = 'mumbai speed test, speed test india, speed test in india, internet speed booster test Mumbai india, wifi speed test mumbai, fiber speed test india, jio fiber speed test, airtel speed test mumbai, broadband speed test india, net speed test mumbai, data speed test india';
     
     // Add canonical URL
-    const canonical = document.createElement('link');
-
-    canonical.rel = 'canonical';
-
-    canonical.href = 'https://speedtestboost.com/mumbai-speed-test';
-
-    document.head.appendChild(canonical);
+    setCanonicalHref('https://speedtestboost.com/mumbai-speed-test');
 
     return () => {
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
     };
   }, []);
 

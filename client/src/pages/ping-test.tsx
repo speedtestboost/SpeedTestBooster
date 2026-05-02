@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { setCanonicalHref } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -79,16 +80,7 @@ export default function PingTest() {
     // Canonical URL
 
     
-    const canonical = document.createElement('link');
-
-    
-    canonical.rel = 'canonical';
-
-    
-    canonical.href = 'https://speedtestboost.com/ping-test';
-
-    
-    document.head.appendChild(canonical);
+    setCanonicalHref('https://speedtestboost.com/ping-test');
     
     // Structured Data (JSON-LD)
     let structuredData = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
@@ -127,10 +119,6 @@ export default function PingTest() {
 
     // Cleanup function
     return () => {
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
       
       // Clean up meta tags
       const cleanupSelectors = [

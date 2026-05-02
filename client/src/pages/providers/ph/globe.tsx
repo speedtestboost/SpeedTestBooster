@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -18,16 +19,7 @@ export default function GlobeSpeedTest() {
       metaDescription.setAttribute('content', 'Test Globe At Home Fiber internet speed instantly - Free speed test for Philippines. Accurate download/upload WiFi performance results now.');
     }
 
-    const canonical = document.createElement('link');
-
-
-    canonical.rel = 'canonical';
-
-
-    canonical.href = 'https://speedtestboost.com/providers/ph/globe';
-
-
-    document.head.appendChild(canonical);
+    setCanonicalHref('https://speedtestboost.com/providers/ph/globe');
 
     const structuredData = {
       "@context": "https://schema.org",
@@ -52,11 +44,6 @@ export default function GlobeSpeedTest() {
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
-
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
     };
   }, []);
 

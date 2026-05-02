@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -18,16 +19,7 @@ export default function CelcomSpeedTest() {
       metaDescription.setAttribute('content', 'Test Celcom Home Fiber internet speed instantly - Free speed test for Malaysia. Accurate fiber & mobile broadband performance results now.');
     }
 
-    const canonical = document.createElement('link');
-
-
-    canonical.rel = 'canonical';
-
-
-    canonical.href = 'https://speedtestboost.com/providers/my/celcom';
-
-
-    document.head.appendChild(canonical);
+    setCanonicalHref('https://speedtestboost.com/providers/my/celcom');
 
     const structuredData = {
       "@context": "https://schema.org",
@@ -52,11 +44,6 @@ export default function CelcomSpeedTest() {
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
-
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
     };
   }, []);
 

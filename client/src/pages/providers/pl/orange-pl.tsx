@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -15,23 +16,17 @@ export default function OrangePlSpeedTest() {
     document.title = "Orange Speed Test Poland - Check Fibe Fiber Internet Speed Free 2025";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Orange Swiatlowùd fiber internet speed instantly - Free speed checker for Poland. Accurate download/upload speeds & DSL results in seconds.');
+      metaDescription.setAttribute('content', 'Test Orange SwiatlowÔøΩd fiber internet speed instantly - Free speed checker for Poland. Accurate download/upload speeds & DSL results in seconds.');
     }
 
     // Update canonical tag
-    const canonical = document.createElement('link');
-
-    canonical.rel = 'canonical';
-
-    canonical.href = 'https://speedtestboost.com/providers/pl/orange-pl';
-
-    document.head.appendChild(canonical);
+    setCanonicalHref('https://speedtestboost.com/providers/pl/orange-pl');
 
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Orange fibre internet Speed Test",
-      "description": "Test your Orange fibre internet speed for free. Speed test for Orange Swiatlowùd and DSL internet customers in Poland.",
+      "description": "Test your Orange fibre internet speed for free. Speed test for Orange SwiatlowÔøΩd and DSL internet customers in Poland.",
       "url": "https://speedtestboost.com/providers/pl/orange-pl",
       "provider": {
         "@type": "Organization",
@@ -50,11 +45,6 @@ export default function OrangePlSpeedTest() {
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
-
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
     };
   }, []);
 
@@ -81,7 +71,7 @@ export default function OrangePlSpeedTest() {
               Orange fibre internet Speed Test
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Test your <span className="font-semibold text-orange-500">Orange fibre internet speed</span> for free. Check your Orange Swiatlowùd or DSL internet performance across Poland.
+              Test your <span className="font-semibold text-orange-500">Orange fibre internet speed</span> for free. Check your Orange SwiatlowÔøΩd or DSL internet performance across Poland.
             </p>
             
             {/* Speed Test CTA */}
@@ -119,7 +109,7 @@ export default function OrangePlSpeedTest() {
 
                 <h3 className="text-xl font-semibold mb-3">Fibre Internet Innovation</h3>
                 <p className="text-muted-foreground">
-                  Orange Swiatlowùd represents the company's flagship internet service, utilizing pure fibre optic technology 
+                  Orange SwiatlowÔøΩd represents the company's flagship internet service, utilizing pure fibre optic technology 
                   to deliver symmetrical upload and download speeds directly to Canadian homes and businesses. The 
                   Fibe network expansion continues across urban centers and increasingly into rural communities, 
                   supporting Poland's growing digital economy and remote work trends. Orange's fibre infrastructure 
@@ -148,7 +138,7 @@ export default function OrangePlSpeedTest() {
                   Regular speed testing helps Orange customers monitor their internet performance and ensure optimal 
                   service delivery. Our Orange speed test provides accurate measurements of your download speeds, 
                   upload speeds, and connection stability, helping identify any performance issues. This testing 
-                  is particularly valuable for Orange Swiatlowùd customers who rely on consistent high-speed connectivity 
+                  is particularly valuable for Orange SwiatlowÔøΩd customers who rely on consistent high-speed connectivity 
                   for work, entertainment, and communication needs.
                 </p>
               </div>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -60,16 +61,7 @@ export default function ComcastSpeedTest() {
       twitterTag.setAttribute('content', tag.content);
     });
 
-    const canonical = document.createElement('link');
-
-
-    canonical.rel = 'canonical';
-
-
-    canonical.href = 'https://speedtestboost.com/providers/us/comcast';
-
-
-    document.head.appendChild(canonical);
+    setCanonicalHref('https://speedtestboost.com/providers/us/comcast');
 
     const structuredData = {
       "@context": "https://schema.org",
@@ -132,10 +124,6 @@ export default function ComcastSpeedTest() {
     document.head.appendChild(script);
 
     return () => {
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
       
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);

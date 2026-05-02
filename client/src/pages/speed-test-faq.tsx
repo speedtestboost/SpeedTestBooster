@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { setCanonicalHref } from "@/lib/seo";
 import { Link } from "wouter";
 import Header from "@/components/Header";
 import GenericFooter from "@/components/GenericFooter";
@@ -27,21 +28,12 @@ export default function SpeedTestFAQ() {
       metaDescription.setAttribute('content', 'Get answers to the most common speed test questions. Learn why your speed test shows fast but internet feels slow, what speeds you need for Zoom and gaming, how to improve results, and more.');
     }
 
-    // Update or create canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
-    if (canonical) {
-      // Reuse existing canonical, track original href
-      const originalHref = canonical.getAttribute('href') || '';
-      modifiedElements.set(canonical, new Map([['href', originalHref]]));
-      canonical.href = 'https://speedtestboost.com/speed-test-faq';
-    } else {
-      // Create new canonical
-      canonical = document.createElement('link');
-      canonical.rel = 'canonical';
-      canonical.href = 'https://speedtestboost.com/speed-test-faq';
-      document.head.appendChild(canonical);
-      createdElements.push(canonical);
+    const canonicalEl = document.getElementById("canonical-url") as HTMLLinkElement | null;
+    if (canonicalEl) {
+      const originalHref = canonicalEl.getAttribute("href") || "";
+      modifiedElements.set(canonicalEl, new Map([["href", originalHref]]));
     }
+    setCanonicalHref("https://speedtestboost.com/speed-test-faq");
 
     // Helper to create or update meta tags with tracking
     const createOrUpdateMetaTag = (property: string, content: string) => {

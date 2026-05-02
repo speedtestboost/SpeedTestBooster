@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -49,13 +50,7 @@ export default function KPNSpeedTest() {
     });
     
     // Update canonical tag
-    const canonical = document.createElement('link');
-
-    canonical.rel = 'canonical';
-
-    canonical.href = 'https://speedtestboost.com/providers/nl/kpn';
-
-    document.head.appendChild(canonical);
+    setCanonicalHref('https://speedtestboost.com/providers/nl/kpn');
     
     // Structured Data
     let structuredData = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
@@ -95,10 +90,6 @@ export default function KPNSpeedTest() {
     });
 
     return () => {
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
     };
   }, []);
 

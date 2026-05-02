@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -19,13 +20,7 @@ export default function OptimumSpeedTest() {
     }
 
     // Update canonical tag
-    const canonical = document.createElement('link');
-
-    canonical.rel = 'canonical';
-
-    canonical.href = 'https://speedtestboost.com/providers/us/optimum';
-
-    document.head.appendChild(canonical);
+    setCanonicalHref('https://speedtestboost.com/providers/us/optimum');
 
     const structuredData = {
       "@context": "https://schema.org",
@@ -51,11 +46,6 @@ export default function OptimumSpeedTest() {
     return () => {
       const existingScript = document.querySelector('script#optimum-structured-data');
       if (existingScript) document.head.removeChild(existingScript);
-
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
     };
   }, []);
 

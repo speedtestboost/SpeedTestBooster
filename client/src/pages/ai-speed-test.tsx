@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { setCanonicalHref } from "@/lib/seo";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -108,13 +109,7 @@ export default function AISpeedTest() {
 
   // Set canonical URL and SEO
   useEffect(() => {
-    const canonical = document.createElement('link');
-
-    canonical.rel = 'canonical';
-
-    canonical.href = 'https://speedtestboost.com/ai-speed-test';
-
-    document.head.appendChild(canonical);
+    setCanonicalHref('https://speedtestboost.com/ai-speed-test');
     
     // Update page title and meta description
     document.title = "AI Internet Speed Test & Requirements Calculator 2025 - ChatGPT, Claude, Midjourney Speed Requirements";
@@ -125,10 +120,6 @@ export default function AISpeedTest() {
     }
 
     return () => {
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
     };
   }, []);
 

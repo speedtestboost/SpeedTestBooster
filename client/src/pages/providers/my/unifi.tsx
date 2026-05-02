@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -18,16 +19,7 @@ export default function UnifiSpeedTest() {
       metaDescription.setAttribute('content', 'Test Unifi FTTH fiber internet speed instantly - Free speed test for Malaysia. Accurate Telekom download/upload performance results in seconds.');
     }
 
-    const canonical = document.createElement('link');
-
-
-    canonical.rel = 'canonical';
-
-
-    canonical.href = 'https://speedtestboost.com/providers/my/unifi';
-
-
-    document.head.appendChild(canonical);
+    setCanonicalHref('https://speedtestboost.com/providers/my/unifi');
 
     const structuredData = {
       "@context": "https://schema.org",
@@ -52,11 +44,6 @@ export default function UnifiSpeedTest() {
     return () => {
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);
-
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
     };
   }, []);
 

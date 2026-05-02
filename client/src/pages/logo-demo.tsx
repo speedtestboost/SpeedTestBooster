@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -51,16 +52,7 @@ export default function LogoDemo() {
     // Canonical URL
 
     
-    const canonical = document.createElement('link');
-
-    
-    canonical.rel = 'canonical';
-
-    
-    canonical.href = 'https://speedtestboost.com/logo-demo';
-
-    
-    document.head.appendChild(canonical);
+    setCanonicalHref('https://speedtestboost.com/logo-demo');
     
     // Add noindex meta tag since this is an internal demo page
     let robotsMeta = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
@@ -74,10 +66,6 @@ export default function LogoDemo() {
     robotsMeta.content = 'noindex, nofollow';
 
     return () => {
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
       if (createdRobots) {
         robotsMeta?.remove();
       } else if (robotsMeta) {

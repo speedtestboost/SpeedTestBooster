@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import GenericFooter from "@/components/GenericFooter";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -26,16 +27,7 @@ export default function FrenchSpeedTest() {
     }
     contentLanguage.setAttribute('content', 'fr');
 
-    const canonical = document.createElement('link');
-
-
-    canonical.rel = 'canonical';
-
-
-    canonical.href = 'https://speedtestboost.com/fr';
-
-
-    document.head.appendChild(canonical);
+    setCanonicalHref('https://speedtestboost.com/fr');
 
     const existingHreflang = document.querySelectorAll('link[rel="alternate"][hreflang]');
     existingHreflang.forEach(link => link.remove());
@@ -96,10 +88,6 @@ export default function FrenchSpeedTest() {
     document.head.appendChild(script);
 
     return () => {
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
       
       const existingScript = document.querySelector('script[type="application/ld+json"]');
       if (existingScript) document.head.removeChild(existingScript);

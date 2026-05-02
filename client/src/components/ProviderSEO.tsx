@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { setCanonicalHref } from '@/lib/seo';
 import { providerKeywords } from '@/seo/providerKeywords';
 
 interface ProviderSEOProps {
@@ -22,11 +23,8 @@ export function ProviderSEO({ providerSlug }: ProviderSEOProps) {
       metaDescription.setAttribute('content', config.metaTemplate);
     }
 
-    // Create canonical URL
-    const canonicalLink = document.createElement('link');
-    canonicalLink.setAttribute('rel', 'canonical');
-    canonicalLink.setAttribute('href', `https://speedtestboost.com/providers/${providerSlug.includes('/') ? providerSlug : `us/${providerSlug}`}`);
-    document.head.appendChild(canonicalLink);
+    const providerPath = providerSlug.includes('/') ? providerSlug : `us/${providerSlug}`;
+    setCanonicalHref(`https://speedtestboost.com/providers/${providerPath}`);
 
     const createOrUpdateMetaProperty = (property: string, content: string) => {
       let metaTag = document.querySelector(`meta[property="${property}"]`);
@@ -54,7 +52,7 @@ export function ProviderSEO({ providerSlug }: ProviderSEOProps) {
     createOrUpdateMetaProperty('og:title', config.titleTemplate);
     createOrUpdateMetaProperty('og:description', config.metaTemplate);
     createOrUpdateMetaProperty('og:type', 'website');
-    createOrUpdateMetaProperty('og:url', `https://speedtestboost.com/providers/${providerSlug.includes('/') ? providerSlug : `us/${providerSlug}`}`);
+    createOrUpdateMetaProperty('og:url', `https://speedtestboost.com/providers/${providerPath}`);
     createOrUpdateMetaProperty('og:image', ogImageUrl);
     createOrUpdateMetaProperty('og:image:alt', config.titleTemplate);
 
@@ -70,8 +68,8 @@ export function ProviderSEO({ providerSlug }: ProviderSEOProps) {
       "@graph": [
         {
           "@type": "WebPage",
-          "@id": `https://speedtestboost.com/providers/${providerSlug.includes('/') ? providerSlug : `us/${providerSlug}`}#webpage`,
-          "url": `https://speedtestboost.com/providers/${providerSlug.includes('/') ? providerSlug : `us/${providerSlug}`}`,
+          "@id": `https://speedtestboost.com/providers/${providerPath}#webpage`,
+          "url": `https://speedtestboost.com/providers/${providerPath}`,
           "name": config.titleTemplate,
           "description": config.metaTemplate,
           "isPartOf": {
@@ -87,10 +85,10 @@ export function ProviderSEO({ providerSlug }: ProviderSEOProps) {
         },
         {
           "@type": "FAQPage",
-          "@id": `https://speedtestboost.com/providers/${providerSlug.includes('/') ? providerSlug : `us/${providerSlug}`}#faq`,
+          "@id": `https://speedtestboost.com/providers/${providerPath}#faq`,
           "mainEntity": config.faq.map((item, index) => ({
             "@type": "Question",
-            "@id": `https://speedtestboost.com/providers/${providerSlug.includes('/') ? providerSlug : `us/${providerSlug}`}#question-${index + 1}`,
+            "@id": `https://speedtestboost.com/providers/${providerPath}#question-${index + 1}`,
             "name": item.question,
             "acceptedAnswer": {
               "@type": "Answer",
@@ -120,13 +118,7 @@ export function ProviderSEO({ providerSlug }: ProviderSEOProps) {
       if (scriptToRemove) {
         scriptToRemove.remove();
       }
-      
-      // Remove the specific canonical element we created
-      if (canonicalLink.parentNode) {
-        canonicalLink.parentNode.removeChild(canonicalLink);
-      }
-      
-      // Leave og:/twitter: tags in place; other routes (e.g. homepage) update them in-place.
+      // Next page useEffect sets canonical; do not reset here.
     };
   }, [providerSlug]);
 

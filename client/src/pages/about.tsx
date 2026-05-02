@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { setCanonicalHref } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Wifi, Globe, Shield, Zap, Users } from "lucide-react";
@@ -18,16 +19,9 @@ export default function About() {
     }
     
     // Add canonical URL
-    const canonical = document.createElement('link');
-    canonical.rel = 'canonical';
-    canonical.href = 'https://speedtestboost.com/about';
-    document.head.appendChild(canonical);
+    setCanonicalHref('https://speedtestboost.com/about');
 
     return () => {
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
     };
   }, []);
 

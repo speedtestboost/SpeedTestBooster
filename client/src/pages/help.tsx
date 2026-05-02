@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { setCanonicalHref } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { 
@@ -29,16 +30,9 @@ export default function Help() {
     }
     
     // Add canonical URL
-    const canonical = document.createElement('link');
-    canonical.rel = 'canonical';
-    canonical.href = 'https://speedtestboost.com/help';
-    document.head.appendChild(canonical);
+    setCanonicalHref('https://speedtestboost.com/help');
 
     return () => {
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
     };
   }, []);
 
