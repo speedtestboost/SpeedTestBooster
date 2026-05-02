@@ -16,6 +16,7 @@ import { Play, Wifi, Monitor, Globe, Zap, CheckCircle2, Activity, BarChart3, Gau
 import { Link } from "wouter";
 import type { SpeedTest } from "@shared/schema";
 import { loadNetworkInfoWithFallback, type PublicNetworkInfo } from "@/lib/networkInfo";
+import { SITE_ORIGIN, setCanonicalHref } from "@/lib/seo";
 
 export default function SpeedTest() {
   const [isTestRunning, setIsTestRunning] = useState(false);
@@ -95,19 +96,8 @@ export default function SpeedTest() {
     }
     contentLanguage.setAttribute('content', 'en-US');
     
-    // Canonical URL
-
-    
-    const canonical = document.createElement('link');
-
-    
-    canonical.rel = 'canonical';
-
-    
-    canonical.href = 'https://speedtestboost.com/';
-
-    
-    document.head.appendChild(canonical);
+    // Canonical: / and /speed-test both prefer the homepage URL (avoid duplicate content signals)
+    setCanonicalHref(`${SITE_ORIGIN}/`);
     
     // Hreflang tags for multilingual support
     const existingHreflang = document.querySelectorAll('link[rel="alternate"][hreflang]');
@@ -253,10 +243,7 @@ export default function SpeedTest() {
     });
 
     return () => {
-      // Remove the specific canonical element we created
-      if (canonical.parentNode) {
-        canonical.parentNode.removeChild(canonical);
-      }
+      /* Next route sets canonical; avoid resetting here (navigation race). */
     };
   }, []);
 

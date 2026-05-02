@@ -1,10 +1,34 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
+import fs from "fs";
+import path from "path";
 import { storage } from "./storage";
 import { insertSpeedTestSchema } from "@shared/schema";
 import { z } from "zod";
 
+/** Static SEO hub at client/public/site-index.html — must not fall through to SPA catch-all. */
+function resolveSiteIndexHtmlPath(): string | undefined {
+  const base = import.meta.dirname;
+  const candidates = [
+    path.join(base, "public", "site-index.html"),
+    path.join(base, "..", "client", "public", "site-index.html"),
+    path.join(base, "..", "dist", "public", "site-index.html"),
+  ];
+  for (const p of candidates) {
+    if (fs.existsSync(p)) return p;
+  }
+  return undefined;
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
+  app.get(["/site-index", "/site-index/"], (_req, res, next) => {
+    const file = resolveSiteIndexHtmlPath();
+    if (!file) return next();
+    res.type("html").sendFile(file, (err) => {
+      if (err) next(err);
+    });
+  });
+
   // Speed test routes
   app.post("/api/speed-tests", async (req, res) => {
     try {

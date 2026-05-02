@@ -7,7 +7,7 @@ export default function GenericFooter() {
     <footer className="bg-card/30 backdrop-blur-sm border-t border-border/50 mt-12">
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
           {/* Internal Pages - Speed Testing */}
           <div>
             <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
@@ -44,11 +44,65 @@ export default function GenericFooter() {
               </li>
               <li>
                 <Link 
+                  href="/site-index" 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                  data-testid="link-footer-site-index"
+                >
+                  Site directory (all URLs)
+                </Link>
+              </li>
+              <li>
+                <Link 
                   href="/help" 
                   className="text-muted-foreground hover:text-primary transition-colors"
                   data-testid="link-footer-help"
                 >
                   Help & FAQ
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/about" 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                  data-testid="link-footer-about"
+                >
+                  About
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+              <Wifi className="h-5 w-5 text-primary" />
+              More tools
+            </h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link 
+                  href="/ai-speed-test" 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                  data-testid="link-footer-ai-speed"
+                >
+                  AI Speed Test
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/speed-test-faq" 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                  data-testid="link-footer-speed-faq"
+                >
+                  Speed Test FAQ
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/wifi-speed-optimization" 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                  data-testid="link-footer-wifi-opt"
+                >
+                  WiFi Optimization
                 </Link>
               </li>
             </ul>
@@ -58,7 +112,7 @@ export default function GenericFooter() {
           <div>
             <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
               <Router className="h-5 w-5 text-primary" />
-              Network Tools
+              Network tools
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
@@ -100,20 +154,29 @@ export default function GenericFooter() {
             </ul>
           </div>
 
-          {/* Country & City Pages */}
+          {/* Country & city hubs */}
           <div>
             <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
               <Globe className="h-5 w-5 text-primary" />
-              Regional Tests
+              Regional tests
             </h3>
             <ul className="space-y-2 text-sm">
+              <li>
+                <Link 
+                  href="/in-speed-test" 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                  data-testid="link-footer-in"
+                >
+                  🇮🇳 India speed test
+                </Link>
+              </li>
               <li>
                 <Link 
                   href="/us-speed-test" 
                   className="text-muted-foreground hover:text-primary transition-colors"
                   data-testid="link-footer-us"
                 >
-                  🇺🇸 United States Speed Test
+                  🇺🇸 United States speed test
                 </Link>
               </li>
               <li>
@@ -122,25 +185,52 @@ export default function GenericFooter() {
                   className="text-muted-foreground hover:text-primary transition-colors"
                   data-testid="link-footer-uk"
                 >
-                  🇬🇧 United Kingdom Speed Test
+                  🇬🇧 United Kingdom speed test
                 </Link>
               </li>
               <li>
                 <Link 
-                  href="/au-speed-test" 
+                  href="/sg-speed-test" 
                   className="text-muted-foreground hover:text-primary transition-colors"
-                  data-testid="link-footer-au"
+                  data-testid="link-footer-sg"
                 >
-                  🇦🇺 Australia Speed Test
+                  🇸🇬 Singapore speed test
                 </Link>
               </li>
               <li>
                 <Link 
-                  href="/ca-speed-test" 
+                  href="/de-speed-test" 
                   className="text-muted-foreground hover:text-primary transition-colors"
-                  data-testid="link-footer-ca"
+                  data-testid="link-footer-de"
                 >
-                  🇨🇦 Canada Speed Test
+                  🇩🇪 Germany speed test
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/delhi-speed-test" 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                  data-testid="link-footer-delhi"
+                >
+                  Delhi speed test
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/mumbai-speed-test" 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                  data-testid="link-footer-mumbai"
+                >
+                  Mumbai speed test
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/internet-providers" 
+                  className="text-primary hover:text-primary/80 font-medium transition-colors"
+                  data-testid="link-footer-all-regions"
+                >
+                  All regions &amp; ISPs →
                 </Link>
               </li>
             </ul>

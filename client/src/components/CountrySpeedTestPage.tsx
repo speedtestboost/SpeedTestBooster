@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import RelatedProviders from "@/components/RelatedProviders";
@@ -7,6 +8,7 @@ import SpeedTestModal from "@/components/SpeedTestModal";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Globe, Zap } from "lucide-react";
+import { Link } from "wouter";
 
 interface CountrySpeedTestPageProps {
   countryName: string;
@@ -35,13 +37,10 @@ export default function CountrySpeedTestPage({
       );
     }
 
-    const canonical = document.createElement("link");
-    canonical.rel = "canonical";
-    canonical.href = canonicalUrl;
-    document.head.appendChild(canonical);
+    setCanonicalHref(canonicalUrl);
 
     return () => {
-      if (canonical.parentNode) canonical.parentNode.removeChild(canonical);
+      /* Next page's useEffect sets canonical; do not reset here (would race on client nav). */
     };
   }, [countryName, canonicalUrl]);
 
@@ -87,6 +86,32 @@ export default function CountrySpeedTestPage({
           </Card>
 
           <RelatedProviders currentCountryCode={countryCode} currentProviderSlug="" />
+
+          <Card className="mt-8 border-dashed">
+            <CardContent className="p-6">
+              <h2 className="text-lg font-semibold text-foreground mb-3">Explore more on Speed Test &amp; Boost</h2>
+              <p className="text-sm text-muted-foreground mb-4">
+                Country hubs, ISP pages, and tools are linked from our main directory so every page is easy to find.
+              </p>
+              <div className="flex flex-wrap gap-3 text-sm">
+                <Link href="/" className="text-primary hover:underline font-medium">
+                  Home speed test
+                </Link>
+                <span className="text-muted-foreground">·</span>
+                <Link href="/internet-providers" className="text-primary hover:underline font-medium">
+                  All countries &amp; ISPs
+                </Link>
+                <span className="text-muted-foreground">·</span>
+                <Link href="/site-index" className="text-primary hover:underline font-medium">
+                  Full HTML site index
+                </Link>
+                <span className="text-muted-foreground">·</span>
+                <Link href="/speed-test-faq" className="text-primary hover:underline font-medium">
+                  Speed test FAQ
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </main>
       <GenericFooter />

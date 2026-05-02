@@ -12,7 +12,8 @@
     
     <!-- Robots and SEO -->
     <meta name="robots" content="index, follow" />
-    <!-- Canonical is set per route in the SPA (see page useEffect hooks). -->
+    <!-- Single canonical; updated per route via setCanonicalHref() in the SPA -->
+    <link id="canonical-url" rel="canonical" href="https://speedtestboost.com/" />
     
     <!-- Language and Geo -->
     <meta name="language" content="English" />
