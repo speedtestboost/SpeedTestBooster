@@ -162,6 +162,11 @@ import UploadSpeedGuide from "@/pages/upload-speed-guide";
 import WiFiSpeedOptimization from "@/pages/wifi-speed-optimization";
 import SpeedTestFAQ from "@/pages/speed-test-faq";
 import PingTest from "@/pages/ping-test";
+import JitterTest from "@/pages/jitter-test";
+import PacketLossTest from "@/pages/packet-loss-test";
+import BufferbloatTest from "@/pages/bufferbloat-test";
+import DNSSpeedTest from "@/pages/dns-speed-test";
+import BandwidthCalculator from "@/pages/bandwidth-calculator";
 import LogoDemo from "@/pages/logo-demo";
 import NotFound from "@/pages/not-found";
 import SpanishSpeedTest from "@/pages/spanish-speed-test";
@@ -223,6 +228,11 @@ function Router() {
       <Route path="/wifi-speed-optimization" component={WiFiSpeedOptimization} />
       <Route path="/speed-test-faq" component={SpeedTestFAQ} />
       <Route path="/ping-test" component={PingTest} />
+      <Route path="/jitter-test" component={JitterTest} />
+      <Route path="/packet-loss-test" component={PacketLossTest} />
+      <Route path="/bufferbloat-test" component={BufferbloatTest} />
+      <Route path="/dns-speed-test" component={DNSSpeedTest} />
+      <Route path="/bandwidth-calculator" component={BandwidthCalculator} />
       <Route path="/logo-demo" component={LogoDemo} />
       
       {/* Language-Specific Pages */}

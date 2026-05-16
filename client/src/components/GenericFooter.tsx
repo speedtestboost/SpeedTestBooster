@@ -116,38 +116,47 @@ export default function GenericFooter() {
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link 
-                  href="/wifi-analyzer" 
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                  data-testid="link-footer-wifi-analyzer"
-                >
+                <Link href="/wifi-analyzer" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-footer-wifi-analyzer">
                   WiFi Analyzer
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/ping-test" 
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                  data-testid="link-footer-ping-test"
-                >
+                <Link href="/ping-test" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-footer-ping-test">
                   Ping Test
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/download-speed-guide" 
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                  data-testid="link-footer-download-guide"
-                >
+                <Link href="/jitter-test" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-footer-jitter-test">
+                  Jitter Test
+                </Link>
+              </li>
+              <li>
+                <Link href="/packet-loss-test" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-footer-packet-loss">
+                  Packet Loss Test
+                </Link>
+              </li>
+              <li>
+                <Link href="/bufferbloat-test" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-footer-bufferbloat">
+                  Bufferbloat Test
+                </Link>
+              </li>
+              <li>
+                <Link href="/dns-speed-test" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-footer-dns">
+                  DNS Speed Test
+                </Link>
+              </li>
+              <li>
+                <Link href="/bandwidth-calculator" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-footer-bandwidth-calc">
+                  Bandwidth Calculator
+                </Link>
+              </li>
+              <li>
+                <Link href="/download-speed-guide" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-footer-download-guide">
                   Download Speed Guide
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/upload-speed-guide" 
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                  data-testid="link-footer-upload-guide"
-                >
+                <Link href="/upload-speed-guide" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-footer-upload-guide">
                   Upload Speed Guide
                 </Link>
               </li>

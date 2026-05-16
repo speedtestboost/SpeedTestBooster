@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { Menu, X, ChevronDown, Wifi } from "lucide-react";
+import { Menu, X, ChevronDown, Wifi, Activity, Globe, BarChart2, Calculator, Zap, Clock } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,7 +9,19 @@ import {
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
+  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
+
+const TOOLS = [
+  { href: "/ping-test",           label: "Ping Test",            icon: Clock,       desc: "Measure latency" },
+  { href: "/jitter-test",         label: "Jitter Test",          icon: Activity,    desc: "Network stability" },
+  { href: "/packet-loss-test",    label: "Packet Loss Test",     icon: Wifi,        desc: "Detect dropped packets" },
+  { href: "/bufferbloat-test",    label: "Bufferbloat Test",     icon: BarChart2,   desc: "Router lag under load" },
+  { href: "/dns-speed-test",      label: "DNS Speed Test",       icon: Globe,       desc: "Find fastest DNS" },
+  { href: "/bandwidth-calculator",label: "Bandwidth Calculator", icon: Calculator,  desc: "Download time & MB↔Mbps" },
+  { href: "/wifi-analyzer",       label: "WiFi Analyzer",        icon: Wifi,        desc: "Diagnose WiFi issues" },
+  { href: "/ai-speed-test",       label: "AI Speed Test",        icon: Zap,         desc: "AI-powered analysis" },
+];
 
 const countries = [
   {
@@ -270,41 +282,62 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
           <div className="flex items-center space-x-4">
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-6">
-              <Link 
-                href="/" 
+              <Link
+                href="/"
                 className={`bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors ${currentPath === "/" ? "bg-primary/90" : ""}`}
               >
                 Home
               </Link>
-              
-              <Link 
-                href="/internet-speed-requirements" 
+
+              <Link
+                href="/internet-speed-requirements"
                 className={`text-muted-foreground hover:text-primary transition-colors font-medium ${currentPath === "/internet-speed-requirements" ? "text-primary" : ""}`}
               >
                 Speed Calculator
               </Link>
-              
-              <Link 
-                href="/ai-speed-test" 
-                className={`text-muted-foreground hover:text-primary transition-colors font-medium ${currentPath === "/ai-speed-test" ? "text-primary" : ""}`}
-              >
-                AI Speed Test
-              </Link>
-              
-              
+
+              {/* Tools Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger className="flex items-center space-x-1 text-muted-foreground hover:text-primary transition-colors font-medium outline-none">
+                  <Zap className="h-4 w-4" />
+                  <span>Tools</span>
+                  <ChevronDown className="h-3 w-3" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="center" className="w-64">
+                  {TOOLS.map((tool) => (
+                    <DropdownMenuItem key={tool.href} asChild>
+                      <Link href={tool.href} className="w-full flex items-start gap-3 py-2">
+                        <tool.icon className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                        <div>
+                          <div className="font-medium text-sm">{tool.label}</div>
+                          <div className="text-xs text-muted-foreground">{tool.desc}</div>
+                        </div>
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <Link href="/bandwidth-calculator" className="w-full text-xs text-muted-foreground">
+                      View all tools →
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
               {/* Internet Providers Dropdown */}
               <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center space-x-1 text-muted-foreground hover:text-primary transition-colors">
+                <DropdownMenuTrigger className="flex items-center space-x-1 text-muted-foreground hover:text-primary transition-colors outline-none">
                   <Wifi className="h-4 w-4" />
-                  <span>All Internet Providers</span>
+                  <span>Providers</span>
                   <ChevronDown className="h-3 w-3" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="center" className="w-64">
                   <DropdownMenuItem asChild>
-                    <Link href="/internet-providers" className="w-full">
+                    <Link href="/internet-providers" className="w-full font-medium">
                       View All Providers
                     </Link>
                   </DropdownMenuItem>
+                  <DropdownMenuSeparator />
                   {countries.map((country) => (
                     <DropdownMenuSub key={country.code}>
                       <DropdownMenuSubTrigger>
@@ -326,11 +359,11 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
                   ))}
                 </DropdownMenuContent>
               </DropdownMenu>
-              
+
               {/* Speed Guides Dropdown */}
               <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center space-x-1 text-muted-foreground hover:text-primary transition-colors">
-                  <span>Speed Guides</span>
+                <DropdownMenuTrigger className="flex items-center space-x-1 text-muted-foreground hover:text-primary transition-colors outline-none">
+                  <span>Guides</span>
                   <ChevronDown className="h-3 w-3" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="center" className="w-56">
@@ -356,14 +389,9 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-              <Link 
-                href="/about" 
-                className={`transition-colors ${currentPath === "/about" ? "text-primary font-medium" : "text-muted-foreground hover:text-primary"}`}
-              >
-                About
-              </Link>
-              <Link 
-                href="/help" 
+
+              <Link
+                href="/help"
                 className={`transition-colors ${currentPath === "/help" ? "text-primary font-medium" : "text-muted-foreground hover:text-primary"}`}
               >
                 Help
@@ -384,81 +412,38 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
         {/* Mobile Menu */}
         {showMobileMenu && (
           <div className="lg:hidden mt-4 pb-4 border-t border-border">
-            <div className="flex flex-col space-y-3 pt-4">
-              <Link 
-                href="/" 
-                className="bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors"
-                onClick={() => setShowMobileMenu(false)}
-              >
+            <div className="flex flex-col space-y-1 pt-4">
+              <Link href="/" className="bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors mb-2" onClick={() => setShowMobileMenu(false)}>
                 Home
               </Link>
-              <Link 
-                href="/internet-speed-requirements" 
-                className="text-muted-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setShowMobileMenu(false)}
-              >
+              <Link href="/internet-speed-requirements" className="text-muted-foreground hover:text-primary transition-colors py-2 px-1" onClick={() => setShowMobileMenu(false)}>
                 Speed Calculator
               </Link>
-              <Link 
-                href="/ai-speed-test" 
-                className="text-muted-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setShowMobileMenu(false)}
-              >
-                AI Speed Test
-              </Link>
-              <Link 
-                href="/speed-test-faq" 
-                className="text-muted-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setShowMobileMenu(false)}
-                data-testid="mobile-link-speed-test-faq"
-              >
-                Speed Test FAQ
-              </Link>
-              <Link 
-                href="/download-speed-guide" 
-                className="text-muted-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setShowMobileMenu(false)}
-                data-testid="mobile-link-download-speed-guide"
-              >
-                Download Speed Guide
-              </Link>
-              <Link 
-                href="/upload-speed-guide" 
-                className="text-muted-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setShowMobileMenu(false)}
-                data-testid="mobile-link-upload-speed-guide"
-              >
-                Upload Speed Guide
-              </Link>
-              <Link 
-                href="/wifi-speed-optimization" 
-                className="text-muted-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setShowMobileMenu(false)}
-                data-testid="mobile-link-wifi-optimization-guide"
-              >
-                WiFi Optimization Guide
-              </Link>
-              <Link 
-                href="/internet-providers" 
-                className="text-muted-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setShowMobileMenu(false)}
-              >
-                All Internet Providers
-              </Link>
-              <Link 
-                href="/about" 
-                className="text-muted-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setShowMobileMenu(false)}
-              >
-                About
-              </Link>
-              <Link 
-                href="/help" 
-                className="text-muted-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setShowMobileMenu(false)}
-              >
-                Help
-              </Link>
+
+              {/* Tools section */}
+              <div className="pt-1 pb-1">
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-1 mb-1">Network Tools</p>
+                {TOOLS.map((tool) => (
+                  <Link key={tool.href} href={tool.href} className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors py-1.5 px-1" onClick={() => setShowMobileMenu(false)}>
+                    <tool.icon className="h-3.5 w-3.5 text-primary flex-shrink-0" />
+                    <span className="text-sm">{tool.label}</span>
+                  </Link>
+                ))}
+              </div>
+
+              {/* Guides section */}
+              <div className="pt-1 pb-1 border-t border-border/40">
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-1 mb-1 mt-2">Guides</p>
+                <Link href="/speed-test-faq" className="text-muted-foreground hover:text-primary transition-colors py-1.5 px-1 block text-sm" onClick={() => setShowMobileMenu(false)}>Speed Test FAQ</Link>
+                <Link href="/download-speed-guide" className="text-muted-foreground hover:text-primary transition-colors py-1.5 px-1 block text-sm" onClick={() => setShowMobileMenu(false)}>Download Speed Guide</Link>
+                <Link href="/upload-speed-guide" className="text-muted-foreground hover:text-primary transition-colors py-1.5 px-1 block text-sm" onClick={() => setShowMobileMenu(false)}>Upload Speed Guide</Link>
+                <Link href="/wifi-speed-optimization" className="text-muted-foreground hover:text-primary transition-colors py-1.5 px-1 block text-sm" onClick={() => setShowMobileMenu(false)}>WiFi Optimization</Link>
+              </div>
+
+              <div className="border-t border-border/40 pt-2">
+                <Link href="/internet-providers" className="text-muted-foreground hover:text-primary transition-colors py-2 px-1 block" onClick={() => setShowMobileMenu(false)}>All Internet Providers</Link>
+                <Link href="/help" className="text-muted-foreground hover:text-primary transition-colors py-2 px-1 block" onClick={() => setShowMobileMenu(false)}>Help</Link>
+              </div>
             </div>
           </div>
         )}
