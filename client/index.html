@@ -12,8 +12,16 @@
     
     <!-- Robots and SEO -->
     <meta name="robots" content="index, follow" />
-    <!-- Single canonical; updated per route via setCanonicalHref() in the SPA -->
-    <link id="canonical-url" rel="canonical" href="https://speedtestboost.com/" />
+    <!--
+      No static <link rel="canonical"> here on purpose.
+      The SPA serves this same index.html for every route, so a hard-coded
+      canonical would point all routes (e.g. /about, /providers/us/spectrum,
+      country & city pages) at "/", which Ahrefs flags as
+      "Non-canonical pages listed in the sitemap".
+      setCanonicalHref() in client/src/lib/seo.ts injects the correct
+      per-route canonical at runtime; crawlers without JS treat each URL
+      as self-canonical, which matches the sitemap entries.
+    -->
     
     <!-- Language and Geo -->
     <meta name="language" content="English" />
