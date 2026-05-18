@@ -11,6 +11,26 @@
 
 ---
 
+## SEO Prerender Step (Important)
+
+`npm run build` runs three steps in order:
+
+1. `vite build` — compiles the React SPA to `dist/public/`.
+2. `node scripts/prerender.mjs` — reads `dist/public/sitemap.xml` and writes one prerendered HTML file per route (e.g. `dist/public/about.html`, `dist/public/providers/us/spectrum.html`). Each file ships its own `<title>`, `<meta name="description">`, `<link rel="canonical">`, `<h1>` and a short SEO body so non-JS crawlers (Ahrefs, Bingbot, social previewers) see real per-route content instead of a duplicate SPA shell.
+3. `esbuild server/index.ts …` — bundles the Express server.
+
+Apache then serves the prerendered file for known routes and falls back to the SPA `index.html` for anything not yet prerendered. The rewrite rules live in `client/public/.htaccess` (copied into `dist/public/.htaccess` by Vite) and in `hostinger-static/.htaccess`. Both internally rewrite `/<path>` → `/<path>.html` when the file exists, so the visitor's URL never changes.
+
+When adding new routes:
+
+- Add the route to `client/public/sitemap.xml`.
+- If the URL pattern is already understood by `scripts/prerender.mjs` (country `/<cc>-speed-test`, city, `/providers/<cc>/<slug>`, or one of the static pages in `STATIC_PAGES`), nothing else is required.
+- If it's a brand-new pattern, extend `getRouteMetadata()` so the prerendered page has accurate title, description, H1 and body copy.
+
+To regenerate prerendered files without rebuilding the SPA, run `npm run build:prerender`.
+
+---
+
 ## Production Deployment to speedtestboost.com
 
 ### Option 1: VPS Deployment (Recommended)
