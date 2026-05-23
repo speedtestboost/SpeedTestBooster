@@ -244,6 +244,15 @@ const STATIC_PAGES = {
     body:
       "Use our internet speed requirements guide to choose the right broadband plan for streaming, gaming, video conferencing and remote work. Compare recommended Mbps per device, household size and use case so you never overpay or underprovision.",
   },
+  "/speed-test-comparison": {
+    title:
+      "Speed Test Comparison 2026: Speedtest vs Fast vs Google Speed Test Explained",
+    description:
+      "Compare Speedtest (Ookla), Fast.com, Google/M-Lab and CDN testers. Understand why Mbps numbers disagree and combine them with jitter, packet loss, bufferbloat and DNS diagnostics.",
+    h1: "Speed test comparison hub",
+    body:
+      "Learn how flagship internet throughput tests route traffic differently, when to trust each vantage point for ISP disputes or streaming woes, and how Speed Test Boost layers jitter, packet loss, DNS and bufferbloat tests on top of classic Mbps benchmarks.",
+  },
   "/internet-providers": {
     title: "Internet Providers Worldwide - ISP Speed Tests by Country",
     description:

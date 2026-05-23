@@ -35,6 +35,15 @@ export default function GenericFooter() {
               </li>
               <li>
                 <Link 
+                  href="/speed-test-comparison" 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                  data-testid="link-footer-speed-test-comparison"
+                >
+                  Speed test comparison (Speedtest vs Fast)
+                </Link>
+              </li>
+              <li>
+                <Link 
                   href="/internet-providers" 
                   className="text-muted-foreground hover:text-primary transition-colors"
                   data-testid="link-footer-providers"

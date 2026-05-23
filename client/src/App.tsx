@@ -33,6 +33,7 @@ import ITSpeedTest from "@/pages/it-speed-test";
 import BRSpeedTest from "@/pages/br-speed-test";
 import PHSpeedTest from "@/pages/ph-speed-test";
 import InternetSpeedRequirements from "@/pages/internet-speed-requirements";
+import SpeedTestComparison from "@/pages/speed-test-comparison";
 import InternetProviders from "@/pages/internet-providers";
 // US Providers
 import VerizonSpeedTest from "@/pages/providers/us/verizon";
@@ -220,6 +221,7 @@ function Router() {
       <Route path="/br-speed-test" component={BRSpeedTest} />
       <Route path="/ph-speed-test" component={PHSpeedTest} />
       <Route path="/internet-speed-requirements" component={InternetSpeedRequirements} />
+      <Route path="/speed-test-comparison" component={SpeedTestComparison} />
       <Route path="/internet-providers" component={InternetProviders} />
       <Route path="/wifi-analyzer" component={WiFiAnalyzer} />
       <Route path="/ai-speed-test" component={AISpeedTest} />

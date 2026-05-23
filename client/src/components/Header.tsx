@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { Menu, X, ChevronDown, Wifi, Activity, Globe, BarChart2, Calculator, Zap, Clock } from "lucide-react";
+import { Menu, X, ChevronDown, Wifi, Activity, Globe, BarChart2, Calculator, Zap, Clock, Scale } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,14 +13,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const TOOLS = [
-  { href: "/ping-test",           label: "Ping Test",            icon: Clock,       desc: "Measure latency" },
-  { href: "/jitter-test",         label: "Jitter Test",          icon: Activity,    desc: "Network stability" },
-  { href: "/packet-loss-test",    label: "Packet Loss Test",     icon: Wifi,        desc: "Detect dropped packets" },
-  { href: "/bufferbloat-test",    label: "Bufferbloat Test",     icon: BarChart2,   desc: "Router lag under load" },
-  { href: "/dns-speed-test",      label: "DNS Speed Test",       icon: Globe,       desc: "Find fastest DNS" },
-  { href: "/bandwidth-calculator",label: "Bandwidth Calculator", icon: Calculator,  desc: "Download time & MB↔Mbps" },
-  { href: "/wifi-analyzer",       label: "WiFi Analyzer",        icon: Wifi,        desc: "Diagnose WiFi issues" },
-  { href: "/ai-speed-test",       label: "AI Speed Test",        icon: Zap,         desc: "AI-powered analysis" },
+  { href: "/ping-test",             label: "Ping Test",               icon: Clock,       desc: "Measure latency" },
+  { href: "/jitter-test",           label: "Jitter Test",             icon: Activity,    desc: "Network stability" },
+  { href: "/packet-loss-test",      label: "Packet Loss Test",        icon: Wifi,        desc: "Detect dropped packets" },
+  { href: "/bufferbloat-test",      label: "Bufferbloat Test",        icon: BarChart2,   desc: "Router lag under load" },
+  { href: "/dns-speed-test",        label: "DNS Speed Test",          icon: Globe,       desc: "Find fastest DNS" },
+  { href: "/bandwidth-calculator",  label: "Bandwidth Calculator",    icon: Calculator,  desc: "Download time & MB↔Mbps" },
+  { href: "/wifi-analyzer",         label: "WiFi Analyzer",           icon: Wifi,        desc: "Diagnose WiFi issues" },
+  { href: "/ai-speed-test",         label: "AI Speed Test",           icon: Zap,         desc: "AI-powered analysis" },
+  { href: "/speed-test-comparison", label: "Speed Test Comparison",   icon: Scale,       desc: "Speedtest vs Fast vs Google" },
 ];
 
 const countries = [

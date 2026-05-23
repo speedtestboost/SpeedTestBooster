@@ -42,6 +42,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
+  <!-- Cornerstone hub: competitor-style comparison + funnel to diagnostics -->
+  <url>
+    <loc>https://speedtestboost.com/speed-test-comparison</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
   
   <!-- Internet Providers Main Page -->
   <url>
