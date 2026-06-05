@@ -41,6 +41,24 @@
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
+  <url>
+    <loc>https://speedtestboost.com/gaming-speed-test</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://speedtestboost.com/isp-throttling-test</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://speedtestboost.com/why-is-my-internet-slow</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
   
   <!-- Internet Providers Main Page -->
   <url>

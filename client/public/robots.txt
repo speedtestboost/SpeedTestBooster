@@ -15,6 +15,9 @@ Allow: /help
 Allow: /site-index
 Allow: /internet-speed-requirements
 Allow: /speed-test-comparison
+Allow: /gaming-speed-test
+Allow: /isp-throttling-test
+Allow: /why-is-my-internet-slow
 Allow: /wifi-analyzer
 Allow: /ai-speed-test
 

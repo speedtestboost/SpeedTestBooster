@@ -44,6 +44,30 @@ export default function GenericFooter() {
               </li>
               <li>
                 <Link 
+                  href="/gaming-speed-test" 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Gaming Speed Test
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/isp-throttling-test" 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  ISP Throttling Test
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/why-is-my-internet-slow" 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Why Is My Internet Slow?
+                </Link>
+              </li>
+              <li>
+                <Link 
                   href="/internet-providers" 
                   className="text-muted-foreground hover:text-primary transition-colors"
                   data-testid="link-footer-providers"

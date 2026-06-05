@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { Menu, X, ChevronDown, Wifi, Activity, Globe, BarChart2, Calculator, Zap, Clock, Scale } from "lucide-react";
+import { Menu, X, ChevronDown, Wifi, Activity, Globe, BarChart2, Calculator, Zap, Clock, Scale, ShieldAlert, Gamepad2, HelpCircle } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,7 +21,10 @@ const TOOLS = [
   { href: "/bandwidth-calculator",  label: "Bandwidth Calculator",    icon: Calculator,  desc: "Download time & MB↔Mbps" },
   { href: "/wifi-analyzer",         label: "WiFi Analyzer",           icon: Wifi,        desc: "Diagnose WiFi issues" },
   { href: "/ai-speed-test",         label: "AI Speed Test",           icon: Zap,         desc: "AI-powered analysis" },
-  { href: "/speed-test-comparison", label: "Speed Test Comparison",   icon: Scale,       desc: "Speedtest vs Fast vs Google" },
+  { href: "/speed-test-comparison",    label: "Speed Test Comparison",   icon: Scale,       desc: "Speedtest vs Fast vs Google" },
+  { href: "/gaming-speed-test",        label: "Gaming Speed Test",       icon: Gamepad2,    desc: "Ping, jitter & lag diagnostics" },
+  { href: "/isp-throttling-test",      label: "ISP Throttling Test",     icon: ShieldAlert, desc: "Detect if your ISP throttles you" },
+  { href: "/why-is-my-internet-slow",  label: "Why Is My Internet Slow?",icon: HelpCircle,  desc: "14 causes & fixes" },
 ];
 
 const countries = [

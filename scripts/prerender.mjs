@@ -253,6 +253,30 @@ const STATIC_PAGES = {
     body:
       "Learn how flagship internet throughput tests route traffic differently, when to trust each vantage point for ISP disputes or streaming woes, and how Speed Test Boost layers jitter, packet loss, DNS and bufferbloat tests on top of classic Mbps benchmarks.",
   },
+  "/gaming-speed-test": {
+    title: "Internet Speed Test for Gaming 2026 — Ping, Jitter & Latency That Actually Matter",
+    description:
+      "Free gaming internet speed test. Check ping, jitter, packet loss and bufferbloat — the metrics that actually cause lag in Valorant, Fortnite, CoD, FIFA and other online games. Not just Mbps.",
+    h1: "Internet Speed Test for Gaming",
+    body:
+      "High Mbps doesn't stop lag. Discover the four metrics that determine online gaming performance — ping, jitter, packet loss and bufferbloat — and use our free tools to diagnose and fix every source of lag in Valorant, Fortnite, Call of Duty, FIFA and more.",
+  },
+  "/isp-throttling-test": {
+    title: "ISP Throttling Test 2026 — Detect If Your Internet Is Being Throttled",
+    description:
+      "Free ISP throttling test. Find out if your internet provider is slowing down Netflix, gaming, YouTube or peak-hour traffic. Step-by-step throttle detection guide with free tools — no download required.",
+    h1: "ISP Throttling Test",
+    body:
+      "Is your internet provider deliberately slowing your connection? Follow our free six-step throttle detection workflow using tools already on this site to confirm ISP throttling in under 10 minutes — covering Netflix CDN paths, peak-hour speed drops, VPN bypass tests and more.",
+  },
+  "/why-is-my-internet-slow": {
+    title: "Why Is My Internet So Slow? 14 Causes & How to Fix Them (2026)",
+    description:
+      "Is your internet slow? Diagnose the real cause — from router issues to ISP throttling, WiFi interference, congestion, and DNS problems — with our free tool checklist. Step-by-step fixes for every scenario.",
+    h1: "Why Is My Internet Slow?",
+    body:
+      "Slow internet has 14 distinct causes — from ISP peak-hour congestion and router bufferbloat to WiFi interference, DNS slowdowns and background software. Use our free 8-step diagnostic checklist and browser-based tools to find the exact bottleneck and fix it without calling your ISP.",
+  },
   "/internet-providers": {
     title: "Internet Providers Worldwide - ISP Speed Tests by Country",
     description:
