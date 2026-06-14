@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { setCanonicalHref } from "@/lib/seo";
+import { setCanonicalHref, setHtmlLang, setHreflangCluster, setOgLocale } from "@/lib/seo";
 import Header from "@/components/Header";
 import GenericFooter from "@/components/GenericFooter";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -19,78 +19,32 @@ export default function PortugueseSpeedTest() {
       metaDescription.setAttribute('content', 'Teste de velocidade da internet grátis em português. Meça sua velocidade de download, upload e ping para provedores no Brasil. Resultados precisos em tempo real para Vivo, Claro, TIM, Oi e mais.');
     }
 
-    let contentLanguage = document.querySelector('meta[http-equiv="content-language"]');
-    if (!contentLanguage) {
-      contentLanguage = document.createElement('meta');
-      contentLanguage.setAttribute('http-equiv', 'content-language');
-      document.head.appendChild(contentLanguage);
-    }
-    contentLanguage.setAttribute('content', 'pt-BR');
-
+    const restoreLang = setHtmlLang("pt-BR");
     setCanonicalHref('https://speedtestboost.com/pt-br');
+    setOgLocale("pt_BR");
+    const cleanupHreflang = setHreflangCluster();
 
-    const existingHreflang = document.querySelectorAll('link[rel="alternate"][hreflang]');
-    existingHreflang.forEach(link => link.remove());
-
-    const hreflangEn = document.createElement('link');
-    hreflangEn.setAttribute('rel', 'alternate');
-    hreflangEn.setAttribute('hreflang', 'en');
-    hreflangEn.setAttribute('href', 'https://speedtestboost.com/');
-    document.head.appendChild(hreflangEn);
-
-    const hreflangEs = document.createElement('link');
-    hreflangEs.setAttribute('rel', 'alternate');
-    hreflangEs.setAttribute('hreflang', 'es');
-    hreflangEs.setAttribute('href', 'https://speedtestboost.com/es');
-    document.head.appendChild(hreflangEs);
-
-    const hreflangId = document.createElement('link');
-    hreflangId.setAttribute('rel', 'alternate');
-    hreflangId.setAttribute('hreflang', 'id');
-    hreflangId.setAttribute('href', 'https://speedtestboost.com/id');
-    document.head.appendChild(hreflangId);
-
-    const hreflangPtBr = document.createElement('link');
-    hreflangPtBr.setAttribute('rel', 'alternate');
-    hreflangPtBr.setAttribute('hreflang', 'pt-BR');
-    hreflangPtBr.setAttribute('href', 'https://speedtestboost.com/pt-br');
-    document.head.appendChild(hreflangPtBr);
-
-    const hreflangFr = document.createElement('link');
-    hreflangFr.setAttribute('rel', 'alternate');
-    hreflangFr.setAttribute('hreflang', 'fr');
-    hreflangFr.setAttribute('href', 'https://speedtestboost.com/fr');
-    document.head.appendChild(hreflangFr);
-
-    const hreflangDefault = document.createElement('link');
-    hreflangDefault.setAttribute('rel', 'alternate');
-    hreflangDefault.setAttribute('hreflang', 'x-default');
-    hreflangDefault.setAttribute('href', 'https://speedtestboost.com/');
-    document.head.appendChild(hreflangDefault);
-
-    const structuredData = {
+    let script = document.querySelector('script[data-page="pt-br"]') as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.setAttribute('data-page', 'pt-br');
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Teste de Velocidade da Internet - Português Brasil",
       "description": "Teste de velocidade da internet grátis em português para medir sua conexão WiFi e fibra óptica no Brasil",
       "url": "https://speedtestboost.com/pt-br",
       "inLanguage": "pt-BR",
-      "about": {
-        "@type": "Thing",
-        "name": "Internet Speed Test",
-        "description": "Ferramenta gratuita para medir velocidade da internet em português brasileiro"
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
+      "about": { "@type": "Thing", "name": "Internet Speed Test", "description": "Ferramenta gratuita para medir velocidade da internet em português brasileiro" }
+    });
 
     return () => {
-      
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
+      restoreLang();
+      cleanupHreflang();
+      document.querySelector('script[data-page="pt-br"]')?.remove();
     };
   }, []);
 

@@ -184,6 +184,8 @@ const LANGUAGE_PAGES = {
     h1: "Test de Velocidad de Internet",
     body:
       "Comprueba al instante la velocidad real de tu conexión de internet con nuestra herramienta gratuita y precisa. Mide la velocidad de descarga, subida, ping y jitter en redes WiFi y por cable, sin descargas ni anuncios.",
+    lang: "es",
+    ogLocale: "es_ES",
   },
   "/id": {
     title: "Tes Kecepatan Internet - Cek Kecepatan WiFi dan Broadband",
@@ -192,6 +194,8 @@ const LANGUAGE_PAGES = {
     h1: "Tes Kecepatan Internet",
     body:
       "Cek kecepatan koneksi internet Anda secara akurat dengan alat tes gratis kami. Mengukur kecepatan unduh, unggah, ping, dan jitter pada jaringan WiFi maupun kabel, tanpa iklan atau aplikasi tambahan.",
+    lang: "id",
+    ogLocale: "id_ID",
   },
   "/pt-br": {
     title: "Teste de Velocidade da Internet - Meça WiFi e Banda Larga",
@@ -200,6 +204,8 @@ const LANGUAGE_PAGES = {
     h1: "Teste de Velocidade da Internet",
     body:
       "Verifique a velocidade real da sua conexão de internet com nossa ferramenta gratuita e precisa. Mede velocidade de download, upload, ping e jitter em WiFi e cabo, sem downloads nem anúncios.",
+    lang: "pt-BR",
+    ogLocale: "pt_BR",
   },
   "/fr": {
     title: "Test de Vitesse Internet - Mesurez Votre Wi-Fi et Haut Débit",
@@ -208,8 +214,32 @@ const LANGUAGE_PAGES = {
     h1: "Test de Vitesse Internet",
     body:
       "Mesurez instantanément la vitesse réelle de votre connexion internet avec notre outil gratuit et précis. Évalue les débits descendants et montants, le ping et la gigue, sur Wi-Fi comme en filaire, sans téléchargement ni publicité.",
+    lang: "fr",
+    ogLocale: "fr_FR",
   },
 };
+
+/**
+ * The full hreflang cluster — must appear on all 5 language-variant pages
+ * (including the English homepage) and be identical across all of them.
+ * Google validates that each URL in the cluster reciprocally lists all others.
+ */
+const HREFLANG_CLUSTER = [
+  { hreflang: "en",        href: `${SITE_ORIGIN}/` },
+  { hreflang: "es",        href: `${SITE_ORIGIN}/es` },
+  { hreflang: "id",        href: `${SITE_ORIGIN}/id` },
+  { hreflang: "pt-BR",     href: `${SITE_ORIGIN}/pt-br` },
+  { hreflang: "fr",        href: `${SITE_ORIGIN}/fr` },
+  { hreflang: "x-default", href: `${SITE_ORIGIN}/` },
+];
+
+/** Build the <link rel="alternate" hreflang="..."> tags as an HTML string. */
+function buildHreflangTags() {
+  return HREFLANG_CLUSTER.map(
+    ({ hreflang, href }) =>
+      `    <link rel="alternate" hreflang="${hreflang}" href="${href}" />`
+  ).join("\n");
+}
 
 const STATIC_PAGES = {
   "/": {
@@ -219,6 +249,8 @@ const STATIC_PAGES = {
     h1: "Free Internet Speed Test",
     body:
       "Run an accurate, ad-free internet speed test in your browser. Measure download speed, upload speed, ping, jitter and packet loss across WiFi and wired connections in under 30 seconds, with no app installs or sign-up required.",
+    lang: "en",
+    ogLocale: "en_US",
   },
   "/about": {
     title: "About Speed Test & Boost - Free Internet Speed Tests for Every Country",
@@ -580,6 +612,40 @@ function renderTemplate(template, meta) {
     /<div\s+id="root"\s*>\s*<\/div>/i,
     `<div id="root">${prerenderedBody}</div>`,
   );
+
+  // ── Geo / i18n: language routes need correct lang attr + hreflang cluster ──
+  // The hreflang cluster is required on ALL 5 language-variant pages so Google
+  // can verify the reciprocal relationship even from non-JS crawls.
+  const isLanguageVariant = Boolean(meta.lang && meta.lang !== "en");
+  const isHomepage = meta.canonical === `${SITE_ORIGIN}/` || meta.canonical === `${SITE_ORIGIN}`;
+
+  if (isLanguageVariant || isHomepage) {
+    // 1. Set the correct lang="…" on the <html> element.
+    const pageLang = meta.lang ?? "en";
+    html = html.replace(/<html([^>]*)lang="[^"]*"/, `<html$1lang="${pageLang}"`);
+
+    // 2. Remove any existing hreflang link tags (none in the template, but be safe).
+    html = html.replace(/<link[^>]+hreflang="[^"]*"[^>]*>\s*\r?\n?/gi, "");
+
+    // 3. Inject the full hreflang cluster just before </head>.
+    html = html.replace(/<\/head>/i, `${buildHreflangTags()}\n  </head>`);
+
+    // 4. Inject / update og:locale if the page has one defined.
+    if (meta.ogLocale) {
+      if (/<meta\s+property="og:locale"\s+content="[^"]*"\s*\/?\s*>/i.test(html)) {
+        html = html.replace(
+          /<meta\s+property="og:locale"\s+content="[^"]*"\s*\/?\s*>/i,
+          `<meta property="og:locale" content="${meta.ogLocale}" />`,
+        );
+      } else {
+        // Insert after og:url
+        html = html.replace(
+          /(<meta\s+property="og:url"[^>]*>)/i,
+          `$1\n    <meta property="og:locale" content="${meta.ogLocale}" />`,
+        );
+      }
+    }
+  }
 
   return html;
 }

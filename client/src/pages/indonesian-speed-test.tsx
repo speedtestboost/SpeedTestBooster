@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { setCanonicalHref } from "@/lib/seo";
+import { setCanonicalHref, setHtmlLang, setHreflangCluster, setOgLocale } from "@/lib/seo";
 import Header from "@/components/Header";
 import GenericFooter from "@/components/GenericFooter";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -27,78 +27,32 @@ export default function IndonesianSpeedTest() {
       document.head.appendChild(keywords);
     }
 
-    let contentLanguage = document.querySelector('meta[http-equiv="content-language"]');
-    if (!contentLanguage) {
-      contentLanguage = document.createElement('meta');
-      contentLanguage.setAttribute('http-equiv', 'content-language');
-      document.head.appendChild(contentLanguage);
-    }
-    contentLanguage.setAttribute('content', 'id');
-
+    const restoreLang = setHtmlLang("id");
     setCanonicalHref('https://speedtestboost.com/id');
+    setOgLocale("id_ID");
+    const cleanupHreflang = setHreflangCluster();
 
-    const existingHreflang = document.querySelectorAll('link[rel="alternate"][hreflang]');
-    existingHreflang.forEach(link => link.remove());
-
-    const hreflangEn = document.createElement('link');
-    hreflangEn.setAttribute('rel', 'alternate');
-    hreflangEn.setAttribute('hreflang', 'en');
-    hreflangEn.setAttribute('href', 'https://speedtestboost.com/');
-    document.head.appendChild(hreflangEn);
-
-    const hreflangEs = document.createElement('link');
-    hreflangEs.setAttribute('rel', 'alternate');
-    hreflangEs.setAttribute('hreflang', 'es');
-    hreflangEs.setAttribute('href', 'https://speedtestboost.com/es');
-    document.head.appendChild(hreflangEs);
-
-    const hreflangId = document.createElement('link');
-    hreflangId.setAttribute('rel', 'alternate');
-    hreflangId.setAttribute('hreflang', 'id');
-    hreflangId.setAttribute('href', 'https://speedtestboost.com/id');
-    document.head.appendChild(hreflangId);
-
-    const hreflangPtBr = document.createElement('link');
-    hreflangPtBr.setAttribute('rel', 'alternate');
-    hreflangPtBr.setAttribute('hreflang', 'pt-BR');
-    hreflangPtBr.setAttribute('href', 'https://speedtestboost.com/pt-br');
-    document.head.appendChild(hreflangPtBr);
-
-    const hreflangFr = document.createElement('link');
-    hreflangFr.setAttribute('rel', 'alternate');
-    hreflangFr.setAttribute('hreflang', 'fr');
-    hreflangFr.setAttribute('href', 'https://speedtestboost.com/fr');
-    document.head.appendChild(hreflangFr);
-
-    const hreflangDefault = document.createElement('link');
-    hreflangDefault.setAttribute('rel', 'alternate');
-    hreflangDefault.setAttribute('hreflang', 'x-default');
-    hreflangDefault.setAttribute('href', 'https://speedtestboost.com/');
-    document.head.appendChild(hreflangDefault);
-
-    const structuredData = {
+    let script = document.querySelector('script[data-page="id"]') as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.setAttribute('data-page', 'id');
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Tes Kecepatan Internet - Indonesia",
       "description": "Tes kecepatan internet gratis untuk mengukur koneksi WiFi dan fiber optik di Indonesia",
       "url": "https://speedtestboost.com/id",
       "inLanguage": "id",
-      "about": {
-        "@type": "Thing",
-        "name": "Internet Speed Test",
-        "description": "Alat gratis untuk mengukur kecepatan internet di Indonesia"
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
+      "about": { "@type": "Thing", "name": "Internet Speed Test", "description": "Alat gratis untuk mengukur kecepatan internet di Indonesia" }
+    });
 
     return () => {
-      
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
+      restoreLang();
+      cleanupHreflang();
+      document.querySelector('script[data-page="id"]')?.remove();
     };
   }, []);
 

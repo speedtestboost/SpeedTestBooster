@@ -16,7 +16,7 @@ import { Play, Wifi, Monitor, Globe, Zap, CheckCircle2, Activity, BarChart3, Gau
 import { Link } from "wouter";
 import type { SpeedTest } from "@shared/schema";
 import { loadNetworkInfoWithFallback, type PublicNetworkInfo } from "@/lib/networkInfo";
-import { SITE_ORIGIN, setCanonicalHref } from "@/lib/seo";
+import { SITE_ORIGIN, setCanonicalHref, setHreflangCluster, setOgLocale } from "@/lib/seo";
 
 export default function SpeedTest() {
   const [isTestRunning, setIsTestRunning] = useState(false);
@@ -54,7 +54,6 @@ export default function SpeedTest() {
       { property: 'og:url', content: 'https://speedtestboost.com/' },
       { property: 'og:type', content: 'website' },
       { property: 'og:site_name', content: 'Speed Test & Boost' },
-      { property: 'og:locale', content: 'en_US' },
       { property: 'og:image', content: 'https://speedtestboost.com/apple-touch-icon.png' },
       { property: 'og:image:alt', content: 'Speed Test & Boost' },
     ];
@@ -87,57 +86,14 @@ export default function SpeedTest() {
       twitterTag.setAttribute('content', tag.content);
     });
     
-    // Bing-specific content-language meta tag
-    let contentLanguage = document.querySelector('meta[http-equiv="content-language"]');
-    if (!contentLanguage) {
-      contentLanguage = document.createElement('meta');
-      contentLanguage.setAttribute('http-equiv', 'content-language');
-      document.head.appendChild(contentLanguage);
-    }
-    contentLanguage.setAttribute('content', 'en-US');
-    
     // Canonical: / and /speed-test both prefer the homepage URL (avoid duplicate content signals)
     setCanonicalHref(`${SITE_ORIGIN}/`);
-    
-    // Hreflang tags for multilingual support
-    const existingHreflang = document.querySelectorAll('link[rel="alternate"][hreflang]');
-    existingHreflang.forEach(link => link.remove());
 
-    const hreflangEn = document.createElement('link');
-    hreflangEn.setAttribute('rel', 'alternate');
-    hreflangEn.setAttribute('hreflang', 'en');
-    hreflangEn.setAttribute('href', 'https://speedtestboost.com/');
-    document.head.appendChild(hreflangEn);
+    // og:locale + alternates (en_US is primary; other language variants listed as alternates)
+    setOgLocale("en_US");
 
-    const hreflangEs = document.createElement('link');
-    hreflangEs.setAttribute('rel', 'alternate');
-    hreflangEs.setAttribute('hreflang', 'es');
-    hreflangEs.setAttribute('href', 'https://speedtestboost.com/es');
-    document.head.appendChild(hreflangEs);
-
-    const hreflangId = document.createElement('link');
-    hreflangId.setAttribute('rel', 'alternate');
-    hreflangId.setAttribute('hreflang', 'id');
-    hreflangId.setAttribute('href', 'https://speedtestboost.com/id');
-    document.head.appendChild(hreflangId);
-
-    const hreflangPtBr = document.createElement('link');
-    hreflangPtBr.setAttribute('rel', 'alternate');
-    hreflangPtBr.setAttribute('hreflang', 'pt-BR');
-    hreflangPtBr.setAttribute('href', 'https://speedtestboost.com/pt-br');
-    document.head.appendChild(hreflangPtBr);
-
-    const hreflangFr = document.createElement('link');
-    hreflangFr.setAttribute('rel', 'alternate');
-    hreflangFr.setAttribute('hreflang', 'fr');
-    hreflangFr.setAttribute('href', 'https://speedtestboost.com/fr');
-    document.head.appendChild(hreflangFr);
-
-    const hreflangDefault = document.createElement('link');
-    hreflangDefault.setAttribute('rel', 'alternate');
-    hreflangDefault.setAttribute('hreflang', 'x-default');
-    hreflangDefault.setAttribute('href', 'https://speedtestboost.com/');
-    document.head.appendChild(hreflangDefault);
+    // Hreflang cluster — must be identical on all 5 language pages
+    const cleanupHreflang = setHreflangCluster();
     
     // Structured Data (JSON-LD)
     let structuredData = document.querySelector('script[type="application/ld+json"]');
@@ -243,7 +199,7 @@ export default function SpeedTest() {
     });
 
     return () => {
-      /* Next route sets canonical; avoid resetting here (navigation race). */
+      cleanupHreflang();
     };
   }, []);
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { setCanonicalHref } from "@/lib/seo";
+import { setCanonicalHref, setHtmlLang, setHreflangCluster, setOgLocale } from "@/lib/seo";
 import Header from "@/components/Header";
 import GenericFooter from "@/components/GenericFooter";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -13,84 +13,38 @@ export default function SpanishSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Test de Velocidad Internet - Mide tu Velocidad WiFi Gratis 2025";
+    document.title = "Test de Velocidad Internet - Mide tu Velocidad WiFi Gratis 2026";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Test de velocidad de internet gratis en español. Mide tu velocidad de descarga, subida y ping para proveedores en España, México, Argentina y América Latina. Resultados precisos en tiempo real.');
     }
 
-    let contentLanguage = document.querySelector('meta[http-equiv="content-language"]');
-    if (!contentLanguage) {
-      contentLanguage = document.createElement('meta');
-      contentLanguage.setAttribute('http-equiv', 'content-language');
-      document.head.appendChild(contentLanguage);
-    }
-    contentLanguage.setAttribute('content', 'es');
-
+    const restoreLang = setHtmlLang("es");
     setCanonicalHref('https://speedtestboost.com/es');
+    setOgLocale("es_ES");
+    const cleanupHreflang = setHreflangCluster();
 
-    const existingHreflang = document.querySelectorAll('link[rel="alternate"][hreflang]');
-    existingHreflang.forEach(link => link.remove());
-
-    const hreflangEn = document.createElement('link');
-    hreflangEn.setAttribute('rel', 'alternate');
-    hreflangEn.setAttribute('hreflang', 'en');
-    hreflangEn.setAttribute('href', 'https://speedtestboost.com/');
-    document.head.appendChild(hreflangEn);
-
-    const hreflangEs = document.createElement('link');
-    hreflangEs.setAttribute('rel', 'alternate');
-    hreflangEs.setAttribute('hreflang', 'es');
-    hreflangEs.setAttribute('href', 'https://speedtestboost.com/es');
-    document.head.appendChild(hreflangEs);
-
-    const hreflangId = document.createElement('link');
-    hreflangId.setAttribute('rel', 'alternate');
-    hreflangId.setAttribute('hreflang', 'id');
-    hreflangId.setAttribute('href', 'https://speedtestboost.com/id');
-    document.head.appendChild(hreflangId);
-
-    const hreflangPtBr = document.createElement('link');
-    hreflangPtBr.setAttribute('rel', 'alternate');
-    hreflangPtBr.setAttribute('hreflang', 'pt-BR');
-    hreflangPtBr.setAttribute('href', 'https://speedtestboost.com/pt-br');
-    document.head.appendChild(hreflangPtBr);
-
-    const hreflangFr = document.createElement('link');
-    hreflangFr.setAttribute('rel', 'alternate');
-    hreflangFr.setAttribute('hreflang', 'fr');
-    hreflangFr.setAttribute('href', 'https://speedtestboost.com/fr');
-    document.head.appendChild(hreflangFr);
-
-    const hreflangDefault = document.createElement('link');
-    hreflangDefault.setAttribute('rel', 'alternate');
-    hreflangDefault.setAttribute('hreflang', 'x-default');
-    hreflangDefault.setAttribute('href', 'https://speedtestboost.com/');
-    document.head.appendChild(hreflangDefault);
-
-    const structuredData = {
+    let script = document.querySelector('script[data-page="es"]') as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.setAttribute('data-page', 'es');
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Test de Velocidad Internet - Español",
       "description": "Test de velocidad de internet gratis en español para medir tu conexión WiFi y fibra óptica",
       "url": "https://speedtestboost.com/es",
       "inLanguage": "es",
-      "about": {
-        "@type": "Thing",
-        "name": "Internet Speed Test",
-        "description": "Herramienta gratuita para medir velocidad de internet en español"
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
+      "about": { "@type": "Thing", "name": "Internet Speed Test", "description": "Herramienta gratuita para medir velocidad de internet en español" }
+    });
 
     return () => {
-      
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
+      restoreLang();
+      cleanupHreflang();
+      document.querySelector('script[data-page="es"]')?.remove();
     };
   }, []);
 
