@@ -66,6 +66,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
+  <url>
+    <loc>https://speedtestboost.com/internet-speed-for-streaming</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
   
   <!-- Internet Providers Main Page -->
   <url>

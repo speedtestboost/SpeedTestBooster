@@ -18,6 +18,7 @@ Allow: /speed-test-comparison
 Allow: /gaming-speed-test
 Allow: /isp-throttling-test
 Allow: /why-is-my-internet-slow
+Allow: /internet-speed-for-streaming
 Allow: /wifi-analyzer
 Allow: /ai-speed-test
 

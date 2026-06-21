@@ -309,6 +309,14 @@ const STATIC_PAGES = {
     body:
       "Slow internet has 14 distinct causes — from ISP peak-hour congestion and router bufferbloat to WiFi interference, DNS slowdowns and background software. Use our free 8-step diagnostic checklist and browser-based tools to find the exact bottleneck and fix it without calling your ISP.",
   },
+  "/internet-speed-for-streaming": {
+    title: "Internet Speed for Streaming 2026 — Netflix, YouTube, Disney+, Prime & More",
+    description:
+      "How much internet speed do you need for streaming? Complete guide with exact Mbps requirements for Netflix 4K, YouTube 4K, Disney Plus, Amazon Prime Video, Hulu, Twitch, Apple TV+ and more — plus a household calculator and buffering fix checklist.",
+    h1: "Internet Speed for Streaming",
+    body:
+      "Find out exactly how much internet speed you need for streaming Netflix 4K (25 Mbps per stream), YouTube 4K (20 Mbps), Disney Plus (25 Mbps), Amazon Prime Video and Hulu. Our household calculator shows the total bandwidth you need for multiple simultaneous streams, and our 9-step buffering fix guide explains why streaming buffers even on fast connections — from WiFi interference to ISP throttling.",
+  },
   "/internet-providers": {
     title: "Internet Providers Worldwide - ISP Speed Tests by Country",
     description:

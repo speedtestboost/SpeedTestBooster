@@ -37,6 +37,7 @@ import SpeedTestComparison from "@/pages/speed-test-comparison";
 import ISPThrottlingTest from "@/pages/isp-throttling-test";
 import GamingSpeedTest from "@/pages/gaming-speed-test";
 import WhyIsMyInternetSlow from "@/pages/why-is-my-internet-slow";
+import InternetSpeedForStreaming from "@/pages/internet-speed-for-streaming";
 import InternetProviders from "@/pages/internet-providers";
 // US Providers
 import VerizonSpeedTest from "@/pages/providers/us/verizon";
@@ -228,6 +229,7 @@ function Router() {
       <Route path="/isp-throttling-test" component={ISPThrottlingTest} />
       <Route path="/gaming-speed-test" component={GamingSpeedTest} />
       <Route path="/why-is-my-internet-slow" component={WhyIsMyInternetSlow} />
+      <Route path="/internet-speed-for-streaming" component={InternetSpeedForStreaming} />
       <Route path="/internet-providers" component={InternetProviders} />
       <Route path="/wifi-analyzer" component={WiFiAnalyzer} />
       <Route path="/ai-speed-test" component={AISpeedTest} />
