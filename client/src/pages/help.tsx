@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { setCanonicalHref } from "@/lib/seo";
+import { applyPageSEO, buildWebPageJsonLd } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { 
@@ -22,18 +22,17 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 
 export default function Help() {
   useEffect(() => {
-    // Update page title and meta description for SEO
-    document.title = "Help & FAQ - Speed Test & Boost | Internet Speed Test Guide";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Get help with internet speed testing. FAQ, troubleshooting guide, and tips to improve your connection speed. Learn about download speed, upload speed, ping, and jitter.');
-    }
-    
-    // Add canonical URL
-    setCanonicalHref('https://speedtestboost.com/help');
+    const title = "Help & FAQ - How to Use the Internet Speed Test";
+    const description =
+      "Help center and FAQ for the Speed Test & Boost internet speed test. Learn how to measure WiFi speed, fix slow connections and read your speed test results.";
+    const canonical = "https://speedtestboost.com/help";
 
-    return () => {
-    };
+    return applyPageSEO({
+      title,
+      description,
+      canonical,
+      jsonLd: buildWebPageJsonLd({ url: canonical, title, description }),
+    });
   }, []);
 
   return (

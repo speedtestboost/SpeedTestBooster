@@ -23,10 +23,8 @@
       as self-canonical, which matches the sitemap entries.
     -->
     
-    <!-- Language and Geo -->
+    <!-- Language -->
     <meta name="language" content="English" />
-    <meta name="geo.region" content="US" />
-    <meta name="geo.placename" content="United States" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -57,8 +55,8 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="x-ua-compatible" content="ie=edge" />
     
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
+    <!-- Schema.org Structured Data (homepage only — removed on inner routes via seo.ts) -->
+    <script type="application/ld+json" id="homepage-structured-data">
     {
       "@context": "https://schema.org",
       "@graph": [

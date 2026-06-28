@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { setCanonicalHref } from "@/lib/seo";
+import { setCanonicalHref, removeHomepageJsonLd } from "@/lib/seo";
 import { Link } from "wouter";
 import Header from "@/components/Header";
 import GenericFooter from "@/components/GenericFooter";
@@ -22,6 +22,7 @@ const PAGE_URL = "https://speedtestboost.com/isp-throttling-test";
 
 function useSEO() {
   useEffect(() => {
+    removeHomepageJsonLd();
     document.title = PAGE_TITLE;
 
     const desc = document.querySelector('meta[name="description"]');

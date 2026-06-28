@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { setCanonicalHref } from "@/lib/seo";
+import { setCanonicalHref, removeHomepageJsonLd } from "@/lib/seo";
 import { Link } from "wouter";
 import Header from "@/components/Header";
 import GenericFooter from "@/components/GenericFooter";
@@ -49,6 +49,7 @@ export default function SpeedTestComparison() {
   const [openFaqs, setOpenFaqs] = useState<number[]>([]);
 
   useEffect(() => {
+    removeHomepageJsonLd();
     const title =
       "Speed Test Comparison 2026: Speedtest vs Fast vs Google & Diagnostics";
     document.title = title;

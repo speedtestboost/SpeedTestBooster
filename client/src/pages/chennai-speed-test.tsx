@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { setCanonicalHref } from "@/lib/seo";
+import { setCanonicalHref, removeHomepageJsonLd } from "@/lib/seo";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { queryClient } from "@/lib/queryClient";
 import { getSessionId } from "@/lib/sessionManager";
@@ -28,7 +28,8 @@ export default function ChennaiSpeedTest() {
   const { toast } = useToast();
 
   useEffect(() => {
-    document.title = "Chennai Internet Free Internet Speed Test Online - No Ads - Free South India WiFi & Fiber Speed Checker | Free Internet Speed Test Online - No Ads & Boost";
+    removeHomepageJsonLd();
+    document.title = "Chennai Speed Test - Check Internet Speed in Chennai, India";
     
     // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');

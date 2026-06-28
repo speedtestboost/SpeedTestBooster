@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { setCanonicalHref } from "@/lib/seo";
+import { setCanonicalHref, removeHomepageJsonLd } from "@/lib/seo";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { queryClient } from "@/lib/queryClient";
 import { getSessionId } from "@/lib/sessionManager";
@@ -30,7 +30,8 @@ export default function MumbaiSpeedTest() {
 
   // SEO Meta Tags
   useEffect(() => {
-    document.title = "Mumbai Free Internet Speed Test Online - No Ads - Free Internet Free Internet Speed Test Online - No Ads Mumbai India | WiFi Speed Check";
+    removeHomepageJsonLd();
+    document.title = "Mumbai Speed Test - Check Internet Speed in Mumbai, India";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Mumbai speed test - Free speed test India for Jio Fiber, Airtel Xstream, ACT Fibernet, BSNL. Check WiFi speed test Mumbai, internet speed booster test Mumbai India, fiber speed test. Test your speed now!');

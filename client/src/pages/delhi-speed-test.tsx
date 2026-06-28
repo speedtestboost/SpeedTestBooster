@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { setCanonicalHref } from "@/lib/seo";
+import { setCanonicalHref, removeHomepageJsonLd } from "@/lib/seo";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { queryClient } from "@/lib/queryClient";
 import { getSessionId } from "@/lib/sessionManager";
@@ -30,7 +30,8 @@ export default function DelhiSpeedTest() {
 
   // SEO Meta Tags
   useEffect(() => {
-    document.title = "Delhi Internet Free Internet Speed Test Online - No Ads - Free WiFi & Broadband Speed Checker NCR | Free Internet Speed Test Online - No Ads & Boost";
+    removeHomepageJsonLd();
+    document.title = "Delhi Speed Test - Check Internet Speed in Delhi, India";
     
     // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');

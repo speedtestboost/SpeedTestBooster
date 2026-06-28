@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { setCanonicalHref } from "@/lib/seo";
+import { applyPageSEO, buildWebPageJsonLd } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Wifi, Globe, Shield, Zap, Users } from "lucide-react";
@@ -11,18 +11,17 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 
 export default function About() {
   useEffect(() => {
-    // Update page title and meta description for SEO
-    document.title = "About Speed Test & Boost - Professional Internet Speed Testing";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Learn about Speed Test & Boost, the professional internet speed testing tool. Accurate bandwidth measurement, network diagnostics, and WiFi optimization for all devices.');
-    }
-    
-    // Add canonical URL
-    setCanonicalHref('https://speedtestboost.com/about');
+    const title = "About Speed Test & Boost - Free Internet Speed Tests for Every Country";
+    const description =
+      "Learn about Speed Test & Boost, the free, ad-free speed test platform that measures download, upload, ping and jitter across global ISPs and major cities.";
+    const canonical = "https://speedtestboost.com/about";
 
-    return () => {
-    };
+    return applyPageSEO({
+      title,
+      description,
+      canonical,
+      jsonLd: buildWebPageJsonLd({ url: canonical, title, description }),
+    });
   }, []);
 
   return (

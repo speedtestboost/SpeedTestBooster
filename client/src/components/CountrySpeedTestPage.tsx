@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { setCanonicalHref } from "@/lib/seo";
+import { applyPageSEO, buildWebPageJsonLd } from "@/lib/seo";
 import Header from "@/components/Header";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import RelatedProviders from "@/components/RelatedProviders";
@@ -28,21 +28,21 @@ export default function CountrySpeedTestPage({
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-    document.title = `${countryName} Speed Test - Check Internet Speed Free 2026`;
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute(
-        "content",
-        `Run a free ${countryName} speed test for accurate download, upload, ping and jitter. Compare broadband performance across ${countryName} ISPs in seconds.`,
-      );
-    }
+    const title = `${countryName} Speed Test - Check Internet Speed in ${countryName} (2026)`;
+    const description = `Run a free ${countryName} speed test for accurate download, upload, ping and jitter. Compare broadband performance across ${countryName} ISPs in seconds.`;
 
-    setCanonicalHref(canonicalUrl);
-
-    return () => {
-      /* Next page's useEffect sets canonical; do not reset here (would race on client nav). */
-    };
-  }, [countryName, canonicalUrl]);
+    return applyPageSEO({
+      title,
+      description,
+      canonical: canonicalUrl,
+      jsonLd: buildWebPageJsonLd({
+        url: canonicalUrl,
+        title,
+        description,
+        breadcrumbs: undefined,
+      }),
+    });
+  }, [countryName, canonicalUrl, slug]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">

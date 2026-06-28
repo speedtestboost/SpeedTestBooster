@@ -4,17 +4,18 @@ Allow: /
 # Sitemap
 Sitemap: https://speedtestboost.com/sitemap.xml
 
-# Crawl-delay for bots
-Crawl-delay: 1
-
 # Allow important SEO pages
 Allow: /
 Allow: /speed-test
 Allow: /about
 Allow: /help
-Allow: /privacy
-Allow: /terms
+Allow: /site-index
 Allow: /internet-speed-requirements
+Allow: /speed-test-comparison
+Allow: /gaming-speed-test
+Allow: /isp-throttling-test
+Allow: /why-is-my-internet-slow
+Allow: /internet-speed-for-streaming
 Allow: /wifi-analyzer
 Allow: /ai-speed-test
 
@@ -31,6 +32,24 @@ Allow: /us-speed-test
 Allow: /uk-speed-test
 Allow: /au-speed-test
 Allow: /ca-speed-test
+Allow: /de-speed-test
+Allow: /sg-speed-test
+Allow: /th-speed-test
+Allow: /nl-speed-test
+Allow: /in-speed-test
+Allow: /mx-speed-test
+Allow: /my-speed-test
+Allow: /id-speed-test
+Allow: /es-speed-test
+Allow: /za-speed-test
+Allow: /ar-speed-test
+Allow: /ae-speed-test
+Allow: /sa-speed-test
+Allow: /pl-speed-test
+Allow: /fr-speed-test
+Allow: /it-speed-test
+Allow: /br-speed-test
+Allow: /ph-speed-test
 
 # Allow multilingual pages
 Allow: /es
@@ -59,6 +78,9 @@ Allow: /providers/my/*
 Allow: /providers/ar/*
 Allow: /providers/ae/*
 Allow: /providers/sa/*
+Allow: /providers/sg/*
+Allow: /providers/th/*
+Allow: /providers/pl/*
 
 # Block common crawler traps
 Disallow: /wp-admin/
@@ -71,6 +93,7 @@ Disallow: /*.json$
 
 # Disallow crawling of API endpoints (placed after Allow rules)
 Disallow: /api/
+Disallow: /logo-demo
 
 # Allow sitemap explicitly (override any wildcards)
 Allow: /sitemap.xml
@@ -78,7 +101,6 @@ Allow: /sitemap.xml
 # Allow Google, Bing, and other major search engines
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 1
 
 User-agent: Mediapartners-Google
 Allow: /
@@ -88,27 +110,21 @@ Allow: /
 
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 1
 
 User-agent: Slurp
 Allow: /
-Crawl-delay: 2
 
 User-agent: DuckDuckBot
 Allow: /
-Crawl-delay: 1
 
 User-agent: Baiduspider
 Allow: /
-Crawl-delay: 2
 
 User-agent: YandexBot
 Allow: /
-Crawl-delay: 2
 
 User-agent: facebookexternalhit
 Allow: /
 
 User-agent: Twitterbot
 Allow: /
-Crawl-delay: 1

@@ -4,9 +4,6 @@ Allow: /
 # Sitemap
 Sitemap: https://speedtestboost.com/sitemap.xml
 
-# Crawl-delay for bots
-Crawl-delay: 1
-
 # Allow important SEO pages
 Allow: /
 Allow: /speed-test
@@ -96,6 +93,7 @@ Disallow: /*.json$
 
 # Disallow crawling of API endpoints (placed after Allow rules)
 Disallow: /api/
+Disallow: /logo-demo
 
 # Allow sitemap explicitly (override any wildcards)
 Allow: /sitemap.xml
@@ -103,7 +101,6 @@ Allow: /sitemap.xml
 # Allow Google, Bing, and other major search engines
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 1
 
 User-agent: Mediapartners-Google
 Allow: /
@@ -113,27 +110,21 @@ Allow: /
 
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 1
 
 User-agent: Slurp
 Allow: /
-Crawl-delay: 2
 
 User-agent: DuckDuckBot
 Allow: /
-Crawl-delay: 1
 
 User-agent: Baiduspider
 Allow: /
-Crawl-delay: 2
 
 User-agent: YandexBot
 Allow: /
-Crawl-delay: 2
 
 User-agent: facebookexternalhit
 Allow: /
 
 User-agent: Twitterbot
 Allow: /
-Crawl-delay: 1

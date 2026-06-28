@@ -425,11 +425,19 @@ const STATIC_PAGES = {
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
+  { href: "/internet-speed-requirements", label: "Speed Requirements" },
+  { href: "/internet-speed-for-streaming", label: "Streaming Speed Guide" },
+  { href: "/gaming-speed-test", label: "Gaming Speed Test" },
+  { href: "/isp-throttling-test", label: "ISP Throttling Test" },
+  { href: "/why-is-my-internet-slow", label: "Why Is Internet Slow?" },
+  { href: "/speed-test-comparison", label: "Speed Test Comparison" },
   { href: "/internet-providers", label: "All Internet Providers" },
+  { href: "/ping-test", label: "Ping Test" },
+  { href: "/bufferbloat-test", label: "Bufferbloat Test" },
+  { href: "/dns-speed-test", label: "DNS Speed Test" },
   { href: "/wifi-analyzer", label: "WiFi Analyzer" },
-  { href: "/ai-speed-test", label: "AI Speed Test" },
   { href: "/speed-test-faq", label: "Speed Test FAQ" },
-  { href: "/site-index", label: "Full Site Index" },
+  { href: "/help", label: "Help" },
 ];
 
 function escapeHtml(value) {
@@ -534,6 +542,45 @@ function getRouteMetadata(routePath) {
  * It's only on screen for the ~100ms it takes the React bundle to hydrate the
  * route and replace #root.
  */
+function buildPageJsonLd(meta) {
+  const isHomepage =
+    meta.canonical === SITE_ORIGIN || meta.canonical === `${SITE_ORIGIN}/`;
+  if (isHomepage) return null;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${meta.canonical}#webpage`,
+        url: meta.canonical,
+        name: meta.title,
+        description: meta.description,
+        isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+        publisher: { "@id": `${SITE_ORIGIN}/#organization` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${meta.canonical}#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `${SITE_ORIGIN}/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: meta.h1,
+            item: meta.canonical,
+          },
+        ],
+      },
+    ],
+  };
+}
+
 function buildPrerenderedBody(meta) {
   const navItems = NAV_LINKS.map(
     (link) =>
@@ -652,6 +699,19 @@ function renderTemplate(template, meta) {
           `$1\n    <meta property="og:locale" content="${meta.ogLocale}" />`,
         );
       }
+    }
+  }
+
+  const pageJsonLd = buildPageJsonLd(meta);
+  if (pageJsonLd) {
+    const jsonLdTag = `<script type="application/ld+json" id="page-structured-data">\n${JSON.stringify(pageJsonLd)}\n    </script>`;
+    if (/<script[^>]+id="homepage-structured-data"[^>]*>[\s\S]*?<\/script>/i.test(html)) {
+      html = html.replace(
+        /<script[^>]+id="homepage-structured-data"[^>]*>[\s\S]*?<\/script>/i,
+        jsonLdTag,
+      );
+    } else {
+      html = html.replace(/<\/head>/i, `    ${jsonLdTag}\n  </head>`);
     }
   }
 

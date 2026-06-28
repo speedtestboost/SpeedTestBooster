@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { setCanonicalHref } from '@/lib/seo';
+import { setCanonicalHref, removeHomepageJsonLd } from '@/lib/seo';
 import { providerKeywords } from '@/seo/providerKeywords';
 
 interface ProviderSEOProps {
@@ -16,6 +16,7 @@ export function ProviderSEO({ providerSlug }: ProviderSEOProps) {
 
     // Update document title
     document.title = config.titleTemplate;
+    removeHomepageJsonLd();
 
     // Update meta description
     const metaDescription = document.querySelector('meta[name="description"]');
