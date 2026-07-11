@@ -4,6 +4,9 @@
 Options -MultiViews
 RewriteEngine On
 
+# Canonical homepage: /speed-test duplicates / — send a 301 to /
+RewriteRule ^speed-test/?$ / [R=301,L]
+
 # 1. If a prerendered <path>.html file exists, serve it for the bare path.
 #      /about                         -> serves /about.html
 #      /providers/us/spectrum         -> serves /providers/us/spectrum.html

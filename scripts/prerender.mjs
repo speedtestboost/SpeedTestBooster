@@ -243,9 +243,9 @@ function buildHreflangTags() {
 
 const STATIC_PAGES = {
   "/": {
-    title: "Free Internet Speed Test Online - No Ads, No Downloads Required",
+    title: "Free Internet Speed Test Online - WiFi & Broadband Speed Test (2026)",
     description:
-      "Free internet speed test online with no ads or downloads. Accurate WiFi speed test, bandwidth checker and speed booster test that works on mobile and desktop.",
+      "Free internet speed test online in your browser. Accurate WiFi speed test, bandwidth checker and speed booster test that works on mobile and desktop.",
     h1: "Free Internet Speed Test",
     body:
       "Run an accurate, ad-free internet speed test in your browser. Measure download speed, upload speed, ping, jitter and packet loss across WiFi and wired connections in under 30 seconds, with no app installs or sign-up required.",

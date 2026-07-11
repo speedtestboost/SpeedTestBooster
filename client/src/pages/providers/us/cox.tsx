@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,45 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function CoxSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Cox Speed Test USA - Check Gigabit Cable Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Cox gigabit cable internet speed instantly - Free speed test for USA. Accurate download/upload performance results in seconds.');
-    }
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/us/cox');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Cox Speed Test",
-      "description": "Test your Cox internet speed for free. Speed test for Cox cable internet and gigabit customers.",
-      "url": "https://speedtestboost.com/providers/us/cox",
-      "provider": {
-        "@type": "Organization",
-        "name": "Cox Communications",
-        "description": "Major cable internet provider serving multiple states with gigabit internet services",
-        "areaServed": { "@type": "Country", "name": "United States" },
-        "serviceType": ["Cable Internet", "Gigabit Internet", "TV Services", "Phone Services", "Business Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.id = 'cox-structured-data';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script#cox-structured-data');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="us" providerSlug="cox" />
       <Header currentPath="/providers/us/cox" />
       
       <main className="pt-24 pb-12">

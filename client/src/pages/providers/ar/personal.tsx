@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function PersonalSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Personal Speed Test Argentina - Check Flow Fiber Internet Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Personal Flow internet speed instantly - Free speed test for Argentina. Accurate fiber & cable broadband performance results in seconds.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/ar/personal');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Personal Speed Test Argentina",
-      "description": "Test your Personal Flow internet speed for free. Speed test for Personal fiber and cable customers in Argentina.",
-      "url": "https://speedtestboost.com/providers/ar/personal",
-      "provider": {
-        "@type": "Organization",
-        "name": "Personal / Telecom Argentina",
-        "description": "Major telecommunications provider offering Personal Flow fiber and cable internet services",
-        "areaServed": { "@type": "Country", "name": "Argentina" },
-        "serviceType": ["Fiber Internet", "Cable Broadband", "Mobile Services", "TV Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="ar" providerSlug="personal" />
       <Header currentPath="/providers/ar/personal" />
       
       <main className="pt-24 pb-12">

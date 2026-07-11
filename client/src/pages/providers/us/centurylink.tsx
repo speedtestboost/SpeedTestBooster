@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,45 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function CenturyLinkSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "CenturyLink Speed Test USA - Check Fiber & DSL Internet Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test CenturyLink fiber & DSL internet speed instantly - Free speed test for USA. Accurate download/upload performance results in seconds.');
-    }
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/us/centurylink');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "CenturyLink Speed Test",
-      "description": "Test your CenturyLink internet speed for free. Speed test for CenturyLink fiber and DSL customers.",
-      "url": "https://speedtestboost.com/providers/us/centurylink",
-      "provider": {
-        "@type": "Organization",
-        "name": "CenturyLink",
-        "description": "Major US telecommunications provider offering fiber and DSL internet services nationwide",
-        "areaServed": { "@type": "Country", "name": "United States" },
-        "serviceType": ["Fiber Internet", "DSL Broadband", "Business Services", "Phone Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.id = 'centurylink-structured-data';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script#centurylink-structured-data');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="us" providerSlug="centurylink" />
       <Header currentPath="/providers/us/centurylink" />
       
       <main className="pt-24 pb-12">

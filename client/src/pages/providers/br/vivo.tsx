@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,45 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function VivoSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Vivo Speed Test Brazil - Check Fiber Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Vivo fiber internet speed instantly - Free speed test for Brazil. Accurate download/upload speeds and broadband results in seconds.');
-    }
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/br/vivo');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Vivo Speed Test Brazil",
-      "description": "Test your Vivo internet speed for free. Speed test for Vivo fiber and broadband customers in Brazil.",
-      "url": "https://speedtestboost.com/providers/br/vivo",
-      "provider": {
-        "@type": "Organization",
-        "name": "Vivo Brazil",
-        "description": "Leading telecommunications provider in Brazil offering fiber and broadband internet services",
-        "areaServed": { "@type": "Country", "name": "Brazil" },
-        "serviceType": ["Fiber Internet", "Broadband Internet", "Mobile Services", "TV Services", "Business Solutions"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.id = 'vivo-structured-data';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script#vivo-structured-data');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="br" providerSlug="vivo" />
       <Header currentPath="/providers/br/vivo" />
       
       <main className="pt-24 pb-12">

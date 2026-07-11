@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function MasOrangeSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "MásOrange Speed Test Spain - Check Fiber Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test MásOrange fiber internet speed instantly - Free speed test for Spain. Accurate download/upload performance results in seconds.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/es/masorange');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "MásOrange Speed Test Spain",
-      "description": "Test your MásOrange fiber internet speed for free. Speed test for MásOrange customers in Spain.",
-      "url": "https://speedtestboost.com/providers/es/masorange",
-      "provider": {
-        "@type": "Organization",
-        "name": "MásOrange",
-        "description": "Spain's merged telecommunications powerhouse combining Orange and MásMóvil networks",
-        "areaServed": { "@type": "Country", "name": "Spain" },
-        "serviceType": ["Fiber Internet", "Mobile Services", "Convergent Services", "Value Plans"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="es" providerSlug="masorange" />
       <Header currentPath="/providers/es/masorange" />
       
       <main className="pt-24 pb-12">

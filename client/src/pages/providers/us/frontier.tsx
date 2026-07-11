@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,45 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function FrontierSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Frontier Speed Test USA - Check Fiber & DSL Internet Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Frontier fiber & DSL internet speed instantly - Free speed test for USA. Accurate rural broadband performance results in seconds.');
-    }
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/us/frontier');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Frontier Speed Test",
-      "description": "Test your Frontier internet speed for free. Speed test for Frontier fiber and DSL customers.",
-      "url": "https://speedtestboost.com/providers/us/frontier",
-      "provider": {
-        "@type": "Organization",
-        "name": "Frontier Communications",
-        "description": "Rural and suburban internet provider offering fiber and DSL services nationwide",
-        "areaServed": { "@type": "Country", "name": "United States" },
-        "serviceType": ["Fiber Internet", "DSL Broadband", "Phone Services", "Business Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.id = 'frontier-structured-data';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script#frontier-structured-data');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="us" providerSlug="frontier" />
       <Header currentPath="/providers/us/frontier" />
       
       <main className="pt-24 pb-12">

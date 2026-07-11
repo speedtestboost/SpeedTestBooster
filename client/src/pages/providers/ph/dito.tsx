@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function DITOSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "DITO Speed Test Philippines - Check 5G & Home Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test DITO 5G & home broadband internet speed instantly - Free speed test for Philippines. Accurate mobile WiFi performance results in seconds.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/ph/dito');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "DITO Speed Test Philippines",
-      "description": "Test your DITO Telecommunity internet speed for free. Speed test for DITO mobile and home broadband customers in the Philippines.",
-      "url": "https://speedtestboost.com/providers/ph/dito",
-      "provider": {
-        "@type": "Organization",
-        "name": "DITO Telecommunity",
-        "description": "Philippines' third major telecommunications player disrupting the market with 5G-first infrastructure and competitive pricing",
-        "areaServed": { "@type": "Country", "name": "Philippines" },
-        "serviceType": ["5G Mobile", "4G Mobile", "Home Broadband", "Wireless Internet"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="ph" providerSlug="dito" />
       <Header currentPath="/providers/ph/dito" />
       
       <main className="pt-24 pb-12">

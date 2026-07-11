@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function CelcomSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Celcom Speed Test Malaysia - Check Home Fiber Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Celcom Home Fiber internet speed instantly - Free speed test for Malaysia. Accurate fiber & mobile broadband performance results now.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/my/celcom');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Celcom Speed Test Malaysia",
-      "description": "Test your Celcom Home Fiber internet speed for free. Speed test for Celcom mobile and fiber broadband customers in Malaysia.",
-      "url": "https://speedtestboost.com/providers/my/celcom",
-      "provider": {
-        "@type": "Organization",
-        "name": "Celcom",
-        "description": "Malaysia's established telecommunications operator expanding Home Fibre services with mobile integration",
-        "areaServed": { "@type": "Country", "name": "Malaysia" },
-        "serviceType": ["Fiber Internet", "Mobile Broadband", "4G LTE", "Convergence Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="my" providerSlug="celcom" />
       <Header currentPath="/providers/my/celcom" />
       
       <main className="pt-24 pb-12">

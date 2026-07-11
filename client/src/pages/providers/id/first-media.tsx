@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function FirstMediaSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "First Media Speed Test Indonesia - Check Cable Internet Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test First Media cable internet speed instantly - Free speed test for Indonesia. Accurate download/upload performance results in seconds.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/id/first-media');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "First Media Speed Test Indonesia",
-      "description": "Test your First Media cable internet speed for free. Speed test for First Media customers across Indonesia.",
-      "url": "https://speedtestboost.com/providers/id/first-media",
-      "provider": {
-        "@type": "Organization",
-        "name": "First Media",
-        "description": "Indonesia's leading cable internet provider offering hybrid fiber-cable services with comprehensive entertainment bundles",
-        "areaServed": { "@type": "Country", "name": "Indonesia" },
-        "serviceType": ["Cable Internet", "Hybrid Fiber-Cable", "Cable TV", "Digital Entertainment"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="id" providerSlug="first-media" />
       <Header currentPath="/providers/id/first-media" />
       
       <main className="pt-24 pb-12">

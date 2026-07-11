@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function MovistarSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Movistar Speed Test Spain - Check Fibra Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Movistar Fibra internet speed instantly - Free speed checker for Spain. Accurate fiber download/upload & FTTH performance results now.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/es/movistar');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Movistar Speed Test Spain",
-      "description": "Test your Movistar Fibra internet speed for free. Speed test for Movistar fiber customers in Spain.",
-      "url": "https://speedtestboost.com/providers/es/movistar",
-      "provider": {
-        "@type": "Organization",
-        "name": "Movistar",
-        "description": "Spain's leading telecommunications provider offering Fibra internet services with nationwide FTTH coverage",
-        "areaServed": { "@type": "Country", "name": "Spain" },
-        "serviceType": ["Fiber Internet", "FTTH", "Mobile Services", "Entertainment Bundles"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="es" providerSlug="movistar" />
       <Header currentPath="/providers/es/movistar" />
       
       <main className="pt-24 pb-12">

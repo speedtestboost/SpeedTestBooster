@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,44 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function M1SpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "M1 Speed Test Singapore - Check Fibre & 5G Internet Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test M1 fibre and 5G broadband speed free. Accurate download, upload, and ping for Singapore homes and businesses.');
-    }
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/sg/m1');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "M1 Internet Speed Test",
-      "description": "Test your M1 broadband speed for free. Speed test for M1 fibre and 5G broadband customers in Singapore.",
-      "url": "https://speedtestboost.com/providers/sg/m1",
-      "provider": {
-        "@type": "Organization",
-        "name": "M1 Singapore",
-        "description": "Singapore's largest telecommunications company providing fibre internet, mobile, and TV services",
-        "areaServed": { "@type": "Country", "name": "Singapore" },
-        "serviceType": ["Fibre Internet", "DSL", "Mobile", "TV", "Telecommunications"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="sg" providerSlug="m1" />
       <Header currentPath="/providers/sg/m1" />
       
       <main className="pt-24 pb-12">

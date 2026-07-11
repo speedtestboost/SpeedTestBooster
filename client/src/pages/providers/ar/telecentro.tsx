@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function TelecentroSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Telecentro Speed Test Argentina - Check Cable Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Telecentro cable internet speed instantly - Free speed checker for Argentina. Accurate broadband & fiber performance results in seconds.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/ar/telecentro');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Telecentro Speed Test Argentina",
-      "description": "Test your Telecentro cable internet speed for free. Speed test for Telecentro cable and fiber customers in Argentina.",
-      "url": "https://speedtestboost.com/providers/ar/telecentro",
-      "provider": {
-        "@type": "Organization",
-        "name": "Telecentro",
-        "description": "Major cable provider offering high-speed cable and fiber internet services in Argentina",
-        "areaServed": { "@type": "Country", "name": "Argentina" },
-        "serviceType": ["Cable Internet", "Fiber Broadband", "TV Services", "Telephone"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="ar" providerSlug="telecentro" />
       <Header currentPath="/providers/ar/telecentro" />
       
       <main className="pt-24 pb-12">

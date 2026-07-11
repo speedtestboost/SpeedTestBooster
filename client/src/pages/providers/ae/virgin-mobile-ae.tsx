@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function VirginMobileAESpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Virgin Mobile UAE Speed Test - Check 5G Mobile Internet Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Virgin Mobile 5G internet speed instantly - Free speed checker for UAE. Accurate mobile broadband performance results in seconds.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/ae/virgin-mobile-ae');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Virgin Mobile Speed Test UAE",
-      "description": "Test your Virgin Mobile internet speed for free. Speed test for Virgin Mobile 4G, 5G, and home broadband customers in UAE.",
-      "url": "https://speedtestboost.com/providers/ae/virgin-mobile-ae",
-      "provider": {
-        "@type": "Organization",
-        "name": "Virgin Mobile UAE",
-        "description": "Mobile-first telecommunications provider offering competitive mobile broadband and flexible plans in UAE",
-        "areaServed": { "@type": "Country", "name": "United Arab Emirates" },
-        "serviceType": ["Mobile Broadband", "4G Mobile", "5G Mobile", "Home Broadband"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="ae" providerSlug="virgin-mobile-ae" />
       <Header currentPath="/providers/ae/virgin-mobile-ae" />
       
       <main className="pt-24 pb-12">

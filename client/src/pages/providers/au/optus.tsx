@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,44 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function OptusSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Optus Speed Test Australia - Check NBN & 5G Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Optus NBN & 5G internet speed instantly - Free speed test for Australia. Accurate download/upload performance results in seconds.');
-    }
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/au/optus');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Optus Speed Test",
-      "description": "Test your Optus internet speed for free. Speed test for Optus NBN and mobile customers.",
-      "url": "https://speedtestboost.com/providers/au/optus",
-      "provider": {
-        "@type": "Organization",
-        "name": "Optus",
-        "description": "Major Australian telecommunications company providing NBN and 5G services",
-        "areaServed": { "@type": "Country", "name": "Australia" },
-        "serviceType": ["NBN Internet", "5G Mobile", "TV", "Business Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="au" providerSlug="optus" />
       <Header currentPath="/providers/au/optus" />
       
       <main className="pt-24 pb-12">

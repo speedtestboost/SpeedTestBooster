@@ -127,6 +127,9 @@ fs.writeFileSync(path.join(deployDir, '.env.example'), envTemplate);
 const htaccess = \`Options -MultiViews
 RewriteEngine On
 
+# Canonical homepage: /speed-test duplicates / — send a 301 to /
+RewriteRule ^speed-test/?$ / [R=301,L]
+
 # Handle Node.js app
 RewriteCond %{REQUEST_URI} ^/api
 RewriteRule ^(.*)$ app.js [L,QSA]

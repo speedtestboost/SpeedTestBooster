@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,44 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function SingtelSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Singtel Speed Test Singapore - Check Fibre & 5G Internet Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Singtel fibre and 5G broadband speed free. Accurate download, upload, and ping for Singapore homes and businesses.');
-    }
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/sg/singtel');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Singtel Internet Speed Test",
-      "description": "Test your Singtel broadband speed for free. Speed test for Singtel fibre and 5G broadband customers in Singapore.",
-      "url": "https://speedtestboost.com/providers/sg/singtel",
-      "provider": {
-        "@type": "Organization",
-        "name": "Singtel Singapore",
-        "description": "Singapore's largest telecommunications company providing fibre internet, mobile, and TV services",
-        "areaServed": { "@type": "Country", "name": "Singapore" },
-        "serviceType": ["Fibre Internet", "DSL", "Mobile", "TV", "Telecommunications"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="sg" providerSlug="singtel" />
       <Header currentPath="/providers/sg/singtel" />
       
       <main className="pt-24 pb-12">

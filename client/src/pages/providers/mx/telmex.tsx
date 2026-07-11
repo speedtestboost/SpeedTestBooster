@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function TelmexSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Telmex Speed Test Mexico - Check Infinitum Fiber Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Telmex Infinitum internet speed instantly - Free speed test for fiber & DSL across Mexico. Check real download/upload speeds & latency now.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/mx/telmex');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Telmex Speed Test Mexico",
-      "description": "Test your Telmex Infinitum internet speed for free. Speed test for Telmex fiber and DSL customers in Mexico.",
-      "url": "https://speedtestboost.com/providers/mx/telmex",
-      "provider": {
-        "@type": "Organization",
-        "name": "Telmex",
-        "description": "Mexico's largest telecommunications provider offering Infinitum fiber and DSL internet services",
-        "areaServed": { "@type": "Country", "name": "Mexico" },
-        "serviceType": ["Fiber Internet", "DSL Broadband", "Fixed Line", "TV Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="mx" providerSlug="telmex" />
       <Header currentPath="/providers/mx/telmex" />
       
       <main className="pt-24 pb-12">

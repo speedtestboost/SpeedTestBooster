@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function CoolIdeasSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Cool Ideas Speed Test South Africa - Check Fiber Internet Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Cool Ideas fiber internet speed instantly - Free speed test for South Africa. Accurate download/upload performance results in seconds.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/za/cool-ideas');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Cool Ideas Speed Test South Africa",
-      "description": "Test your Cool Ideas fiber internet speed for free. Speed test for Cool Ideas customers in South Africa.",
-      "url": "https://speedtestboost.com/providers/za/cool-ideas",
-      "provider": {
-        "@type": "Organization",
-        "name": "Cool Ideas",
-        "description": "South Africa's award-winning fiber internet service provider with exceptional customer service and competitive pricing",
-        "areaServed": { "@type": "Country", "name": "South Africa" },
-        "serviceType": ["Fiber Internet", "Business Fiber", "Open-Access Network", "ISP Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="za" providerSlug="cool-ideas" />
       <Header currentPath="/providers/za/cool-ideas" />
       
       <main className="pt-24 pb-12">

@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,44 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function SkySpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Sky Speed Test UK - Check Fibre Broadband Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Sky Fibre broadband speed instantly - Free speed test for UK. Accurate download/upload superfast performance results in seconds.');
-    }
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/uk/sky');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Sky Broadband Speed Test",
-      "description": "Test your Sky broadband speed for free. Speed test for Sky fibre internet and TV customers.",
-      "url": "https://speedtestboost.com/providers/uk/sky",
-      "provider": {
-        "@type": "Organization",
-        "name": "Sky",
-        "description": "Leading UK broadband and TV provider offering superfast fibre internet and entertainment services",
-        "areaServed": { "@type": "Country", "name": "United Kingdom" },
-        "serviceType": ["Fibre Broadband", "TV", "Mobile", "Entertainment"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="uk" providerSlug="sky" />
       <Header currentPath="/providers/uk/sky" />
       
       <main className="pt-24 pb-12">

@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function ZainSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Zain Speed Test Saudi Arabia - Check Fiber Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Zain fiber internet speed instantly - Free speed test for Saudi Arabia. Accurate download/upload mobile performance results in seconds.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/sa/zain');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Zain Speed Test Saudi Arabia",
-      "description": "Test your Zain fiber internet speed for free. Speed test for Zain fiber and mobile customers in Saudi Arabia.",
-      "url": "https://speedtestboost.com/providers/sa/zain",
-      "provider": {
-        "@type": "Organization",
-        "name": "Zain KSA",
-        "description": "Saudi Arabia's competitive third telecommunications provider offering fiber internet and mobile services",
-        "areaServed": { "@type": "Country", "name": "Saudi Arabia" },
-        "serviceType": ["Fiber Internet", "Mobile Services", "Youth-Focused Plans", "Digital Innovation"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="sa" providerSlug="zain" />
       <Header currentPath="/providers/sa/zain" />
       
       <main className="pt-24 pb-12">

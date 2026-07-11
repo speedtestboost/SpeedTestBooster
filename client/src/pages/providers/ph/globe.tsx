@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function GlobeSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Globe Speed Test Philippines - Check At Home Fiber Internet Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Globe At Home Fiber internet speed instantly - Free speed test for Philippines. Accurate download/upload WiFi performance results now.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/ph/globe');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Globe Speed Test Philippines",
-      "description": "Test your Globe At Home Fiber internet speed for free. Speed test for Globe fiber customers in the Philippines.",
-      "url": "https://speedtestboost.com/providers/ph/globe",
-      "provider": {
-        "@type": "Organization",
-        "name": "Globe Telecom",
-        "description": "Philippines' co-leading telecommunications provider offering At Home Fiber internet and 5G mobile services",
-        "areaServed": { "@type": "Country", "name": "Philippines" },
-        "serviceType": ["Fiber Internet", "5G Mobile", "Entertainment Bundles", "TV Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="ph" providerSlug="globe" />
       <Header currentPath="/providers/ph/globe" />
       
       <main className="pt-24 pb-12">

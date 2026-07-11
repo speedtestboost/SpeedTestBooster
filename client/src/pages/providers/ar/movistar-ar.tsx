@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function MovistarArgentinaSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Movistar Speed Test Argentina - Check Fibra Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Movistar Fibra internet speed instantly - Free speed checker for Argentina. Accurate fiber download/upload speeds & ADSL results now.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/ar/movistar-ar');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Movistar Speed Test Argentina",
-      "description": "Test your Movistar Fibra internet speed for free. Speed test for Movistar fiber and ADSL customers in Argentina.",
-      "url": "https://speedtestboost.com/providers/ar/movistar-ar",
-      "provider": {
-        "@type": "Organization",
-        "name": "Movistar Argentina",
-        "description": "Telefónica's Argentine operation offering Movistar Fibra and ADSL internet services",
-        "areaServed": { "@type": "Country", "name": "Argentina" },
-        "serviceType": ["Fiber Internet", "ADSL Broadband", "Fixed Line", "TV Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="ar" providerSlug="movistar-ar" />
       <Header currentPath="/providers/ar/movistar-ar" />
       
       <main className="pt-24 pb-12">

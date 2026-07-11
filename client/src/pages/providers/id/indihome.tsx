@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function IndiHomeSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "IndiHome Speed Test Indonesia - Check Telkomsel Fiber Internet Speed 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test IndiHome fiber speed instantly - Free internet speed checker for Indonesia. Get accurate Telkomsel IndiHome download/upload results now.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/id/indihome');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "IndiHome Speed Test Indonesia",
-      "description": "Test your IndiHome fiber internet speed for free. Speed test for Telkomsel IndiHome customers in Indonesia.",
-      "url": "https://speedtestboost.com/providers/id/indihome",
-      "provider": {
-        "@type": "Organization",
-        "name": "IndiHome",
-        "description": "Indonesia's dominant telecommunications provider offering fiber internet services with 75% market share and 38 million homes passed",
-        "areaServed": { "@type": "Country", "name": "Indonesia" },
-        "serviceType": ["Fiber Internet", "IPTV", "Fixed Line", "Home Broadband"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="id" providerSlug="indihome" />
       <Header currentPath="/providers/id/indihome" />
       
       <main className="pt-24 pb-12">

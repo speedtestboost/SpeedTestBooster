@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function MaxisSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Maxis Speed Test Malaysia - Check Fiber & 5G Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Maxis Fiber & 5G internet speed instantly - Free speed test for Malaysia. Accurate download/upload mobile broadband results in seconds.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/my/maxis');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Maxis Speed Test Malaysia",
-      "description": "Test your Maxis Fiber Home internet speed for free. Speed test for Maxis fiber and mobile broadband customers in Malaysia.",
-      "url": "https://speedtestboost.com/providers/my/maxis",
-      "provider": {
-        "@type": "Organization",
-        "name": "Maxis",
-        "description": "Malaysia's leading mobile operator expanding Maxis Fibre Home services with 5G integration",
-        "areaServed": { "@type": "Country", "name": "Malaysia" },
-        "serviceType": ["Fiber Internet", "5G Mobile", "Mobile Broadband", "Convergence Plans"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="my" providerSlug="maxis" />
       <Header currentPath="/providers/my/maxis" />
       
       <main className="pt-24 pb-12">

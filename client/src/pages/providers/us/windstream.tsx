@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,45 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function WindstreamSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Windstream Speed Test USA - Check Fiber & DSL Internet Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Windstream fiber & DSL internet speed instantly - Free speed test for USA. Accurate rural broadband performance results in seconds.');
-    }
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/us/windstream');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Windstream Speed Test",
-      "description": "Test your Windstream internet speed for free. Speed test for Windstream fiber and DSL customers.",
-      "url": "https://speedtestboost.com/providers/us/windstream",
-      "provider": {
-        "@type": "Organization",
-        "name": "Windstream Communications",
-        "description": "Rural internet provider specializing in fiber and DSL services across multiple states",
-        "areaServed": { "@type": "Country", "name": "United States" },
-        "serviceType": ["Fiber Internet", "DSL Broadband", "Business Services", "Cloud Solutions"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.id = 'windstream-structured-data';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script#windstream-structured-data');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="us" providerSlug="windstream" />
       <Header currentPath="/providers/us/windstream" />
       
       <main className="pt-24 pb-12">

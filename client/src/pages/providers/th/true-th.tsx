@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,44 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function TrueThSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "True Speed Test Thailand - Check Fibe Fiber Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test True Fibre fiber internet speed instantly - Free speed checker for Thailand. Accurate download/upload speeds & DSL results in seconds.');
-    }
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/th/true-th');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "True Fibre internet Speed Test",
-      "description": "Test your True Fibre internet speed for free. Speed test for True Fibre and DSL internet customers in Thailand.",
-      "url": "https://speedtestboost.com/providers/th/true-th",
-      "provider": {
-        "@type": "Organization",
-        "name": "True Corporation Thailand",
-        "description": "Thailand's largest telecommunications company providing fibre internet, mobile, and TV services",
-        "areaServed": { "@type": "Country", "name": "Thailand" },
-        "serviceType": ["Fibre Internet", "DSL", "Mobile", "TV", "Telecommunications"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="th" providerSlug="true-th" />
       <Header currentPath="/providers/th/true-th" />
       
       <main className="pt-24 pb-12">

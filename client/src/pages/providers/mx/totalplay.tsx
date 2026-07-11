@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function TotalplaySpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Totalplay Speed Test Mexico - Check Fiber Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Totalplay gigabit fiber internet speed instantly - Free speed test for Mexico. Accurate download/upload speeds & low latency results now.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/mx/totalplay');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Totalplay Speed Test Mexico",
-      "description": "Test your Totalplay fiber internet speed for free. Speed test for Totalplay customers in Mexico.",
-      "url": "https://speedtestboost.com/providers/mx/totalplay",
-      "provider": {
-        "@type": "Organization",
-        "name": "Totalplay",
-        "description": "Mexico's premium fiber internet provider offering gigabit speeds and advanced broadband services",
-        "areaServed": { "@type": "Country", "name": "Mexico" },
-        "serviceType": ["Fiber Internet", "Gigabit Broadband", "TV Services", "Telephony"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="mx" providerSlug="totalplay" />
       <Header currentPath="/providers/mx/totalplay" />
       
       <main className="pt-24 pb-12">

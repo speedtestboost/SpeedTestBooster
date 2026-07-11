@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function VodacomFibreSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Vodacom Speed Test South Africa - Check Fibre Internet Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Vodacom Fibre internet speed instantly - Free speed test for South Africa. Accurate download/upload performance results in seconds.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/za/vodacom-fibre');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Vodacom Fibre Speed Test South Africa",
-      "description": "Test your Vodacom Fibre internet speed for free. Speed test for Vodacom fiber customers in South Africa.",
-      "url": "https://speedtestboost.com/providers/za/vodacom-fibre",
-      "provider": {
-        "@type": "Organization",
-        "name": "Vodacom",
-        "description": "South Africa's leading telecommunications provider offering fiber internet, mobile services, and integrated connectivity solutions",
-        "areaServed": { "@type": "Country", "name": "South Africa" },
-        "serviceType": ["Fiber Internet", "Mobile Services", "Business Connectivity", "Cloud Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="za" providerSlug="vodacom-fibre" />
       <Header currentPath="/providers/za/vodacom-fibre" />
       
       <main className="pt-24 pb-12">

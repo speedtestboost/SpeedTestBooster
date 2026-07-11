@@ -1,11 +1,10 @@
 import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Zap, Wifi, Router, Network, Signal } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
-import ProviderSEO from "@/components/ProviderSEO";
-import { providerKeywords } from "@/seo/providerKeywords";
 import RelatedProviders from "@/components/RelatedProviders";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import GenericFooter from "@/components/GenericFooter";
@@ -13,11 +12,10 @@ import { Link } from "wouter";
 
 export default function ACTFibernetSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
-  const seoConfig = providerKeywords.actfibernet;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      <ProviderSEO providerSlug="in/act-fibernet" />
+      <ProviderPageSEO countryCode="in" providerSlug="act-fibernet" />
       <Header currentPath="/providers/in/act-fibernet" />
       
       <main className="pt-24 pb-12">

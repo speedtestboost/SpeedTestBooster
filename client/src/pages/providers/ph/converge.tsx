@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function ConvergeSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Converge Speed Test Philippines - Check Fiber Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Converge pure fiber internet speed instantly - Free speed test for Philippines. Accurate download/upload FTTH performance results now.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/ph/converge');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Converge Speed Test Philippines",
-      "description": "Test your Converge ICT pure fiber internet speed for free. Speed test for Converge fiber-only network customers in the Philippines.",
-      "url": "https://speedtestboost.com/providers/ph/converge",
-      "provider": {
-        "@type": "Organization",
-        "name": "Converge ICT",
-        "description": "Philippines' fastest-growing pure fiber telecommunications provider disrupting the market with competitive pricing",
-        "areaServed": { "@type": "Country", "name": "Philippines" },
-        "serviceType": ["Pure Fiber Internet", "Fiber-to-the-Home", "Business Solutions"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="ph" providerSlug="converge" />
       <Header currentPath="/providers/ph/converge" />
       
       <main className="pt-24 pb-12">

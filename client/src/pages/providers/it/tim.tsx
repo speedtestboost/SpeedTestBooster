@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,45 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function TIMSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "TIM Speed Test Italy - Check Fiber & ADSL Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test TIM fiber & ADSL internet speed instantly - Free speed test for Italy. Accurate download/upload broadband performance results now.');
-    }
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/it/tim');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "TIM Speed Test Italy",
-      "description": "Test your TIM internet speed for free. Speed test for TIM fiber and ADSL customers in Italy.",
-      "url": "https://speedtestboost.com/providers/it/tim",
-      "provider": {
-        "@type": "Organization",
-        "name": "TIM Italy",
-        "description": "Leading telecommunications provider in Italy offering fiber and ADSL internet services",
-        "areaServed": { "@type": "Country", "name": "Italy" },
-        "serviceType": ["Fiber Internet", "ADSL Broadband", "Mobile Services", "TV Services", "Business Solutions"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.id = 'tim-structured-data';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script#tim-structured-data');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="it" providerSlug="tim" />
       <Header currentPath="/providers/it/tim" />
       
       <main className="pt-24 pb-12">

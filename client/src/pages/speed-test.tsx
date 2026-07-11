@@ -30,12 +30,12 @@ export default function SpeedTest() {
 
   // SEO Meta Tags for homepage
   useEffect(() => {
-    document.title = "Free Internet Speed Test Online - No Ads, No Downloads Required";
+    document.title = "Free Internet Speed Test Online - WiFi & Broadband Speed Test (2026)";
     
     // Meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free internet speed test online with no ads or downloads. Accurate wifi speed test and bandwidth checker. Lightweight speed booster test works on mobile and desktop.');
+      metaDescription.setAttribute('content', 'Free internet speed test online in your browser. Accurate wifi speed test and bandwidth checker. Lightweight speed booster test works on mobile and desktop.');
     }
     
     // Keywords meta tag
@@ -45,7 +45,7 @@ export default function SpeedTest() {
       keywords.setAttribute('name', 'keywords');
       document.head.appendChild(keywords);
     }
-    keywords.setAttribute('content', 'free internet speed test online, speed test no ads, wifi speed test, internet speed booster test, speed test no download, lightweight speed test, accurate speed test, bandwidth test, mobile speed test, speed test for gaming');
+    keywords.setAttribute('content', 'free internet speed test online, wifi speed test, internet speed booster test, speed test no download, lightweight speed test, accurate speed test, bandwidth test, mobile speed test, speed test for gaming');
     
     // Open Graph tags
     const ogTags = [

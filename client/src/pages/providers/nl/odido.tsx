@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,89 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function OdidoSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    // SEO meta tags
-    document.title = "Odido Speed Test Netherlands - Check Fiber & 5G Internet Free 2025";
-    
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Odido fiber & 5G internet speed instantly - Free speed test for Netherlands. Accurate download/upload mobile performance results now.');
-    }
-    
-    // Keywords targeting low-competition Dutch terms
-    let keywords = document.querySelector('meta[name="keywords"]') as HTMLMetaElement;
-    if (!keywords) {
-      keywords = document.createElement('meta');
-      keywords.name = 'keywords';
-      document.head.appendChild(keywords);
-    }
-    keywords.content = 'Odido speed test, T-Mobile Nederland, 4G 5G test';
-    
-    // Open Graph tags
-    const ogTags = [
-      { property: 'og:title', content: 'Odido Speed Test Netherlands 2025 - Test T-Mobile Internet Speed' },
-      { property: 'og:description', content: 'Free Odido speed test for Netherlands. Test T-Mobile fiber, 4G, 5G internet speeds. Check download, upload speeds and ping latency.' },
-      { property: 'og:url', content: 'https://speedtestboost.com/providers/nl/odido' },
-      { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Speed Test & Boost' }
-    ];
-    
-    ogTags.forEach(tag => {
-      let ogTag = document.querySelector(`meta[property="${tag.property}"]`);
-      if (!ogTag) {
-        ogTag = document.createElement('meta');
-        ogTag.setAttribute('property', tag.property);
-        document.head.appendChild(ogTag);
-      }
-      ogTag.setAttribute('content', tag.content);
-    });
-    
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/nl/odido');
-    
-    // Structured Data
-    let structuredData = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
-    if (!structuredData) {
-      structuredData = document.createElement('script');
-      structuredData.type = 'application/ld+json';
-      document.head.appendChild(structuredData);
-    }
-    structuredData.textContent = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Odido Speed Test Netherlands",
-      "description": "Free Odido internet speed test for Netherlands. Test T-Mobile fiber, 4G and 5G connection speeds.",
-      "url": "https://speedtestboost.com/providers/nl/odido",
-      "applicationCategory": "NetworkingApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Odido",
-        "description": "Netherlands mobile and internet provider (formerly T-Mobile)",
-        "url": "https://www.odido.nl/"
-      },
-      "audience": {
-        "@type": "Audience",
-        "audienceType": "Netherlands Odido T-Mobile Internet Users"
-      },
-      "geo": {
-        "@type": "Place",
-        "addressCountry": "NL",
-        "addressRegion": "Netherlands"
-      }
-    });
-
-    return () => {
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="nl" providerSlug="odido" />
       <Header currentPath="/providers/nl/odido" />
       
       <main className="pt-24 pb-12">

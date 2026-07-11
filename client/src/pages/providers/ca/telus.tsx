@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,44 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function TelusSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Telus Speed Test Canada - Check PureFibre Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Telus PureFibre internet speed instantly - Free speed test for Canada. Accurate fiber download/upload & LTE performance results now.');
-    }
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/ca/telus');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Telus Speed Test",
-      "description": "Test your Telus internet speed for free. Speed test for Telus fiber and LTE customers.",
-      "url": "https://speedtestboost.com/providers/ca/telus",
-      "provider": {
-        "@type": "Organization",
-        "name": "Telus",
-        "description": "Canadian telecommunications company providing fiber internet and wireless services",
-        "areaServed": { "@type": "Country", "name": "Canada" },
-        "serviceType": ["Fiber Internet", "LTE", "Mobile", "TV", "Business Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="ca" providerSlug="telus" />
       <Header currentPath="/providers/ca/telus" />
       
       <main className="pt-24 pb-12">

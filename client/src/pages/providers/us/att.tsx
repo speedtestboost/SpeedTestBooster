@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Zap, Wifi, Router, Network, Signal } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
-import ProviderSEO from "@/components/ProviderSEO";
-import { providerKeywords } from "@/seo/providerKeywords";
 import RelatedProviders from "@/components/RelatedProviders";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import GenericFooter from "@/components/GenericFooter";
@@ -14,129 +13,11 @@ import { Link } from "wouter";
 
 export default function ATTSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
-  const seoConfig = providerKeywords.att;
 
-  useEffect(() => {
-    document.title = "AT&T Speed Test No Ads - ATSpeed TestT USA - Check Fiber Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test AT&T Fiber lightweight speed test for ATinternet speedT instantly - Free speed test for USA. Accurate gigabit download/upload performance results in seconds.');
-    }
-
-    let metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (!metaKeywords) {
-      metaKeywords = document.createElement('meta');
-      metaKeywords.setAttribute('name', 'keywords');
-      document.head.appendChild(metaKeywords);
-    }
-    metaKeywords.setAttribute('content', 'att speed test, at&t fiber speed test, att lightweight speed test for ATinternet speedT test, at&t wifi speed test, att fiber test, att dsl speed test, at&t internet test, att upload speed test, at&t speed check, att fixed wireless test, at&t gigapower test, att broadband test');
-
-    const ogTags = [
-      { property: 'og:title', content: 'AT&T Speed Test No Ads - ATSpeed TestT USA - Free Fiber Internet Speed Test No Ads - ATSpeed TestT 2025' },
-      { property: 'og:description', content: 'Test AT&T Fiber lightweight speed test for ATinternet speedT. Check download/upload speeds and ping. Accurate AT&T speed test results for fiber and DSL.' },
-      { property: 'og:url', content: 'https://speedtestboost.com/providers/us/att' },
-      { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Speed Test No Ads - ATSpeed TestT and Boost' }
-    ];
-
-    ogTags.forEach(tag => {
-      let ogTag = document.querySelector(`meta[property="${tag.property}"]`);
-      if (!ogTag) {
-        ogTag = document.createElement('meta');
-        ogTag.setAttribute('property', tag.property);
-        document.head.appendChild(ogTag);
-      }
-      ogTag.setAttribute('content', tag.content);
-    });
-
-    const twitterTags = [
-      { name: 'twitter:card', content: 'summary' },
-      { name: 'twitter:title', content: 'AT&T Speed Test No Ads - ATSpeed TestT USA - Free Fiber Internet Speed Test No Ads - ATSpeed TestT 2025' },
-      { name: 'twitter:description', content: 'Test AT&T Fiber lightweight speed test for ATinternet speedT. Accurate AT&T speed test for download, upload, and ping.' }
-    ];
-
-    twitterTags.forEach(tag => {
-      let twitterTag = document.querySelector(`meta[name="${tag.name}"]`);
-      if (!twitterTag) {
-        twitterTag = document.createElement('meta');
-        twitterTag.setAttribute('name', tag.name);
-        document.head.appendChild(twitterTag);
-      }
-      twitterTag.setAttribute('content', tag.content);
-    });
-
-    setCanonicalHref('https://speedtestboost.com/providers/us/att');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "AT&T Speed Test No Ads - ATSpeed TestT 2025",
-      "description": "Test your AT&T lightweight speed test for ATinternet speedT for free. Speed test for AT&T fiber and DSL customers.",
-      "url": "https://speedtestboost.com/providers/us/att",
-      "mainEntity": {
-        "@type": "SoftwareApplication",
-        "name": "AT&T Speed Test No Ads - ATSpeed TestT Tool",
-        "applicationCategory": "NetworkingApplication",
-        "operatingSystem": "Web Browser",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        }
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "AT&T",
-        "description": "Major US telecommunications company providing fiber and DSL internet services",
-        "areaServed": { "@type": "Country", "name": "United States" },
-        "serviceType": ["Fiber Internet", "DSL", "Fixed Wireless", "5G", "TV", "Business Services"]
-      },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://speedtestboost.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Internet Providers",
-            "item": "https://speedtestboost.com/internet-providers"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "US Providers",
-            "item": "https://speedtestboost.com/providers/us"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "AT&T Speed Test No Ads - ATSpeed TestT",
-            "item": "https://speedtestboost.com/providers/us/att"
-          }
-        ]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      <ProviderSEO providerSlug="att" />
+      <ProviderPageSEO countryCode="us" providerSlug="att" />
       <Header currentPath="/providers/us/att" />
       
       <main className="pt-24 pb-12">
@@ -183,7 +64,7 @@ export default function ATTSpeedTest() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-2">Pro Tip: Get the Most Accurate AT&T Fiber Speed Test No Ads - ATSpeed TestT Results</h3>
+                  <h3 className="font-semibold text-foreground mb-2">Pro Tip: Get the Most Accurate AT&T Fiber Speed Test</h3>
                   <p className="text-sm text-muted-foreground">
                     Connect via Ethernet cable directly to your AT&T gateway for the most accurate <strong>AT&T Fiber speed test</strong> results. 
                     Close all background apps and disconnect other devices during testing. Test at multiple times throughout the day, 
@@ -194,9 +75,9 @@ export default function ATTSpeedTest() {
             </CardContent>
           </Card>
 
-          {/* Understanding Your Speed Test No Ads - ATSpeed TestT Results */}
+          {/* Understanding Your Speed Test Results */}
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Understanding Your AT&T Speed Test No Ads - ATSpeed TestT Results</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Understanding Your AT&T Speed Test</h2>
             <p className="text-center text-muted-foreground mb-8 max-w-3xl mx-auto">
               Learn what your <strong>AT&T speed test</strong> results mean and how to interpret download speeds, upload speeds, and ping for optimal fiber and DSL internet performance.
             </p>
@@ -262,7 +143,7 @@ export default function ATTSpeedTest() {
                 <span className="mx-2">›</span>
                 <Link href="/providers/us" className="hover:text-primary">US Providers</Link>
                 <span className="mx-2">›</span>
-                <span className="text-foreground">AT&T Speed Test No Ads - ATSpeed TestT</span>
+                <span className="text-foreground">AT&T Speed Test</span>
               </nav>
               
               <div className="prose prose-gray dark:prose-invert max-w-none space-y-6">
@@ -354,7 +235,7 @@ export default function ATTSpeedTest() {
             </CardContent>
           </Card>
 
-          {/* Speed Test No Ads - ATSpeed TestT Performance Images */}
+          {/* AT&T Performance Images */}
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <Card>
               <CardContent className="p-6">

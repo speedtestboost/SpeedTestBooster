@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function UnifiSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Unifi Speed Test Malaysia - Check FTTH Fiber Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Unifi FTTH fiber internet speed instantly - Free speed test for Malaysia. Accurate Telekom download/upload performance results in seconds.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/my/unifi');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Unifi Speed Test Malaysia",
-      "description": "Test your Unifi fiber internet speed for free. Speed test for Telekom Malaysia Unifi customers across Malaysia.",
-      "url": "https://speedtestboost.com/providers/my/unifi",
-      "provider": {
-        "@type": "Organization",
-        "name": "Unifi",
-        "description": "Malaysia's dominant fiber broadband brand by Telekom Malaysia offering nationwide FTTH services",
-        "areaServed": { "@type": "Country", "name": "Malaysia" },
-        "serviceType": ["Fiber Internet", "IPTV", "Home Phone", "Entertainment Bundle"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="my" providerSlug="unifi" />
       <Header currentPath="/providers/my/unifi" />
       
       <main className="pt-24 pb-12">

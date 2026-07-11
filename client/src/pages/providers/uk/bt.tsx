@@ -1,11 +1,10 @@
 import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Zap, Wifi, Router, Network, Signal } from "lucide-react";
 import SpeedTestModal from "@/components/SpeedTestModal";
-import ProviderSEO from "@/components/ProviderSEO";
-import { providerKeywords } from "@/seo/providerKeywords";
 import RelatedProviders from "@/components/RelatedProviders";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import GenericFooter from "@/components/GenericFooter";
@@ -13,11 +12,10 @@ import { Link } from "wouter";
 
 export default function BTSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
-  const seoConfig = providerKeywords.bt;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      <ProviderSEO providerSlug="bt" />
+      <ProviderPageSEO countryCode="uk" providerSlug="bt" />
       <Header currentPath="/providers/uk/bt" />
       
       <main className="pt-24 pb-12">
@@ -64,7 +62,7 @@ export default function BTSpeedTest() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-2">Pro Tip: Get the Most Accurate BT Broadband Speed Test No Ads - BT Results</h3>
+                  <h3 className="font-semibold text-foreground mb-2">Pro Tip: Get the Most Accurate BT Broadband Speed Test</h3>
                   <p className="text-sm text-muted-foreground">
                     Connect via Ethernet cable directly to your BT Hub for the most accurate fiber speed test results. 
                     Close all background apps and disconnect other devices during testing. Test at multiple times throughout the day, 
@@ -75,9 +73,9 @@ export default function BTSpeedTest() {
             </CardContent>
           </Card>
 
-          {/* Understanding Your Speed Test No Ads - BT Results */}
+          {/* Understanding Your Speed Test Results */}
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Understanding Your BT Speed Test No Ads - BT Results</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Understanding Your BT Speed Test</h2>
             <p className="text-center text-muted-foreground mb-8 max-w-3xl mx-auto">
               Learn what your BT broadband speed test results mean and how to interpret download speeds, upload speeds, and ping for optimal fiber internet performance.
             </p>

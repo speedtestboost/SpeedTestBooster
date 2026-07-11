@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function GOSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "GO Speed Test Saudi Arabia - Check Fiber Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test GO fiber internet speed instantly - Free speed test for Saudi Arabia. Accurate download/upload mobile performance results in seconds.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/sa/go');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "GO Speed Test Saudi Arabia",
-      "description": "Test your GO internet speed for free. Speed test for GO fiber and mobile customers in Saudi Arabia.",
-      "url": "https://speedtestboost.com/providers/sa/go",
-      "provider": {
-        "@type": "Organization",
-        "name": "GO",
-        "description": "Saudi Arabia's emerging telecommunications provider offering competitive fiber and mobile services",
-        "areaServed": { "@type": "Country", "name": "Saudi Arabia" },
-        "serviceType": ["Fiber Internet", "Mobile Services", "Value Plans", "Alternative Provider"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="sa" providerSlug="go" />
       <Header currentPath="/providers/sa/go" />
       
       <main className="pt-24 pb-12">

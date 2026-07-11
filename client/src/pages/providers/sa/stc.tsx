@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function STCSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "STC Speed Test Saudi Arabia - Check STC Fiber & 5G Internet Speed 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test STC fiber & 5G internet speed instantly - Free speed checker for Saudi Arabia. Accurate performance results for download, upload & latency.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/sa/stc');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "STC Speed Test Saudi Arabia",
-      "description": "Test your STC fiber internet speed for free. Speed test for STC fiber and 5G customers in Saudi Arabia.",
-      "url": "https://speedtestboost.com/providers/sa/stc",
-      "provider": {
-        "@type": "Organization",
-        "name": "STC",
-        "description": "Saudi Arabia's largest telecommunications provider offering fiber internet and advanced 5G services",
-        "areaServed": { "@type": "Country", "name": "Saudi Arabia" },
-        "serviceType": ["Fiber Internet", "5G Mobile", "Smart City Solutions", "Enterprise Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="sa" providerSlug="stc" />
       <Header currentPath="/providers/sa/stc" />
       
       <main className="pt-24 pb-12">

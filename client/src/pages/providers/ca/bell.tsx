@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,44 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function BellSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Bell Speed Test Canada - Check Fibe Fiber Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Bell Fibe fiber internet speed instantly - Free speed checker for Canada. Accurate download/upload speeds & DSL results in seconds.');
-    }
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/ca/bell');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Bell Internet Speed Test",
-      "description": "Test your Bell internet speed for free. Speed test for Bell Fibe and DSL internet customers in Canada.",
-      "url": "https://speedtestboost.com/providers/ca/bell",
-      "provider": {
-        "@type": "Organization",
-        "name": "Bell Canada",
-        "description": "Canada's largest telecommunications company providing fibre internet, mobile, and TV services",
-        "areaServed": { "@type": "Country", "name": "Canada" },
-        "serviceType": ["Fibre Internet", "DSL", "Mobile", "TV", "Telecommunications"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="ca" providerSlug="bell" />
       <Header currentPath="/providers/ca/bell" />
       
       <main className="pt-24 pb-12">

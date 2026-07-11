@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,44 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function StarhubSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "StarHub Speed Test Singapore - Check Fibre & 5G Internet Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test StarHub fibre and 5G broadband speed free. Accurate download, upload, and ping for Singapore homes and businesses.');
-    }
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/sg/starhub');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "StarHub Internet Speed Test",
-      "description": "Test your StarHub broadband speed for free. Speed test for StarHub fibre and 5G broadband customers in Singapore.",
-      "url": "https://speedtestboost.com/providers/sg/starhub",
-      "provider": {
-        "@type": "Organization",
-        "name": "StarHub Singapore",
-        "description": "Singapore's largest telecommunications company providing fibre internet, mobile, and TV services",
-        "areaServed": { "@type": "Country", "name": "Singapore" },
-        "serviceType": ["Fibre Internet", "DSL", "Mobile", "TV", "Telecommunications"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="sg" providerSlug="starhub" />
       <Header currentPath="/providers/sg/starhub" />
       
       <main className="pt-24 pb-12">

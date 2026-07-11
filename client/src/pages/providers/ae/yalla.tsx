@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function YallaSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Yalla Speed Test UAE - Check Yalla Fiber Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Yalla fiber internet speed instantly - Free speed test for UAE. Accurate download/upload speeds and performance results in seconds.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/ae/yalla');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Yalla Speed Test UAE",
-      "description": "Test your Yalla internet speed for free. Speed test for Yalla fiber and broadband customers in UAE.",
-      "url": "https://speedtestboost.com/providers/ae/yalla",
-      "provider": {
-        "@type": "Organization",
-        "name": "Yalla",
-        "description": "Emerging alternative telecommunications provider offering affordable fiber and broadband in UAE",
-        "areaServed": { "@type": "Country", "name": "United Arab Emirates" },
-        "serviceType": ["Fiber Internet", "Broadband", "Home Internet", "Alternative Provider"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="ae" providerSlug="yalla" />
       <Header currentPath="/providers/ae/yalla" />
       
       <main className="pt-24 pb-12">

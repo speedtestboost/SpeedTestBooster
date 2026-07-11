@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function TIMESpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "TIME Speed Test Malaysia - Check Fiber Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test TIME gigabit fiber internet speed instantly - Free speed test for Malaysia. Accurate download/upload performance & low latency results now.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/my/time');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "TIME Speed Test Malaysia",
-      "description": "Test your TIME fiber internet speed for free. Speed test for TIME high-speed fiber broadband customers in Malaysia.",
-      "url": "https://speedtestboost.com/providers/my/time",
-      "provider": {
-        "@type": "Organization",
-        "name": "TIME dotCom",
-        "description": "Malaysia's pure fiber broadband specialist offering competitive gigabit speeds with no data caps",
-        "areaServed": { "@type": "Country", "name": "Malaysia" },
-        "serviceType": ["Fiber Internet", "Business Broadband", "Unlimited Data", "Low Latency Gaming"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="my" providerSlug="time" />
       <Header currentPath="/providers/my/time" />
       
       <main className="pt-24 pb-12">

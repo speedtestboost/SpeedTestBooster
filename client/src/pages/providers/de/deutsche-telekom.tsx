@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,44 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function DeutscheTelekomSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Deutsche Telekom Speed Test Germany - Check Fiber & DSL Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Deutsche Telekom fiber & DSL speed instantly - Free speed test for Germany. Accurate download/upload performance results in seconds.');
-    }
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/de/deutsche-telekom');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Deutsche Telekom Speed Test", 
-      "description": "Test your Deutsche Telekom internet speed for free. Speed test for Telekom DSL and fibre customers in Germany.",
-      "url": "https://speedtestboost.com/providers/de/deutsche-telekom",
-      "provider": {
-        "@type": "Organization",
-        "name": "Deutsche Telekom",
-        "description": "Germany's largest telecommunications company providing internet, mobile, and digital services",
-        "areaServed": { "@type": "Country", "name": "Germany" },
-        "serviceType": ["DSL Internet", "Fibre Internet", "5G Mobile", "TV", "Cloud Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="de" providerSlug="deutsche-telekom" />
       <Header currentPath="/providers/de/deutsche-telekom" />
       
       <main className="pt-24 pb-12">

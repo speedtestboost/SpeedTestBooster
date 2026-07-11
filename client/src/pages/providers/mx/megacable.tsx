@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function MegacableSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Megacable Speed Test Mexico - Check Cable & Fiber Internet Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Megacable cable & fiber internet speed instantly - Free speed test for Mexico. Accurate download/upload broadband results in seconds.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/mx/megacable');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Megacable Speed Test Mexico",
-      "description": "Test your Megacable internet speed for free. Speed test for Megacable MCM cable and fiber customers in Mexico.",
-      "url": "https://speedtestboost.com/providers/mx/megacable",
-      "provider": {
-        "@type": "Organization",
-        "name": "Megacable",
-        "description": "Western Mexico's leading cable internet provider with 14% market share and growing fiber network",
-        "areaServed": { "@type": "Country", "name": "Mexico" },
-        "serviceType": ["Cable Internet", "Fiber Internet", "TV Services", "Telephony"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="mx" providerSlug="megacable" />
       <Header currentPath="/providers/mx/megacable" />
       
       <main className="pt-24 pb-12">

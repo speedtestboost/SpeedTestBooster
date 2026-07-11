@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,44 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function VirginMediaSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Virgin Media Speed Test UK - Check Cable Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Virgin Media cable internet speed instantly - Free speed test for UK. Accurate ultrafast download/upload performance results now.');
-    }
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/uk/virgin-media');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Virgin Media Speed Test",
-      "description": "Test your Virgin Media broadband speed for free. Speed test for Virgin cable internet and TV customers.",
-      "url": "https://speedtestboost.com/providers/uk/virgin-media",
-      "provider": {
-        "@type": "Organization",
-        "name": "Virgin Media",
-        "description": "Leading UK cable internet provider offering ultrafast broadband and entertainment services",
-        "areaServed": { "@type": "Country", "name": "United Kingdom" },
-        "serviceType": ["Cable Broadband", "Fibre Internet", "TV", "Mobile"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="uk" providerSlug="virgin-media" />
       <Header currentPath="/providers/uk/virgin-media" />
       
       <main className="pt-24 pb-12">

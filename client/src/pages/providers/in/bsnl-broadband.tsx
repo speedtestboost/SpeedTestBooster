@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -13,132 +14,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function BSNLBroadbandSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    // SEO Meta Tags
-    document.title = "BSNL Speed Test India - Check FTTH Fiber Internet Speed Free 2025";
-    
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test BSNL FTTH fiber internet speed instantly - Free speed test for India. Accurate government broadband performance results in seconds.');
-    }
-
-    // Add keywords meta tag
-    let metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (!metaKeywords) {
-      metaKeywords = document.createElement('meta');
-      metaKeywords.setAttribute('name', 'keywords');
-      document.head.appendChild(metaKeywords);
-    }
-    metaKeywords.setAttribute('content', 'bsnl broadband speed test, bsnl ftth, government internet');
-
-    // Open Graph tags for social sharing
-    const ogTags = [
-      { property: 'og:title', content: 'BSNL Broadband Speed Test - BSNL Fiber Internet Speed Test' },
-      { property: 'og:description', content: 'Free speed test for BSNL Broadband customers. Test BSNL FTTH fiber speeds across India with government broadband service.' },
-      { property: 'og:url', content: 'https://speedtestboost.com/providers/in/bsnl-broadband' },
-      { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Speed Test and Boost' }
-    ];
-
-    ogTags.forEach(tag => {
-      let ogTag = document.querySelector(`meta[property="${tag.property}"]`);
-      if (!ogTag) {
-        ogTag = document.createElement('meta');
-        ogTag.setAttribute('property', tag.property);
-        document.head.appendChild(ogTag);
-      }
-      ogTag.setAttribute('content', tag.content);
-    });
-
-    // Twitter Card tags
-    const twitterTags = [
-      { name: 'twitter:card', content: 'summary' },
-      { name: 'twitter:title', content: 'BSNL Broadband Speed Test - BSNL Fiber Internet Speed Test' },
-      { name: 'twitter:description', content: 'Free speed test for BSNL Broadband customers. Test BSNL FTTH fiber speeds across India.' }
-    ];
-
-    twitterTags.forEach(tag => {
-      let twitterTag = document.querySelector(`meta[name="${tag.name}"]`);
-      if (!twitterTag) {
-        twitterTag = document.createElement('meta');
-        twitterTag.setAttribute('name', tag.name);
-        document.head.appendChild(twitterTag);
-      }
-      twitterTag.setAttribute('content', tag.content);
-    });
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/in/bsnl-broadband');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "BSNL Broadband Speed Test 2025",
-      "description": "Free BSNL Broadband speed test for BSNL fiber customers. Test BSNL FTTH speeds across India with government broadband service.",
-      "url": "https://speedtestboost.com/providers/in/bsnl-broadband",
-      "mainEntity": {
-        "@type": "SoftwareApplication",
-        "name": "BSNL Broadband Speed Test Tool",
-        "applicationCategory": "NetworkingApplication",
-        "operatingSystem": "Web Browser",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "INR"
-        }
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "BSNL",
-        "description": "Bharat Sanchar Nigam Limited - India's government-owned telecommunications company",
-        "areaServed": { "@type": "Country", "name": "India" },
-        "serviceType": ["Fiber Internet", "Broadband", "Mobile Services", "Landline Services"]
-      },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://speedtestboost.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Internet Providers",
-            "item": "https://speedtestboost.com/internet-providers"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "India Providers",
-            "item": "https://speedtestboost.com/providers/in"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "BSNL Broadband Speed Test",
-            "item": "https://speedtestboost.com/providers/in/bsnl-broadband"
-          }
-        ]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="in" providerSlug="bsnl-broadband" />
       <Header currentPath="/providers/in/bsnl-broadband" />
       
       <main className="pt-24 pb-12">

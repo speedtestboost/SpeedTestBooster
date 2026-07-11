@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function OrangeSpainSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Orange Speed Test Spain - Check Fiber Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Orange fiber internet speed instantly - Free speed test for Spain. Accurate download/upload speeds and performance results in seconds.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/es/orange-es');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Orange Speed Test Spain",
-      "description": "Test your Orange fiber internet speed for free. Speed test for Orange fiber customers in Spain.",
-      "url": "https://speedtestboost.com/providers/es/orange-es",
-      "provider": {
-        "@type": "Organization",
-        "name": "Orange Spain",
-        "description": "Spain's second-largest telecommunications provider delivering best-in-class fiber internet performance",
-        "areaServed": { "@type": "Country", "name": "Spain" },
-        "serviceType": ["Fiber Internet", "Mobile Services", "Convergent Services", "Entertainment"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="es" providerSlug="orange-es" />
       <Header currentPath="/providers/es/orange-es" />
       
       <main className="pt-24 pb-12">

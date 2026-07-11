@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,44 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function TPGSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "TPG Speed Test Australia - Check NBN Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test TPG NBN internet speed instantly - Free speed test for Australia. Accurate download/upload speeds and performance results now.');
-    }
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/au/tpg');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "TPG Speed Test",
-      "description": "Test your TPG internet speed for free. Speed test for TPG NBN and ADSL customers.",
-      "url": "https://speedtestboost.com/providers/au/tpg",
-      "provider": {
-        "@type": "Organization",
-        "name": "TPG",
-        "description": "Australian telecommunications company providing NBN and internet services",
-        "areaServed": { "@type": "Country", "name": "Australia" },
-        "serviceType": ["NBN Internet", "ADSL", "Mobile", "Business Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="au" providerSlug="tpg" />
       <Header currentPath="/providers/au/tpg" />
       
       <main className="pt-24 pb-12">

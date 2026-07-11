@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function PLDTSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "PLDT Speed Test Philippines - Check PLDT Fibr Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test PLDT Fibr internet speed instantly - Free speed checker for Philippines. Accurate download/upload speeds, ping & jitter results in seconds.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/ph/pldt');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "PLDT Speed Test Philippines",
-      "description": "Test your PLDT Fibr internet speed for free. Speed test for PLDT fiber and DSL customers in the Philippines.",
-      "url": "https://speedtestboost.com/providers/ph/pldt",
-      "provider": {
-        "@type": "Organization",
-        "name": "PLDT",
-        "description": "Philippines' largest telecommunications provider offering Fibr fiber internet and DSL broadband services",
-        "areaServed": { "@type": "Country", "name": "Philippines" },
-        "serviceType": ["Fiber Internet", "DSL Broadband", "Mobile Services", "TV Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="ph" providerSlug="pldt" />
       <Header currentPath="/providers/ph/pldt" />
       
       <main className="pt-24 pb-12">

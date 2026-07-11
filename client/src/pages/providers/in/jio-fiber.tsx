@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -13,132 +14,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function JioFiberSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    // SEO Meta Tags
-    document.title = "Jio Fiber Speed Test India - Free WiFi Speed Test Jio | Speed Test India";
-    
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Free Jio Fiber speed test India - Test my fiber speed test for Jio. Run wifi speed test, internet speed test India, speed test in india. Check Reliance Jio broadband speed online free.');
-    }
-
-    // Add keywords meta tag
-    let metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (!metaKeywords) {
-      metaKeywords = document.createElement('meta');
-      metaKeywords.setAttribute('name', 'keywords');
-      document.head.appendChild(metaKeywords);
-    }
-    metaKeywords.setAttribute('content', 'jio fiber speed test, speed test india, speed test in india, jio fiber speed test india, my fiber speed test, fiber speed test india, wifi speed test india, internet speed test india, reliance jio speed test, jio broadband speed test, jio wifi speed test');
-
-    // Open Graph tags for social sharing
-    const ogTags = [
-      { property: 'og:title', content: 'Jio Fiber Speed Test - Reliance Jio Broadband Speed Test' },
-      { property: 'og:description', content: 'Free speed test for Reliance Jio Fiber customers. Test broadband and WiFi speeds up to 1 Gbps across India.' },
-      { property: 'og:url', content: 'https://speedtestboost.com/providers/in/jio-fiber' },
-      { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Speed Test and Boost' }
-    ];
-
-    ogTags.forEach(tag => {
-      let ogTag = document.querySelector(`meta[property="${tag.property}"]`);
-      if (!ogTag) {
-        ogTag = document.createElement('meta');
-        ogTag.setAttribute('property', tag.property);
-        document.head.appendChild(ogTag);
-      }
-      ogTag.setAttribute('content', tag.content);
-    });
-
-    // Twitter Card tags
-    const twitterTags = [
-      { name: 'twitter:card', content: 'summary' },
-      { name: 'twitter:title', content: 'Jio Fiber Speed Test - Reliance Jio Broadband Speed Test' },
-      { name: 'twitter:description', content: 'Free speed test for Reliance Jio Fiber customers. Test broadband and WiFi speeds up to 1 Gbps.' }
-    ];
-
-    twitterTags.forEach(tag => {
-      let twitterTag = document.querySelector(`meta[name="${tag.name}"]`);
-      if (!twitterTag) {
-        twitterTag = document.createElement('meta');
-        twitterTag.setAttribute('name', tag.name);
-        document.head.appendChild(twitterTag);
-      }
-      twitterTag.setAttribute('content', tag.content);
-    });
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/in/jio-fiber');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Jio Fiber Speed Test 2025",
-      "description": "Free Jio Fiber speed test for Reliance Jio broadband customers. Test fiber internet speeds up to 1 Gbps across India.",
-      "url": "https://speedtestboost.com/providers/in/jio-fiber",
-      "mainEntity": {
-        "@type": "SoftwareApplication",
-        "name": "Jio Fiber Speed Test Tool",
-        "applicationCategory": "NetworkingApplication",
-        "operatingSystem": "Web Browser",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "INR"
-        }
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Reliance Jio",
-        "description": "India's largest telecom operator offering fiber broadband and mobile services",
-        "areaServed": { "@type": "Country", "name": "India" },
-        "serviceType": ["Fiber Internet", "Broadband", "Mobile Services", "Digital Services"]
-      },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://speedtestboost.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Internet Providers",
-            "item": "https://speedtestboost.com/internet-providers"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "India Providers",
-            "item": "https://speedtestboost.com/providers/in"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "Jio Fiber Speed Test",
-            "item": "https://speedtestboost.com/providers/in/jio-fiber"
-          }
-        ]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="in" providerSlug="jio-fiber" />
       <Header currentPath="/providers/in/jio-fiber" />
       
       <main className="pt-24 pb-12">

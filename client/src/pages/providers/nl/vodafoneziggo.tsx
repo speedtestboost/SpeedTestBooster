@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,89 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function VodafoneZiggoSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    // SEO meta tags
-    document.title = "VodafoneZiggo Speed Test Netherlands - Check Cable Internet Free 2025";
-    
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test VodafoneZiggo cable internet speed instantly - Free speed test for Netherlands. Accurate Ziggo download/upload performance results now.');
-    }
-    
-    // Keywords targeting low-competition Dutch terms
-    let keywords = document.querySelector('meta[name="keywords"]') as HTMLMetaElement;
-    if (!keywords) {
-      keywords = document.createElement('meta');
-      keywords.name = 'keywords';
-      document.head.appendChild(keywords);
-    }
-    keywords.content = 'VodafoneZiggo speed test, Ziggo internet snelheid, kabel internet';
-    
-    // Open Graph tags
-    const ogTags = [
-      { property: 'og:title', content: 'VodafoneZiggo Speed Test Netherlands 2025 - Test Ziggo Internet Speed' },
-      { property: 'og:description', content: 'Free VodafoneZiggo speed test for Netherlands. Test Ziggo cable, fiber internet speeds. Check download, upload speeds and ping latency.' },
-      { property: 'og:url', content: 'https://speedtestboost.com/providers/nl/vodafoneziggo' },
-      { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Speed Test & Boost' }
-    ];
-    
-    ogTags.forEach(tag => {
-      let ogTag = document.querySelector(`meta[property="${tag.property}"]`);
-      if (!ogTag) {
-        ogTag = document.createElement('meta');
-        ogTag.setAttribute('property', tag.property);
-        document.head.appendChild(ogTag);
-      }
-      ogTag.setAttribute('content', tag.content);
-    });
-    
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/nl/vodafoneziggo');
-    
-    // Structured Data
-    let structuredData = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
-    if (!structuredData) {
-      structuredData = document.createElement('script');
-      structuredData.type = 'application/ld+json';
-      document.head.appendChild(structuredData);
-    }
-    structuredData.textContent = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "VodafoneZiggo Speed Test Netherlands",
-      "description": "Free VodafoneZiggo internet speed test for Netherlands. Test Ziggo cable and fiber connection speeds.",
-      "url": "https://speedtestboost.com/providers/nl/vodafoneziggo",
-      "applicationCategory": "NetworkingApplication",
-      "operatingSystem": "Web Browser",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "VodafoneZiggo",
-        "description": "Netherlands leading cable and telecom provider",
-        "url": "https://www.vodafoneziggo.nl/"
-      },
-      "audience": {
-        "@type": "Audience",
-        "audienceType": "Netherlands VodafoneZiggo Internet Users"
-      },
-      "geo": {
-        "@type": "Place",
-        "addressCountry": "NL",
-        "addressRegion": "Netherlands"
-      }
-    });
-
-    return () => {
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="nl" providerSlug="vodafoneziggo" />
       <Header currentPath="/providers/nl/vodafoneziggo" />
       
       <main className="pt-24 pb-12">

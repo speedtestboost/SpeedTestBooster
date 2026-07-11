@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,44 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function VodafoneDESpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Vodafone Speed Test Germany - Check Cable & 5G Internet Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Vodafone cable & 5G internet speed instantly - Free speed test for Germany. Accurate download/upload performance results now.');
-    }
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/de/vodafone-de');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Vodafone Germany Speed Test",
-      "description": "Test your Vodafone Germany internet speed for free. Speed test for Vodafone cable and mobile customers.",
-      "url": "https://speedtestboost.com/providers/de/vodafone-de",
-      "provider": {
-        "@type": "Organization",
-        "name": "Vodafone Germany",
-        "description": "Major German telecommunications company providing cable internet and 5G services",
-        "areaServed": { "@type": "Country", "name": "Germany" },
-        "serviceType": ["Cable Internet", "5G Mobile", "TV", "Business Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="de" providerSlug="vodafone-de" />
       <Header currentPath="/providers/de/vodafone-de" />
       
       <main className="pt-24 pb-12">

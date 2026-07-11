@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,44 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function O2DESpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "O2 Speed Test Germany - Check DSL & LTE Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test O2 DSL & LTE internet speed instantly - Free speed checker for Germany. Accurate download/upload performance results in seconds.');
-    }
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/de/o2-de');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "O2 Germany Speed Test",
-      "description": "Test your O2 Germany internet speed for free. Speed test for O2 DSL and mobile customers.",
-      "url": "https://speedtestboost.com/providers/de/o2-de",
-      "provider": {
-        "@type": "Organization",
-        "name": "O2 Germany",
-        "description": "German telecommunications company providing DSL internet and mobile services",
-        "areaServed": { "@type": "Country", "name": "Germany" },
-        "serviceType": ["DSL Internet", "LTE", "Mobile", "Business Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="de" providerSlug="o2-de" />
       <Header currentPath="/providers/de/o2-de" />
       
       <main className="pt-24 pb-12">

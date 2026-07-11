@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function RainSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Rain Speed Test South Africa - Check 5G Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Rain 5G & 4G internet speed instantly - Free speed test for South Africa. Accurate wireless broadband performance results in seconds.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/za/rain');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Rain Speed Test South Africa",
-      "description": "Test your Rain 4G/5G internet speed for free. Speed test for Rain wireless broadband customers in South Africa.",
-      "url": "https://speedtestboost.com/providers/za/rain",
-      "provider": {
-        "@type": "Organization",
-        "name": "Rain",
-        "description": "South Africa's mobile-first internet provider offering unlimited 4G and 5G home internet services",
-        "areaServed": { "@type": "Country", "name": "South Africa" },
-        "serviceType": ["4G Internet", "5G Internet", "Wireless Broadband", "Mobile Internet"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="za" providerSlug="rain" />
       <Header currentPath="/providers/za/rain" />
       
       <main className="pt-24 pb-12">

@@ -48,11 +48,11 @@ export default function HyderabadSpeedTest() {
     
     // Open Graph tags
     const ogTags = [
-      { property: 'og:title', content: 'Hyderabad Internet Free Internet Speed Test Online - No Ads - Free Cyberabad WiFi & Fiber Speed Checker' },
+      { property: 'og:title', content: 'Hyderabad Internet Internet Speed Test - Free Cyberabad WiFi & Fiber Speed Checker' },
       { property: 'og:description', content: 'Test your internet speed in Hyderabad (Cyberabad). Free speed test for Airtel, Jio Fiber, ACT Fibernet, and Railwire. Check WiFi, fiber speeds optimized for HITEC City and pharma industries.' },
       { property: 'og:url', content: 'https://speedtestboost.com/hyderabad-speed-test' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Free Internet Speed Test Online - No Ads & Boost' },
+      { property: 'og:site_name', content: 'Speed Test & Boost' },
       { property: 'og:locale', content: 'en_IN' }
     ];
     
@@ -69,7 +69,7 @@ export default function HyderabadSpeedTest() {
     // Twitter Card tags
     const twitterTags = [
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'Hyderabad Internet Free Internet Speed Test Online - No Ads - Free Cyberabad WiFi & Fiber Speed Checker' },
+      { name: 'twitter:title', content: 'Hyderabad Internet Internet Speed Test - Free Cyberabad WiFi & Fiber Speed Checker' },
       { name: 'twitter:description', content: 'Test your internet speed in Hyderabad Cyberabad. Free speed test for Airtel, Jio Fiber, ACT Fibernet optimized for HITEC City.' }
     ];
     
@@ -98,7 +98,7 @@ export default function HyderabadSpeedTest() {
     structuredData.textContent = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Hyderabad Internet Free Internet Speed Test Online - No Ads",
+      "name": "Hyderabad Internet Internet Speed Test",
       "description": "Free online internet speed booster test Hyderabad for Hyderabad Cyberabad with Airtel, Jio Fiber, ACT Fibernet, and Railwire ISP support",
       "url": "https://speedtestboost.com/hyderabad-speed-test",
       "applicationCategory": "NetworkingApplication",
@@ -110,7 +110,7 @@ export default function HyderabadSpeedTest() {
       },
       "creator": {
         "@type": "Organization",
-        "name": "Free Internet Speed Test Online - No Ads & Boost"
+        "name": "Speed Test & Boost"
       },
       "audience": {
         "@type": "Audience",
@@ -207,7 +207,7 @@ export default function HyderabadSpeedTest() {
       <section className="max-w-4xl mx-auto px-4 lg:px-8 py-8">
         <div className="text-center mb-8">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Hyderabad Cyberabad Free Internet Speed Test Online - No Ads
+            Hyderabad Cyberabad Internet Speed Test
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
             Test your internet speed in Hyderabad (Cyberabad), India's leading biotech and pharmaceutical hub. 
@@ -237,7 +237,7 @@ export default function HyderabadSpeedTest() {
       <main className="max-w-md lg:max-w-7xl mx-auto px-4 lg:px-8 py-6 space-y-6">
         <Breadcrumbs 
           items={[
-            { label: "Hyderabad Free Internet Speed Test Online - No Ads", href: "/hyderabad-speed-test" }
+            { label: "Hyderabad Internet Speed Test", href: "/hyderabad-speed-test" }
           ]} 
         />
         
@@ -264,7 +264,7 @@ export default function HyderabadSpeedTest() {
             </Card>
             <Card className="card-hover">
               <CardContent className="p-6 space-y-4">
-                <h3 className="text-lg font-semibold text-foreground">Free Internet Speed Test Online - No Ads</h3>
+                <h3 className="text-lg font-semibold text-foreground">Internet Speed Test</h3>
                 <Button
                   onClick={handleStartTest}
                   disabled={isTestRunning}
@@ -272,7 +272,7 @@ export default function HyderabadSpeedTest() {
                   size="lg"
                 >
                   <Play className="h-6 w-6 mr-3" />
-                  <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
+                  <span>{isTestRunning ? "Running Test..." : "Start Internet Speed Test"}</span>
                 </Button>
                 {isTestRunning && (
                   <div className="bg-muted/30 rounded-xl p-4 border border-border/50">
@@ -353,7 +353,7 @@ export default function HyderabadSpeedTest() {
                 size="lg"
               >
                 <Play className="h-6 w-6 mr-3" />
-                <span>{isTestRunning ? "Running Test..." : "Start Free Internet Speed Test Online - No Ads"}</span>
+                <span>{isTestRunning ? "Running Test..." : "Start Internet Speed Test"}</span>
               </Button>
               {isTestRunning && (
                 <div className="bg-muted/30 rounded-xl p-4 border border-border/50">
@@ -409,23 +409,23 @@ export default function HyderabadSpeedTest() {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               <Link href="/mumbai-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Mumbai</div>
-                <div className="text-xs text-muted-foreground">Financial Hub Free Internet Speed Test Online - No Ads</div>
+                <div className="text-xs text-muted-foreground">Financial Hub Internet Speed Test</div>
               </Link>
               <Link href="/delhi-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Delhi</div>
-                <div className="text-xs text-muted-foreground">Capital Free Internet Speed Test Online - No Ads</div>
+                <div className="text-xs text-muted-foreground">Capital Internet Speed Test</div>
               </Link>
               <Link href="/bangalore-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Bangalore</div>
-                <div className="text-xs text-muted-foreground">Tech Hub Free Internet Speed Test Online - No Ads</div>
+                <div className="text-xs text-muted-foreground">Tech Hub Internet Speed Test</div>
               </Link>
               <Link href="/chennai-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Chennai</div>
-                <div className="text-xs text-muted-foreground">South India Free Internet Speed Test Online - No Ads</div>
+                <div className="text-xs text-muted-foreground">South India Internet Speed Test</div>
               </Link>
               <Link href="/kolkata-speed-test" className="block p-4 bg-background/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-200">
                 <div className="text-sm font-medium text-foreground">Kolkata</div>
-                <div className="text-xs text-muted-foreground">East India Free Internet Speed Test Online - No Ads</div>
+                <div className="text-xs text-muted-foreground">East India Internet Speed Test</div>
               </Link>
             </div>
           </div>
@@ -439,7 +439,7 @@ export default function HyderabadSpeedTest() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <Card className="card-hover">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-3">About Internet Free Internet Speed Test Online - No Adss</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-3">About Internet Internet Speed Tests</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   An internet speed booster test Hyderabad measures your connection's download speed, upload speed, and ping latency. 
                   Our free bandwidth test tool provides accurate results for WiFi, broadband, fiber, and mobile connections 
@@ -515,10 +515,10 @@ export default function HyderabadSpeedTest() {
           {/* Footer Links and Info */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pt-8 border-t border-border/30">
             <div>
-              <h4 className="font-semibold text-foreground mb-3">Free Internet Speed Test Online - No Ads Tools</h4>
+              <h4 className="font-semibold text-foreground mb-3">Internet Speed Test Tools</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <div>Download Free Internet Speed Test Online - No Ads</div>
-                <div>Upload Free Internet Speed Test Online - No Ads</div>
+                <div>Download Internet Speed Test</div>
+                <div>Upload Internet Speed Test</div>
                 <div>Ping Test Tool</div>
                 <div>Bandwidth Checker</div>
               </div>
@@ -526,16 +526,16 @@ export default function HyderabadSpeedTest() {
             <div>
               <h4 className="font-semibold text-foreground mb-3">Connection Types</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <div>WiFi Free Internet Speed Test Online - No Ads</div>
-                <div>Fiber Free Internet Speed Test Online - No Ads</div>
-                <div>Cable Free Internet Speed Test Online - No Ads</div>
-                <div>Mobile Free Internet Speed Test Online - No Ads</div>
+                <div>WiFi Internet Speed Test</div>
+                <div>Fiber Internet Speed Test</div>
+                <div>Cable Internet Speed Test</div>
+                <div>Mobile Internet Speed Test</div>
               </div>
             </div>
             <div>
               <h4 className="font-semibold text-foreground mb-3">Resources</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <div>Free Internet Speed Test Online - No Ads History</div>
+                <div>Internet Speed Test History</div>
                 <div>Network Diagnostics</div>
                 <div>Connection Optimization</div>
                 <div>Speed Comparisons</div>
@@ -559,7 +559,7 @@ export default function HyderabadSpeedTest() {
           {/* Copyright */}
           <div className="text-center pt-8 border-t border-border/30 mt-8">
             <p className="text-sm text-muted-foreground">
-              © 2025 Free Internet Speed Test Online - No Ads and Boost. Free internet speed booster test Hyderabad tool for accurate bandwidth measurement. 
+              © 2025 Internet Speed Test and Boost. Free internet speed booster test Hyderabad tool for accurate bandwidth measurement. 
               Test your connection speed on any device.
             </p>
           </div>

@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -13,132 +14,10 @@ import { Link } from "wouter";
 export default function HathwayBroadbandSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    // SEO Meta Tags
-    document.title = "Hathway Speed Test India - Check Cable & Fiber Internet Speed Free 2025";
-    
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Hathway cable & fiber internet speed instantly - Free speed test for India. Accurate broadband download/upload performance results now.');
-    }
-
-    // Add keywords meta tag
-    let metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (!metaKeywords) {
-      metaKeywords = document.createElement('meta');
-      metaKeywords.setAttribute('name', 'keywords');
-      document.head.appendChild(metaKeywords);
-    }
-    metaKeywords.setAttribute('content', 'hathway broadband speed test, hathway cable, cable internet');
-
-    // Open Graph tags for social sharing
-    const ogTags = [
-      { property: 'og:title', content: 'Hathway Broadband Speed Test - Hathway Cable Internet Speed Test' },
-      { property: 'og:description', content: 'Free speed test for Hathway Broadband customers. Test Hathway cable internet and fiber speeds across India.' },
-      { property: 'og:url', content: 'https://speedtestboost.com/providers/in/hathway-broadband' },
-      { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Speed Test and Boost' }
-    ];
-
-    ogTags.forEach(tag => {
-      let ogTag = document.querySelector(`meta[property="${tag.property}"]`);
-      if (!ogTag) {
-        ogTag = document.createElement('meta');
-        ogTag.setAttribute('property', tag.property);
-        document.head.appendChild(ogTag);
-      }
-      ogTag.setAttribute('content', tag.content);
-    });
-
-    // Twitter Card tags
-    const twitterTags = [
-      { name: 'twitter:card', content: 'summary' },
-      { name: 'twitter:title', content: 'Hathway Broadband Speed Test - Hathway Cable Internet Speed Test' },
-      { name: 'twitter:description', content: 'Free speed test for Hathway Broadband customers. Test Hathway cable internet speeds across India.' }
-    ];
-
-    twitterTags.forEach(tag => {
-      let twitterTag = document.querySelector(`meta[name="${tag.name}"]`);
-      if (!twitterTag) {
-        twitterTag = document.createElement('meta');
-        twitterTag.setAttribute('name', tag.name);
-        document.head.appendChild(twitterTag);
-      }
-      twitterTag.setAttribute('content', tag.content);
-    });
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/in/hathway-broadband');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Hathway Broadband Speed Test 2025",
-      "description": "Free Hathway Broadband speed test for Hathway cable internet customers. Test Hathway fiber speeds across India.",
-      "url": "https://speedtestboost.com/providers/in/hathway-broadband",
-      "mainEntity": {
-        "@type": "SoftwareApplication",
-        "name": "Hathway Broadband Speed Test Tool",
-        "applicationCategory": "NetworkingApplication",
-        "operatingSystem": "Web Browser",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "INR"
-        }
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Hathway Cable & Datacom",
-        "description": "Leading cable broadband provider in India offering high-speed internet and digital TV services",
-        "areaServed": { "@type": "Country", "name": "India" },
-        "serviceType": ["Cable Internet", "Digital TV", "Broadband", "WiFi Services"]
-      },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://speedtestboost.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Internet Providers",
-            "item": "https://speedtestboost.com/internet-providers"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "India Providers",
-            "item": "https://speedtestboost.com/providers/in"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "Hathway Broadband Speed Test",
-            "item": "https://speedtestboost.com/providers/in/hathway-broadband"
-          }
-        ]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="in" providerSlug="hathway-broadband" />
       <Header currentPath="/providers/in/hathway-broadband" />
       
       <main className="pt-24 pb-12">

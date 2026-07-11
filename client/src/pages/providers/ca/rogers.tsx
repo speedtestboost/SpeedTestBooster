@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,44 +13,10 @@ import GenericFooter from "@/components/GenericFooter";
 export default function RogersSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Rogers Speed Test Canada - Check Cable & Fiber Internet Speed Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Rogers cable & fiber internet speed instantly - Free speed test for Canada. Accurate download/upload performance & 5G results now.');
-    }
-
-    // Update canonical tag
-    setCanonicalHref('https://speedtestboost.com/providers/ca/rogers');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Rogers Speed Test",
-      "description": "Test your Rogers internet speed for free. Speed test for Rogers cable and fiber customers.",
-      "url": "https://speedtestboost.com/providers/ca/rogers",
-      "provider": {
-        "@type": "Organization",
-        "name": "Rogers",
-        "description": "Major Canadian telecommunications company providing cable and fiber internet services",
-        "areaServed": { "@type": "Country", "name": "Canada" },
-        "serviceType": ["Cable Internet", "Fiber", "5G", "TV", "Business Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="ca" providerSlug="rogers" />
       <Header currentPath="/providers/ca/rogers" />
       
       <main className="pt-24 pb-12">

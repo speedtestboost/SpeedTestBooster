@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ProviderPageSEO from "@/components/ProviderPageSEO";
 import { setCanonicalHref } from "@/lib/seo";
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,43 +13,10 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 export default function BiznetSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
-  useEffect(() => {
-    document.title = "Biznet Speed Test Indonesia - Check Home Fiber Internet Free 2025";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Test Biznet Home fiber internet speed instantly - Free speed test for Indonesia. Accurate download/upload speeds & gaming performance now.');
-    }
-
-    setCanonicalHref('https://speedtestboost.com/providers/id/biznet');
-
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Biznet Speed Test Indonesia",
-      "description": "Test your Biznet Home fiber internet speed for free. Speed test for Biznet customers in Indonesian urban markets.",
-      "url": "https://speedtestboost.com/providers/id/biznet",
-      "provider": {
-        "@type": "Organization",
-        "name": "Biznet",
-        "description": "Premium fiber internet provider specializing in urban markets across Indonesia with gaming-optimized high-speed connectivity",
-        "areaServed": { "@type": "Country", "name": "Indonesia" },
-        "serviceType": ["Fiber Internet", "Gaming Internet", "Business Broadband", "Data Center Services"]
-      }
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]');
-      if (existingScript) document.head.removeChild(existingScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <ProviderPageSEO countryCode="id" providerSlug="biznet" />
       <Header currentPath="/providers/id/biznet" />
       
       <main className="pt-24 pb-12">
