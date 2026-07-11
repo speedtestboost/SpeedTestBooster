@@ -75,6 +75,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
+  <url>
+    <loc>https://speedtestboost.com/internet-speed-for-video-calls</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
   
   <!-- Internet Providers Main Page -->
   <url>

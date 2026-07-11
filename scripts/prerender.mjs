@@ -317,6 +317,14 @@ const STATIC_PAGES = {
     body:
       "Find out exactly how much internet speed you need for streaming Netflix 4K (25 Mbps per stream), YouTube 4K (20 Mbps), Disney Plus (25 Mbps), Amazon Prime Video and Hulu. Our household calculator shows the total bandwidth you need for multiple simultaneous streams, and our 9-step buffering fix guide explains why streaming buffers even on fast connections — from WiFi interference to ISP throttling.",
   },
+  "/internet-speed-for-video-calls": {
+    title: "Internet Speed for Video Calls 2026 — Zoom, Teams, Google Meet & Work From Home",
+    description:
+      "How much internet speed do you need for video calls? Complete Mbps guide for Zoom, Microsoft Teams, Google Meet, WebEx and Slack — upload speed requirements, ping & jitter thresholds, WFH household calculator, and fixes when calls freeze despite a fast speed test.",
+    h1: "Internet Speed for Video Calls",
+    body:
+      "Find out how much internet speed you need for Zoom (3.8 Mbps upload for 1080p), Microsoft Teams, Google Meet and remote work. Upload speed matters more than download for video calls — our WFH household calculator, ping and jitter thresholds, and 8-step fix guide explain why calls freeze even when your speed test looks fast.",
+  },
   "/internet-providers": {
     title: "Internet Providers Worldwide - ISP Speed Tests by Country",
     description:
@@ -427,6 +435,7 @@ const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/internet-speed-requirements", label: "Speed Requirements" },
   { href: "/internet-speed-for-streaming", label: "Streaming Speed Guide" },
+  { href: "/internet-speed-for-video-calls", label: "Video Call Speed Guide" },
   { href: "/gaming-speed-test", label: "Gaming Speed Test" },
   { href: "/isp-throttling-test", label: "ISP Throttling Test" },
   { href: "/why-is-my-internet-slow", label: "Why Is Internet Slow?" },

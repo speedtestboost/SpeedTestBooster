@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { Menu, X, ChevronDown, Wifi, Activity, Globe, BarChart2, Calculator, Zap, Clock, Scale, ShieldAlert, Gamepad2, HelpCircle, MonitorPlay } from "lucide-react";
+import { Menu, X, ChevronDown, Wifi, Activity, Globe, BarChart2, Calculator, Zap, Clock, Scale, ShieldAlert, Gamepad2, HelpCircle, MonitorPlay, Video } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,6 +26,7 @@ const TOOLS = [
   { href: "/isp-throttling-test",      label: "ISP Throttling Test",     icon: ShieldAlert, desc: "Detect if your ISP throttles you" },
   { href: "/why-is-my-internet-slow",  label: "Why Is My Internet Slow?",icon: HelpCircle,  desc: "14 causes & fixes" },
   { href: "/internet-speed-for-streaming", label: "Internet Speed for Streaming", icon: MonitorPlay, desc: "Netflix, YouTube, Disney+ & more" },
+  { href: "/internet-speed-for-video-calls", label: "Internet Speed for Video Calls", icon: Video, desc: "Zoom, Teams, Google Meet & WFH" },
 ];
 
 const countries = [
