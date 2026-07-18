@@ -624,7 +624,7 @@ export default function InternetSpeedForVideoCalls() {
             {[
               { href: "/internet-speed-for-streaming",  label: "Internet speed for streaming" },
               { href: "/upload-speed-guide",            label: "Upload speed guide" },
-              { href: "/internet-speed-requirements",   label: "Speed requirements guide" },
+              { href: "/how-much-internet-speed-do-i-need",   label: "Speed requirements guide" },
               { href: "/bufferbloat-test",              label: "Bufferbloat test" },
               { href: "/why-is-my-internet-slow",       label: "Why is my internet slow?" },
             ].map((l, i) => (

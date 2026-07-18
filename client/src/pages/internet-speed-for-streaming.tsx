@@ -604,7 +604,7 @@ export default function InternetSpeedForStreaming() {
           {/* Related guides */}
           <div className="flex flex-wrap gap-4 text-sm justify-center">
             {[
-              { href: "/internet-speed-requirements",  label: "Internet speed requirements guide" },
+              { href: "/how-much-internet-speed-do-i-need",  label: "How much internet speed do I need?" },
               { href: "/isp-throttling-test",           label: "ISP throttling test" },
               { href: "/gaming-speed-test",             label: "Gaming speed test" },
               { href: "/bufferbloat-test",              label: "Bufferbloat test" },

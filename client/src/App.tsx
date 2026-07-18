@@ -32,7 +32,9 @@ import FRSpeedTest from "@/pages/fr-speed-test";
 import ITSpeedTest from "@/pages/it-speed-test";
 import BRSpeedTest from "@/pages/br-speed-test";
 import PHSpeedTest from "@/pages/ph-speed-test";
-import InternetSpeedRequirements from "@/pages/internet-speed-requirements";
+import InternetSpeedForCloudGaming from "@/pages/internet-speed-for-cloud-gaming";
+import HowMuchInternetSpeedDoINeed from "@/pages/how-much-internet-speed-do-i-need";
+import InternetSpeedRequirementsRedirect from "@/pages/internet-speed-requirements";
 import SpeedTestComparison from "@/pages/speed-test-comparison";
 import ISPThrottlingTest from "@/pages/isp-throttling-test";
 import GamingSpeedTest from "@/pages/gaming-speed-test";
@@ -225,13 +227,15 @@ function Router() {
       <Route path="/it-speed-test" component={ITSpeedTest} />
       <Route path="/br-speed-test" component={BRSpeedTest} />
       <Route path="/ph-speed-test" component={PHSpeedTest} />
-      <Route path="/internet-speed-requirements" component={InternetSpeedRequirements} />
+      <Route path="/internet-speed-requirements" component={InternetSpeedRequirementsRedirect} />
+      <Route path="/how-much-internet-speed-do-i-need" component={HowMuchInternetSpeedDoINeed} />
       <Route path="/speed-test-comparison" component={SpeedTestComparison} />
       <Route path="/isp-throttling-test" component={ISPThrottlingTest} />
       <Route path="/gaming-speed-test" component={GamingSpeedTest} />
       <Route path="/why-is-my-internet-slow" component={WhyIsMyInternetSlow} />
       <Route path="/internet-speed-for-streaming" component={InternetSpeedForStreaming} />
       <Route path="/internet-speed-for-video-calls" component={InternetSpeedForVideoCalls} />
+      <Route path="/internet-speed-for-cloud-gaming" component={InternetSpeedForCloudGaming} />
       <Route path="/internet-providers" component={InternetProviders} />
       <Route path="/wifi-analyzer" component={WiFiAnalyzer} />
       <Route path="/ai-speed-test" component={AISpeedTest} />

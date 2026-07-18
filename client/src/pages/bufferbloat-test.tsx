@@ -21,7 +21,7 @@ function useSEO() {
     const desc = document.querySelector('meta[name="description"]');
     if (desc)
       desc.setAttribute("content",
-        "Free bufferbloat test — measure the latency added by your router when the link is saturated. A–F grade with CAKE/FQ-CoDel fix tips. No download, no ads.");
+        "Free bufferbloat test — measure latency added by your router when the link is saturated. A–F grade with CAKE/FQ-CoDel fix tips. Runs in your browser.");
 
     const metas: [string, string][] = [
       ["og:title", "Free Bufferbloat Test — Router Latency Under Load | SpeedTestBoost"],
@@ -197,11 +197,27 @@ export default function BufferbloatTest() {
               Free Bufferbloat Test
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Find out if your router or modem is adding hidden lag when the connection is busy — 
-              the most under-diagnosed cause of stuttering games and choppy video calls. 
-              <strong> No download. No ads.</strong>
+              Find out if your router or modem is adding hidden lag when the connection is busy —
+              the most under-diagnosed cause of stuttering games, choppy video calls, and cloud gaming input lag.
             </p>
           </div>
+
+          {/* SEO intro — visible to crawlers before interactive test */}
+          <Card className="mb-6 border-border/60">
+            <CardContent className="p-5 text-sm text-muted-foreground space-y-3">
+              <p>
+                <strong className="text-foreground">Bufferbloat</strong> is excess latency when your connection is busy.
+                Your speed test may show 100 Mbps, but ping can jump from 20 ms to 200 ms while someone downloads or streams —
+                ruining <Link href="/gaming-speed-test" className="text-primary hover:underline">online gaming</Link>,{" "}
+                <Link href="/internet-speed-for-video-calls" className="text-primary hover:underline">video calls</Link>, and{" "}
+                <Link href="/internet-speed-for-cloud-gaming" className="text-primary hover:underline">cloud gaming</Link>.
+              </p>
+              <p>
+                Run the test below to get an A–F grade. Grades C or worse mean you should enable CAKE or FQ-CoDel QoS on your router.
+                Most ISP routers ship with oversized buffers by default.
+              </p>
+            </CardContent>
+          </Card>
 
           {/* Main card */}
           <Card className="mb-8 border-2 border-primary/20 shadow-lg shadow-primary/5">

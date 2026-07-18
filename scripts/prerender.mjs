@@ -268,13 +268,21 @@ const STATIC_PAGES = {
     body:
       "Find answers to common questions about how the speed test works, how to read download, upload, ping and jitter results, and what to do when your WiFi or broadband connection is slower than expected.",
   },
-  "/internet-speed-requirements": {
-    title: "Internet Speed Requirements 2026 - How Much Speed Do You Need?",
+  "/how-much-internet-speed-do-i-need": {
+    title: "How Much Internet Speed Do I Need? (2026) — Calculator & Household Guide",
     description:
-      "Find the right internet speed for streaming, gaming, video calls and remote work in 2026. Compare Mbps requirements per device and household size.",
-    h1: "Internet Speed Requirements 2026",
+      "How much internet speed do you need in 2026? Free household calculator plus Mbps recommendations for streaming, gaming, video calls, cloud gaming and remote work — by household size.",
+    h1: "How Much Internet Speed Do I Need?",
     body:
-      "Use our internet speed requirements guide to choose the right broadband plan for streaming, gaming, video conferencing and remote work. Compare recommended Mbps per device, household size and use case so you never overpay or underprovision.",
+      "Most households need 100–300 Mbps download in 2026. Use our free calculator and household guide to find the right broadband plan for streaming, gaming, video calls and work from home — then test your actual speed to see if your ISP delivers what you pay for.",
+  },
+  "/internet-speed-for-cloud-gaming": {
+    title: "Internet Speed for Cloud Gaming 2026 — GeForce NOW, Xbox Cloud, PS Portal & More",
+    description:
+      "How much internet speed do you need for cloud gaming? Exact Mbps and latency requirements for NVIDIA GeForce NOW, Xbox Cloud Gaming, PlayStation Portal, Amazon Luna and Boosteroid.",
+    h1: "Internet Speed for Cloud Gaming",
+    body:
+      "Cloud gaming at 1080p needs 25–50 Mbps download and latency under 40 ms — but bufferbloat and jitter matter more than raw Mbps. Compare requirements for GeForce NOW, Xbox Cloud Gaming, PlayStation Portal and more, then diagnose your connection with our gaming and bufferbloat tests.",
   },
   "/speed-test-comparison": {
     title:
@@ -433,9 +441,10 @@ const STATIC_PAGES = {
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
-  { href: "/internet-speed-requirements", label: "Speed Requirements" },
+  { href: "/how-much-internet-speed-do-i-need", label: "How Much Speed Do I Need?" },
   { href: "/internet-speed-for-streaming", label: "Streaming Speed Guide" },
   { href: "/internet-speed-for-video-calls", label: "Video Call Speed Guide" },
+  { href: "/internet-speed-for-cloud-gaming", label: "Cloud Gaming Speed Guide" },
   { href: "/gaming-speed-test", label: "Gaming Speed Test" },
   { href: "/isp-throttling-test", label: "ISP Throttling Test" },
   { href: "/why-is-my-internet-slow", label: "Why Is Internet Slow?" },

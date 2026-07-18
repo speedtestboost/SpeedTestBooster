@@ -27,6 +27,8 @@ const TOOLS = [
   { href: "/why-is-my-internet-slow",  label: "Why Is My Internet Slow?",icon: HelpCircle,  desc: "14 causes & fixes" },
   { href: "/internet-speed-for-streaming", label: "Internet Speed for Streaming", icon: MonitorPlay, desc: "Netflix, YouTube, Disney+ & more" },
   { href: "/internet-speed-for-video-calls", label: "Internet Speed for Video Calls", icon: Video, desc: "Zoom, Teams, Google Meet & WFH" },
+  { href: "/internet-speed-for-cloud-gaming", label: "Internet Speed for Cloud Gaming", icon: Gamepad2, desc: "GeForce NOW, Xbox Cloud, PS Portal" },
+  { href: "/how-much-internet-speed-do-i-need", label: "How Much Speed Do I Need?", icon: Calculator, desc: "Household Mbps calculator" },
 ];
 
 const countries = [
@@ -296,8 +298,8 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
               </Link>
 
               <Link
-                href="/internet-speed-requirements"
-                className={`text-muted-foreground hover:text-primary transition-colors font-medium ${currentPath === "/internet-speed-requirements" ? "text-primary" : ""}`}
+                href="/how-much-internet-speed-do-i-need"
+                className={`text-muted-foreground hover:text-primary transition-colors font-medium ${currentPath === "/how-much-internet-speed-do-i-need" ? "text-primary" : ""}`}
               >
                 Speed Calculator
               </Link>
@@ -422,7 +424,7 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
               <Link href="/" className="bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors mb-2" onClick={() => setShowMobileMenu(false)}>
                 Home
               </Link>
-              <Link href="/internet-speed-requirements" className="text-muted-foreground hover:text-primary transition-colors py-2 px-1" onClick={() => setShowMobileMenu(false)}>
+              <Link href="/how-much-internet-speed-do-i-need" className="text-muted-foreground hover:text-primary transition-colors py-2 px-1" onClick={() => setShowMobileMenu(false)}>
                 Speed Calculator
               </Link>
 

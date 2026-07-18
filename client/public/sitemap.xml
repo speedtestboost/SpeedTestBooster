@@ -36,10 +36,10 @@
     <priority>0.6</priority>
   </url>
   
-  <!-- Internet Speed Requirements Guide 2025 - High Traffic Page -->
+  <!-- How much internet speed do I need — high-intent calculator page -->
   <url>
-    <loc>https://speedtestboost.com/internet-speed-requirements</loc>
-    <lastmod>2025-10-31</lastmod>
+    <loc>https://speedtestboost.com/how-much-internet-speed-do-i-need</loc>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
@@ -78,6 +78,12 @@
   <url>
     <loc>https://speedtestboost.com/internet-speed-for-video-calls</loc>
     <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://speedtestboost.com/internet-speed-for-cloud-gaming</loc>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>

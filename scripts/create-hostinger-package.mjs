@@ -130,6 +130,9 @@ RewriteEngine On
 # Canonical homepage: /speed-test duplicates / — send a 301 to /
 RewriteRule ^speed-test/?$ / [R=301,L]
 
+# Legacy URL → primary calculator page
+RewriteRule ^internet-speed-requirements/?$ /how-much-internet-speed-do-i-need [R=301,L]
+
 # Handle Node.js app
 RewriteCond %{REQUEST_URI} ^/api
 RewriteRule ^(.*)$ app.js [L,QSA]

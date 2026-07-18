@@ -26,7 +26,7 @@ export default function GenericFooter() {
               </li>
               <li>
                 <Link 
-                  href="/internet-speed-requirements" 
+                  href="/how-much-internet-speed-do-i-need" 
                   className="text-muted-foreground hover:text-primary transition-colors"
                   data-testid="link-footer-requirements"
                 >
@@ -80,6 +80,14 @@ export default function GenericFooter() {
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Internet Speed for Video Calls
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/internet-speed-for-cloud-gaming" 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Internet Speed for Cloud Gaming
                 </Link>
               </li>
               <li>
