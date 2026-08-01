@@ -161,7 +161,7 @@ export default function ComcastSpeedTest() {
                   cable network spans urban centers, suburban neighborhoods, and smaller towns, providing comprehensive 
                   coverage that serves varied demographic and geographic markets. This extensive infrastructure foundation 
                   enables Comcast to offer consistent internet connectivity across its service territories. Use our 
-                  <Link href="/internet-speed-requirements" className="text-primary hover:underline"> speed requirements calculator</Link> to determine your ideal plan. 
+                  <Link href="/how-much-internet-speed-do-i-need" className="text-primary hover:underline"> speed requirements calculator</Link> to determine your ideal plan. 
                   Compare Xfinity with <Link href="/providers/us/verizon" className="text-primary hover:underline">Verizon</Link>, 
                   <Link href="/providers/us/spectrum" className="text-primary hover:underline">Spectrum</Link>, and 
                   <Link href="/providers/us/att" className="text-primary hover:underline">AT&T</Link>.
@@ -400,7 +400,7 @@ export default function ComcastSpeedTest() {
                       <li>If issues persist, contact Xfinity support at <strong>1-800-XFINITY (1-800-934-6489)</strong></li>
                       <li>Check for cable line issues or local network outages on <a href="https://www.xfinity.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Xfinity's website</a></li>
                       <li>Request a technician visit to inspect your coaxial cable connection and signal strength</li>
-                      <li>Ask about plan upgrades if your current speed tier isn't meeting your household's needs per our <Link href="/internet-speed-requirements" className="text-primary hover:underline">requirements guide</Link></li>
+                      <li>Ask about plan upgrades if your current speed tier isn't meeting your household's needs per our <Link href="/how-much-internet-speed-do-i-need" className="text-primary hover:underline">requirements guide</Link></li>
                     </ul>
                   </div>
                 </div>
@@ -467,7 +467,7 @@ export default function ComcastSpeedTest() {
                   <div>
                     <h4 className="font-semibold text-foreground mb-2">How much lightweight speed test for Comcast does my household need?</h4>
                     <p className="text-sm text-muted-foreground">
-                      For basic use, 100-200 Mbps works well. Multiple 4K streams and gaming require 300-500 Mbps. Heavy usage households benefit from Gigabit plans. Use our <Link href="/internet-speed-requirements" className="text-primary hover:underline">lightweight speed test for Comcast requirements calculator</Link> for personalized recommendations.
+                      For basic use, 100-200 Mbps works well. Multiple 4K streams and gaming require 300-500 Mbps. Heavy usage households benefit from Gigabit plans. Use our <Link href="/how-much-internet-speed-do-i-need" className="text-primary hover:underline">lightweight speed test for Comcast requirements calculator</Link> for personalized recommendations.
                     </p>
                   </div>
                 </div>
@@ -503,7 +503,7 @@ export default function ComcastSpeedTest() {
             <div>
               <h4 className="font-semibold text-foreground mb-3">Speed Test</h4>
               <div className="space-y-2 text-sm">
-                <Link href="/internet-speed-requirements" className="block text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/how-much-internet-speed-do-i-need" className="block text-muted-foreground hover:text-primary transition-colors">
                   Speed Requirements
                 </Link>
                 <Link href="/wifi-analyzer" className="block text-muted-foreground hover:text-primary transition-colors">

@@ -84,7 +84,7 @@ export default function BSNLBroadbandSpeedTest() {
                   portfolio encompasses multiple speed tiers including 10 Mbps, 20 Mbps, 50 Mbps, 100 Mbps, 200 Mbps, 
                   and 300 Mbps plans, each designed to accommodate different usage patterns from basic internet browsing 
                   to bandwidth-intensive applications like video streaming, online education, and remote work requirements. 
-                  Use our <Link href="/internet-speed-requirements" className="text-primary hover:underline">speed requirements calculator</Link> to identify the optimal BSNL plan for your specific connectivity needs.
+                  Use our <Link href="/how-much-internet-speed-do-i-need" className="text-primary hover:underline">speed requirements calculator</Link> to identify the optimal BSNL plan for your specific connectivity needs.
                 </p>
 
                 <h3 className="text-xl font-semibold mb-3">Nationwide Coverage and Rural Connectivity</h3>
@@ -243,7 +243,7 @@ export default function BSNLBroadbandSpeedTest() {
             <div>
               <h4 className="font-semibold text-foreground mb-3">Speed Test Tools</h4>
               <div className="space-y-2 text-sm">
-                <Link href="/internet-speed-requirements" className="block text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/how-much-internet-speed-do-i-need" className="block text-muted-foreground hover:text-primary transition-colors">
                   Speed Requirements
                 </Link>
                 <Link href="/wifi-analyzer" className="block text-muted-foreground hover:text-primary transition-colors">

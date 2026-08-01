@@ -84,7 +84,7 @@ export default function HathwayBroadbandSpeedTest() {
                   commercial areas. The service portfolio includes multiple speed tiers: 50 Mbps, 100 Mbps, 150 Mbps, 
                   200 Mbps, and 300 Mbps plans, each designed to meet diverse connectivity requirements from basic web 
                   browsing to high-bandwidth applications like video streaming, online gaming, and work-from-home setups. 
-                  Use our <Link href="/internet-speed-requirements" className="text-primary hover:underline">speed requirements calculator</Link> to determine the most suitable Hathway broadband plan for your specific internet usage needs.
+                  Use our <Link href="/how-much-internet-speed-do-i-need" className="text-primary hover:underline">speed requirements calculator</Link> to determine the most suitable Hathway broadband plan for your specific internet usage needs.
                 </p>
 
                 <h3 className="text-xl font-semibold mb-3">Urban and Suburban Coverage Network</h3>
@@ -243,7 +243,7 @@ export default function HathwayBroadbandSpeedTest() {
             <div>
               <h4 className="font-semibold text-foreground mb-3">Speed Test Tools</h4>
               <div className="space-y-2 text-sm">
-                <Link href="/internet-speed-requirements" className="block text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/how-much-internet-speed-do-i-need" className="block text-muted-foreground hover:text-primary transition-colors">
                   Speed Requirements
                 </Link>
                 <Link href="/wifi-analyzer" className="block text-muted-foreground hover:text-primary transition-colors">

@@ -33,6 +33,7 @@ import ITSpeedTest from "@/pages/it-speed-test";
 import BRSpeedTest from "@/pages/br-speed-test";
 import PHSpeedTest from "@/pages/ph-speed-test";
 import InternetSpeedForCloudGaming from "@/pages/internet-speed-for-cloud-gaming";
+import StarlinkSpeedTest from "@/pages/starlink-speed-test";
 import HowMuchInternetSpeedDoINeed from "@/pages/how-much-internet-speed-do-i-need";
 import InternetSpeedRequirementsRedirect from "@/pages/internet-speed-requirements";
 import SpeedTestComparison from "@/pages/speed-test-comparison";
@@ -236,6 +237,7 @@ function Router() {
       <Route path="/internet-speed-for-streaming" component={InternetSpeedForStreaming} />
       <Route path="/internet-speed-for-video-calls" component={InternetSpeedForVideoCalls} />
       <Route path="/internet-speed-for-cloud-gaming" component={InternetSpeedForCloudGaming} />
+      <Route path="/starlink-speed-test" component={StarlinkSpeedTest} />
       <Route path="/internet-providers" component={InternetProviders} />
       <Route path="/wifi-analyzer" component={WiFiAnalyzer} />
       <Route path="/ai-speed-test" component={AISpeedTest} />

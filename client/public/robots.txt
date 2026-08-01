@@ -6,17 +6,18 @@ Sitemap: https://speedtestboost.com/sitemap.xml
 
 # Allow important SEO pages
 Allow: /
-Allow: /speed-test
 Allow: /about
 Allow: /help
 Allow: /site-index
-Allow: /internet-speed-requirements
+Allow: /how-much-internet-speed-do-i-need
 Allow: /speed-test-comparison
 Allow: /gaming-speed-test
 Allow: /isp-throttling-test
 Allow: /why-is-my-internet-slow
 Allow: /internet-speed-for-streaming
 Allow: /internet-speed-for-video-calls
+Allow: /internet-speed-for-cloud-gaming
+Allow: /starlink-speed-test
 Allow: /wifi-analyzer
 Allow: /ai-speed-test
 

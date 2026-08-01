@@ -412,7 +412,7 @@ export default function SpeedTest() {
               <Link href="/ai-speed-test" className="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-3 py-1.5 text-white/90 text-sm font-medium transition-all">
                 <TrendingUp className="h-3.5 w-3.5" />AI Speed Test
               </Link>
-              <Link href="/internet-speed-requirements" className="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-3 py-1.5 text-white/90 text-sm font-medium transition-all">
+              <Link href="/how-much-internet-speed-do-i-need" className="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-3 py-1.5 text-white/90 text-sm font-medium transition-all">
                 <BarChart3 className="h-3.5 w-3.5" />Speed Guide
               </Link>
               <Link href="/in-speed-test" className="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-3 py-1.5 text-white/90 text-sm font-medium transition-all">
@@ -721,7 +721,7 @@ export default function SpeedTest() {
           </h2>
           <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
             Compare your results against recommended speeds for common activities.
-            <Link href="/internet-speed-requirements" className="text-primary hover:underline ml-1">View full speed requirements guide →</Link>
+            <Link href="/how-much-internet-speed-do-i-need" className="text-primary hover:underline ml-1">View full speed requirements guide →</Link>
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
@@ -1059,7 +1059,7 @@ export default function SpeedTest() {
                 },
                 {
                   q: "What is a good internet speed?",
-                  a: <>25 Mbps covers basic browsing and HD streaming. 100 Mbps suits most households. 300+ Mbps is comfortable for multiple 4K streams. For gaming, ping under 30 ms matters more than raw speed. <Link href="/internet-speed-requirements" className="text-primary hover:underline">See full requirements →</Link></>
+                  a: <>25 Mbps covers basic browsing and HD streaming. 100 Mbps suits most households. 300+ Mbps is comfortable for multiple 4K streams. For gaming, ping under 30 ms matters more than raw speed. <Link href="/how-much-internet-speed-do-i-need" className="text-primary hover:underline">See full requirements →</Link></>
                 },
                 {
                   q: "Why is my result lower than my ISP plan?",
@@ -1121,7 +1121,7 @@ export default function SpeedTest() {
                 <Link href="/download-speed-guide" className="block text-muted-foreground hover:text-primary transition-colors">Download Speed Guide</Link>
                 <Link href="/upload-speed-guide" className="block text-muted-foreground hover:text-primary transition-colors">Upload Speed Guide</Link>
                 <Link href="/wifi-speed-optimization" className="block text-muted-foreground hover:text-primary transition-colors">WiFi Optimization</Link>
-                <Link href="/internet-speed-requirements" className="block text-muted-foreground hover:text-primary transition-colors">Speed Requirements</Link>
+                <Link href="/how-much-internet-speed-do-i-need" className="block text-muted-foreground hover:text-primary transition-colors">Speed Requirements</Link>
               </div>
             </div>
             <div>

@@ -685,7 +685,7 @@ export default function WiFiSpeedOptimization() {
                 <Link href="/wifi-analyzer" className="text-primary hover:underline mr-4">
                   Advanced WiFi Analyzer →
                 </Link>
-                <Link href="/internet-speed-requirements" className="text-primary hover:underline">
+                <Link href="/how-much-internet-speed-do-i-need" className="text-primary hover:underline">
                   Complete Speed Requirements Guide →
                 </Link>
               </div>

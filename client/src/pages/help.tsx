@@ -248,7 +248,7 @@ export default function Help() {
                   your internet plan.
                 </p>
                 <Button variant="outline" size="sm" asChild>
-                  <Link href="/internet-speed-requirements">Speed Calculator</Link>
+                  <Link href="/how-much-internet-speed-do-i-need">Speed Calculator</Link>
                 </Button>
               </CardContent>
             </Card>

@@ -284,6 +284,14 @@ const STATIC_PAGES = {
     body:
       "Cloud gaming at 1080p needs 25–50 Mbps download and latency under 40 ms — but bufferbloat and jitter matter more than raw Mbps. Compare requirements for GeForce NOW, Xbox Cloud Gaming, PlayStation Portal and more, then diagnose your connection with our gaming and bufferbloat tests.",
   },
+  "/starlink-speed-test": {
+    title: "Starlink Speed Test 2026 — Test Starlink Internet Speed & What to Expect",
+    description:
+      "Free Starlink speed test with 2026 benchmarks. Expected download, upload and ping by plan, how to test correctly over Ethernet vs WiFi, and whether Starlink handles streaming, gaming and video calls.",
+    h1: "Starlink Speed Test",
+    body:
+      "Test your Starlink internet speed in your browser and compare against 2026 benchmarks: Residential plans typically deliver 100–250 Mbps download, 10–40 Mbps upload and 25–60 ms ping. Learn how to test correctly over Ethernet, why peak-hour speeds drop 25–35%, and whether Starlink is fast enough for 4K streaming, gaming and Zoom calls.",
+  },
   "/speed-test-comparison": {
     title:
       "Speed Test Comparison 2026: Speedtest vs Fast vs Google Speed Test Explained",
@@ -445,6 +453,7 @@ const NAV_LINKS = [
   { href: "/internet-speed-for-streaming", label: "Streaming Speed Guide" },
   { href: "/internet-speed-for-video-calls", label: "Video Call Speed Guide" },
   { href: "/internet-speed-for-cloud-gaming", label: "Cloud Gaming Speed Guide" },
+  { href: "/starlink-speed-test", label: "Starlink Speed Test" },
   { href: "/gaming-speed-test", label: "Gaming Speed Test" },
   { href: "/isp-throttling-test", label: "ISP Throttling Test" },
   { href: "/why-is-my-internet-slow", label: "Why Is Internet Slow?" },

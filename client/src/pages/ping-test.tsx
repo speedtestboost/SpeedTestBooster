@@ -766,7 +766,7 @@ export default function PingTest() {
                 <Link href="/wifi-analyzer" className="block text-muted-foreground hover:text-primary transition-colors">
                   WiFi Analyzer
                 </Link>
-                <Link href="/internet-speed-requirements" className="block text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/how-much-internet-speed-do-i-need" className="block text-muted-foreground hover:text-primary transition-colors">
                   Speed Calculator
                 </Link>
                 <Link href="/ai-speed-test" className="block text-muted-foreground hover:text-primary transition-colors">

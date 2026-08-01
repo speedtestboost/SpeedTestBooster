@@ -29,6 +29,7 @@ const TOOLS = [
   { href: "/internet-speed-for-video-calls", label: "Internet Speed for Video Calls", icon: Video, desc: "Zoom, Teams, Google Meet & WFH" },
   { href: "/internet-speed-for-cloud-gaming", label: "Internet Speed for Cloud Gaming", icon: Gamepad2, desc: "GeForce NOW, Xbox Cloud, PS Portal" },
   { href: "/how-much-internet-speed-do-i-need", label: "How Much Speed Do I Need?", icon: Calculator, desc: "Household Mbps calculator" },
+  { href: "/starlink-speed-test", label: "Starlink Speed Test", icon: Globe, desc: "Satellite internet benchmarks" },
 ];
 
 const countries = [

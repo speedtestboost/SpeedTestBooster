@@ -591,7 +591,7 @@ export default function UploadSpeedGuide() {
                 </Link>
               </div>
               <div className="mt-6 text-center">
-                <Link href="/internet-speed-requirements" className="text-primary hover:underline">
+                <Link href="/how-much-internet-speed-do-i-need" className="text-primary hover:underline">
                   View Complete Speed Requirements Guide →
                 </Link>
               </div>

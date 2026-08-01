@@ -379,7 +379,7 @@ export default function SpeedTestComparison() {
               </p>
               <p>
                 Already happy with headline Mbps? Tie it back to subjective quality: chase{" "}
-                <Link href="/internet-speed-requirements" className="text-primary hover:underline">
+                <Link href="/how-much-internet-speed-do-i-need" className="text-primary hover:underline">
                   activity-based requirements
                 </Link>,{" "}
                 <Link href="/upload-speed-guide" className="text-primary hover:underline">

@@ -163,7 +163,7 @@ export default function ATTSpeedTest() {
                   providing customers with advanced broadband capabilities ranging from 300 Mbps to 5 Gig that support streaming, 
                   remote work, and smart home applications. AT&T's 100% fiber-optic network ensures ultra-reliable high-speed 
                   connectivity with equal upload and download speeds—a major advantage over cable competitors. 
-                  Use our <Link href="/internet-speed-requirements" className="text-primary hover:underline">speed requirements calculator</Link> to determine your ideal plan. 
+                  Use our <Link href="/how-much-internet-speed-do-i-need" className="text-primary hover:underline">speed requirements calculator</Link> to determine your ideal plan. 
                   Compare AT&T with <Link href="/providers/us/verizon" className="text-primary hover:underline">Verizon</Link>, 
                   <Link href="/providers/us/spectrum" className="text-primary hover:underline">Spectrum</Link>, and 
                   <Link href="/providers/us/comcast" className="text-primary hover:underline">Comcast</Link>.

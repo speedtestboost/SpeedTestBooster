@@ -134,7 +134,7 @@ export default function ProviderFooter() {
               </li>
               <li>
                 <Link 
-                  href="/internet-speed-requirements" 
+                  href="/how-much-internet-speed-do-i-need" 
                   className="text-muted-foreground hover:text-foreground transition-colors"
                   data-testid="link-footer-speed-requirements"
                 >

@@ -159,7 +159,7 @@ export default function SpectrumSpeedTest() {
                   The company's hybrid fiber-coaxial infrastructure provides customers with download speeds 
                   ranging from 300 Mbps on their base plan to 1 Gig (1000 Mbps) connections, supporting everything from 
                   basic web browsing to demanding applications like 4K streaming, online gaming, and 
-                  remote work requirements. Use our <Link href="/internet-speed-requirements" className="text-primary hover:underline">speed requirements calculator</Link> to determine the right plan for your needs. 
+                  remote work requirements. Use our <Link href="/how-much-internet-speed-do-i-need" className="text-primary hover:underline">speed requirements calculator</Link> to determine the right plan for your needs. 
                   Regular <strong>Spectrum lightweight speed test for Spectrum tests</strong> help ensure you're getting the performance you're paying for.
                 </p>
               </div>
@@ -490,7 +490,7 @@ export default function SpectrumSpeedTest() {
                     <h4 className="font-semibold text-foreground mb-2">How much speed does my household need?</h4>
                     <p className="text-sm text-muted-foreground">
                       For basic browsing and streaming, 50-100 Mbps works well. If you have multiple users or want 4K streaming and gaming, 
-                      aim for 300+ Mbps. Use our <Link href="/internet-speed-requirements" className="text-primary hover:underline">lightweight speed test for Spectrum calculator</Link> to get personalized recommendations.
+                      aim for 300+ Mbps. Use our <Link href="/how-much-internet-speed-do-i-need" className="text-primary hover:underline">lightweight speed test for Spectrum calculator</Link> to get personalized recommendations.
                     </p>
                   </div>
                 </div>
@@ -527,7 +527,7 @@ export default function SpectrumSpeedTest() {
             <div>
               <h4 className="font-semibold text-foreground mb-3">Speed Test</h4>
               <div className="space-y-2 text-sm">
-                <Link href="/internet-speed-requirements" className="block text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/how-much-internet-speed-do-i-need" className="block text-muted-foreground hover:text-primary transition-colors">
                   Speed Requirements
                 </Link>
                 <Link href="/wifi-analyzer" className="block text-muted-foreground hover:text-primary transition-colors">

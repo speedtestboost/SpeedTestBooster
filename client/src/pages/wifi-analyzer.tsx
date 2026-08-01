@@ -661,7 +661,7 @@ export default function WiFiAnalyzer() {
                   <Link href="/" className="block text-primary hover:underline text-sm">
                     Internet Speed Test
                   </Link>
-                  <Link href="/internet-speed-requirements" className="block text-primary hover:underline text-sm">
+                  <Link href="/how-much-internet-speed-do-i-need" className="block text-primary hover:underline text-sm">
                     Speed Requirements Guide
                   </Link>
                   <Link href="/help" className="block text-primary hover:underline text-sm">

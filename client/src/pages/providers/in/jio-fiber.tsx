@@ -82,7 +82,7 @@ export default function JioFiberSpeedTest() {
                   internet connectivity directly to customers' homes across India's major cities and towns. The service 
                   offers comprehensive speed plans including 30 Mbps, 100 Mbps, 150 Mbps, 300 Mbps, 500 Mbps, and 
                   1 Gbps options, supporting everything from basic web browsing to demanding applications like 4K streaming, 
-                  online gaming, video conferencing, and smart home automation. Use our <Link href="/internet-speed-requirements" className="text-primary hover:underline">speed requirements calculator</Link> to determine the ideal Jio Fiber plan for your household needs.
+                  online gaming, video conferencing, and smart home automation. Use our <Link href="/how-much-internet-speed-do-i-need" className="text-primary hover:underline">speed requirements calculator</Link> to determine the ideal Jio Fiber plan for your household needs.
                 </p>
 
                 <h3 className="text-xl font-semibold mb-3">Digital India Initiative and Coverage</h3>
@@ -240,7 +240,7 @@ export default function JioFiberSpeedTest() {
             <div>
               <h4 className="font-semibold text-foreground mb-3">Speed Test Tools</h4>
               <div className="space-y-2 text-sm">
-                <Link href="/internet-speed-requirements" className="block text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/how-much-internet-speed-do-i-need" className="block text-muted-foreground hover:text-primary transition-colors">
                   Speed Requirements
                 </Link>
                 <Link href="/wifi-analyzer" className="block text-muted-foreground hover:text-primary transition-colors">

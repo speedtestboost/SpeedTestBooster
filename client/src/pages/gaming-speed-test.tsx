@@ -406,7 +406,7 @@ export default function GamingSpeedTest() {
             {[
               { href: "/isp-throttling-test", label: "ISP throttling test" },
               { href: "/bufferbloat-test", label: "Bufferbloat test" },
-              { href: "/internet-speed-requirements", label: "Speed requirements" },
+              { href: "/how-much-internet-speed-do-i-need", label: "Speed requirements" },
               { href: "/why-is-my-internet-slow", label: "Why is my internet slow?" },
               { href: "/speed-test-faq", label: "Speed test FAQ" },
             ].map((l, i) => (

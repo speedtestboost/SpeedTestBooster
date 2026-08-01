@@ -355,7 +355,7 @@ export default function WhyIsMyInternetSlow() {
               { href: "/isp-throttling-test", label: "ISP throttling test" },
               { href: "/gaming-speed-test", label: "Gaming speed test" },
               { href: "/bufferbloat-test", label: "Bufferbloat test" },
-              { href: "/internet-speed-requirements", label: "Speed requirements guide" },
+              { href: "/how-much-internet-speed-do-i-need", label: "Speed requirements guide" },
               { href: "/speed-test-comparison", label: "Speed test comparison" },
             ].map((l, i) => (
               <span key={l.href}>

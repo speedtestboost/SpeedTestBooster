@@ -127,6 +127,10 @@ fs.writeFileSync(path.join(deployDir, '.env.example'), envTemplate);
 const htaccess = \`Options -MultiViews
 RewriteEngine On
 
+# Canonical host: www duplicates the apex domain — 301 to non-www.
+RewriteCond %{HTTP_HOST} ^www\\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
 # Canonical homepage: /speed-test duplicates / — send a 301 to /
 RewriteRule ^speed-test/?$ / [R=301,L]
 
