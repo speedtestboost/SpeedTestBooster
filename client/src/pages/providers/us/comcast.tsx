@@ -37,7 +37,7 @@ export default function ComcastSpeedTest() {
               Comcast Xfinity Speed Test
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Test your <span className="font-semibold text-blue-500">Comcast Xfinity lightweight speed test for Comcast</span> for free. Check your cable or fiber internet performance with accurate download, upload, and ping measurements.
+              Test your <span className="font-semibold text-blue-500">Comcast Xfinity internet speed</span> for free. Check your cable or fiber internet performance with accurate download, upload, and ping measurements.
             </p>
             
             <div className="mb-12">
@@ -67,7 +67,7 @@ export default function ComcastSpeedTest() {
                   <p className="text-sm text-muted-foreground">
                     Connect via Ethernet cable directly to your Xfinity gateway for the most accurate <strong>comcast cable test</strong> results. 
                     Close all background apps and disconnect other devices during testing. Test at multiple times throughout the day, 
-                    avoiding peak hours (6-11 PM) when network traffic is highest for the best <strong>xfinity lightweight speed test for Comcast test</strong> accuracy.
+                    avoiding peak hours (6-11 PM) when network traffic is highest for the best <strong>xfinity internet speed test</strong> accuracy.
                   </p>
                 </div>
               </div>
@@ -182,7 +182,7 @@ export default function ComcastSpeedTest() {
                   fiber network expansion, and emerging wireless technologies that enhance internet service capabilities. 
                   The company's technical innovation focus includes exploring next-generation cable technologies, 
                   improving network capacity, and developing customer experience technologies that modernize traditional 
-                  cable television and internet service delivery. Regular <strong>comcast lightweight speed test for Comcast tests</strong> verify network performance.
+                  cable television and internet service delivery. Regular <strong>comcast internet speed tests</strong> verify network performance.
                 </p>
 
                 <h3 className="text-xl font-semibold mb-3">Business and Commercial Services</h3>
@@ -316,7 +316,7 @@ export default function ComcastSpeedTest() {
             <CardContent className="p-8">
               <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Troubleshooting Slow Comcast Xfinity Speeds</h2>
               <p className="text-center text-muted-foreground mb-8 max-w-3xl mx-auto">
-                If your <strong>xfinity lightweight speed test for Comcast test</strong> results are below expectations, try these proven solutions before contacting technical support:
+                If your <strong>xfinity internet speed test</strong> results are below expectations, try these proven solutions before contacting technical support:
               </p>
               
               <div className="space-y-6">
@@ -415,7 +415,7 @@ export default function ComcastSpeedTest() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold text-foreground mb-2">How do I test my Comcast Xfinity lightweight speed test for Comcast?</h4>
+                    <h4 className="font-semibold text-foreground mb-2">How do I test my Comcast Xfinity internet speed?</h4>
                     <p className="text-sm text-muted-foreground">
                       Use our speed test tool above by clicking 'Start Speed Test'. It will measure your Xfinity cable internet download speed, upload speed, and ping in seconds for accurate results.
                     </p>
@@ -439,7 +439,7 @@ export default function ComcastSpeedTest() {
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-2">Does Comcast Xfinity throttle lightweight speed test for Comcasts?</h4>
+                    <h4 className="font-semibold text-foreground mb-2">Does Comcast Xfinity throttle internet speeds?</h4>
                     <p className="text-sm text-muted-foreground">
                       Comcast doesn't impose data caps on most residential plans, but network management during peak congestion can affect speeds. If you consistently experience throttling, run regular speed tests and contact Xfinity support at 1-800-XFINITY.
                     </p>
@@ -465,9 +465,9 @@ export default function ComcastSpeedTest() {
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-2">How much lightweight speed test for Comcast does my household need?</h4>
+                    <h4 className="font-semibold text-foreground mb-2">How much internet speed does my household need?</h4>
                     <p className="text-sm text-muted-foreground">
-                      For basic use, 100-200 Mbps works well. Multiple 4K streams and gaming require 300-500 Mbps. Heavy usage households benefit from Gigabit plans. Use our <Link href="/how-much-internet-speed-do-i-need" className="text-primary hover:underline">lightweight speed test for Comcast requirements calculator</Link> for personalized recommendations.
+                      For basic use, 100-200 Mbps works well. Multiple 4K streams and gaming require 300-500 Mbps. Heavy usage households benefit from Gigabit plans. Use our <Link href="/how-much-internet-speed-do-i-need" className="text-primary hover:underline">internet speed requirements calculator</Link> for personalized recommendations.
                     </p>
                   </div>
                 </div>
@@ -555,8 +555,8 @@ export default function ComcastSpeedTest() {
 
           <div className="text-center pt-8 border-t border-border/30 mt-8">
             <p className="text-sm text-muted-foreground">
-              © 2025 Speed Test
-              Test your cable lightweight speed test for Comcast, WiFi performance, and network connectivity with our accurate Xfinity speed test tool.
+              © 2026 Speed Test
+              Test your cable internet speed, WiFi performance, and network connectivity with our accurate Xfinity speed test tool.
             </p>
           </div>
         </div>

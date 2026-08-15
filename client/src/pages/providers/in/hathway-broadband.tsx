@@ -35,7 +35,7 @@ export default function HathwayBroadbandSpeedTest() {
               </div>
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">
-              Hathway Broadband Speed Test 2025
+              Hathway Broadband Speed Test 2026
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
               Test your <span className="font-semibold text-orange-500">Hathway Broadband internet speed</span> for free. Check Hathway cable internet speeds, WiFi performance, and digital connectivity across India.
@@ -294,7 +294,7 @@ export default function HathwayBroadbandSpeedTest() {
           {/* Copyright */}
           <div className="text-center pt-8 border-t border-border/30 mt-8">
             <p className="text-sm text-muted-foreground">
-              © 2025 Speed Test and Boost. Free Hathway Broadband internet speed test for Hathway customers. 
+              © 2026 Speed Test and Boost. Free Hathway Broadband internet speed test for Hathway customers. 
               Test your Hathway cable internet speed, WiFi performance, and digital connectivity across India.
             </p>
           </div>

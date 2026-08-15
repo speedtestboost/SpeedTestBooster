@@ -273,7 +273,7 @@ export default function InternetProviders() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Internet Service Providers Worldwide - Speed Test & Compare ISPs 2025";
+    document.title = "Internet Service Providers Worldwide - Speed Test & Compare ISPs 2026";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Compare internet service providers worldwide. Test speeds for major ISPs including Verizon, BT, Bell, Telstra, Deutsche Telekom, Jio Fiber, Orange, Vivo, NTT, and KT. Find the best broadband plans in your country.');

@@ -77,7 +77,7 @@ export default function WiFiAnalyzer() {
     
     // Open Graph tags
     const ogTags = [
-      { property: 'og:title', content: 'WiFi Analyzer & Network Diagnostics Tool - Free Network Scanner 2025' },
+      { property: 'og:title', content: 'WiFi Analyzer & Network Diagnostics Tool - Free Network Scanner 2026' },
       { property: 'og:description', content: 'Professional WiFi analyzer and network diagnostics tool. Scan WiFi networks, analyze signal strength, diagnose network issues, and optimize wireless performance.' },
       { property: 'og:url', content: 'https://speedtestboost.com/wifi-analyzer' },
       { property: 'og:type', content: 'website' },
@@ -98,7 +98,7 @@ export default function WiFiAnalyzer() {
     // Twitter Card tags
     const twitterTags = [
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'WiFi Analyzer & Network Diagnostics Tool - Free Network Scanner 2025' },
+      { name: 'twitter:title', content: 'WiFi Analyzer & Network Diagnostics Tool - Free Network Scanner 2026' },
       { name: 'twitter:description', content: 'Professional WiFi analyzer and network diagnostics tool. Scan WiFi networks, analyze signal strength, and optimize wireless performance.' }
     ];
     
@@ -677,7 +677,7 @@ export default function WiFiAnalyzer() {
 
           <div className="border-t border-border pt-8 text-center">
             <p className="text-sm text-muted-foreground">
-              © 2025 Speed Test & Boost. Free WiFi analyzer and network diagnostics tools for optimal internet performance.
+              © 2026 Speed Test & Boost. Free WiFi analyzer and network diagnostics tools for optimal internet performance.
             </p>
           </div>
         </div>

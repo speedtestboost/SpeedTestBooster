@@ -581,7 +581,7 @@ export default function MumbaiSpeedTest() {
           {/* Copyright */}
           <div className="text-center pt-8 border-t border-border/30 mt-8">
             <p className="text-sm text-muted-foreground">
-              © 2025 Internet Speed Test and Boost. Free Mumbai internet speed booster test Mumbai tool for accurate bandwidth measurement. 
+              © 2026 Internet Speed Test and Boost. Free Mumbai internet speed booster test Mumbai tool for accurate bandwidth measurement. 
               Test your connection speed on any device. Compare with <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Fast.com</a> and <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Speedtest.net</a>.
             </p>
           </div>

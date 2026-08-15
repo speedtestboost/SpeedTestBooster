@@ -13,7 +13,7 @@ export default function PortugueseSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Teste de Velocidade da Internet - Medidor de Velocidade WiFi Grátis 2025";
+    document.title = "Teste de Velocidade da Internet - Medidor de Velocidade WiFi Grátis 2026";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Teste de velocidade da internet grátis em português. Meça sua velocidade de download, upload e ping para provedores no Brasil. Resultados precisos em tempo real para Vivo, Claro, TIM, Oi e mais.');

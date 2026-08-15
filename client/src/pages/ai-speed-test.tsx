@@ -112,11 +112,11 @@ export default function AISpeedTest() {
     setCanonicalHref('https://speedtestboost.com/ai-speed-test');
     
     // Update page title and meta description
-    document.title = "AI Internet Speed Test & Requirements Calculator 2025 - ChatGPT, Claude, Midjourney Speed Requirements";
+    document.title = "AI Internet Speed Test & Requirements Calculator 2026 - ChatGPT, Claude, Midjourney Speed Requirements";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Calculate exact internet speed requirements for AI tools like ChatGPT, Claude, Midjourney, and enterprise AI workloads. Free AI speed test with personalized recommendations and optimization tips for 2025.');
+      metaDescription.setAttribute('content', 'Calculate exact internet speed requirements for AI tools like ChatGPT, Claude, Midjourney, and enterprise AI workloads. Free AI speed test with personalized recommendations and optimization tips for 2026.');
     }
 
     return () => {
@@ -201,7 +201,7 @@ export default function AISpeedTest() {
           </div>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Calculate exact internet speed requirements for AI tools like ChatGPT, Claude, Midjourney, and enterprise AI workloads. 
-            Get personalized recommendations and optimize your connection for seamless AI experiences in 2025.
+            Get personalized recommendations and optimize your connection for seamless AI experiences in 2026.
           </p>
         </div>
 
@@ -405,7 +405,7 @@ export default function AISpeedTest() {
 
         {/* All AI Use Cases Overview */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold mb-6 text-center">AI Internet Speed Requirements Guide 2025</h2>
+          <h2 className="text-3xl font-bold mb-6 text-center">AI Internet Speed Requirements Guide 2026</h2>
           <p className="text-muted-foreground text-center mb-8 max-w-3xl mx-auto">
             Understanding bandwidth requirements for different AI applications helps you choose the right internet plan 
             and optimize your connection for seamless AI experiences. Each AI tool has specific requirements based on data processing needs.
@@ -517,7 +517,7 @@ export default function AISpeedTest() {
         {/* Future AI Trends */}
         <Card className="mb-12">
           <CardHeader>
-            <CardTitle>Future AI Speed Requirements: What to Expect in 2025</CardTitle>
+            <CardTitle>Future AI Speed Requirements: What to Expect in 2026</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-2 gap-6">
@@ -642,7 +642,7 @@ export default function AISpeedTest() {
           {/* Copyright */}
           <div className="text-center pt-8 border-t border-border/30 mt-8">
             <p className="text-sm text-muted-foreground">
-              © 2025 Speed Test and Boost. AI internet speed requirements calculator for ChatGPT, Midjourney, Claude and enterprise AI workloads. 
+              © 2026 Speed Test and Boost. AI internet speed requirements calculator for ChatGPT, Midjourney, Claude and enterprise AI workloads. 
               Compare AI bandwidth needs and optimize your connection for artificial intelligence applications.
             </p>
           </div>

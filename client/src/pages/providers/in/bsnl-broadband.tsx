@@ -35,7 +35,7 @@ export default function BSNLBroadbandSpeedTest() {
               </div>
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-green-500 via-green-600 to-green-500 bg-clip-text text-transparent">
-              BSNL Broadband Speed Test 2025
+              BSNL Broadband Speed Test 2026
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
               Test your <span className="font-semibold text-green-500">BSNL Broadband internet speed</span> for free. Check BSNL FTTH fiber speeds, WiFi performance, and government broadband connectivity across India.
@@ -294,7 +294,7 @@ export default function BSNLBroadbandSpeedTest() {
           {/* Copyright */}
           <div className="text-center pt-8 border-t border-border/30 mt-8">
             <p className="text-sm text-muted-foreground">
-              © 2025 Speed Test and Boost. Free BSNL Broadband internet speed test for BSNL customers. 
+              © 2026 Speed Test and Boost. Free BSNL Broadband internet speed test for BSNL customers. 
               Test your BSNL FTTH fiber speed, WiFi performance, and government broadband connectivity across India.
             </p>
           </div>

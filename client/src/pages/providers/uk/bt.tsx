@@ -375,7 +375,7 @@ export default function BTSpeedTest() {
               <CardContent className="p-8">
                 <h2 className="text-2xl font-bold mb-4">{section.title}</h2>
                 <p className="text-muted-foreground">
-                  {index === 0 && "Test your BT broadband lightweight speed test for BT with our advanced online speed test tool. Our platform provides accurate measurements of your fiber optic or FTTC connection, ensuring you're getting the speeds that BT delivers across the United Kingdom as the nation's largest provider."}
+                  {index === 0 && "Test your BT broadband internet speed with our advanced online speed test tool. Our platform provides accurate measurements of your fiber optic or FTTC connection, ensuring you're getting the speeds that BT delivers across the United Kingdom as the nation's largest provider."}
                   {index === 1 && "Check your BT fiber speed to ensure optimal Full Fibre performance for streaming, gaming, and work from home. BT Full Fibre offers fast download speeds up to 900 Mbps, making it ideal for bandwidth-intensive households with multiple devices and 4K streaming needs."}
                   {index === 2 && "Check your BT upload speed to ensure optimal performance for video conferencing, file uploads, and cloud backups. BT Full Fibre offers faster upload speeds than FTTC connections, providing better performance for remote work and content creation."}
                   {index === 3 && "Monitor your BT ping and latency for gaming, video calls, and real-time applications. Lower ping times indicate better network responsiveness, which is crucial for competitive gaming and professional video conferencing on BT's fiber network."}

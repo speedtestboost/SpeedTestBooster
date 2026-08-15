@@ -551,7 +551,7 @@ export default function KolkataSpeedTest() {
           {/* Copyright */}
           <div className="text-center pt-8 border-t border-border/30 mt-8">
             <p className="text-sm text-muted-foreground">
-              © 2025 Internet Speed Test and Boost. Free internet speed booster test Kolkata tool for accurate bandwidth measurement. 
+              © 2026 Internet Speed Test and Boost. Free internet speed booster test Kolkata tool for accurate bandwidth measurement. 
               Test your connection speed on any device.
             </p>
           </div>

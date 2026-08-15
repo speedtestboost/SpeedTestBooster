@@ -35,7 +35,7 @@ export default function JioFiberSpeedTest() {
               </div>
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 bg-clip-text text-transparent">
-              Jio Fiber Speed Test 2025
+              Jio Fiber Speed Test 2026
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
               Test your <span className="font-semibold text-blue-500">Reliance Jio Fiber internet speed</span> for free. Check download speeds, upload speeds, and WiFi performance for fiber broadband customers across India.
@@ -291,7 +291,7 @@ export default function JioFiberSpeedTest() {
           {/* Copyright */}
           <div className="text-center pt-8 border-t border-border/30 mt-8">
             <p className="text-sm text-muted-foreground">
-              © 2025 Speed Test and Boost. Free Jio Fiber internet speed test for Reliance Jio customers. 
+              © 2026 Speed Test and Boost. Free Jio Fiber internet speed test for Reliance Jio customers. 
               Test your fiber broadband speed, WiFi performance, and network connectivity across India.
             </p>
           </div>

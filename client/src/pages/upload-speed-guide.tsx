@@ -13,7 +13,7 @@ export default function UploadSpeedGuide() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Internet Upload Speed Explained: Complete Guide 2025";
+    document.title = "Internet Upload Speed Explained: Complete Guide 2026";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -44,13 +44,13 @@ export default function UploadSpeedGuide() {
       metaTag.setAttribute('content', content);
     };
 
-    createOrUpdateMetaTag('og:title', 'Internet Upload Speed Explained: Complete Guide 2025');
+    createOrUpdateMetaTag('og:title', 'Internet Upload Speed Explained: Complete Guide 2026');
     createOrUpdateMetaTag('og:description', 'Complete guide to internet upload speeds. Learn what upload speed you need for video calls, file sharing, streaming, and remote work.');
     createOrUpdateMetaTag('og:type', 'article');
     createOrUpdateMetaTag('og:url', 'https://speedtestboost.com/upload-speed-guide');
     createOrUpdateMetaTag('og:image', 'https://speedtestboost.com/logo-option-5.svg');
     createOrUpdateTwitterMetaTag('twitter:card', 'summary_large_image');
-    createOrUpdateTwitterMetaTag('twitter:title', 'Internet Upload Speed Explained: Complete Guide 2025');
+    createOrUpdateTwitterMetaTag('twitter:title', 'Internet Upload Speed Explained: Complete Guide 2026');
     createOrUpdateTwitterMetaTag('twitter:description', 'Complete guide to internet upload speeds. Learn what upload speed you need for video calls, file sharing, streaming, and remote work.');
     createOrUpdateTwitterMetaTag('twitter:image', 'https://speedtestboost.com/logo-option-5.svg');
 
@@ -61,7 +61,7 @@ export default function UploadSpeedGuide() {
         {
           "@type": "Article",
           "@id": "https://speedtestboost.com/upload-speed-guide#article",
-          "headline": "Internet Upload Speed Explained: Complete Guide 2025",
+          "headline": "Internet Upload Speed Explained: Complete Guide 2026",
           "description": "Complete guide to internet upload speeds. Learn what upload speed you need for video calls, file sharing, streaming, and remote work.",
           "author": {
             "@type": "Organization",
@@ -76,7 +76,7 @@ export default function UploadSpeedGuide() {
             }
           },
           "datePublished": "2025-01-17",
-          "dateModified": "2025-01-17",
+          "dateModified": "2026-08-15",
           "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https://speedtestboost.com/upload-speed-guide"
@@ -293,7 +293,7 @@ export default function UploadSpeedGuide() {
           {/* Why Upload Speed Matters */}
           <Card className="mb-8" data-testid="card-upload-importance">
             <CardContent className="p-8">
-              <h2 className="text-2xl font-bold mb-6">Why Upload Speed is Critical in 2025</h2>
+              <h2 className="text-2xl font-bold mb-6">Why Upload Speed is Critical in 2026</h2>
               
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-4">

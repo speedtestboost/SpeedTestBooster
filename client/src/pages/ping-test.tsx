@@ -828,7 +828,7 @@ export default function PingTest() {
           {/* Copyright */}
           <div className="text-center pt-8 border-t border-border/30 mt-8">
             <p className="text-sm text-muted-foreground">
-              © 2025 Speed Test and Boost. Free ping test tool for network latency measurement and analysis. 
+              © 2026 Speed Test and Boost. Free ping test tool for network latency measurement and analysis. 
               Professional network diagnostics for optimal performance. Compare with other tools like <a href="https://fast.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Fast.com</a> and <a href="https://www.speedtest.net/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Speedtest.net</a>.
             </p>
           </div>

@@ -37,7 +37,7 @@ export default function SpectrumSpeedTest() {
               Charter Spectrum Speed Test
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Test your <span className="font-semibold text-blue-500">Charter Spectrum lightweight speed test for Spectrum</span> for free. Check download speeds, upload speeds, and WiFi performance for cable internet customers nationwide.
+              Test your <span className="font-semibold text-blue-500">Charter Spectrum internet speed</span> for free. Check download speeds, upload speeds, and WiFi performance for cable internet customers nationwide.
             </p>
             
             <div className="mb-12">
@@ -78,7 +78,7 @@ export default function SpectrumSpeedTest() {
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Understanding Your Spectrum Speed Test</h2>
             <p className="text-center text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Learn what your Spectrum lightweight speed test for Spectrum test results mean and how to interpret download speeds, upload speeds, and ping for optimal cable internet performance.
+              Learn what your Spectrum internet speed test results mean and how to interpret download speeds, upload speeds, and ping for optimal cable internet performance.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -160,7 +160,7 @@ export default function SpectrumSpeedTest() {
                   ranging from 300 Mbps on their base plan to 1 Gig (1000 Mbps) connections, supporting everything from 
                   basic web browsing to demanding applications like 4K streaming, online gaming, and 
                   remote work requirements. Use our <Link href="/how-much-internet-speed-do-i-need" className="text-primary hover:underline">speed requirements calculator</Link> to determine the right plan for your needs. 
-                  Regular <strong>Spectrum lightweight speed test for Spectrum tests</strong> help ensure you're getting the performance you're paying for.
+                  Regular <strong>Spectrum internet speed tests</strong> help ensure you're getting the performance you're paying for.
                 </p>
               </div>
             </CardContent>
@@ -428,7 +428,7 @@ export default function SpectrumSpeedTest() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold text-foreground mb-2">What is a good Spectrum lightweight speed test for Spectrum?</h4>
+                    <h4 className="font-semibold text-foreground mb-2">What is a good Spectrum internet speed?</h4>
                     <p className="text-sm text-muted-foreground">
                       For most households, 100+ Mbps download speed is recommended. Spectrum's base plan offers 300 Mbps download 
                       and 10 Mbps upload, which supports multiple devices, HD streaming, and remote work requirements.
@@ -459,7 +459,7 @@ export default function SpectrumSpeedTest() {
                 </div>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold text-foreground mb-2">How can I improve my Spectrum lightweight speed test for Spectrum?</h4>
+                    <h4 className="font-semibold text-foreground mb-2">How can I improve my Spectrum internet speed?</h4>
                     <p className="text-sm text-muted-foreground">
                       Restart your modem monthly, use ethernet instead of WiFi, relocate your router centrally, disconnect unused 
                       devices, and ensure your equipment supports your speed tier. Contact Spectrum if issues persist.
@@ -490,7 +490,7 @@ export default function SpectrumSpeedTest() {
                     <h4 className="font-semibold text-foreground mb-2">How much speed does my household need?</h4>
                     <p className="text-sm text-muted-foreground">
                       For basic browsing and streaming, 50-100 Mbps works well. If you have multiple users or want 4K streaming and gaming, 
-                      aim for 300+ Mbps. Use our <Link href="/how-much-internet-speed-do-i-need" className="text-primary hover:underline">lightweight speed test for Spectrum calculator</Link> to get personalized recommendations.
+                      aim for 300+ Mbps. Use our <Link href="/how-much-internet-speed-do-i-need" className="text-primary hover:underline">internet speed calculator</Link> to get personalized recommendations.
                     </p>
                   </div>
                 </div>
@@ -578,8 +578,8 @@ export default function SpectrumSpeedTest() {
           {/* Copyright */}
           <div className="text-center pt-8 border-t border-border/30 mt-8">
             <p className="text-sm text-muted-foreground">
-              © 2025 Speed Test
-              Test your cable lightweight speed test for Spectrum, WiFi performance, and network connectivity. Compare with official Spectrum speed test results.
+              © 2026 Speed Test
+              Test your cable internet speed, WiFi performance, and network connectivity. Compare with official Spectrum speed test results.
             </p>
           </div>
         </div>

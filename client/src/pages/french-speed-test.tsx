@@ -13,7 +13,7 @@ export default function FrenchSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Test de Vitesse Internet - Testez Votre Connexion WiFi Gratuit 2025";
+    document.title = "Test de Vitesse Internet - Testez Votre Connexion WiFi Gratuit 2026";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Test de vitesse internet gratuit en français. Mesurez votre vitesse de téléchargement, upload et ping pour les fournisseurs au Canada et en France. Résultats précis en temps réel pour Bell, Rogers, Bouygues et plus.');

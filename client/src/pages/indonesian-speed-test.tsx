@@ -13,7 +13,7 @@ export default function IndonesianSpeedTest() {
   const [showSpeedTest, setShowSpeedTest] = useState(false);
 
   useEffect(() => {
-    document.title = "Tes Kecepatan Internet Gratis - Cek WiFi & Broadband 2025";
+    document.title = "Tes Kecepatan Internet Gratis - Cek WiFi & Broadband 2026";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Tes kecepatan internet gratis untuk WiFi dan broadband. Cek download, upload, ping & jitter akurat untuk IndiHome, Biznet, First Media.');

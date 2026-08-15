@@ -60,7 +60,7 @@ export default function WiFiSpeedOptimization() {
   ]);
 
   useEffect(() => {
-    document.title = "WiFi Speed Optimization Guide: Boost Your Internet 2025";
+    document.title = "WiFi Speed Optimization Guide: Boost Your Internet 2026";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -91,13 +91,13 @@ export default function WiFiSpeedOptimization() {
       metaTag.setAttribute('content', content);
     };
 
-    createOrUpdateMetaTag('og:title', 'WiFi Speed Optimization Guide: Boost Your Internet 2025');
+    createOrUpdateMetaTag('og:title', 'WiFi Speed Optimization Guide: Boost Your Internet 2026');
     createOrUpdateMetaTag('og:description', 'Complete WiFi speed optimization guide. Learn how to boost your wireless internet speed with our optimization tool, expert tips, and troubleshooting solutions.');
     createOrUpdateMetaTag('og:type', 'article');
     createOrUpdateMetaTag('og:url', 'https://speedtestboost.com/wifi-speed-optimization');
     createOrUpdateMetaTag('og:image', 'https://speedtestboost.com/logo-option-5.svg');
     createOrUpdateTwitterMetaTag('twitter:card', 'summary_large_image');
-    createOrUpdateTwitterMetaTag('twitter:title', 'WiFi Speed Optimization Guide: Boost Your Internet 2025');
+    createOrUpdateTwitterMetaTag('twitter:title', 'WiFi Speed Optimization Guide: Boost Your Internet 2026');
     createOrUpdateTwitterMetaTag('twitter:description', 'Complete WiFi speed optimization guide. Learn how to boost your wireless internet speed with our optimization tool, expert tips, and troubleshooting solutions.');
     createOrUpdateTwitterMetaTag('twitter:image', 'https://speedtestboost.com/logo-option-5.svg');
 
@@ -108,7 +108,7 @@ export default function WiFiSpeedOptimization() {
         {
           "@type": "Article",
           "@id": "https://speedtestboost.com/wifi-speed-optimization#article",
-          "headline": "WiFi Speed Optimization Guide: Boost Your Internet 2025",
+          "headline": "WiFi Speed Optimization Guide: Boost Your Internet 2026",
           "description": "Complete WiFi speed optimization guide. Learn how to boost your wireless internet speed with our optimization tool, expert tips, and troubleshooting solutions.",
           "author": {
             "@type": "Organization",
@@ -123,7 +123,7 @@ export default function WiFiSpeedOptimization() {
             }
           },
           "datePublished": "2025-01-17",
-          "dateModified": "2025-01-17",
+          "dateModified": "2026-08-15",
           "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https://speedtestboost.com/wifi-speed-optimization"

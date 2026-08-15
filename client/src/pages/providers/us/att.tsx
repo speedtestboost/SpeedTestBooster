@@ -38,7 +38,7 @@ export default function ATTSpeedTest() {
               {seoConfig.h1}
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Test your <span className="font-semibold text-orange-500">AT&T lightweight speed test for ATinternet speedT</span> for free. Check your AT&T Fiber or DSL internet performance with symmetrical gigabit speeds.
+              Test your <span className="font-semibold text-orange-500">AT&T internet speed</span> for free. Check your AT&T Fiber or DSL internet performance with symmetrical gigabit speeds.
             </p>
             
             <div className="mb-12">
@@ -68,7 +68,7 @@ export default function ATTSpeedTest() {
                   <p className="text-sm text-muted-foreground">
                     Connect via Ethernet cable directly to your AT&T gateway for the most accurate <strong>AT&T Fiber speed test</strong> results. 
                     Close all background apps and disconnect other devices during testing. Test at multiple times throughout the day, 
-                    avoiding peak hours (6-11 PM) when network traffic is highest for the best <strong>AT&T lightweight speed test for ATinternet speedT test</strong> accuracy.
+                    avoiding peak hours (6-11 PM) when network traffic is highest for the best <strong>AT&T internet speed test</strong> accuracy.
                   </p>
                 </div>
               </div>
@@ -158,7 +158,7 @@ export default function ATTSpeedTest() {
                 <h3 className="text-xl font-semibold mb-3">AT&T Fiber Network Excellence</h3>
                 <p className="text-muted-foreground">
                   <strong>AT&T Fiber</strong> represents the company's investment in next-generation network technology, delivering 
-                  <strong>symmetrical gigabit lightweight speed test for ATinternet speedTs</strong> directly to homes and businesses across expanding service areas. 
+                  <strong>symmetrical gigabit internet speeds</strong> directly to homes and businesses across expanding service areas. 
                   The company's fiber deployment strategy focuses on both urban centers and suburban communities, 
                   providing customers with advanced broadband capabilities ranging from 300 Mbps to 5 Gig that support streaming, 
                   remote work, and smart home applications. AT&T's 100% fiber-optic network ensures ultra-reliable high-speed 
@@ -195,7 +195,7 @@ export default function ATTSpeedTest() {
                   dedicated internet access, private networking, cloud services, and cybersecurity applications. The 
                   company's business division leverages its extensive network infrastructure and technical expertise 
                   to serve large corporations, government agencies, and small businesses with scalable connectivity 
-                  solutions that support diverse operational requirements. Regular <strong>AT&T lightweight speed test for ATinternet speedT tests</strong> ensure 
+                  solutions that support diverse operational requirements. Regular <strong>AT&T internet speed tests</strong> ensure 
                   businesses are getting the reliable fiber performance they need.
                 </p>
 
@@ -228,7 +228,7 @@ export default function ATTSpeedTest() {
                     Multi-gig plans (2 Gig, 5 Gig) require compatible gateway and network cards. Position your AT&T gateway centrally 
                     and avoid interference from thick walls or electronics. For DSL customers, line quality impacts speeds—contact 
                     <a href="https://att.com/support" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline"> AT&T support</a> if 
-                    <strong>AT&T lightweight speed test for ATinternet speedT tests</strong> consistently show poor results. Use our <Link href="/wifi-analyzer" className="text-primary hover:underline">WiFi analyzer</Link> to optimize channel selection.
+                    <strong>AT&T internet speed tests</strong> consistently show poor results. Use our <Link href="/wifi-analyzer" className="text-primary hover:underline">WiFi analyzer</Link> to optimize channel selection.
                   </p>
                 </div>
               </div>
@@ -271,7 +271,7 @@ export default function ATTSpeedTest() {
             <CardContent className="p-8">
               <h2 className="text-3xl font-bold text-foreground mb-4 text-center">Cities with Fastest AT&T Fiber Speeds</h2>
               <p className="text-center text-muted-foreground mb-8 max-w-3xl mx-auto">
-                AT&T Fiber delivers exceptional symmetrical lightweight speed test for ATinternet speedTs across major US metros with multi-gig speeds widely available and excellent <strong>AT&T speed test</strong> results.
+                AT&T Fiber delivers exceptional symmetrical internet speeds across major US metros with multi-gig speeds widely available and excellent <strong>AT&T speed test</strong> results.
               </p>
               
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
@@ -420,8 +420,8 @@ export default function ATTSpeedTest() {
               <CardContent className="p-8">
                 <h2 className="text-2xl font-bold mb-4">{section.title}</h2>
                 <p className="text-muted-foreground">
-                  {index === 0 && "Test your AT&T Fiber lightweight speed test for ATinternet speedT with our advanced online speed test tool. Our platform provides accurate measurements of your fiber optic connection, ensuring you're getting the premium symmetrical speeds that AT&T Fiber delivers across major US markets from 300 Mbps to 5 Gig."}
-                  {index === 1 && "Check your AT&T DSL speed to verify performance for legacy connections. AT&T DSL typically delivers 10-100 Mbps depending on your location and line quality. DSL speeds vary based on distance from the central office and copper line condition. Regular AT&T lightweight speed test for ATinternet speedT tests help monitor DSL performance."}
+                  {index === 0 && "Test your AT&T Fiber internet speed with our advanced online speed test tool. Our platform provides accurate measurements of your fiber optic connection, ensuring you're getting the premium symmetrical speeds that AT&T Fiber delivers across major US markets from 300 Mbps to 5 Gig."}
+                  {index === 1 && "Check your AT&T DSL speed to verify performance for legacy connections. AT&T DSL typically delivers 10-100 Mbps depending on your location and line quality. DSL speeds vary based on distance from the central office and copper line condition. Regular AT&T internet speed tests help monitor DSL performance."}
                   {index === 2 && "Monitor your AT&T upload speed to ensure optimal performance for video conferencing, file uploads, and cloud backups. AT&T Fiber offers symmetrical speeds, meaning your upload speed matches your download speed—a major advantage over cable competitors. DSL upload speeds are typically lower, ranging from 1-10 Mbps."}
                   {index === 3 && "Test your AT&T WiFi speed to verify wireless performance throughout your home. WiFi speeds depend on your gateway model, network congestion, and physical obstacles. For best results, use the AT&T Smart Home Manager app to optimize WiFi settings and check for interference. Consider WiFi 6 for AT&T Fiber multi-gig plans."}
                   {index === 4 && "Check AT&T Fixed Wireless speed for rural internet access. AT&T offers fixed wireless internet in areas where fiber and DSL aren't available, providing an alternative to satellite internet. Fixed wireless speeds vary based on signal strength and network congestion, typically delivering 25-50 Mbps. Test your AT&T connection regularly to monitor performance."}
